@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B4AA3ECD18333D6F00F57A74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4AA3ECB18333D6F00F57A74 /* Main.storyboard */; };
+		B4AA3ED018333D8800F57A74 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4AA3ECF18333D8800F57A74 /* ViewController.m */; };
 		D729BD3B181C24A000F762A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3A181C24A000F762A3 /* Foundation.framework */; };
 		D729BD3D181C24A000F762A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3C181C24A000F762A3 /* CoreGraphics.framework */; };
 		D729BD3F181C24A000F762A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3E181C24A000F762A3 /* UIKit.framework */; };
@@ -32,6 +34,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B4AA3ECC18333D6F00F57A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../example/example/example/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B4AA3ECE18333D8000F57A74 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ../../../example/example/example/ViewController.h; sourceTree = "<group>"; };
+		B4AA3ECF18333D8800F57A74 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ../../../example/example/example/ViewController.m; sourceTree = "<group>"; };
 		D729BD37181C24A000F762A3 /* ProjectCrystalBlue-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ProjectCrystalBlue-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D729BD3A181C24A000F762A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D729BD3C181C24A000F762A3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -107,6 +112,9 @@
 		D729BD40181C24A000F762A3 /* ProjectCrystalBlue-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				B4AA3ECF18333D8800F57A74 /* ViewController.m */,
+				B4AA3ECE18333D8000F57A74 /* ViewController.h */,
+				B4AA3ECB18333D6F00F57A74 /* Main.storyboard */,
 				D729BD49181C24A000F762A3 /* AppDelegate.h */,
 				D729BD4A181C24A000F762A3 /* AppDelegate.m */,
 				D729BD4C181C24A000F762A3 /* Images.xcassets */,
@@ -202,6 +210,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = D729BD2E181C24A000F762A3;
 			productRefGroup = D729BD38181C24A000F762A3 /* Products */;
@@ -219,6 +228,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4AA3ECD18333D6F00F57A74 /* Main.storyboard in Resources */,
 				D729BD45181C24A000F762A3 /* InfoPlist.strings in Resources */,
 				D729BD4D181C24A000F762A3 /* Images.xcassets in Resources */,
 			);
@@ -239,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4AA3ED018333D8800F57A74 /* ViewController.m in Sources */,
 				D729BD4B181C24A000F762A3 /* AppDelegate.m in Sources */,
 				D729BD47181C24A000F762A3 /* main.m in Sources */,
 			);
@@ -263,6 +274,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		B4AA3ECB18333D6F00F57A74 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B4AA3ECC18333D6F00F57A74 /* Base */,
+			);
+			name = Main.storyboard;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		D729BD43181C24A000F762A3 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -443,6 +463,7 @@
 				D729BD65181C24A000F762A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D729BD66181C24A000F762A3 /* Build configuration list for PBXNativeTarget "ProjectCrystalBlue-iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -451,6 +472,7 @@
 				D729BD68181C24A000F762A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
