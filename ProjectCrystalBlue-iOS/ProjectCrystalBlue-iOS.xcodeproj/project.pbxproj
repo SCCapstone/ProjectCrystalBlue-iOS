@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B4AA3ECD18333D6F00F57A74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4AA3ECB18333D6F00F57A74 /* Main.storyboard */; };
-		B4AA3ED018333D8800F57A74 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4AA3ECF18333D8800F57A74 /* ViewController.m */; };
+		B4FD168A184D4598004EFC57 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4FD1689184D4598004EFC57 /* ViewController.m */; };
+		B4FD168C184D45CC004EFC57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4FD168B184D45CC004EFC57 /* Main.storyboard */; };
 		D729BD3B181C24A000F762A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3A181C24A000F762A3 /* Foundation.framework */; };
 		D729BD3D181C24A000F762A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3C181C24A000F762A3 /* CoreGraphics.framework */; };
 		D729BD3F181C24A000F762A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3E181C24A000F762A3 /* UIKit.framework */; };
@@ -34,9 +34,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B4AA3ECC18333D6F00F57A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../example/example/example/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B4AA3ECE18333D8000F57A74 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ../../../example/example/example/ViewController.h; sourceTree = "<group>"; };
-		B4AA3ECF18333D8800F57A74 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ../../../example/example/example/ViewController.m; sourceTree = "<group>"; };
+		B4FD1688184D4598004EFC57 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		B4FD1689184D4598004EFC57 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B4FD168B184D45CC004EFC57 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D729BD37181C24A000F762A3 /* ProjectCrystalBlue-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ProjectCrystalBlue-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D729BD3A181C24A000F762A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D729BD3C181C24A000F762A3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -112,10 +112,10 @@
 		D729BD40181C24A000F762A3 /* ProjectCrystalBlue-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				B4AA3ECF18333D8800F57A74 /* ViewController.m */,
-				B4AA3ECE18333D8000F57A74 /* ViewController.h */,
-				B4AA3ECB18333D6F00F57A74 /* Main.storyboard */,
+				B4FD168B184D45CC004EFC57 /* Main.storyboard */,
 				D729BD49181C24A000F762A3 /* AppDelegate.h */,
+				B4FD1688184D4598004EFC57 /* ViewController.h */,
+				B4FD1689184D4598004EFC57 /* ViewController.m */,
 				D729BD4A181C24A000F762A3 /* AppDelegate.m */,
 				D729BD4C181C24A000F762A3 /* Images.xcassets */,
 				D729BD41181C24A000F762A3 /* Supporting Files */,
@@ -228,7 +228,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4AA3ECD18333D6F00F57A74 /* Main.storyboard in Resources */,
+				B4FD168C184D45CC004EFC57 /* Main.storyboard in Resources */,
 				D729BD45181C24A000F762A3 /* InfoPlist.strings in Resources */,
 				D729BD4D181C24A000F762A3 /* Images.xcassets in Resources */,
 			);
@@ -249,8 +249,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4AA3ED018333D8800F57A74 /* ViewController.m in Sources */,
 				D729BD4B181C24A000F762A3 /* AppDelegate.m in Sources */,
+				B4FD168A184D4598004EFC57 /* ViewController.m in Sources */,
 				D729BD47181C24A000F762A3 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,15 +274,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B4AA3ECB18333D6F00F57A74 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B4AA3ECC18333D6F00F57A74 /* Base */,
-			);
-			name = Main.storyboard;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		D729BD43181C24A000F762A3 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -381,6 +372,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS-Prefix.pch";
 				INFOPLIST_FILE = "ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS-Info.plist";
@@ -394,6 +386,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS-Prefix.pch";
 				INFOPLIST_FILE = "ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS-Info.plist";
