@@ -4,7 +4,7 @@
 //
 //  Created by Logan Hood on 10/26/13.
 //  Copyright (c) 2013 Project Crystal Blue. All rights reserved.
-//
+//  Another comment
 
 #import "AppDelegate.h"
 
