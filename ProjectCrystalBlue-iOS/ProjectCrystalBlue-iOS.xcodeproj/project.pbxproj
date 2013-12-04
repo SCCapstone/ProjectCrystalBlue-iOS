@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B4171180184F1AED0024C834 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B417117F184F1AED0024C834 /* Main.storyboard */; };
+		B417118A184F1BD70024C834 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = B4171189184F1BD70024C834 /* Sample.m */; };
+		B417118D184F1C0F0024C834 /* SampleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B417118C184F1C0F0024C834 /* SampleListViewController.m */; };
 		B4FD168A184D4598004EFC57 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4FD1689184D4598004EFC57 /* ViewController.m */; };
-		B4FD168C184D45CC004EFC57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4FD168B184D45CC004EFC57 /* Main.storyboard */; };
 		D729BD3B181C24A000F762A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3A181C24A000F762A3 /* Foundation.framework */; };
 		D729BD3D181C24A000F762A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3C181C24A000F762A3 /* CoreGraphics.framework */; };
 		D729BD3F181C24A000F762A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3E181C24A000F762A3 /* UIKit.framework */; };
@@ -34,9 +36,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B417117F184F1AED0024C834 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "../../../ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS/Main.storyboard"; sourceTree = "<group>"; };
+		B4171188184F1BD70024C834 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
+		B4171189184F1BD70024C834 /* Sample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample.m; sourceTree = "<group>"; };
+		B417118B184F1C0F0024C834 /* SampleListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleListViewController.h; sourceTree = "<group>"; };
+		B417118C184F1C0F0024C834 /* SampleListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleListViewController.m; sourceTree = "<group>"; };
 		B4FD1688184D4598004EFC57 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		B4FD1689184D4598004EFC57 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		B4FD168B184D45CC004EFC57 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D729BD37181C24A000F762A3 /* ProjectCrystalBlue-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ProjectCrystalBlue-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D729BD3A181C24A000F762A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D729BD3C181C24A000F762A3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -79,6 +85,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B4171187184F1BB50024C834 /* Ryan Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B4171188184F1BD70024C834 /* Sample.h */,
+				B4171189184F1BD70024C834 /* Sample.m */,
+				B417118B184F1C0F0024C834 /* SampleListViewController.h */,
+				B417118C184F1C0F0024C834 /* SampleListViewController.m */,
+			);
+			name = "Ryan Classes";
+			sourceTree = "<group>";
+		};
 		D729BD2E181C24A000F762A3 = {
 			isa = PBXGroup;
 			children = (
@@ -112,7 +129,8 @@
 		D729BD40181C24A000F762A3 /* ProjectCrystalBlue-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				B4FD168B184D45CC004EFC57 /* Main.storyboard */,
+				B4171187184F1BB50024C834 /* Ryan Classes */,
+				B417117F184F1AED0024C834 /* Main.storyboard */,
 				D729BD49181C24A000F762A3 /* AppDelegate.h */,
 				B4FD1688184D4598004EFC57 /* ViewController.h */,
 				B4FD1689184D4598004EFC57 /* ViewController.m */,
@@ -228,9 +246,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4FD168C184D45CC004EFC57 /* Main.storyboard in Resources */,
 				D729BD45181C24A000F762A3 /* InfoPlist.strings in Resources */,
 				D729BD4D181C24A000F762A3 /* Images.xcassets in Resources */,
+				B4171180184F1AED0024C834 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +269,8 @@
 			files = (
 				D729BD4B181C24A000F762A3 /* AppDelegate.m in Sources */,
 				B4FD168A184D4598004EFC57 /* ViewController.m in Sources */,
+				B417118A184F1BD70024C834 /* Sample.m in Sources */,
+				B417118D184F1C0F0024C834 /* SampleListViewController.m in Sources */,
 				D729BD47181C24A000F762A3 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
