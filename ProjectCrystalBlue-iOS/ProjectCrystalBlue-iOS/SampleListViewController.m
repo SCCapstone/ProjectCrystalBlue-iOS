@@ -8,6 +8,8 @@
 
 #import "SampleListViewController.h"
 #import "Sample.h"
+#import "AddSampleViewController.h"
+#import "EditTaskViewController.h"
 
 @interface SampleListViewController ()
 
@@ -38,12 +40,6 @@
     
     self.samples = [[NSMutableArray alloc] init];
     
-    Sample *sample = [[Sample alloc] initWithName:@"My First Sample" pulverized: NO];
-    [self.samples addObject:sample];
-    
-    Sample *pulverizedSample = [[Sample alloc] initWithName:@"My First Pulverized Sample" pulverized:YES];
-    [self.samples addObject:pulverizedSample];
-    
     [self.tableView reloadData];
 }
 
@@ -54,6 +50,18 @@
 }
 
 #pragma mark - Table view data source
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"AddSampleSegue"]){
+        UINavigationController *navCon = segue.destinationViewController;
+        AddSampleViewController *addSampleViewController = [navCon.viewControllers objectAtIndex:0];
+        addSampleViewController.sampleListViewController = self;
+    }
+    else if ([segue.identifier isEqualToString:@"EditSampleSegue"]){
+        EditTaskViewController *editTaskViewController = segue.destinationViewController;
+        editTaskViewController.sample = [self.samples objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+    }
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -84,6 +92,11 @@
     return cell;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear: animated];
+    [self.tableView reloadData];
+}
 /*
  // Override to support conditional editing of the table view.
  - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
