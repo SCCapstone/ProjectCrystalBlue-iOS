@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B4171180184F1AED0024C834 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B417117F184F1AED0024C834 /* Main.storyboard */; };
 		B417118A184F1BD70024C834 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = B4171189184F1BD70024C834 /* Sample.m */; };
 		B417118D184F1C0F0024C834 /* SampleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B417118C184F1C0F0024C834 /* SampleListViewController.m */; };
 		B4171199184F21590024C834 /* AddSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4171198184F21590024C834 /* AddSampleViewController.m */; };
 		B417119C184F28A50024C834 /* EditTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B417119B184F28A50024C834 /* EditTaskViewController.m */; };
+		B417119E184F7C6D0024C834 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B417119D184F7C6D0024C834 /* Main.storyboard */; };
 		B4FD168A184D4598004EFC57 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4FD1689184D4598004EFC57 /* ViewController.m */; };
 		D729BD3B181C24A000F762A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3A181C24A000F762A3 /* Foundation.framework */; };
 		D729BD3D181C24A000F762A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3C181C24A000F762A3 /* CoreGraphics.framework */; };
@@ -38,7 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B417117F184F1AED0024C834 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "../../../ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS/Main.storyboard"; sourceTree = "<group>"; };
 		B4171188184F1BD70024C834 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
 		B4171189184F1BD70024C834 /* Sample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample.m; sourceTree = "<group>"; };
 		B417118B184F1C0F0024C834 /* SampleListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleListViewController.h; sourceTree = "<group>"; };
@@ -47,6 +46,7 @@
 		B4171198184F21590024C834 /* AddSampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleViewController.m; sourceTree = "<group>"; };
 		B417119A184F28A50024C834 /* EditTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTaskViewController.h; sourceTree = "<group>"; };
 		B417119B184F28A50024C834 /* EditTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTaskViewController.m; sourceTree = "<group>"; };
+		B417119D184F7C6D0024C834 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B4FD1688184D4598004EFC57 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		B4FD1689184D4598004EFC57 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D729BD37181C24A000F762A3 /* ProjectCrystalBlue-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ProjectCrystalBlue-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,7 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				B4171187184F1BB50024C834 /* Ryan Classes */,
-				B417117F184F1AED0024C834 /* Main.storyboard */,
+				B417119D184F7C6D0024C834 /* Main.storyboard */,
 				D729BD49181C24A000F762A3 /* AppDelegate.h */,
 				B4FD1688184D4598004EFC57 /* ViewController.h */,
 				B4FD1689184D4598004EFC57 /* ViewController.m */,
@@ -257,8 +257,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D729BD45181C24A000F762A3 /* InfoPlist.strings in Resources */,
+				B417119E184F7C6D0024C834 /* Main.storyboard in Resources */,
 				D729BD4D181C24A000F762A3 /* Images.xcassets in Resources */,
-				B4171180184F1AED0024C834 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
