@@ -12,6 +12,7 @@
 		B4171199184F21590024C834 /* AddSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4171198184F21590024C834 /* AddSampleViewController.m */; };
 		B417119C184F28A50024C834 /* EditTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B417119B184F28A50024C834 /* EditTaskViewController.m */; };
 		B417119E184F7C6D0024C834 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B417119D184F7C6D0024C834 /* Main.storyboard */; };
+		B4A1C75C1850FDA000703247 /* AttributeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A1C75B1850FDA000703247 /* AttributeListViewController.m */; };
 		B4FD168A184D4598004EFC57 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4FD1689184D4598004EFC57 /* ViewController.m */; };
 		D729BD3B181C24A000F762A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3A181C24A000F762A3 /* Foundation.framework */; };
 		D729BD3D181C24A000F762A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3C181C24A000F762A3 /* CoreGraphics.framework */; };
@@ -47,6 +48,8 @@
 		B417119A184F28A50024C834 /* EditTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTaskViewController.h; sourceTree = "<group>"; };
 		B417119B184F28A50024C834 /* EditTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTaskViewController.m; sourceTree = "<group>"; };
 		B417119D184F7C6D0024C834 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		B4A1C75A1850FDA000703247 /* AttributeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeListViewController.h; sourceTree = "<group>"; };
+		B4A1C75B1850FDA000703247 /* AttributeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeListViewController.m; sourceTree = "<group>"; };
 		B4FD1688184D4598004EFC57 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		B4FD1689184D4598004EFC57 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D729BD37181C24A000F762A3 /* ProjectCrystalBlue-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ProjectCrystalBlue-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +105,8 @@
 				B4171198184F21590024C834 /* AddSampleViewController.m */,
 				B417119A184F28A50024C834 /* EditTaskViewController.h */,
 				B417119B184F28A50024C834 /* EditTaskViewController.m */,
+				B4A1C75A1850FDA000703247 /* AttributeListViewController.h */,
+				B4A1C75B1850FDA000703247 /* AttributeListViewController.m */,
 			);
 			name = "Ryan Classes";
 			sourceTree = "<group>";
@@ -284,6 +289,7 @@
 				B417119C184F28A50024C834 /* EditTaskViewController.m in Sources */,
 				B4171199184F21590024C834 /* AddSampleViewController.m in Sources */,
 				D729BD47181C24A000F762A3 /* main.m in Sources */,
+				B4A1C75C1850FDA000703247 /* AttributeListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

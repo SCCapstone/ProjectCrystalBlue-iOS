@@ -10,6 +10,7 @@
 #import "Sample.h"
 #import "AddSampleViewController.h"
 #import "EditTaskViewController.h"
+#import "AttributeListViewController.h"
 
 @interface SampleListViewController ()
 
@@ -60,6 +61,10 @@
     else if ([segue.identifier isEqualToString:@"EditSampleSegue"]){
         EditTaskViewController *editTaskViewController = segue.destinationViewController;
         editTaskViewController.sample = [self.samples objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+    }
+    else if([segue.identifier isEqualToString:@"AttributeListSegue"]){
+        AttributeListViewController *attributeListViewController = segue.destinationViewController;
+        attributeListViewController.attributes = [self.samples objectAtIndex:self.tableView.indexPathForSelectedRow.row];
     }
 }
 
