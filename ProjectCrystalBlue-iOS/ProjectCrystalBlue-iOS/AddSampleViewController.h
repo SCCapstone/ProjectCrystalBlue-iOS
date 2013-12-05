@@ -16,6 +16,10 @@
 - (IBAction)nextButtonPressed:(id)sender;
 
 @property (nonatomic, strong) IBOutlet UITextField *nameField;
+@property (nonatomic, strong) IBOutlet UITextField *rockTypeField;
+@property (nonatomic, strong) IBOutlet UITextField *coordinatesField;
+
 @property (nonatomic, strong) SampleListViewController *sampleListViewController;
+
 
 @end

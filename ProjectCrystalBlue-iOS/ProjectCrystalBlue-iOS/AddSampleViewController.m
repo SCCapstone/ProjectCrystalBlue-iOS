@@ -17,6 +17,8 @@
 @implementation AddSampleViewController
 
 @synthesize nameField;
+@synthesize rockTypeField;
+@synthesize coordinatesField;
 @synthesize sampleListViewController;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -52,7 +54,7 @@
 }
 
 -(void)nextButtonPressed:(id)sender{
-    Sample *newSample = [[Sample alloc] initWithRockType:self.nameField.text AndRockId:self.nameField.text AndCoordinates:self.nameField.text AndIsPulverized:NO];
+    Sample *newSample = [[Sample alloc] initWithRockType:self.rockTypeField.text AndRockId:self.nameField.text AndCoordinates:self.coordinatesField.text AndIsPulverized:NO];
    // Sample *newSample = [[Sample alloc] initWithName:self.nameField.text pulverized:NO];
     [self.sampleListViewController.samples addObject:newSample];
     [self dismissModalViewControllerAnimated:YES];
