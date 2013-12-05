@@ -10,9 +10,17 @@
 
 @interface Sample : NSObject
 
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, assign) BOOL pulverized;
 
-- (id)initWithName:(NSString *)name pulverized:(BOOL)pulverized;
+@property(nonatomic) NSString* rockType;
+@property(nonatomic) NSString* rockId;
+@property(nonatomic) NSString* coordinates;
+@property(nonatomic) bool isPulverized;
+
+-(id) initWithRockType:(NSString*)rockType
+             AndRockId:(NSString*)rockId
+        AndCoordinates:(NSString*)coordinates
+       AndIsPulverized:(bool)isPulverized;
+
+-(id) initWithSample:(Sample*)sample;
 
 @end

@@ -10,17 +10,34 @@
 
 @implementation Sample
 
-@synthesize name = _name;
-@synthesize pulverized = _pulverized;
+@synthesize rockType = _rockType;
+@synthesize rockId = _rockId;
+@synthesize coordinates = _coordinates;
+@synthesize isPulverized = _isPulverized;
 
--(id)initWithName:(NSString *)name pulverized:(BOOL)pulverized{
+-(id) initWithRockType:(NSString*)rockType
+             AndRockId:(NSString*)rockId
+        AndCoordinates:(NSString*)coordinates
+       AndIsPulverized:(bool)isPulverized
+{
     self = [super init];
-    if(self){
-        self.name = name;
-        self.pulverized = pulverized;
+    if (self) {
+        _rockType = rockType;
+        _rockId = rockId;
+        _coordinates = coordinates;
+        _isPulverized = isPulverized;
     }
     return self;
 }
+
+-(id) initWithSample:(Sample*)sample {
+    self = [self initWithRockType:sample.rockType
+                        AndRockId:sample.rockId
+                   AndCoordinates:sample.coordinates
+                  AndIsPulverized:sample.isPulverized];
+    return self;
+}
+
 
 @end
 

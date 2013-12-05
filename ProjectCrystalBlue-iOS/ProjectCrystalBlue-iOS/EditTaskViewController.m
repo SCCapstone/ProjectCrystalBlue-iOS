@@ -37,7 +37,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    self.nameField.text = self.sample.name;
+    self.nameField.text = self.sample.rockId;
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,7 +49,7 @@
 #pragma mark - IBActions
 
 - (void)sampleDataChanged:(id)sender{
-    self.sample.name = self.nameField.text;
+    self.sample.rockId = self.nameField.text;
 }
 
 @end
