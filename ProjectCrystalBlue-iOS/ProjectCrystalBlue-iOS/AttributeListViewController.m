@@ -18,6 +18,7 @@
 @implementation AttributeListViewController
 
 @synthesize attributes = _attributes;
+@synthesize currentSample = _currentSample;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -61,14 +62,30 @@
     return 4;
 }
 
+//for Justin/Logan: here is where we are going to be assigning cell values fro the attributes. you can use if(indexPath.row == 'row number') to get the correct attribute to populate each row. I just don't know how to get the "currentSample" to be in this method (since in the SampleListViewController samples is the array)... because we do need a current sample.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
+    
+    //Sample *clickedSample = [self.currentSample objectAtIndex:indexPath.row];
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     
-    
+    //I don't know if the right sides of these work... but this is how we would specify the seperate cells
+    if (indexPath.row == 0) {
+        cell.textLabel.text = self.currentSample.rockId;
+    }
+    if (indexPath.row == 1) {
+        cell.textLabel.text = self.currentSample.rockType;
+    }
+    if (indexPath.row == 2) {
+        cell.textLabel.text = self.currentSample.coordinates;
+    }
+    //if (indexPath.row == 3) {
+        //cell.textLabel.text = self.currentSample.isPulverized;
+    //}
     return cell;
 }
 

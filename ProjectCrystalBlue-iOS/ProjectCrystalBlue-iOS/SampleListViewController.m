@@ -92,7 +92,9 @@
     
     // Configure the cell...
     //TODO set the text
-    cell.textLabel.text = currentSample.rockId;
+        cell.textLabel.text = currentSample.rockId;
+   
+   // cell.textLabel.text = currentSample.rockId;
     
     return cell;
 }

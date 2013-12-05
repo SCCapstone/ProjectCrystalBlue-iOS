@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class Sample;
+
 @interface AttributeListViewController : UITableViewController
 
 @property(nonatomic, strong) NSMutableArray *attributes;
+@property(nonatomic, strong) Sample *currentSample;
 
 @end
