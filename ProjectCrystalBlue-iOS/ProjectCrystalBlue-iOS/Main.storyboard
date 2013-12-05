@@ -314,6 +314,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="SJA-0W-RbR" kind="push" identifier="AttributeListSegue" id="Tz6-GI-KUM"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dd8-Fu-e6G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -886,24 +889,6 @@
             </objects>
             <point key="canvasLocation" x="-2558" y="453"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="PNW-V2-09a">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c3g-X3-aBb" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aba-yt-csl">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="SJA-0W-RbR" kind="relationship" relationship="rootViewController" id="uzI-95-YXQ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WFH-z1-Dbl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1741" y="1079"/>
-        </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -911,9 +896,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="kHR-yS-ZWJ"/>
-        <segue reference="FjT-vJ-hxq"/>
+        <segue reference="hCV-Ce-ZOr"/>
         <segue reference="vCb-nw-nmk"/>
+        <segue reference="FjT-vJ-hxq"/>
         <segue reference="GXK-Uz-z3D"/>
         <segue reference="bAv-6r-d25"/>
     </inferredMetricsTieBreakers>
