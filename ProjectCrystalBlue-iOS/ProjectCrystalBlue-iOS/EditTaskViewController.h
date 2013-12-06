@@ -13,6 +13,8 @@
 @interface EditTaskViewController : UITableViewController
 
 @property (nonatomic, strong) IBOutlet UITextField *nameField;
+@property (strong, nonatomic) IBOutlet UITextField *rocktypeField;
+@property (strong, nonatomic) IBOutlet UITextField *locationField;
 @property (nonatomic, strong) Sample *sample;
 
 - (IBAction)sampleDataChanged:(id)sender;

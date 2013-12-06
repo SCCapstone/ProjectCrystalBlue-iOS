@@ -16,6 +16,8 @@
 @implementation EditTaskViewController
 
 @synthesize nameField = _nameField;
+@synthesize rocktypeField = _rocktypeField;
+@synthesize locationField = _locationField;
 @synthesize sample = _sample;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -38,6 +40,8 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.nameField.text = self.sample.rockId;
+    self.rocktypeField.text = self.sample.rockType;
+    self.locationField.text = self.sample.coordinates;
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,6 +54,8 @@
 
 - (void)sampleDataChanged:(id)sender{
     self.sample.rockId = self.nameField.text;
+    self.sample.rockType = self.rocktypeField.text;
+    self.sample.coordinates = self.locationField.text;
 }
 
 @end
