@@ -18,8 +18,8 @@
     self = [super init];
     if (self) {
         sqlite3 *dbConnection;
-        // Try to open temporary database
-        if (sqlite3_open("test.db", &dbConnection) != SQLITE_OK) {
+        // Try to open temporary database TODO CHANGE NIL TO test.db
+        if (sqlite3_open(nil, &dbConnection) != SQLITE_OK) {
             NSLog(@"Failed to open database");
             return nil;
         }
@@ -38,6 +38,7 @@
 
 // Execute a query command against the local SQLite database
 -(NSArray *)performQuery:(NSString *)query {
+    NSLog(@"%@", query);
     sqlite3_stmt *statement = nil;
     const char *sql = [query UTF8String];
     int resultCode = sqlite3_prepare_v2(db, sql, -1, &statement, NULL);

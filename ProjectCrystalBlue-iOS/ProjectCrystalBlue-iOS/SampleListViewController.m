@@ -19,12 +19,14 @@
 @implementation SampleListViewController
 
 @synthesize samples = _samples;
+@synthesize database = _database;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
+    
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -32,6 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _database = [[SQLiteWrapper alloc] init];
+    _samples = [_database getSamples];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -61,6 +65,7 @@
     else if ([segue.identifier isEqualToString:@"EditSampleSegue"]){
         EditTaskViewController *editTaskViewController = segue.destinationViewController;
         editTaskViewController.sample = [self.samples objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+        editTaskViewController.sampleListViewController = self;
     }
     else if([segue.identifier isEqualToString:@"AttributeListSegue"]){
         AttributeListViewController *attributeListViewController = segue.destinationViewController;

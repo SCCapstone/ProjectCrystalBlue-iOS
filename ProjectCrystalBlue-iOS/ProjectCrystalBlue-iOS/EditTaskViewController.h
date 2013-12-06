@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SampleListViewController.h"
 
 @class Sample;
 
@@ -17,6 +18,8 @@
 @property (strong, nonatomic) IBOutlet UITextField *locationField;
 @property (strong, nonatomic) IBOutlet UITextField *isPulverizedField;
 @property (nonatomic, strong) Sample *sample;
+
+@property (nonatomic, strong) SampleListViewController *sampleListViewController;
 
 - (IBAction)sampleDataChanged:(id)sender;
 

@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SQLiteWrapper.h"
 
-@interface SampleListViewController : UITableViewController
+@interface SampleListViewController : UITableViewController {
+}
 
 @property(nonatomic, strong) NSMutableArray *samples;
+@property(nonatomic, strong) SQLiteWrapper *database;
 
 @end

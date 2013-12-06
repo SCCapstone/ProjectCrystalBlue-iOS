@@ -21,6 +21,8 @@
 @synthesize isPulverizedField = _isPulverizedField;
 @synthesize sample = _sample;
 
+@synthesize sampleListViewController;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -59,6 +61,7 @@
     self.sample.rockType = self.rocktypeField.text;
     self.sample.coordinates = self.locationField.text;
     self.sample.isPulverized = [self.isPulverizedField.text boolValue];
+    [sampleListViewController.database updateSample:self.sample];
 }
 
 @end

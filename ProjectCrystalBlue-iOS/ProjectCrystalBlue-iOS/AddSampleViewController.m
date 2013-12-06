@@ -60,6 +60,7 @@
                                          AndIsPulverized:self.isPulverizedField.text];
    // Sample *newSample = [[Sample alloc] initWithName:self.nameField.text pulverized:NO];
     [self.sampleListViewController.samples addObject:newSample];
+    [self.sampleListViewController.database insertSample:newSample];
     [self dismissModalViewControllerAnimated:YES];
    
 }
