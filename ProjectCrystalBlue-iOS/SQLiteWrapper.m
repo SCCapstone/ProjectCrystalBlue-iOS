@@ -18,8 +18,12 @@
     self = [super init];
     if (self) {
         sqlite3 *dbConnection;
-        // Try to open temporary database TODO CHANGE NIL TO test.db
-        if (sqlite3_open(nil, &dbConnection) != SQLITE_OK) {
+        // Try to open temporary database
+        NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString* documentsDirectory = [paths lastObject];
+        NSString* databasePath = [documentsDirectory stringByAppendingPathComponent:@"test.db"];
+        
+        if (sqlite3_open([databasePath UTF8String], &dbConnection) != SQLITE_OK) {
             NSLog(@"Failed to open database");
             return nil;
         }
@@ -88,6 +92,7 @@
                                               AndIsPulverized:[[[result objectAtIndex:i] objectAtIndex:3] boolValue]];
             [samples addObject:sample];
         }
+        NSLog(@"Found %d samples.", [samples count]);
         return samples;
     }
     return nil;
