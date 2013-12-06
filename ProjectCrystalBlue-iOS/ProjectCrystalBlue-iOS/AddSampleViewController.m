@@ -55,7 +55,7 @@
 
 -(void)nextButtonPressed:(id)sender{
     Sample *newSample = [[Sample alloc] initWithRockType:self.rockTypeField.text
-                                               AndRockId:self.nameField.text
+                                               AndRockId:[self.nameField.text integerValue]
                                           AndCoordinates:self.coordinatesField.text
                                          AndIsPulverized:self.isPulverizedField.text];
    // Sample *newSample = [[Sample alloc] initWithName:self.nameField.text pulverized:NO];
