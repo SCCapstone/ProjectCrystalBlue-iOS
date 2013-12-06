@@ -14,6 +14,8 @@
 		B417119E184F7C6D0024C834 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B417119D184F7C6D0024C834 /* Main.storyboard */; };
 		B4A1C75C1850FDA000703247 /* AttributeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A1C75B1850FDA000703247 /* AttributeListViewController.m */; };
 		B4FD168A184D4598004EFC57 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4FD1689184D4598004EFC57 /* ViewController.m */; };
+		D71EE32C18518C46007D4018 /* SQLiteWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D71EE32B18518C46007D4018 /* SQLiteWrapper.m */; };
+		D71EE32E18518C5F007D4018 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D71EE32D18518C5F007D4018 /* libsqlite3.dylib */; };
 		D729BD3B181C24A000F762A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3A181C24A000F762A3 /* Foundation.framework */; };
 		D729BD3D181C24A000F762A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3C181C24A000F762A3 /* CoreGraphics.framework */; };
 		D729BD3F181C24A000F762A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3E181C24A000F762A3 /* UIKit.framework */; };
@@ -52,6 +54,9 @@
 		B4A1C75B1850FDA000703247 /* AttributeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeListViewController.m; sourceTree = "<group>"; };
 		B4FD1688184D4598004EFC57 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		B4FD1689184D4598004EFC57 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D71EE32A18518C46007D4018 /* SQLiteWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SQLiteWrapper.h; path = ../SQLiteWrapper.h; sourceTree = "<group>"; };
+		D71EE32B18518C46007D4018 /* SQLiteWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SQLiteWrapper.m; path = ../SQLiteWrapper.m; sourceTree = "<group>"; };
+		D71EE32D18518C5F007D4018 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		D729BD37181C24A000F762A3 /* ProjectCrystalBlue-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ProjectCrystalBlue-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D729BD3A181C24A000F762A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D729BD3C181C24A000F762A3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -75,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D71EE32E18518C5F007D4018 /* libsqlite3.dylib in Frameworks */,
 				D729BD3D181C24A000F762A3 /* CoreGraphics.framework in Frameworks */,
 				D729BD3F181C24A000F762A3 /* UIKit.framework in Frameworks */,
 				D729BD3B181C24A000F762A3 /* Foundation.framework in Frameworks */,
@@ -133,6 +139,7 @@
 		D729BD39181C24A000F762A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D71EE32D18518C5F007D4018 /* libsqlite3.dylib */,
 				D729BD3A181C24A000F762A3 /* Foundation.framework */,
 				D729BD3C181C24A000F762A3 /* CoreGraphics.framework */,
 				D729BD3E181C24A000F762A3 /* UIKit.framework */,
@@ -144,11 +151,13 @@
 		D729BD40181C24A000F762A3 /* ProjectCrystalBlue-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				D71EE32A18518C46007D4018 /* SQLiteWrapper.h */,
+				D71EE32B18518C46007D4018 /* SQLiteWrapper.m */,
 				B4171187184F1BB50024C834 /* Ryan Classes */,
 				B417119D184F7C6D0024C834 /* Main.storyboard */,
-				D729BD49181C24A000F762A3 /* AppDelegate.h */,
 				B4FD1688184D4598004EFC57 /* ViewController.h */,
 				B4FD1689184D4598004EFC57 /* ViewController.m */,
+				D729BD49181C24A000F762A3 /* AppDelegate.h */,
 				D729BD4A181C24A000F762A3 /* AppDelegate.m */,
 				D729BD4C181C24A000F762A3 /* Images.xcassets */,
 				D729BD41181C24A000F762A3 /* Supporting Files */,
@@ -287,6 +296,7 @@
 				B417118A184F1BD70024C834 /* Sample.m in Sources */,
 				B417118D184F1C0F0024C834 /* SampleListViewController.m in Sources */,
 				B417119C184F28A50024C834 /* EditTaskViewController.m in Sources */,
+				D71EE32C18518C46007D4018 /* SQLiteWrapper.m in Sources */,
 				B4171199184F21590024C834 /* AddSampleViewController.m in Sources */,
 				D729BD47181C24A000F762A3 /* main.m in Sources */,
 				B4A1C75C1850FDA000703247 /* AttributeListViewController.m in Sources */,
