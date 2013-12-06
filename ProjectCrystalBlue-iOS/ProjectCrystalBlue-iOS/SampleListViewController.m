@@ -92,7 +92,7 @@
     
     // Configure the cell...
     //TODO set the text
-        cell.textLabel.text = currentSample.rockId;
+        cell.textLabel.text = [NSString stringWithFormat:(@"%d"), (int)currentSample.rockId];
    
    // cell.textLabel.text = currentSample.rockId;
     

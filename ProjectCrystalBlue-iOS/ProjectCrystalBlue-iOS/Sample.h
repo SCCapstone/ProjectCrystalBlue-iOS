@@ -12,12 +12,12 @@
 
 
 @property(nonatomic) NSString* rockType;
-@property(nonatomic) NSString* rockId;
+@property(nonatomic) NSInteger rockId;
 @property(nonatomic) NSString* coordinates;
 @property(nonatomic) bool isPulverized;
 
 -(id) initWithRockType:(NSString*)rockType
-             AndRockId:(NSString*)rockId
+             AndRockId:(NSInteger)rockId
         AndCoordinates:(NSString*)coordinates
        AndIsPulverized:(bool)isPulverized;
 

@@ -16,7 +16,7 @@
 @synthesize isPulverized = _isPulverized;
 
 -(id) initWithRockType:(NSString*)rockType
-             AndRockId:(NSString*)rockId
+             AndRockId:(NSInteger)rockId
         AndCoordinates:(NSString*)coordinates
        AndIsPulverized:(bool)isPulverized
 {

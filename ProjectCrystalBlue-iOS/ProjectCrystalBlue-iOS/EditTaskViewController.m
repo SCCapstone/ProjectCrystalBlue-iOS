@@ -40,7 +40,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    self.nameField.text = self.sample.rockId;
+    self.nameField.text = [NSString stringWithFormat:(@"%d"), (int)self.sample.rockId];
     self.rocktypeField.text = self.sample.rockType;
     self.locationField.text = self.sample.coordinates;
     self.isPulverizedField.text = self.sample.isPulverized ? @"YES" : @"NO";
@@ -55,7 +55,7 @@
 #pragma mark - IBActions
 
 - (void)sampleDataChanged:(id)sender{
-    self.sample.rockId = self.nameField.text;
+    self.sample.rockId = [self.nameField.text integerValue];
     self.sample.rockType = self.rocktypeField.text;
     self.sample.coordinates = self.locationField.text;
     self.sample.isPulverized = [self.isPulverizedField.text boolValue];

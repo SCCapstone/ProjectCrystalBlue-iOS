@@ -75,7 +75,7 @@
     
     //I don't know if the right sides of these work... but this is how we would specify the seperate cells
     if (indexPath.row == 0) {
-        cell.textLabel.text = self.currentSample.rockId;
+        cell.textLabel.text = [NSString stringWithFormat:(@"%d"), self.currentSample.rockId];
     }
     if (indexPath.row == 1) {
         cell.textLabel.text = self.currentSample.rockType;
