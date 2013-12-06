@@ -18,6 +18,7 @@
 @property (nonatomic, strong) IBOutlet UITextField *nameField;
 @property (nonatomic, strong) IBOutlet UITextField *rockTypeField;
 @property (nonatomic, strong) IBOutlet UITextField *coordinatesField;
+@property (strong, nonatomic) IBOutlet UITextField *isPulverizedField;
 
 @property (nonatomic, strong) SampleListViewController *sampleListViewController;
 

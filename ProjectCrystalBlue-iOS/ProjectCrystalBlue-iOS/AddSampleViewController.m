@@ -54,7 +54,10 @@
 }
 
 -(void)nextButtonPressed:(id)sender{
-    Sample *newSample = [[Sample alloc] initWithRockType:self.rockTypeField.text AndRockId:self.nameField.text AndCoordinates:self.coordinatesField.text AndIsPulverized:NO];
+    Sample *newSample = [[Sample alloc] initWithRockType:self.rockTypeField.text
+                                               AndRockId:self.nameField.text
+                                          AndCoordinates:self.coordinatesField.text
+                                         AndIsPulverized:self.isPulverizedField.text];
    // Sample *newSample = [[Sample alloc] initWithName:self.nameField.text pulverized:NO];
     [self.sampleListViewController.samples addObject:newSample];
     [self dismissModalViewControllerAnimated:YES];

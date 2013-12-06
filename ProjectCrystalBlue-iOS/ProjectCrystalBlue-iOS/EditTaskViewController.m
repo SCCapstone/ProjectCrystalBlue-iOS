@@ -18,6 +18,7 @@
 @synthesize nameField = _nameField;
 @synthesize rocktypeField = _rocktypeField;
 @synthesize locationField = _locationField;
+@synthesize isPulverizedField = _isPulverizedField;
 @synthesize sample = _sample;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -42,6 +43,7 @@
     self.nameField.text = self.sample.rockId;
     self.rocktypeField.text = self.sample.rockType;
     self.locationField.text = self.sample.coordinates;
+    self.isPulverizedField.text = self.sample.isPulverized ? @"YES" : @"NO";
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,6 +58,7 @@
     self.sample.rockId = self.nameField.text;
     self.sample.rockType = self.rocktypeField.text;
     self.sample.coordinates = self.locationField.text;
+    self.sample.isPulverized = [self.isPulverizedField.text boolValue];
 }
 
 @end

@@ -15,6 +15,7 @@
 @property (nonatomic, strong) IBOutlet UITextField *nameField;
 @property (strong, nonatomic) IBOutlet UITextField *rocktypeField;
 @property (strong, nonatomic) IBOutlet UITextField *locationField;
+@property (strong, nonatomic) IBOutlet UITextField *isPulverizedField;
 @property (nonatomic, strong) Sample *sample;
 
 - (IBAction)sampleDataChanged:(id)sender;
