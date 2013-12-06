@@ -34,8 +34,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _database = [[SQLiteWrapper alloc] init];
-    _samples = [_database getSamples];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -44,6 +42,9 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.samples = [[NSMutableArray alloc] init];
+    
+    _database = [[SQLiteWrapper alloc] init];
+    [self.samples addObjectsFromArray:[_database getSamples]];
     
     [self.tableView reloadData];
 }
