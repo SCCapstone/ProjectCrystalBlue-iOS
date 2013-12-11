@@ -21,7 +21,7 @@
         // Try to open temporary database
         NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString* documentsDirectory = [paths lastObject];
-        NSString* databasePath = [documentsDirectory stringByAppendingPathComponent:@"test.db"];
+        NSString* databasePath = [documentsDirectory stringByAppendingPathComponent:@"test3.db"];
         
         if (sqlite3_open([databasePath UTF8String], &dbConnection) != SQLITE_OK) {
             NSLog(@"Failed to open database");
@@ -31,12 +31,13 @@
         zumero_register(db);
 
         // Create sample database
-        NSString *sql = @"CREATE VIRTUAL TABLE IF NOT EXISTS samples USING zumero("
-                        "rockType TEXT,"
-                        "rockId INTEGER PRIMARY KEY,"
-                        "coordinates TEXT,"
-                        "isPulverized INTEGER);";
-        [self performQuery:sql];
+//        NSString *sql = @"CREATE VIRTUAL TABLE IF NOT EXISTS samples USING zumero("
+//        "rockType TEXT,"
+//        "rockId INTEGER PRIMARY KEY,"
+//        "coordinates TEXT,"
+//        "isPulverized INTEGER);";
+//        [self performQuery:sql];
+        [self sync];
     }
     return self;
 }
@@ -105,6 +106,7 @@
                      "VALUES ('%@',%d,'%@',%d);", [sample rockType], (int)[sample rockId], [sample coordinates],
                      [sample isPulverized] ? 1 : 0];
     [self performQuery:sql];
+    [self sync];
 }
 
 // Submits a change to the SQLite database.
@@ -125,23 +127,29 @@
 // Sync local database with zumero database
 -(void) sync {
     NSString *sql = @"SELECT zumero_sync("
-    "'test',"
-    "'https://zinst7655bd1e667.s.zumero.net',"
-    "'test_db2',"
-    "zumero_internal_auth_scheme('zumero_users_admin'),"
-    "'admin',"
-    "'pcbcsce490','temp_file');";
-    [self performQuery:sql];
+        "'main',"
+        "'https://zinst7655bd1e667.s.zumero.net',"
+        "'test_db3',"
+        "zumero_internal_auth_scheme('zumero_users_admin'),"
+        "'admin',"
+        "'pcbcsce490');";
+    NSArray *result = [self performQuery:sql];
+    NSArray *args = [[[result objectAtIndex:0] objectAtIndex:0] componentsSeparatedByString:@";"];
+    NSInteger callsRemaining = [[args objectAtIndex:0] integerValue];
+    for (NSInteger i=0; i<callsRemaining; i++) {
+        [self performQuery:sql];
+    }
+
 }
 
 // Get storage usage stats from zumero database
 -(void) storageUsage {
     NSString *sql = @"SELECT zumero_get_storage_usage_on_server("
-    "'https://zinst7655bd1e667.s.zumero.net',"
-    "zumero_internal_auth_scheme('zumero_users_admin'),"
-    "'admin',"
-    "'pcbcsce490',"
-    "'my_dbfile_list');";
+        "'https://zinst7655bd1e667.s.zumero.net',"
+        "zumero_internal_auth_scheme('zumero_users_admin'),"
+        "'admin',"
+        "'pcbcsce490',"
+        "'my_dbfile_list');";
     [self performQuery:sql];
     sql = @"SELECT * FROM my_dbfile_list;";
     [self performQuery:sql];
