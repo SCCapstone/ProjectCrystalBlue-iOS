@@ -14,10 +14,16 @@
 		B417119E184F7C6D0024C834 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B417119D184F7C6D0024C834 /* Main.storyboard */; };
 		B4A1C75C1850FDA000703247 /* AttributeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A1C75B1850FDA000703247 /* AttributeListViewController.m */; };
 		B4FD168A184D4598004EFC57 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4FD1689184D4598004EFC57 /* ViewController.m */; };
+		D01DDDBF188DDC5E0059AF09 /* ChildSample.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDB8188DDC5E0059AF09 /* ChildSample.m */; };
+		D01DDDC0188DDC5E0059AF09 /* ChildSampleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDBA188DDC5E0059AF09 /* ChildSampleConstants.m */; };
+		D01DDDC1188DDC5E0059AF09 /* OriginalSample.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDBC188DDC5E0059AF09 /* OriginalSample.m */; };
+		D01DDDC2188DDC5E0059AF09 /* OriginalSampleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDBE188DDC5E0059AF09 /* OriginalSampleConstants.m */; };
+		D01DDDC9188DDC910059AF09 /* ChildSampleStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDC4188DDC910059AF09 /* ChildSampleStore.m */; };
+		D01DDDCA188DDC910059AF09 /* ImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDC6188DDC910059AF09 /* ImageStore.m */; };
+		D01DDDCB188DDC910059AF09 /* OriginalSampleStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDC8188DDC910059AF09 /* OriginalSampleStore.m */; };
+		D03677031857D496002A042D /* zumero.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D03677021857D496002A042D /* zumero.a */; };
 		D04AD3981851BDAB0079B2EE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04AD3971851BDAB0079B2EE /* CFNetwork.framework */; };
 		D04AD39A1851BDB00079B2EE /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D04AD3991851BDB00079B2EE /* libz.dylib */; };
-		D0969B551851C188008C4BD5 /* SQLiteWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0969B541851C188008C4BD5 /* SQLiteWrapper.m */; };
-		D0969B571851C1A6008C4BD5 /* zumero.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0969B561851C1A6008C4BD5 /* zumero.a */; };
 		D71EE32E18518C5F007D4018 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D71EE32D18518C5F007D4018 /* libsqlite3.dylib */; };
 		D729BD3B181C24A000F762A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3A181C24A000F762A3 /* Foundation.framework */; };
 		D729BD3D181C24A000F762A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3C181C24A000F762A3 /* CoreGraphics.framework */; };
@@ -57,11 +63,23 @@
 		B4A1C75B1850FDA000703247 /* AttributeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeListViewController.m; sourceTree = "<group>"; };
 		B4FD1688184D4598004EFC57 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		B4FD1689184D4598004EFC57 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D01DDDB7188DDC5E0059AF09 /* ChildSample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildSample.h; sourceTree = "<group>"; };
+		D01DDDB8188DDC5E0059AF09 /* ChildSample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildSample.m; sourceTree = "<group>"; };
+		D01DDDB9188DDC5E0059AF09 /* ChildSampleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildSampleConstants.h; sourceTree = "<group>"; };
+		D01DDDBA188DDC5E0059AF09 /* ChildSampleConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildSampleConstants.m; sourceTree = "<group>"; };
+		D01DDDBB188DDC5E0059AF09 /* OriginalSample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OriginalSample.h; sourceTree = "<group>"; };
+		D01DDDBC188DDC5E0059AF09 /* OriginalSample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalSample.m; sourceTree = "<group>"; };
+		D01DDDBD188DDC5E0059AF09 /* OriginalSampleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OriginalSampleConstants.h; sourceTree = "<group>"; };
+		D01DDDBE188DDC5E0059AF09 /* OriginalSampleConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalSampleConstants.m; sourceTree = "<group>"; };
+		D01DDDC3188DDC910059AF09 /* ChildSampleStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildSampleStore.h; sourceTree = "<group>"; };
+		D01DDDC4188DDC910059AF09 /* ChildSampleStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildSampleStore.m; sourceTree = "<group>"; };
+		D01DDDC5188DDC910059AF09 /* ImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageStore.h; sourceTree = "<group>"; };
+		D01DDDC6188DDC910059AF09 /* ImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageStore.m; sourceTree = "<group>"; };
+		D01DDDC7188DDC910059AF09 /* OriginalSampleStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OriginalSampleStore.h; sourceTree = "<group>"; };
+		D01DDDC8188DDC910059AF09 /* OriginalSampleStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalSampleStore.m; sourceTree = "<group>"; };
+		D03677021857D496002A042D /* zumero.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = zumero.a; path = include/zumero.a; sourceTree = "<group>"; };
 		D04AD3971851BDAB0079B2EE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D04AD3991851BDB00079B2EE /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		D0969B531851C188008C4BD5 /* SQLiteWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteWrapper.h; sourceTree = "<group>"; };
-		D0969B541851C188008C4BD5 /* SQLiteWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteWrapper.m; sourceTree = "<group>"; };
-		D0969B561851C1A6008C4BD5 /* zumero.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = zumero.a; path = include/zumero.a; sourceTree = "<group>"; };
 		D71EE32D18518C5F007D4018 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		D729BD37181C24A000F762A3 /* ProjectCrystalBlue-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ProjectCrystalBlue-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D729BD3A181C24A000F762A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -86,7 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0969B571851C1A6008C4BD5 /* zumero.a in Frameworks */,
+				D03677031857D496002A042D /* zumero.a in Frameworks */,
 				D04AD39A1851BDB00079B2EE /* libz.dylib in Frameworks */,
 				D04AD3981851BDAB0079B2EE /* CFNetwork.framework in Frameworks */,
 				D71EE32E18518C5F007D4018 /* libsqlite3.dylib in Frameworks */,
@@ -126,6 +144,55 @@
 			name = "Ryan Classes";
 			sourceTree = "<group>";
 		};
+		D01DDDB2188DDBF10059AF09 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D01DDDB7188DDC5E0059AF09 /* ChildSample.h */,
+				D01DDDB8188DDC5E0059AF09 /* ChildSample.m */,
+				D01DDDB9188DDC5E0059AF09 /* ChildSampleConstants.h */,
+				D01DDDBA188DDC5E0059AF09 /* ChildSampleConstants.m */,
+				D01DDDBB188DDC5E0059AF09 /* OriginalSample.h */,
+				D01DDDBC188DDC5E0059AF09 /* OriginalSample.m */,
+				D01DDDBD188DDC5E0059AF09 /* OriginalSampleConstants.h */,
+				D01DDDBE188DDC5E0059AF09 /* OriginalSampleConstants.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		D01DDDB3188DDBF80059AF09 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		D01DDDB4188DDC020059AF09 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				D01DDDC3188DDC910059AF09 /* ChildSampleStore.h */,
+				D01DDDC4188DDC910059AF09 /* ChildSampleStore.m */,
+				D01DDDC5188DDC910059AF09 /* ImageStore.h */,
+				D01DDDC6188DDC910059AF09 /* ImageStore.m */,
+				D01DDDC7188DDC910059AF09 /* OriginalSampleStore.h */,
+				D01DDDC8188DDC910059AF09 /* OriginalSampleStore.m */,
+			);
+			name = Store;
+			sourceTree = "<group>";
+		};
+		D01DDDB5188DDC080059AF09 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		D01DDDB6188DDC0F0059AF09 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
 		D729BD2E181C24A000F762A3 = {
 			isa = PBXGroup;
 			children = (
@@ -148,7 +215,7 @@
 		D729BD39181C24A000F762A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D0969B561851C1A6008C4BD5 /* zumero.a */,
+				D03677021857D496002A042D /* zumero.a */,
 				D04AD3991851BDB00079B2EE /* libz.dylib */,
 				D04AD3971851BDAB0079B2EE /* CFNetwork.framework */,
 				D71EE32D18518C5F007D4018 /* libsqlite3.dylib */,
@@ -163,14 +230,17 @@
 		D729BD40181C24A000F762A3 /* ProjectCrystalBlue-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				D01DDDB3188DDBF80059AF09 /* Controller */,
+				D01DDDB2188DDBF10059AF09 /* Model */,
+				D01DDDB4188DDC020059AF09 /* Store */,
+				D01DDDB6188DDC0F0059AF09 /* Utility */,
+				D01DDDB5188DDC080059AF09 /* ViewController */,
 				B4171187184F1BB50024C834 /* Ryan Classes */,
 				B417119D184F7C6D0024C834 /* Main.storyboard */,
 				B4FD1688184D4598004EFC57 /* ViewController.h */,
 				B4FD1689184D4598004EFC57 /* ViewController.m */,
 				D729BD49181C24A000F762A3 /* AppDelegate.h */,
 				D729BD4A181C24A000F762A3 /* AppDelegate.m */,
-				D0969B531851C188008C4BD5 /* SQLiteWrapper.h */,
-				D0969B541851C188008C4BD5 /* SQLiteWrapper.m */,
 				D729BD4C181C24A000F762A3 /* Images.xcassets */,
 				D729BD41181C24A000F762A3 /* Supporting Files */,
 			);
@@ -304,13 +374,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				D729BD4B181C24A000F762A3 /* AppDelegate.m in Sources */,
+				D01DDDC2188DDC5E0059AF09 /* OriginalSampleConstants.m in Sources */,
+				D01DDDCA188DDC910059AF09 /* ImageStore.m in Sources */,
 				B4FD168A184D4598004EFC57 /* ViewController.m in Sources */,
+				D01DDDCB188DDC910059AF09 /* OriginalSampleStore.m in Sources */,
+				D01DDDC1188DDC5E0059AF09 /* OriginalSample.m in Sources */,
 				B417118A184F1BD70024C834 /* Sample.m in Sources */,
 				B417118D184F1C0F0024C834 /* SampleListViewController.m in Sources */,
+				D01DDDC9188DDC910059AF09 /* ChildSampleStore.m in Sources */,
 				B417119C184F28A50024C834 /* EditTaskViewController.m in Sources */,
-				D0969B551851C188008C4BD5 /* SQLiteWrapper.m in Sources */,
 				B4171199184F21590024C834 /* AddSampleViewController.m in Sources */,
 				D729BD47181C24A000F762A3 /* main.m in Sources */,
+				D01DDDBF188DDC5E0059AF09 /* ChildSample.m in Sources */,
+				D01DDDC0188DDC5E0059AF09 /* ChildSampleConstants.m in Sources */,
 				B4A1C75C1850FDA000703247 /* AttributeListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
