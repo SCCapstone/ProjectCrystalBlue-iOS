@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "OriginalSampleConstants.h"
+#import "SourceConstants.h"
 
-@interface OriginalSample : NSObject
+@interface Source : NSObject
 
 @property(readonly,copy) NSString *key;
 @property NSDictionary *attributes;

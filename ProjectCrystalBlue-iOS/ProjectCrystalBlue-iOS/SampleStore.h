@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ChildSample.h"
+#import "Sample.h"
 
-@interface ChildSampleStore : NSObject
+@interface SampleStore : NSObject
 {
     NSMutableArray *allSamples;
 }
 
-+ (ChildSampleStore *) sharedStore;
++ (SampleStore *) sharedStore;
 
 - (NSMutableArray *) allSamples;
 

@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Logan Hood. All rights reserved.
 //
 
-#import "ChildSampleStore.h"
+#import "SampleStore.h"
 
-@implementation ChildSampleStore
+@implementation SampleStore
 
 - (id)init
 {
@@ -25,9 +25,9 @@
     return [self sharedStore];
 }
 
-+ (ChildSampleStore *)sharedStore
++ (SampleStore *)sharedStore
 {
-    static ChildSampleStore *sharedStore = nil;
+    static SampleStore *sharedStore = nil;
     if (!sharedStore)
         sharedStore = [[super allocWithZone:nil] init];
     

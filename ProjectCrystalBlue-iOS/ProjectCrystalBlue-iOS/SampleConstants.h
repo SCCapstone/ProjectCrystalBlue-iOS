@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ChildSampleConstants : NSObject
+@interface SampleConstants : NSObject
 
 + (NSArray *) attributeNames;
 + (NSArray *) attributeDefaultValues;

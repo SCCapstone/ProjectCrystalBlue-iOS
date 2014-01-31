@@ -7,15 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "OriginalSample.h"
+#import "Source.h"
 
-@interface OriginalSampleStore : NSObject
+@interface SourceStore : NSObject
 {
-    NSMutableArray *allSamples;
+    NSMutableArray *allSources;
 }
 
-+ (OriginalSampleStore *) sharedStore;
++ (SourceStore *) sharedStore;
 
-- (NSMutableArray *) allSamples;
+- (NSMutableArray *) allSources;
+- (Source *)createSource;
 
 @end

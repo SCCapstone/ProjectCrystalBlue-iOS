@@ -6,16 +6,18 @@
 //  Copyright (c) 2014 Logan Hood. All rights reserved.
 //
 
-#import "OriginalSampleStore.h"
+#import "SourceStore.h"
+#import "Source.h"
+#import "SourceConstants.h"
 
-@implementation OriginalSampleStore
+@implementation SourceStore
 
 - (id)init
 {
     self = [super init];
     if (self)
     {
-        allSamples = [[NSMutableArray alloc] init];
+        allSources = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -25,18 +27,24 @@
     return [self sharedStore];
 }
 
-+ (OriginalSampleStore *)sharedStore
++ (SourceStore *)sharedStore
 {
-    static OriginalSampleStore *sharedStore = nil;
+    static SourceStore *sharedStore = nil;
     if (!sharedStore)
         sharedStore = [[super allocWithZone:nil] init];
     
     return sharedStore;
 }
 
-- (NSArray *)allSamples
+- (NSArray *)allSources
 {
-    return allSamples;
+    return allSources;
+}
+
+- (Source *)createSource {
+    Source *p = [[Source alloc] init];
+    [allSources addObject:p];
+    return p;
 }
 
 @end

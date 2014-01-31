@@ -1,26 +1,21 @@
 //
-//  Sample.h
-//  ProjectCrystalBlue-iOS
+//  ChildSample.h
+//  ProjectCrystalBlueOSX
 //
-//  Created by Ryan McGraw on 12/4/13.
-//  Copyright (c) 2013 Project Crystal Blue. All rights reserved.
+//  Created by Justin Baumgartner on 1/18/14.
+//  Copyright (c) 2014 Logan Hood. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import "SampleConstants.h"
 
 @interface Sample : NSObject
 
+@property(readonly,copy) NSString *key;
+@property(readonly,copy) NSString *originalKey;
+@property NSDictionary *attributes;
 
-@property(nonatomic) NSString* rockType;
-@property(nonatomic) NSInteger rockId;
-@property(nonatomic) NSString* coordinates;
-@property(nonatomic) bool isPulverized;
-
--(id) initWithRockType:(NSString*)rockType
-             AndRockId:(NSInteger)rockId
-        AndCoordinates:(NSString*)coordinates
-       AndIsPulverized:(bool)isPulverized;
-
--(id) initWithSample:(Sample*)sample;
+- (id) initWithAttributes:(NSArray *) attributeNames
+     AndWithDefaultValues:(NSArray *) attributeDefaultValues;
 
 @end
