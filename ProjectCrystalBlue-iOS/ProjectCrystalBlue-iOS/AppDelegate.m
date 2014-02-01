@@ -18,7 +18,10 @@
     
     SourceViewController *sourcesViewController = [[SourceViewController alloc] init];
     
+    UINavigationController *navController = [[UINavigationController alloc]
+                                             initWithRootViewController:sourcesViewController];
     [[self window] setRootViewController:sourcesViewController];
+    [[self window] setRootViewController:navController];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

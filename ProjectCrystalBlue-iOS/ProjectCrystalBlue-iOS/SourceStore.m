@@ -47,4 +47,20 @@
     return p;
 }
 
+
+- (void)removeSource:(Source *)p {
+    [allSources removeObjectIdenticalTo:p];
+}
+
+- (void)moveItemAtIndex:(int)from
+                toIndex:(int)to
+{
+    if (from == to) {
+        return;
+    }
+    Source *p = [allSources objectAtIndex:from];
+    [allSources removeObjectAtIndex:from];
+    [allSources insertObject:p atIndex:to]; }
+
+
 @end

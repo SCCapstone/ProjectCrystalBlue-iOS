@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B4383ACB189C42B700DAC28F /* SourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383ACA189C42B700DAC28F /* SourceViewController.m */; };
 		B4383AD0189C4A0000DAC28F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383ACF189C4A0000DAC28F /* AppDelegate.m */; };
+		B4383AE2189C71B200DAC28F /* SourceEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383AE0189C71B200DAC28F /* SourceEditViewController.m */; };
+		B4383AE3189C71B200DAC28F /* SourceEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4383AE1189C71B200DAC28F /* SourceEditViewController.xib */; };
 		D01DDDBF188DDC5E0059AF09 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDB8188DDC5E0059AF09 /* Sample.m */; };
 		D01DDDC0188DDC5E0059AF09 /* SampleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDBA188DDC5E0059AF09 /* SampleConstants.m */; };
 		D01DDDC1188DDC5E0059AF09 /* Source.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDBC188DDC5E0059AF09 /* Source.m */; };
@@ -48,6 +50,9 @@
 		B4383ACA189C42B700DAC28F /* SourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceViewController.m; sourceTree = "<group>"; };
 		B4383ACE189C4A0000DAC28F /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B4383ACF189C4A0000DAC28F /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B4383ADF189C71B200DAC28F /* SourceEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceEditViewController.h; sourceTree = "<group>"; };
+		B4383AE0189C71B200DAC28F /* SourceEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceEditViewController.m; sourceTree = "<group>"; };
+		B4383AE1189C71B200DAC28F /* SourceEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SourceEditViewController.xib; sourceTree = "<group>"; };
 		D01DDDB7188DDC5E0059AF09 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
 		D01DDDB8188DDC5E0059AF09 /* Sample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample.m; sourceTree = "<group>"; };
 		D01DDDB9188DDC5E0059AF09 /* SampleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleConstants.h; sourceTree = "<group>"; };
@@ -119,6 +124,14 @@
 			name = AppDelegate;
 			sourceTree = "<group>";
 		};
+		B4383AE4189C71B800DAC28F /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				B4383AE1189C71B200DAC28F /* SourceEditViewController.xib */,
+			);
+			name = XIBs;
+			sourceTree = "<group>";
+		};
 		D01DDDB2188DDBF10059AF09 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +172,8 @@
 			children = (
 				B4383AC9189C42B700DAC28F /* SourceViewController.h */,
 				B4383ACA189C42B700DAC28F /* SourceViewController.m */,
+				B4383ADF189C71B200DAC28F /* SourceEditViewController.h */,
+				B4383AE0189C71B200DAC28F /* SourceEditViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -207,6 +222,7 @@
 		D729BD40181C24A000F762A3 /* ProjectCrystalBlue-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				B4383AE4189C71B800DAC28F /* XIBs */,
 				B4383ACD189C431E00DAC28F /* AppDelegate */,
 				D01DDDB3188DDBF80059AF09 /* Controller */,
 				D01DDDB2188DDBF10059AF09 /* Model */,
@@ -326,6 +342,7 @@
 			files = (
 				D729BD45181C24A000F762A3 /* InfoPlist.strings in Resources */,
 				D729BD4D181C24A000F762A3 /* Images.xcassets in Resources */,
+				B4383AE3189C71B200DAC28F /* SourceEditViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +371,7 @@
 				D729BD47181C24A000F762A3 /* main.m in Sources */,
 				D01DDDBF188DDC5E0059AF09 /* Sample.m in Sources */,
 				D01DDDC0188DDC5E0059AF09 /* SampleConstants.m in Sources */,
+				B4383AE2189C71B200DAC28F /* SourceEditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,5 +18,7 @@
 
 - (NSMutableArray *) allSources;
 - (Source *)createSource;
+- (void)removeSource:(Source *)p;
+- (void)moveItemAtIndex:(int)from toIndex:(int)to;
 
 @end
