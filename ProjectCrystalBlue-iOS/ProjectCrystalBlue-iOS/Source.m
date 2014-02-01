@@ -13,7 +13,7 @@
 
 - (NSString *)description
 {
-    NSString *descriptionString = [[NSString alloc] initWithFormat:@"Source: %@", [[self attributes] objectForKey:@"Continent"]];
+    NSString *descriptionString = [[NSString alloc] initWithFormat:@"Source: %@", [[self attributes] objectForKey:@"Group"]];
     return descriptionString;
 }
 

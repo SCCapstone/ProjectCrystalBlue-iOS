@@ -59,10 +59,13 @@ NSString *const DEF_VAL_SUBPROJECT = @"Subproject here";
     static NSArray *attributeNames = nil;
     if (!attributeNames)
     {
-        attributeNames = [NSArray arrayWithObjects:
-                          CONTINENT,
-                          nil];
+        //attributeNames = [NSArray arrayWithObjects:
+         //                 CONTINENT,
+         //                 nil];
+        
+        attributeNames = [NSArray arrayWithObjects:CONTINENT, TYPE, LITHOLOGY, DEPOSYSTEM, GROUP, FORMATION, MEMBER, REGION, LOCALITY, SECTION, METER_LEVEL, LATITUDE, LONGITUDE, AGE, AGE_BASIS1, AGE_BASIS2, DATE_COLLECTED, PROJECT, SUBPROJECT, nil];
     }
+    
     return attributeNames;
 }
 
@@ -72,8 +75,7 @@ NSString *const DEF_VAL_SUBPROJECT = @"Subproject here";
     if (!attributeDefaultValues)
     {
         attributeDefaultValues = [NSArray arrayWithObjects:
-                          DEF_VAL_CONTINENT,
-                          nil];
+                          DEF_VAL_CONTINENT, DEF_VAL_TYPE, DEF_VAL_LITHOLOGY, DEF_VAL_DEPOSYSTEM, DEF_VAL_GROUP, DEF_VAL_FORMATION, DEF_VAL_MEMBER, DEF_VAL_REGION, DEF_VAL_LOCALITY, DEF_VAL_SECTION, DEF_VAL_METER_LEVEL, DEF_VAL_LATITUDE, DEF_VAL_LONGITUDE, DEF_VAL_AGE, DEF_VAL_AGE_BASIS1, DEF_VAL_AGE_BASIS2, DEF_VAL_DATE_COLLECTED, DEF_VAL_PROJECT, DEF_VAL_SUBPROJECT, nil];
     }
     return attributeDefaultValues;
 }
