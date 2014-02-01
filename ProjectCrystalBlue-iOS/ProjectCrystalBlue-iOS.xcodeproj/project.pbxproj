@@ -15,12 +15,12 @@
 		D01DDDC0188DDC5E0059AF09 /* SampleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDBA188DDC5E0059AF09 /* SampleConstants.m */; };
 		D01DDDC1188DDC5E0059AF09 /* Source.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDBC188DDC5E0059AF09 /* Source.m */; };
 		D01DDDC2188DDC5E0059AF09 /* SourceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDBE188DDC5E0059AF09 /* SourceConstants.m */; };
-		D01DDDC9188DDC910059AF09 /* SampleStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDC4188DDC910059AF09 /* SampleStore.m */; };
 		D01DDDCA188DDC910059AF09 /* ImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDC6188DDC910059AF09 /* ImageStore.m */; };
-		D01DDDCB188DDC910059AF09 /* SourceStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDC8188DDC910059AF09 /* SourceStore.m */; };
 		D03677031857D496002A042D /* zumero.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D03677021857D496002A042D /* zumero.a */; };
 		D04AD3981851BDAB0079B2EE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04AD3971851BDAB0079B2EE /* CFNetwork.framework */; };
 		D04AD39A1851BDB00079B2EE /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D04AD3991851BDB00079B2EE /* libz.dylib */; };
+		D0B1B728189C876000052443 /* LibraryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B1B727189C876000052443 /* LibraryObject.m */; };
+		D0B1B731189C900800052443 /* LibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B1B730189C900800052443 /* LibraryObjectStore.m */; };
 		D71EE32E18518C5F007D4018 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D71EE32D18518C5F007D4018 /* libsqlite3.dylib */; };
 		D729BD3B181C24A000F762A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3A181C24A000F762A3 /* Foundation.framework */; };
 		D729BD3D181C24A000F762A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3C181C24A000F762A3 /* CoreGraphics.framework */; };
@@ -61,15 +61,15 @@
 		D01DDDBC188DDC5E0059AF09 /* Source.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Source.m; sourceTree = "<group>"; };
 		D01DDDBD188DDC5E0059AF09 /* SourceConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceConstants.h; sourceTree = "<group>"; };
 		D01DDDBE188DDC5E0059AF09 /* SourceConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceConstants.m; sourceTree = "<group>"; };
-		D01DDDC3188DDC910059AF09 /* SampleStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleStore.h; sourceTree = "<group>"; };
-		D01DDDC4188DDC910059AF09 /* SampleStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleStore.m; sourceTree = "<group>"; };
 		D01DDDC5188DDC910059AF09 /* ImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageStore.h; sourceTree = "<group>"; };
 		D01DDDC6188DDC910059AF09 /* ImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageStore.m; sourceTree = "<group>"; };
-		D01DDDC7188DDC910059AF09 /* SourceStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceStore.h; sourceTree = "<group>"; };
-		D01DDDC8188DDC910059AF09 /* SourceStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceStore.m; sourceTree = "<group>"; };
 		D03677021857D496002A042D /* zumero.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = zumero.a; path = include/zumero.a; sourceTree = "<group>"; };
 		D04AD3971851BDAB0079B2EE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D04AD3991851BDB00079B2EE /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		D0B1B726189C876000052443 /* LibraryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryObject.h; sourceTree = "<group>"; };
+		D0B1B727189C876000052443 /* LibraryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObject.m; sourceTree = "<group>"; };
+		D0B1B72F189C900800052443 /* LibraryObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryObjectStore.h; sourceTree = "<group>"; };
+		D0B1B730189C900800052443 /* LibraryObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObjectStore.m; sourceTree = "<group>"; };
 		D71EE32D18518C5F007D4018 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		D729BD37181C24A000F762A3 /* ProjectCrystalBlue-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ProjectCrystalBlue-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D729BD3A181C24A000F762A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -135,6 +135,8 @@
 		D01DDDB2188DDBF10059AF09 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D0B1B726189C876000052443 /* LibraryObject.h */,
+				D0B1B727189C876000052443 /* LibraryObject.m */,
 				D01DDDB7188DDC5E0059AF09 /* Sample.h */,
 				D01DDDB8188DDC5E0059AF09 /* Sample.m */,
 				D01DDDB9188DDC5E0059AF09 /* SampleConstants.h */,
@@ -157,12 +159,10 @@
 		D01DDDB4188DDC020059AF09 /* Store */ = {
 			isa = PBXGroup;
 			children = (
-				D01DDDC3188DDC910059AF09 /* SampleStore.h */,
-				D01DDDC4188DDC910059AF09 /* SampleStore.m */,
 				D01DDDC5188DDC910059AF09 /* ImageStore.h */,
 				D01DDDC6188DDC910059AF09 /* ImageStore.m */,
-				D01DDDC7188DDC910059AF09 /* SourceStore.h */,
-				D01DDDC8188DDC910059AF09 /* SourceStore.m */,
+				D0B1B72F189C900800052443 /* LibraryObjectStore.h */,
+				D0B1B730189C900800052443 /* LibraryObjectStore.m */,
 			);
 			name = Store;
 			sourceTree = "<group>";
@@ -365,9 +365,9 @@
 				B4383ACB189C42B700DAC28F /* SourceViewController.m in Sources */,
 				D01DDDC2188DDC5E0059AF09 /* SourceConstants.m in Sources */,
 				D01DDDCA188DDC910059AF09 /* ImageStore.m in Sources */,
-				D01DDDCB188DDC910059AF09 /* SourceStore.m in Sources */,
 				D01DDDC1188DDC5E0059AF09 /* Source.m in Sources */,
-				D01DDDC9188DDC910059AF09 /* SampleStore.m in Sources */,
+				D0B1B731189C900800052443 /* LibraryObjectStore.m in Sources */,
+				D0B1B728189C876000052443 /* LibraryObject.m in Sources */,
 				D729BD47181C24A000F762A3 /* main.m in Sources */,
 				D01DDDBF188DDC5E0059AF09 /* Sample.m in Sources */,
 				D01DDDC0188DDC5E0059AF09 /* SampleConstants.m in Sources */,

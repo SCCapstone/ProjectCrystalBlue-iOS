@@ -1,9 +1,9 @@
 //
-//  ChildSampleConstants.m
-//  ProjectCrystalBlueOSX
+//  SampleConstants.m
+//  ProjectCrystalBlue-iOS
 //
 //  Created by Justin Baumgartner on 1/18/14.
-//  Copyright (c) 2014 Logan Hood. All rights reserved.
+//  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
 #import "SampleConstants.h"
