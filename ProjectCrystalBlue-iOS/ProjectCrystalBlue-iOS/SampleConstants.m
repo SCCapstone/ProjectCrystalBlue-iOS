@@ -12,6 +12,7 @@
  */
 NSString *const CURRENT_LOCATION = @"CurrentLocation";
 
+
 /* Attribute default values
  */
 NSString *const DEF_VAL_CURRENT_LOCATION = @"USC";
