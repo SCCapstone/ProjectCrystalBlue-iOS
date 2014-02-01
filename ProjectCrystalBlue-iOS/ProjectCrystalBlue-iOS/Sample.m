@@ -11,6 +11,9 @@
 
 @implementation Sample
 
-
+-(id) pulverize:(Sample *) aSample
+{
+    return aSample;
+}
 
 @end

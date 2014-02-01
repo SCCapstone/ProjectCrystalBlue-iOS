@@ -11,6 +11,7 @@
 
 @interface Sample : LibraryObject
 
+-(id) pulverize:(Sample *) aSample;
 
 
 @end

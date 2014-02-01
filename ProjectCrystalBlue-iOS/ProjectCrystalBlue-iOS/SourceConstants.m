@@ -59,9 +59,6 @@ NSString *const DEF_VAL_SUBPROJECT = @"Subproject here";
     static NSArray *attributeNames = nil;
     if (!attributeNames)
     {
-        //attributeNames = [NSArray arrayWithObjects:
-         //                 CONTINENT,
-         //                 nil];
         
         attributeNames = [NSArray arrayWithObjects:CONTINENT, TYPE, LITHOLOGY, DEPOSYSTEM, GROUP, FORMATION, MEMBER, REGION, LOCALITY, SECTION, METER_LEVEL, LATITUDE, LONGITUDE, AGE, AGE_BASIS1, AGE_BASIS2, DATE_COLLECTED, PROJECT, SUBPROJECT, nil];
     }
