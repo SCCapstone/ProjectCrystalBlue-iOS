@@ -53,7 +53,7 @@
     [super viewWillDisappear:animated];
     // Clear first responder [[self view] endEditing:YES];
     // "Save" changes to item
-    //[source setKey]
+    [[source setAttributes] objectForKey:@"Type":TypeField text];
     //[item setSerialNumber:[serialNumberField text]];
     //[item setValueInDollars:[[valueField text] intValue]];
 }
