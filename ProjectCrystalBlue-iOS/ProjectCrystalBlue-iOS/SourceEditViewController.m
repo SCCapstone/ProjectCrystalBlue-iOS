@@ -53,7 +53,9 @@
     [super viewWillDisappear:animated];
     // Clear first responder [[self view] endEditing:YES];
     // "Save" changes to item
-    [[source setAttributes] objectForKey:@"Type":TypeField text];
+    //[[source setAttributes] objectForKey:@"Type":TypeField text];
+    [[source attributes] setValue:@"Type" forKey:[TypeField text]];
+    [source setAttributes:[source attributes]];
     //[item setSerialNumber:[serialNumberField text]];
     //[item setValueInDollars:[[valueField text] intValue]];
 }
