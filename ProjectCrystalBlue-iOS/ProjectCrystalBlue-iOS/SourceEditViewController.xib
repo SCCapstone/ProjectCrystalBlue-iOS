@@ -83,6 +83,9 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <action selector="backgroundTapped:" destination="-1" eventType="touchUpInside" id="qKh-vq-kK0"/>
+            </connections>
         </view>
     </objects>
 </document>

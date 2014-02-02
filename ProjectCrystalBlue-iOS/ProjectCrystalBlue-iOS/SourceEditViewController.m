@@ -53,15 +53,25 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    // Clear first responder [[self view] endEditing:YES];
+    // Clear first responder
+    [[self view] endEditing:YES];
     // "Save" changes to item
-    //[[source setAttributes] objectForKey:@"Type":TypeField text];
     [[source attributes] setObject:[TypeField text] forKey:@"Type"];
+    [[source attributes] setObject:[LatitudeField text] forKey:@"Latitude"];
+    [[source attributes] setObject:[LongitudeField text] forKey:@"Longitude"];
     
     
     //[item setSerialNumber:[serialNumberField text]];
     //[item setValueInDollars:[[valueField text] intValue]];
 }
 
+-(BOOL) textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
 
+- (IBAction)backgroundTapped:(id)sender {
+    [[self view] endEditing:YES];
+}
 @end

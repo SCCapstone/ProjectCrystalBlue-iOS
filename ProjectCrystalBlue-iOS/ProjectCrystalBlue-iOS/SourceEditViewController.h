@@ -21,4 +21,6 @@
 }
 @property (nonatomic, strong) Source *source;
 
+- (IBAction)backgroundTapped:(id)sender;
+
 @end
