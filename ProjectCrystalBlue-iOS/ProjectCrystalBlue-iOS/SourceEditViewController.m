@@ -44,6 +44,8 @@
     [super viewWillAppear:animated];
     [KeyField setText:[source key]];
     [TypeField setText:[[source attributes] objectForKey:@"Type"]];
+    [LatitudeField setText:[[source attributes] objectForKey:@"Latitude"]];
+    [LongitudeField setText:[[source attributes] objectForKey:@"Longitude"]];
    // [TypeField setText:[source attributes.];
    // [valueField setText:[NSString stringWithFormat:@"%d", [item valueInDollars]]];
     
@@ -54,8 +56,9 @@
     // Clear first responder [[self view] endEditing:YES];
     // "Save" changes to item
     //[[source setAttributes] objectForKey:@"Type":TypeField text];
-    [[source attributes] setValue:@"Type" forKey:[TypeField text]];
-    [source setAttributes:[source attributes]];
+    [[source attributes] setObject:[TypeField text] forKey:@"Type"];
+    
+    
     //[item setSerialNumber:[serialNumberField text]];
     //[item setValueInDollars:[[valueField text] intValue]];
 }
