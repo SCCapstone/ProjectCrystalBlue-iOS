@@ -6,10 +6,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SourceEditViewController">
             <connections>
-                <outlet property="KeyField" destination="6N5-p2-ypQ" id="UX7-rv-KzM"/>
-                <outlet property="LatitudeField" destination="5oT-PV-7l3" id="gIv-BI-ihR"/>
-                <outlet property="LongitudeField" destination="dQt-0T-LXv" id="KEv-hr-yUX"/>
-                <outlet property="TypeField" destination="aVr-cG-eUZ" id="RW9-cE-kin"/>
+                <outlet property="KeyField" destination="6N5-p2-ypQ" id="Tqx-Cr-cdN"/>
+                <outlet property="LatitudeField" destination="5oT-PV-7l3" id="uOV-it-jnp"/>
+                <outlet property="LongitudeField" destination="dQt-0T-LXv" id="RGX-e1-dq3"/>
+                <outlet property="TypeField" destination="aVr-cG-eUZ" id="tie-RF-wSq"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -38,7 +38,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Longitude" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5w5-Xh-vez">
-                    <rect key="frame" x="20" y="548" width="76" height="21"/>
+                    <rect key="frame" x="20" y="548" width="89" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
@@ -58,7 +58,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
-                        <outlet property="delegate" destination="-1" id="eLV-Nq-7El"/>
+                        <outlet property="delegate" destination="-1" id="SSu-Pe-fGa"/>
                     </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5oT-PV-7l3">
@@ -67,7 +67,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
-                        <outlet property="delegate" destination="-1" id="g33-QB-efE"/>
+                        <outlet property="delegate" destination="-1" id="cm9-sV-1FD"/>
                     </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dQt-0T-LXv">
@@ -75,6 +75,9 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="dhc-Pw-L3V"/>
+                    </connections>
                 </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

@@ -9,7 +9,6 @@
 #import "SourceViewController.h"
 #import "Source.h"
 #import "SourceStore.h"
-#import "SourceEditViewController.h"
 
 @implementation SourceViewController
 
@@ -101,6 +100,20 @@
     [[SourceStore sharedStore] moveItemAtIndex:[sourceIndexPath row]
                                         toIndex:[destinationIndexPath row]];
 }
+
+
+- (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SourceEditViewController *sourceEditViewController = [[SourceEditViewController alloc] init];
+    
+    NSMutableArray *sources = [[SourceStore sharedStore] allSources];
+    Source *selectedSource = [sources objectAtIndex:[indexPath row]];
+    
+    [sourceEditViewController setSource:selectedSource];
+    [[self navigationController] pushViewController:sourceEditViewController
+                                           animated:YES];
+}
+
 
 
 

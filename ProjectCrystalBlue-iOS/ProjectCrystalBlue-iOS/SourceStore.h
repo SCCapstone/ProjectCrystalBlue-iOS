@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Source.h"
+
+@class Source;
 
 @interface SourceStore : NSObject
 {

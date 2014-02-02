@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SourceEditViewController.h"
 
 @interface SourceViewController : UITableViewController
 

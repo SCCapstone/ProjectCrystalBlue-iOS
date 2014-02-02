@@ -17,7 +17,7 @@
 
 @implementation SourceEditViewController
 
-@synthesize source, KeyField, TypeField, LatitudeField, LongitudeField;
+@synthesize source;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,11 +43,19 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [KeyField setText:[source key]];
+    [TypeField setText:[[source attributes] objectForKey:@"Type"]];
    // [TypeField setText:[source attributes.];
    // [valueField setText:[NSString stringWithFormat:@"%d", [item valueInDollars]]];
- 
-  
     
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    // Clear first responder [[self view] endEditing:YES];
+    // "Save" changes to item
+    //[source setKey]
+    //[item setSerialNumber:[serialNumberField text]];
+    //[item setValueInDollars:[[valueField text] intValue]];
 }
 
 

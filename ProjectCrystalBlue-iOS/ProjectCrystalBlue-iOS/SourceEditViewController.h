@@ -7,16 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Source.h"
 
-@class Source;
 
 @interface SourceEditViewController : UIViewController
+<UINavigationControllerDelegate,UITextFieldDelegate>
 
-
-@property (weak, nonatomic) IBOutlet UITextField *KeyField;
-@property (weak, nonatomic) IBOutlet UITextField *TypeField;
-@property (weak, nonatomic) IBOutlet UITextField *LatitudeField;
-@property (weak, nonatomic) IBOutlet UITextField *LongitudeField;
+{
+    __weak IBOutlet UITextField *KeyField;
+    __weak IBOutlet UITextField *TypeField;
+    __weak IBOutlet UITextField *LatitudeField;
+    __weak IBOutlet UITextField *LongitudeField;
+}
 @property (nonatomic, strong) Source *source;
 
 @end
