@@ -74,12 +74,14 @@
 }
 
 - (IBAction)addNewItem:(id)sender {
+   
     Source *newSource = [[SourceStore sharedStore] createSource];
     
     int lastRow = [[[SourceStore sharedStore] allSources] indexOfObject:newSource];
     NSIndexPath *ip = [NSIndexPath indexPathForRow:lastRow inSection:0];
     [[self tableView] insertRowsAtIndexPaths:[NSArray arrayWithObject:ip]
                             withRowAnimation:UITableViewRowAnimationTop];
+   
 }
 
 

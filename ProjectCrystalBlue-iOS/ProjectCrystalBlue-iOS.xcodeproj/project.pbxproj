@@ -11,6 +11,8 @@
 		B4383AD0189C4A0000DAC28F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383ACF189C4A0000DAC28F /* AppDelegate.m */; };
 		B4383AE2189C71B200DAC28F /* SourceEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383AE0189C71B200DAC28F /* SourceEditViewController.m */; };
 		B4383AE7189DFEBB00DAC28F /* SourceEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4383AE6189DFEBB00DAC28F /* SourceEditViewController.xib */; };
+		B4383AF3189E25F900DAC28F /* AddSourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383AF1189E25F900DAC28F /* AddSourceViewController.m */; };
+		B4383AF4189E25F900DAC28F /* AddSourceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4383AF2189E25F900DAC28F /* AddSourceViewController.xib */; };
 		D01DDDBF188DDC5E0059AF09 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDB8188DDC5E0059AF09 /* Sample.m */; };
 		D01DDDC0188DDC5E0059AF09 /* SampleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDBA188DDC5E0059AF09 /* SampleConstants.m */; };
 		D01DDDC1188DDC5E0059AF09 /* Source.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDBC188DDC5E0059AF09 /* Source.m */; };
@@ -55,6 +57,9 @@
 		B4383ADF189C71B200DAC28F /* SourceEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceEditViewController.h; sourceTree = "<group>"; };
 		B4383AE0189C71B200DAC28F /* SourceEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceEditViewController.m; sourceTree = "<group>"; };
 		B4383AE6189DFEBB00DAC28F /* SourceEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SourceEditViewController.xib; sourceTree = "<group>"; };
+		B4383AF0189E25F900DAC28F /* AddSourceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSourceViewController.h; sourceTree = "<group>"; };
+		B4383AF1189E25F900DAC28F /* AddSourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSourceViewController.m; sourceTree = "<group>"; };
+		B4383AF2189E25F900DAC28F /* AddSourceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSourceViewController.xib; sourceTree = "<group>"; };
 		D01DDDB7188DDC5E0059AF09 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
 		D01DDDB8188DDC5E0059AF09 /* Sample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample.m; sourceTree = "<group>"; };
 		D01DDDB9188DDC5E0059AF09 /* SampleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleConstants.h; sourceTree = "<group>"; };
@@ -133,6 +138,7 @@
 		B4383AE4189C71B800DAC28F /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
+				B4383AF2189E25F900DAC28F /* AddSourceViewController.xib */,
 				B4383AE6189DFEBB00DAC28F /* SourceEditViewController.xib */,
 			);
 			name = XIBs;
@@ -184,6 +190,8 @@
 				B4383ACA189C42B700DAC28F /* SourceViewController.m */,
 				B4383ADF189C71B200DAC28F /* SourceEditViewController.h */,
 				B4383AE0189C71B200DAC28F /* SourceEditViewController.m */,
+				B4383AF0189E25F900DAC28F /* AddSourceViewController.h */,
+				B4383AF1189E25F900DAC28F /* AddSourceViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -351,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D729BD45181C24A000F762A3 /* InfoPlist.strings in Resources */,
+				B4383AF4189E25F900DAC28F /* AddSourceViewController.xib in Resources */,
 				D729BD4D181C24A000F762A3 /* Images.xcassets in Resources */,
 				B4383AE7189DFEBB00DAC28F /* SourceEditViewController.xib in Resources */,
 			);
@@ -384,6 +393,7 @@
 				D01DDDC0188DDC5E0059AF09 /* SampleConstants.m in Sources */,
 				B4383AE2189C71B200DAC28F /* SourceEditViewController.m in Sources */,
 				D0B1B73D189C924A00052443 /* SampleStore.m in Sources */,
+				B4383AF3189E25F900DAC28F /* AddSourceViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
