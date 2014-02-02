@@ -37,6 +37,10 @@
 		D729BD56181C24A000F762A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3E181C24A000F762A3 /* UIKit.framework */; };
 		D729BD5E181C24A000F762A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D729BD5C181C24A000F762A3 /* InfoPlist.strings */; };
 		D729BD60181C24A000F762A3 /* ProjectCrystalBlue_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D729BD5F181C24A000F762A3 /* ProjectCrystalBlue_iOSTests.m */; };
+		D7D76B07189EED000056CDE4 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D76B02189EED000056CDE4 /* DDASLLogger.m */; };
+		D7D76B08189EED000056CDE4 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D76B04189EED000056CDE4 /* DDFileLogger.m */; };
+		D7D76B09189EED000056CDE4 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D76B06189EED000056CDE4 /* DDLog.m */; };
+		D7D76B0C189EED060056CDE4 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D76B0B189EED060056CDE4 /* DDTTYLogger.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +100,14 @@
 		D729BD5B181C24A000F762A3 /* ProjectCrystalBlue-iOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProjectCrystalBlue-iOSTests-Info.plist"; sourceTree = "<group>"; };
 		D729BD5D181C24A000F762A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D729BD5F181C24A000F762A3 /* ProjectCrystalBlue_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectCrystalBlue_iOSTests.m; sourceTree = "<group>"; };
+		D7D76B01189EED000056CDE4 /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
+		D7D76B02189EED000056CDE4 /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogger.m; sourceTree = "<group>"; };
+		D7D76B03189EED000056CDE4 /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
+		D7D76B04189EED000056CDE4 /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
+		D7D76B05189EED000056CDE4 /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
+		D7D76B06189EED000056CDE4 /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
+		D7D76B0A189EED060056CDE4 /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
+		D7D76B0B189EED060056CDE4 /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +211,7 @@
 		D01DDDB6188DDC0F0059AF09 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				D7D76B00189EEB6B0056CDE4 /* Lumberjack */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -280,6 +293,21 @@
 				D729BD5C181C24A000F762A3 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D7D76B00189EEB6B0056CDE4 /* Lumberjack */ = {
+			isa = PBXGroup;
+			children = (
+				D7D76B01189EED000056CDE4 /* DDASLLogger.h */,
+				D7D76B02189EED000056CDE4 /* DDASLLogger.m */,
+				D7D76B03189EED000056CDE4 /* DDFileLogger.h */,
+				D7D76B04189EED000056CDE4 /* DDFileLogger.m */,
+				D7D76B05189EED000056CDE4 /* DDLog.h */,
+				D7D76B06189EED000056CDE4 /* DDLog.m */,
+				D7D76B0A189EED060056CDE4 /* DDTTYLogger.h */,
+				D7D76B0B189EED060056CDE4 /* DDTTYLogger.m */,
+			);
+			name = Lumberjack;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,10 +409,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4383AD0189C4A0000DAC28F /* AppDelegate.m in Sources */,
+				D7D76B08189EED000056CDE4 /* DDFileLogger.m in Sources */,
 				B4383ACB189C42B700DAC28F /* SourceViewController.m in Sources */,
+				D7D76B0C189EED060056CDE4 /* DDTTYLogger.m in Sources */,
 				D01DDDC2188DDC5E0059AF09 /* SourceConstants.m in Sources */,
 				D01DDDCA188DDC910059AF09 /* ImageStore.m in Sources */,
 				D01DDDC1188DDC5E0059AF09 /* Source.m in Sources */,
+				D7D76B09189EED000056CDE4 /* DDLog.m in Sources */,
 				D0B1B731189C900800052443 /* LibraryObjectStore.m in Sources */,
 				D0B1B73C189C924A00052443 /* SourceStore.m in Sources */,
 				D0B1B728189C876000052443 /* LibraryObject.m in Sources */,
@@ -394,6 +425,7 @@
 				B4383AE2189C71B200DAC28F /* SourceEditViewController.m in Sources */,
 				D0B1B73D189C924A00052443 /* SampleStore.m in Sources */,
 				B4383AF3189E25F900DAC28F /* AddSourceViewController.m in Sources */,
+				D7D76B07189EED000056CDE4 /* DDASLLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

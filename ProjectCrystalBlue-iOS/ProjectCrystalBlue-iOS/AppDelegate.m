@@ -8,6 +8,15 @@
 
 #import "AppDelegate.h"
 #import "SourceViewController.h"
+#import "DDLog.h"
+#import "DDTTYLogger.h"
+#import "DDASLLogger.h"
+
+#ifdef DEBUG
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+#else
+static const int ddLogLevel = LOG_LEVEL_WARN;
+#endif
 
 @implementation AppDelegate
 
@@ -15,6 +24,10 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    DDLogInfo(@"Starting Lumberjack log!");
     
     SourceViewController *sourcesViewController = [[SourceViewController alloc] init];
     
