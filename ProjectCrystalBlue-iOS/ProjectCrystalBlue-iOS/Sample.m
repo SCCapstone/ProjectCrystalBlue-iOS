@@ -11,9 +11,9 @@
 
 @implementation Sample
 
--(id) pulverize:(Sample *) aSample
+-(void) pulverize
 {
-    return aSample;
+    [[self attributes] setObject:@"Yes" forKey:@"Pulverizer"];
 }
 
 @end

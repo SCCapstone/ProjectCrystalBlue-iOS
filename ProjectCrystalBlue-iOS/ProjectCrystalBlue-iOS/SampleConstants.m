@@ -10,7 +10,7 @@
 
 /* Attribute names
  */
-NSString *const CURRENT_LOCATION = @"CurrentLocation";
+NSString *const CURRENT_LOCATION = @"CurrentLocation";	
 NSString *const BULK_ROCK = @"Bulk_Rock";
 NSString *const RAINY_DAY = @"Rainy_Day";
 NSString *const HAND_SAMPLE = @"Hand_Sample";

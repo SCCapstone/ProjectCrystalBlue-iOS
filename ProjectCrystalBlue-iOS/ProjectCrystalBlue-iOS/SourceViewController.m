@@ -75,6 +75,8 @@
 
 - (IBAction)addNewItem:(id)sender {
    
+    
+    
     Source *newSource = [[SourceStore sharedStore] createSource];
     
     int lastRow = [[[SourceStore sharedStore] allSources] indexOfObject:newSource];
