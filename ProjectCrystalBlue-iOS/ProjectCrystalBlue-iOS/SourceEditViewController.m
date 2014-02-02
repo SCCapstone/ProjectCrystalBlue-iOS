@@ -7,12 +7,17 @@
 //
 
 #import "SourceEditViewController.h"
+#import "Source.h"
+#import "LibraryObject.h"
+
 
 @interface SourceEditViewController ()
 
 @end
 
 @implementation SourceEditViewController
+
+@synthesize source, KeyField, TypeField, LatitudeField, LongitudeField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -23,10 +28,9 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [[self view] setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,5 +38,17 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [KeyField setText:[source key]];
+   // [TypeField setText:[source attributes.];
+   // [valueField setText:[NSString stringWithFormat:@"%d", [item valueInDollars]]];
+ 
+  
+    
+}
+
 
 @end

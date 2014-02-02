@@ -9,6 +9,7 @@
 #import "SourceViewController.h"
 #import "Source.h"
 #import "SourceStore.h"
+#import "SourceEditViewController.h"
 
 @implementation SourceViewController
 
@@ -100,6 +101,8 @@
     [[SourceStore sharedStore] moveItemAtIndex:[sourceIndexPath row]
                                         toIndex:[destinationIndexPath row]];
 }
+
+
 
 
 @end

@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class Source;
+
 @interface SourceEditViewController : UIViewController
+
+
+@property (weak, nonatomic) IBOutlet UITextField *KeyField;
+@property (weak, nonatomic) IBOutlet UITextField *TypeField;
+@property (weak, nonatomic) IBOutlet UITextField *LatitudeField;
+@property (weak, nonatomic) IBOutlet UITextField *LongitudeField;
+@property (nonatomic, strong) Source *source;
 
 @end
