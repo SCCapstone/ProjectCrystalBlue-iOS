@@ -18,7 +18,7 @@
 + (SourceStore *)sharedStore;
 
 - (NSMutableArray *)allSources;
-- (Source *)createSource;
+- (Source *)createSourceWithKey:(NSString*)inKey;
 - (void)removeSource:(Source *)p;
 - (void)moveItemAtIndex:(int)from
                 toIndex:(int)to;

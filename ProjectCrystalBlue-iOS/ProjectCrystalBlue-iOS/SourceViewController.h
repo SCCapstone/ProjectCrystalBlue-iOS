@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "SourceEditViewController.h"
 
-@interface SourceViewController : UITableViewController
+@interface SourceViewController : UITableViewController <UIActionSheetDelegate>
+
+@property(nonatomic) NSString* option;
 
 @end

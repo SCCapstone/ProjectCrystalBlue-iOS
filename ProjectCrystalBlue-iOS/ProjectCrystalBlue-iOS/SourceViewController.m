@@ -10,6 +10,7 @@
 #import "Source.h"
 #import "SourceStore.h"
 #import "DDLog.h"
+#import "SourceEditViewController.h"
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -18,6 +19,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 #endif
 
 @implementation SourceViewController
+@synthesize option;
 
 
 - (id)init {
@@ -35,9 +37,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [[self navigationItem] setRightBarButtonItem:bbi];
         [[self navigationItem] setLeftBarButtonItem:[self editButtonItem]];
         
-        for (int i = 0; i < 5; i++) {
-           [[SourceStore sharedStore] createSource];
-        }
+        
     }
     return self;
 }
@@ -58,12 +58,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
     // If there is no reusable cell of this type, create a new one
     if (!cell) {
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                  reuseIdentifier:@"UITableViewCell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:@"UITableViewCell"];
     }
     // Set the text on the cell with the description of the item // that is at the nth index of items, where n = row this cell // will appear in on the tableview
     Source *p = [[[SourceStore sharedStore] allSources]
-                  objectAtIndex:[indexPath row]]; [[cell textLabel] setText:[p description]];
+                 objectAtIndex:[indexPath row]]; [[cell textLabel] setText:[p description]];
     return cell;
 }
 
@@ -72,7 +72,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     // If we are currently in editing mode...
     if ([self isEditing]) {
         [sender setTitle:@"Edit" forState:UIControlStateNormal]; // Turn off editing mode
-    [   self setEditing:NO animated:YES];
+        [   self setEditing:NO animated:YES];
     }
     else {
         [sender setTitle:@"Done" forState:UIControlStateNormal]; // Enter editing mode
@@ -81,16 +81,21 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 - (IBAction)addNewItem:(id)sender {
-   
     
+    //Source *newSource = [[SourceStore sharedStore] createSource];
+    Source *newSource = [[SourceStore sharedStore] createSourceWithKey:@"key"];
+    SourceEditViewController *sourceEditViewController = [[SourceEditViewController alloc] initForNewSource:YES];
     
-    Source *newSource = [[SourceStore sharedStore] createSource];
+    [sourceEditViewController setSource:newSource];
+    [sourceEditViewController setDismissBlock:^{
+        [[self tableView] reloadData];
+    }];
     
-    int lastRow = [[[SourceStore sharedStore] allSources] indexOfObject:newSource];
-    NSIndexPath *ip = [NSIndexPath indexPathForRow:lastRow inSection:0];
-    [[self tableView] insertRowsAtIndexPaths:[NSArray arrayWithObject:ip]
-                            withRowAnimation:UITableViewRowAnimationTop];
-   
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:sourceEditViewController];
+    [navController setModalPresentationStyle:UIModalPresentationFormSheet];
+    [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    [self presentViewController:navController animated:YES completion:nil];
+    
 }
 
 
@@ -109,7 +114,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
       toIndexPath:(NSIndexPath *)destinationIndexPath
 {
     [[SourceStore sharedStore] moveItemAtIndex:[sourceIndexPath row]
-                                        toIndex:[destinationIndexPath row]];
+                                       toIndex:[destinationIndexPath row]];
 }
 
 
@@ -120,12 +125,40 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     NSMutableArray *sources = [[SourceStore sharedStore] allSources];
     Source *selectedSource = [sources objectAtIndex:[indexPath row]];
     
-    [sourceEditViewController setSource:selectedSource];
-    [[self navigationController] pushViewController:sourceEditViewController
-                                           animated:YES];
+    UIActionSheet *message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Edit Source", @"View Children", nil];
+    
+    [message showInView:[UIApplication sharedApplication].keyWindow];
+    
+    while ((!message.hidden) && (message.superview != nil))
+    {
+        [[NSRunLoop currentRunLoop] limitDateForMode:NSDefaultRunLoopMode];
+        
+    }
+    
+    if([option isEqualToString:@"EDIT"])
+    {
+        [sourceEditViewController setSource:selectedSource];
+        [[self navigationController] pushViewController:sourceEditViewController  animated:YES];
+    }
 }
 
 
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex)
+    {
+        case 0:
+            option = @"EDIT";
+            NSLog(@"edit");
+            break;
+        case 1:
+            option = @"VIEW";
+            NSLog(@"view");
+            break;
+        case 2:
+            NSLog(@"Cancel");
+    }
+}
 
 
 

@@ -9,6 +9,7 @@
 #import "SourceEditViewController.h"
 #import "Source.h"
 #import "LibraryObject.h"
+#import "SourceStore.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -52,8 +53,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [TypeField setText:[[source attributes] objectForKey:@"Type"]];
     [LatitudeField setText:[[source attributes] objectForKey:@"Latitude"]];
     [LongitudeField setText:[[source attributes] objectForKey:@"Longitude"]];
-   // [TypeField setText:[source attributes.];
-   // [valueField setText:[NSString stringWithFormat:@"%d", [item valueInDollars]]];
+    // [TypeField setText:[source attributes.];
+    // [valueField setText:[NSString stringWithFormat:@"%d", [item valueInDollars]]];
     
 }
 
@@ -62,6 +63,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     // Clear first responder
     [[self view] endEditing:YES];
     // "Save" changes to item
+    
     [[source attributes] setObject:[TypeField text] forKey:@"Type"];
     [[source attributes] setObject:[LatitudeField text] forKey:@"Latitude"];
     [[source attributes] setObject:[LongitudeField text] forKey:@"Longitude"];
@@ -80,4 +82,40 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (IBAction)backgroundTapped:(id)sender {
     [[self view] endEditing:YES];
 }
+
+
+- (id)initForNewSource:(BOOL)isNew
+{
+    self = [super initWithNibName:@"SourceEditViewController" bundle:nil];
+    if (self)
+    {
+        if (isNew)
+        {
+            UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]
+                                           initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                           target:self
+                                           action:@selector(save:)];
+            [[self navigationItem] setRightBarButtonItem:doneButton];
+            
+            UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]
+                                             initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                             target:self
+                                             action:@selector(cancel:)];
+            [[self navigationItem] setLeftBarButtonItem:cancelButton];
+        }
+    }
+    return self;
+}
+
+- (void)save:(id)sender
+{
+    [[self presentingViewController] dismissViewControllerAnimated:YES completion:_dismissBlock];
+}
+
+- (void)cancel:(id)sender
+{
+    [[SourceStore sharedStore] removeSource:source];
+    [[self presentingViewController] dismissViewControllerAnimated:YES completion:_dismissBlock];
+}
+
 @end

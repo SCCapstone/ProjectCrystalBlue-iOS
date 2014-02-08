@@ -48,9 +48,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return allSources;
 }
 
-- (Source *)createSource {
-    Source *p = [[Source alloc] initWithKey:@"key"
-                         AndWithAttributes:[SourceConstants attributeNames]
+- (Source *)createSourceWithKey:(NSString *)inKey  {
+    Source *p = [[Source alloc] initWithKey:inKey
+                          AndWithAttributes:[SourceConstants attributeNames]
                        AndWithDefaultValues:[SourceConstants attributeDefaultValues]];
     [allSources addObject:p];
     return p;
