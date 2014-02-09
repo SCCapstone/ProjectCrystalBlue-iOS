@@ -64,6 +64,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [[self view] endEditing:YES];
     // "Save" changes to item
     
+    source.key = [KeyField text];
     [[source attributes] setObject:[TypeField text] forKey:@"Type"];
     [[source attributes] setObject:[LatitudeField text] forKey:@"Latitude"];
     [[source attributes] setObject:[LongitudeField text] forKey:@"Longitude"];

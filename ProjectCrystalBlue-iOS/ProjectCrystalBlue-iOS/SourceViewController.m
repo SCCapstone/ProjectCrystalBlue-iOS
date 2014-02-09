@@ -83,7 +83,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (IBAction)addNewItem:(id)sender {
     
     //Source *newSource = [[SourceStore sharedStore] createSource];
-    Source *newSource = [[SourceStore sharedStore] createSourceWithKey:@"key"];
+    Source *newSource = [[SourceStore sharedStore] createSourceWithKey:@""];
     SourceEditViewController *sourceEditViewController = [[SourceEditViewController alloc] initForNewSource:YES];
     
     [sourceEditViewController setSource:newSource];
