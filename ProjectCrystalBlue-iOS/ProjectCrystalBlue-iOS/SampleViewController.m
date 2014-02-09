@@ -29,9 +29,10 @@
         UIBarButtonItem *bbi = [[UIBarButtonItem alloc]
                                 initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self
                                 action:@selector(addNewItem:)];
+        UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         
         [[self navigationItem] setRightBarButtonItem:bbi];
-        [[self navigationItem] setLeftBarButtonItem:[self editButtonItem]];
+        [[self navigationItem] setLeftBarButtonItem:backbtn];
         
         
     }
@@ -64,7 +65,10 @@
     return cell;
 }
 
-
+-(void) goBack:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];

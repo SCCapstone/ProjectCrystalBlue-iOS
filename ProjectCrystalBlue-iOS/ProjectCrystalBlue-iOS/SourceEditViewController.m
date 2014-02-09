@@ -80,6 +80,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [[source attributes] setObject:[TypeField text] forKey:@"Type"];
     [[source attributes] setObject:[LatitudeField text] forKey:@"Latitude"];
     [[source attributes] setObject:[LongitudeField text] forKey:@"Longitude"];
+    NSString *newSampleKey = [NSString stringWithFormat:@"%@%@", source.key, @"_001"];
+    Sample *newSample = [[SampleStore sharedStore] createSampleWithKey:newSampleKey];
     }
     
     else
@@ -87,9 +89,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [[SourceStore sharedStore] removeSource:source];
     }
     
-    NSString *newSampleKey = [NSString stringWithFormat:@"%@%@", source.key, @"_001"];
     
-    Sample *newSample = [[SampleStore sharedStore] createSampleWithKey:newSampleKey];
     
     
         //[item setSerialNumber:[serialNumberField text]];
