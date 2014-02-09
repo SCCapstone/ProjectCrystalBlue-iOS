@@ -7,7 +7,9 @@
 //
 
 #import "SampleStore.h"
+#import "SampleConstants.h"
 #import "DDLog.h"
+#import "Sample.h"
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -45,5 +47,30 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     return allSamples;
 }
+
+- (Sample *)createSampleWithKey:(NSString *)inKey  {
+    Sample *p = [[Sample alloc] initWithKey:inKey
+                          AndWithAttributes:[SampleConstants attributeNames]
+                       AndWithDefaultValues:[SampleConstants attributeDefaultValues]];
+    [allSamples addObject:p];
+    return p;
+}
+
+
+- (void)removeSample:(Sample *)p {
+    [allSamples removeObjectIdenticalTo:p];
+}
+
+- (void)moveItemAtIndex:(int)from
+                toIndex:(int)to
+{
+    if (from == to) {
+        return;
+    }
+    Sample *p = [allSamples objectAtIndex:from];
+    [allSamples removeObjectAtIndex:from];
+    [allSamples insertObject:p atIndex:to]; }
+
+
 
 @end

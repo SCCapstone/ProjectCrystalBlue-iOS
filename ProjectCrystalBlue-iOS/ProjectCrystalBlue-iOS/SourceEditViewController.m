@@ -11,6 +11,8 @@
 #import "LibraryObject.h"
 #import "SourceStore.h"
 #import "DDLog.h"
+#import "Sample.h"
+#import "SampleStore.h"
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -85,6 +87,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [[SourceStore sharedStore] removeSource:source];
     }
     
+    NSString *newSampleKey = [NSString stringWithFormat:@"%@%@", source.key, @"_001"];
+    
+    Sample *newSample = [[SampleStore sharedStore] createSampleWithKey:newSampleKey];
     
     
         //[item setSerialNumber:[serialNumberField text]];

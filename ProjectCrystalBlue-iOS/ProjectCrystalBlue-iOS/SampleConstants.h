@@ -1,6 +1,6 @@
 //
 //  SampleConstants.h
-//  ProjectCrystalBlue-iOS
+//  ProjectCrystalBlueOSX
 //
 //  Created by Justin Baumgartner on 1/18/14.
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
@@ -12,5 +12,6 @@
 
 + (NSArray *)attributeNames;
 + (NSArray *)attributeDefaultValues;
++ (NSString *)sampleTableName;
 
 @end

@@ -23,4 +23,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [[self attributes] setObject:@"Yes" forKey:@"Pulverizer"];
 }
 
+- (NSString *)description
+{
+    //NSString *descriptionString = [[NSString alloc] initWithFormat:@"Source: %@", [[self attributes] objectForKey:@"Group"]];
+    NSString *descriptionString = [[NSString alloc] initWithFormat:@"Sample: %@", [self key]];
+    return descriptionString;
+}
+
 @end

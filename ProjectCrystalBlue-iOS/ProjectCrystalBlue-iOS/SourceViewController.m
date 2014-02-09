@@ -12,6 +12,8 @@
 #import "DDLog.h"
 #import "SourceEditViewController.h"
 #import "SampleViewController.h"
+#import "Sample.h"
+#import "SampleStore.h"
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -94,6 +96,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }];
     
 
+
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:sourceEditViewController];
     [navController setModalPresentationStyle:UIModalPresentationFormSheet];
     [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
@@ -142,7 +145,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     if([option isEqualToString:@"EDIT"])
     {
         [sourceEditViewController setSource:selectedSource];
-        [[self navigationController] pushViewController:sampleViewController  animated:YES];
+        [[self navigationController] pushViewController:sourceEditViewController  animated:YES];
     }
     
     if([option isEqualToString:@"VIEW"])

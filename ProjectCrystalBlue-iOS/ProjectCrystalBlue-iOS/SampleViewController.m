@@ -7,6 +7,10 @@
 //
 
 #import "SampleViewController.h"
+#import "Sample.h"
+#import "SourceStore.h"
+#import "SampleStore.h"
+#import "DDLog.h"
 
 @interface SampleViewController ()
 
@@ -14,14 +18,52 @@
 
 @implementation SampleViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+- (id)init {
+    // Call the superclass's designated initializer
+    self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        // Custom initialization
+        
+        UINavigationItem *n = [self navigationItem];
+        [n setTitle:@"Samples"];
+        
+        UIBarButtonItem *bbi = [[UIBarButtonItem alloc]
+                                initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self
+                                action:@selector(addNewItem:)];
+        
+        [[self navigationItem] setRightBarButtonItem:bbi];
+        [[self navigationItem] setLeftBarButtonItem:[self editButtonItem]];
+        
+        
     }
     return self;
 }
+
+- (id)initWithStyle:(UITableViewStyle)style {
+    return [self init]; }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [[[SampleStore sharedStore] allSamples] count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Create an instance of UITableViewCell, with default appearance
+    // Check for a reusable cell first, use that if it exists
+    UITableViewCell *cell =
+    [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+    // If there is no reusable cell of this type, create a new one
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:@"UITableViewCell"];
+    }
+    // Set the text on the cell with the description of the item // that is at the nth index of items, where n = row this cell // will appear in on the tableview
+    
+    Sample *p = [[[SampleStore sharedStore] allSamples]
+                 objectAtIndex:[indexPath row]]; [[cell textLabel] setText:[p description]];
+    return cell;
+}
+
 
 - (void)viewDidLoad
 {

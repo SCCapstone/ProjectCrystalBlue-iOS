@@ -12,6 +12,6 @@
 @interface Sample : LibraryObject
 
 -(void) pulverize;
-
+- (NSString *)description;
 
 @end

@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Sample.h"
+
+@class Sample;
 
 @interface SampleStore : NSObject
 {
@@ -17,5 +18,8 @@
 + (SampleStore *) sharedStore;
 
 - (NSMutableArray *) allSamples;
-
+- (Sample *)createSampleWithKey:(NSString*)inKey;
+- (void)removeSample:(Sample *)p;
+- (void)moveItemAtIndex:(int)from
+                toIndex:(int)to;
 @end
