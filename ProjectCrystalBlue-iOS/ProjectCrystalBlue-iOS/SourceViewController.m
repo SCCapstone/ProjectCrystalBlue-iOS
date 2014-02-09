@@ -11,6 +11,7 @@
 #import "SourceStore.h"
 #import "DDLog.h"
 #import "SourceEditViewController.h"
+#import "SampleViewController.h"
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -123,6 +124,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SourceEditViewController *sourceEditViewController = [[SourceEditViewController alloc] init];
+    SampleViewController *sampleViewController = [[SampleViewController alloc] init];
     
     NSMutableArray *sources = [[SourceStore sharedStore] allSources];
     Source *selectedSource = [sources objectAtIndex:[indexPath row]];
@@ -140,7 +142,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     if([option isEqualToString:@"EDIT"])
     {
         [sourceEditViewController setSource:selectedSource];
-        [[self navigationController] pushViewController:sourceEditViewController  animated:YES];
+        [[self navigationController] pushViewController:sampleViewController  animated:YES];
+    }
+    
+    if([option isEqualToString:@"VIEW"])
+    {
+         [[self navigationController] pushViewController:sampleViewController  animated:YES];
     }
     
 }

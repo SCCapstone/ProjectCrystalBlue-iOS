@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B4014E8D18A7203300D8F4BA /* SampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4014E8C18A7203300D8F4BA /* SampleViewController.m */; };
 		B4383ACB189C42B700DAC28F /* SourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383ACA189C42B700DAC28F /* SourceViewController.m */; };
 		B4383AD0189C4A0000DAC28F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383ACF189C4A0000DAC28F /* AppDelegate.m */; };
 		B4383AE2189C71B200DAC28F /* SourceEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383AE0189C71B200DAC28F /* SourceEditViewController.m */; };
@@ -52,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B4014E8B18A7203300D8F4BA /* SampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleViewController.h; sourceTree = "<group>"; };
+		B4014E8C18A7203300D8F4BA /* SampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleViewController.m; sourceTree = "<group>"; };
 		B4383AC9189C42B700DAC28F /* SourceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceViewController.h; sourceTree = "<group>"; };
 		B4383ACA189C42B700DAC28F /* SourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceViewController.m; sourceTree = "<group>"; };
 		B4383ACE189C4A0000DAC28F /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -196,6 +199,8 @@
 				B4383ACA189C42B700DAC28F /* SourceViewController.m */,
 				B4383ADF189C71B200DAC28F /* SourceEditViewController.h */,
 				B4383AE0189C71B200DAC28F /* SourceEditViewController.m */,
+				B4014E8B18A7203300D8F4BA /* SampleViewController.h */,
+				B4014E8C18A7203300D8F4BA /* SampleViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -407,6 +412,7 @@
 				D01DDDCA188DDC910059AF09 /* ImageStore.m in Sources */,
 				D01DDDC1188DDC5E0059AF09 /* Source.m in Sources */,
 				D7D76B09189EED000056CDE4 /* DDLog.m in Sources */,
+				B4014E8D18A7203300D8F4BA /* SampleViewController.m in Sources */,
 				D0B1B731189C900800052443 /* LibraryObjectStore.m in Sources */,
 				D0B1B73C189C924A00052443 /* SourceStore.m in Sources */,
 				D0B1B728189C876000052443 /* LibraryObject.m in Sources */,
