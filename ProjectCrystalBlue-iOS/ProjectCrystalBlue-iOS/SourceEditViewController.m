@@ -26,7 +26,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @implementation SourceEditViewController
 
-@synthesize source, isNewSource;
+@synthesize source, isNewSource, scroller;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,8 +38,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 - (void)viewDidLoad {
+    [self.scroller setScrollEnabled:YES];
+    [scroller setContentSize:CGSizeMake(320, 950)];
+    
     [super viewDidLoad];
     [[self view] setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

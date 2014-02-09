@@ -18,7 +18,9 @@
     __weak IBOutlet UITextField *TypeField;
     __weak IBOutlet UITextField *LatitudeField;
     __weak IBOutlet UITextField *LongitudeField;
+   
 }
+@property (nonatomic, strong)  IBOutlet UIScrollView *scroller;
 @property (nonatomic, strong) Source *source;
 
 @property (nonatomic, copy) void (^dismissBlock)(void);
