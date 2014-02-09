@@ -64,13 +64,30 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [[self view] endEditing:YES];
     // "Save" changes to item
     
+    BOOL keyExists = false;
+    
+    for (int i = 0; i < [[[SourceStore sharedStore] allSources] count]; i++) {
+        if ([[[[[SourceStore sharedStore] allSources] objectAtIndex:i] key] isEqualToString:[KeyField text]] ) {
+            keyExists = true;
+        }
+    }
+    
+    if (keyExists == false) {
+        
     source.key = [KeyField text];
     [[source attributes] setObject:[TypeField text] forKey:@"Type"];
     [[source attributes] setObject:[LatitudeField text] forKey:@"Latitude"];
     [[source attributes] setObject:[LongitudeField text] forKey:@"Longitude"];
+    }
+    
+    else
+    {
+        [[SourceStore sharedStore] removeSource:source];
+    }
     
     
-    //[item setSerialNumber:[serialNumberField text]];
+    
+        //[item setSerialNumber:[serialNumberField text]];
     //[item setValueInDollars:[[valueField text] intValue]];
 }
 

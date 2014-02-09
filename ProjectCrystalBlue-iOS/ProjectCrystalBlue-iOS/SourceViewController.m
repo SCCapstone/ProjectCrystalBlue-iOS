@@ -86,11 +86,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     Source *newSource = [[SourceStore sharedStore] createSourceWithKey:@""];
     SourceEditViewController *sourceEditViewController = [[SourceEditViewController alloc] initForNewSource:YES];
     
+    
     [sourceEditViewController setSource:newSource];
     [sourceEditViewController setDismissBlock:^{
         [[self tableView] reloadData];
     }];
     
+
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:sourceEditViewController];
     [navController setModalPresentationStyle:UIModalPresentationFormSheet];
     [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
@@ -140,6 +142,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [sourceEditViewController setSource:selectedSource];
         [[self navigationController] pushViewController:sourceEditViewController  animated:YES];
     }
+    
 }
 
 

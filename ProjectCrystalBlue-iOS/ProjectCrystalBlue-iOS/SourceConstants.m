@@ -39,25 +39,25 @@ NSString *const SUBPROJECT = @"Subproject";
 
 /* Attribute default values
  */
-NSString *const DEF_VAL_CONTINENT = @"continent here";
-NSString *const DEF_VAL_TYPE = @"Type here";
-NSString *const DEF_VAL_LITHOLOGY = @"Lithology here";
-NSString *const DEF_VAL_DEPOSYSTEM = @"Deposystem here";
-NSString *const DEF_VAL_GROUP = @"Group here";
-NSString *const DEF_VAL_FORMATION = @"Formation here";
-NSString *const DEF_VAL_MEMBER = @"Member here";
-NSString *const DEF_VAL_REGION = @"Region here";
-NSString *const DEF_VAL_LOCALITY = @"Locality here";
-NSString *const DEF_VAL_SECTION = @"Section here";
-NSString *const DEF_VAL_METER_LEVEL = @"Meter_Level here";
-NSString *const DEF_VAL_LATITUDE = @"Latitude here";
-NSString *const DEF_VAL_LONGITUDE = @"Longitude here";
-NSString *const DEF_VAL_AGE = @"Age here";
-NSString *const DEF_VAL_AGE_BASIS1 = @"Age_Basis1 here";
-NSString *const DEF_VAL_AGE_BASIS2 = @"Age_Basis2 here";
-NSString *const DEF_VAL_DATE_COLLECTED = @"Date_Collected here";
-NSString *const DEF_VAL_PROJECT = @"Project here";
-NSString *const DEF_VAL_SUBPROJECT = @"Subproject here";
+NSString *const DEF_VAL_CONTINENT = @"";
+NSString *const DEF_VAL_TYPE = @"";
+NSString *const DEF_VAL_LITHOLOGY = @"";
+NSString *const DEF_VAL_DEPOSYSTEM = @"";
+NSString *const DEF_VAL_GROUP = @"";
+NSString *const DEF_VAL_FORMATION = @"";
+NSString *const DEF_VAL_MEMBER = @"";
+NSString *const DEF_VAL_REGION = @"";
+NSString *const DEF_VAL_LOCALITY = @"";
+NSString *const DEF_VAL_SECTION = @"";
+NSString *const DEF_VAL_METER_LEVEL = @"";
+NSString *const DEF_VAL_LATITUDE = @"";
+NSString *const DEF_VAL_LONGITUDE = @"";
+NSString *const DEF_VAL_AGE = @"";
+NSString *const DEF_VAL_AGE_BASIS1 = @"";
+NSString *const DEF_VAL_AGE_BASIS2 = @"";
+NSString *const DEF_VAL_DATE_COLLECTED = @"";
+NSString *const DEF_VAL_PROJECT = @"";
+NSString *const DEF_VAL_SUBPROJECT = @"";
 
 @implementation SourceConstants
 
