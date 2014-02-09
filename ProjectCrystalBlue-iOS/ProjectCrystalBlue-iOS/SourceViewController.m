@@ -150,7 +150,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     if([option isEqualToString:@"VIEW"])
     {
-         [[self navigationController] pushViewController:sampleViewController  animated:YES];
+        [SampleStore sharedStore].clickedSource = selectedSource;
+        [[self navigationController] pushViewController:sampleViewController  animated:YES];
     }
     
 }

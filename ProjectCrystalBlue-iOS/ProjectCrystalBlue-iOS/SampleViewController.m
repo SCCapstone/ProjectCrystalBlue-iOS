@@ -44,7 +44,24 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[[SampleStore sharedStore] allSamples] count];
+    int counter = 0;
+    NSString *aSampleKey = [[[SampleStore sharedStore] clickedSource] key];
+    NSString *bSampleKey;
+    NSInteger len = [aSampleKey length];
+    
+    
+    for(int i = 0; i < [[[SampleStore sharedStore] allSamples] count]; i++)
+    {
+        
+        bSampleKey = [[[[[SampleStore sharedStore] allSamples] objectAtIndex:i] key] substringToIndex:len];
+                                                                                             
+        if( [bSampleKey isEqualToString:aSampleKey])
+            {
+                 counter= counter + 1;
+            }
+    }
+    
+    return counter;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -59,9 +76,28 @@
                                       reuseIdentifier:@"UITableViewCell"];
     }
     // Set the text on the cell with the description of the item // that is at the nth index of items, where n = row this cell // will appear in on the tableview
+   
+    NSString *aSampleKey = [[[SampleStore sharedStore] clickedSource] key];
+    NSString *bSampleKey;
+    NSInteger len = [aSampleKey length];
+    NSMutableArray *temp = [[NSMutableArray alloc] init];
     
-    Sample *p = [[[SampleStore sharedStore] allSamples]
+    
+    for(int i = 0; i < [[[SampleStore sharedStore] allSamples] count]; i++)
+    {
+        
+        bSampleKey = [[[[[SampleStore sharedStore] allSamples] objectAtIndex:i] key] substringToIndex:len];
+        
+        if( [bSampleKey isEqualToString:aSampleKey])
+        {
+            [temp addObject:[[[SampleStore sharedStore] allSamples] objectAtIndex:i]];
+        }
+    }
+    
+    
+    Sample *p = [temp
                  objectAtIndex:[indexPath row]]; [[cell textLabel] setText:[p description]];
+    
     return cell;
 }
 

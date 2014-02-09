@@ -18,6 +18,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 #endif
 
 @implementation SampleStore
+@synthesize clickedSource;
 
 - (id)init
 {

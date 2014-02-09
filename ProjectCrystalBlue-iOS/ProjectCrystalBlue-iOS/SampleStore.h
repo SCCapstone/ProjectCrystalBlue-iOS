@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Source.h"
 
 @class Sample;
 
@@ -14,6 +15,7 @@
 {
     NSMutableArray *allSamples;
 }
+@property (nonatomic, strong) Source *clickedSource;
 
 + (SampleStore *) sharedStore;
 
