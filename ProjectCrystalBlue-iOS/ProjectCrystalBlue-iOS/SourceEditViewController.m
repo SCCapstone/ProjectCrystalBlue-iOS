@@ -26,7 +26,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @implementation SourceEditViewController
 
-@synthesize source;
+@synthesize source, isNewSource;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -74,7 +74,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         }
     }
     
-    if (keyExists == false) {
+    if (keyExists == false && isNewSource == true) {
         
     source.key = [KeyField text];
     [[source attributes] setObject:[TypeField text] forKey:@"Type"];
@@ -84,12 +84,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     Sample *newSample = [[SampleStore sharedStore] createSampleWithKey:newSampleKey];
     }
     
-    else
+    if(keyExists == true && isNewSource == true)
     {
         [[SourceStore sharedStore] removeSource:source];
     }
     
-    
+    isNewSource = false;
     
     
         //[item setSerialNumber:[serialNumberField text]];
@@ -127,6 +127,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             [[self navigationItem] setLeftBarButtonItem:cancelButton];
         }
     }
+    
+    isNewSource = true;
     return self;
 }
 

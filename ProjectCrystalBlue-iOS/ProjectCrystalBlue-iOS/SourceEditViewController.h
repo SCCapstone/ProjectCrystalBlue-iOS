@@ -22,6 +22,7 @@
 @property (nonatomic, strong) Source *source;
 
 @property (nonatomic, copy) void (^dismissBlock)(void);
+@property (nonatomic) BOOL isNewSource;
 
 - (IBAction)backgroundTapped:(id)sender;
 
