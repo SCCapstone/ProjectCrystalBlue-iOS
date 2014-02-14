@@ -47,6 +47,10 @@
 		D7EFB3E818AECBB2004EAB88 /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EFB3E718AECBB2004EAB88 /* ImageUtils.m */; };
 		D7EFB3EB18AECD09004EAB88 /* LocalImageStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EFB3EA18AECD09004EAB88 /* LocalImageStoreTests.m */; };
 		D7EFB3ED18AECD0F004EAB88 /* big_test_image_4096-4096.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D7EFB3EC18AECD0F004EAB88 /* big_test_image_4096-4096.jpg */; };
+		D7EFB3F118AECF5C004EAB88 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EFB3F018AECF5C004EAB88 /* AWSS3.framework */; };
+		D7EFB3F318AECF64004EAB88 /* AWSSimpleDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EFB3F218AECF64004EAB88 /* AWSSimpleDB.framework */; };
+		D7EFB3F418AECF8D004EAB88 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EFB3F018AECF5C004EAB88 /* AWSS3.framework */; };
+		D7EFB3F518AECF94004EAB88 /* AWSSimpleDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EFB3F218AECF64004EAB88 /* AWSSimpleDB.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +127,8 @@
 		D7EFB3E718AECBB2004EAB88 /* ImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtils.m; sourceTree = "<group>"; };
 		D7EFB3EA18AECD09004EAB88 /* LocalImageStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalImageStoreTests.m; sourceTree = "<group>"; };
 		D7EFB3EC18AECD0F004EAB88 /* big_test_image_4096-4096.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "big_test_image_4096-4096.jpg"; sourceTree = "<group>"; };
+		D7EFB3F018AECF5C004EAB88 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = include/AWSS3.framework; sourceTree = "<group>"; };
+		D7EFB3F218AECF64004EAB88 /* AWSSimpleDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSSimpleDB.framework; path = include/AWSSimpleDB.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +143,8 @@
 				D729BD3D181C24A000F762A3 /* CoreGraphics.framework in Frameworks */,
 				D729BD3F181C24A000F762A3 /* UIKit.framework in Frameworks */,
 				D729BD3B181C24A000F762A3 /* Foundation.framework in Frameworks */,
+				D7EFB3F318AECF64004EAB88 /* AWSSimpleDB.framework in Frameworks */,
+				D7EFB3F118AECF5C004EAB88 /* AWSS3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +155,8 @@
 				D729BD54181C24A000F762A3 /* XCTest.framework in Frameworks */,
 				D729BD56181C24A000F762A3 /* UIKit.framework in Frameworks */,
 				D729BD55181C24A000F762A3 /* Foundation.framework in Frameworks */,
+				D7EFB3F418AECF8D004EAB88 /* AWSS3.framework in Frameworks */,
+				D7EFB3F518AECF94004EAB88 /* AWSSimpleDB.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +262,8 @@
 		D729BD39181C24A000F762A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D7EFB3F218AECF64004EAB88 /* AWSSimpleDB.framework */,
+				D7EFB3F018AECF5C004EAB88 /* AWSS3.framework */,
 				D03677021857D496002A042D /* zumero.a */,
 				D04AD3991851BDB00079B2EE /* libz.dylib */,
 				D04AD3971851BDAB0079B2EE /* CFNetwork.framework */,
@@ -641,6 +653,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/hoodlm/Downloads/aws-ios-sdk-1.7.1",
+					"/Users/hoodlm/Documents/Xcode\\ Projects/ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS/include",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -665,6 +682,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/hoodlm/Downloads/aws-ios-sdk-1.7.1",
+					"/Users/hoodlm/Documents/Xcode\\ Projects/ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS/include",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -692,6 +714,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"/Users/hoodlm/Documents/Xcode\\ Projects/ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS/include",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS-Prefix.pch";
@@ -715,6 +738,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"/Users/hoodlm/Documents/Xcode\\ Projects/ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS/include",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS-Prefix.pch";
