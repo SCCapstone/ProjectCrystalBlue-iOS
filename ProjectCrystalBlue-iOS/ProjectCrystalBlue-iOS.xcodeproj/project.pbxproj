@@ -16,7 +16,6 @@
 		D01DDDC0188DDC5E0059AF09 /* SampleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDBA188DDC5E0059AF09 /* SampleConstants.m */; };
 		D01DDDC1188DDC5E0059AF09 /* Source.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDBC188DDC5E0059AF09 /* Source.m */; };
 		D01DDDC2188DDC5E0059AF09 /* SourceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDBE188DDC5E0059AF09 /* SourceConstants.m */; };
-		D01DDDCA188DDC910059AF09 /* ImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDC6188DDC910059AF09 /* ImageStore.m */; };
 		D03677031857D496002A042D /* zumero.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D03677021857D496002A042D /* zumero.a */; };
 		D04AD3981851BDAB0079B2EE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04AD3971851BDAB0079B2EE /* CFNetwork.framework */; };
 		D04AD39A1851BDB00079B2EE /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D04AD3991851BDB00079B2EE /* libz.dylib */; };
@@ -40,6 +39,9 @@
 		D7D76B08189EED000056CDE4 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D76B04189EED000056CDE4 /* DDFileLogger.m */; };
 		D7D76B09189EED000056CDE4 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D76B06189EED000056CDE4 /* DDLog.m */; };
 		D7D76B0C189EED060056CDE4 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D76B0B189EED060056CDE4 /* DDTTYLogger.m */; };
+		D7EFB3D618AEC695004EAB88 /* AbstractMobileImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EFB3D518AEC695004EAB88 /* AbstractMobileImageStore.m */; };
+		D7EFB3D918AEC7DD004EAB88 /* AbstractMobileCloudImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EFB3D818AEC7DD004EAB88 /* AbstractMobileCloudImageStore.m */; };
+		D7EFB3DE18AEC88E004EAB88 /* AbstractImageStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EFB3DD18AEC88E004EAB88 /* AbstractImageStoreTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,8 +72,6 @@
 		D01DDDBC188DDC5E0059AF09 /* Source.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Source.m; sourceTree = "<group>"; };
 		D01DDDBD188DDC5E0059AF09 /* SourceConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceConstants.h; sourceTree = "<group>"; };
 		D01DDDBE188DDC5E0059AF09 /* SourceConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceConstants.m; sourceTree = "<group>"; };
-		D01DDDC5188DDC910059AF09 /* ImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageStore.h; sourceTree = "<group>"; };
-		D01DDDC6188DDC910059AF09 /* ImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageStore.m; sourceTree = "<group>"; };
 		D03677021857D496002A042D /* zumero.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = zumero.a; path = include/zumero.a; sourceTree = "<group>"; };
 		D04AD3971851BDAB0079B2EE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D04AD3991851BDB00079B2EE /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -106,6 +106,11 @@
 		D7D76B06189EED000056CDE4 /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
 		D7D76B0A189EED060056CDE4 /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
 		D7D76B0B189EED060056CDE4 /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
+		D7EFB3D418AEC695004EAB88 /* AbstractMobileImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractMobileImageStore.h; sourceTree = "<group>"; };
+		D7EFB3D518AEC695004EAB88 /* AbstractMobileImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractMobileImageStore.m; sourceTree = "<group>"; };
+		D7EFB3D718AEC7DD004EAB88 /* AbstractMobileCloudImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractMobileCloudImageStore.h; sourceTree = "<group>"; };
+		D7EFB3D818AEC7DD004EAB88 /* AbstractMobileCloudImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractMobileCloudImageStore.m; sourceTree = "<group>"; };
+		D7EFB3DD18AEC88E004EAB88 /* AbstractImageStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractImageStoreTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,12 +185,11 @@
 		D01DDDB4188DDC020059AF09 /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				D7EFB3D218AEC66C004EAB88 /* ImageStore */,
 				D0B1B738189C924A00052443 /* SourceStore.h */,
 				D0B1B739189C924A00052443 /* SourceStore.m */,
 				D0B1B73A189C924A00052443 /* SampleStore.h */,
 				D0B1B73B189C924A00052443 /* SampleStore.m */,
-				D01DDDC5188DDC910059AF09 /* ImageStore.h */,
-				D01DDDC6188DDC910059AF09 /* ImageStore.m */,
 				D0B1B72F189C900800052443 /* LibraryObjectStore.h */,
 				D0B1B730189C900800052443 /* LibraryObjectStore.m */,
 			);
@@ -277,6 +281,7 @@
 		D729BD59181C24A000F762A3 /* ProjectCrystalBlue-iOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				D7EFB3DA18AEC872004EAB88 /* Store Tests */,
 				D729BD5F181C24A000F762A3 /* ProjectCrystalBlue_iOSTests.m */,
 				D729BD5A181C24A000F762A3 /* Supporting Files */,
 			);
@@ -305,6 +310,49 @@
 				D7D76B0B189EED060056CDE4 /* DDTTYLogger.m */,
 			);
 			name = Lumberjack;
+			sourceTree = "<group>";
+		};
+		D7EFB3D218AEC66C004EAB88 /* ImageStore */ = {
+			isa = PBXGroup;
+			children = (
+				D7EFB3D318AEC675004EAB88 /* Abstract Classes */,
+			);
+			name = ImageStore;
+			sourceTree = "<group>";
+		};
+		D7EFB3D318AEC675004EAB88 /* Abstract Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D7EFB3D418AEC695004EAB88 /* AbstractMobileImageStore.h */,
+				D7EFB3D518AEC695004EAB88 /* AbstractMobileImageStore.m */,
+				D7EFB3D718AEC7DD004EAB88 /* AbstractMobileCloudImageStore.h */,
+				D7EFB3D818AEC7DD004EAB88 /* AbstractMobileCloudImageStore.m */,
+			);
+			name = "Abstract Classes";
+			sourceTree = "<group>";
+		};
+		D7EFB3DA18AEC872004EAB88 /* Store Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D7EFB3DB18AEC876004EAB88 /* Image Store */,
+			);
+			name = "Store Tests";
+			sourceTree = "<group>";
+		};
+		D7EFB3DB18AEC876004EAB88 /* Image Store */ = {
+			isa = PBXGroup;
+			children = (
+				D7EFB3DC18AEC87A004EAB88 /* AbstractMobileImageStore */,
+			);
+			name = "Image Store";
+			sourceTree = "<group>";
+		};
+		D7EFB3DC18AEC87A004EAB88 /* AbstractMobileImageStore */ = {
+			isa = PBXGroup;
+			children = (
+				D7EFB3DD18AEC88E004EAB88 /* AbstractImageStoreTests.m */,
+			);
+			name = AbstractMobileImageStore;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -407,9 +455,9 @@
 				B4383AD0189C4A0000DAC28F /* AppDelegate.m in Sources */,
 				D7D76B08189EED000056CDE4 /* DDFileLogger.m in Sources */,
 				B4383ACB189C42B700DAC28F /* SourceViewController.m in Sources */,
+				D7EFB3D618AEC695004EAB88 /* AbstractMobileImageStore.m in Sources */,
 				D7D76B0C189EED060056CDE4 /* DDTTYLogger.m in Sources */,
 				D01DDDC2188DDC5E0059AF09 /* SourceConstants.m in Sources */,
-				D01DDDCA188DDC910059AF09 /* ImageStore.m in Sources */,
 				D01DDDC1188DDC5E0059AF09 /* Source.m in Sources */,
 				D7D76B09189EED000056CDE4 /* DDLog.m in Sources */,
 				B4014E8D18A7203300D8F4BA /* SampleViewController.m in Sources */,
@@ -422,6 +470,7 @@
 				B4383AE2189C71B200DAC28F /* SourceEditViewController.m in Sources */,
 				D0B1B73D189C924A00052443 /* SampleStore.m in Sources */,
 				D7D76B07189EED000056CDE4 /* DDASLLogger.m in Sources */,
+				D7EFB3D918AEC7DD004EAB88 /* AbstractMobileCloudImageStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +479,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D729BD60181C24A000F762A3 /* ProjectCrystalBlue_iOSTests.m in Sources */,
+				D7EFB3DE18AEC88E004EAB88 /* AbstractImageStoreTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
