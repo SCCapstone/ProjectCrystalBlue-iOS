@@ -53,8 +53,9 @@
 
 +(UIImage *)defaultImage
 {
-    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", NSStringFromClass(self.class)];
-    return nil;
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"no_image" ofType:@"png"];
+    UIImage *defImage = [[UIImage alloc] initWithContentsOfFile:path];
+    return defImage;
 }
 
 @end

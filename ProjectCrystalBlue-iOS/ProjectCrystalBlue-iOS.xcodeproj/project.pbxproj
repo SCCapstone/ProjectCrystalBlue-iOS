@@ -42,6 +42,11 @@
 		D7EFB3D618AEC695004EAB88 /* AbstractMobileImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EFB3D518AEC695004EAB88 /* AbstractMobileImageStore.m */; };
 		D7EFB3D918AEC7DD004EAB88 /* AbstractMobileCloudImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EFB3D818AEC7DD004EAB88 /* AbstractMobileCloudImageStore.m */; };
 		D7EFB3DE18AEC88E004EAB88 /* AbstractImageStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EFB3DD18AEC88E004EAB88 /* AbstractImageStoreTests.m */; };
+		D7EFB3E118AEC9A3004EAB88 /* LocalImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EFB3E018AEC9A3004EAB88 /* LocalImageStore.m */; };
+		D7EFB3E418AECB45004EAB88 /* no_image.png in Resources */ = {isa = PBXBuildFile; fileRef = D7EFB3E318AECB45004EAB88 /* no_image.png */; };
+		D7EFB3E818AECBB2004EAB88 /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EFB3E718AECBB2004EAB88 /* ImageUtils.m */; };
+		D7EFB3EB18AECD09004EAB88 /* LocalImageStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EFB3EA18AECD09004EAB88 /* LocalImageStoreTests.m */; };
+		D7EFB3ED18AECD0F004EAB88 /* big_test_image_4096-4096.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D7EFB3EC18AECD0F004EAB88 /* big_test_image_4096-4096.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +116,13 @@
 		D7EFB3D718AEC7DD004EAB88 /* AbstractMobileCloudImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractMobileCloudImageStore.h; sourceTree = "<group>"; };
 		D7EFB3D818AEC7DD004EAB88 /* AbstractMobileCloudImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractMobileCloudImageStore.m; sourceTree = "<group>"; };
 		D7EFB3DD18AEC88E004EAB88 /* AbstractImageStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractImageStoreTests.m; sourceTree = "<group>"; };
+		D7EFB3DF18AEC9A3004EAB88 /* LocalImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalImageStore.h; sourceTree = "<group>"; };
+		D7EFB3E018AEC9A3004EAB88 /* LocalImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalImageStore.m; sourceTree = "<group>"; };
+		D7EFB3E318AECB45004EAB88 /* no_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_image.png; sourceTree = "<group>"; };
+		D7EFB3E618AECBB2004EAB88 /* ImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
+		D7EFB3E718AECBB2004EAB88 /* ImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtils.m; sourceTree = "<group>"; };
+		D7EFB3EA18AECD09004EAB88 /* LocalImageStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalImageStoreTests.m; sourceTree = "<group>"; };
+		D7EFB3EC18AECD0F004EAB88 /* big_test_image_4096-4096.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "big_test_image_4096-4096.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +224,7 @@
 		D01DDDB6188DDC0F0059AF09 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				D7EFB3E518AECB9D004EAB88 /* MobileImageUtils */,
 				D7D76B00189EEB6B0056CDE4 /* Lumberjack */,
 			);
 			name = Utility;
@@ -315,7 +328,10 @@
 		D7EFB3D218AEC66C004EAB88 /* ImageStore */ = {
 			isa = PBXGroup;
 			children = (
+				D7EFB3E218AECB38004EAB88 /* ImageStoreResources */,
 				D7EFB3D318AEC675004EAB88 /* Abstract Classes */,
+				D7EFB3DF18AEC9A3004EAB88 /* LocalImageStore.h */,
+				D7EFB3E018AEC9A3004EAB88 /* LocalImageStore.m */,
 			);
 			name = ImageStore;
 			sourceTree = "<group>";
@@ -342,6 +358,7 @@
 		D7EFB3DB18AEC876004EAB88 /* Image Store */ = {
 			isa = PBXGroup;
 			children = (
+				D7EFB3E918AECCF9004EAB88 /* LocalImageStore */,
 				D7EFB3DC18AEC87A004EAB88 /* AbstractMobileImageStore */,
 			);
 			name = "Image Store";
@@ -353,6 +370,32 @@
 				D7EFB3DD18AEC88E004EAB88 /* AbstractImageStoreTests.m */,
 			);
 			name = AbstractMobileImageStore;
+			sourceTree = "<group>";
+		};
+		D7EFB3E218AECB38004EAB88 /* ImageStoreResources */ = {
+			isa = PBXGroup;
+			children = (
+				D7EFB3E318AECB45004EAB88 /* no_image.png */,
+			);
+			name = ImageStoreResources;
+			sourceTree = "<group>";
+		};
+		D7EFB3E518AECB9D004EAB88 /* MobileImageUtils */ = {
+			isa = PBXGroup;
+			children = (
+				D7EFB3E618AECBB2004EAB88 /* ImageUtils.h */,
+				D7EFB3E718AECBB2004EAB88 /* ImageUtils.m */,
+			);
+			name = MobileImageUtils;
+			sourceTree = "<group>";
+		};
+		D7EFB3E918AECCF9004EAB88 /* LocalImageStore */ = {
+			isa = PBXGroup;
+			children = (
+				D7EFB3EC18AECD0F004EAB88 /* big_test_image_4096-4096.jpg */,
+				D7EFB3EA18AECD09004EAB88 /* LocalImageStoreTests.m */,
+			);
+			name = LocalImageStore;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,6 +476,7 @@
 			files = (
 				D729BD45181C24A000F762A3 /* InfoPlist.strings in Resources */,
 				D729BD4D181C24A000F762A3 /* Images.xcassets in Resources */,
+				D7EFB3E418AECB45004EAB88 /* no_image.png in Resources */,
 				B4383AE7189DFEBB00DAC28F /* SourceEditViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,6 +485,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7EFB3ED18AECD0F004EAB88 /* big_test_image_4096-4096.jpg in Resources */,
 				D729BD5E181C24A000F762A3 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,6 +503,7 @@
 				D7EFB3D618AEC695004EAB88 /* AbstractMobileImageStore.m in Sources */,
 				D7D76B0C189EED060056CDE4 /* DDTTYLogger.m in Sources */,
 				D01DDDC2188DDC5E0059AF09 /* SourceConstants.m in Sources */,
+				D7EFB3E818AECBB2004EAB88 /* ImageUtils.m in Sources */,
 				D01DDDC1188DDC5E0059AF09 /* Source.m in Sources */,
 				D7D76B09189EED000056CDE4 /* DDLog.m in Sources */,
 				B4014E8D18A7203300D8F4BA /* SampleViewController.m in Sources */,
@@ -467,6 +513,7 @@
 				D729BD47181C24A000F762A3 /* main.m in Sources */,
 				D01DDDBF188DDC5E0059AF09 /* Sample.m in Sources */,
 				D01DDDC0188DDC5E0059AF09 /* SampleConstants.m in Sources */,
+				D7EFB3E118AEC9A3004EAB88 /* LocalImageStore.m in Sources */,
 				B4383AE2189C71B200DAC28F /* SourceEditViewController.m in Sources */,
 				D0B1B73D189C924A00052443 /* SampleStore.m in Sources */,
 				D7D76B07189EED000056CDE4 /* DDASLLogger.m in Sources */,
@@ -479,6 +526,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D729BD60181C24A000F762A3 /* ProjectCrystalBlue_iOSTests.m in Sources */,
+				D7EFB3EB18AECD09004EAB88 /* LocalImageStoreTests.m in Sources */,
 				D7EFB3DE18AEC88E004EAB88 /* AbstractImageStoreTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
