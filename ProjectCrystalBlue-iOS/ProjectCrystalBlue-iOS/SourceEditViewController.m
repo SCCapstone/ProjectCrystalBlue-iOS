@@ -26,7 +26,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @implementation SourceEditViewController
 
-@synthesize source, isNewSource, scroller;
+@synthesize source, scroller, libraryObjectStore;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -57,9 +57,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [KeyField setText:[source key]];
-    [TypeField setText:[[source attributes] objectForKey:@"Type"]];
-    [LatitudeField setText:[[source attributes] objectForKey:@"Latitude"]];
-    [LongitudeField setText:[[source attributes] objectForKey:@"Longitude"]];
+    [TypeField setText:[[source attributes] objectForKey:@"type"]];
+    [LatitudeField setText:[[source attributes] objectForKey:@"latitude"]];
+    [LongitudeField setText:[[source attributes] objectForKey:@"longitude"]];
     // [TypeField setText:[source attributes.];
     // [valueField setText:[NSString stringWithFormat:@"%d", [item valueInDollars]]];
     
@@ -71,29 +71,33 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [[self view] endEditing:YES];
     // "Save" changes to item
     
-    BOOL keyExists = [self.libraryObjectStore libraryObjectExistsForKey:[KeyField text] FromTable:[SourceConstants tableName]];
+    BOOL keyExists = [libraryObjectStore libraryObjectExistsForKey:[KeyField text] FromTable:[SourceConstants tableName]];
+
     
-    if (!self.source && !keyExists) {
-        NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
-        [attributes setObject:[TypeField text] forKey:@"Type"];
-        [attributes setObject:[LatitudeField text] forKey:@"Latitude"];
-        [attributes setObject:[LongitudeField text] forKey:@"Longitude"];
+    if (!source && !keyExists) {
         
         Source *newSource = [[Source alloc] initWithKey:[KeyField text]
-                             AndWithAttributeDictionary:attributes];
-        [self.libraryObjectStore putLibraryObject:newSource IntoTable:[SourceConstants tableName]];
+                                       AndWithValues:[SourceConstants attributeDefaultValues]];
+        [[newSource attributes] setObject:[TypeField text] forKey:@"type"];
+        [[newSource attributes] setObject:[LatitudeField text] forKey:@"latitude"];
+        [[newSource attributes] setObject:[LongitudeField text] forKey:@"longitude"];
         
-        NSString *newSampleKey = [NSString stringWithFormat:@"%@%@", source.key, @"_001"];
+        [libraryObjectStore putLibraryObject:newSource IntoTable:[SourceConstants tableName]];
+        
+        NSString *newSampleKey = [NSString stringWithFormat:@"%@%@", [newSource key], @"_001"];
         Sample *newSample = [[Sample alloc] initWithKey:newSampleKey
                                           AndWithValues:[SampleConstants attributeDefaultValues]];
-        [self.libraryObjectStore putLibraryObject:newSample IntoTable:[SampleConstants tableName]];
+        [[newSample attributes] setObject:[KeyField text] forKey:@"sourceKey"];
+        [libraryObjectStore putLibraryObject:newSample IntoTable:[SampleConstants tableName]];
     }
-    
-    isNewSource = false;
-    
-    
-        //[item setSerialNumber:[serialNumberField text]];
-    //[item setValueInDollars:[[valueField text] intValue]];
+    else if (source)
+    {
+        [[source attributes] setObject:[TypeField text] forKey:@"type"];
+        [[source attributes] setObject:[LatitudeField text] forKey:@"latitude"];
+        [[source attributes] setObject:[LongitudeField text] forKey:@"longitude"];
+        
+        [libraryObjectStore updateLibraryObject:source IntoTable:[SourceConstants tableName]];
+    }
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
@@ -128,7 +132,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         }
     }
     
-    isNewSource = true;
     return self;
 }
 

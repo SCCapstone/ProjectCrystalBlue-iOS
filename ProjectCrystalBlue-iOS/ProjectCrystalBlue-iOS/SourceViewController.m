@@ -23,7 +23,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @interface SourceViewController()
 {
-    AbstractCloudLibraryObjectStore *libraryObjectStore;
+    SimpleDBLibraryObjectStore *libraryObjectStore;
     NSString *option;
 }
 
@@ -99,6 +99,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     
     [sourceEditViewController setSource:nil];
+    [sourceEditViewController setLibraryObjectStore:libraryObjectStore];
     [sourceEditViewController setDismissBlock:^{
         [[self tableView] reloadData];
     }];
@@ -127,9 +128,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SourceEditViewController *sourceEditViewController = [[SourceEditViewController alloc] init];
-    SampleViewController *sampleViewController = [[SampleViewController alloc] init];
-    
     Source *selectedSource = [[libraryObjectStore getAllLibraryObjectsFromTable:[SourceConstants tableName]]
                               objectAtIndex:indexPath.row];
     
@@ -145,13 +143,17 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     if([option isEqualToString:@"EDIT"])
     {
+        SourceEditViewController *sourceEditViewController = [[SourceEditViewController alloc] init];
         [sourceEditViewController setSource:selectedSource];
+        [sourceEditViewController setLibraryObjectStore:libraryObjectStore];
         [[self navigationController] pushViewController:sourceEditViewController  animated:YES];
     }
     
     if([option isEqualToString:@"VIEW"])
     {
+        SampleViewController *sampleViewController = [[SampleViewController alloc] init];
         [sampleViewController setSelectedSource:selectedSource];
+        [sampleViewController setLibraryObjectStore:libraryObjectStore];
         [[self navigationController] pushViewController:sampleViewController  animated:YES];
     }
     

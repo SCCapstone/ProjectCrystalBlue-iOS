@@ -12,6 +12,8 @@
 #import "DDTTYLogger.h"
 #import "DDASLLogger.h"
 
+#define AWS_MULTI_FRAMEWORK "Yeahhhh"
+
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 #else

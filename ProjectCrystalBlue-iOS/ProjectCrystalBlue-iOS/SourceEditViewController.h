@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Source.h"
 #import "AbstractCloudLibraryObjectStore.h"
+#import "SimpleDBLibraryObjectStore.h"
 
 @interface SourceEditViewController : UIViewController
 <UINavigationControllerDelegate,UITextFieldDelegate>
@@ -22,10 +23,9 @@
 }
 @property (nonatomic, strong) IBOutlet UIScrollView *scroller;
 @property (nonatomic, strong) Source *source;
-@property (nonatomic, strong) AbstractCloudLibraryObjectStore *libraryObjectStore;
+@property (nonatomic, strong) SimpleDBLibraryObjectStore *libraryObjectStore;
 
 @property (nonatomic, copy) void (^dismissBlock)(void);
-@property (nonatomic) BOOL isNewSource;
 
 - (IBAction)backgroundTapped:(id)sender;
 

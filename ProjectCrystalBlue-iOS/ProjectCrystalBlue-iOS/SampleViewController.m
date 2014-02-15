@@ -27,21 +27,7 @@
     // Call the superclass's designated initializer
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        NSString *aSampleKey = [selectedSource key];
-        NSString *bSampleKey;
-        NSArray *allSamples = [libraryObjectStore getAllLibraryObjectsFromTable:[SampleConstants tableName]];
-        
-        for(int i = 0; i < [libraryObjectStore countInTable:[SampleConstants tableName]]; i++)
-        {
-            
-            Sample *sample = [allSamples objectAtIndex:i];
-            bSampleKey = [[sample attributes] objectForKey:@"sourceKey"];
-            
-            if( [bSampleKey isEqualToString:aSampleKey])
-            {
-                [samples addObject:sample];
-            }
-        }
+        samples = [[NSMutableArray alloc] init];
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Samples"];
@@ -93,7 +79,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    NSString *aSampleKey = [selectedSource key];
+    NSString *bSampleKey;
+    NSArray *allSamples = [libraryObjectStore getAllLibraryObjectsFromTable:[SampleConstants tableName]];
+    
+	for(int i = 0; i < [libraryObjectStore countInTable:[SampleConstants tableName]]; i++)
+    {
+        
+        Sample *sample = [allSamples objectAtIndex:i];
+        bSampleKey = [[sample attributes] objectForKey:@"sourceKey"];
+        
+        if( [bSampleKey isEqualToString:aSampleKey])
+        {
+            [samples addObject:sample];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
