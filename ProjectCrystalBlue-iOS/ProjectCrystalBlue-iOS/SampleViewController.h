@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Source.h"
+#import "AbstractCloudLibraryObjectStore.h"
 
 @interface SampleViewController : UITableViewController <UIActionSheetDelegate>
 
-@property(nonatomic) NSString* option;
-@property(nonatomic) NSMutableArray* sampleSet;
+@property(nonatomic) Source* selectedSource;
+@property(nonatomic) AbstractCloudLibraryObjectStore *libraryObjectStore;
 
 @end

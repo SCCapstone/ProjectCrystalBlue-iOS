@@ -11,6 +11,5 @@
 
 @interface SourceViewController : UITableViewController <UIActionSheetDelegate>
 
-@property(nonatomic) NSString* option;
 
 @end

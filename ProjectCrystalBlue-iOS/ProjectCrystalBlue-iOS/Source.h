@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "LibraryObject.h"
+#import "SourceConstants.h"
 
 @interface Source : LibraryObject
 
-- (NSString *)description;
+- (id)initWithKey:(NSString *)key
+    AndWithValues:(NSArray *)attributeValues;
 
 @end

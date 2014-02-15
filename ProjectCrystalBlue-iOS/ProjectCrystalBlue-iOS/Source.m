@@ -7,7 +7,6 @@
 //
 
 #import "Source.h"
-#import "SourceConstants.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -17,6 +16,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 #endif
 
 @implementation Source
+
+- (id)initWithKey:(NSString *)key
+    AndWithValues:(NSArray *)attributeValues
+{
+    return [super initWithKey:key
+            AndWithAttributes:[SourceConstants attributeNames]
+                    AndValues:attributeValues];
+}
 
 - (NSString *)description
 {

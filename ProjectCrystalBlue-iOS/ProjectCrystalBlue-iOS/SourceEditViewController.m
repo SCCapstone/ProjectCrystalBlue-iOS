@@ -9,10 +9,10 @@
 #import "SourceEditViewController.h"
 #import "Source.h"
 #import "LibraryObject.h"
-#import "SourceStore.h"
 #import "DDLog.h"
 #import "Sample.h"
-#import "SampleStore.h"
+#import "AbstractCloudLibraryObjectStore.h"
+#import "SimpleDBLibraryObjectStore.h"
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -32,7 +32,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+
     }
     return self;
 }
@@ -71,27 +71,22 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [[self view] endEditing:YES];
     // "Save" changes to item
     
-    BOOL keyExists = false;
+    BOOL keyExists = [self.libraryObjectStore libraryObjectExistsForKey:[KeyField text] FromTable:[SourceConstants tableName]];
     
-    for (int i = 0; i < [[[SourceStore sharedStore] allSources] count]; i++) {
-        if ([[[[[SourceStore sharedStore] allSources] objectAtIndex:i] key] isEqualToString:[KeyField text]] ) {
-            keyExists = true;
-        }
-    }
-    
-    if (keyExists == false && isNewSource == true) {
+    if (!self.source && !keyExists) {
+        NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
+        [attributes setObject:[TypeField text] forKey:@"Type"];
+        [attributes setObject:[LatitudeField text] forKey:@"Latitude"];
+        [attributes setObject:[LongitudeField text] forKey:@"Longitude"];
         
-    source.key = [KeyField text];
-    [[source attributes] setObject:[TypeField text] forKey:@"Type"];
-    [[source attributes] setObject:[LatitudeField text] forKey:@"Latitude"];
-    [[source attributes] setObject:[LongitudeField text] forKey:@"Longitude"];
-    NSString *newSampleKey = [NSString stringWithFormat:@"%@%@", source.key, @"_001"];
-    Sample *newSample = [[SampleStore sharedStore] createSampleWithKey:newSampleKey];
-    }
-    
-    if(keyExists == true && isNewSource == true)
-    {
-        [[SourceStore sharedStore] removeSource:source];
+        Source *newSource = [[Source alloc] initWithKey:[KeyField text]
+                             AndWithAttributeDictionary:attributes];
+        [self.libraryObjectStore putLibraryObject:newSource IntoTable:[SourceConstants tableName]];
+        
+        NSString *newSampleKey = [NSString stringWithFormat:@"%@%@", source.key, @"_001"];
+        Sample *newSample = [[Sample alloc] initWithKey:newSampleKey
+                                          AndWithValues:[SampleConstants attributeDefaultValues]];
+        [self.libraryObjectStore putLibraryObject:newSample IntoTable:[SampleConstants tableName]];
     }
     
     isNewSource = false;
@@ -144,7 +139,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (void)cancel:(id)sender
 {
-    [[SourceStore sharedStore] removeSource:source];
+    //[[SourceStore sharedStore] removeSource:source];
     [[self presentingViewController] dismissViewControllerAnimated:YES completion:_dismissBlock];
 }
 

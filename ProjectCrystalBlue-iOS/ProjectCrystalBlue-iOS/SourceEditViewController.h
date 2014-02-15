@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Source.h"
-
+#import "AbstractCloudLibraryObjectStore.h"
 
 @interface SourceEditViewController : UIViewController
 <UINavigationControllerDelegate,UITextFieldDelegate>
@@ -20,8 +20,9 @@
     __weak IBOutlet UITextField *LongitudeField;
    
 }
-@property (nonatomic, strong)  IBOutlet UIScrollView *scroller;
+@property (nonatomic, strong) IBOutlet UIScrollView *scroller;
 @property (nonatomic, strong) Source *source;
+@property (nonatomic, strong) AbstractCloudLibraryObjectStore *libraryObjectStore;
 
 @property (nonatomic, copy) void (^dismissBlock)(void);
 @property (nonatomic) BOOL isNewSource;

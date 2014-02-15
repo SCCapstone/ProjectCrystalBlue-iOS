@@ -8,23 +8,40 @@
 
 #import "SampleViewController.h"
 #import "Sample.h"
-#import "SourceStore.h"
-#import "SampleStore.h"
 #import "DDLog.h"
 #import "SampleEditViewController.h"
 
 @interface SampleViewController ()
+{
+    NSMutableArray *samples;
+    NSString* option;
+}
 
 @end
 
 @implementation SampleViewController
 
-@synthesize option, sampleSet;
+@synthesize selectedSource, libraryObjectStore;
 
 - (id)init {
     // Call the superclass's designated initializer
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
+        NSString *aSampleKey = [selectedSource key];
+        NSString *bSampleKey;
+        NSArray *allSamples = [libraryObjectStore getAllLibraryObjectsFromTable:[SampleConstants tableName]];
+        
+        for(int i = 0; i < [libraryObjectStore countInTable:[SampleConstants tableName]]; i++)
+        {
+            
+            Sample *sample = [allSamples objectAtIndex:i];
+            bSampleKey = [[sample attributes] objectForKey:@"sourceKey"];
+            
+            if( [bSampleKey isEqualToString:aSampleKey])
+            {
+                [samples addObject:sample];
+            }
+        }
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Samples"];
@@ -47,24 +64,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int counter = 0;
-    NSString *aSampleKey = [[[SampleStore sharedStore] clickedSource] key];
-    NSString *bSampleKey;
-    NSInteger len = [aSampleKey length];
-    
-    
-    for(int i = 0; i < [[[SampleStore sharedStore] allSamples] count]; i++)
-    {
-        
-        bSampleKey = [[[[[SampleStore sharedStore] allSamples] objectAtIndex:i] key] substringToIndex:len];
-                                                                                             
-        if( [bSampleKey isEqualToString:aSampleKey])
-            {
-                 counter= counter + 1;
-            }
-    }
-    
-    return counter;
+    return [samples count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -79,28 +79,9 @@
                                       reuseIdentifier:@"UITableViewCell"];
     }
     // Set the text on the cell with the description of the item // that is at the nth index of items, where n = row this cell // will appear in on the tableview
-   
-    NSString *aSampleKey = [[[SampleStore sharedStore] clickedSource] key];
-    NSString *bSampleKey;
-    NSInteger len = [aSampleKey length];
-    NSMutableArray *temp = [[NSMutableArray alloc] init];
     
-    
-    for(int i = 0; i < [[[SampleStore sharedStore] allSamples] count]; i++)
-    {
-        
-        bSampleKey = [[[[[SampleStore sharedStore] allSamples] objectAtIndex:i] key] substringToIndex:len];
-        
-        if( [bSampleKey isEqualToString:aSampleKey])
-        {
-            [temp addObject:[[[SampleStore sharedStore] allSamples] objectAtIndex:i]];
-        }
-    }
-    
-    
-    Sample *p = [temp
-                 objectAtIndex:[indexPath row]]; [[cell textLabel] setText:[p description]];
-    sampleSet = temp;
+    Sample *p = [samples objectAtIndex:[indexPath row]];
+    [[cell textLabel] setText:[p description]];
     
     return cell;
 }
@@ -124,9 +105,7 @@
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    
-    //NSMutableArray *samples = [[SampleStore sharedStore] allSamples];
-    Sample *selectedSample = [sampleSet objectAtIndex:[indexPath row]];
+    Sample *selectedSample = [samples objectAtIndex:[indexPath row]];
     
     SampleEditViewController *sampleEditViewController = [[SampleEditViewController alloc] initWithSample:selectedSample];
     

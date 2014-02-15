@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "LibraryObject.h"
+#import "SampleConstants.h"
 
 @interface Sample : LibraryObject
 
--(void) pulverize;
-- (NSString *)description;
+- (id)initWithKey:(NSString *)key
+    AndWithValues:(NSArray *)attributeValues;
+
+- (NSString *)sourceKey;
 
 @end

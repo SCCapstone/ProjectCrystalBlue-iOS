@@ -7,7 +7,6 @@
 //
 
 #import "Sample.h"
-#import "SampleConstants.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -18,9 +17,17 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @implementation Sample
 
--(void) pulverize
+- (id)initWithKey:(NSString *)key
+    AndWithValues:(NSArray *)attributeValues
 {
-    [[self attributes] setObject:@"Yes" forKey:@"Pulverizer"];
+    return [super initWithKey:key
+            AndWithAttributes:[SampleConstants attributeNames]
+                    AndValues:attributeValues];
+}
+
+- (NSString *)sourceKey
+{
+    return [[self attributes] objectForKey:@"sourceKey"];
 }
 
 - (NSString *)description

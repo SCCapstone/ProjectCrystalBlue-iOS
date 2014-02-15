@@ -10,12 +10,14 @@
 
 @interface LibraryObject : NSObject
 
-//@property (readonly, copy) NSString *key;
-@property NSString *key;
+@property(readonly,copy) NSString *key;
 @property NSMutableDictionary *attributes;
 
 - (id)initWithKey:(NSString *)aKey
 AndWithAttributes:(NSArray *)attributeNames
-AndWithDefaultValues:(NSArray *)attributeDefaultValues;
+        AndValues:(NSArray *)attributeValues;
+
+- (id)initWithKey:(NSString *)aKey
+AndWithAttributeDictionary:(NSDictionary *)attr;
 
 @end

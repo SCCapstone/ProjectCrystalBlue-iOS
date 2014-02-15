@@ -1,12 +1,12 @@
 //
-//  SampleConstants.m
-//  ProjectCrystalBlueOSX
+//  TransactionConstants.m
+//  ProjectCrystalBlue-iOS
 //
-//  Created by Justin Baumgartner on 1/18/14.
+//  Created by Justin Baumgartner on 2/11/14.
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import "SampleConstants.h"
+#import "TransactionConstants.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -17,23 +17,21 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 /* Attribute names
  */
-static NSString *const KEY = @"key";
-static NSString *const SOURCE_KEY = @"sourceKey";
-static NSString *const CURRENT_LOCATION = @"currentLocation";
-static NSString *const TAGS = @"tags";
+static NSString *const TIMESTAMP = @"timestamp";
+static NSString *const LIBRARY_OBJECT_KEY = @"libraryObjectKey";
+static NSString *const SQL_COMMAND_TYPE = @"sqlCommandType";
 
 /* Attribute default values
  */
-static NSString *const DEF_VAL_KEY = @"key here";
-static NSString *const DEF_VAL_SOURCE_KEY = @"sourceKey here";
-static NSString *const DEF_VAL_CURRENT_LOCATION = @"USC";
-static NSString *const DEF_VAL_TAGS = @"tag here";
+static NSString *const DEF_VAL_TIMESTAMP = @"unique timestamp";
+static NSString *const DEF_VAL_LIBRARY_OBJECT_KEY = @"library object key here";
+static NSString *const DEF_VAL_SQL_COMMAND_TYPE = @"PUT,UPDATE,DELETE here";
 
 /* Sample table name
  */
-static NSString *const SAMPLE_TABLE_NAME = @"test_sample_table";
+static NSString *const TRANSACTION_TABLE_NAME = @"test_transaction_table";
 
-@implementation SampleConstants
+@implementation TransactionConstants
 
 + (NSArray *)attributeNames
 {
@@ -41,7 +39,7 @@ static NSString *const SAMPLE_TABLE_NAME = @"test_sample_table";
     if (!attributeNames)
     {
         attributeNames = [NSArray arrayWithObjects:
-                          KEY, SOURCE_KEY, CURRENT_LOCATION, TAGS, nil];
+                          TIMESTAMP, LIBRARY_OBJECT_KEY, SQL_COMMAND_TYPE, nil];
     }
     return attributeNames;
 }
@@ -52,14 +50,14 @@ static NSString *const SAMPLE_TABLE_NAME = @"test_sample_table";
     if (!attributeDefaultValues)
     {
         attributeDefaultValues = [NSArray arrayWithObjects:
-                                  DEF_VAL_KEY, DEF_VAL_SOURCE_KEY, DEF_VAL_CURRENT_LOCATION, DEF_VAL_TAGS, nil];
+                                  DEF_VAL_TIMESTAMP, DEF_VAL_LIBRARY_OBJECT_KEY, DEF_VAL_SQL_COMMAND_TYPE, nil];
     }
     return attributeDefaultValues;
 }
 
 + (NSString *)tableName
 {
-    return SAMPLE_TABLE_NAME;
+    return TRANSACTION_TABLE_NAME;
 }
 
 + (NSString *)tableSchema
@@ -73,8 +71,10 @@ static NSString *const SAMPLE_TABLE_NAME = @"test_sample_table";
         for (int i=0; i<[attrNames count];  i++)
         {
             NSString *attr = [attrNames objectAtIndex:i];
-            [attrNames replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@ TEXT%@",
-                                                          attr, [attr isEqualToString:@"key"] ? @" PRIMARY KEY" : @""]];
+            if ([attr isEqualToString:@"timestamp"])
+                [attrNames replaceObjectAtIndex:i withObject:@"timestamp REAL PRIMARY KEY"];
+            else
+                [attrNames replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@ TEXT", attr]];
         }
         schema = [attrNames componentsJoinedByString:@","];
     }

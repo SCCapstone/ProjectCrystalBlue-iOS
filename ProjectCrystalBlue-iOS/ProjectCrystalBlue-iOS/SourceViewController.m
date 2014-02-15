@@ -8,12 +8,12 @@
 
 #import "SourceViewController.h"
 #import "Source.h"
-#import "SourceStore.h"
 #import "DDLog.h"
 #import "SourceEditViewController.h"
 #import "SampleViewController.h"
 #import "Sample.h"
-#import "SampleStore.h"
+#import "AbstractCloudLibraryObjectStore.h"
+#import "SimpleDBLibraryObjectStore.h"
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -21,14 +21,22 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 static const int ddLogLevel = LOG_LEVEL_WARN;
 #endif
 
-@implementation SourceViewController
-@synthesize option;
+@interface SourceViewController()
+{
+    AbstractCloudLibraryObjectStore *libraryObjectStore;
+    NSString *option;
+}
 
+@end
+
+@implementation SourceViewController
 
 - (id)init {
     // Call the superclass's designated initializer
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
+        libraryObjectStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data"
+                                                                     WithDatabaseName:@"test_database.db"];
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Sources"];
@@ -50,7 +58,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[[SourceStore sharedStore] allSources] count];
+    return [libraryObjectStore countInTable:[SourceConstants tableName]];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -65,8 +73,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                       reuseIdentifier:@"UITableViewCell"];
     }
     // Set the text on the cell with the description of the item // that is at the nth index of items, where n = row this cell // will appear in on the tableview
-    Source *p = [[[SourceStore sharedStore] allSources]
-                 objectAtIndex:[indexPath row]]; [[cell textLabel] setText:[p description]];
+    
+    Source *source = [[libraryObjectStore getAllLibraryObjectsFromTable:[SourceConstants tableName]]
+                      objectAtIndex:indexPath.row];
+    [[cell textLabel] setText:[source description]];
     return cell;
 }
 
@@ -85,12 +95,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (IBAction)addNewItem:(id)sender {
     
-    //Source *newSource = [[SourceStore sharedStore] createSource];
-    Source *newSource = [[SourceStore sharedStore] createSourceWithKey:@""];
     SourceEditViewController *sourceEditViewController = [[SourceEditViewController alloc] initForNewSource:YES];
     
     
-    [sourceEditViewController setSource:newSource];
+    [sourceEditViewController setSource:nil];
     [sourceEditViewController setDismissBlock:^{
         [[self tableView] reloadData];
     }];
@@ -109,28 +117,21 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        Source *source = [[[SourceStore sharedStore] allSources] objectAtIndex:indexPath.row];
-        [[SourceStore sharedStore] removeSource:source];
+        Source *source = [[libraryObjectStore getAllLibraryObjectsFromTable:[SourceConstants tableName]]
+                          objectAtIndex:indexPath.row];
+        [libraryObjectStore deleteLibraryObjectWithKey:[source key] FromTable:[SourceConstants tableName]];
         
         [[self tableView] deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
-
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
-      toIndexPath:(NSIndexPath *)destinationIndexPath
-{
-    [[SourceStore sharedStore] moveItemAtIndex:[sourceIndexPath row]
-                                       toIndex:[destinationIndexPath row]];
-}
-
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SourceEditViewController *sourceEditViewController = [[SourceEditViewController alloc] init];
     SampleViewController *sampleViewController = [[SampleViewController alloc] init];
     
-    NSMutableArray *sources = [[SourceStore sharedStore] allSources];
-    Source *selectedSource = [sources objectAtIndex:[indexPath row]];
+    Source *selectedSource = [[libraryObjectStore getAllLibraryObjectsFromTable:[SourceConstants tableName]]
+                              objectAtIndex:indexPath.row];
     
     UIActionSheet *message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Edit Source", @"View Children", nil];
     
@@ -150,7 +151,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     if([option isEqualToString:@"VIEW"])
     {
-        [SampleStore sharedStore].clickedSource = selectedSource;
+        [sampleViewController setSelectedSource:selectedSource];
         [[self navigationController] pushViewController:sampleViewController  animated:YES];
     }
     
@@ -171,7 +172,5 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             break;
     }
 }
-
-
 
 @end
