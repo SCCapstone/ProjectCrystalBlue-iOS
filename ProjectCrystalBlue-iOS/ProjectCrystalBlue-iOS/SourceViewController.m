@@ -163,14 +163,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     {
         case 0:
             option = @"EDIT";
-            NSLog(@"edit");
             break;
         case 1:
             option = @"VIEW";
-            NSLog(@"view");
             break;
         case 2:
-            NSLog(@"Cancel");
+            break;
     }
 }
 

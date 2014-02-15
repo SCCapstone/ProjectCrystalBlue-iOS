@@ -23,7 +23,6 @@
     if (self) {
         
         UINavigationItem *n = [self navigationItem];
-        NSLog(@"aj");
         [n setTitle:[sample key]];
         
         UIBarButtonItem *bbi = [[UIBarButtonItem alloc]

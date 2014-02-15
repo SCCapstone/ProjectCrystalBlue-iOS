@@ -160,14 +160,12 @@
     {
         case 0:
             option = @"PROC";
-            NSLog(@"proc");
             break;
         case 1:
             option = @"VIEW";
-            NSLog(@"view");
             break;
         case 2:
-            NSLog(@"Cancel");
+            break;
     }
 }
 
