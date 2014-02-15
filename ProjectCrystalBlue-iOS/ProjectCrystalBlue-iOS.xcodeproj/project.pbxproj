@@ -654,9 +654,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/include",
 					"$(inherited)",
-					"/Users/hoodlm/Downloads/aws-ios-sdk-1.7.1",
-					"/Users/hoodlm/Documents/Xcode\\ Projects/ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS/include",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS-Prefix.pch";
@@ -667,9 +666,8 @@
 				);
 				INFOPLIST_FILE = "ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/include",
 					"$(inherited)",
-					/Users/Justin/Projects/ZumeroTestOSX,
-					"/Users/Justin/Projects/ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -683,9 +681,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/include",
 					"$(inherited)",
-					"/Users/hoodlm/Downloads/aws-ios-sdk-1.7.1",
-					"/Users/hoodlm/Documents/Xcode\\ Projects/ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS/include",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS-Prefix.pch";
@@ -696,9 +693,8 @@
 				);
 				INFOPLIST_FILE = "ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/include",
 					"$(inherited)",
-					/Users/Justin/Projects/ZumeroTestOSX,
-					"/Users/Justin/Projects/ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -714,7 +710,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"/Users/hoodlm/Documents/Xcode\\ Projects/ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS/include",
+					"$(SRCROOT)/include",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS-Prefix.pch";
@@ -722,7 +718,13 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/include",
+				);
 				INFOPLIST_FILE = "ProjectCrystalBlue-iOSTests/ProjectCrystalBlue-iOSTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/include";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -738,11 +740,17 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"/Users/hoodlm/Documents/Xcode\\ Projects/ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS/include",
+					"$(SRCROOT)/include",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/include",
+				);
 				INFOPLIST_FILE = "ProjectCrystalBlue-iOSTests/ProjectCrystalBlue-iOSTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/include";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
