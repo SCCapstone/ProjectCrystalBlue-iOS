@@ -11,12 +11,15 @@
 #import "SourceStore.h"
 #import "SampleStore.h"
 #import "DDLog.h"
+#import "SampleEditViewController.h"
 
 @interface SampleViewController ()
 
 @end
 
 @implementation SampleViewController
+
+@synthesize option, sampleSet;
 
 - (id)init {
     // Call the superclass's designated initializer
@@ -97,6 +100,7 @@
     
     Sample *p = [temp
                  objectAtIndex:[indexPath row]]; [[cell textLabel] setText:[p description]];
+    sampleSet = temp;
     
     return cell;
 }
@@ -116,5 +120,56 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    
+    //NSMutableArray *samples = [[SampleStore sharedStore] allSamples];
+    Sample *selectedSample = [sampleSet objectAtIndex:[indexPath row]];
+    
+    SampleEditViewController *sampleEditViewController = [[SampleEditViewController alloc] initWithSample:selectedSample];
+    
+    UIActionSheet *message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Perform Procedure", @"View Sample", nil];
+    
+    [message showInView:[UIApplication sharedApplication].keyWindow];
+    
+    while ((!message.hidden) && (message.superview != nil))
+    {
+        [[NSRunLoop currentRunLoop] limitDateForMode:NSDefaultRunLoopMode];
+        
+    }
+    
+    if([option isEqualToString:@"PROC"])
+    {
+
+    }
+    
+    if([option isEqualToString:@"VIEW"])
+    {
+        [sampleEditViewController setSample:selectedSample];
+        [[self navigationController] pushViewController:sampleEditViewController  animated:YES];
+    }
+    
+}
+
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex)
+    {
+        case 0:
+            option = @"PROC";
+            NSLog(@"proc");
+            break;
+        case 1:
+            option = @"VIEW";
+            NSLog(@"view");
+            break;
+        case 2:
+            NSLog(@"Cancel");
+    }
+}
+
 
 @end

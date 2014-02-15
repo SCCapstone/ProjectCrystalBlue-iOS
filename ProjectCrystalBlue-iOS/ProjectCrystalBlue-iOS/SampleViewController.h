@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SampleViewController : UITableViewController
+@interface SampleViewController : UITableViewController <UIActionSheetDelegate>
+
+@property(nonatomic) NSString* option;
+@property(nonatomic) NSMutableArray* sampleSet;
 
 @end

@@ -27,7 +27,7 @@ static NSString *const TAGS = @"tags";
 static NSString *const DEF_VAL_KEY = @"key here";
 static NSString *const DEF_VAL_SOURCE_KEY = @"sourceKey here";
 static NSString *const DEF_VAL_CURRENT_LOCATION = @"USC";
-static NSString *const DEF_VAL_TAGS = @"tag here";
+static NSString *const DEF_VAL_TAGS = @"_PV_JC";
 
 /* Sample table name
  */
