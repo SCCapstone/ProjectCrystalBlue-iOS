@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "Sample.h"
+#import "AbstractCloudLibraryObjectStore.h"
+#import "SimpleDBLibraryObjectStore.h"
 
 @interface SampleEditViewController : UITableViewController <UINavigationControllerDelegate>
 
-@property (nonatomic, strong) Sample *sample;
+@property (nonatomic, strong) Sample *selectedSample;
+@property (nonatomic, strong) SimpleDBLibraryObjectStore *libraryObjectStore;
+
 
 -(id)initWithSample:(Sample *)initSample;
 

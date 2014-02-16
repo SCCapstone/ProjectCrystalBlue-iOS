@@ -127,7 +127,7 @@
     
     if([option isEqualToString:@"VIEW"])
     {
-        [sampleEditViewController setSample:selectedSample];
+        [sampleEditViewController setSelectedSample:selectedSample];
         [[self navigationController] pushViewController:sampleEditViewController  animated:YES];
     }
     
