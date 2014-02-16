@@ -13,7 +13,7 @@
 
 @interface SampleViewController ()
 {
-    NSMutableArray *samples;
+    NSArray *samples;
     NSString* option;
 }
 
@@ -66,8 +66,8 @@
     }
     // Set the text on the cell with the description of the item // that is at the nth index of items, where n = row this cell // will appear in on the tableview
     
-    Sample *p = [samples objectAtIndex:[indexPath row]];
-    [[cell textLabel] setText:[p description]];
+    Sample *sample = [samples objectAtIndex:[indexPath row]];
+    [[cell textLabel] setText:[sample description]];
     
     return cell;
 }
@@ -80,21 +80,7 @@
 {
     [super viewDidLoad];
     
-    NSString *aSampleKey = [selectedSource key];
-    NSString *bSampleKey;
-    NSArray *allSamples = [libraryObjectStore getAllLibraryObjectsFromTable:[SampleConstants tableName]];
-    
-	for(int i = 0; i < [libraryObjectStore countInTable:[SampleConstants tableName]]; i++)
-    {
-        
-        Sample *sample = [allSamples objectAtIndex:i];
-        bSampleKey = [[sample attributes] objectForKey:@"sourceKey"];
-        
-        if( [bSampleKey isEqualToString:aSampleKey])
-        {
-            [samples addObject:sample];
-        }
-    }
+    samples = [libraryObjectStore getAllSamplesForSource:selectedSource];
 }
 
 - (void)didReceiveMemoryWarning
@@ -149,6 +135,5 @@
             break;
     }
 }
-
 
 @end
