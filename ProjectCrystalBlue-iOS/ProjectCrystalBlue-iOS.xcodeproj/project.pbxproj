@@ -19,9 +19,7 @@
 		D01DDDC0188DDC5E0059AF09 /* SampleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDBA188DDC5E0059AF09 /* SampleConstants.m */; };
 		D01DDDC1188DDC5E0059AF09 /* Source.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDBC188DDC5E0059AF09 /* Source.m */; };
 		D01DDDC2188DDC5E0059AF09 /* SourceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDBE188DDC5E0059AF09 /* SourceConstants.m */; };
-		D03677031857D496002A042D /* zumero.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D03677021857D496002A042D /* zumero.a */; };
 		D04AD3981851BDAB0079B2EE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04AD3971851BDAB0079B2EE /* CFNetwork.framework */; };
-		D04AD39A1851BDB00079B2EE /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D04AD3991851BDB00079B2EE /* libz.dylib */; };
 		D07526DF18B0084400622CBA /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = D07526DC18B0084400622CBA /* Transaction.m */; };
 		D07526E018B0084400622CBA /* TransactionConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D07526DE18B0084400622CBA /* TransactionConstants.m */; };
 		D07526E418B008B600622CBA /* TransactionStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D07526E318B008B600622CBA /* TransactionStore.m */; };
@@ -101,9 +99,7 @@
 		D01DDDBC188DDC5E0059AF09 /* Source.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Source.m; sourceTree = "<group>"; };
 		D01DDDBD188DDC5E0059AF09 /* SourceConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceConstants.h; sourceTree = "<group>"; };
 		D01DDDBE188DDC5E0059AF09 /* SourceConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceConstants.m; sourceTree = "<group>"; };
-		D03677021857D496002A042D /* zumero.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = zumero.a; path = include/zumero.a; sourceTree = "<group>"; };
 		D04AD3971851BDAB0079B2EE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		D04AD3991851BDB00079B2EE /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		D07526DB18B0084400622CBA /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transaction.h; sourceTree = "<group>"; };
 		D07526DC18B0084400622CBA /* Transaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transaction.m; sourceTree = "<group>"; };
 		D07526DD18B0084400622CBA /* TransactionConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionConstants.h; sourceTree = "<group>"; };
@@ -179,8 +175,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D03677031857D496002A042D /* zumero.a in Frameworks */,
-				D04AD39A1851BDB00079B2EE /* libz.dylib in Frameworks */,
 				D04AD3981851BDAB0079B2EE /* CFNetwork.framework in Frameworks */,
 				D71EE32E18518C5F007D4018 /* libsqlite3.dylib in Frameworks */,
 				D729BD3D181C24A000F762A3 /* CoreGraphics.framework in Frameworks */,
@@ -398,8 +392,6 @@
 				D7E0AFD618B00D410005DFDA /* AWSRuntime.framework */,
 				D7EFB3F218AECF64004EAB88 /* AWSSimpleDB.framework */,
 				D7EFB3F018AECF5C004EAB88 /* AWSS3.framework */,
-				D03677021857D496002A042D /* zumero.a */,
-				D04AD3991851BDB00079B2EE /* libz.dylib */,
 				D04AD3971851BDAB0079B2EE /* CFNetwork.framework */,
 				D71EE32D18518C5F007D4018 /* libsqlite3.dylib */,
 				D729BD3A181C24A000F762A3 /* Foundation.framework */,
