@@ -42,13 +42,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         NSString *localDirectory = [documentsDirectory stringByAppendingPathComponent:directory];
         
         BOOL directoryExists;
-        NSError *error;
         [[NSFileManager defaultManager] fileExistsAtPath:localDirectory isDirectory:&directoryExists];
         if (!directoryExists) {
             [[NSFileManager defaultManager] createDirectoryAtPath:localDirectory
                                       withIntermediateDirectories:YES
                                                        attributes:nil
-                                                            error:&error];
+                                                            error:nil];
         }
         
         localQueue = [FMDatabaseQueue databaseQueueWithPath:[localDirectory stringByAppendingPathComponent:databaseName]];
@@ -64,6 +63,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (LibraryObject *)getLibraryObjectForKey:(NSString *)key
                                 FromTable:(NSString *)tableName
 {
+    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SampleConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SampleConstants tableName.", NSStringFromClass(self.class));
+        return nil;
+    }
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE key='%@'", tableName, key];
     
     // Get library object with key
@@ -93,6 +96,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (NSArray *)getAllLibraryObjectsFromTable:(NSString *)tableName
 {
+    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SampleConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SampleConstants tableName.", NSStringFromClass(self.class));
+        return nil;
+    }
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@", tableName];
     
     // Get all library objects from table
@@ -122,9 +129,79 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return libraryObjects;
 }
 
+- (NSArray *)getAllSamplesForSource:(Source *)source
+{
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE sourceKey='%@'", [SampleConstants tableName], [source key]];
+    
+    // Get all corresponding samples from table
+    __block NSMutableArray *samples;
+    [localQueue inDatabase:^(FMDatabase *localDatabase) {
+        FMResultSet *results = [localDatabase executeQuery:sql];
+        
+        if ([localDatabase hadError]) {
+            DDLogCError(@"%@: Failed to get all library objects from local database. Error: %@",
+                        NSStringFromClass(self.class), [localDatabase lastError]);
+            [results close];
+            return;
+        }
+        
+        // Add all the results to the samples array
+        samples = [[NSMutableArray alloc] init];
+        while ([results next]) {
+            NSString *key = [[results resultDictionary] objectForKey:@"key"];
+            [samples addObject:[[Sample alloc] initWithKey:key AndWithAttributeDictionary:[results resultDictionary]]];
+        }
+        [results close];
+    }];
+    
+    return samples;
+}
+
+- (NSArray *)executeSqlQuery:(NSString *)sql
+                     OnTable:(NSString *)tableName
+{
+    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SampleConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SampleConstants tableName.", NSStringFromClass(self.class));
+        return nil;
+    }
+    if (![[sql uppercaseString] hasPrefix:@"SELECT"]) {
+        DDLogCError(@"%@: Invalid sql command type. Only use this function to execute queries!", NSStringFromClass(self.class));
+        return nil;
+    }
+    // Get all library objects from table
+    __block NSMutableArray *libraryObjects;
+    [localQueue inDatabase:^(FMDatabase *localDatabase) {
+        FMResultSet *results = [localDatabase executeQuery:sql];
+        
+        if ([localDatabase hadError]) {
+            DDLogCError(@"%@: Failed to execute query on database. Error: %@",
+                        NSStringFromClass(self.class), [localDatabase lastError]);
+            [results close];
+            return;
+        }
+        
+        // Add all the results to the libraryObjects array
+        libraryObjects = [[NSMutableArray alloc] init];
+        while ([results next]) {
+            NSString *key = [[results resultDictionary] objectForKey:@"key"];
+            if ([tableName isEqualToString:[SourceConstants tableName]])
+                [libraryObjects addObject:[[Source alloc] initWithKey:key AndWithAttributeDictionary:[results resultDictionary]]];
+            else
+                [libraryObjects addObject:[[Sample alloc] initWithKey:key AndWithAttributeDictionary:[results resultDictionary]]];
+        }
+        [results close];
+    }];
+    
+    return libraryObjects;
+}
+
 - (BOOL)putLibraryObject:(LibraryObject *)libraryObject
                IntoTable:(NSString *)tableName
 {
+    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SampleConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SampleConstants tableName.", NSStringFromClass(self.class));
+        return NO;
+    }
     // Setup sql query
     NSString *sql;
     if ([tableName isEqualToString:[SourceConstants tableName]])
@@ -150,6 +227,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)updateLibraryObject:(LibraryObject *)libraryObject
                   IntoTable:(NSString *)tableName
 {
+    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SampleConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SampleConstants tableName.", NSStringFromClass(self.class));
+        return NO;
+    }
     LibraryObject *oldObject = [self getLibraryObjectForKey:[libraryObject key] FromTable:tableName];
     if (!oldObject) {
         DDLogCError(@"%@: Cannot update non-existent object!", NSStringFromClass(self.class));
@@ -197,6 +278,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)deleteLibraryObjectWithKey:(NSString *)key
                          FromTable:(NSString *)tableName
 {
+    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SampleConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SampleConstants tableName.", NSStringFromClass(self.class));
+        return NO;
+    }
     if (![self libraryObjectExistsForKey:key FromTable:tableName]) {
         DDLogCError(@"%@: Library object attempting to delete does not exist in the local database",
                     NSStringFromClass(self.class));
@@ -220,6 +305,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)libraryObjectExistsForKey:(NSString *)key
                         FromTable:(NSString *)tableName
 {
+    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SampleConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SampleConstants tableName.", NSStringFromClass(self.class));
+        return NO;
+    }
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE key='%@'", tableName, key];
     
     // Check library object for key
@@ -240,8 +329,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return objectExists;
 }
 
-- (NSInteger)countInTable:(NSString *)tableName
+- (NSUInteger)countInTable:(NSString *)tableName
 {
+    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SampleConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SampleConstants tableName.", NSStringFromClass(self.class));
+        return 0;
+    }
     NSString *sql = [NSString stringWithFormat:@"SELECT count(*) FROM %@", tableName];
     
     // Get the number of rows in table

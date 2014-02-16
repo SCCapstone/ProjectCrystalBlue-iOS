@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "LibraryObject.h"
 
+@class Source;
+
 @interface AbstractLibraryObjectStore : NSObject
 
 - (id)initInLocalDirectory:(NSString *)directory
@@ -23,6 +25,18 @@
  */
 - (NSArray *)getAllLibraryObjectsFromTable:(NSString *)tableName;
 
+/** Retrieve all the samples that originated from the source object.
+ */
+- (NSArray *)getAllSamplesForSource:(Source *)source;
+
+/** Execute a query on the table.
+ *
+ *  This should only be a SELECT query to get library objects, do not attempt
+ *  to use this method to make changes to the database.
+ */
+- (NSArray *)executeSqlQuery:(NSString *)sql
+                     OnTable:(NSString *)tableName;
+
 /** Add a new library object to the LibraryObjectStore with the given unique key.
  *
  *  The key absolutely positively *MUST* be unique across all devices.
@@ -31,7 +45,7 @@
  *  Generally, the only reason this should be unsuccessful is if the key is not unique
  *  or the device disk cannot be written to.
  *
- *  This only guarantees that the library object has been added to a LOCAL library object 
+ *  This only guarantees that the library object has been added to a LOCAL library object
  *  store; not necessarily to the cloud storage location.
  */
 - (BOOL)putLibraryObject:(LibraryObject *)libraryObject
@@ -61,6 +75,6 @@
 
 /** Returns the number of rows in the table
  */
-- (NSInteger)countInTable:(NSString *)tableName;
+- (NSUInteger)countInTable:(NSString *)tableName;
 
 @end
