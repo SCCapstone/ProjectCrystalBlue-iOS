@@ -145,6 +145,7 @@
             option = @"VIEW";
             break;
         case 2:
+            option = @"NOTHING";
             break;
     }
 }

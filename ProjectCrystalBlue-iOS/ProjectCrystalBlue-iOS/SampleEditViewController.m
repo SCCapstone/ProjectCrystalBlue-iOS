@@ -81,7 +81,6 @@
 {
     [super viewDidLoad];
     
-    NSString *selectedSampleKey = [selectedSample key];
     NSString *tag = [[NSString alloc] init];
     NSString *currentChar = [[NSString alloc] init];
     NSMutableArray *tempTags = [[NSMutableArray alloc] init];

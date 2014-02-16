@@ -171,6 +171,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             option = @"VIEW";
             break;
         case 2:
+            option = @"NOTHING";
             break;
     }
 }
