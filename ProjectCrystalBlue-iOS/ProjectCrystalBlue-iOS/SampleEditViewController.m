@@ -56,7 +56,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [tags count];
+    if([tags count] == 0)
+        return 1;
+    else
+        return [tags count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -72,8 +75,12 @@
     }
     // Set the text on the cell with the description of the item // that is at the nth index of items, where n = row this cell // will appear in on the tableview
     //Sample *p = [samples objectAtIndex:[indexPath row]];
-    NSString *p = [tags objectAtIndex:[indexPath row]];
-    [[cell textLabel] setText:p];
+    if ([tags count] > 0) {
+        NSString *p = [tags objectAtIndex:[indexPath row]];
+        [[cell textLabel] setText:p];
+    }
+    else
+        [[cell textLabel] setText:@"No Procedures Done"];
     
     return cell;
 }
