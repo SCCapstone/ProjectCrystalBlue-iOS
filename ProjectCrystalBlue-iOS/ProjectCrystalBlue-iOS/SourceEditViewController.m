@@ -13,6 +13,7 @@
 #import "Sample.h"
 #import "AbstractCloudLibraryObjectStore.h"
 #import "SimpleDBLibraryObjectStore.h"
+#import "SourceConstants.h"
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -57,9 +58,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [KeyField setText:[source key]];
-    [TypeField setText:[[source attributes] objectForKey:@"type"]];
-    [LatitudeField setText:[[source attributes] objectForKey:@"latitude"]];
-    [LongitudeField setText:[[source attributes] objectForKey:@"longitude"]];
+    [TypeField setText:[[source attributes] objectForKey:SRC_TYPE]];
+    [LatitudeField setText:[[source attributes] objectForKey:SRC_LATITUDE]];
+    [LongitudeField setText:[[source attributes] objectForKey:SRC_LONGITUDE]];
     // [TypeField setText:[source attributes.];
     // [valueField setText:[NSString stringWithFormat:@"%d", [item valueInDollars]]];
     
@@ -78,9 +79,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         
         Source *newSource = [[Source alloc] initWithKey:[KeyField text]
                                        AndWithValues:[SourceConstants attributeDefaultValues]];
-        [[newSource attributes] setObject:[TypeField text] forKey:@"type"];
-        [[newSource attributes] setObject:[LatitudeField text] forKey:@"latitude"];
-        [[newSource attributes] setObject:[LongitudeField text] forKey:@"longitude"];
+        [[newSource attributes] setObject:[TypeField text] forKey:SRC_TYPE];
+        [[newSource attributes] setObject:[LatitudeField text] forKey:SRC_LATITUDE];
+        [[newSource attributes] setObject:[LongitudeField text] forKey:SRC_LONGITUDE];
         
         [libraryObjectStore putLibraryObject:newSource IntoTable:[SourceConstants tableName]];
         
