@@ -80,9 +80,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    NSString *temp = [[selectedSample attributes] objectForKey:SMP_TAGS];
-    
     tags = [ProcedureTagDecoder nameArrayFromTags:[[selectedSample attributes] objectForKey:SMP_TAGS]];
 }
 
