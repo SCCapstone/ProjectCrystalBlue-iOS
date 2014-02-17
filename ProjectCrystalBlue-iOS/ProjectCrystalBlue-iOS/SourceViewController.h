@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SourceEditViewController.h"
 
-@interface SourceViewController : UITableViewController <UIActionSheetDelegate>
+@interface SourceViewController : UITableViewController <UIActionSheetDelegate, UIAlertViewDelegate>
 
 
 @end

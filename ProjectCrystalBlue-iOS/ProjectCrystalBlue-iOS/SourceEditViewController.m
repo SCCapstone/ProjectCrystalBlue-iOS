@@ -91,22 +91,23 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [[newSample attributes] setObject:[KeyField text] forKey:@"sourceKey"];
         [libraryObjectStore putLibraryObject:newSample IntoTable:[SampleConstants tableName]];
     }
-    else if (source)
-    {
-        [[source attributes] setObject:[TypeField text] forKey:@"type"];
-        [[source attributes] setObject:[LatitudeField text] forKey:@"latitude"];
-        [[source attributes] setObject:[LongitudeField text] forKey:@"longitude"];
-        
-        [libraryObjectStore updateLibraryObject:source IntoTable:[SourceConstants tableName]];
-    }
     
-    else if(keyExists)
+    else if(![source.key isEqualToString:[KeyField text]])
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"This key exists or was edited. Changes discarded" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"This key exists or was edited. Changes discarded" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         
         [alert show];
         
         [alert resignFirstResponder];
+    }
+    
+    else if (source)
+    {
+        [[source attributes] setObject:[TypeField text] forKey:SRC_TYPE];
+        [[source attributes] setObject:[LatitudeField text] forKey:SRC_LATITUDE];
+        [[source attributes] setObject:[LongitudeField text] forKey:SRC_LONGITUDE];
+        
+        [libraryObjectStore updateLibraryObject:source IntoTable:[SourceConstants tableName]];
     }
 }
 
