@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B4014E8D18A7203300D8F4BA /* SampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4014E8C18A7203300D8F4BA /* SampleViewController.m */; };
 		B42DF80D18AFC4CD001C0E09 /* SampleEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B42DF80C18AFC4CD001C0E09 /* SampleEditViewController.m */; };
-		B42DF81018B084BE001C0E09 /* Procedures.m in Sources */ = {isa = PBXBuildFile; fileRef = B42DF80F18B084BE001C0E09 /* Procedures.m */; };
 		B4383ACB189C42B700DAC28F /* SourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383ACA189C42B700DAC28F /* SourceViewController.m */; };
 		B4383AD0189C4A0000DAC28F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383ACF189C4A0000DAC28F /* AppDelegate.m */; };
 		B4383AE2189C71B200DAC28F /* SourceEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383AE0189C71B200DAC28F /* SourceEditViewController.m */; };
@@ -36,6 +35,14 @@
 		D075270618B009C600622CBA /* AbstractCloudLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D075270418B009C600622CBA /* AbstractCloudLibraryObjectStore.m */; };
 		D075270918B021AD00622CBA /* HardcodedCredentialsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D075270818B021AD00622CBA /* HardcodedCredentialsProvider.m */; };
 		D0B1B728189C876000052443 /* LibraryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B1B727189C876000052443 /* LibraryObject.m */; };
+		D704E1BB18B1946200170B7E /* PrimitiveProcedures.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1B418B1946200170B7E /* PrimitiveProcedures.m */; };
+		D704E1BC18B1946200170B7E /* ProcedureNameConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1B618B1946200170B7E /* ProcedureNameConstants.m */; };
+		D704E1BE18B1946200170B7E /* ProcedureTagDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1BA18B1946200170B7E /* ProcedureTagDecoder.m */; };
+		D704E1C118B1947C00170B7E /* Procedures.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1C018B1947C00170B7E /* Procedures.m */; };
+		D704E1C818B194BB00170B7E /* PrimitiveProcedureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1C418B194BB00170B7E /* PrimitiveProcedureTests.m */; };
+		D704E1C918B194BB00170B7E /* ProcedureNameConstantsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1C518B194BB00170B7E /* ProcedureNameConstantsTests.m */; };
+		D704E1CA18B194BB00170B7E /* ProcedureTagDecoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1C618B194BB00170B7E /* ProcedureTagDecoderTests.m */; };
+		D704E1CB18B194BB00170B7E /* ProceduresTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1C718B194BB00170B7E /* ProceduresTests.m */; };
 		D71EE32E18518C5F007D4018 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D71EE32D18518C5F007D4018 /* libsqlite3.dylib */; };
 		D729BD3B181C24A000F762A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3A181C24A000F762A3 /* Foundation.framework */; };
 		D729BD3D181C24A000F762A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3C181C24A000F762A3 /* CoreGraphics.framework */; };
@@ -83,8 +90,6 @@
 		B4014E8C18A7203300D8F4BA /* SampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleViewController.m; sourceTree = "<group>"; };
 		B42DF80B18AFC4CD001C0E09 /* SampleEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleEditViewController.h; sourceTree = "<group>"; };
 		B42DF80C18AFC4CD001C0E09 /* SampleEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleEditViewController.m; sourceTree = "<group>"; };
-		B42DF80E18B084BE001C0E09 /* Procedures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Procedures.h; sourceTree = "<group>"; };
-		B42DF80F18B084BE001C0E09 /* Procedures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Procedures.m; sourceTree = "<group>"; };
 		B4383AC9189C42B700DAC28F /* SourceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceViewController.h; sourceTree = "<group>"; };
 		B4383ACA189C42B700DAC28F /* SourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceViewController.m; sourceTree = "<group>"; };
 		B4383ACE189C4A0000DAC28F /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -133,6 +138,18 @@
 		D075270818B021AD00622CBA /* HardcodedCredentialsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HardcodedCredentialsProvider.m; sourceTree = "<group>"; };
 		D0B1B726189C876000052443 /* LibraryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryObject.h; sourceTree = "<group>"; };
 		D0B1B727189C876000052443 /* LibraryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObject.m; sourceTree = "<group>"; };
+		D704E1B318B1946200170B7E /* PrimitiveProcedures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitiveProcedures.h; sourceTree = "<group>"; };
+		D704E1B418B1946200170B7E /* PrimitiveProcedures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveProcedures.m; sourceTree = "<group>"; };
+		D704E1B518B1946200170B7E /* ProcedureNameConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureNameConstants.h; sourceTree = "<group>"; };
+		D704E1B618B1946200170B7E /* ProcedureNameConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureNameConstants.m; sourceTree = "<group>"; };
+		D704E1B918B1946200170B7E /* ProcedureTagDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureTagDecoder.h; sourceTree = "<group>"; };
+		D704E1BA18B1946200170B7E /* ProcedureTagDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureTagDecoder.m; sourceTree = "<group>"; };
+		D704E1BF18B1947C00170B7E /* Procedures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Procedures.h; sourceTree = "<group>"; };
+		D704E1C018B1947C00170B7E /* Procedures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Procedures.m; sourceTree = "<group>"; };
+		D704E1C418B194BB00170B7E /* PrimitiveProcedureTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveProcedureTests.m; sourceTree = "<group>"; };
+		D704E1C518B194BB00170B7E /* ProcedureNameConstantsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureNameConstantsTests.m; sourceTree = "<group>"; };
+		D704E1C618B194BB00170B7E /* ProcedureTagDecoderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureTagDecoderTests.m; sourceTree = "<group>"; };
+		D704E1C718B194BB00170B7E /* ProceduresTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProceduresTests.m; sourceTree = "<group>"; };
 		D71EE32D18518C5F007D4018 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		D729BD37181C24A000F762A3 /* ProjectCrystalBlue-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ProjectCrystalBlue-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D729BD3A181C24A000F762A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -249,10 +266,9 @@
 		D01DDDB2188DDBF10059AF09 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D704E1B118B1942100170B7E /* Procedure */,
 				D0B1B726189C876000052443 /* LibraryObject.h */,
 				D0B1B727189C876000052443 /* LibraryObject.m */,
-				B42DF80E18B084BE001C0E09 /* Procedures.h */,
-				B42DF80F18B084BE001C0E09 /* Procedures.m */,
 				D01DDDBB188DDC5E0059AF09 /* Source.h */,
 				D01DDDBC188DDC5E0059AF09 /* Source.m */,
 				D01DDDB7188DDC5E0059AF09 /* Sample.h */,
@@ -372,6 +388,40 @@
 			name = "Abstract Classes";
 			sourceTree = "<group>";
 		};
+		D704E1B118B1942100170B7E /* Procedure */ = {
+			isa = PBXGroup;
+			children = (
+				D704E1BF18B1947C00170B7E /* Procedures.h */,
+				D704E1C018B1947C00170B7E /* Procedures.m */,
+				D704E1B318B1946200170B7E /* PrimitiveProcedures.h */,
+				D704E1B418B1946200170B7E /* PrimitiveProcedures.m */,
+				D704E1B518B1946200170B7E /* ProcedureNameConstants.h */,
+				D704E1B618B1946200170B7E /* ProcedureNameConstants.m */,
+				D704E1B918B1946200170B7E /* ProcedureTagDecoder.h */,
+				D704E1BA18B1946200170B7E /* ProcedureTagDecoder.m */,
+			);
+			name = Procedure;
+			sourceTree = "<group>";
+		};
+		D704E1C218B194A200170B7E /* Model Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D704E1C318B194AE00170B7E /* Procedure Tests */,
+			);
+			name = "Model Tests";
+			sourceTree = "<group>";
+		};
+		D704E1C318B194AE00170B7E /* Procedure Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D704E1C418B194BB00170B7E /* PrimitiveProcedureTests.m */,
+				D704E1C518B194BB00170B7E /* ProcedureNameConstantsTests.m */,
+				D704E1C618B194BB00170B7E /* ProcedureTagDecoderTests.m */,
+				D704E1C718B194BB00170B7E /* ProceduresTests.m */,
+			);
+			name = "Procedure Tests";
+			sourceTree = "<group>";
+		};
 		D729BD2E181C24A000F762A3 = {
 			isa = PBXGroup;
 			children = (
@@ -437,6 +487,7 @@
 		D729BD59181C24A000F762A3 /* ProjectCrystalBlue-iOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				D704E1C218B194A200170B7E /* Model Tests */,
 				D7EFB3DA18AEC872004EAB88 /* Store Tests */,
 				D729BD5F181C24A000F762A3 /* ProjectCrystalBlue_iOSTests.m */,
 				D729BD5A181C24A000F762A3 /* Supporting Files */,
@@ -650,18 +701,21 @@
 				B4383ACB189C42B700DAC28F /* SourceViewController.m in Sources */,
 				D7EFB3D618AEC695004EAB88 /* AbstractMobileImageStore.m in Sources */,
 				D7D76B0C189EED060056CDE4 /* DDTTYLogger.m in Sources */,
+				D704E1C118B1947C00170B7E /* Procedures.m in Sources */,
 				D01DDDC2188DDC5E0059AF09 /* SourceConstants.m in Sources */,
 				D7EFB3E818AECBB2004EAB88 /* ImageUtils.m in Sources */,
 				D01DDDC1188DDC5E0059AF09 /* Source.m in Sources */,
 				D075270918B021AD00622CBA /* HardcodedCredentialsProvider.m in Sources */,
 				D7D76B09189EED000056CDE4 /* DDLog.m in Sources */,
 				B4014E8D18A7203300D8F4BA /* SampleViewController.m in Sources */,
+				D704E1BE18B1946200170B7E /* ProcedureTagDecoder.m in Sources */,
+				D704E1BC18B1946200170B7E /* ProcedureNameConstants.m in Sources */,
+				D704E1BB18B1946200170B7E /* PrimitiveProcedures.m in Sources */,
 				D0B1B728189C876000052443 /* LibraryObject.m in Sources */,
 				D075270018B009A500622CBA /* LocalLibraryObjectStore.m in Sources */,
 				D07526DF18B0084400622CBA /* Transaction.m in Sources */,
 				D729BD47181C24A000F762A3 /* main.m in Sources */,
 				D07526F018B008E300622CBA /* FMDatabase.m in Sources */,
-				B42DF81018B084BE001C0E09 /* Procedures.m in Sources */,
 				D01DDDBF188DDC5E0059AF09 /* Sample.m in Sources */,
 				D075270518B009C600622CBA /* AbstractLibraryObjectStore.m in Sources */,
 				D01DDDC0188DDC5E0059AF09 /* SampleConstants.m in Sources */,
@@ -684,10 +738,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D001B3BF18B039C000975620 /* LocalLibraryObjectStoreTests.m in Sources */,
+				D704E1CB18B194BB00170B7E /* ProceduresTests.m in Sources */,
 				D001B3C118B039CB00975620 /* TransactionStoreTests.m in Sources */,
 				D729BD60181C24A000F762A3 /* ProjectCrystalBlue_iOSTests.m in Sources */,
+				D704E1CA18B194BB00170B7E /* ProcedureTagDecoderTests.m in Sources */,
 				D7EFB3EB18AECD09004EAB88 /* LocalImageStoreTests.m in Sources */,
 				D7EFB3DE18AEC88E004EAB88 /* AbstractImageStoreTests.m in Sources */,
+				D704E1C818B194BB00170B7E /* PrimitiveProcedureTests.m in Sources */,
+				D704E1C918B194BB00170B7E /* ProcedureNameConstantsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
