@@ -7,12 +7,12 @@
 //
 
 #import "SampleEditViewController.h"
-#
+#import "ProcedureTagDecoder.h"
 
 @interface SampleEditViewController ()
 
 {
-    NSMutableArray *tags;
+    NSArray *tags;
 }
 
 @end
@@ -81,43 +81,9 @@
 {
     [super viewDidLoad];
     
-    NSString *tag = [[NSString alloc] init];
-    NSString *currentChar = [[NSString alloc] init];
-    NSMutableArray *tempTags = [[NSMutableArray alloc] init];
-    NSInteger loopLength = [[[selectedSample attributes] objectForKey:@"tags"] length];
-   
+    NSString *temp = [[selectedSample attributes] objectForKey:SMP_TAGS];
     
-    
-    
-	for(int i = 0; i < loopLength; i++)
-    {
-        currentChar = [[selectedSample attributes] objectForKey:@"tags"];
-        currentChar = [currentChar substringWithRange:NSMakeRange(i, 1)];
-                      
-        if((i == (loopLength-1)) || [currentChar isEqualToString:@"_"])
-        {
-            [tempTags addObject:tag];
-            tag = @"";
-        }
-                       
-       else if(![currentChar isEqualToString:@"_"])
-        {
-            tag = [tag stringByAppendingString:currentChar];
-        }
-    }
-    
-    tag = @"";
-    
-    for (int i = 0; i < tempTags.count; i++) {
-        tag = [tempTags objectAtIndex:i];
-        if ([tag isEqualToString: @"JC"]) {
-            [tags addObject:@"Jaw Crusher"];
-        }
-        else if ([tag isEqualToString: @"PV"])
-        {
-            [tags addObject:@"Pulverizer"];
-        }
-    }
+    tags = [ProcedureTagDecoder nameArrayFromTags:[[selectedSample attributes] objectForKey:SMP_TAGS]];
 }
 
 @end
