@@ -10,6 +10,7 @@
 #import "Sample.h"
 #import "DDLog.h"
 #import "SampleEditViewController.h"
+#import "ProcedureListViewController.h"
 
 @interface SampleViewController ()
 {
@@ -94,7 +95,7 @@
     
     Sample *selectedSample = [samples objectAtIndex:[indexPath row]];
     
-    SampleEditViewController *sampleEditViewController = [[SampleEditViewController alloc] initWithSample:selectedSample];
+    
     
     UIActionSheet *message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Perform Procedure", @"View Sample", nil];
     
@@ -108,12 +109,14 @@
     
     if([option isEqualToString:@"PROC"])
     {
-
+        ProcedureListViewController *procedureListViewController = [[ProcedureListViewController alloc] initWithSample:selectedSample];
+        [[self navigationController] pushViewController:procedureListViewController  animated:YES];
     }
     
     if([option isEqualToString:@"VIEW"])
     {
-        [sampleEditViewController setSelectedSample:selectedSample];
+        SampleEditViewController *sampleEditViewController = [[SampleEditViewController alloc] initWithSample:selectedSample];
+        //[sampleEditViewController setSelectedSample:selectedSample];
         [[self navigationController] pushViewController:sampleEditViewController  animated:YES];
     }
     

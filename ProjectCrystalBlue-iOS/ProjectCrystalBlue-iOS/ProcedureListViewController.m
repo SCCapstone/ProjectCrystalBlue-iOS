@@ -1,30 +1,30 @@
 //
-//  SampleEditViewController.m
+//  ProcedureListViewController.m
 //  ProjectCrystalBlue-iOS
 //
-//  Created by Ryan McGraw on 2/15/14.
+//  Created by Ryan McGraw on 2/17/14.
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import "SampleEditViewController.h"
-#import "ProcedureTagDecoder.h"
+#import "ProcedureListViewController.h"
+#import "Sample.h"
+#import "Procedures.h"
+#import "PrimitiveProcedures.h"
+#import "ProcedureNameConstants.h"
 
-@interface SampleEditViewController ()
-
+@interface ProcedureListViewController ()
 {
-    NSArray *tags;
+    NSMutableArray *procedureNames;
 }
-
 @end
 
-@implementation SampleEditViewController
-
-@synthesize selectedSample, libraryObjectStore;
+@implementation ProcedureListViewController
+@synthesize selectedSample;
 
 - (id)initWithSample:(Sample*)initSample {
     // Call the superclass's designated initializer
     selectedSample = initSample;
-    tags = [[NSMutableArray alloc] init];
+    procedureNames = [[NSMutableArray alloc] init];
     
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
@@ -56,7 +56,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [tags count];
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -72,7 +72,7 @@
     }
     // Set the text on the cell with the description of the item // that is at the nth index of items, where n = row this cell // will appear in on the tableview
     //Sample *p = [samples objectAtIndex:[indexPath row]];
-    NSString *p = [tags objectAtIndex:[indexPath row]];
+    NSString *p = [procedureNames objectAtIndex:[indexPath row]];
     [[cell textLabel] setText:p];
     
     return cell;
@@ -81,7 +81,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    tags = [ProcedureTagDecoder nameArrayFromTags:[[selectedSample attributes] objectForKey:SMP_TAGS]];
+    [procedureNames addObject:@"Jaw Crusher"];
+    [procedureNames addObject:@"Pulverizer"];
 }
+
+
 
 @end

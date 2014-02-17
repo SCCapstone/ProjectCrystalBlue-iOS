@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B4014E8D18A7203300D8F4BA /* SampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4014E8C18A7203300D8F4BA /* SampleViewController.m */; };
 		B42DF80D18AFC4CD001C0E09 /* SampleEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B42DF80C18AFC4CD001C0E09 /* SampleEditViewController.m */; };
+		B42DF81318B1DB3B001C0E09 /* ProcedureListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B42DF81218B1DB3B001C0E09 /* ProcedureListViewController.m */; };
 		B4383ACB189C42B700DAC28F /* SourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383ACA189C42B700DAC28F /* SourceViewController.m */; };
 		B4383AD0189C4A0000DAC28F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383ACF189C4A0000DAC28F /* AppDelegate.m */; };
 		B4383AE2189C71B200DAC28F /* SourceEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383AE0189C71B200DAC28F /* SourceEditViewController.m */; };
@@ -90,6 +91,8 @@
 		B4014E8C18A7203300D8F4BA /* SampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleViewController.m; sourceTree = "<group>"; };
 		B42DF80B18AFC4CD001C0E09 /* SampleEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleEditViewController.h; sourceTree = "<group>"; };
 		B42DF80C18AFC4CD001C0E09 /* SampleEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleEditViewController.m; sourceTree = "<group>"; };
+		B42DF81118B1DB3B001C0E09 /* ProcedureListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureListViewController.h; sourceTree = "<group>"; };
+		B42DF81218B1DB3B001C0E09 /* ProcedureListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureListViewController.m; sourceTree = "<group>"; };
 		B4383AC9189C42B700DAC28F /* SourceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceViewController.h; sourceTree = "<group>"; };
 		B4383ACA189C42B700DAC28F /* SourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceViewController.m; sourceTree = "<group>"; };
 		B4383ACE189C4A0000DAC28F /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -315,6 +318,8 @@
 				B4014E8C18A7203300D8F4BA /* SampleViewController.m */,
 				B42DF80B18AFC4CD001C0E09 /* SampleEditViewController.h */,
 				B42DF80C18AFC4CD001C0E09 /* SampleEditViewController.m */,
+				B42DF81118B1DB3B001C0E09 /* ProcedureListViewController.h */,
+				B42DF81218B1DB3B001C0E09 /* ProcedureListViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -717,6 +722,7 @@
 				D729BD47181C24A000F762A3 /* main.m in Sources */,
 				D07526F018B008E300622CBA /* FMDatabase.m in Sources */,
 				D01DDDBF188DDC5E0059AF09 /* Sample.m in Sources */,
+				B42DF81318B1DB3B001C0E09 /* ProcedureListViewController.m in Sources */,
 				D075270518B009C600622CBA /* AbstractLibraryObjectStore.m in Sources */,
 				D01DDDC0188DDC5E0059AF09 /* SampleConstants.m in Sources */,
 				B42DF80D18AFC4CD001C0E09 /* SampleEditViewController.m in Sources */,
