@@ -51,4 +51,15 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                 intoTableNamed:[SampleConstants tableName]];
 }
 
++ (void)panUpSample:(Sample *)sample
+                inStore:(AbstractLibraryObjectStore *)store
+{
+    DDLogDebug(@"%s", __func__);
+    [PrimitiveProcedures appendToCloneOfSample:sample
+                                     tagString:PROC_TAG_PAN_UP
+                                     intoStore:store
+                                intoTableNamed:[SampleConstants tableName]];
+}
+
+
 @end

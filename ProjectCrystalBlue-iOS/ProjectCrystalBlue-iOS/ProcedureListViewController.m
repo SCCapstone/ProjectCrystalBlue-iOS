@@ -60,7 +60,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -87,6 +87,7 @@
     [super viewDidLoad];
     [procedureNames addObject:@"Jaw Crusher"];
     [procedureNames addObject:@"Pulverizer"];
+    [procedureNames addObject:@"Pan-Up"];
 }
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -95,11 +96,19 @@
     if([indexPath row] == 0)
     {
         [Procedures jawCrushSample:selectedSample inStore:libraryObjectStore];
+        [self.navigationController popViewControllerAnimated:YES];
     }
     
     if([indexPath row] == 1)
     {
         [Procedures pulverizeSample:selectedSample inStore:libraryObjectStore];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
+    if([indexPath row] == 2)
+    {
+        [Procedures panUpSample:selectedSample inStore:libraryObjectStore];
+        [self.navigationController popViewControllerAnimated:YES];
     }
     
 }

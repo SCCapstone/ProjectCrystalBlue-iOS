@@ -32,11 +32,21 @@
                 inStore:(AbstractLibraryObjectStore *)store;
 
 /**
+ *  Sample was consider pan up. This creates a new sample and adds this attribute
+ */
++ (void)panUpSample:(Sample *)sample
+            inStore:(AbstractLibraryObjectStore *)store;
+
+
+/**
  *  Can be used to add a custom tag to a sample, for example for procedures not declared in ProcedureNameConstants.
  *  This creates a clone of the sample; it is NOT an in-place operation.
  */
 + (void)addCustomTagToSample:(Sample *)sample
                          tag:(NSString *)tag
                      inStore:(AbstractLibraryObjectStore *)store;
+
+
+
 
 @end

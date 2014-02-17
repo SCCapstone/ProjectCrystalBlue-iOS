@@ -85,7 +85,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         
         [libraryObjectStore putLibraryObject:newSource IntoTable:[SourceConstants tableName]];
         
-        NSString *newSampleKey = [NSString stringWithFormat:@"%@%@", [newSource key], @"_001"];
+        NSString *newSampleKey = [NSString stringWithFormat:@"%@%@", [newSource key], @".001"];
         Sample *newSample = [[Sample alloc] initWithKey:newSampleKey
                                           AndWithValues:[SampleConstants attributeDefaultValues]];
         [[newSample attributes] setObject:[KeyField text] forKey:@"sourceKey"];
