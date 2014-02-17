@@ -88,7 +88,8 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    [[self tableView] reloadData];
+    samples = [libraryObjectStore getAllSamplesForSource:selectedSource];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
