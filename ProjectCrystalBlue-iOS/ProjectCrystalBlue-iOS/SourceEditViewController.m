@@ -99,6 +99,15 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         
         [libraryObjectStore updateLibraryObject:source IntoTable:[SourceConstants tableName]];
     }
+    
+    else if(keyExists)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"This key exists or was edited. Changes discarded" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        
+        [alert show];
+        
+        [alert resignFirstResponder];
+    }
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
@@ -146,5 +155,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     //[[SourceStore sharedStore] removeSource:source];
     [[self presentingViewController] dismissViewControllerAnimated:YES completion:_dismissBlock];
 }
+
 
 @end

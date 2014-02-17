@@ -12,7 +12,7 @@
 #import "SimpleDBLibraryObjectStore.h"
 
 @interface SourceEditViewController : UIViewController
-<UINavigationControllerDelegate,UITextFieldDelegate>
+<UINavigationControllerDelegate,UITextFieldDelegate, UIAlertViewDelegate>
 
 {
     __weak IBOutlet UITextField *KeyField;
