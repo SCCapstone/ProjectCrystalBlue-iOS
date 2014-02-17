@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03AE34DC18B1F3F1006AD856 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03AE34DB18B1F3F1006AD856 /* libzbar.a */; };
 		B4014E8D18A7203300D8F4BA /* SampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4014E8C18A7203300D8F4BA /* SampleViewController.m */; };
 		B42DF80D18AFC4CD001C0E09 /* SampleEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B42DF80C18AFC4CD001C0E09 /* SampleEditViewController.m */; };
 		B42DF81318B1DB3B001C0E09 /* ProcedureListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B42DF81218B1DB3B001C0E09 /* ProcedureListViewController.m */; };
@@ -87,6 +88,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03AE34DB18B1F3F1006AD856 /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libzbar.a; path = include/libzbar.a; sourceTree = "<group>"; };
 		B4014E8B18A7203300D8F4BA /* SampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleViewController.h; sourceTree = "<group>"; };
 		B4014E8C18A7203300D8F4BA /* SampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleViewController.m; sourceTree = "<group>"; };
 		B42DF80B18AFC4CD001C0E09 /* SampleEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleEditViewController.h; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				D7EFB3F318AECF64004EAB88 /* AWSSimpleDB.framework in Frameworks */,
 				D7EFB3F118AECF5C004EAB88 /* AWSS3.framework in Frameworks */,
 				D7E0AFD718B00D410005DFDA /* AWSRuntime.framework in Frameworks */,
+				03AE34DC18B1F3F1006AD856 /* libzbar.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,6 +452,7 @@
 		D729BD39181C24A000F762A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03AE34DB18B1F3F1006AD856 /* libzbar.a */,
 				D7E0AFD618B00D410005DFDA /* AWSRuntime.framework */,
 				D7EFB3F218AECF64004EAB88 /* AWSSimpleDB.framework */,
 				D7EFB3F018AECF5C004EAB88 /* AWSS3.framework */,
@@ -877,11 +881,13 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/include",
+					"$(SRCROOT)/include/ZBarSDK",
 				);
 				INFOPLIST_FILE = "ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/include",
+					"/Users/josh/ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -909,6 +915,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/include",
+					"/Users/josh/ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
