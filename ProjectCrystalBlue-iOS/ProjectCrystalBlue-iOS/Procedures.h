@@ -26,6 +26,12 @@
                inStore:(AbstractLibraryObjectStore *)store;
 
 /**
+ *  Pulverize the given sample. This is an IN-PLACE operation, destroying the previous sample.
+ */
++ (void)pulverizeSample:(Sample *)sample
+                inStore:(AbstractLibraryObjectStore *)store;
+
+/**
  *  Can be used to add a custom tag to a sample, for example for procedures not declared in ProcedureNameConstants.
  *  This creates a clone of the sample; it is NOT an in-place operation.
  */

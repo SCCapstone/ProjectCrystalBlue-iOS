@@ -11,6 +11,8 @@
 #import "DDLog.h"
 #import "SampleEditViewController.h"
 #import "ProcedureListViewController.h"
+#import "AbstractCloudLibraryObjectStore.h"
+#import "SimpleDBLibraryObjectStore.h"
 
 @interface SampleViewController ()
 {

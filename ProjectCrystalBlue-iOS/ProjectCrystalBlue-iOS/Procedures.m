@@ -30,6 +30,16 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                 intoTableNamed:[SampleConstants tableName]];
 }
 
++ (void)pulverizeSample:(Sample *)sample
+               inStore:(AbstractLibraryObjectStore *)store
+{
+    DDLogDebug(@"%s", __func__);
+    [PrimitiveProcedures appendToSampleInPlace:sample
+                                     tagString:PROC_TAG_PULVERIZE
+                                     intoStore:store
+                                intoTableNamed:[SampleConstants tableName]];
+}
+
 + (void)addCustomTagToSample:(Sample *)sample
                          tag:(NSString *)tag
                      inStore:(AbstractLibraryObjectStore *)store

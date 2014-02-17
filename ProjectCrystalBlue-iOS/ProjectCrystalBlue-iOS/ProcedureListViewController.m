@@ -10,11 +10,13 @@
 #import "Sample.h"
 #import "Procedures.h"
 #import "PrimitiveProcedures.h"
-#import "ProcedureNameConstants.h"
+#import "AbstractCloudLibraryObjectStore.h"
+#import "SimpleDBLibraryObjectStore.h"
 
 @interface ProcedureListViewController ()
 {
     NSMutableArray *procedureNames;
+     SimpleDBLibraryObjectStore *libraryObjectStore;
 }
 @end
 
@@ -23,6 +25,8 @@
 
 - (id)initWithSample:(Sample*)initSample {
     // Call the superclass's designated initializer
+    
+    libraryObjectStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data" WithDatabaseName:@"test_database.db"];
     selectedSample = initSample;
     procedureNames = [[NSMutableArray alloc] init];
     
@@ -85,6 +89,20 @@
     [procedureNames addObject:@"Pulverizer"];
 }
 
+- (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if([indexPath row] == 0)
+    {
+        [Procedures jawCrushSample:selectedSample inStore:libraryObjectStore];
+    }
+    
+    if([indexPath row] == 1)
+    {
+        [Procedures pulverizeSample:selectedSample inStore:libraryObjectStore];
+    }
+    
+}
 
 
 @end
