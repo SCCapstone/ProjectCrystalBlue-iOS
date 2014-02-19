@@ -887,7 +887,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/include",
-					"/Users/josh/ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -915,7 +914,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/include",
-					"/Users/josh/ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
