@@ -92,22 +92,22 @@
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    NSString *dummyInitials = @"ANONYMOUS";
     if([indexPath row] == 0)
     {
-        [Procedures jawCrushSample:selectedSample inStore:libraryObjectStore];
+        [Procedures jawCrushSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
         [self.navigationController popViewControllerAnimated:YES];
     }
     
     if([indexPath row] == 1)
     {
-        [Procedures pulverizeSample:selectedSample inStore:libraryObjectStore];
+        [Procedures pulverizeSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
         [self.navigationController popViewControllerAnimated:YES];
     }
     
     if([indexPath row] == 2)
     {
-        [Procedures panUpSample:selectedSample inStore:libraryObjectStore];
+        [Procedures panUpSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
         [self.navigationController popViewControllerAnimated:YES];
     }
     

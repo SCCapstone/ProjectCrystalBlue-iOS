@@ -23,18 +23,21 @@
  *  Jawcrush the given sample. This is an IN-PLACE operation, destroying the previous sample.
  */
 + (void)jawCrushSample:(Sample *)sample
+          withInitials:(NSString *)initials
                inStore:(AbstractLibraryObjectStore *)store;
 
 /**
  *  Pulverize the given sample. This is an IN-PLACE operation, destroying the previous sample.
  */
 + (void)pulverizeSample:(Sample *)sample
+           withInitials:(NSString *)initials
                 inStore:(AbstractLibraryObjectStore *)store;
 
 /**
  *  Sample was consider pan up. This creates a new sample and adds this attribute
  */
 + (void)panUpSample:(Sample *)sample
+withInitials:(NSString *)initials
             inStore:(AbstractLibraryObjectStore *)store;
 
 
@@ -44,6 +47,7 @@
  */
 + (void)addCustomTagToSample:(Sample *)sample
                          tag:(NSString *)tag
+                withInitials:(NSString *)initials
                      inStore:(AbstractLibraryObjectStore *)store;
 
 

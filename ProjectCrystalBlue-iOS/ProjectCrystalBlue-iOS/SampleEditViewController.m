@@ -7,7 +7,7 @@
 //
 
 #import "SampleEditViewController.h"
-#import "ProcedureTagDecoder.h"
+#import "ProcedureRecordParser.h"
 
 @interface SampleEditViewController ()
 
@@ -88,7 +88,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    tags = [ProcedureTagDecoder nameArrayFromTags:[[selectedSample attributes] objectForKey:SMP_TAGS]];
+    tags = [ProcedureRecordParser nameArrayFromRecordList:[[selectedSample attributes] objectForKey:SMP_TAGS]];
 }
 
 @end
