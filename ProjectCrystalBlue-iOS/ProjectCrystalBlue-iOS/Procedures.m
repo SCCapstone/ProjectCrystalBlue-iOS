@@ -20,10 +20,21 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @implementation Procedures
 
+
+
++ (void)addFreshSample:(Sample *)sample
+                   inStore:(AbstractLibraryObjectStore *)store
+{
+    DDLogDebug(@"%s", __func__);
+    [PrimitiveProcedures cloneSampleWithClearedTags:sample
+                                          intoStore:store
+                                     intoTableNamed:[SampleConstants tableName]];
+}
+
+
 /**
  Procedures that append to a clone of a tag only
  **/
-
 + (void)makeSlabfromSample:(Sample *)sample
         withInitials:(NSString *)initials
             inStore:(AbstractLibraryObjectStore *)store
@@ -107,7 +118,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     is created with the up. For down procedures the current sample gets the up and a new sample is created with the down
  **/
 
-+ (void)gemeniUpSample:(Sample *)sample
++ (void)geminiUpSample:(Sample *)sample
        withInitials:(NSString *)initials
             inStore:(AbstractLibraryObjectStore *)store
 {

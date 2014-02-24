@@ -19,6 +19,13 @@
  */
 @interface Procedures : NSObject
 
+
+/**
+ * Used to created fresh sample
+ **/
++ (void)addFreshSample:(Sample *)sample
+               inStore:(AbstractLibraryObjectStore *)store;
+
 /**
  * Make a slab from a sample. This creates a new sample and adds slab to its procedures
  **/
@@ -65,7 +72,7 @@
  *  Sample was considered gemeni up. This creates a new sample and adds this attribute and appends down
  *  to the current sample.
  */
-+ (void)gemeniUpSample:(Sample *)sample
++ (void)geminiUpSample:(Sample *)sample
           withInitials:(NSString *)initials
                inStore:(AbstractLibraryObjectStore *)store;
 

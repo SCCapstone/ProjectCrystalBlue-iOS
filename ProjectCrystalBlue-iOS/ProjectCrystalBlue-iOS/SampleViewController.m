@@ -13,6 +13,7 @@
 #import "ProcedureListViewController.h"
 #import "AbstractCloudLibraryObjectStore.h"
 #import "SimpleDBLibraryObjectStore.h"
+#import "Procedures.h"
 
 @interface SampleViewController ()
 {
@@ -36,8 +37,7 @@
         [n setTitle:@"Samples"];
         
         UIBarButtonItem *bbi = [[UIBarButtonItem alloc]
-                                initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self
-                                action:@selector(addNewItem:)];
+                                initWithTitle:@"Add New" style:UIBarButtonItemStyleBordered target:self action:@selector(addNewItem:)];
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         
         [[self navigationItem] setRightBarButtonItem:bbi];
@@ -79,6 +79,14 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+-(void) addNewItem:(id)sender
+{
+    
+    [Procedures addFreshSample:[samples objectAtIndex:0] inStore:libraryObjectStore];
+    [[self tableView] reloadData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
