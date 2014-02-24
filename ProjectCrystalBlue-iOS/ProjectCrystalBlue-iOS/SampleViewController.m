@@ -82,9 +82,8 @@
 
 -(void) addNewItem:(id)sender
 {
-    
     [Procedures addFreshSample:[samples objectAtIndex:0] inStore:libraryObjectStore];
-    [[self tableView] reloadData];
+    [self.tableView reloadData];
 }
 
 - (void)viewDidLoad
