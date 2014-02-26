@@ -31,12 +31,14 @@
 		D07526F318B008E300622CBA /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = D07526ED18B008E300622CBA /* FMDatabaseQueue.m */; };
 		D07526F418B008E300622CBA /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = D07526EF18B008E300622CBA /* FMResultSet.m */; };
 		D07526FC18B0099B00622CBA /* SimpleDBLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D07526F918B0099B00622CBA /* SimpleDBLibraryObjectStore.m */; };
-		D07526FD18B0099B00622CBA /* SimpleDBCredentialsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D07526FB18B0099B00622CBA /* SimpleDBCredentialsProvider.m */; };
 		D075270018B009A500622CBA /* LocalLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D07526FF18B009A500622CBA /* LocalLibraryObjectStore.m */; };
 		D075270518B009C600622CBA /* AbstractLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D075270218B009C600622CBA /* AbstractLibraryObjectStore.m */; };
 		D075270618B009C600622CBA /* AbstractCloudLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D075270418B009C600622CBA /* AbstractCloudLibraryObjectStore.m */; };
 		D075270918B021AD00622CBA /* HardcodedCredentialsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D075270818B021AD00622CBA /* HardcodedCredentialsProvider.m */; };
 		D0B1B728189C876000052443 /* LibraryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B1B727189C876000052443 /* LibraryObject.m */; };
+		D0C85BD518BDB0C00002033E /* ConflictResolution.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C85BD418BDB0C00002033E /* ConflictResolution.m */; };
+		D0C85BD818BDB4810002033E /* SimpleDBUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C85BD718BDB4810002033E /* SimpleDBUtils.m */; };
+		D0C85BDB18BDB5680002033E /* SimpleDBUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C85BDA18BDB5680002033E /* SimpleDBUtilsTests.m */; };
 		D704E1BB18B1946200170B7E /* PrimitiveProcedures.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1B418B1946200170B7E /* PrimitiveProcedures.m */; };
 		D704E1BC18B1946200170B7E /* ProcedureNameConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1B618B1946200170B7E /* ProcedureNameConstants.m */; };
 		D704E1BE18B1946200170B7E /* ProcedureTagDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1BA18B1946200170B7E /* ProcedureTagDecoder.m */; };
@@ -131,8 +133,6 @@
 		D07526EF18B008E300622CBA /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		D07526F818B0099B00622CBA /* SimpleDBLibraryObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleDBLibraryObjectStore.h; sourceTree = "<group>"; };
 		D07526F918B0099B00622CBA /* SimpleDBLibraryObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBLibraryObjectStore.m; sourceTree = "<group>"; };
-		D07526FA18B0099B00622CBA /* SimpleDBCredentialsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleDBCredentialsProvider.h; sourceTree = "<group>"; };
-		D07526FB18B0099B00622CBA /* SimpleDBCredentialsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBCredentialsProvider.m; sourceTree = "<group>"; };
 		D07526FE18B009A500622CBA /* LocalLibraryObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalLibraryObjectStore.h; sourceTree = "<group>"; };
 		D07526FF18B009A500622CBA /* LocalLibraryObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalLibraryObjectStore.m; sourceTree = "<group>"; };
 		D075270118B009C600622CBA /* AbstractLibraryObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractLibraryObjectStore.h; sourceTree = "<group>"; };
@@ -143,6 +143,11 @@
 		D075270818B021AD00622CBA /* HardcodedCredentialsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HardcodedCredentialsProvider.m; sourceTree = "<group>"; };
 		D0B1B726189C876000052443 /* LibraryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryObject.h; sourceTree = "<group>"; };
 		D0B1B727189C876000052443 /* LibraryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObject.m; sourceTree = "<group>"; };
+		D0C85BD318BDB0C00002033E /* ConflictResolution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConflictResolution.h; sourceTree = "<group>"; };
+		D0C85BD418BDB0C00002033E /* ConflictResolution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConflictResolution.m; sourceTree = "<group>"; };
+		D0C85BD618BDB4810002033E /* SimpleDBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleDBUtils.h; sourceTree = "<group>"; };
+		D0C85BD718BDB4810002033E /* SimpleDBUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBUtils.m; sourceTree = "<group>"; };
+		D0C85BDA18BDB5680002033E /* SimpleDBUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBUtilsTests.m; sourceTree = "<group>"; };
 		D704E1B318B1946200170B7E /* PrimitiveProcedures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitiveProcedures.h; sourceTree = "<group>"; };
 		D704E1B418B1946200170B7E /* PrimitiveProcedures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveProcedures.m; sourceTree = "<group>"; };
 		D704E1B518B1946200170B7E /* ProcedureNameConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureNameConstants.h; sourceTree = "<group>"; };
@@ -256,6 +261,7 @@
 		D001B3BC18B0398F00975620 /* LibraryObjectStore */ = {
 			isa = PBXGroup;
 			children = (
+				D0C85BD918BDB52F0002033E /* SimpleDBLibraryObjectStore */,
 				D001B3BD18B039A500975620 /* LocalLibraryObjectStore */,
 			);
 			name = LibraryObjectStore;
@@ -287,6 +293,8 @@
 				D01DDDBA188DDC5E0059AF09 /* SampleConstants.m */,
 				D07526DD18B0084400622CBA /* TransactionConstants.h */,
 				D07526DE18B0084400622CBA /* TransactionConstants.m */,
+				D0C85BD318BDB0C00002033E /* ConflictResolution.h */,
+				D0C85BD418BDB0C00002033E /* ConflictResolution.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -379,8 +387,8 @@
 			children = (
 				D07526F818B0099B00622CBA /* SimpleDBLibraryObjectStore.h */,
 				D07526F918B0099B00622CBA /* SimpleDBLibraryObjectStore.m */,
-				D07526FA18B0099B00622CBA /* SimpleDBCredentialsProvider.h */,
-				D07526FB18B0099B00622CBA /* SimpleDBCredentialsProvider.m */,
+				D0C85BD618BDB4810002033E /* SimpleDBUtils.h */,
+				D0C85BD718BDB4810002033E /* SimpleDBUtils.m */,
 			);
 			name = SimpleDBLibraryObjectStore;
 			sourceTree = "<group>";
@@ -394,6 +402,14 @@
 				D075270418B009C600622CBA /* AbstractCloudLibraryObjectStore.m */,
 			);
 			name = "Abstract Classes";
+			sourceTree = "<group>";
+		};
+		D0C85BD918BDB52F0002033E /* SimpleDBLibraryObjectStore */ = {
+			isa = PBXGroup;
+			children = (
+				D0C85BDA18BDB5680002033E /* SimpleDBUtilsTests.m */,
+			);
+			name = SimpleDBLibraryObjectStore;
 			sourceTree = "<group>";
 		};
 		D704E1B118B1942100170B7E /* Procedure */ = {
@@ -703,7 +719,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4383AD0189C4A0000DAC28F /* AppDelegate.m in Sources */,
-				D07526FD18B0099B00622CBA /* SimpleDBCredentialsProvider.m in Sources */,
 				D07526FC18B0099B00622CBA /* SimpleDBLibraryObjectStore.m in Sources */,
 				D7D76B08189EED000056CDE4 /* DDFileLogger.m in Sources */,
 				D075270618B009C600622CBA /* AbstractCloudLibraryObjectStore.m in Sources */,
@@ -712,6 +727,7 @@
 				D7D76B0C189EED060056CDE4 /* DDTTYLogger.m in Sources */,
 				D704E1C118B1947C00170B7E /* Procedures.m in Sources */,
 				D01DDDC2188DDC5E0059AF09 /* SourceConstants.m in Sources */,
+				D0C85BD518BDB0C00002033E /* ConflictResolution.m in Sources */,
 				D7EFB3E818AECBB2004EAB88 /* ImageUtils.m in Sources */,
 				D01DDDC1188DDC5E0059AF09 /* Source.m in Sources */,
 				D075270918B021AD00622CBA /* HardcodedCredentialsProvider.m in Sources */,
@@ -740,6 +756,7 @@
 				D7D76B07189EED000056CDE4 /* DDASLLogger.m in Sources */,
 				D7EFB3D918AEC7DD004EAB88 /* AbstractMobileCloudImageStore.m in Sources */,
 				D07526F318B008E300622CBA /* FMDatabaseQueue.m in Sources */,
+				D0C85BD818BDB4810002033E /* SimpleDBUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -754,6 +771,7 @@
 				D704E1CA18B194BB00170B7E /* ProcedureTagDecoderTests.m in Sources */,
 				D7EFB3EB18AECD09004EAB88 /* LocalImageStoreTests.m in Sources */,
 				D7EFB3DE18AEC88E004EAB88 /* AbstractImageStoreTests.m in Sources */,
+				D0C85BDB18BDB5680002033E /* SimpleDBUtilsTests.m in Sources */,
 				D704E1C818B194BB00170B7E /* PrimitiveProcedureTests.m in Sources */,
 				D704E1C918B194BB00170B7E /* ProcedureNameConstantsTests.m in Sources */,
 			);
@@ -909,6 +927,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/include",
+					"$(SRCROOT)/include/ZBarSDK",
 				);
 				INFOPLIST_FILE = "ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS-Info.plist";
 				LIBRARY_SEARCH_PATHS = (

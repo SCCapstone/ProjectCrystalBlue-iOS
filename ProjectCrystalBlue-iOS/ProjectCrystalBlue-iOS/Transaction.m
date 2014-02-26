@@ -14,6 +14,7 @@
 @synthesize attributes;
 
 - (id)initWithLibraryObjectKey:(NSString *)key
+              AndWithTableName:(NSString *)tableName
          AndWithSqlCommandType:(NSString *)sqlCommand
 {
     self = [super init];
@@ -21,7 +22,7 @@
     {
         timestamp = [NSNumber numberWithDouble:[[[NSDate alloc] init] timeIntervalSince1970]];
         
-        NSArray *attributeValues = [[NSArray alloc] initWithObjects:timestamp, key, sqlCommand, nil];
+        NSArray *attributeValues = [[NSArray alloc] initWithObjects:[timestamp stringValue], key, tableName, sqlCommand, nil];
         attributes = [[NSMutableDictionary alloc] initWithObjects:attributeValues
                                                           forKeys:[TransactionConstants attributeNames]];
     }
@@ -38,9 +39,57 @@ AndWithAttributeDictionary:(NSDictionary *)attr
         attributes = [attr mutableCopy];
         
         // Make sure key is set correctly
-        [attributes setObject:timestamp forKey:@"timestamp"];
+        [attributes setObject:[timestamp stringValue] forKey:TRN_TIMESTAMP];
     }
     return self;
+}
+
+- (void)resetTimestamp
+{
+    timestamp = [NSNumber numberWithDouble:[[[NSDate alloc] init] timeIntervalSince1970]];
+    [attributes setObject:[timestamp stringValue] forKey:TRN_TIMESTAMP];
+}
+
+/**
+ *  Compares this Transaction to another object. Transactions are considered equal if they have the same key and all the same attributes.
+ */
+- (BOOL)isEqual:(id)object
+{
+    if (nil == object) {
+        return NO;
+    }
+    
+    if (![object isKindOfClass:[Transaction class]]) {
+        return NO;
+    }
+    
+    Transaction *other = (Transaction *)object;
+    
+    if ([self.timestamp doubleValue] != [other.timestamp doubleValue]) {
+        return NO;
+    }
+    
+    if (self.attributes.count != other.attributes.count) {
+        return NO;
+    }
+    
+    for (NSString *attributeKey in self.attributes.allKeys) {
+        NSString *ours = [self.attributes objectForKey:attributeKey];
+        NSString *theirs = [other.attributes objectForKey:attributeKey];
+        
+        if (![ours isEqualToString:theirs]) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
+/**
+ *  Returns a hash generated for this Transaction. The hash is generated purely from the key.
+ */
+- (NSUInteger)hash
+{
+    return [self.timestamp hash];
 }
 
 @end

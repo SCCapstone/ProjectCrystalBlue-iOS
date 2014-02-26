@@ -15,9 +15,12 @@
 @property NSMutableDictionary *attributes;
 
 - (id)initWithLibraryObjectKey:(NSString *)key
+              AndWithTableName:(NSString *)tableName
          AndWithSqlCommandType:(NSString *)sqlCommand;
 
 - (id)initWithTimestamp:(NSNumber *)aTimestamp
 AndWithAttributeDictionary:(NSDictionary *)attr;
+
+- (void)resetTimestamp;
 
 @end

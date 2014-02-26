@@ -12,8 +12,10 @@
 #import "TransactionStore.h"
 #import "Source.h"
 #import "Sample.h"
+#import "ConflictResolution.h"
 #import <AWSSimpleDB/AmazonSimpleDBClient.h>
 #import "HardcodedCredentialsProvider.h"
+#import "SimpleDBUtils.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -47,8 +49,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         NSObject<AmazonCredentialsProvider> *credentialsProvider = [[HardcodedCredentialsProvider alloc] init];
         simpleDBClient = [[AmazonSimpleDBClient alloc] initWithCredentialsProvider:credentialsProvider];
         
-        //if (![self setupDomains])
-        //    return nil;
+        if (![self setupDomains])
+            return nil;
     }
     
     return self;
@@ -57,13 +59,126 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)synchronizeWithCloud
 {
     // Get remote history since last update
+    NSTimeInterval lastSyncTime = [transactionStore timeOfLastSync];
+    NSString *query = [NSString stringWithFormat:@"select * from %@ where timestamp >= '%f' order by timestamp limit 250", [TransactionConstants tableName], lastSyncTime];
+    NSArray *remoteTransactions = [SimpleDBUtils executeSelectQuery:query
+                                            WithReturnedObjectClass:[Transaction class]
+                                                        UsingClient:simpleDBClient];
+    if (!remoteTransactions)
+        return NO;
     
+    // Initialize some arrays and get ConflictResolution objects
+    NSArray *resolvedConflicts = [transactionStore resolveConflicts:remoteTransactions];
+    NSMutableArray *unsyncedTransactions = [[NSMutableArray alloc] init];
+    NSMutableArray *unsyncedSourcePuts = [[NSMutableArray alloc] init];
+    NSMutableArray *unsyncedSamplePuts = [[NSMutableArray alloc] init];
+    NSMutableArray *unsyncedSourceDeletes = [[NSMutableArray alloc] init];
+    NSMutableArray *unsyncedSampleDeletes = [[NSMutableArray alloc] init];
     
-    // Compare remote with local.  For each transaction, conflicting key? Resolve conflicts
+    // For each conflict where local is more recent, add to appropriate array
+    for (ConflictResolution *resolvedConflict in resolvedConflicts) {
+        if (resolvedConflict.isLocalMoreRecent) {
+            // Reset transaction to current time
+            Transaction *resolvedTransaction = resolvedConflict.transaction;
+            [resolvedTransaction resetTimestamp];
+            
+            // Delete transaction
+            if ([[resolvedTransaction.attributes objectForKey:TRN_SQL_COMMAND_TYPE] isEqualToString:@"DELETE"]) {
+                if ([[resolvedTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_TABLE] isEqualToString:[SourceConstants tableName]])
+                    [unsyncedSourceDeletes addObject:[resolvedTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]];
+                else
+                    [unsyncedSampleDeletes addObject:[resolvedTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]];
+            }
+            // Put/Update transaction
+            else {
+                // Get library object associated with transaction
+                LibraryObject *resolvedObject = [localStore getLibraryObjectForKey:[resolvedTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]
+                                                                         FromTable:[resolvedTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_TABLE]];
+                // Add it to Source/Sample array to be sent to remote
+                if ([resolvedObject isMemberOfClass:[Source class]])
+                    [unsyncedSourcePuts addObject:resolvedObject];
+                else
+                    [unsyncedSamplePuts addObject:resolvedObject];
+            }
+            // Add transaction to be sent to remote
+            [unsyncedTransactions addObject:resolvedTransaction];
+        }
+    }
     
-    // Push modified local history and corresponding library objects
+    // Add remaining 'dirty' transactions/objects to unsynced arrays
+    NSArray *unsyncedLocalTransactions = [transactionStore getAllTransactions];
+    for (Transaction *localTransaction in unsyncedLocalTransactions) {
+        // Reset localTransactions to current time
+        [localTransaction resetTimestamp];
+        
+        // Delete transaction
+        if ([[localTransaction.attributes objectForKey:TRN_SQL_COMMAND_TYPE] isEqualToString:@"DELETE"]) {
+            if ([[localTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_TABLE] isEqualToString:[SourceConstants tableName]])
+                [unsyncedSourceDeletes addObject:[localTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]];
+            else
+                [unsyncedSampleDeletes addObject:[localTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]];
+        }
+        // Put/Update transaction
+        else {
+            // Get library object associated with transaction
+            LibraryObject *resolvedObject = [localStore getLibraryObjectForKey:[localTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]
+                                                                     FromTable:[localTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_TABLE]];
+            // Add it to Source/Sample array to be sent to remote
+            if ([resolvedObject isMemberOfClass:[Source class]])
+                [unsyncedSourcePuts addObject:resolvedObject];
+            else
+                [unsyncedSamplePuts addObject:resolvedObject];
+        }
+        
+        // Add transaction to be sent to remote
+        [unsyncedTransactions addObject:localTransaction];
+        
+    }
     
-    return NO;
+    // Put unsynced objects in remote database
+    [SimpleDBUtils executeBatchPut:unsyncedSourcePuts WithDomainName:[SourceConstants tableName] UsingClient:simpleDBClient];
+    [SimpleDBUtils executeBatchPut:unsyncedSamplePuts WithDomainName:[SampleConstants tableName] UsingClient:simpleDBClient];
+    
+    // Delete unsynced objects in remote database
+    [SimpleDBUtils executeBatchDelete:unsyncedSourceDeletes WithDomainName:[SourceConstants tableName] UsingClient:simpleDBClient];
+    [SimpleDBUtils executeBatchDelete:unsyncedSampleDeletes WithDomainName:[SampleConstants tableName] UsingClient:simpleDBClient];
+    
+    // Put unsycned transaction in remote database
+    [SimpleDBUtils executeBatchPut:unsyncedTransactions WithDomainName:[TransactionConstants tableName] UsingClient:simpleDBClient];
+    
+    // Get changed objects from remote database
+    @try {
+        for (ConflictResolution *resolvedConflict in resolvedConflicts) {
+            // Only for conflicts where remote is more recent
+            if (!resolvedConflict.isLocalMoreRecent) {
+                NSString *tableName = [resolvedConflict.transaction.attributes objectForKey:TRN_LIBRARY_OBJECT_TABLE];
+                NSString *sqlCommandType = [resolvedConflict.transaction.attributes objectForKey:TRN_SQL_COMMAND_TYPE];
+                NSString *libraryObjectKey = [resolvedConflict.transaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY];
+                
+                // Update changes to remote object with local database
+                if ([sqlCommandType isEqualToString:@"DELETE"])
+                    [localStore deleteLibraryObjectWithKey:libraryObjectKey FromTable:tableName];
+                else {
+                    // Get library object from remote database
+                    LibraryObject *remoteObject = (LibraryObject *)[SimpleDBUtils executeGetWithItemName:libraryObjectKey
+                                                                                       AndWithDomainName:tableName
+                                                                                             UsingClient:simpleDBClient
+                                                                                         ToObjectOfClass:[tableName isEqualToString:[SourceConstants tableName]] ? [Source class] : [Sample class]];
+                    if ([sqlCommandType isEqualToString:@"PUT"])
+                        [localStore putLibraryObject:remoteObject IntoTable:tableName];
+                    else if ([sqlCommandType isEqualToString:@"UPDATE"])
+                        [localStore updateLibraryObject:remoteObject IntoTable:tableName];
+                }
+            }
+        }
+    }
+    @catch (NSException *exception) {
+        DDLogCError(@"%@: Failed while get changed library object from remote database. Error: %@", NSStringFromClass(self.class), exception);
+        return NO;
+    }
+    
+    [transactionStore clearLocalTransactions];
+    return YES;
 }
 
 - (BOOL)setupDomains
@@ -71,24 +186,23 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     @try {
         SimpleDBListDomainsResponse *listResponse = [simpleDBClient listDomains:[[SimpleDBListDomainsRequest alloc] init]];
         SimpleDBCreateDomainRequest *createRequest;
-        SimpleDBCreateDomainResponse *createResponse;
         
         // Source domain
         if (![listResponse.domainNames containsObject:[SourceConstants tableName]]) {
             createRequest = [[SimpleDBCreateDomainRequest alloc] initWithDomainName:[SourceConstants tableName]];
-            createResponse = [simpleDBClient createDomain:createRequest];
+            [simpleDBClient createDomain:createRequest];
         }
         
         // Sample domain
         if (![listResponse.domainNames containsObject:[SampleConstants tableName]]) {
             createRequest = [[SimpleDBCreateDomainRequest alloc] initWithDomainName:[SampleConstants tableName]];
-            createResponse = [simpleDBClient createDomain:createRequest];
+            [simpleDBClient createDomain:createRequest];
         }
         
         // Transaction domain
         if (![listResponse.domainNames containsObject:[TransactionConstants tableName]]) {
             createRequest = [[SimpleDBCreateDomainRequest alloc] initWithDomainName:[TransactionConstants tableName]];
-            createResponse = [simpleDBClient createDomain:createRequest];
+            [simpleDBClient createDomain:createRequest];
         }
     }
     @catch (NSException *exception) {
@@ -96,6 +210,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return NO;
     }
     
+    DDLogCInfo(@"%@: Setup the remote domains.", NSStringFromClass(self.class));
     return YES;
 }
 
@@ -110,9 +225,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return [localStore getAllLibraryObjectsFromTable:tableName];
 }
 
-- (NSArray *)getAllSamplesForSource:(Source *)source
+- (NSArray *)getAllSamplesForSourceKey:(NSString *)sourceKey
 {
-    return [localStore getAllSamplesForSource:source];
+    return [localStore getAllSamplesForSourceKey:sourceKey];
 }
 
 - (NSArray *)executeSqlQuery:(NSString *)sql
@@ -128,6 +243,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return NO;
     
     Transaction *transaction = [[Transaction alloc] initWithLibraryObjectKey:[libraryObject key]
+                                                            AndWithTableName:tableName
                                                        AndWithSqlCommandType:@"PUT"];
     if (![transactionStore commitTransaction:transaction])
         return NO;
@@ -142,6 +258,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return NO;
     
     Transaction *transaction = [[Transaction alloc] initWithLibraryObjectKey:[libraryObject key]
+                                                            AndWithTableName:tableName
                                                        AndWithSqlCommandType:@"UPDATE"];
     if (![transactionStore commitTransaction:transaction])
         return NO;
@@ -152,13 +269,47 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)deleteLibraryObjectWithKey:(NSString *)key
                          FromTable:(NSString *)tableName
 {
+    NSArray *samples;
+    if ([tableName isEqualToString:[SourceConstants tableName]])
+        samples = [localStore getAllSamplesForSourceKey:key];
+    
     if (![localStore deleteLibraryObjectWithKey:key FromTable:tableName])
         return NO;
     
     Transaction *transaction = [[Transaction alloc] initWithLibraryObjectKey:key
+                                                            AndWithTableName:tableName
                                                        AndWithSqlCommandType:@"DELETE"];
     if (![transactionStore commitTransaction:transaction])
         return NO;
+    
+    // Need to add sample deletions to transaction table too
+    if (samples) {
+        for (Sample *sample in samples) {
+            Transaction *transaction = [[Transaction alloc] initWithLibraryObjectKey:sample.key
+                                                                    AndWithTableName:[SampleConstants tableName]
+                                                               AndWithSqlCommandType:@"DELETE"];
+            if (![transactionStore commitTransaction:transaction])
+                return NO;
+        }
+    }
+    
+    return YES;
+}
+
+- (BOOL)deleteAllSamplesForSourceKey:(NSString *)sourceKey
+{
+    NSArray *samples = [localStore getAllSamplesForSourceKey:sourceKey];
+    
+    if (![localStore deleteAllSamplesForSourceKey:sourceKey])
+        return NO;
+    
+    for (Sample *sample in samples) {
+        Transaction *transaction = [[Transaction alloc] initWithLibraryObjectKey:sample.key
+                                                                AndWithTableName:[SampleConstants tableName]
+                                                           AndWithSqlCommandType:@"DELETE"];
+        if (![transactionStore commitTransaction:transaction])
+            return NO;
+    }
     
     return YES;
 }

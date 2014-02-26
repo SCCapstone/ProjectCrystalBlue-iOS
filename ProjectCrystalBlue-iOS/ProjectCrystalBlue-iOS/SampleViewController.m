@@ -83,12 +83,12 @@
 {
     [super viewDidLoad];
     
-    samples = [libraryObjectStore getAllSamplesForSource:selectedSource];
+    samples = [libraryObjectStore getAllSamplesForSourceKey:selectedSource.key];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    samples = [libraryObjectStore getAllSamplesForSource:selectedSource];
+    samples = [libraryObjectStore getAllSamplesForSourceKey:selectedSource.key];
     [self.tableView reloadData];
 }
 
