@@ -197,6 +197,119 @@ withInitials:(NSString *)initials
                 withInitials:(NSString *)initials
                      inStore:(AbstractLibraryObjectStore *)store;
 
+/**
+*  Sample was considered Magnet .2 up.This creates a new sample and adds this attribute and appends down
+*  to the current sample.
+*/
++ (void)magnet02AmpsUpSample:(Sample *)sample
+                withInitials:(NSString *)initials
+                     inStore:(AbstractLibraryObjectStore *)store;
+
+/**
+ *  Sample was considered Magnet .2 down.This creates a new sample and adds this attribute and appends down
+ *  to the current sample.
+ */
++ (void)magnet02AmpsDownSample:(Sample *)sample
+                  withInitials:(NSString *)initials
+                       inStore:(AbstractLibraryObjectStore *)store;
+
+/**
+ *  Sample was considered Magnet .4 up.This creates a new sample and adds this attribute and appends down
+ *  to the current sample.
+ */
++ (void)magnet04AmpsUpSample:(Sample *)sample
+                withInitials:(NSString *)initials
+                     inStore:(AbstractLibraryObjectStore *)store;
+
+/**
+ *  Sample was considered Magnet 4 down.This creates a new sample and adds this attribute and appends down
+ *  to the current sample.
+ */
++ (void)magnet04AmpsDownSample:(Sample *)sample
+                  withInitials:(NSString *)initials
+                       inStore:(AbstractLibraryObjectStore *)store;
+
+/**
+ *  Sample was considered Magnet .6 up.This creates a new sample and adds this attribute and appends down
+ *  to the current sample.
+ */
++ (void)magnet06AmpsUpSample:(Sample *)sample
+                withInitials:(NSString *)initials
+                     inStore:(AbstractLibraryObjectStore *)store;
+
+/**
+ *  Sample was considered Magnet .6 down.This creates a new sample and adds this attribute and appends down
+ *  to the current sample.
+ */
++ (void)magnet06AmpsDownSample:(Sample *)sample
+                  withInitials:(NSString *)initials
+                       inStore:(AbstractLibraryObjectStore *)store;
+
+/**
+ *  Sample was considered Magnet .8 up.This creates a new sample and adds this attribute and appends down
+ *  to the current sample.
+ */
++ (void)magnet08AmpsUpSample:(Sample *)sample
+                withInitials:(NSString *)initials
+                     inStore:(AbstractLibraryObjectStore *)store;
+
+/**
+ *  Sample was considered Magnet .8 down.This creates a new sample and adds this attribute and appends down
+ *  to the current sample.
+ */
++ (void)magnet08AmpsDownSample:(Sample *)sample
+                  withInitials:(NSString *)initials
+                       inStore:(AbstractLibraryObjectStore *)store;
+
+/**
+ *  Sample was considered Magnet 1.0 up.This creates a new sample and adds this attribute and appends down
+ *  to the current sample.
+ */
++ (void)magnet10AmpsUpSample:(Sample *)sample
+                withInitials:(NSString *)initials
+                     inStore:(AbstractLibraryObjectStore *)store;
+
+/**
+ *  Sample was considered Magnet 1.0 down.This creates a new sample and adds this attribute and appends down
+ *  to the current sample.
+ */
++ (void)magnet10AmpsDownSample:(Sample *)sample
+                  withInitials:(NSString *)initials
+                       inStore:(AbstractLibraryObjectStore *)store;
+
+/**
+ *  Sample was considered Magnet 1.2 up.This creates a new sample and adds this attribute and appends down
+ *  to the current sample.
+ */
++ (void)magnet12AmpsUpSample:(Sample *)sample
+                withInitials:(NSString *)initials
+                     inStore:(AbstractLibraryObjectStore *)store;
+
+/**
+ *  Sample was considered Magnet 1.2 down.This creates a new sample and adds this attribute and appends down
+ *  to the current sample.
+ */
++ (void)magnet12AmpsDownSample:(Sample *)sample
+                  withInitials:(NSString *)initials
+                       inStore:(AbstractLibraryObjectStore *)store;
+
+/**
+ *  Sample was considered Magnet 1.4 up.This creates a new sample and adds this attribute and appends down
+ *  to the current sample.
+ */
++ (void)magnet14AmpsUpSample:(Sample *)sample
+                withInitials:(NSString *)initials
+                     inStore:(AbstractLibraryObjectStore *)store;
+
+/**
+ *  Sample was considered Magnet 1.4 down.This creates a new sample and adds this attribute and appends down
+ *  to the current sample.
+ */
++ (void)magnet14AmpsDownSample:(Sample *)sample
+                  withInitials:(NSString *)initials
+                       inStore:(AbstractLibraryObjectStore *)store;
+
+
 
 /**
  *  Can be used to add a custom tag to a sample, for example for procedures not declared in ProcedureNameConstants.

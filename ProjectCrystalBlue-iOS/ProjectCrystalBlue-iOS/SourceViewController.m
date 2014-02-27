@@ -121,6 +121,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         Source *source = [[libraryObjectStore getAllLibraryObjectsFromTable:[SourceConstants tableName]]
                           objectAtIndex:indexPath.row];
         [libraryObjectStore deleteLibraryObjectWithKey:[source key] FromTable:[SourceConstants tableName]];
+       // [libraryObjectStore deleteAllSamplesForSourceKey:[source key]];
         
         [[self tableView] deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
