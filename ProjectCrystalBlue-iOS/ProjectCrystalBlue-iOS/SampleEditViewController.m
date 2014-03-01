@@ -32,17 +32,17 @@
         UINavigationItem *n = [self navigationItem];
         [n setTitle:[selectedSample key]];
         
-        UIBarButtonItem *bbi = [[UIBarButtonItem alloc]
-                                initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self
-                                action:@selector(addNewItem:)];
+        UIBarButtonItem *actions = [[UIBarButtonItem alloc] initWithTitle:@"Options" style:UIBarButtonItemStyleBordered target:self action:@selector(multiOptions:)];
+        
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         
-        [[self navigationItem] setRightBarButtonItem:bbi];
+        [[self navigationItem] setRightBarButtonItem:actions];
         [[self navigationItem] setLeftBarButtonItem:backbtn];
         
     }
     return self;
 }
+
 
 -(void) goBack:(id)sender
 {
