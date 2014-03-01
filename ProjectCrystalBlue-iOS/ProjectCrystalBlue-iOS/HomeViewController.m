@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "SourceViewController.h"
+#import "SearchSampleViewController.h"
 
 @interface HomeViewController ()
 
@@ -42,5 +43,10 @@
     SourceViewController *sourceViewController = [[SourceViewController alloc] init];
     [[self navigationController] pushViewController:sourceViewController  animated:YES];
     
+}
+
+- (IBAction)searchSample:(id)sender {
+    SearchSampleViewController *searchSampleViewController = [[SearchSampleViewController alloc] init];
+    [[self navigationController] pushViewController:searchSampleViewController  animated:YES];
 }
 @end

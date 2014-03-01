@@ -1,5 +1,5 @@
 //
-//  HomeViewController.h
+//  SearchSampleViewController.h
 //  ProjectCrystalBlue-iOS
 //
 //  Created by Ryan McGraw on 3/1/14.
@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeViewController : UIViewController
+@interface SearchSampleViewController : UIViewController
 
-- (IBAction)viewSources:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *searchField;
 
 - (IBAction)searchSample:(id)sender;
 
