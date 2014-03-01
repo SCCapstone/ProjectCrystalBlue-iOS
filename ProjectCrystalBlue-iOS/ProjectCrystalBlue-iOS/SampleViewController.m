@@ -132,6 +132,7 @@
     {
         SampleEditViewController *sampleEditViewController = [[SampleEditViewController alloc] initWithSample:selectedSample];
         //[sampleEditViewController setSelectedSample:selectedSample];
+        [sampleEditViewController setLibraryObjectStore:libraryObjectStore];
         [[self navigationController] pushViewController:sampleEditViewController  animated:YES];
     }
     

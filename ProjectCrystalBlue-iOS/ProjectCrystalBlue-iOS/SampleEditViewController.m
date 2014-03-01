@@ -66,10 +66,12 @@
     
     if([option isEqualToString:@"VIEW"])
     {
-        LibraryObject *selectedSource = [libraryObjectStore getLibraryObjectForKey:[selectedSample sourceKey] FromTable:[SourceConstants tableName]];
+        
+        NSString *temp = [selectedSample sourceKey];
+        Source *selectedSource = (Source*)[libraryObjectStore getLibraryObjectForKey:temp FromTable:[SourceConstants tableName]];
         
         SourceEditViewController *sourceEditViewController = [[SourceEditViewController alloc] init];
-        [sourceEditViewController setSource:(Source*) selectedSource];
+        [sourceEditViewController setSource:selectedSource];
         [sourceEditViewController setLibraryObjectStore:libraryObjectStore];
         [[self navigationController] pushViewController:sourceEditViewController  animated:YES];
     }
