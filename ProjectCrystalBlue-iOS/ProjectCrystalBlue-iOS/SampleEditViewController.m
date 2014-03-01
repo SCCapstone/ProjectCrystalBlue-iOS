@@ -8,11 +8,14 @@
 
 #import "SampleEditViewController.h"
 #import "ProcedureRecordParser.h"
+#import "SourceEditViewController.h"
+#import "ProcedureListViewController.h"
 
 @interface SampleEditViewController ()
 
 {
     NSArray *tags;
+    NSString *option;
 }
 
 @end
@@ -47,6 +50,53 @@
 -(void) goBack:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void) multiOptions:(id)sender
+{
+    UIActionSheet *message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"View Source", @"Apply Procedure", nil];
+    
+    [message showInView:[UIApplication sharedApplication].keyWindow];
+    
+    while ((!message.hidden) && (message.superview != nil))
+    {
+        [[NSRunLoop currentRunLoop] limitDateForMode:NSDefaultRunLoopMode];
+        
+    }
+    
+    if([option isEqualToString:@"VIEW"])
+    {
+        LibraryObject *selectedSource = [libraryObjectStore getLibraryObjectForKey:[selectedSample sourceKey] FromTable:[SourceConstants tableName]];
+        
+        SourceEditViewController *sourceEditViewController = [[SourceEditViewController alloc] init];
+        [sourceEditViewController setSource:(Source*) selectedSource];
+        [sourceEditViewController setLibraryObjectStore:libraryObjectStore];
+        [[self navigationController] pushViewController:sourceEditViewController  animated:YES];
+    }
+    
+    if([option isEqualToString:@"APPLY"])
+    {
+        ProcedureListViewController *procedureListViewController = [[ProcedureListViewController alloc] initWithSample:selectedSample];
+        //[procedureListViewController setLibraryObjectStore:libraryObjectStore];
+        [[self navigationController] pushViewController:procedureListViewController  animated:YES];
+    }
+    
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex)
+    {
+        case 0:
+            option = @"VIEW";
+            break;
+        case 1:
+            option = @"APPLY";
+            break;
+        case 2:
+            option = @"NOTHING";
+            break;
+    }
 }
 
 
@@ -89,6 +139,12 @@
 {
     [super viewDidLoad];
     tags = [ProcedureRecordParser nameArrayFromRecordList:[[selectedSample attributes] objectForKey:SMP_TAGS]];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+     tags = [ProcedureRecordParser nameArrayFromRecordList:[[selectedSample attributes] objectForKey:SMP_TAGS]];
+    [self.tableView reloadData];
 }
 
 @end
