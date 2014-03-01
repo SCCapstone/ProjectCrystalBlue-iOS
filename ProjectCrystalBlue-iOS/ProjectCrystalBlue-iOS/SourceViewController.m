@@ -45,8 +45,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                 initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self
                                 action:@selector(addNewItem:)];
         
+        UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
+        
         [[self navigationItem] setRightBarButtonItem:bbi];
-        [[self navigationItem] setLeftBarButtonItem:[self editButtonItem]];
+        [[self navigationItem] setLeftBarButtonItem:backbtn];
+        //[[self navigationItem] setLeftBarButtonItem:[self editButtonItem]];
         
         
     }
@@ -111,6 +114,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
     [self presentViewController:navController animated:YES completion:nil];
     
+}
+         
+-(void) goBack:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

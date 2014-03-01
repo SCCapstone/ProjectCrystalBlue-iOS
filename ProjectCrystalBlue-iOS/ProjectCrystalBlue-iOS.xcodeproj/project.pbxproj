@@ -15,6 +15,8 @@
 		B4383AD0189C4A0000DAC28F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383ACF189C4A0000DAC28F /* AppDelegate.m */; };
 		B4383AE2189C71B200DAC28F /* SourceEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383AE0189C71B200DAC28F /* SourceEditViewController.m */; };
 		B4383AE7189DFEBB00DAC28F /* SourceEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4383AE6189DFEBB00DAC28F /* SourceEditViewController.xib */; };
+		B446B92618C2403C00AB4E88 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B92418C2403C00AB4E88 /* HomeViewController.m */; };
+		B446B92718C2403C00AB4E88 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B92518C2403C00AB4E88 /* HomeViewController.xib */; };
 		D001B3BF18B039C000975620 /* LocalLibraryObjectStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D001B3BE18B039C000975620 /* LocalLibraryObjectStoreTests.m */; };
 		D001B3C118B039CB00975620 /* TransactionStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D001B3C018B039CB00975620 /* TransactionStoreTests.m */; };
 		D01DDDBF188DDC5E0059AF09 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDB8188DDC5E0059AF09 /* Sample.m */; };
@@ -106,6 +108,9 @@
 		B4383ADF189C71B200DAC28F /* SourceEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceEditViewController.h; sourceTree = "<group>"; };
 		B4383AE0189C71B200DAC28F /* SourceEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceEditViewController.m; sourceTree = "<group>"; };
 		B4383AE6189DFEBB00DAC28F /* SourceEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SourceEditViewController.xib; sourceTree = "<group>"; };
+		B446B92318C2403C00AB4E88 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		B446B92418C2403C00AB4E88 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		B446B92518C2403C00AB4E88 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		D001B3BE18B039C000975620 /* LocalLibraryObjectStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalLibraryObjectStoreTests.m; sourceTree = "<group>"; };
 		D001B3C018B039CB00975620 /* TransactionStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionStoreTests.m; sourceTree = "<group>"; };
 		D01DDDB7188DDC5E0059AF09 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
@@ -250,9 +255,27 @@
 		B4383AE4189C71B800DAC28F /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
+				B446B92518C2403C00AB4E88 /* HomeViewController.xib */,
 				B4383AE6189DFEBB00DAC28F /* SourceEditViewController.xib */,
 			);
 			name = XIBs;
+			sourceTree = "<group>";
+		};
+		B446B92218C23FB800AB4E88 /* ModelViews */ = {
+			isa = PBXGroup;
+			children = (
+				B4383AC9189C42B700DAC28F /* SourceViewController.h */,
+				B4383ACA189C42B700DAC28F /* SourceViewController.m */,
+				B4383ADF189C71B200DAC28F /* SourceEditViewController.h */,
+				B4383AE0189C71B200DAC28F /* SourceEditViewController.m */,
+				B4014E8B18A7203300D8F4BA /* SampleViewController.h */,
+				B4014E8C18A7203300D8F4BA /* SampleViewController.m */,
+				B42DF80B18AFC4CD001C0E09 /* SampleEditViewController.h */,
+				B42DF80C18AFC4CD001C0E09 /* SampleEditViewController.m */,
+				B42DF81118B1DB3B001C0E09 /* ProcedureListViewController.h */,
+				B42DF81218B1DB3B001C0E09 /* ProcedureListViewController.m */,
+			);
+			name = ModelViews;
 			sourceTree = "<group>";
 		};
 		D001B3BB18B0398700975620 /* TransactionStore */ = {
@@ -326,16 +349,9 @@
 		D01DDDB5188DDC080059AF09 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B4383AC9189C42B700DAC28F /* SourceViewController.h */,
-				B4383ACA189C42B700DAC28F /* SourceViewController.m */,
-				B4383ADF189C71B200DAC28F /* SourceEditViewController.h */,
-				B4383AE0189C71B200DAC28F /* SourceEditViewController.m */,
-				B4014E8B18A7203300D8F4BA /* SampleViewController.h */,
-				B4014E8C18A7203300D8F4BA /* SampleViewController.m */,
-				B42DF80B18AFC4CD001C0E09 /* SampleEditViewController.h */,
-				B42DF80C18AFC4CD001C0E09 /* SampleEditViewController.m */,
-				B42DF81118B1DB3B001C0E09 /* ProcedureListViewController.h */,
-				B42DF81218B1DB3B001C0E09 /* ProcedureListViewController.m */,
+				B446B92218C23FB800AB4E88 /* ModelViews */,
+				B446B92318C2403C00AB4E88 /* HomeViewController.h */,
+				B446B92418C2403C00AB4E88 /* HomeViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -705,6 +721,7 @@
 			files = (
 				D729BD45181C24A000F762A3 /* InfoPlist.strings in Resources */,
 				D729BD4D181C24A000F762A3 /* Images.xcassets in Resources */,
+				B446B92718C2403C00AB4E88 /* HomeViewController.xib in Resources */,
 				D7EFB3E418AECB45004EAB88 /* no_image.png in Resources */,
 				B4383AE7189DFEBB00DAC28F /* SourceEditViewController.xib in Resources */,
 			);
@@ -753,6 +770,7 @@
 				D075270518B009C600622CBA /* AbstractLibraryObjectStore.m in Sources */,
 				D01DDDC0188DDC5E0059AF09 /* SampleConstants.m in Sources */,
 				D72FE4AD18B59F0D00C6452F /* ProcedureNameConstants.m in Sources */,
+				B446B92618C2403C00AB4E88 /* HomeViewController.m in Sources */,
 				B42DF80D18AFC4CD001C0E09 /* SampleEditViewController.m in Sources */,
 				D72FE4AE18B59F0D00C6452F /* PrimitiveProcedures.m in Sources */,
 				D7EFB3E118AEC9A3004EAB88 /* LocalImageStore.m in Sources */,

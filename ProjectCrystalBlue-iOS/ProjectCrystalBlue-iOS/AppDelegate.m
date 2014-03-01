@@ -7,7 +7,7 @@
 //  Another comment
 
 #import "AppDelegate.h"
-#import "SourceViewController.h"
+#import "HomeViewController.h"
 #import "DDLog.h"
 #import "DDTTYLogger.h"
 #import "DDASLLogger.h"
@@ -29,11 +29,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     DDLogInfo(@"Starting Lumberjack log!");
     
-    SourceViewController *sourcesViewController = [[SourceViewController alloc] init];
+    HomeViewController *homeViewController = [[HomeViewController alloc] init];
     
     UINavigationController *navController = [[UINavigationController alloc]
-                                             initWithRootViewController:sourcesViewController];
-    [[self window] setRootViewController:sourcesViewController];
+                                             initWithRootViewController:homeViewController];
+    [[self window] setRootViewController:homeViewController];
     [[self window] setRootViewController:navController];
     
     self.window.backgroundColor = [UIColor whiteColor];
