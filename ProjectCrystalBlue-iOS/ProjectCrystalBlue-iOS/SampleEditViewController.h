@@ -11,7 +11,7 @@
 #import "AbstractCloudLibraryObjectStore.h"
 #import "SimpleDBLibraryObjectStore.h"
 
-@interface SampleEditViewController : UITableViewController <UINavigationControllerDelegate>
+@interface SampleEditViewController : UITableViewController <UINavigationControllerDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) Sample *selectedSample;
 @property (nonatomic, strong) SimpleDBLibraryObjectStore *libraryObjectStore;
