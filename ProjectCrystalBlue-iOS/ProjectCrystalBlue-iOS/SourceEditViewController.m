@@ -57,58 +57,26 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [KeyField setText:[source key]];
     [TypeField setText:[[source attributes] objectForKey:SRC_TYPE]];
     [LatitudeField setText:[[source attributes] objectForKey:SRC_LATITUDE]];
     [LongitudeField setText:[[source attributes] objectForKey:SRC_LONGITUDE]];
-    // [TypeField setText:[source attributes.];
-    // [valueField setText:[NSString stringWithFormat:@"%d", [item valueInDollars]]];
+ 
     
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    // Clear first responder
     [[self view] endEditing:YES];
-    // "Save" changes to item
     
-    BOOL keyExists = [libraryObjectStore libraryObjectExistsForKey:[KeyField text] FromTable:[SourceConstants tableName]];
+    //BOOL keyExists = [libraryObjectStore libraryObjectExistsForKey:[KeyField text] FromTable:[SourceConstants tableName]];
 
     
-    if (!source && !keyExists) {
-        
-        Source *newSource = [[Source alloc] initWithKey:[KeyField text]
-                                       AndWithValues:[SourceConstants attributeDefaultValues]];
-        [[newSource attributes] setObject:[TypeField text] forKey:SRC_TYPE];
-        [[newSource attributes] setObject:[LatitudeField text] forKey:SRC_LATITUDE];
-        [[newSource attributes] setObject:[LongitudeField text] forKey:SRC_LONGITUDE];
-        
-        [libraryObjectStore putLibraryObject:newSource IntoTable:[SourceConstants tableName]];
-        
-        NSString *newSampleKey = [NSString stringWithFormat:@"%@%@", [newSource key], @".001"];
-        Sample *newSample = [[Sample alloc] initWithKey:newSampleKey
-                                          AndWithValues:[SampleConstants attributeDefaultValues]];
-        [[newSample attributes] setObject:[KeyField text] forKey:@"sourceKey"];
-        [libraryObjectStore putLibraryObject:newSample IntoTable:[SampleConstants tableName]];
-    }
-    
-    else if(![source.key isEqualToString:[KeyField text]])
-    {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"This key exists or was edited. Changes discarded" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        
-        [alert show];
-        
-        [alert resignFirstResponder];
-    }
-    
-    else if (source)
-    {
         [[source attributes] setObject:[TypeField text] forKey:SRC_TYPE];
         [[source attributes] setObject:[LatitudeField text] forKey:SRC_LATITUDE];
         [[source attributes] setObject:[LongitudeField text] forKey:SRC_LONGITUDE];
         
         [libraryObjectStore updateLibraryObject:source IntoTable:[SourceConstants tableName]];
-    }
+
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
@@ -121,30 +89,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [[self view] endEditing:YES];
 }
 
-
-- (id)initForNewSource:(BOOL)isNew
-{
-    self = [super initWithNibName:@"SourceEditViewController" bundle:nil];
-    if (self)
-    {
-        if (isNew)
-        {
-            UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]
-                                           initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                           target:self
-                                           action:@selector(save:)];
-            [[self navigationItem] setRightBarButtonItem:doneButton];
-            
-            UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]
-                                             initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                             target:self
-                                             action:@selector(cancel:)];
-            [[self navigationItem] setLeftBarButtonItem:cancelButton];
-        }
-    }
-    
-    return self;
-}
 
 - (void)save:(id)sender
 {

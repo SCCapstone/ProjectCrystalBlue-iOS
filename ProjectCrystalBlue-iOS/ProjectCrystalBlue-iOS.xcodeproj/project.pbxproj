@@ -14,7 +14,6 @@
 		B4383ACB189C42B700DAC28F /* SourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383ACA189C42B700DAC28F /* SourceViewController.m */; };
 		B4383AD0189C4A0000DAC28F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383ACF189C4A0000DAC28F /* AppDelegate.m */; };
 		B4383AE2189C71B200DAC28F /* SourceEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383AE0189C71B200DAC28F /* SourceEditViewController.m */; };
-		B4383AE7189DFEBB00DAC28F /* SourceEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4383AE6189DFEBB00DAC28F /* SourceEditViewController.xib */; };
 		B446B92618C2403C00AB4E88 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B92418C2403C00AB4E88 /* HomeViewController.m */; };
 		B446B92718C2403C00AB4E88 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B92518C2403C00AB4E88 /* HomeViewController.xib */; };
 		B446B92B18C2589900AB4E88 /* SearchSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B92918C2589900AB4E88 /* SearchSampleViewController.m */; };
@@ -32,7 +31,6 @@
 		B446B94F18C2E8B000AB4E88 /* AddSampleSevenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B94D18C2E8B000AB4E88 /* AddSampleSevenViewController.xib */; };
 		B446B95318C2E9CF00AB4E88 /* AddSampleEightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B95118C2E9CF00AB4E88 /* AddSampleEightViewController.m */; };
 		B446B95418C2E9CF00AB4E88 /* AddSampleEightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B95218C2E9CF00AB4E88 /* AddSampleEightViewController.xib */; };
-		B446B95718C2F00D00AB4E88 /* DeleteSourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B95618C2F00D00AB4E88 /* DeleteSourcesViewController.m */; };
 		D001B3BF18B039C000975620 /* LocalLibraryObjectStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D001B3BE18B039C000975620 /* LocalLibraryObjectStoreTests.m */; };
 		D001B3C118B039CB00975620 /* TransactionStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D001B3C018B039CB00975620 /* TransactionStoreTests.m */; };
 		D01DDDBF188DDC5E0059AF09 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDB8188DDC5E0059AF09 /* Sample.m */; };
@@ -123,7 +121,6 @@
 		B4383ACF189C4A0000DAC28F /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B4383ADF189C71B200DAC28F /* SourceEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceEditViewController.h; sourceTree = "<group>"; };
 		B4383AE0189C71B200DAC28F /* SourceEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceEditViewController.m; sourceTree = "<group>"; };
-		B4383AE6189DFEBB00DAC28F /* SourceEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SourceEditViewController.xib; sourceTree = "<group>"; };
 		B446B92318C2403C00AB4E88 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		B446B92418C2403C00AB4E88 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		B446B92518C2403C00AB4E88 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
@@ -151,8 +148,6 @@
 		B446B95018C2E9CF00AB4E88 /* AddSampleEightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSampleEightViewController.h; sourceTree = "<group>"; };
 		B446B95118C2E9CF00AB4E88 /* AddSampleEightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleEightViewController.m; sourceTree = "<group>"; };
 		B446B95218C2E9CF00AB4E88 /* AddSampleEightViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSampleEightViewController.xib; sourceTree = "<group>"; };
-		B446B95518C2F00D00AB4E88 /* DeleteSourcesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteSourcesViewController.h; sourceTree = "<group>"; };
-		B446B95618C2F00D00AB4E88 /* DeleteSourcesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteSourcesViewController.m; sourceTree = "<group>"; };
 		D001B3BE18B039C000975620 /* LocalLibraryObjectStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalLibraryObjectStoreTests.m; sourceTree = "<group>"; };
 		D001B3C018B039CB00975620 /* TransactionStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionStoreTests.m; sourceTree = "<group>"; };
 		D01DDDB7188DDC5E0059AF09 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
@@ -298,7 +293,6 @@
 			isa = PBXGroup;
 			children = (
 				B446B92518C2403C00AB4E88 /* HomeViewController.xib */,
-				B4383AE6189DFEBB00DAC28F /* SourceEditViewController.xib */,
 				B446B92A18C2589900AB4E88 /* SearchSampleViewController.xib */,
 				B446B93018C2C85900AB4E88 /* AddSampleOneViewController.xib */,
 				B446B94318C2E49D00AB4E88 /* AddSampleFiveViewController.xib */,
@@ -426,8 +420,6 @@
 				B446B92418C2403C00AB4E88 /* HomeViewController.m */,
 				B446B92818C2589900AB4E88 /* SearchSampleViewController.h */,
 				B446B92918C2589900AB4E88 /* SearchSampleViewController.m */,
-				B446B95518C2F00D00AB4E88 /* DeleteSourcesViewController.h */,
-				B446B95618C2F00D00AB4E88 /* DeleteSourcesViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -804,7 +796,6 @@
 				B446B92718C2403C00AB4E88 /* HomeViewController.xib in Resources */,
 				B446B95418C2E9CF00AB4E88 /* AddSampleEightViewController.xib in Resources */,
 				D7EFB3E418AECB45004EAB88 /* no_image.png in Resources */,
-				B4383AE7189DFEBB00DAC28F /* SourceEditViewController.xib in Resources */,
 				B446B93218C2C85900AB4E88 /* AddSampleOneViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -844,7 +835,6 @@
 				D7EFB3E818AECBB2004EAB88 /* ImageUtils.m in Sources */,
 				D01DDDC1188DDC5E0059AF09 /* Source.m in Sources */,
 				D075270918B021AD00622CBA /* HardcodedCredentialsProvider.m in Sources */,
-				B446B95718C2F00D00AB4E88 /* DeleteSourcesViewController.m in Sources */,
 				D7D76B09189EED000056CDE4 /* DDLog.m in Sources */,
 				B4014E8D18A7203300D8F4BA /* SampleViewController.m in Sources */,
 				D0B1B728189C876000052443 /* LibraryObject.m in Sources */,

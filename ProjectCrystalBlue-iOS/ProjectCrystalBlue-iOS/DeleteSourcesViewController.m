@@ -44,8 +44,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         
         [[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
         [[self navigationItem] setLeftBarButtonItem:backbtn];
-        
-        
     }
     return self;
 }

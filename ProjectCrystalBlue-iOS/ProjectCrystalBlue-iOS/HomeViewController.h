@@ -16,6 +16,5 @@
 
 - (IBAction)addSource:(id)sender;
 
-- (IBAction)deleteSources:(id)sender;
 
 @end

@@ -57,8 +57,4 @@
     [[self navigationController] pushViewController:asoViewController  animated:YES];
 }
 
-- (IBAction)deleteSources:(id)sender {
-    DeleteSourcesViewController *delViewController = [[DeleteSourcesViewController alloc] init];
-    [[self navigationController] pushViewController:delViewController  animated:YES];
-}
 @end

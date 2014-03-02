@@ -35,23 +35,15 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     // Call the superclass's designated initializer
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        libraryObjectStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data"
-                                                                     WithDatabaseName:@"test_database.db"];
+        libraryObjectStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data" WithDatabaseName:@"test_database.db"];
         
         UINavigationItem *n = [self navigationItem];
-        [n setTitle:@"Sources"];
-        
-        UIBarButtonItem *bbi = [[UIBarButtonItem alloc]
-                                initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self
-                                action:@selector(addNewItem:)];
+        [n setTitle:@"Delete Sources"];
         
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         
-        [[self navigationItem] setRightBarButtonItem:bbi];
+        [[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
         [[self navigationItem] setLeftBarButtonItem:backbtn];
-        //[[self navigationItem] setLeftBarButtonItem:[self editButtonItem]];
-        
-        
     }
     return self;
 }
@@ -94,26 +86,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [sender setTitle:@"Done" forState:UIControlStateNormal]; // Enter editing mode
         [self setEditing:YES animated:YES];
     }
-}
-
-- (IBAction)addNewItem:(id)sender {
-    
-    SourceEditViewController *sourceEditViewController = [[SourceEditViewController alloc] initForNewSource:YES];
-    
-    
-    [sourceEditViewController setSource:nil];
-    [sourceEditViewController setLibraryObjectStore:libraryObjectStore];
-    [sourceEditViewController setDismissBlock:^{
-        [[self tableView] reloadData];
-    }];
-    
-
-
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:sourceEditViewController];
-    [navController setModalPresentationStyle:UIModalPresentationFormSheet];
-    [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-    [self presentViewController:navController animated:YES completion:nil];
-    
 }
          
 -(void) goBack:(id)sender
@@ -167,7 +139,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
     
 }
-
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
