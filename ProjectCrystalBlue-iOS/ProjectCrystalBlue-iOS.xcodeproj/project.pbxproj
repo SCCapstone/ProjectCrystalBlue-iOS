@@ -32,6 +32,7 @@
 		B446B95318C2E9CF00AB4E88 /* AddSampleEightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B95118C2E9CF00AB4E88 /* AddSampleEightViewController.m */; };
 		B446B95418C2E9CF00AB4E88 /* AddSampleEightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B95218C2E9CF00AB4E88 /* AddSampleEightViewController.xib */; };
 		B4D3541118C2FCF300D33197 /* SourceEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4D3541018C2FCF300D33197 /* SourceEditViewController.xib */; };
+		B4D3541318C2FD8600D33197 /* SourcesEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4D3541218C2FD8600D33197 /* SourcesEditViewController.xib */; };
 		D001B3BF18B039C000975620 /* LocalLibraryObjectStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D001B3BE18B039C000975620 /* LocalLibraryObjectStoreTests.m */; };
 		D001B3C118B039CB00975620 /* TransactionStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D001B3C018B039CB00975620 /* TransactionStoreTests.m */; };
 		D01DDDBF188DDC5E0059AF09 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDB8188DDC5E0059AF09 /* Sample.m */; };
@@ -150,6 +151,7 @@
 		B446B95118C2E9CF00AB4E88 /* AddSampleEightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleEightViewController.m; sourceTree = "<group>"; };
 		B446B95218C2E9CF00AB4E88 /* AddSampleEightViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSampleEightViewController.xib; sourceTree = "<group>"; };
 		B4D3541018C2FCF300D33197 /* SourceEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SourceEditViewController.xib; path = "../../../../.Trash/ProjectCrystalBlue-iOS_22/ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS/SourceEditViewController.xib"; sourceTree = "<group>"; };
+		B4D3541218C2FD8600D33197 /* SourcesEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SourcesEditViewController.xib; sourceTree = "<group>"; };
 		D001B3BE18B039C000975620 /* LocalLibraryObjectStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalLibraryObjectStoreTests.m; sourceTree = "<group>"; };
 		D001B3C018B039CB00975620 /* TransactionStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionStoreTests.m; sourceTree = "<group>"; };
 		D01DDDB7188DDC5E0059AF09 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				B446B92518C2403C00AB4E88 /* HomeViewController.xib */,
 				B446B92A18C2589900AB4E88 /* SearchSampleViewController.xib */,
 				B446B93018C2C85900AB4E88 /* AddSampleOneViewController.xib */,
+				B4D3541218C2FD8600D33197 /* SourcesEditViewController.xib */,
 				B446B94318C2E49D00AB4E88 /* AddSampleFiveViewController.xib */,
 				B446B94818C2E67C00AB4E88 /* AddSampleSixViewController.xib */,
 				B446B94D18C2E8B000AB4E88 /* AddSampleSevenViewController.xib */,
@@ -797,6 +800,7 @@
 				D729BD4D181C24A000F762A3 /* Images.xcassets in Resources */,
 				B446B92C18C2589900AB4E88 /* SearchSampleViewController.xib in Resources */,
 				B446B92718C2403C00AB4E88 /* HomeViewController.xib in Resources */,
+				B4D3541318C2FD8600D33197 /* SourcesEditViewController.xib in Resources */,
 				B446B95418C2E9CF00AB4E88 /* AddSampleEightViewController.xib in Resources */,
 				D7EFB3E418AECB45004EAB88 /* no_image.png in Resources */,
 				B446B93218C2C85900AB4E88 /* AddSampleOneViewController.xib in Resources */,
