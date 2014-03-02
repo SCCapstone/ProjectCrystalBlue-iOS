@@ -11,9 +11,6 @@
 #import "AbstractCloudLibraryObjectStore.h"
 
 @interface AddSampleFiveViewController : UIViewController<UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *GroupField;
-@property (weak, nonatomic) IBOutlet UITextField *FormationField;
-@property (weak, nonatomic) IBOutlet UITextField *MemberField;
 
 
 @property(nonatomic) Source* sourceToAdd;

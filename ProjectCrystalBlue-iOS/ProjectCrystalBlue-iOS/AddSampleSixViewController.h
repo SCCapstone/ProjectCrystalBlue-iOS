@@ -1,5 +1,5 @@
 //
-//  AddSourceFiveViewController.h
+//  AddSampleSixViewController.h
 //  ProjectCrystalBlue-iOS
 //
 //  Created by Ryan McGraw on 3/1/14.
@@ -7,13 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+
+#import <UIKit/UIKit.h>
 #import "Source.h"
 #import "AbstractCloudLibraryObjectStore.h"
 
-@interface AddSampleFiveViewController : UIViewController<UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *GroupField;
-@property (weak, nonatomic) IBOutlet UITextField *FormationField;
-@property (weak, nonatomic) IBOutlet UITextField *MemberField;
+@interface AddSampleSixViewController : UIViewController<UITextFieldDelegate>
 
 
 @property(nonatomic) Source* sourceToAdd;

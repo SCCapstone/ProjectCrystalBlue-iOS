@@ -155,6 +155,8 @@
 {
     if ([typeSelected isEqualToString:@"Siliciclastic"]) {
         AddSampleFourViewController *asfViewController = [[AddSampleFourViewController alloc] initWithSource:sourceToAdd];
+        
+        [asfViewController setLibraryObjectStore:libraryObjectStore];
 
         if ([indexPath row] == 0)
         {
@@ -232,6 +234,8 @@
     if ([typeSelected isEqualToString:@"Carbonate"]) {
         AddSampleFourViewController *asfViewController = [[AddSampleFourViewController alloc] initWithSource:sourceToAdd];
         
+        [asfViewController setLibraryObjectStore:libraryObjectStore];
+        
         if ([indexPath row] == 0)
         {
             [asfViewController setTypeSelected:@"Carbonate"];
@@ -298,6 +302,8 @@
     
     if ([typeSelected isEqualToString:@"Authigenic"]) {
         AddSampleFiveViewController *asfViewController = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd];
+        [asfViewController setLibraryObjectStore:libraryObjectStore];
+
         
         if ([indexPath row] == 0)
         {
@@ -318,6 +324,8 @@
     
     if ([typeSelected isEqualToString:@"Plutonic"]) {
         AddSampleFiveViewController *asfViewController = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd];
+        [asfViewController setLibraryObjectStore:libraryObjectStore];
+
         
         if ([indexPath row] == 0)
         {
@@ -394,6 +402,8 @@
     
     if ([typeSelected isEqualToString:@"Volcanic"]) {
         AddSampleFiveViewController *asfViewController = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd];
+        [asfViewController setLibraryObjectStore:libraryObjectStore];
+
         
         if ([indexPath row] == 0)
         {
@@ -454,6 +464,8 @@
     
     if ([typeSelected isEqualToString:@"Metasedimentary"]) {
         AddSampleFiveViewController *asfViewController = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd];
+        [asfViewController setLibraryObjectStore:libraryObjectStore];
+
         
         if ([indexPath row] == 0)
         {
@@ -498,6 +510,8 @@
     
     if ([typeSelected isEqualToString:@"Metaigneous"]) {
         AddSampleFiveViewController *asfViewController = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd];
+        [asfViewController setLibraryObjectStore:libraryObjectStore];
+
         
         if ([indexPath row] == 0)
         {

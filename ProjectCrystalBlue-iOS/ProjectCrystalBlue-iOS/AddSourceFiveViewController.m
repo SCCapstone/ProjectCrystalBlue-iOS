@@ -1,5 +1,5 @@
 //
-//  AddSampleFiveViewController.m
+//  AddSourceFiveViewController.m
 //  ProjectCrystalBlue-iOS
 //
 //  Created by Ryan McGraw on 3/1/14.
@@ -7,23 +7,23 @@
 //
 
 #import "AddSampleFiveViewController.h"
+#import "SimpleDBLibraryObjectStore.h"
+#import "SourceConstants.h"
 #import "Source.h"
-#import "AddSampleSixViewController.h"
-
 
 @interface AddSampleFiveViewController ()
 
 @end
 
 @implementation AddSampleFiveViewController
-@synthesize GroupField, FormationField, MemberField, sourceToAdd, libraryObjectStore;
+@synthesize libraryObjectStore, sourceToAdd;
 
-- (id)initWithSource:(Source *)initSource
+- (id)initWithSource:(id)initSource
 {
     if (self) {
         
         UINavigationItem *n = [self navigationItem];
-        [n setTitle:@"Add Sample: Cont."];
+        [n setTitle:@"Add Sample Cont."];
         
         UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(addSource:)];
         
@@ -34,19 +34,9 @@
         
     }
     return self;
-
 }
 
 - (IBAction)addSource:(id)sender {
-    
-    [[sourceToAdd attributes] setObject:[GroupField text] forKey:SRC_GROUP];
-    [[sourceToAdd attributes] setObject:[FormationField text] forKey:SRC_FORMATION];
-    [[sourceToAdd attributes] setObject:[MemberField text] forKey:SRC_MEMBER];
-    
-    AddSampleSixViewController *assViewController = [[AddSampleSixViewController alloc] initWithSource:sourceToAdd];
-    
-    [assViewController setLibraryObjectStore:libraryObjectStore];
-    [[self navigationController] pushViewController:assViewController  animated:YES];
     
 }
 

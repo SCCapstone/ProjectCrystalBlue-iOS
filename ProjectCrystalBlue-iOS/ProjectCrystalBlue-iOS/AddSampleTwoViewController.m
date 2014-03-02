@@ -101,6 +101,9 @@
     AddSampleThreeViewController *astViewController = [[AddSampleThreeViewController alloc] initWithSource:sourceToAdd];
     AddSampleFiveViewController *asfViewController = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd];
     
+    [astViewController setLibraryObjectStore:libraryObjectStore];
+    [asfViewController setLibraryObjectStore:libraryObjectStore];
+    
     if ([indexPath row] == 0)
     {
         [astViewController setTypeSelected:@"Siliciclastic"];

@@ -24,8 +24,10 @@
 		B446B93518C2CCA200AB4E88 /* AddSampleTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B93418C2CCA200AB4E88 /* AddSampleTwoViewController.m */; };
 		B446B93818C2D3D900AB4E88 /* AddSampleThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B93718C2D3D900AB4E88 /* AddSampleThreeViewController.m */; };
 		B446B93B18C2DA7900AB4E88 /* AddSampleFourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B93A18C2DA7900AB4E88 /* AddSampleFourViewController.m */; };
-		B446B93F18C2DEA200AB4E88 /* AddSampleFiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B93D18C2DEA200AB4E88 /* AddSampleFiveViewController.m */; };
-		B446B94018C2DEA200AB4E88 /* AddSampleFiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B93E18C2DEA200AB4E88 /* AddSampleFiveViewController.xib */; };
+		B446B94418C2E49D00AB4E88 /* AddSampleFiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B94218C2E49D00AB4E88 /* AddSampleFiveViewController.m */; };
+		B446B94518C2E49D00AB4E88 /* AddSampleFiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B94318C2E49D00AB4E88 /* AddSampleFiveViewController.xib */; };
+		B446B94918C2E67C00AB4E88 /* AddSampleSixViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B94718C2E67C00AB4E88 /* AddSampleSixViewController.m */; };
+		B446B94A18C2E67C00AB4E88 /* AddSampleSixViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B94818C2E67C00AB4E88 /* AddSampleSixViewController.xib */; };
 		D001B3BF18B039C000975620 /* LocalLibraryObjectStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D001B3BE18B039C000975620 /* LocalLibraryObjectStoreTests.m */; };
 		D001B3C118B039CB00975620 /* TransactionStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D001B3C018B039CB00975620 /* TransactionStoreTests.m */; };
 		D01DDDBF188DDC5E0059AF09 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDB8188DDC5E0059AF09 /* Sample.m */; };
@@ -132,9 +134,12 @@
 		B446B93718C2D3D900AB4E88 /* AddSampleThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleThreeViewController.m; sourceTree = "<group>"; };
 		B446B93918C2DA7900AB4E88 /* AddSampleFourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSampleFourViewController.h; sourceTree = "<group>"; };
 		B446B93A18C2DA7900AB4E88 /* AddSampleFourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleFourViewController.m; sourceTree = "<group>"; };
-		B446B93C18C2DEA200AB4E88 /* AddSampleFiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSampleFiveViewController.h; sourceTree = "<group>"; };
-		B446B93D18C2DEA200AB4E88 /* AddSampleFiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleFiveViewController.m; sourceTree = "<group>"; };
-		B446B93E18C2DEA200AB4E88 /* AddSampleFiveViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSampleFiveViewController.xib; sourceTree = "<group>"; };
+		B446B94118C2E49D00AB4E88 /* AddSampleFiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSampleFiveViewController.h; sourceTree = "<group>"; };
+		B446B94218C2E49D00AB4E88 /* AddSampleFiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleFiveViewController.m; sourceTree = "<group>"; };
+		B446B94318C2E49D00AB4E88 /* AddSampleFiveViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSampleFiveViewController.xib; sourceTree = "<group>"; };
+		B446B94618C2E67C00AB4E88 /* AddSampleSixViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSampleSixViewController.h; sourceTree = "<group>"; };
+		B446B94718C2E67C00AB4E88 /* AddSampleSixViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleSixViewController.m; sourceTree = "<group>"; };
+		B446B94818C2E67C00AB4E88 /* AddSampleSixViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSampleSixViewController.xib; sourceTree = "<group>"; };
 		D001B3BE18B039C000975620 /* LocalLibraryObjectStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalLibraryObjectStoreTests.m; sourceTree = "<group>"; };
 		D001B3C018B039CB00975620 /* TransactionStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionStoreTests.m; sourceTree = "<group>"; };
 		D01DDDB7188DDC5E0059AF09 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
@@ -283,7 +288,8 @@
 				B4383AE6189DFEBB00DAC28F /* SourceEditViewController.xib */,
 				B446B92A18C2589900AB4E88 /* SearchSampleViewController.xib */,
 				B446B93018C2C85900AB4E88 /* AddSampleOneViewController.xib */,
-				B446B93E18C2DEA200AB4E88 /* AddSampleFiveViewController.xib */,
+				B446B94318C2E49D00AB4E88 /* AddSampleFiveViewController.xib */,
+				B446B94818C2E67C00AB4E88 /* AddSampleSixViewController.xib */,
 			);
 			name = XIBs;
 			sourceTree = "<group>";
@@ -316,8 +322,10 @@
 				B446B93718C2D3D900AB4E88 /* AddSampleThreeViewController.m */,
 				B446B93918C2DA7900AB4E88 /* AddSampleFourViewController.h */,
 				B446B93A18C2DA7900AB4E88 /* AddSampleFourViewController.m */,
-				B446B93C18C2DEA200AB4E88 /* AddSampleFiveViewController.h */,
-				B446B93D18C2DEA200AB4E88 /* AddSampleFiveViewController.m */,
+				B446B94118C2E49D00AB4E88 /* AddSampleFiveViewController.h */,
+				B446B94218C2E49D00AB4E88 /* AddSampleFiveViewController.m */,
+				B446B94618C2E67C00AB4E88 /* AddSampleSixViewController.h */,
+				B446B94718C2E67C00AB4E88 /* AddSampleSixViewController.m */,
 			);
 			name = AddSampleWalkthrough;
 			sourceTree = "<group>";
@@ -766,10 +774,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B446B94518C2E49D00AB4E88 /* AddSampleFiveViewController.xib in Resources */,
 				D729BD45181C24A000F762A3 /* InfoPlist.strings in Resources */,
+				B446B94A18C2E67C00AB4E88 /* AddSampleSixViewController.xib in Resources */,
 				D729BD4D181C24A000F762A3 /* Images.xcassets in Resources */,
 				B446B92C18C2589900AB4E88 /* SearchSampleViewController.xib in Resources */,
-				B446B94018C2DEA200AB4E88 /* AddSampleFiveViewController.xib in Resources */,
 				B446B92718C2403C00AB4E88 /* HomeViewController.xib in Resources */,
 				D7EFB3E418AECB45004EAB88 /* no_image.png in Resources */,
 				B4383AE7189DFEBB00DAC28F /* SourceEditViewController.xib in Resources */,
@@ -798,6 +807,7 @@
 				D07526FC18B0099B00622CBA /* SimpleDBLibraryObjectStore.m in Sources */,
 				D72FE4AF18B59F0D00C6452F /* ProcedureRecordParser.m in Sources */,
 				D7D76B08189EED000056CDE4 /* DDFileLogger.m in Sources */,
+				B446B94918C2E67C00AB4E88 /* AddSampleSixViewController.m in Sources */,
 				D72FE4B118B59F0D00C6452F /* ProcedureRecord.m in Sources */,
 				D075270618B009C600622CBA /* AbstractCloudLibraryObjectStore.m in Sources */,
 				B4383ACB189C42B700DAC28F /* SourceViewController.m in Sources */,
@@ -805,6 +815,7 @@
 				D7D76B0C189EED060056CDE4 /* DDTTYLogger.m in Sources */,
 				D01DDDC2188DDC5E0059AF09 /* SourceConstants.m in Sources */,
 				B446B93518C2CCA200AB4E88 /* AddSampleTwoViewController.m in Sources */,
+				B446B94418C2E49D00AB4E88 /* AddSampleFiveViewController.m in Sources */,
 				D0C85BD518BDB0C00002033E /* ConflictResolution.m in Sources */,
 				D7EFB3E818AECBB2004EAB88 /* ImageUtils.m in Sources */,
 				D01DDDC1188DDC5E0059AF09 /* Source.m in Sources */,
@@ -825,7 +836,6 @@
 				D72FE4AD18B59F0D00C6452F /* ProcedureNameConstants.m in Sources */,
 				B446B92618C2403C00AB4E88 /* HomeViewController.m in Sources */,
 				B42DF80D18AFC4CD001C0E09 /* SampleEditViewController.m in Sources */,
-				B446B93F18C2DEA200AB4E88 /* AddSampleFiveViewController.m in Sources */,
 				D72FE4AE18B59F0D00C6452F /* PrimitiveProcedures.m in Sources */,
 				D7EFB3E118AEC9A3004EAB88 /* LocalImageStore.m in Sources */,
 				B4383AE2189C71B200DAC28F /* SourceEditViewController.m in Sources */,
