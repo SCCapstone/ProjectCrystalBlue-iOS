@@ -8,6 +8,7 @@
 
 #import "AddSampleTwoViewController.h"
 #import "Source.h"
+#import "AddSampleThreeViewController.h"
 
 @interface AddSampleTwoViewController ()
 {
@@ -92,6 +93,88 @@
     [typeArray addObject:@"Igneous"];
     [typeArray addObject:@"Metamorphic"];
     [typeArray addObject:@"Unknown"];
+}
+
+- (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    AddSampleThreeViewController *astViewController = [[AddSampleThreeViewController alloc] initWithSource:sourceToAdd];
+    
+    if ([indexPath row] == 0)
+    {
+        [astViewController setTypeSelected:@"Siliciclastic"];
+        [astViewController setNumRows:8];
+        [[sourceToAdd attributes] setObject:@"Siliciclastic" forKey:SRC_LATITUDE];
+        [[self navigationController] pushViewController:astViewController  animated:YES];
+    }
+    
+    if ([indexPath row] == 1)
+    {
+        [astViewController setTypeSelected:@"Carbonate"];
+        [astViewController setNumRows:7];
+        [[sourceToAdd attributes] setObject:@"Carbonate" forKey:SRC_LATITUDE];
+        [astViewController setSourceToAdd:sourceToAdd];
+        [[self navigationController] pushViewController:astViewController  animated:YES];
+    }
+    
+    if ([indexPath row] == 2)
+    {
+        [astViewController setTypeSelected:@"Authigenic"];
+        [astViewController setNumRows:2];
+        [[sourceToAdd attributes] setObject:@"Authigenic" forKey:SRC_LATITUDE];
+        [astViewController setSourceToAdd:sourceToAdd];
+        [[self navigationController] pushViewController:astViewController  animated:YES];
+    }
+    
+    if ([indexPath row] == 3)
+    {
+        [astViewController setTypeSelected:@"Plutonic"];
+        [astViewController setNumRows:9];
+        [[sourceToAdd attributes] setObject:@"Plutonic" forKey:SRC_LATITUDE];
+        [astViewController setSourceToAdd:sourceToAdd];
+        [[self navigationController] pushViewController:astViewController  animated:YES];
+    }
+    
+    if ([indexPath row] == 4)
+    {
+        [astViewController setTypeSelected:@"Volcanic"];
+        [astViewController setNumRows:7];
+         [[sourceToAdd attributes] setObject:@"Volcanic" forKey:SRC_LATITUDE];
+        [astViewController setSourceToAdd:sourceToAdd];
+        [[self navigationController] pushViewController:astViewController  animated:YES];
+    }
+    
+    if ([indexPath row] == 5)
+    {
+        [astViewController setTypeSelected:@"Metasedimentary"];
+        [astViewController setNumRows:5];
+         [[sourceToAdd attributes] setObject:@"Metasedimentary" forKey:SRC_LATITUDE];
+        [astViewController setSourceToAdd:sourceToAdd];
+        [[self navigationController] pushViewController:astViewController  animated:YES];
+    }
+    
+    if ([indexPath row] == 6)
+    {
+        [astViewController setTypeSelected:@"Metaigneous"];
+        [astViewController setNumRows:6];
+         [[sourceToAdd attributes] setObject:@"Metaigneous" forKey:SRC_LATITUDE];
+        [astViewController setSourceToAdd:sourceToAdd];
+        [[self navigationController] pushViewController:astViewController  animated:YES];
+    }
+    
+    if ([indexPath row] == 7)
+    {
+        [astViewController setTypeSelected:@"Igneous"];
+    }
+    
+    if ([indexPath row] == 8)
+    {
+        [astViewController setTypeSelected:@"Metamorphic"];
+    }
+    
+    if ([indexPath row] == 9)
+    {
+        [astViewController setTypeSelected:@"Unknown"];
+    }
 }
 
 @end
