@@ -9,6 +9,7 @@
 #import "AddSampleTwoViewController.h"
 #import "Source.h"
 #import "AddSampleThreeViewController.h"
+#import "AddSampleFiveViewController.h"
 
 @interface AddSampleTwoViewController ()
 {
@@ -98,6 +99,7 @@
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AddSampleThreeViewController *astViewController = [[AddSampleThreeViewController alloc] initWithSource:sourceToAdd];
+    AddSampleFiveViewController *asfViewController = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd];
     
     if ([indexPath row] == 0)
     {
@@ -157,24 +159,33 @@
     {
         [astViewController setTypeSelected:@"Metaigneous"];
         [astViewController setNumRows:6];
-         [[sourceToAdd attributes] setObject:@"Metaigneous" forKey:SRC_TYPE];
+        [[sourceToAdd attributes] setObject:@"Metaigneous" forKey:SRC_TYPE];
         [astViewController setSourceToAdd:sourceToAdd];
         [[self navigationController] pushViewController:astViewController  animated:YES];
     }
     
     if ([indexPath row] == 7)
     {
-        [astViewController setTypeSelected:@"Igneous"];
+        [[sourceToAdd attributes] setObject:@"Igneous" forKey:SRC_TYPE];
+        [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_LITHOLOGY];
+        [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
+        [[self navigationController] pushViewController:asfViewController  animated:YES];
     }
     
     if ([indexPath row] == 8)
     {
-        [astViewController setTypeSelected:@"Metamorphic"];
+        [[sourceToAdd attributes] setObject:@"Metamorphic" forKey:SRC_TYPE];
+        [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_LITHOLOGY];
+        [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
+        [[self navigationController] pushViewController:asfViewController  animated:YES];
     }
     
     if ([indexPath row] == 9)
     {
-        [astViewController setTypeSelected:@"Unknown"];
+        [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_TYPE];
+        [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_LITHOLOGY];
+        [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
+        [[self navigationController] pushViewController:asfViewController  animated:YES];
     }
 }
 
