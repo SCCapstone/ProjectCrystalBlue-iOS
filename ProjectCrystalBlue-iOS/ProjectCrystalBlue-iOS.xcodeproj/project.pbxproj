@@ -294,8 +294,8 @@
 		B4383AE4189C71B800DAC28F /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
-				D7B5867E18C3AD75003C19C0 /* SourceEditViewController.xib */,
 				B446B92518C2403C00AB4E88 /* HomeViewController.xib */,
+				D7B5867E18C3AD75003C19C0 /* SourceEditViewController.xib */,
 				B446B92A18C2589900AB4E88 /* SearchSampleViewController.xib */,
 				B446B93018C2C85900AB4E88 /* AddSampleOneViewController.xib */,
 				B446B94318C2E49D00AB4E88 /* AddSampleFiveViewController.xib */,
