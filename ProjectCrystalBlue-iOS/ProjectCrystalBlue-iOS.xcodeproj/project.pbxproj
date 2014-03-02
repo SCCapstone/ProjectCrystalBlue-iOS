@@ -23,6 +23,7 @@
 		B446B93218C2C85900AB4E88 /* AddSampleOneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B93018C2C85900AB4E88 /* AddSampleOneViewController.xib */; };
 		B446B93518C2CCA200AB4E88 /* AddSampleTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B93418C2CCA200AB4E88 /* AddSampleTwoViewController.m */; };
 		B446B93818C2D3D900AB4E88 /* AddSampleThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B93718C2D3D900AB4E88 /* AddSampleThreeViewController.m */; };
+		B446B93B18C2DA7900AB4E88 /* AddSampleFourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B93A18C2DA7900AB4E88 /* AddSampleFourViewController.m */; };
 		D001B3BF18B039C000975620 /* LocalLibraryObjectStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D001B3BE18B039C000975620 /* LocalLibraryObjectStoreTests.m */; };
 		D001B3C118B039CB00975620 /* TransactionStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D001B3C018B039CB00975620 /* TransactionStoreTests.m */; };
 		D01DDDBF188DDC5E0059AF09 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDB8188DDC5E0059AF09 /* Sample.m */; };
@@ -127,6 +128,8 @@
 		B446B93418C2CCA200AB4E88 /* AddSampleTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleTwoViewController.m; sourceTree = "<group>"; };
 		B446B93618C2D3D900AB4E88 /* AddSampleThreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSampleThreeViewController.h; sourceTree = "<group>"; };
 		B446B93718C2D3D900AB4E88 /* AddSampleThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleThreeViewController.m; sourceTree = "<group>"; };
+		B446B93918C2DA7900AB4E88 /* AddSampleFourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSampleFourViewController.h; sourceTree = "<group>"; };
+		B446B93A18C2DA7900AB4E88 /* AddSampleFourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleFourViewController.m; sourceTree = "<group>"; };
 		D001B3BE18B039C000975620 /* LocalLibraryObjectStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalLibraryObjectStoreTests.m; sourceTree = "<group>"; };
 		D001B3C018B039CB00975620 /* TransactionStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionStoreTests.m; sourceTree = "<group>"; };
 		D01DDDB7188DDC5E0059AF09 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
@@ -305,6 +308,8 @@
 				B446B93418C2CCA200AB4E88 /* AddSampleTwoViewController.m */,
 				B446B93618C2D3D900AB4E88 /* AddSampleThreeViewController.h */,
 				B446B93718C2D3D900AB4E88 /* AddSampleThreeViewController.m */,
+				B446B93918C2DA7900AB4E88 /* AddSampleFourViewController.h */,
+				B446B93A18C2DA7900AB4E88 /* AddSampleFourViewController.m */,
 			);
 			name = AddSampleWalkthrough;
 			sourceTree = "<group>";
@@ -801,6 +806,7 @@
 				D075270018B009A500622CBA /* LocalLibraryObjectStore.m in Sources */,
 				D72FE4B018B59F0D00C6452F /* Procedures.m in Sources */,
 				D07526DF18B0084400622CBA /* Transaction.m in Sources */,
+				B446B93B18C2DA7900AB4E88 /* AddSampleFourViewController.m in Sources */,
 				D729BD47181C24A000F762A3 /* main.m in Sources */,
 				D07526F018B008E300622CBA /* FMDatabase.m in Sources */,
 				D01DDDBF188DDC5E0059AF09 /* Sample.m in Sources */,

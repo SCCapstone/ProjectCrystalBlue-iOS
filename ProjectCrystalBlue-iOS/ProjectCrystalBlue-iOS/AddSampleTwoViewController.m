@@ -103,7 +103,8 @@
     {
         [astViewController setTypeSelected:@"Siliciclastic"];
         [astViewController setNumRows:8];
-        [[sourceToAdd attributes] setObject:@"Siliciclastic" forKey:SRC_LATITUDE];
+        [[sourceToAdd attributes] setObject:@"Siliciclastic" forKey:SRC_TYPE];
+         [astViewController setSourceToAdd:sourceToAdd];
         [[self navigationController] pushViewController:astViewController  animated:YES];
     }
     
@@ -111,7 +112,7 @@
     {
         [astViewController setTypeSelected:@"Carbonate"];
         [astViewController setNumRows:7];
-        [[sourceToAdd attributes] setObject:@"Carbonate" forKey:SRC_LATITUDE];
+        [[sourceToAdd attributes] setObject:@"Carbonate" forKey:SRC_TYPE];
         [astViewController setSourceToAdd:sourceToAdd];
         [[self navigationController] pushViewController:astViewController  animated:YES];
     }
@@ -120,7 +121,7 @@
     {
         [astViewController setTypeSelected:@"Authigenic"];
         [astViewController setNumRows:2];
-        [[sourceToAdd attributes] setObject:@"Authigenic" forKey:SRC_LATITUDE];
+        [[sourceToAdd attributes] setObject:@"Authigenic" forKey:SRC_TYPE];
         [astViewController setSourceToAdd:sourceToAdd];
         [[self navigationController] pushViewController:astViewController  animated:YES];
     }
@@ -129,7 +130,7 @@
     {
         [astViewController setTypeSelected:@"Plutonic"];
         [astViewController setNumRows:9];
-        [[sourceToAdd attributes] setObject:@"Plutonic" forKey:SRC_LATITUDE];
+        [[sourceToAdd attributes] setObject:@"Plutonic" forKey:SRC_TYPE];
         [astViewController setSourceToAdd:sourceToAdd];
         [[self navigationController] pushViewController:astViewController  animated:YES];
     }
@@ -138,7 +139,7 @@
     {
         [astViewController setTypeSelected:@"Volcanic"];
         [astViewController setNumRows:7];
-         [[sourceToAdd attributes] setObject:@"Volcanic" forKey:SRC_LATITUDE];
+         [[sourceToAdd attributes] setObject:@"Volcanic" forKey:SRC_TYPE];
         [astViewController setSourceToAdd:sourceToAdd];
         [[self navigationController] pushViewController:astViewController  animated:YES];
     }
@@ -147,7 +148,7 @@
     {
         [astViewController setTypeSelected:@"Metasedimentary"];
         [astViewController setNumRows:5];
-         [[sourceToAdd attributes] setObject:@"Metasedimentary" forKey:SRC_LATITUDE];
+         [[sourceToAdd attributes] setObject:@"Metasedimentary" forKey:SRC_TYPE];
         [astViewController setSourceToAdd:sourceToAdd];
         [[self navigationController] pushViewController:astViewController  animated:YES];
     }
@@ -156,7 +157,7 @@
     {
         [astViewController setTypeSelected:@"Metaigneous"];
         [astViewController setNumRows:6];
-         [[sourceToAdd attributes] setObject:@"Metaigneous" forKey:SRC_LATITUDE];
+         [[sourceToAdd attributes] setObject:@"Metaigneous" forKey:SRC_TYPE];
         [astViewController setSourceToAdd:sourceToAdd];
         [[self navigationController] pushViewController:astViewController  animated:YES];
     }

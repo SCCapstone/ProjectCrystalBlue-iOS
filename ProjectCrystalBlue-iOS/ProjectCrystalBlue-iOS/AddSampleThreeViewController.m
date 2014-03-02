@@ -9,6 +9,7 @@
 
 #import "Source.h"
 #import "AddSampleThreeViewController.h"
+#import "AddSampleFourViewController.h"
 
 @interface AddSampleThreeViewController ()
 {
@@ -152,15 +153,150 @@
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([typeSelected isEqualToString:@"Siliciclastic"]) {
+        AddSampleFourViewController *asfViewController = [[AddSampleFourViewController alloc] initWithSource:sourceToAdd];
+
         if ([indexPath row] == 0)
         {
-            
+            [asfViewController setTypeSelected:@"Siliciclastic"];
+            [asfViewController setNumRows:15];
+            [[sourceToAdd attributes] setObject:@"Conglomerate" forKey:SRC_LITHOLOGY];
+            [asfViewController setSourceToAdd:sourceToAdd];
+            [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
     
-        if([indexPath row] == 1)
+        if ([indexPath row] == 1)
         {
-            
+            [asfViewController setTypeSelected:@"Siliciclastic"];
+            [asfViewController setNumRows:15];
+            [[sourceToAdd attributes] setObject:@"Conglomerate" forKey:SRC_LITHOLOGY];
+            [asfViewController setSourceToAdd:sourceToAdd];
+            [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
+        
+        if ([indexPath row] == 2)
+        {
+            [asfViewController setTypeSelected:@"Siliciclastic"];
+            [asfViewController setNumRows:15];
+            [[sourceToAdd attributes] setObject:@"Breccia" forKey:SRC_LITHOLOGY];
+            [asfViewController setSourceToAdd:sourceToAdd];
+            [[self navigationController] pushViewController:asfViewController  animated:YES];
+        }
+        
+        if ([indexPath row] == 3)
+        {
+            [asfViewController setTypeSelected:@"Siliciclastic"];
+            [asfViewController setNumRows:15];
+            [[sourceToAdd attributes] setObject:@"Sandstone" forKey:SRC_LITHOLOGY];
+            [asfViewController setSourceToAdd:sourceToAdd];
+            [[self navigationController] pushViewController:asfViewController  animated:YES];
+        }
+        
+        if ([indexPath row] == 4)
+        {
+            [asfViewController setTypeSelected:@"Siliciclastic"];
+            [asfViewController setNumRows:15];
+            [[sourceToAdd attributes] setObject:@"Mudstone" forKey:SRC_LITHOLOGY];
+            [asfViewController setSourceToAdd:sourceToAdd];
+            [[self navigationController] pushViewController:asfViewController  animated:YES];
+        }
+        
+        if ([indexPath row] == 5)
+        {
+            [asfViewController setTypeSelected:@"Siliciclastic"];
+            [asfViewController setNumRows:15];
+            [[sourceToAdd attributes] setObject:@"Gravel" forKey:SRC_LITHOLOGY];
+            [asfViewController setSourceToAdd:sourceToAdd];
+            [[self navigationController] pushViewController:asfViewController  animated:YES];
+        }
+        
+        if ([indexPath row] == 6)
+        {
+            [asfViewController setTypeSelected:@"Siliciclastic"];
+            [asfViewController setNumRows:15];
+            [[sourceToAdd attributes] setObject:@"Sand" forKey:SRC_LITHOLOGY];
+            [asfViewController setSourceToAdd:sourceToAdd];
+            [[self navigationController] pushViewController:asfViewController  animated:YES];
+        }
+        
+        if ([indexPath row] == 7)
+        {
+            [asfViewController setTypeSelected:@"Siliciclastic"];
+            [asfViewController setNumRows:15];
+            [[sourceToAdd attributes] setObject:@"Mud" forKey:SRC_LITHOLOGY];
+            [asfViewController setSourceToAdd:sourceToAdd];
+            [[self navigationController] pushViewController:asfViewController  animated:YES];
+        }
+    }
+    
+    if ([typeSelected isEqualToString:@"Carbonate"]) {
+        AddSampleFourViewController *asfViewController = [[AddSampleFourViewController alloc] initWithSource:sourceToAdd];
+        
+        if ([indexPath row] == 0)
+        {
+            [asfViewController setTypeSelected:@"Carbonate"];
+            [asfViewController setNumRows:5];
+            [[sourceToAdd attributes] setObject:@"Marl" forKey:SRC_LITHOLOGY];
+            [asfViewController setSourceToAdd:sourceToAdd];
+            [[self navigationController] pushViewController:asfViewController  animated:YES];
+        }
+        
+        if ([indexPath row] == 1)
+        {
+            [asfViewController setTypeSelected:@"Carbonate"];
+            [asfViewController setNumRows:5];
+            [[sourceToAdd attributes] setObject:@"Micrite" forKey:SRC_LITHOLOGY];
+            [asfViewController setSourceToAdd:sourceToAdd];
+            [[self navigationController] pushViewController:asfViewController  animated:YES];
+        }
+        
+        if ([indexPath row] == 2)
+        {
+            [asfViewController setTypeSelected:@"Carbonate"];
+            [asfViewController setNumRows:5];
+            [[sourceToAdd attributes] setObject:@"Wackestone" forKey:SRC_LITHOLOGY];
+            [asfViewController setSourceToAdd:sourceToAdd];
+            [[self navigationController] pushViewController:asfViewController  animated:YES];
+        }
+        
+        if ([indexPath row] == 3)
+        {
+            [asfViewController setTypeSelected:@"Carbonate"];
+            [asfViewController setNumRows:5];
+            [[sourceToAdd attributes] setObject:@"Packstone" forKey:SRC_LITHOLOGY];
+            [asfViewController setSourceToAdd:sourceToAdd];
+            [[self navigationController] pushViewController:asfViewController  animated:YES];
+        }
+        
+        if ([indexPath row] == 4)
+        {
+            [asfViewController setTypeSelected:@"Carbonate"];
+            [asfViewController setNumRows:5];
+            [[sourceToAdd attributes] setObject:@"Grainstone" forKey:SRC_LITHOLOGY];
+            [asfViewController setSourceToAdd:sourceToAdd];
+            [[self navigationController] pushViewController:asfViewController  animated:YES];
+        }
+        
+        if ([indexPath row] == 5)
+        {
+            [asfViewController setTypeSelected:@"Carbonate"];
+            [asfViewController setNumRows:5];
+            [[sourceToAdd attributes] setObject:@"Boundstone" forKey:SRC_LITHOLOGY];
+            [asfViewController setSourceToAdd:sourceToAdd];
+            [[self navigationController] pushViewController:asfViewController  animated:YES];
+        }
+        
+        if ([indexPath row] == 6)
+        {
+            [asfViewController setTypeSelected:@"Carbonate"];
+            [asfViewController setNumRows:5];
+            [[sourceToAdd attributes] setObject:@"Unknown" forKey:SRC_LITHOLOGY];
+            [asfViewController setSourceToAdd:sourceToAdd];
+            [[self navigationController] pushViewController:asfViewController  animated:YES];
+        }
+
+        
+    }
+    
     
 }
 
