@@ -58,10 +58,23 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [TypeField setText:[[source attributes] objectForKey:SRC_TYPE]];
+    [LithologyField setText:[[source attributes] objectForKey:SRC_LITHOLOGY]];
+    [DeposystemField setText:[[source attributes] objectForKey:SRC_DEPOSYSTEM]];
+    [GroupField setText:[[source attributes] objectForKey:SRC_GROUP]];
+    [FormationField setText:[[source attributes] objectForKey:SRC_FORMATION]];
+    [MemberField setText:[[source attributes] objectForKey:SRC_MEMBER]];
+    [RegionField setText:[[source attributes] objectForKey:SRC_REGION]];
+    [LocalityField setText:[[source attributes] objectForKey:SRC_LOCALITY]];
+    [SectionField setText:[[source attributes] objectForKey:SRC_SECTION]];
+    [MeterLevelField setText:[[source attributes] objectForKey:SRC_METER_LEVEL]];
     [LatitudeField setText:[[source attributes] objectForKey:SRC_LATITUDE]];
     [LongitudeField setText:[[source attributes] objectForKey:SRC_LONGITUDE]];
- 
-    
+    [AgeField setText:[[source attributes] objectForKey:SRC_AGE]];
+    [AgeBasis1Field setText:[[source attributes] objectForKey:SRC_AGE_BASIS1]];
+    [AgeBasis2Field setText:[[source attributes] objectForKey:SRC_AGE_BASIS2]];
+    [ProjectField setText:[[source attributes] objectForKey:SRC_PROJECT]];
+    [SubprojectField setText:[[source attributes] objectForKey:SRC_SUBPROJECT]];
+  
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -71,11 +84,25 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     //BOOL keyExists = [libraryObjectStore libraryObjectExistsForKey:[KeyField text] FromTable:[SourceConstants tableName]];
 
     
-        [[source attributes] setObject:[TypeField text] forKey:SRC_TYPE];
-        [[source attributes] setObject:[LatitudeField text] forKey:SRC_LATITUDE];
-        [[source attributes] setObject:[LongitudeField text] forKey:SRC_LONGITUDE];
+    [[source attributes] setObject:[TypeField text] forKey:SRC_TYPE];
+    [[source attributes] setObject:[LithologyField text] forKey:SRC_LITHOLOGY];
+    [[source attributes] setObject:[DeposystemField text] forKey:SRC_DEPOSYSTEM];
+    [[source attributes] setObject:[GroupField text] forKey:SRC_GROUP];
+    [[source attributes] setObject:[FormationField text] forKey:SRC_FORMATION];
+    [[source attributes] setObject:[MemberField text] forKey:SRC_MEMBER];
+    [[source attributes] setObject:[RegionField text] forKey:SRC_REGION];
+    [[source attributes] setObject:[LocalityField text] forKey:SRC_LOCALITY];
+    [[source attributes] setObject:[SectionField text] forKey:SRC_SECTION];
+    [[source attributes] setObject:[MeterLevelField text] forKey:SRC_METER_LEVEL];
+    [[source attributes] setObject:[LatitudeField text] forKey:SRC_LATITUDE];
+    [[source attributes] setObject:[LongitudeField text] forKey:SRC_LONGITUDE];
+    [[source attributes] setObject:[AgeField text] forKey:SRC_AGE];
+    [[source attributes] setObject:[AgeBasis1Field text] forKey:SRC_AGE_BASIS1];
+    [[source attributes] setObject:[AgeBasis2Field text] forKey:SRC_AGE_BASIS2];
+    [[source attributes] setObject:[ProjectField text] forKey:SRC_PROJECT];
+    [[source attributes] setObject:[SubprojectField text] forKey:SRC_SUBPROJECT];
         
-        [libraryObjectStore updateLibraryObject:source IntoTable:[SourceConstants tableName]];
+    [libraryObjectStore updateLibraryObject:source IntoTable:[SourceConstants tableName]];
 
 }
 
