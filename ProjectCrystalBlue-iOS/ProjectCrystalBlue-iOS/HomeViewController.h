@@ -14,4 +14,5 @@
 
 - (IBAction)searchSample:(id)sender;
 
+- (IBAction)addSource:(id)sender;
 @end
