@@ -11,8 +11,13 @@
 #import "AbstractCloudLibraryObjectStore.h"
 #import "Sample.h"
 #import "SampleConstants.h"
+#import "DDLog.h"
 
-
+#ifdef DEBUG
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+#else
+static const int ddLogLevel = LOG_LEVEL_WARN;
+#endif
 @interface AddSampleEightViewController ()
 
 @end
@@ -41,11 +46,11 @@
 }
 
 - (IBAction)addSource:(id)sender {
-    
+
+    DDLogInfo(@"Adding new source %@", sourceToAdd.key);
     [[sourceToAdd attributes] setObject:[ProjectField text] forKey:SRC_PROJECT];
     [[sourceToAdd attributes] setObject:[SubprojectField text] forKey:SRC_SUBPROJECT];
     [libraryObjectStore putLibraryObject:sourceToAdd IntoTable:[SourceConstants tableName]];
-    
     
     NSString *newSampleKey = [NSString stringWithFormat:@"%@%@", [sourceToAdd key], @".001"];
     Sample *newSample = [[Sample alloc] initWithKey:newSampleKey
