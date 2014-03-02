@@ -37,6 +37,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     if (self) {
         libraryObjectStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data" WithDatabaseName:@"test_database.db"];
         
+        [libraryObjectStore synchronizeWithCloud];
+        
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Delete Sources"];
         
