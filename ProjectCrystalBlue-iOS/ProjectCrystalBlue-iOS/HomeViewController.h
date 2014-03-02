@@ -15,4 +15,7 @@
 - (IBAction)searchSample:(id)sender;
 
 - (IBAction)addSource:(id)sender;
+
+- (IBAction)deleteSources:(id)sender;
+
 @end

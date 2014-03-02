@@ -10,6 +10,7 @@
 #import "SourceViewController.h"
 #import "SearchSampleViewController.h"
 #import "AddSampleOneViewController.h"
+#import "DeleteSourcesViewController.h"
 
 @interface HomeViewController ()
 
@@ -54,5 +55,10 @@
 - (IBAction)addSource:(id)sender {
     AddSampleOneViewController *asoViewController = [[AddSampleOneViewController alloc] init];
     [[self navigationController] pushViewController:asoViewController  animated:YES];
+}
+
+- (IBAction)deleteSources:(id)sender {
+    DeleteSourcesViewController *delViewController = [[DeleteSourcesViewController alloc] init];
+    [[self navigationController] pushViewController:delViewController  animated:YES];
 }
 @end
