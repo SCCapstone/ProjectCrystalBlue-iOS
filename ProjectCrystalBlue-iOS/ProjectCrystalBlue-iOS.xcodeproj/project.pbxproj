@@ -28,6 +28,10 @@
 		B446B94518C2E49D00AB4E88 /* AddSampleFiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B94318C2E49D00AB4E88 /* AddSampleFiveViewController.xib */; };
 		B446B94918C2E67C00AB4E88 /* AddSampleSixViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B94718C2E67C00AB4E88 /* AddSampleSixViewController.m */; };
 		B446B94A18C2E67C00AB4E88 /* AddSampleSixViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B94818C2E67C00AB4E88 /* AddSampleSixViewController.xib */; };
+		B446B94E18C2E8B000AB4E88 /* AddSampleSevenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B94C18C2E8B000AB4E88 /* AddSampleSevenViewController.m */; };
+		B446B94F18C2E8B000AB4E88 /* AddSampleSevenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B94D18C2E8B000AB4E88 /* AddSampleSevenViewController.xib */; };
+		B446B95318C2E9CF00AB4E88 /* AddSampleEightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B95118C2E9CF00AB4E88 /* AddSampleEightViewController.m */; };
+		B446B95418C2E9CF00AB4E88 /* AddSampleEightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B95218C2E9CF00AB4E88 /* AddSampleEightViewController.xib */; };
 		D001B3BF18B039C000975620 /* LocalLibraryObjectStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D001B3BE18B039C000975620 /* LocalLibraryObjectStoreTests.m */; };
 		D001B3C118B039CB00975620 /* TransactionStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D001B3C018B039CB00975620 /* TransactionStoreTests.m */; };
 		D01DDDBF188DDC5E0059AF09 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDB8188DDC5E0059AF09 /* Sample.m */; };
@@ -140,6 +144,12 @@
 		B446B94618C2E67C00AB4E88 /* AddSampleSixViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSampleSixViewController.h; sourceTree = "<group>"; };
 		B446B94718C2E67C00AB4E88 /* AddSampleSixViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleSixViewController.m; sourceTree = "<group>"; };
 		B446B94818C2E67C00AB4E88 /* AddSampleSixViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSampleSixViewController.xib; sourceTree = "<group>"; };
+		B446B94B18C2E8B000AB4E88 /* AddSampleSevenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSampleSevenViewController.h; sourceTree = "<group>"; };
+		B446B94C18C2E8B000AB4E88 /* AddSampleSevenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleSevenViewController.m; sourceTree = "<group>"; };
+		B446B94D18C2E8B000AB4E88 /* AddSampleSevenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSampleSevenViewController.xib; sourceTree = "<group>"; };
+		B446B95018C2E9CF00AB4E88 /* AddSampleEightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSampleEightViewController.h; sourceTree = "<group>"; };
+		B446B95118C2E9CF00AB4E88 /* AddSampleEightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleEightViewController.m; sourceTree = "<group>"; };
+		B446B95218C2E9CF00AB4E88 /* AddSampleEightViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSampleEightViewController.xib; sourceTree = "<group>"; };
 		D001B3BE18B039C000975620 /* LocalLibraryObjectStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalLibraryObjectStoreTests.m; sourceTree = "<group>"; };
 		D001B3C018B039CB00975620 /* TransactionStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionStoreTests.m; sourceTree = "<group>"; };
 		D01DDDB7188DDC5E0059AF09 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
@@ -290,6 +300,8 @@
 				B446B93018C2C85900AB4E88 /* AddSampleOneViewController.xib */,
 				B446B94318C2E49D00AB4E88 /* AddSampleFiveViewController.xib */,
 				B446B94818C2E67C00AB4E88 /* AddSampleSixViewController.xib */,
+				B446B94D18C2E8B000AB4E88 /* AddSampleSevenViewController.xib */,
+				B446B95218C2E9CF00AB4E88 /* AddSampleEightViewController.xib */,
 			);
 			name = XIBs;
 			sourceTree = "<group>";
@@ -326,6 +338,10 @@
 				B446B94218C2E49D00AB4E88 /* AddSampleFiveViewController.m */,
 				B446B94618C2E67C00AB4E88 /* AddSampleSixViewController.h */,
 				B446B94718C2E67C00AB4E88 /* AddSampleSixViewController.m */,
+				B446B94B18C2E8B000AB4E88 /* AddSampleSevenViewController.h */,
+				B446B94C18C2E8B000AB4E88 /* AddSampleSevenViewController.m */,
+				B446B95018C2E9CF00AB4E88 /* AddSampleEightViewController.h */,
+				B446B95118C2E9CF00AB4E88 /* AddSampleEightViewController.m */,
 			);
 			name = AddSampleWalkthrough;
 			sourceTree = "<group>";
@@ -776,10 +792,12 @@
 			files = (
 				B446B94518C2E49D00AB4E88 /* AddSampleFiveViewController.xib in Resources */,
 				D729BD45181C24A000F762A3 /* InfoPlist.strings in Resources */,
+				B446B94F18C2E8B000AB4E88 /* AddSampleSevenViewController.xib in Resources */,
 				B446B94A18C2E67C00AB4E88 /* AddSampleSixViewController.xib in Resources */,
 				D729BD4D181C24A000F762A3 /* Images.xcassets in Resources */,
 				B446B92C18C2589900AB4E88 /* SearchSampleViewController.xib in Resources */,
 				B446B92718C2403C00AB4E88 /* HomeViewController.xib in Resources */,
+				B446B95418C2E9CF00AB4E88 /* AddSampleEightViewController.xib in Resources */,
 				D7EFB3E418AECB45004EAB88 /* no_image.png in Resources */,
 				B4383AE7189DFEBB00DAC28F /* SourceEditViewController.xib in Resources */,
 				B446B93218C2C85900AB4E88 /* AddSampleOneViewController.xib in Resources */,
@@ -812,6 +830,7 @@
 				D075270618B009C600622CBA /* AbstractCloudLibraryObjectStore.m in Sources */,
 				B4383ACB189C42B700DAC28F /* SourceViewController.m in Sources */,
 				D7EFB3D618AEC695004EAB88 /* AbstractMobileImageStore.m in Sources */,
+				B446B95318C2E9CF00AB4E88 /* AddSampleEightViewController.m in Sources */,
 				D7D76B0C189EED060056CDE4 /* DDTTYLogger.m in Sources */,
 				D01DDDC2188DDC5E0059AF09 /* SourceConstants.m in Sources */,
 				B446B93518C2CCA200AB4E88 /* AddSampleTwoViewController.m in Sources */,
@@ -844,6 +863,7 @@
 				D07526F118B008E300622CBA /* FMDatabaseAdditions.m in Sources */,
 				D07526F418B008E300622CBA /* FMResultSet.m in Sources */,
 				B446B92B18C2589900AB4E88 /* SearchSampleViewController.m in Sources */,
+				B446B94E18C2E8B000AB4E88 /* AddSampleSevenViewController.m in Sources */,
 				D07526F218B008E300622CBA /* FMDatabasePool.m in Sources */,
 				D7D76B07189EED000056CDE4 /* DDASLLogger.m in Sources */,
 				B446B93818C2D3D900AB4E88 /* AddSampleThreeViewController.m in Sources */,

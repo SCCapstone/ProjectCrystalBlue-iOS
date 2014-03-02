@@ -6,27 +6,29 @@
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import "AddSampleSixViewController.h"
-#import "AddSampleSevenViewController.h"
+#import "AddSampleEightViewController.h"
+#import "SourceConstants.h"
+#import "AbstractCloudLibraryObjectStore.h"
+#import "Sample.h"
+#import "SampleConstants.h"
 
 
-@interface AddSampleSixViewController ()
+@interface AddSampleEightViewController ()
 
 @end
 
-@implementation AddSampleSixViewController
-@synthesize libraryObjectStore, sourceToAdd, RegionField, LocalityField, SectionField, MeterLevelField;
+@implementation AddSampleEightViewController
+@synthesize libraryObjectStore, sourceToAdd, ProjectField, SubprojectField;
 
 - (id)initWithSource:(Source *)initSource
 {
     if (self) {
-        
         sourceToAdd = initSource;
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Add Sample Cont."];
         
-        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(addSource:)];
+        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(addSource:)];
         
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         
@@ -39,17 +41,21 @@
 }
 
 - (IBAction)addSource:(id)sender {
-    [[sourceToAdd attributes] setObject:[RegionField text] forKey:SRC_REGION];
-    [[sourceToAdd attributes] setObject:[LocalityField text] forKey:SRC_LOCALITY];
-    [[sourceToAdd attributes] setObject:[SectionField text] forKey:SRC_SECTION];
-    [[sourceToAdd attributes] setObject:[MeterLevelField text] forKey:SRC_METER_LEVEL];
     
-    AddSampleSevenViewController *assViewController = [[AddSampleSevenViewController alloc] initWithSource:sourceToAdd];
+    [[sourceToAdd attributes] setObject:[ProjectField text] forKey:SRC_PROJECT];
+    [[sourceToAdd attributes] setObject:[SubprojectField text] forKey:SRC_SUBPROJECT];
+    [libraryObjectStore putLibraryObject:sourceToAdd IntoTable:[SourceConstants tableName]];
     
-    [assViewController setLibraryObjectStore:libraryObjectStore];
-    [[self navigationController] pushViewController:assViewController  animated:YES];
+    
+    NSString *newSampleKey = [NSString stringWithFormat:@"%@%@", [sourceToAdd key], @".001"];
+    Sample *newSample = [[Sample alloc] initWithKey:newSampleKey
+                                      AndWithValues:[SampleConstants attributeDefaultValues]];
+    [[newSample attributes] setObject:[sourceToAdd key] forKey:@"sourceKey"];
+    [libraryObjectStore putLibraryObject:newSample IntoTable:[SampleConstants tableName]];
 
-   }
+    [[self navigationController] popToRootViewControllerAnimated:YES];
+    
+}
 
 -(void) goBack:(id)sender
 {

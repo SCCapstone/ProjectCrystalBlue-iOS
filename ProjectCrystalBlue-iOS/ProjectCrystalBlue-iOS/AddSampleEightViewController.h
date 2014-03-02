@@ -1,5 +1,5 @@
 //
-//  AddSampleSixViewController.h
+//  AddSampleEightViewController.h
 //  ProjectCrystalBlue-iOS
 //
 //  Created by Ryan McGraw on 3/1/14.
@@ -10,12 +10,9 @@
 #import "Source.h"
 #import "AbstractCloudLibraryObjectStore.h"
 
-@interface AddSampleSixViewController : UIViewController<UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *RegionField;
-@property (weak, nonatomic) IBOutlet UITextField *LocalityField;
-@property (weak, nonatomic) IBOutlet UITextField *SectionField;
-@property (weak, nonatomic) IBOutlet UITextField *MeterLevelField;
-
+@interface AddSampleEightViewController : UIViewController<UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *ProjectField;
+@property (weak, nonatomic) IBOutlet UITextField *SubprojectField;
 
 @property(nonatomic) Source* sourceToAdd;
 @property(nonatomic) AbstractCloudLibraryObjectStore *libraryObjectStore;

@@ -6,22 +6,20 @@
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import "AddSampleSixViewController.h"
 #import "AddSampleSevenViewController.h"
+#import "AddSampleEightViewController.h"
 
-
-@interface AddSampleSixViewController ()
+@interface AddSampleSevenViewController ()
 
 @end
 
-@implementation AddSampleSixViewController
-@synthesize libraryObjectStore, sourceToAdd, RegionField, LocalityField, SectionField, MeterLevelField;
+@implementation AddSampleSevenViewController
+@synthesize libraryObjectStore, sourceToAdd, AgeField, AgeBasis1Field, AgeBasis2Field;
 
 - (id)initWithSource:(Source *)initSource
 {
     if (self) {
-        
-        sourceToAdd = initSource;
+         sourceToAdd = initSource;
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Add Sample Cont."];
@@ -39,17 +37,15 @@
 }
 
 - (IBAction)addSource:(id)sender {
-    [[sourceToAdd attributes] setObject:[RegionField text] forKey:SRC_REGION];
-    [[sourceToAdd attributes] setObject:[LocalityField text] forKey:SRC_LOCALITY];
-    [[sourceToAdd attributes] setObject:[SectionField text] forKey:SRC_SECTION];
-    [[sourceToAdd attributes] setObject:[MeterLevelField text] forKey:SRC_METER_LEVEL];
+    [[sourceToAdd attributes] setObject:[AgeField text] forKey:SRC_AGE];
+    [[sourceToAdd attributes] setObject:[AgeBasis1Field text] forKey:SRC_AGE_BASIS1];
+    [[sourceToAdd attributes] setObject:[AgeBasis2Field text] forKey:SRC_AGE_BASIS2];
     
-    AddSampleSevenViewController *assViewController = [[AddSampleSevenViewController alloc] initWithSource:sourceToAdd];
+    AddSampleEightViewController *aseViewController = [[AddSampleEightViewController alloc] initWithSource:sourceToAdd];
     
-    [assViewController setLibraryObjectStore:libraryObjectStore];
-    [[self navigationController] pushViewController:assViewController  animated:YES];
-
-   }
+    [aseViewController setLibraryObjectStore:libraryObjectStore];
+    [[self navigationController] pushViewController:aseViewController  animated:YES];
+}
 
 -(void) goBack:(id)sender
 {

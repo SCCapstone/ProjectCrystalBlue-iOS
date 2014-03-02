@@ -172,6 +172,7 @@
         [[sourceToAdd attributes] setObject:@"Igneous" forKey:SRC_TYPE];
         [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_LITHOLOGY];
         [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
+        [asfViewController setSourceToAdd:sourceToAdd];
         [[self navigationController] pushViewController:asfViewController  animated:YES];
     }
     
@@ -180,6 +181,7 @@
         [[sourceToAdd attributes] setObject:@"Metamorphic" forKey:SRC_TYPE];
         [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_LITHOLOGY];
         [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
+        [asfViewController setSourceToAdd:sourceToAdd];
         [[self navigationController] pushViewController:asfViewController  animated:YES];
     }
     
@@ -188,6 +190,7 @@
         [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_TYPE];
         [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_LITHOLOGY];
         [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
+        [asfViewController setSourceToAdd:sourceToAdd];
         [[self navigationController] pushViewController:asfViewController  animated:YES];
     }
 }
