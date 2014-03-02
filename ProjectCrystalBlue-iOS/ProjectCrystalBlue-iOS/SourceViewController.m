@@ -124,7 +124,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     if([option isEqualToString:@"EDIT"])
     {
-        SourceEditViewController *sourceEditViewController = [[SourceEditViewController alloc] initWithNibName:@"SourcedEditViewController"
+        SourceEditViewController *sourceEditViewController = [[SourceEditViewController alloc] initWithNibName:@"SourceEditViewController"
                                                                                                         bundle:nil];
         [sourceEditViewController setSource:selectedSource];
         [sourceEditViewController setLibraryObjectStore:libraryObjectStore];
