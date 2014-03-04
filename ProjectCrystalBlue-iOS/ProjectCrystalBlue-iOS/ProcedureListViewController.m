@@ -62,7 +62,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 37;
+    return 22;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -96,36 +96,21 @@
     [procedureNames addObject:@"Trim"];
     [procedureNames addObject:@"Pulverizer"];
     [procedureNames addObject:@"Jaw Crusher"];
-    [procedureNames addObject:@"Gemini Up"];
-    [procedureNames addObject:@"Gemini Down"];
-    [procedureNames addObject:@"Pan Up"];
-    [procedureNames addObject:@"Pan Down"];
-    [procedureNames addObject:@"Sieves Up"];
-    [procedureNames addObject:@"Sieves Down"];
-    [procedureNames addObject:@"Heavy Liquid 330 Up"];
-    [procedureNames addObject:@"Heavy Liquid 330 Down"];
-    [procedureNames addObject:@"Heavy Liquid 290 Up"];
-    [procedureNames addObject:@"Heavy Liquid 290 Down"];
-    [procedureNames addObject:@"Heavy Liquid 265 Up"];
-    [procedureNames addObject:@"Heavy Liquid 265 Down"];
-    [procedureNames addObject:@"Heavy Liquid 255 Up"];
-    [procedureNames addObject:@"Heavy Liquid 255 Down"];
-    [procedureNames addObject:@"Hand Magnet Up"];
-    [procedureNames addObject:@"Hand Magnet Down"];
-    [procedureNames addObject:@"Magnet 0.2 Amps Up"];
-    [procedureNames addObject:@"Magnet 0.2 Amps Down"];
-    [procedureNames addObject:@"Magnet 0.4 Amps Up"];
-    [procedureNames addObject:@"Magnet 0.4 Amps Down"];
-    [procedureNames addObject:@"Magnet 0.6 Amps Up"];
-    [procedureNames addObject:@"Magnet 0.6 Amps Down"];
-    [procedureNames addObject:@"Magnet 0.8 Amps Up"];
-    [procedureNames addObject:@"Magnet 0.8 Amps Down"];
-    [procedureNames addObject:@"Magnet 1.0 Amps Up"];
-    [procedureNames addObject:@"Magnet 1.0 Amps Down"];
-    [procedureNames addObject:@"Magnet 1.2 Amps Up"];
-    [procedureNames addObject:@"Magnet 1.2 Amps Down"];
-    [procedureNames addObject:@"Magnet 1.4 Amps Up"];
-    [procedureNames addObject:@"Magnet 1.4 Amps Down"];
+    [procedureNames addObject:@"Gemini"];
+    [procedureNames addObject:@"Pan"];
+    [procedureNames addObject:@"Sieves"];
+    [procedureNames addObject:@"Heavy Liquid 330"];
+    [procedureNames addObject:@"Heavy Liquid 290"];
+    [procedureNames addObject:@"Heavy Liquid 265"];
+    [procedureNames addObject:@"Heavy Liquid 255"];
+    [procedureNames addObject:@"Hand Magnet"];
+    [procedureNames addObject:@"Magnet 0.2 Amps"];
+    [procedureNames addObject:@"Magnet 0.4 Amps"];
+    [procedureNames addObject:@"Magnet 0.6 Amps"];
+    [procedureNames addObject:@"Magnet 0.8 Amps"];
+    [procedureNames addObject:@"Magnet 1.0 Amps"];
+    [procedureNames addObject:@"Magnet 1.2 Amps"];
+    [procedureNames addObject:@"Magnet 1.4 Amps"];
 
     
 }
@@ -173,174 +158,97 @@
     
     if([indexPath row] == 7)
     {
-        [Procedures geminiUpSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
+        [Procedures geminiSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
         [self.navigationController popViewControllerAnimated:YES];    }
+    
     
     if([indexPath row] == 8)
     {
-        [Procedures geminiDownSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
+        [Procedures panSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
         [self.navigationController popViewControllerAnimated:YES];
     }
     
     if([indexPath row] == 9)
     {
-        [Procedures panUpSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
+        [Procedures sievesTenSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
         [self.navigationController popViewControllerAnimated:YES];
     }
+    
     
     if([indexPath row] == 10)
     {
-        [Procedures panDownSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
+        [Procedures heavyLiquid_330_Sample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
         [self.navigationController popViewControllerAnimated:YES];    }
+    
     
     if([indexPath row] == 11)
     {
-        [Procedures sievesTenUpSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+        [Procedures heavyLiquid_290_Sample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
+        [self.navigationController popViewControllerAnimated:YES];    }
+    
+   
     
     if([indexPath row] == 12)
     {
-        [Procedures sievesTenDownSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+        [Procedures heavyLiquid_265_Sample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
+        [self.navigationController popViewControllerAnimated:YES];    }
+    
     
     if([indexPath row] == 13)
     {
-        [Procedures heavyLiquid_330_UpSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
+        [Procedures heavyLiquid_255_Sample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
         [self.navigationController popViewControllerAnimated:YES];    }
+    
     
     if([indexPath row] == 14)
     {
-        [Procedures heavyLiquid_330_DownSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+        [Procedures handMagnetSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
+        [self.navigationController popViewControllerAnimated:YES];    }
+    
     
     if([indexPath row] == 15)
     {
-        [Procedures heavyLiquid_290_UpSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-        [self.navigationController popViewControllerAnimated:YES];    }
+        [Procedures  magnet02AmpsSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
     
     if([indexPath row] == 16)
     {
-        [Procedures heavyLiquid_290_DownSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
+        [Procedures  magnet04AmpsSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
         [self.navigationController popViewControllerAnimated:YES];
     }
+    
     
     if([indexPath row] == 17)
     {
-        [Procedures heavyLiquid_265_UpSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-        [self.navigationController popViewControllerAnimated:YES];    }
+        [Procedures  magnet06AmpsSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
     
     if([indexPath row] == 18)
     {
-        [Procedures heavyLiquid_265_DownSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
+        [Procedures  magnet08AmpsSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
         [self.navigationController popViewControllerAnimated:YES];
     }
+    
     
     if([indexPath row] == 19)
     {
-        [Procedures heavyLiquid_255_UpSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-        [self.navigationController popViewControllerAnimated:YES];    }
+        [Procedures  magnet10AmpsSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
     
     if([indexPath row] == 20)
     {
-        [Procedures heavyLiquid_255_DownSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
+        [Procedures  magnet12AmpsSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
         [self.navigationController popViewControllerAnimated:YES];
     }
-    
+  
     if([indexPath row] == 21)
     {
-        [Procedures handMagnetUpSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-        [self.navigationController popViewControllerAnimated:YES];    }
-    
-    if([indexPath row] == 22)
-    {
-        [Procedures handMagnetDownSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-    if([indexPath row] == 24)
-    {
-        [Procedures  magnet02AmpsUpSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-    if([indexPath row] == 25)
-    {
-        [Procedures  magnet02AmpsDownSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-    if([indexPath row] == 26)
-    {
-        [Procedures  magnet04AmpsUpSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-    if([indexPath row] == 27)
-    {
-        [Procedures  magnet04AmpsDownSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-    if([indexPath row] == 28)
-    {
-        [Procedures  magnet06AmpsUpSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-    if([indexPath row] == 29)
-    {
-        [Procedures  magnet06AmpsDownSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-    if([indexPath row] == 30)
-    {
-        [Procedures  magnet08AmpsUpSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-    if([indexPath row] == 31)
-    {
-        [Procedures  magnet08AmpsDownSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-    if([indexPath row] == 32)
-    {
-        [Procedures  magnet10AmpsUpSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-    if([indexPath row] == 33)
-    {
-        [Procedures  magnet10AmpsDownSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-    if([indexPath row] == 34)
-    {
-        [Procedures  magnet12AmpsUpSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-    if([indexPath row] == 35)
-    {
-        [Procedures  magnet12AmpsDownSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-    if([indexPath row] == 36)
-    {
-        [Procedures  magnet14AmpsUpSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-    if([indexPath row] == 37)
-    {
-        [Procedures  magnet14AmpsDownSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
+        [Procedures  magnet14AmpsSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
         [self.navigationController popViewControllerAnimated:YES];
     }
     
