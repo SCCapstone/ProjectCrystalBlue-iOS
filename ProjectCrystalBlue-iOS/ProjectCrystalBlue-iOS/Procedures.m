@@ -132,13 +132,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_GEMINI_UP
+                                     tagString:PROC_TAG_GEMINI_DOWN
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
     
     [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_GEMINI_DOWN
+                                     tagString:PROC_TAG_GEMINI_UP
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
@@ -149,13 +149,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_PAN_UP
+                                     tagString:PROC_TAG_PAN_DOWN
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
     
     [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_PAN_DOWN
+                                     tagString:PROC_TAG_PAN_UP
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
@@ -167,13 +167,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_SIEVE_10_UP
+                                     tagString:PROC_TAG_SIEVE_10_DOWN
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
     
     [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_SIEVE_10_DOWN
+                                     tagString:PROC_TAG_SIEVE_10_UP
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
@@ -187,13 +187,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_HEAVY_LIQUID_330_UP
+                                     tagString:PROC_TAG_HEAVY_LIQUID_330_DOWN
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
     
     [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_HEAVY_LIQUID_330_DOWN
+                                     tagString:PROC_TAG_HEAVY_LIQUID_330_UP
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
@@ -205,13 +205,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_HEAVY_LIQUID_290_UP
+                                     tagString:PROC_TAG_HEAVY_LIQUID_290_DOWN
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
     
     [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_HEAVY_LIQUID_290_DOWN
+                                     tagString:PROC_TAG_HEAVY_LIQUID_290_UP
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
@@ -223,13 +223,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_HEAVY_LIQUID_265_UP
+                                     tagString:PROC_TAG_HEAVY_LIQUID_265_DOWN
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
     
     [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_HEAVY_LIQUID_265_DOWN
+                                     tagString:PROC_TAG_HEAVY_LIQUID_265_UP
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
@@ -241,13 +241,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_HEAVY_LIQUID_255_UP
+                                     tagString:PROC_TAG_HEAVY_LIQUID_255_DOWN
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
     
     [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_HEAVY_LIQUID_255_DOWN
+                                     tagString:PROC_TAG_HEAVY_LIQUID_255_UP
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
@@ -260,13 +260,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_HAND_MAGNET_UP
+                                     tagString:PROC_TAG_HAND_MAGNET_DOWN
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
     
     [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_HAND_MAGNET_DOWN
+                                     tagString:PROC_TAG_HAND_MAGNET_UP
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
@@ -279,13 +279,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_MAGNET_02_AMPS_UP
+                                     tagString:PROC_TAG_MAGNET_02_AMPS_DOWN
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
     
     [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_MAGNET_02_AMPS_DOWN
+                                     tagString:PROC_TAG_MAGNET_02_AMPS_UP
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
@@ -298,13 +298,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_MAGNET_04_AMPS_UP
+                                     tagString:PROC_TAG_MAGNET_04_AMPS_DOWN
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
     
     [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_MAGNET_04_AMPS_DOWN
+                                     tagString:PROC_TAG_MAGNET_04_AMPS_UP
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
@@ -317,13 +317,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_MAGNET_06_AMPS_UP
+                                     tagString:PROC_TAG_MAGNET_06_AMPS_DOWN
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
     
     [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_MAGNET_06_AMPS_DOWN
+                                     tagString:PROC_TAG_MAGNET_06_AMPS_UP
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
@@ -335,13 +335,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_MAGNET_08_AMPS_UP
+                                     tagString:PROC_TAG_MAGNET_08_AMPS_DOWN
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
     
     [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_MAGNET_08_AMPS_DOWN
+                                     tagString:PROC_TAG_MAGNET_08_AMPS_UP
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
@@ -354,13 +354,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_MAGNET_10_AMPS_UP
+                                     tagString:PROC_TAG_MAGNET_10_AMPS_DOWN
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
     
     [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_MAGNET_10_AMPS_DOWN
+                                     tagString:PROC_TAG_MAGNET_10_AMPS_UP
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
@@ -373,13 +373,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_MAGNET_12_AMPS_UP
+                                     tagString:PROC_TAG_MAGNET_12_AMPS_DOWN
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
     
     [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_MAGNET_12_AMPS_DOWN
+                                     tagString:PROC_TAG_MAGNET_12_AMPS_UP
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
@@ -392,13 +392,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_MAGNET_14_AMPS_UP
+                                     tagString:PROC_TAG_MAGNET_14_AMPS_DOWN
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
     
     [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_MAGNET_14_AMPS_DOWN
+                                     tagString:PROC_TAG_MAGNET_14_AMPS_UP
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];

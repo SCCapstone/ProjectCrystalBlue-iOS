@@ -148,7 +148,6 @@
     }
     else
         [[cell textLabel] setText:@"No Procedures Done"];
-    
     return cell;
 }
 
