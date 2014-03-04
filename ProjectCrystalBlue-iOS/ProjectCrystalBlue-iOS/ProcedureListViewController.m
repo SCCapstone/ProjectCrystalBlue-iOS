@@ -13,6 +13,7 @@
 #import "AbstractCloudLibraryObjectStore.h"
 #import "SimpleDBLibraryObjectStore.h"
 #import "ProcedureNameConstants.h"
+#import "EditLocationViewController.h"
 
 @interface ProcedureListViewController ()
 {
@@ -114,8 +115,10 @@
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *dummyInitials = @"ANONYMOUS";
-    if ([indexPath row] == 0) {
-        
+    if ([indexPath row] == 0)
+    {
+        EditLocationViewController *editLocationViewController = [[EditLocationViewController alloc] initWithSample:selectedSample];
+        [[self navigationController] pushViewController:editLocationViewController  animated:YES];
     }
     
     if([indexPath row] == 1)

@@ -31,6 +31,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                      intoTableNamed:[SampleConstants tableName]];
 }
 
++ (void)moveSample:(Sample *)sample
+        toLocation:(NSString *) newLocation
+           inStore:(AbstractLibraryObjectStore *)store
+{
+    DDLogDebug(@"%s", __func__);
+    [[sample attributes] setObject:newLocation forKey:SMP_CURRENT_LOCATION];
+    [store updateLibraryObject:sample IntoTable:[SampleConstants tableName]];
+}
 
 /**
  Procedures that append to a clone of a tag only

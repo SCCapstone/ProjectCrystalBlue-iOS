@@ -27,6 +27,13 @@
                inStore:(AbstractLibraryObjectStore *)store;
 
 /**
+ * Used to change location of a sample
+ **/
++ (void)moveSample:(Sample *)sample
+        toLocation:(NSString *) newLocation
+               inStore:(AbstractLibraryObjectStore *)store;
+
+/**
  * Make a slab from a sample. This creates a new sample and adds slab to its procedures
  **/
 + (void)makeSlabfromSample:(Sample *)sample
