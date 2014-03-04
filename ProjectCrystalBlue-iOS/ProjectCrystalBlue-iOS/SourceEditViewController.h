@@ -35,12 +35,13 @@
    
 }
 @property (nonatomic, strong) IBOutlet UIScrollView *scroller;
-@property (nonatomic, strong) Source *source;
+@property (nonatomic, strong) Source *selectedSource;
 @property (nonatomic, strong) SimpleDBLibraryObjectStore *libraryObjectStore;
+
 
 @property (nonatomic, copy) void (^dismissBlock)(void);
 
 - (IBAction)backgroundTapped:(id)sender;
-
+- (id)initWithSource:(Source*)initSample;
 
 @end

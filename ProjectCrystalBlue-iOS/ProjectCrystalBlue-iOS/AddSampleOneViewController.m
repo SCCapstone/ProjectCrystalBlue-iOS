@@ -29,7 +29,7 @@
         libraryObjectStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data"WithDatabaseName:@"test_database.db"];
         
         UINavigationItem *n = [self navigationItem];
-        [n setTitle:@"Add Sample: Pg.1"];
+        [n setTitle:@"Add Sample"];
         
         UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(addSource:)];
         
@@ -99,7 +99,7 @@
 
 - (void) animateTextField: (UITextField*) textField up: (BOOL) up
 {
-    const int movementDistance = 40; // tweak as needed
+    const int movementDistance = 30; // tweak as needed
     const float movementDuration = 0.3f; // tweak as needed
     
     int movement = (up ? -movementDistance : movementDistance);

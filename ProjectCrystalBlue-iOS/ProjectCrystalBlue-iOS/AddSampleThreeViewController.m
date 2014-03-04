@@ -33,22 +33,14 @@
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Select Lithology"];
         
-        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(addSource:)];
-        
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         
-        [[self navigationItem] setRightBarButtonItem:bbi];
         [[self navigationItem] setLeftBarButtonItem:backbtn];
         
     }
     return self;
 }
 
-- (IBAction)addSource:(id)sender {
-    
-    
-    
-}
 
 -(void) goBack:(id)sender
 {
