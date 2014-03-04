@@ -14,6 +14,7 @@
 		B4383ACB189C42B700DAC28F /* SourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383ACA189C42B700DAC28F /* SourceViewController.m */; };
 		B4383AD0189C4A0000DAC28F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383ACF189C4A0000DAC28F /* AppDelegate.m */; };
 		B4383AE2189C71B200DAC28F /* SourceEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383AE0189C71B200DAC28F /* SourceEditViewController.m */; };
+		B43DCE9618C67A8C00FD9B53 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43DCE9518C67A8C00FD9B53 /* CoreLocation.framework */; };
 		B446B92618C2403C00AB4E88 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B92418C2403C00AB4E88 /* HomeViewController.m */; };
 		B446B92718C2403C00AB4E88 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B92518C2403C00AB4E88 /* HomeViewController.xib */; };
 		B446B92B18C2589900AB4E88 /* SearchSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B92918C2589900AB4E88 /* SearchSampleViewController.m */; };
@@ -124,6 +125,7 @@
 		B4383ACF189C4A0000DAC28F /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B4383ADF189C71B200DAC28F /* SourceEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceEditViewController.h; sourceTree = "<group>"; };
 		B4383AE0189C71B200DAC28F /* SourceEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceEditViewController.m; sourceTree = "<group>"; };
+		B43DCE9518C67A8C00FD9B53 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B446B92318C2403C00AB4E88 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		B446B92418C2403C00AB4E88 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		B446B92518C2403C00AB4E88 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B43DCE9618C67A8C00FD9B53 /* CoreLocation.framework in Frameworks */,
 				D04AD3981851BDAB0079B2EE /* CFNetwork.framework in Frameworks */,
 				D71EE32E18518C5F007D4018 /* libsqlite3.dylib in Frameworks */,
 				D729BD3D181C24A000F762A3 /* CoreGraphics.framework in Frameworks */,
@@ -571,6 +574,7 @@
 		D729BD39181C24A000F762A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B43DCE9518C67A8C00FD9B53 /* CoreLocation.framework */,
 				03AE34DB18B1F3F1006AD856 /* libzbar.a */,
 				D7E0AFD618B00D410005DFDA /* AWSRuntime.framework */,
 				D7EFB3F218AECF64004EAB88 /* AWSSimpleDB.framework */,

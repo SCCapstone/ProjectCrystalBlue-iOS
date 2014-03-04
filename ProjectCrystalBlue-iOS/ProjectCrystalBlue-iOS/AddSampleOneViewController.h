@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreLocation/CoreLocation.h"
 
-@interface AddSampleOneViewController : UIViewController<UITextFieldDelegate>
+@interface AddSampleOneViewController : UIViewController<UITextFieldDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *KeyField;
 @property (weak, nonatomic) IBOutlet UITextField *LatitudeField;
@@ -16,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *DateField;
 
 - (IBAction)backgroundTapped:(id)sender;
+- (IBAction)getLocation:(id)sender;
 
 @end
