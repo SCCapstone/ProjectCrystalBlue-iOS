@@ -69,6 +69,17 @@
 {
     [super viewDidLoad];
     locationManager = [[CLLocationManager alloc] init];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    //uncomment to get the time only
+    //[formatter setDateFormat:@"hh:mm a"];
+    //[formatter setDateFormat:@"MMM dd, YYYY"];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    
+    
+    //get the date today
+    NSString *dateToday = [formatter stringFromDate:[NSDate date]];
+    
+    DateField.text = dateToday;
     // Do any additional setup after loading the view from its nib.
 }
 

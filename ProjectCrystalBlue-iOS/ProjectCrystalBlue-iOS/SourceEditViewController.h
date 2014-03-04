@@ -32,6 +32,7 @@
     __weak IBOutlet UITextField *AgeBasis2Field;
     __weak IBOutlet UITextField *ProjectField;
     __weak IBOutlet UITextField *SubprojectField;
+    __weak IBOutlet UITextField *DateField;
    
 }
 @property (nonatomic, strong) IBOutlet UIScrollView *scroller;

@@ -9,6 +9,7 @@
                 <outlet property="AgeBasis1Field" destination="V1J-vA-NWp" id="mHQ-48-48P"/>
                 <outlet property="AgeBasis2Field" destination="hIg-va-ada" id="laX-48-3Id"/>
                 <outlet property="AgeField" destination="KcI-Tp-tqr" id="N7X-dN-hwC"/>
+                <outlet property="DateField" destination="G41-ib-rYs" id="Qh9-qw-Kgk"/>
                 <outlet property="DeposystemField" destination="Vaz-UL-vob" id="bei-ft-5JT"/>
                 <outlet property="FormationField" destination="H1A-xN-k0B" id="Ddt-FZ-U1q"/>
                 <outlet property="GroupField" destination="i1f-HN-sjX" id="8RL-5I-N34"/>
@@ -285,6 +286,22 @@
                     <rect key="frame" x="20" y="640" width="102" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="G41-ib-rYs">
+                    <rect key="frame" x="135" y="675" width="165" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="BY7-7d-SWp"/>
+                    </connections>
+                </textField>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Gathered" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nK6-ta-RR7">
+                    <rect key="frame" x="20" y="678" width="116" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>

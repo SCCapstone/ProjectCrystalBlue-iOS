@@ -79,6 +79,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [AgeBasis2Field setText:[[selectedSource attributes] objectForKey:SRC_AGE_BASIS2]];
     [ProjectField setText:[[selectedSource attributes] objectForKey:SRC_PROJECT]];
     [SubprojectField setText:[[selectedSource attributes] objectForKey:SRC_SUBPROJECT]];
+    [DateField setText:[[selectedSource attributes] objectForKey:SRC_DATE_COLLECTED]];
   
 }
 
@@ -106,6 +107,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [[selectedSource attributes] setObject:[AgeBasis2Field text] forKey:SRC_AGE_BASIS2];
     [[selectedSource attributes] setObject:[ProjectField text] forKey:SRC_PROJECT];
     [[selectedSource attributes] setObject:[SubprojectField text] forKey:SRC_SUBPROJECT];
+    [[selectedSource attributes] setObject:[DateField text] forKey:SRC_DATE_COLLECTED];
         
     [libraryObjectStore updateLibraryObject:selectedSource IntoTable:[SourceConstants tableName]];
 
