@@ -14,6 +14,7 @@
 #import "SimpleDBLibraryObjectStore.h"
 #import "ProcedureNameConstants.h"
 #import "EditLocationViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ProcedureListViewController ()
 {
@@ -41,8 +42,8 @@
     procedureNames4 = [[NSMutableArray alloc] init];
     
     self = [super initWithStyle:UITableViewStyleGrouped];
-    if (self) {
-        
+    if (self)
+    {
         UINavigationItem *n = [self navigationItem];
         [n setTitle:[selectedSample key]];
         

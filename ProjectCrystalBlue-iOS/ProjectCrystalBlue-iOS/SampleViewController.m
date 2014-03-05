@@ -31,7 +31,7 @@
     // Call the superclass's designated initializer
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        samples = [[NSMutableArray alloc] init];
+        samples = [[NSArray alloc] init];
         selectedSource = initSource;
         
         UINavigationItem *n = [self navigationItem];
@@ -52,7 +52,8 @@
 }
 
 - (id)initWithStyle:(UITableViewStyle)style {
-    return [self init]; }
+    return [self init];
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -61,16 +62,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Create an instance of UITableViewCell, with default appearance
-    // Check for a reusable cell first, use that if it exists
     UITableViewCell *cell =
     [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-    // If there is no reusable cell of this type, create a new one
+    
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:@"UITableViewCell"];
     }
-    // Set the text on the cell with the description of the item // that is at the nth index of items, where n = row this cell // will appear in on the tableview
     
     Sample *sample = [samples objectAtIndex:[indexPath row]];
     [[cell textLabel] setText:[sample description]];
@@ -86,6 +84,7 @@
 -(void) addNewItem:(id)sender
 {
     [Procedures addFreshSample:[samples objectAtIndex:0] inStore:libraryObjectStore];
+    samples = [libraryObjectStore getAllSamplesForSourceKey:selectedSource.key];
     [self.tableView reloadData];
 }
 
