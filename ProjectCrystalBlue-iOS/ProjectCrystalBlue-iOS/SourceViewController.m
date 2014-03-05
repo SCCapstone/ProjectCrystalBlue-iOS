@@ -40,7 +40,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [libraryObjectStore synchronizeWithCloud];
         
         UINavigationItem *n = [self navigationItem];
-        [n setTitle:@"Delete Sources"];
+        [n setTitle:@"Sources"];
         
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         
@@ -89,6 +89,16 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [self setEditing:YES animated:YES];
     }
 }
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.tableView.editing) {
+        self.editButtonItem.title =  @"Done";
+    }
+    else
+        self.editButtonItem.title = @"Delete";
+    return YES;
+}
          
 -(void) goBack:(id)sender
 {
@@ -114,7 +124,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     Source *selectedSource = [[libraryObjectStore getAllLibraryObjectsFromTable:[SourceConstants tableName]]
                               objectAtIndex:indexPath.row];
     
-    UIActionSheet *message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Edit Source", @"View Children", nil];
+    UIActionSheet *message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Edit Source", @"View Samples", nil];
     
     [message showInView:[UIApplication sharedApplication].keyWindow];
     
@@ -126,17 +136,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     if([option isEqualToString:@"EDIT"])
     {
-        SourceEditViewController *sourceEditViewController = [[SourceEditViewController alloc] initWithNibName:@"SourceEditViewController"
-                                                                                                        bundle:nil];
-        [sourceEditViewController setSource:selectedSource];
+        SourceEditViewController *sourceEditViewController = [[SourceEditViewController alloc] initWithSource:selectedSource];
         [sourceEditViewController setLibraryObjectStore:libraryObjectStore];
         [[self navigationController] pushViewController:sourceEditViewController  animated:YES];
     }
     
     if([option isEqualToString:@"VIEW"])
     {
-        SampleViewController *sampleViewController = [[SampleViewController alloc] init];
-        [sampleViewController setSelectedSource:selectedSource];
+        SampleViewController *sampleViewController = [[SampleViewController alloc] initWithSource:selectedSource];
         [sampleViewController setLibraryObjectStore:libraryObjectStore];
         [[self navigationController] pushViewController:sampleViewController  animated:YES];
     }

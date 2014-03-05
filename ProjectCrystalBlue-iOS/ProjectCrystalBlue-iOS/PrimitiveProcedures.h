@@ -52,4 +52,8 @@
                    intoStore:(AbstractLibraryObjectStore *)store
               intoTableNamed:(NSString *)tableName;
 
++(NSString *)uniqueKeyBasedOn:(NSString *)previousKey
+                      inStore:(AbstractLibraryObjectStore *)store
+                      inTable:(NSString *)tableName;
+
 @end

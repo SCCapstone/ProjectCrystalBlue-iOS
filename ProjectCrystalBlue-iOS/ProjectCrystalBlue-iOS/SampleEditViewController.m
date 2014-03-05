@@ -70,8 +70,7 @@
         NSString *temp = [selectedSample sourceKey];
         Source *selectedSource = (Source*)[libraryObjectStore getLibraryObjectForKey:temp FromTable:[SourceConstants tableName]];
         
-        SourceEditViewController *sourceEditViewController = [[SourceEditViewController alloc] init];
-        [sourceEditViewController setSource:selectedSource];
+        SourceEditViewController *sourceEditViewController = [[SourceEditViewController alloc] initWithSource:selectedSource];
         [sourceEditViewController setLibraryObjectStore:libraryObjectStore];
         [[self navigationController] pushViewController:sourceEditViewController  animated:YES];
     }
@@ -106,12 +105,23 @@
     return [self init];
 }
 
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if([tags count] == 0)
+    if (section == 0) {
         return 1;
-    else
-        return [tags count];
+    }
+    
+    else{
+        if([tags count] == 0)
+            return 1;
+        else
+            return [tags count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -125,15 +135,19 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:@"UITableViewCell"];
     }
-    // Set the text on the cell with the description of the item // that is at the nth index of items, where n = row this cell // will appear in on the tableview
-    //Sample *p = [samples objectAtIndex:[indexPath row]];
+ 
+    if (indexPath.section==0) {
+        NSString *p = [[selectedSample attributes] objectForKey:SMP_CURRENT_LOCATION];
+         [[cell textLabel] setText:p];
+        return cell;
+    }
+    
     if ([tags count] > 0) {
         NSString *p = [tags objectAtIndex:[indexPath row]];
         [[cell textLabel] setText:p];
     }
     else
         [[cell textLabel] setText:@"No Procedures Done"];
-    
     return cell;
 }
 
@@ -147,6 +161,17 @@
 {
      tags = [ProcedureRecordParser nameArrayFromRecordList:[[selectedSample attributes] objectForKey:SMP_TAGS]];
     [self.tableView reloadData];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    if(section == 0)
+    {
+        return @"Current Location";
+    }
+    else
+    {
+        return @"Procedures Applied";
+    }
 }
 
 @end
