@@ -14,6 +14,7 @@
 #import "AbstractCloudLibraryObjectStore.h"
 #import "SimpleDBLibraryObjectStore.h"
 #import "Procedures.h"
+#import "PrimitiveProcedures.h"
 
 @interface SampleViewController ()
 {
@@ -83,7 +84,27 @@
 
 -(void) addNewItem:(id)sender
 {
-    [Procedures addFreshSample:[samples objectAtIndex:0] inStore:libraryObjectStore];
+    if([[libraryObjectStore getAllSamplesForSourceKey:selectedSource.key] count] != 0)
+    {
+        [Procedures addFreshSample:[samples objectAtIndex:0] inStore:libraryObjectStore];
+    }
+    else
+    {
+        NSString *temp = selectedSource.key;
+        temp = [temp stringByAppendingString:@".001"];
+        
+        NSString *key = [PrimitiveProcedures uniqueKeyBasedOn:[NSString stringWithFormat:@"%@.001", selectedSource.key]
+                                                      inStore:libraryObjectStore
+                                                      inTable:[SampleConstants tableName]];
+        
+        Sample *sample = [[Sample alloc] initWithKey:key
+                           AndWithAttributes:[SampleConstants attributeNames]
+                                   AndValues:[SampleConstants attributeDefaultValues]];
+        [sample.attributes setObject:selectedSource.key
+                              forKey:SMP_SOURCE_KEY];
+        
+        [libraryObjectStore putLibraryObject:sample IntoTable:[SampleConstants tableName]];
+    }
     samples = [libraryObjectStore getAllSamplesForSourceKey:selectedSource.key];
     [self.tableView reloadData];
 }
