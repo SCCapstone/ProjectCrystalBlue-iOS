@@ -13,10 +13,16 @@
 
 @interface AddSampleFiveViewController ()
 
+{
+    UITableView *autocompleteTableView;
+}
+
 @end
 
 @implementation AddSampleFiveViewController
 @synthesize GroupField, FormationField, MemberField, sourceToAdd, libraryObjectStore;
+@synthesize pastGroups, pastFormations;
+@synthesize autocompleteGroups, autocompleteFormations;
 
 - (id)initWithSource:(Source *)initSource
 {
@@ -32,12 +38,21 @@
         [[self navigationItem] setRightBarButtonItem:bbi];
         [[self navigationItem] setLeftBarButtonItem:backbtn];
         
+        
+        autocompleteTableView = [[UITableView alloc] initWithFrame:
+                                 CGRectMake(0, 120, 320, 120) style:UITableViewStyleGrouped];
+        autocompleteTableView.delegate = self;
+        autocompleteTableView.dataSource = self;
+        autocompleteTableView.scrollEnabled = YES;
+        autocompleteTableView.hidden = YES;
+        [self.view addSubview:autocompleteTableView];
     }
     return self;
 
 }
 
 - (IBAction)addSource:(id)sender {
+    autocompleteTableView.hidden = YES;
     
     [[sourceToAdd attributes] setObject:[GroupField text] forKey:SRC_GROUP];
     [[sourceToAdd attributes] setObject:[FormationField text] forKey:SRC_FORMATION];
@@ -59,7 +74,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    pastGroups = [[NSMutableArray alloc] init];
+    autocompleteGroups = [[NSMutableArray alloc] init];
+    
+    [pastGroups addObject:@"Group1"];
+    [pastGroups addObject:@"Group3"];
+    [pastGroups addObject:@"NewGroup1"];
+    
+    pastFormations = [[NSMutableArray alloc] init];
+    autocompleteFormations = [[NSMutableArray alloc] init];
+    
+    [pastFormations addObject:@"Form1"];
+    [pastFormations addObject:@"Form3"];
+    [pastFormations addObject:@"NewForm1"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,12 +98,15 @@
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    autocompleteTableView.hidden = YES;
     return YES;
 }
 
 - (IBAction)backgroundTapped:(id)sender {
+    autocompleteTableView.hidden = YES;
     [[self view] endEditing:YES];
 }
+
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
@@ -91,8 +121,18 @@
 
 - (void) animateTextField: (UITextField*) textField up: (BOOL) up
 {
-    const int movementDistance = 40; // tweak as needed
-    const float movementDuration = 0.3f; // tweak as needed
+    int movementDistance = 0;
+    float movementDuration = 0.0;
+    
+    if (textField == GroupField) {
+       movementDistance = 40; // tweak as needed
+       movementDuration = 0.3f; // tweak as needed
+    }
+    
+    if (textField == FormationField) {
+        movementDistance = 120; // tweak as needed
+        movementDuration = 0.3f; // tweak as needed
+    }
     
     int movement = (up ? -movementDistance : movementDistance);
     
@@ -103,4 +143,69 @@
     [UIView commitAnimations];
 }
 
+- (BOOL)textField:(UITextField *)textField
+    shouldChangeCharactersInRange:(NSRange)range
+        replacementString:(NSString *)string {
+   
+    autocompleteTableView.hidden = NO;
+    
+    NSString *substring = [NSString stringWithString:textField.text];
+    substring = [substring
+                 stringByReplacingCharactersInRange:range withString:string];
+    [self searchAutocompleteEntriesWithSubstring:substring];
+    return YES;
+}
+
+- (void)searchAutocompleteEntriesWithSubstring:(NSString *)substring {
+    
+    // Put anything that starts with this substring into the autocompleteUrls array
+    // The items in this array is what will show up in the table view
+    
+    NSMutableArray *temp = [[NSMutableArray alloc] init];
+    
+    if ([GroupField isFirstResponder]) {
+        temp = pastGroups;
+    }
+    
+    if ([FormationField isFirstResponder]) {
+        temp = pastFormations;
+    }
+    
+    [autocompleteGroups removeAllObjects];
+    for(NSString *curString in temp) {
+        NSRange substringRange = [curString rangeOfString:substring];
+        if (substringRange.location == 0) {
+            [autocompleteGroups addObject:curString];
+        }
+    }
+    [autocompleteTableView reloadData];
+    
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger) section {
+    return autocompleteGroups.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = nil;
+    static NSString *AutoCompleteRowIdentifier = @"AutoCompleteRowIdentifier";
+    cell = [tableView dequeueReusableCellWithIdentifier:AutoCompleteRowIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]
+                 initWithStyle:UITableViewCellStyleDefault reuseIdentifier:AutoCompleteRowIdentifier];
+    }
+    
+    cell.textLabel.text = [autocompleteGroups objectAtIndex:indexPath.row];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    GroupField.text = selectedCell.textLabel.text;
+    autocompleteTableView.hidden = YES;
+    
+    
+}
 @end
