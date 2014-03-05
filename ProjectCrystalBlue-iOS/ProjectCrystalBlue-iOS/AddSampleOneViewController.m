@@ -45,19 +45,36 @@
 
 - (IBAction)addSource:(id)sender {
     
-    sourceToAdd = [[Source alloc] initWithKey:[KeyField text]
-                                      AndWithValues:[SourceConstants attributeDefaultValues]];
+    if (![libraryObjectStore libraryObjectExistsForKey:[KeyField text] FromTable:[SourceConstants tableName]])
+    {
+        sourceToAdd = [[Source alloc] initWithKey:[KeyField text]
+                                        AndWithValues:[SourceConstants attributeDefaultValues]];
     
-    [[sourceToAdd attributes] setObject:[LatitudeField text] forKey:SRC_LATITUDE];
-    [[sourceToAdd attributes] setObject:[LongitudeField text] forKey:SRC_LONGITUDE];
-    [[sourceToAdd attributes] setObject:[DateField text] forKey:SRC_DATE_COLLECTED];
+        [[sourceToAdd attributes] setObject:[LatitudeField text] forKey:SRC_LATITUDE];
+        [[sourceToAdd attributes] setObject:[LongitudeField text] forKey:SRC_LONGITUDE];
+        [[sourceToAdd attributes] setObject:[DateField text] forKey:SRC_DATE_COLLECTED];
     
-    AddSampleTwoViewController *astViewController = [[AddSampleTwoViewController alloc] initWithSource:sourceToAdd];
+        AddSampleTwoViewController *astViewController = [[AddSampleTwoViewController alloc] initWithSource:sourceToAdd];
     
-    [astViewController setLibraryObjectStore:libraryObjectStore];
-    [[self navigationController] pushViewController:astViewController  animated:YES];
+        [astViewController setLibraryObjectStore:libraryObjectStore];
+        [[self navigationController] pushViewController:astViewController  animated:YES];
+    }
     
+    else
+    {
+        NSString *message = @"Source already exist for key '";
+        message = [message stringByAppendingString:[KeyField text]];
+        message = [message stringByAppendingString:@"'"];
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+    }
 }
+
 
 -(void) goBack:(id)sender
 {

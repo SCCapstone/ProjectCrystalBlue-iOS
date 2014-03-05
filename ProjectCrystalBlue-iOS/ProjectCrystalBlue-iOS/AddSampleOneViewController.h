@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CoreLocation/CoreLocation.h"
 
-@interface AddSampleOneViewController : UIViewController<UITextFieldDelegate, CLLocationManagerDelegate>
+@interface AddSampleOneViewController : UIViewController<UITextFieldDelegate, CLLocationManagerDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *KeyField;
 @property (weak, nonatomic) IBOutlet UITextField *LatitudeField;

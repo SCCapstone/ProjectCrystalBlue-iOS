@@ -23,7 +23,7 @@
     if (self) {
         
         UINavigationItem *n = [self navigationItem];
-        [n setTitle:@"Add Sample: Cont."];
+        [n setTitle:@"Add Sample Cont."];
         
         UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(addSource:)];
         
