@@ -143,8 +143,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     if([option isEqualToString:@"VIEW"])
     {
-        SampleViewController *sampleViewController = [[SampleViewController alloc] init];
-        [sampleViewController setSelectedSource:selectedSource];
+        SampleViewController *sampleViewController = [[SampleViewController alloc] initWithSource:selectedSource];
         [sampleViewController setLibraryObjectStore:libraryObjectStore];
         [[self navigationController] pushViewController:sampleViewController  animated:YES];
     }

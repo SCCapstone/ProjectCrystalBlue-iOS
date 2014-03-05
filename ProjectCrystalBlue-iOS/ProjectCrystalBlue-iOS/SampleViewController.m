@@ -27,14 +27,17 @@
 
 @synthesize selectedSource, libraryObjectStore;
 
-- (id)init {
+- (id)initWithSource:(Source *) initSource {
     // Call the superclass's designated initializer
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         samples = [[NSMutableArray alloc] init];
+        selectedSource = initSource;
         
         UINavigationItem *n = [self navigationItem];
-        [n setTitle:@"Samples"];
+        NSString *title = selectedSource.key;
+        title = [title stringByAppendingString:@" Samples"];
+        [n setTitle:title];
         
         UIBarButtonItem *bbi = [[UIBarButtonItem alloc]
                                 initWithTitle:@"Add New" style:UIBarButtonItemStyleBordered target:self action:@selector(addNewItem:)];

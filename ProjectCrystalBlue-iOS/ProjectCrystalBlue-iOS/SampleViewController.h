@@ -15,4 +15,5 @@
 @property(nonatomic) Source* selectedSource;
 @property(nonatomic) AbstractCloudLibraryObjectStore *libraryObjectStore;
 
+-(id) initWithSource:(Source *) initSource;
 @end
