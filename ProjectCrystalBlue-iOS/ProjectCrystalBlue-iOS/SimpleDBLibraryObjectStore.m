@@ -230,10 +230,23 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return [localStore getAllSamplesForSourceKey:sourceKey];
 }
 
-- (NSArray *)executeSqlQuery:(NSString *)sql
-                     OnTable:(NSString *)tableName
+- (NSArray *)getAllLibraryObjectsForAttributeName:(NSString *)attributeName
+                               WithAttributeValue:(NSString *)attributeValue
+                                        FromTable:(NSString *)tableName
 {
-    return [localStore executeSqlQuery:sql OnTable:tableName];
+    return [localStore getAllLibraryObjectsForAttributeName:attributeName WithAttributeValue:attributeValue FromTable:tableName];
+}
+
+- (NSArray *)getUniqueAttributeValuesForAttributeName:(NSString *)attributeName
+                                            FromTable:(NSString *)tableName
+{
+    return [localStore getUniqueAttributeValuesForAttributeName:attributeName FromTable:tableName];
+}
+
+- (NSArray *)getLibraryObjectsWithSqlQuery:(NSString *)sql
+                                   OnTable:(NSString *)tableName
+{
+    return [localStore getLibraryObjectsWithSqlQuery:sql OnTable:tableName];
 }
 
 - (BOOL)putLibraryObject:(LibraryObject *)libraryObject
