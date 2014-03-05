@@ -84,7 +84,8 @@
 
 -(void) addNewItem:(id)sender
 {
-    if([[libraryObjectStore getAllSamplesForSourceKey:selectedSource.key] count] != 0)
+    samples = [libraryObjectStore getAllSamplesForSourceKey:selectedSource.key];
+    if([samples count] != 0)
     {
         [Procedures addFreshSample:[samples objectAtIndex:0] inStore:libraryObjectStore];
     }
@@ -93,7 +94,7 @@
         NSString *temp = selectedSource.key;
         temp = [temp stringByAppendingString:@".001"];
         
-        NSString *key = [PrimitiveProcedures uniqueKeyBasedOn:[NSString stringWithFormat:@"%@.001", selectedSource.key]
+        NSString *key = [PrimitiveProcedures uniqueKeyBasedOn:selectedSource.key
                                                       inStore:libraryObjectStore
                                                       inTable:[SampleConstants tableName]];
         
