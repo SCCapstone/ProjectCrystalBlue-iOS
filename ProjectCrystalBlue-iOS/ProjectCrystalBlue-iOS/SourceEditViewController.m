@@ -32,16 +32,19 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @synthesize selectedSource, scroller, libraryObjectStore;
 
-- (id)initWithSource:(Source*)initSource
+- (id)initWithSource:(Source*)initSource withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary
 {
     selectedSource = initSource;
+    libraryObjectStore = initLibrary;
     if (self) {
         UINavigationItem *n = [self navigationItem];
         [n setTitle:[selectedSource key]];
         
-        UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
+        UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Return" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
+        UIBarButtonItem *savebtn = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleBordered target:self action:@selector(save:)];
         
         [[self navigationItem] setLeftBarButtonItem:backbtn];
+        [[self navigationItem] setRightBarButtonItem:savebtn];
     }
     return self;
 }
@@ -89,10 +92,25 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[self view] endEditing:YES];
-    
-    //BOOL keyExists = [libraryObjectStore libraryObjectExistsForKey:[KeyField text] FromTable:[SourceConstants tableName]];
+}
 
-    
+-(BOOL) textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (IBAction)backgroundTapped:(id)sender {
+    [[self view] endEditing:YES];
+}
+
+-(void) goBack:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void) save:(id)sender
+{
     [[selectedSource attributes] setObject:[TypeField text] forKey:SRC_TYPE];
     [[selectedSource attributes] setObject:[LithologyField text] forKey:SRC_LITHOLOGY];
     [[selectedSource attributes] setObject:[DeposystemField text] forKey:SRC_DEPOSYSTEM];
@@ -111,24 +129,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [[selectedSource attributes] setObject:[ProjectField text] forKey:SRC_PROJECT];
     [[selectedSource attributes] setObject:[SubprojectField text] forKey:SRC_SUBPROJECT];
     [[selectedSource attributes] setObject:[DateField text] forKey:SRC_DATE_COLLECTED];
-        
+    
     [libraryObjectStore updateLibraryObject:selectedSource IntoTable:[SourceConstants tableName]];
-
-}
-
--(BOOL) textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    return YES;
-}
-
-- (IBAction)backgroundTapped:(id)sender {
-    [[self view] endEditing:YES];
-}
-
--(void) goBack:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    TypeLabel.textColor = [UIColor blackColor];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField

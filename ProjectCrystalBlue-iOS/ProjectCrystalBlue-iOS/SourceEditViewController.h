@@ -38,12 +38,12 @@
 }
 @property (nonatomic, strong) IBOutlet UIScrollView *scroller;
 @property (nonatomic, strong) Source *selectedSource;
-@property (nonatomic, strong) SimpleDBLibraryObjectStore *libraryObjectStore;
+@property (nonatomic, strong) AbstractCloudLibraryObjectStore *libraryObjectStore;
 
 
 @property (nonatomic, copy) void (^dismissBlock)(void);
 
 - (IBAction)backgroundTapped:(id)sender;
-- (id)initWithSource:(Source*)initSample;
+- (id)initWithSource:(Source*)initSource withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary;
 
 @end
