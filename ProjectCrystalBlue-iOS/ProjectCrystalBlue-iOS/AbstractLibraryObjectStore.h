@@ -29,13 +29,27 @@
  */
 - (NSArray *)getAllSamplesForSourceKey:(NSString *)sourceKey;
 
-/** Execute a query on the table.
+/** Retrieve all library objects where the attribute is equal to the
+ *  specified attribute value.
+ */
+- (NSArray *)getAllLibraryObjectsForAttributeName:(NSString *)attributeName
+                               WithAttributeValue:(NSString *)attributeValue
+                                        FromTable:(NSString *)tableName;
+
+/** Retrieve an array of unique attribute values for the specified attribute name.
+ *
+ *  Use case of autocomplete a field based on previous entries.
+ */
+- (NSArray *)getUniqueAttributeValuesForAttributeName:(NSString *)attributeName
+                                            FromTable:(NSString *)tableName;
+
+/** Retrieve an array of library objects with sql query on the table.
  *
  *  This should only be a SELECT query to get library objects, do not attempt
  *  to use this method to make changes to the database.
  */
-- (NSArray *)executeSqlQuery:(NSString *)sql
-                     OnTable:(NSString *)tableName;
+- (NSArray *)getLibraryObjectsWithSqlQuery:(NSString *)sql
+                                   OnTable:(NSString *)tableName;
 
 /** Add a new library object to the LibraryObjectStore with the given unique key.
  *
