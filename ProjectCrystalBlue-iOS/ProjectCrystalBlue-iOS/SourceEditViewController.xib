@@ -24,6 +24,7 @@
                 <outlet property="SectionField" destination="XW4-Lh-Khd" id="uQw-Oc-nha"/>
                 <outlet property="SubprojectField" destination="ICy-Gm-jhG" id="MyV-tT-nop"/>
                 <outlet property="TypeField" destination="aVr-cG-eUZ" id="tie-RF-wSq"/>
+                <outlet property="TypeLabel" destination="pYK-rz-VM1" id="cfs-mn-wT3"/>
                 <outlet property="scroller" destination="h8Y-bc-RnQ" id="gih-UR-FM4"/>
                 <outlet property="view" destination="h8Y-bc-RnQ" id="Lf3-va-rIv"/>
             </connections>

@@ -34,6 +34,7 @@
     __weak IBOutlet UITextField *SubprojectField;
     __weak IBOutlet UITextField *DateField;
    
+    __weak IBOutlet UILabel *TypeLabel;
 }
 @property (nonatomic, strong) IBOutlet UIScrollView *scroller;
 @property (nonatomic, strong) Source *selectedSource;

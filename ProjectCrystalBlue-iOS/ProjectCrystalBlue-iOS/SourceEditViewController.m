@@ -22,6 +22,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 #endif
 
 @interface SourceEditViewController ()
+{
+    NSString* textString;
+}
 
 @end
 
@@ -130,6 +133,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    textString = [textField text];
     [self animateTextField: textField up: YES];
 }
 
@@ -137,6 +141,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     [self animateTextField: textField up: NO];
+    if (![textString isEqualToString:[textField text]]) {
+        
+        if(textField == TypeField)
+        {
+            TypeLabel.textColor = [UIColor redColor];
+        }
+    }
 }
 
 - (void) animateTextField: (UITextField*) textField up: (BOOL) up
