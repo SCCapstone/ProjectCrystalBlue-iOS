@@ -22,7 +22,7 @@
 @property(nonatomic) NSArray *pastGroups;
 @property(nonatomic) NSMutableArray *autocompleteGroups;
 
-@property(nonatomic) NSMutableArray *pastFormations;
+@property(nonatomic) NSArray *pastFormations;
 @property(nonatomic) NSMutableArray *autocompleteFormations;
 
 - (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary;

@@ -83,12 +83,11 @@
     pastGroups = [libraryObjectStore getUniqueAttributeValuesForAttributeName:SRC_GROUP FromTable:[SourceConstants tableName]];
     
     
-    pastFormations = [[NSMutableArray alloc] init];
+    pastFormations = [[NSArray alloc] init];
     autocompleteFormations = [[NSMutableArray alloc] init];
     
-    [pastFormations addObject:@"Form1"];
-    [pastFormations addObject:@"Form3"];
-    [pastFormations addObject:@"NewForm1"];
+    pastGroups = [libraryObjectStore getUniqueAttributeValuesForAttributeName:SRC_GROUP FromTable:[SourceConstants tableName]];
+  
 }
 
 - (void)didReceiveMemoryWarning
@@ -168,10 +167,12 @@
     if ([GroupField isFirstResponder]) {
         temp = pastGroups;
     }
-    
+   
+    /*
     if ([FormationField isFirstResponder]) {
         temp = pastFormations;
     }
+     */
     
     [autocompleteGroups removeAllObjects];
     for(NSString *curString in temp) {
