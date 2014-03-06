@@ -130,8 +130,10 @@
        movementDuration = 0.3f; // tweak as needed
     }
     
-    if (textField == FormationField) {
-        movementDistance = 120; // tweak as needed
+    //if (textField == FormationField) {
+    else
+    {
+        movementDistance = 40; // tweak as needed
         movementDuration = 0.3f; // tweak as needed
     }
     
@@ -147,13 +149,16 @@
 - (BOOL)textField:(UITextField *)textField
     shouldChangeCharactersInRange:(NSRange)range
         replacementString:(NSString *)string {
-   
-    autocompleteTableView.hidden = NO;
+    if([GroupField isFirstResponder])
+    {
+        autocompleteTableView.hidden = NO;
     
-    NSString *substring = [NSString stringWithString:textField.text];
-    substring = [substring
+        NSString *substring = [NSString stringWithString:textField.text];
+        substring = [substring
                  stringByReplacingCharactersInRange:range withString:string];
-    [self searchAutocompleteEntriesWithSubstring:substring];
+        [self searchAutocompleteEntriesWithSubstring:substring];
+        return YES;
+    }
     return YES;
 }
 
@@ -161,8 +166,7 @@
     
     // Put anything that starts with this substring into the autocompleteUrls array
     // The items in this array is what will show up in the table view
-    
-    NSArray *temp = [[NSArray alloc] init];
+       NSArray *temp = [[NSArray alloc] init];
     
     if ([GroupField isFirstResponder]) {
         temp = pastGroups;
