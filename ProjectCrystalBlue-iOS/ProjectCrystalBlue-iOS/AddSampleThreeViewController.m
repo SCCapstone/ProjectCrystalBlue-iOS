@@ -22,9 +22,10 @@
 
 @synthesize sourceToAdd, libraryObjectStore, typeSelected, numRows;
 
--(id)initWithSource:(Source *)initSource
+- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary
 {
     sourceToAdd = initSource;
+    libraryObjectStore = initLibrary;
     lithArray = [[NSMutableArray alloc] init];
     
     self = [super initWithStyle:UITableViewStyleGrouped];
@@ -146,16 +147,13 @@
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([typeSelected isEqualToString:@"Siliciclastic"]) {
-        AddSampleFourViewController *asfViewController = [[AddSampleFourViewController alloc] initWithSource:sourceToAdd];
-        
-        [asfViewController setLibraryObjectStore:libraryObjectStore];
+        AddSampleFourViewController *asfViewController = [[AddSampleFourViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
 
         if ([indexPath row] == 0)
         {
             [asfViewController setTypeSelected:@"Siliciclastic"];
             [asfViewController setNumRows:15];
             [[sourceToAdd attributes] setObject:@"Conglomerate" forKey:SRC_LITHOLOGY];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
     
@@ -164,7 +162,6 @@
             [asfViewController setTypeSelected:@"Siliciclastic"];
             [asfViewController setNumRows:15];
             [[sourceToAdd attributes] setObject:@"Conglomerate" forKey:SRC_LITHOLOGY];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -173,7 +170,6 @@
             [asfViewController setTypeSelected:@"Siliciclastic"];
             [asfViewController setNumRows:15];
             [[sourceToAdd attributes] setObject:@"Breccia" forKey:SRC_LITHOLOGY];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -182,7 +178,6 @@
             [asfViewController setTypeSelected:@"Siliciclastic"];
             [asfViewController setNumRows:15];
             [[sourceToAdd attributes] setObject:@"Sandstone" forKey:SRC_LITHOLOGY];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -191,7 +186,6 @@
             [asfViewController setTypeSelected:@"Siliciclastic"];
             [asfViewController setNumRows:15];
             [[sourceToAdd attributes] setObject:@"Mudstone" forKey:SRC_LITHOLOGY];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -200,7 +194,6 @@
             [asfViewController setTypeSelected:@"Siliciclastic"];
             [asfViewController setNumRows:15];
             [[sourceToAdd attributes] setObject:@"Gravel" forKey:SRC_LITHOLOGY];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -209,7 +202,6 @@
             [asfViewController setTypeSelected:@"Siliciclastic"];
             [asfViewController setNumRows:15];
             [[sourceToAdd attributes] setObject:@"Sand" forKey:SRC_LITHOLOGY];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -218,22 +210,18 @@
             [asfViewController setTypeSelected:@"Siliciclastic"];
             [asfViewController setNumRows:15];
             [[sourceToAdd attributes] setObject:@"Mud" forKey:SRC_LITHOLOGY];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
     }
     
     if ([typeSelected isEqualToString:@"Carbonate"]) {
-        AddSampleFourViewController *asfViewController = [[AddSampleFourViewController alloc] initWithSource:sourceToAdd];
-        
-        [asfViewController setLibraryObjectStore:libraryObjectStore];
+        AddSampleFourViewController *asfViewController = [[AddSampleFourViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
         
         if ([indexPath row] == 0)
         {
             [asfViewController setTypeSelected:@"Carbonate"];
             [asfViewController setNumRows:5];
             [[sourceToAdd attributes] setObject:@"Marl" forKey:SRC_LITHOLOGY];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -242,7 +230,6 @@
             [asfViewController setTypeSelected:@"Carbonate"];
             [asfViewController setNumRows:5];
             [[sourceToAdd attributes] setObject:@"Micrite" forKey:SRC_LITHOLOGY];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -251,7 +238,6 @@
             [asfViewController setTypeSelected:@"Carbonate"];
             [asfViewController setNumRows:5];
             [[sourceToAdd attributes] setObject:@"Wackestone" forKey:SRC_LITHOLOGY];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -260,7 +246,6 @@
             [asfViewController setTypeSelected:@"Carbonate"];
             [asfViewController setNumRows:5];
             [[sourceToAdd attributes] setObject:@"Packstone" forKey:SRC_LITHOLOGY];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -269,7 +254,6 @@
             [asfViewController setTypeSelected:@"Carbonate"];
             [asfViewController setNumRows:5];
             [[sourceToAdd attributes] setObject:@"Grainstone" forKey:SRC_LITHOLOGY];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -278,7 +262,6 @@
             [asfViewController setTypeSelected:@"Carbonate"];
             [asfViewController setNumRows:5];
             [[sourceToAdd attributes] setObject:@"Boundstone" forKey:SRC_LITHOLOGY];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -287,13 +270,12 @@
             [asfViewController setTypeSelected:@"Carbonate"];
             [asfViewController setNumRows:5];
             [[sourceToAdd attributes] setObject:@"Unknown" forKey:SRC_LITHOLOGY];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
     }
     
     if ([typeSelected isEqualToString:@"Authigenic"]) {
-        AddSampleFiveViewController *asfViewController = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd];
+        AddSampleFiveViewController *asfViewController = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
         [asfViewController setLibraryObjectStore:libraryObjectStore];
 
         
@@ -301,7 +283,6 @@
         {
             [[sourceToAdd attributes] setObject:@"Glauconite" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -309,13 +290,12 @@
         {
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
     }
     
     if ([typeSelected isEqualToString:@"Plutonic"]) {
-        AddSampleFiveViewController *asfViewController = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd];
+        AddSampleFiveViewController *asfViewController = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
         [asfViewController setLibraryObjectStore:libraryObjectStore];
 
         
@@ -323,7 +303,6 @@
         {
             [[sourceToAdd attributes] setObject:@"Granitoid" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -331,7 +310,6 @@
         {
             [[sourceToAdd attributes] setObject:@"Granite" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -339,7 +317,6 @@
         {
             [[sourceToAdd attributes] setObject:@"Granodiorite" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -347,7 +324,6 @@
         {
             [[sourceToAdd attributes] setObject:@"Tonalite" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -355,7 +331,6 @@
         {
             [[sourceToAdd attributes] setObject:@"Diorite" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -363,7 +338,6 @@
         {
             [[sourceToAdd attributes] setObject:@"Gabbro" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -371,7 +345,6 @@
         {
             [[sourceToAdd attributes] setObject:@"Monzonite" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -379,7 +352,6 @@
         {
             [[sourceToAdd attributes] setObject:@"Syenite" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -387,21 +359,17 @@
         {
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
     }
     
     if ([typeSelected isEqualToString:@"Volcanic"]) {
-        AddSampleFiveViewController *asfViewController = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd];
-        [asfViewController setLibraryObjectStore:libraryObjectStore];
-
+        AddSampleFiveViewController *asfViewController = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
         
         if ([indexPath row] == 0)
         {
             [[sourceToAdd attributes] setObject:@"Ash" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -409,7 +377,6 @@
         {
             [[sourceToAdd attributes] setObject:@"Rhyolite" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -417,7 +384,6 @@
         {
             [[sourceToAdd attributes] setObject:@"Dacite" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -425,7 +391,6 @@
         {
             [[sourceToAdd attributes] setObject:@"Andesite" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -433,7 +398,6 @@
         {
             [[sourceToAdd attributes] setObject:@"Basalt" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -441,7 +405,6 @@
         {
             [[sourceToAdd attributes] setObject:@"Trachyte" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -449,21 +412,18 @@
         {
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
     }
     
     if ([typeSelected isEqualToString:@"Metasedimentary"]) {
-        AddSampleFiveViewController *asfViewController = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd];
-        [asfViewController setLibraryObjectStore:libraryObjectStore];
+        AddSampleFiveViewController *asfViewController = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
 
         
         if ([indexPath row] == 0)
         {
             [[sourceToAdd attributes] setObject:@"Slate" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -471,7 +431,6 @@
         {
             [[sourceToAdd attributes] setObject:@"Phyllite" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -479,7 +438,6 @@
         {
             [[sourceToAdd attributes] setObject:@"Schist" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -487,7 +445,6 @@
         {
             [[sourceToAdd attributes] setObject:@"Gneiss" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -495,21 +452,18 @@
         {
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
     }
     
     if ([typeSelected isEqualToString:@"Metaigneous"]) {
-        AddSampleFiveViewController *asfViewController = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd];
-        [asfViewController setLibraryObjectStore:libraryObjectStore];
+        AddSampleFiveViewController *asfViewController = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
 
         
         if ([indexPath row] == 0)
         {
             [[sourceToAdd attributes] setObject:@"Felsic Orthoschist" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
@@ -517,7 +471,6 @@
         {
             [[sourceToAdd attributes] setObject:@"Felsic Orthogneiss" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
 
@@ -526,7 +479,6 @@
         {
             [[sourceToAdd attributes] setObject:@"Intermediate Orthoschist" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
 
@@ -535,7 +487,6 @@
         {
             [[sourceToAdd attributes] setObject:@"Intermediate Orthogneiss" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
 
@@ -544,7 +495,6 @@
         {
             [[sourceToAdd attributes] setObject:@"Amphibolite" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
 
@@ -553,7 +503,6 @@
         {
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_LITHOLOGY];
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
     }

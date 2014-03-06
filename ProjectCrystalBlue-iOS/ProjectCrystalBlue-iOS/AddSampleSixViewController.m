@@ -17,11 +17,11 @@
 @implementation AddSampleSixViewController
 @synthesize libraryObjectStore, sourceToAdd, RegionField, LocalityField, SectionField, MeterLevelField;
 
-- (id)initWithSource:(Source *)initSource
-{
+- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary{
     if (self) {
         
         sourceToAdd = initSource;
+        libraryObjectStore = initLibrary;
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Add Sample Cont."];
@@ -44,9 +44,8 @@
     [[sourceToAdd attributes] setObject:[SectionField text] forKey:SRC_SECTION];
     [[sourceToAdd attributes] setObject:[MeterLevelField text] forKey:SRC_METER_LEVEL];
     
-    AddSampleSevenViewController *assViewController = [[AddSampleSevenViewController alloc] initWithSource:sourceToAdd];
+    AddSampleSevenViewController *assViewController = [[AddSampleSevenViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
     
-    [assViewController setLibraryObjectStore:libraryObjectStore];
     [[self navigationController] pushViewController:assViewController  animated:YES];
 
    }

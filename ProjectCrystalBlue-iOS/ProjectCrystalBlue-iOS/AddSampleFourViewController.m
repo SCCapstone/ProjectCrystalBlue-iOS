@@ -20,9 +20,10 @@
 
 @synthesize sourceToAdd, libraryObjectStore, typeSelected, numRows;
 
--(id)initWithSource:(Source *)initSource
+- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary
 {
     sourceToAdd = initSource;
+    libraryObjectStore = initLibrary;
     depoArray = [[NSMutableArray alloc] init];
     
     self = [super initWithStyle:UITableViewStyleGrouped];
@@ -106,112 +107,96 @@
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AddSampleFiveViewController *asfViewController = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd];
-    [asfViewController setLibraryObjectStore:libraryObjectStore];
+    AddSampleFiveViewController *asfViewController = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
     
     if ([typeSelected isEqualToString:@"Siliciclastic"]) {
         if ([indexPath row] == 0)
         {
             [[sourceToAdd attributes] setObject:@"Alluvial Fan" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
         if ([indexPath row] == 1)
         {
             [[sourceToAdd attributes] setObject:@"Fluvial Megafan" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
         if ([indexPath row] == 2)
         {
             [[sourceToAdd attributes] setObject:@"Meandearing Fluvial" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
         if ([indexPath row] == 3)
         {
             [[sourceToAdd attributes] setObject:@"Braided Fluvial" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
         if ([indexPath row] == 4)
         {
             [[sourceToAdd attributes] setObject:@"Alpine Glacial" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
         if ([indexPath row] == 5)
         {
             [[sourceToAdd attributes] setObject:@"Ice Sheet" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
         if ([indexPath row] == 6)
         {
             [[sourceToAdd attributes] setObject:@"Lacustrine" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
         if ([indexPath row] == 7)
         {
             [[sourceToAdd attributes] setObject:@"Eolian" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
         if ([indexPath row] == 8)
         {
             [[sourceToAdd attributes] setObject:@"Deltaic" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
         if ([indexPath row] == 9)
         {
             [[sourceToAdd attributes] setObject:@"Estuarine" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
         if ([indexPath row] == 10)
         {
             [[sourceToAdd attributes] setObject:@"Shallow Marine" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
         if ([indexPath row] == 11)
         {
             [[sourceToAdd attributes] setObject:@"Shelf" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
         if ([indexPath row] == 12)
         {
             [[sourceToAdd attributes] setObject:@"Pelagic" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
         if ([indexPath row] == 13)
         {
             [[sourceToAdd attributes] setObject:@"Submarine Fan" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
         if ([indexPath row] == 14)
         {
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
     }
@@ -220,35 +205,30 @@
         if ([indexPath row] == 0)
         {
             [[sourceToAdd attributes] setObject:@"Carbonate Platform" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
         if ([indexPath row] == 1)
         {
             [[sourceToAdd attributes] setObject:@"Carbonate Reef" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
         if ([indexPath row] == 2)
         {
             [[sourceToAdd attributes] setObject:@"Pelagic" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
         if ([indexPath row] == 3)
         {
             [[sourceToAdd attributes] setObject:@"Eolian" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
         
         if ([indexPath row] == 4)
         {
             [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-            [asfViewController setSourceToAdd:sourceToAdd];
             [[self navigationController] pushViewController:asfViewController  animated:YES];
         }
     }

@@ -16,5 +16,5 @@
 @property(nonatomic) NSString* typeSelected;
 @property(nonatomic) int numRows;
 
--(id)initWithSource:(Source *)initSource;
+- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary;
 @end

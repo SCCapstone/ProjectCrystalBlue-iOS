@@ -21,9 +21,10 @@
 
 @synthesize sourceToAdd, libraryObjectStore;
 
--(id)initWithSource:(Source *)initSource
+- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary
 {
     sourceToAdd = initSource;
+    libraryObjectStore = initLibrary;
     typeArray = [[NSMutableArray alloc] init];
     
     self = [super initWithStyle:UITableViewStyleGrouped];
@@ -90,18 +91,14 @@
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AddSampleThreeViewController *astViewController = [[AddSampleThreeViewController alloc] initWithSource:sourceToAdd];
-    AddSampleFiveViewController *asfViewController = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd];
-    
-    [astViewController setLibraryObjectStore:libraryObjectStore];
-    [asfViewController setLibraryObjectStore:libraryObjectStore];
+    AddSampleThreeViewController *astViewController = [[AddSampleThreeViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
+    AddSampleFiveViewController *asfViewController = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
     
     if ([indexPath row] == 0)
     {
         [astViewController setTypeSelected:@"Siliciclastic"];
         [astViewController setNumRows:8];
         [[sourceToAdd attributes] setObject:@"Siliciclastic" forKey:SRC_TYPE];
-         [astViewController setSourceToAdd:sourceToAdd];
         [[self navigationController] pushViewController:astViewController  animated:YES];
     }
     
@@ -110,7 +107,6 @@
         [astViewController setTypeSelected:@"Carbonate"];
         [astViewController setNumRows:7];
         [[sourceToAdd attributes] setObject:@"Carbonate" forKey:SRC_TYPE];
-        [astViewController setSourceToAdd:sourceToAdd];
         [[self navigationController] pushViewController:astViewController  animated:YES];
     }
     
@@ -119,7 +115,6 @@
         [astViewController setTypeSelected:@"Authigenic"];
         [astViewController setNumRows:2];
         [[sourceToAdd attributes] setObject:@"Authigenic" forKey:SRC_TYPE];
-        [astViewController setSourceToAdd:sourceToAdd];
         [[self navigationController] pushViewController:astViewController  animated:YES];
     }
     
@@ -128,7 +123,6 @@
         [astViewController setTypeSelected:@"Plutonic"];
         [astViewController setNumRows:9];
         [[sourceToAdd attributes] setObject:@"Plutonic" forKey:SRC_TYPE];
-        [astViewController setSourceToAdd:sourceToAdd];
         [[self navigationController] pushViewController:astViewController  animated:YES];
     }
     
@@ -137,7 +131,6 @@
         [astViewController setTypeSelected:@"Volcanic"];
         [astViewController setNumRows:7];
          [[sourceToAdd attributes] setObject:@"Volcanic" forKey:SRC_TYPE];
-        [astViewController setSourceToAdd:sourceToAdd];
         [[self navigationController] pushViewController:astViewController  animated:YES];
     }
     
@@ -146,7 +139,6 @@
         [astViewController setTypeSelected:@"Metasedimentary"];
         [astViewController setNumRows:5];
          [[sourceToAdd attributes] setObject:@"Metasedimentary" forKey:SRC_TYPE];
-        [astViewController setSourceToAdd:sourceToAdd];
         [[self navigationController] pushViewController:astViewController  animated:YES];
     }
     
@@ -155,7 +147,6 @@
         [astViewController setTypeSelected:@"Metaigneous"];
         [astViewController setNumRows:6];
         [[sourceToAdd attributes] setObject:@"Metaigneous" forKey:SRC_TYPE];
-        [astViewController setSourceToAdd:sourceToAdd];
         [[self navigationController] pushViewController:astViewController  animated:YES];
     }
     
@@ -164,7 +155,6 @@
         [[sourceToAdd attributes] setObject:@"Igneous" forKey:SRC_TYPE];
         [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_LITHOLOGY];
         [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-        [asfViewController setSourceToAdd:sourceToAdd];
         [[self navigationController] pushViewController:asfViewController  animated:YES];
     }
     
@@ -173,7 +163,6 @@
         [[sourceToAdd attributes] setObject:@"Metamorphic" forKey:SRC_TYPE];
         [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_LITHOLOGY];
         [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-        [asfViewController setSourceToAdd:sourceToAdd];
         [[self navigationController] pushViewController:asfViewController  animated:YES];
     }
     
@@ -182,7 +171,6 @@
         [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_TYPE];
         [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_LITHOLOGY];
         [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-        [asfViewController setSourceToAdd:sourceToAdd];
         [[self navigationController] pushViewController:asfViewController  animated:YES];
     }
 }

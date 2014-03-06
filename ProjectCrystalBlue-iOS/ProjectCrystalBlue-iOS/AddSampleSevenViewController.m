@@ -16,10 +16,10 @@
 @implementation AddSampleSevenViewController
 @synthesize libraryObjectStore, sourceToAdd, AgeField, AgeBasis1Field, AgeBasis2Field;
 
-- (id)initWithSource:(Source *)initSource
-{
+- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary{
     if (self) {
          sourceToAdd = initSource;
+        libraryObjectStore = initLibrary;
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Add Sample Cont."];
@@ -41,9 +41,8 @@
     [[sourceToAdd attributes] setObject:[AgeBasis1Field text] forKey:SRC_AGE_BASIS1];
     [[sourceToAdd attributes] setObject:[AgeBasis2Field text] forKey:SRC_AGE_BASIS2];
     
-    AddSampleEightViewController *aseViewController = [[AddSampleEightViewController alloc] initWithSource:sourceToAdd];
+    AddSampleEightViewController *aseViewController = [[AddSampleEightViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
     
-    [aseViewController setLibraryObjectStore:libraryObjectStore];
     [[self navigationController] pushViewController:aseViewController  animated:YES];
 }
 

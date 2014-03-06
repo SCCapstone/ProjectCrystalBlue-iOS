@@ -19,11 +19,11 @@
 @property(nonatomic) Source* sourceToAdd;
 @property(nonatomic) AbstractCloudLibraryObjectStore *libraryObjectStore;
 
-@property(nonatomic) NSMutableArray *pastGroups;
+@property(nonatomic) NSArray *pastGroups;
 @property(nonatomic) NSMutableArray *autocompleteGroups;
 
 @property(nonatomic) NSMutableArray *pastFormations;
 @property(nonatomic) NSMutableArray *autocompleteFormations;
 
--(id)initWithSource:(Source *)initSource;
+- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary;
 @end

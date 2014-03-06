@@ -25,10 +25,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 @implementation AddSampleEightViewController
 @synthesize libraryObjectStore, sourceToAdd, ProjectField, SubprojectField;
 
-- (id)initWithSource:(Source *)initSource
-{
+- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary{
     if (self) {
         sourceToAdd = initSource;
+        libraryObjectStore = initLibrary;
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Add Sample Cont."];

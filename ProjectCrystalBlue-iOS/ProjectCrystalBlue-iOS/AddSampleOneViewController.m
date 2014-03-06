@@ -7,14 +7,14 @@
 //
 
 #import "AddSampleOneViewController.h"
-#import "SimpleDBLibraryObjectStore.h"
+#import "AbstractLibraryObjectStore.h"
 #import "SourceConstants.h"
 #import "Source.h"
 #import "AddSampleTwoViewController.h"
 
 @interface AddSampleOneViewController ()
 {
-    SimpleDBLibraryObjectStore *libraryObjectStore;
+    AbstractCloudLibraryObjectStore *libraryObjectStore;
     Source *sourceToAdd;
     CLLocationManager *locationManager;
 }
@@ -54,7 +54,7 @@
         [[sourceToAdd attributes] setObject:[LongitudeField text] forKey:SRC_LONGITUDE];
         [[sourceToAdd attributes] setObject:[DateField text] forKey:SRC_DATE_COLLECTED];
     
-        AddSampleTwoViewController *astViewController = [[AddSampleTwoViewController alloc] initWithSource:sourceToAdd];
+        AddSampleTwoViewController *astViewController = [[AddSampleTwoViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
     
         [astViewController setLibraryObjectStore:libraryObjectStore];
         [[self navigationController] pushViewController:astViewController  animated:YES];

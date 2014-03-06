@@ -20,5 +20,5 @@
 @property(nonatomic) Source* sourceToAdd;
 @property(nonatomic) AbstractCloudLibraryObjectStore *libraryObjectStore;
 
--(id)initWithSource:(Source *)initSource;
+- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary;
 @end

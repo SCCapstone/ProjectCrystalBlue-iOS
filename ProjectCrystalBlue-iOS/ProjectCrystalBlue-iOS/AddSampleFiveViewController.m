@@ -9,6 +9,8 @@
 #import "AddSampleFiveViewController.h"
 #import "Source.h"
 #import "AddSampleSixViewController.h"
+#import "AbstractLibraryObjectStore.h"
+#import "SampleConstants.h"
 
 
 @interface AddSampleFiveViewController ()
@@ -24,9 +26,11 @@
 @synthesize pastGroups, pastFormations;
 @synthesize autocompleteGroups, autocompleteFormations;
 
-- (id)initWithSource:(Source *)initSource
+- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary
 {
     if (self) {
+        sourceToAdd = initSource;
+        libraryObjectStore = initLibrary;
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Add Sample Cont."];
@@ -58,9 +62,8 @@
     [[sourceToAdd attributes] setObject:[FormationField text] forKey:SRC_FORMATION];
     [[sourceToAdd attributes] setObject:[MemberField text] forKey:SRC_MEMBER];
     
-    AddSampleSixViewController *assViewController = [[AddSampleSixViewController alloc] initWithSource:sourceToAdd];
+    AddSampleSixViewController *assViewController = [[AddSampleSixViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
     
-    [assViewController setLibraryObjectStore:libraryObjectStore];
     [[self navigationController] pushViewController:assViewController  animated:YES];
     
 }
@@ -77,9 +80,8 @@
     pastGroups = [[NSMutableArray alloc] init];
     autocompleteGroups = [[NSMutableArray alloc] init];
     
-    [pastGroups addObject:@"Group1"];
-    [pastGroups addObject:@"Group3"];
-    [pastGroups addObject:@"NewGroup1"];
+    pastGroups = [libraryObjectStore getUniqueAttributeValuesForAttributeName:SRC_GROUP FromTable:[SourceConstants tableName]];
+    
     
     pastFormations = [[NSMutableArray alloc] init];
     autocompleteFormations = [[NSMutableArray alloc] init];
@@ -161,7 +163,7 @@
     // Put anything that starts with this substring into the autocompleteUrls array
     // The items in this array is what will show up in the table view
     
-    NSMutableArray *temp = [[NSMutableArray alloc] init];
+    NSArray *temp = [[NSArray alloc] init];
     
     if ([GroupField isFirstResponder]) {
         temp = pastGroups;
