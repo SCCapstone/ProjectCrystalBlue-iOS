@@ -133,6 +133,23 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [libraryObjectStore updateLibraryObject:selectedSource IntoTable:[SourceConstants tableName]];
     
     TypeLabel.textColor = [UIColor blackColor];
+    LithologyLabel.textColor = [UIColor blackColor];
+    DeposystemLabel.textColor = [UIColor blackColor];
+    GroupLabel.textColor = [UIColor blackColor];
+    FormationLabel.textColor = [UIColor blackColor];
+    MemberLabel.textColor = [UIColor blackColor];
+    RegionLabel.textColor = [UIColor blackColor];
+    LocalityLabel.textColor = [UIColor blackColor];
+    SectionLabel.textColor = [UIColor blackColor];
+    MeterLevelLabel.textColor = [UIColor blackColor];
+    LatitudeLabel.textColor = [UIColor blackColor];
+    LongitudeLabel.textColor = [UIColor blackColor];
+    AgeLabel.textColor = [UIColor blackColor];
+    AgeBasis1Label.textColor = [UIColor blackColor];
+    AgeBasis2Label.textColor = [UIColor blackColor];
+    ProjectLabel.textColor = [UIColor blackColor];
+    SubprojectLabel.textColor = [UIColor blackColor];
+    DateLabel.textColor = [UIColor blackColor];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
@@ -151,6 +168,75 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         {
             TypeLabel.textColor = [UIColor redColor];
         }
+        if(textField == LithologyField)
+        {
+            LithologyLabel.textColor = [UIColor redColor];
+        }
+        if(textField == DeposystemField)
+        {
+            DeposystemLabel.textColor = [UIColor redColor];
+        }
+        if(textField == GroupField)
+        {
+            GroupLabel.textColor = [UIColor redColor];
+        }
+        if(textField == FormationField)
+        {
+            FormationLabel.textColor = [UIColor redColor];
+        }
+        if(textField == MemberField)
+        {
+            MemberLabel.textColor = [UIColor redColor];
+        }
+        if(textField == RegionField)
+        {
+            RegionLabel.textColor = [UIColor redColor];
+        }
+        if(textField == LocalityField)
+        {
+            LocalityLabel.textColor = [UIColor redColor];
+        }
+        if(textField == SectionField)
+        {
+            SectionLabel.textColor = [UIColor redColor];
+        }
+        if(textField == MeterLevelField)
+        {
+            MeterLevelLabel.textColor = [UIColor redColor];
+        }
+        if(textField == LatitudeField)
+        {
+            LatitudeLabel.textColor = [UIColor redColor];
+        }
+        if(textField == LongitudeField)
+        {
+            LongitudeLabel.textColor = [UIColor redColor];
+        }
+        if(textField == AgeField)
+        {
+            AgeLabel.textColor = [UIColor redColor];
+        }
+        if(textField == AgeBasis1Field)
+        {
+            AgeBasis1Label.textColor = [UIColor redColor];
+        }
+        if(textField == AgeBasis2Field)
+        {
+            AgeBasis2Label.textColor = [UIColor redColor];
+        }
+        if(textField == ProjectField)
+        {
+            ProjectLabel.textColor = [UIColor redColor];
+        }
+        if(textField == SubprojectField)
+        {
+            SubprojectLabel.textColor = [UIColor redColor];
+        }
+        if(textField == DateField)
+        {
+            DateLabel.textColor = [UIColor redColor];
+        }
+        
     }
 }
 

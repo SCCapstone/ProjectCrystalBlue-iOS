@@ -7,22 +7,39 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SourceEditViewController">
             <connections>
                 <outlet property="AgeBasis1Field" destination="V1J-vA-NWp" id="mHQ-48-48P"/>
+                <outlet property="AgeBasis1Label" destination="uVD-5a-e0X" id="C98-Pe-VXS"/>
                 <outlet property="AgeBasis2Field" destination="hIg-va-ada" id="laX-48-3Id"/>
+                <outlet property="AgeBasis2Label" destination="RL2-Ej-0xW" id="KTa-JF-XaV"/>
                 <outlet property="AgeField" destination="KcI-Tp-tqr" id="N7X-dN-hwC"/>
+                <outlet property="AgeLabel" destination="kgL-54-ueV" id="elP-A4-YPi"/>
                 <outlet property="DateField" destination="G41-ib-rYs" id="Qh9-qw-Kgk"/>
+                <outlet property="DateLabel" destination="nK6-ta-RR7" id="4KN-Lu-vFW"/>
                 <outlet property="DeposystemField" destination="Vaz-UL-vob" id="bei-ft-5JT"/>
+                <outlet property="DeposystemLabel" destination="KOX-Mv-m9d" id="kfa-fs-Qyk"/>
                 <outlet property="FormationField" destination="H1A-xN-k0B" id="Ddt-FZ-U1q"/>
+                <outlet property="FormationLabel" destination="QuK-HC-gxe" id="5yM-Ur-E5C"/>
                 <outlet property="GroupField" destination="i1f-HN-sjX" id="8RL-5I-N34"/>
+                <outlet property="GroupLabel" destination="Aw0-F8-ljQ" id="997-fe-yxx"/>
                 <outlet property="LatitudeField" destination="5oT-PV-7l3" id="uOV-it-jnp"/>
+                <outlet property="LatitudeLabel" destination="EtW-XY-aX6" id="FB4-Ki-Nje"/>
                 <outlet property="LithologyField" destination="BPV-yg-2dD" id="unc-ir-ThN"/>
+                <outlet property="LithologyLabel" destination="JB1-6g-1pe" id="dPz-8l-NmU"/>
                 <outlet property="LocalityField" destination="Rul-DF-W0X" id="b48-3D-hDd"/>
+                <outlet property="LocalityLabel" destination="L9p-V6-eho" id="6AM-a3-dRN"/>
                 <outlet property="LongitudeField" destination="dQt-0T-LXv" id="RGX-e1-dq3"/>
+                <outlet property="LongitudeLabel" destination="5w5-Xh-vez" id="DAZ-uT-Cw1"/>
                 <outlet property="MemberField" destination="3Ov-WU-5K7" id="Ggy-el-497"/>
+                <outlet property="MemberLabel" destination="eua-Uk-Q0P" id="T8l-f1-ZBK"/>
                 <outlet property="MeterLevelField" destination="HAo-kF-6jr" id="Nz2-Eb-NiX"/>
+                <outlet property="MeterLevelLabel" destination="lXJ-Pd-huD" id="f9Q-Qq-rxC"/>
                 <outlet property="ProjectField" destination="zwL-mm-EBk" id="49u-a0-aMA"/>
+                <outlet property="ProjectLabel" destination="V2L-rS-oHe" id="qBo-Br-dJU"/>
                 <outlet property="RegionField" destination="Hot-zw-WzQ" id="yP1-6O-7dG"/>
+                <outlet property="RegionLabel" destination="DRO-Qz-d73" id="HvS-fL-ALT"/>
                 <outlet property="SectionField" destination="XW4-Lh-Khd" id="uQw-Oc-nha"/>
+                <outlet property="SectionLabel" destination="UNg-sQ-y1k" id="cFr-MM-YkX"/>
                 <outlet property="SubprojectField" destination="ICy-Gm-jhG" id="MyV-tT-nop"/>
+                <outlet property="SubprojectLabel" destination="6wL-ao-Mfd" id="bPp-PQ-ca2"/>
                 <outlet property="TypeField" destination="aVr-cG-eUZ" id="tie-RF-wSq"/>
                 <outlet property="TypeLabel" destination="pYK-rz-VM1" id="cfs-mn-wT3"/>
                 <outlet property="scroller" destination="h8Y-bc-RnQ" id="gih-UR-FM4"/>
@@ -50,7 +67,7 @@
                     </connections>
                 </textField>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latitude" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EtW-XY-aX6">
-                    <rect key="frame" x="20" y="413" width="107" height="21"/>
+                    <rect key="frame" x="20" y="415" width="107" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
@@ -152,7 +169,7 @@
                     </connections>
                 </textField>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meter Level" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lXJ-Pd-huD">
-                    <rect key="frame" x="20" y="374" width="107" height="21"/>
+                    <rect key="frame" x="20" y="375" width="107" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
@@ -272,13 +289,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age Basis 2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RL2-Ej-0xW">
-                    <rect key="frame" x="20" y="565" width="102" height="21"/>
+                    <rect key="frame" x="20" y="564" width="102" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V2L-rS-oHe">
-                    <rect key="frame" x="20" y="602" width="102" height="21"/>
+                    <rect key="frame" x="20" y="603" width="102" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
