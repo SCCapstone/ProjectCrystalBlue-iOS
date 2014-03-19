@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *RegionField;
 @property (weak, nonatomic) IBOutlet UITextField *LocalityField;
 @property (weak, nonatomic) IBOutlet UITextField *SectionField;
-@property (weak, nonatomic) IBOutlet UITextField *MeterLevelField;
+@property (weak, nonatomic) IBOutlet UITextField *MeterField;
 
 
 @property(nonatomic) Source* sourceToAdd;

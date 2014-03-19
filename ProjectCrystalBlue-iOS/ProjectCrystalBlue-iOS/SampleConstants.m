@@ -53,6 +53,44 @@ static NSString *const SAMPLE_TABLE_NAME = @"prod_sample_table";
     return attributeDefaultValues;
 }
 
+/// Array of human-readable labels for each attribute
++ (NSArray *)humanReadableLabels
+{
+    static NSArray *humanReadableLabels = nil;
+    if (!humanReadableLabels)
+    {
+        humanReadableLabels = [NSArray arrayWithObjects:
+                               SMP_DISPLAY_KEY,
+                               SMP_DISPLAY_SOURCE_KEY,
+                               SMP_DISPLAY_CURRENT_LOCATION,
+                               SMP_DISPLAY_TAGS, nil];
+    }
+    return humanReadableLabels;
+}
+
+/// Return the human-readable label corresponding to an attribute name
++ (NSString *)humanReadableLabelForAttribute:(NSString *)attributeName
+{
+    NSUInteger index = [[self.class attributeNames] indexOfObject:attributeName];
+    if (index == NSNotFound) {
+        DDLogWarn(@"%@: %@ attribute is unknown.", NSStringFromClass(self.class), attributeName);
+        return attributeName;
+    }
+    
+    return [[self.class humanReadableLabels] objectAtIndex:index];
+}
+
++ (NSString *)attributeNameForHumanReadableLabel:(NSString *)label
+{
+    NSUInteger index = [[self.class humanReadableLabels] indexOfObject:label];
+    if (index == NSNotFound) {
+        DDLogWarn(@"%@: %@ attribute is unknown.", NSStringFromClass(self.class), label);
+        return label;
+    }
+    
+    return [[self.class attributeNames] objectAtIndex:index];
+}
+
 + (NSString *)tableName
 {
     return SAMPLE_TABLE_NAME;
@@ -70,7 +108,7 @@ static NSString *const SAMPLE_TABLE_NAME = @"prod_sample_table";
         {
             NSString *attr = [attrNames objectAtIndex:i];
             [attrNames replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@ TEXT%@",
-                                                          attr, [attr isEqualToString:@"key"] ? @" PRIMARY KEY" : @""]];
+                                                          attr, [attr isEqualToString:SMP_KEY] ? @" PRIMARY KEY" : @""]];
         }
         schema = [attrNames componentsJoinedByString:@","];
     }

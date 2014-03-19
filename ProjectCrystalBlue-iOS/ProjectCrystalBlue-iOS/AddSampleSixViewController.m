@@ -15,7 +15,7 @@
 @end
 
 @implementation AddSampleSixViewController
-@synthesize libraryObjectStore, sourceToAdd, RegionField, LocalityField, SectionField, MeterLevelField;
+@synthesize libraryObjectStore, sourceToAdd, RegionField, LocalityField, SectionField, MeterField;
 
 - (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary{
     if (self) {
@@ -32,7 +32,6 @@
         
         [[self navigationItem] setRightBarButtonItem:bbi];
         [[self navigationItem] setLeftBarButtonItem:backbtn];
-        
     }
     return self;
     
@@ -42,7 +41,7 @@
     [[sourceToAdd attributes] setObject:[RegionField text] forKey:SRC_REGION];
     [[sourceToAdd attributes] setObject:[LocalityField text] forKey:SRC_LOCALITY];
     [[sourceToAdd attributes] setObject:[SectionField text] forKey:SRC_SECTION];
-    [[sourceToAdd attributes] setObject:[MeterLevelField text] forKey:SRC_METER_LEVEL];
+    [[sourceToAdd attributes] setObject:[MeterField text] forKey:SRC_METER];
     
     AddSampleSevenViewController *assViewController = [[AddSampleSevenViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
     

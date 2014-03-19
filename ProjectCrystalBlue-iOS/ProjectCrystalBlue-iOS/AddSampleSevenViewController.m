@@ -7,24 +7,31 @@
 //
 
 #import "AddSampleSevenViewController.h"
-#import "AddSampleEightViewController.h"
+#import "Sample.h"
+#import "DDLog.h"
+
+#ifdef DEBUG
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+#else
+static const int ddLogLevel = LOG_LEVEL_WARN;
+#endif
 
 @interface AddSampleSevenViewController ()
 
 @end
 
 @implementation AddSampleSevenViewController
-@synthesize libraryObjectStore, sourceToAdd, AgeField, AgeBasis1Field, AgeBasis2Field;
+@synthesize libraryObjectStore, sourceToAdd, AgeField, AgeMethodField, AgeDataTypeField;
 
 - (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary{
     if (self) {
-         sourceToAdd = initSource;
+        sourceToAdd = initSource;
         libraryObjectStore = initLibrary;
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Add Sample Cont."];
         
-        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(addSource:)];
+        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(addSource:)];
         
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         
@@ -38,12 +45,19 @@
 
 - (IBAction)addSource:(id)sender {
     [[sourceToAdd attributes] setObject:[AgeField text] forKey:SRC_AGE];
-    [[sourceToAdd attributes] setObject:[AgeBasis1Field text] forKey:SRC_AGE_BASIS1];
-    [[sourceToAdd attributes] setObject:[AgeBasis2Field text] forKey:SRC_AGE_BASIS2];
+    [[sourceToAdd attributes] setObject:[AgeMethodField text] forKey:SRC_AGE_METHOD];
+    [[sourceToAdd attributes] setObject:[AgeDataTypeField text] forKey:SRC_AGE_DATATYPE];
     
-    AddSampleEightViewController *aseViewController = [[AddSampleEightViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
+    DDLogInfo(@"Adding new source %@", sourceToAdd.key);
+    [libraryObjectStore putLibraryObject:sourceToAdd IntoTable:[SourceConstants tableName]];
     
-    [[self navigationController] pushViewController:aseViewController  animated:YES];
+    NSString *newSampleKey = [NSString stringWithFormat:@"%@%@", [sourceToAdd key], @".001"];
+    Sample *newSample = [[Sample alloc] initWithKey:newSampleKey
+                                      AndWithValues:[SampleConstants attributeDefaultValues]];
+    [[newSample attributes] setObject:[sourceToAdd key] forKey:@"sourceKey"];
+    [libraryObjectStore putLibraryObject:newSample IntoTable:[SampleConstants tableName]];
+    
+    [[self navigationController] popToRootViewControllerAnimated:YES];
 }
 
 -(void) goBack:(id)sender

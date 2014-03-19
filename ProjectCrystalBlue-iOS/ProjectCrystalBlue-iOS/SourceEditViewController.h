@@ -24,20 +24,17 @@
     __weak IBOutlet UITextField *RegionField;
     __weak IBOutlet UITextField *LocalityField;
     __weak IBOutlet UITextField *SectionField;
-    __weak IBOutlet UITextField *MeterLevelField;
+    __weak IBOutlet UITextField *MeterField;
     __weak IBOutlet UITextField *LatitudeField;
     __weak IBOutlet UITextField *LongitudeField;
     __weak IBOutlet UITextField *AgeField;
-    __weak IBOutlet UITextField *AgeBasis1Field;
-    __weak IBOutlet UITextField *AgeBasis2Field;
-    __weak IBOutlet UITextField *ProjectField;
-    __weak IBOutlet UITextField *SubprojectField;
+    __weak IBOutlet UITextField *AgeMethodField;
+    __weak IBOutlet UITextField *AgeDataTypeField;
     __weak IBOutlet UITextField *DateField;
-   
 }
 @property (nonatomic, strong) IBOutlet UIScrollView *scroller;
 @property (nonatomic, strong) Source *selectedSource;
-@property (nonatomic, strong) SimpleDBLibraryObjectStore *libraryObjectStore;
+@property (nonatomic, strong) AbstractCloudLibraryObjectStore *libraryObjectStore;
 
 
 @property (nonatomic, copy) void (^dismissBlock)(void);

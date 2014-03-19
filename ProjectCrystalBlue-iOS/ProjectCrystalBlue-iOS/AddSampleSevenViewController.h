@@ -12,8 +12,8 @@
 
 @interface AddSampleSevenViewController : UIViewController<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *AgeField;
-@property (weak, nonatomic) IBOutlet UITextField *AgeBasis1Field;
-@property (weak, nonatomic) IBOutlet UITextField *AgeBasis2Field;
+@property (weak, nonatomic) IBOutlet UITextField *AgeMethodField;
+@property (weak, nonatomic) IBOutlet UITextField *AgeDataTypeField;
 
 @property(nonatomic) Source* sourceToAdd;
 @property(nonatomic) AbstractCloudLibraryObjectStore *libraryObjectStore;

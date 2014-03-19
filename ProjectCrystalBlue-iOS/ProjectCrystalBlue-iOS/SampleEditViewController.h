@@ -14,7 +14,7 @@
 @interface SampleEditViewController : UITableViewController <UINavigationControllerDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) Sample *selectedSample;
-@property (nonatomic, strong) SimpleDBLibraryObjectStore *libraryObjectStore;
+@property (nonatomic, strong) AbstractCloudLibraryObjectStore *libraryObjectStore;
 
 
 -(id)initWithSample:(Sample *)initSample;

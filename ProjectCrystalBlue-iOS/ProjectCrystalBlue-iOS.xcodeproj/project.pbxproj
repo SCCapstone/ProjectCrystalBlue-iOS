@@ -30,8 +30,6 @@
 		B446B94A18C2E67C00AB4E88 /* AddSampleSixViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B94818C2E67C00AB4E88 /* AddSampleSixViewController.xib */; };
 		B446B94E18C2E8B000AB4E88 /* AddSampleSevenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B94C18C2E8B000AB4E88 /* AddSampleSevenViewController.m */; };
 		B446B94F18C2E8B000AB4E88 /* AddSampleSevenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B94D18C2E8B000AB4E88 /* AddSampleSevenViewController.xib */; };
-		B446B95318C2E9CF00AB4E88 /* AddSampleEightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B95118C2E9CF00AB4E88 /* AddSampleEightViewController.m */; };
-		B446B95418C2E9CF00AB4E88 /* AddSampleEightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B95218C2E9CF00AB4E88 /* AddSampleEightViewController.xib */; };
 		B46C93C518C64A920057078B /* EditLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B46C93C318C64A920057078B /* EditLocationViewController.m */; };
 		B46C93C618C64A920057078B /* EditLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B46C93C418C64A920057078B /* EditLocationViewController.xib */; };
 		D001B3BF18B039C000975620 /* LocalLibraryObjectStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D001B3BE18B039C000975620 /* LocalLibraryObjectStoreTests.m */; };
@@ -150,9 +148,6 @@
 		B446B94B18C2E8B000AB4E88 /* AddSampleSevenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSampleSevenViewController.h; sourceTree = "<group>"; };
 		B446B94C18C2E8B000AB4E88 /* AddSampleSevenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleSevenViewController.m; sourceTree = "<group>"; };
 		B446B94D18C2E8B000AB4E88 /* AddSampleSevenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSampleSevenViewController.xib; sourceTree = "<group>"; };
-		B446B95018C2E9CF00AB4E88 /* AddSampleEightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSampleEightViewController.h; sourceTree = "<group>"; };
-		B446B95118C2E9CF00AB4E88 /* AddSampleEightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleEightViewController.m; sourceTree = "<group>"; };
-		B446B95218C2E9CF00AB4E88 /* AddSampleEightViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSampleEightViewController.xib; sourceTree = "<group>"; };
 		B46C93C218C64A920057078B /* EditLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditLocationViewController.h; sourceTree = "<group>"; };
 		B46C93C318C64A920057078B /* EditLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditLocationViewController.m; sourceTree = "<group>"; };
 		B46C93C418C64A920057078B /* EditLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditLocationViewController.xib; sourceTree = "<group>"; };
@@ -308,7 +303,6 @@
 				B446B94318C2E49D00AB4E88 /* AddSampleFiveViewController.xib */,
 				B446B94818C2E67C00AB4E88 /* AddSampleSixViewController.xib */,
 				B446B94D18C2E8B000AB4E88 /* AddSampleSevenViewController.xib */,
-				B446B95218C2E9CF00AB4E88 /* AddSampleEightViewController.xib */,
 				B446B92A18C2589900AB4E88 /* SearchSampleViewController.xib */,
 				B46C93C418C64A920057078B /* EditLocationViewController.xib */,
 			);
@@ -349,8 +343,6 @@
 				B446B94718C2E67C00AB4E88 /* AddSampleSixViewController.m */,
 				B446B94B18C2E8B000AB4E88 /* AddSampleSevenViewController.h */,
 				B446B94C18C2E8B000AB4E88 /* AddSampleSevenViewController.m */,
-				B446B95018C2E9CF00AB4E88 /* AddSampleEightViewController.h */,
-				B446B95118C2E9CF00AB4E88 /* AddSampleEightViewController.m */,
 			);
 			name = AddSampleWalkthrough;
 			sourceTree = "<group>";
@@ -770,7 +762,7 @@
 		D729BD2F181C24A000F762A3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Project Crystal Blue";
 				TargetAttributes = {
 					D729BD51181C24A000F762A3 = {
@@ -810,7 +802,6 @@
 				D729BD4D181C24A000F762A3 /* Images.xcassets in Resources */,
 				B446B92C18C2589900AB4E88 /* SearchSampleViewController.xib in Resources */,
 				B446B92718C2403C00AB4E88 /* HomeViewController.xib in Resources */,
-				B446B95418C2E9CF00AB4E88 /* AddSampleEightViewController.xib in Resources */,
 				B46C93C618C64A920057078B /* EditLocationViewController.xib in Resources */,
 				D7EFB3E418AECB45004EAB88 /* no_image.png in Resources */,
 				B446B93218C2C85900AB4E88 /* AddSampleOneViewController.xib in Resources */,
@@ -843,7 +834,6 @@
 				D075270618B009C600622CBA /* AbstractCloudLibraryObjectStore.m in Sources */,
 				B4383ACB189C42B700DAC28F /* SourceViewController.m in Sources */,
 				D7EFB3D618AEC695004EAB88 /* AbstractMobileImageStore.m in Sources */,
-				B446B95318C2E9CF00AB4E88 /* AddSampleEightViewController.m in Sources */,
 				D7D76B0C189EED060056CDE4 /* DDTTYLogger.m in Sources */,
 				D01DDDC2188DDC5E0059AF09 /* SourceConstants.m in Sources */,
 				B446B93518C2CCA200AB4E88 /* AddSampleTwoViewController.m in Sources */,
@@ -939,7 +929,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -980,7 +969,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1070,7 +1058,6 @@
 		D729BD67181C24A000F762A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ProjectCrystalBlue-iOS.app/ProjectCrystalBlue-iOS";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1100,7 +1087,6 @@
 		D729BD68181C24A000F762A3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ProjectCrystalBlue-iOS.app/ProjectCrystalBlue-iOS";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

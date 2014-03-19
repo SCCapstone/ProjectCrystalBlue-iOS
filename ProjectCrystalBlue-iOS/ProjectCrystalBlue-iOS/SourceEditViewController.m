@@ -71,16 +71,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [RegionField setText:[[selectedSource attributes] objectForKey:SRC_REGION]];
     [LocalityField setText:[[selectedSource attributes] objectForKey:SRC_LOCALITY]];
     [SectionField setText:[[selectedSource attributes] objectForKey:SRC_SECTION]];
-    [MeterLevelField setText:[[selectedSource attributes] objectForKey:SRC_METER_LEVEL]];
+    [MeterField setText:[[selectedSource attributes] objectForKey:SRC_METER]];
     [LatitudeField setText:[[selectedSource attributes] objectForKey:SRC_LATITUDE]];
     [LongitudeField setText:[[selectedSource attributes] objectForKey:SRC_LONGITUDE]];
     [AgeField setText:[[selectedSource attributes] objectForKey:SRC_AGE]];
-    [AgeBasis1Field setText:[[selectedSource attributes] objectForKey:SRC_AGE_BASIS1]];
-    [AgeBasis2Field setText:[[selectedSource attributes] objectForKey:SRC_AGE_BASIS2]];
-    [ProjectField setText:[[selectedSource attributes] objectForKey:SRC_PROJECT]];
-    [SubprojectField setText:[[selectedSource attributes] objectForKey:SRC_SUBPROJECT]];
+    [AgeMethodField setText:[[selectedSource attributes] objectForKey:SRC_AGE_METHOD]];
+    [AgeDataTypeField setText:[[selectedSource attributes] objectForKey:SRC_AGE_DATATYPE]];
     [DateField setText:[[selectedSource attributes] objectForKey:SRC_DATE_COLLECTED]];
-  
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -99,18 +96,15 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [[selectedSource attributes] setObject:[RegionField text] forKey:SRC_REGION];
     [[selectedSource attributes] setObject:[LocalityField text] forKey:SRC_LOCALITY];
     [[selectedSource attributes] setObject:[SectionField text] forKey:SRC_SECTION];
-    [[selectedSource attributes] setObject:[MeterLevelField text] forKey:SRC_METER_LEVEL];
+    [[selectedSource attributes] setObject:[MeterField text] forKey:SRC_METER];
     [[selectedSource attributes] setObject:[LatitudeField text] forKey:SRC_LATITUDE];
     [[selectedSource attributes] setObject:[LongitudeField text] forKey:SRC_LONGITUDE];
     [[selectedSource attributes] setObject:[AgeField text] forKey:SRC_AGE];
-    [[selectedSource attributes] setObject:[AgeBasis1Field text] forKey:SRC_AGE_BASIS1];
-    [[selectedSource attributes] setObject:[AgeBasis2Field text] forKey:SRC_AGE_BASIS2];
-    [[selectedSource attributes] setObject:[ProjectField text] forKey:SRC_PROJECT];
-    [[selectedSource attributes] setObject:[SubprojectField text] forKey:SRC_SUBPROJECT];
+    [[selectedSource attributes] setObject:[AgeMethodField text] forKey:SRC_AGE_METHOD];
+    [[selectedSource attributes] setObject:[AgeDataTypeField text] forKey:SRC_AGE_DATATYPE];
     [[selectedSource attributes] setObject:[DateField text] forKey:SRC_DATE_COLLECTED];
         
     [libraryObjectStore updateLibraryObject:selectedSource IntoTable:[SourceConstants tableName]];
-
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
