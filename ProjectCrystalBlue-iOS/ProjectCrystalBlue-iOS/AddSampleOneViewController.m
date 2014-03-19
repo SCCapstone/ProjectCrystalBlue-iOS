@@ -143,6 +143,8 @@
         LatitudeField.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
         LongitudeField.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
     }
+    
+    [locationManager stopUpdatingLocation];
 }
 
 
