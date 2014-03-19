@@ -70,8 +70,7 @@
         NSString *temp = [selectedSample sourceKey];
         Source *selectedSource = (Source*)[libraryObjectStore getLibraryObjectForKey:temp FromTable:[SourceConstants tableName]];
         
-        SourceEditViewController *sourceEditViewController = [[SourceEditViewController alloc] initWithSource:selectedSource];
-        [sourceEditViewController setLibraryObjectStore:libraryObjectStore];
+        SourceEditViewController *sourceEditViewController = [[SourceEditViewController alloc] initWithSource:selectedSource withLibrary:libraryObjectStore];
         [[self navigationController] pushViewController:sourceEditViewController  animated:YES];
     }
     

@@ -10,18 +10,28 @@
                 <outlet property="AgeField" destination="KcI-Tp-tqr" id="N7X-dN-hwC"/>
                 <outlet property="AgeMethodField" destination="V1J-vA-NWp" id="0Gl-Tk-hsf"/>
                 <outlet property="DateField" destination="G41-ib-rYs" id="Qh9-qw-Kgk"/>
+                <outlet property="DateLabel" destination="nK6-ta-RR7" id="4KN-Lu-vFW"/>
                 <outlet property="DeposystemField" destination="Vaz-UL-vob" id="bei-ft-5JT"/>
+                <outlet property="DeposystemLabel" destination="KOX-Mv-m9d" id="kfa-fs-Qyk"/>
                 <outlet property="FormationField" destination="H1A-xN-k0B" id="Ddt-FZ-U1q"/>
+                <outlet property="FormationLabel" destination="QuK-HC-gxe" id="5yM-Ur-E5C"/>
                 <outlet property="GroupField" destination="i1f-HN-sjX" id="8RL-5I-N34"/>
+                <outlet property="GroupLabel" destination="Aw0-F8-ljQ" id="997-fe-yxx"/>
                 <outlet property="LatitudeField" destination="5oT-PV-7l3" id="uOV-it-jnp"/>
+                <outlet property="LatitudeLabel" destination="EtW-XY-aX6" id="FB4-Ki-Nje"/>
                 <outlet property="LithologyField" destination="BPV-yg-2dD" id="unc-ir-ThN"/>
+                <outlet property="LithologyLabel" destination="JB1-6g-1pe" id="dPz-8l-NmU"/>
                 <outlet property="LocalityField" destination="Rul-DF-W0X" id="b48-3D-hDd"/>
+                <outlet property="LocalityLabel" destination="L9p-V6-eho" id="6AM-a3-dRN"/>
                 <outlet property="LongitudeField" destination="dQt-0T-LXv" id="RGX-e1-dq3"/>
+                <outlet property="LongitudeLabel" destination="5w5-Xh-vez" id="DAZ-uT-Cw1"/>
                 <outlet property="MemberField" destination="3Ov-WU-5K7" id="Ggy-el-497"/>
                 <outlet property="MeterField" destination="HAo-kF-6jr" id="Z3V-ie-A4q"/>
                 <outlet property="RegionField" destination="Hot-zw-WzQ" id="yP1-6O-7dG"/>
+                <outlet property="RegionLabel" destination="DRO-Qz-d73" id="HvS-fL-ALT"/>
                 <outlet property="SectionField" destination="XW4-Lh-Khd" id="uQw-Oc-nha"/>
                 <outlet property="TypeField" destination="aVr-cG-eUZ" id="tie-RF-wSq"/>
+                <outlet property="TypeLabel" destination="pYK-rz-VM1" id="cfs-mn-wT3"/>
                 <outlet property="scroller" destination="h8Y-bc-RnQ" id="gih-UR-FM4"/>
                 <outlet property="view" destination="h8Y-bc-RnQ" id="Lf3-va-rIv"/>
             </connections>
