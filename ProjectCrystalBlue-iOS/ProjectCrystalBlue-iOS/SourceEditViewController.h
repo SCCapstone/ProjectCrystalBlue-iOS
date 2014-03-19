@@ -31,6 +31,23 @@
     __weak IBOutlet UITextField *AgeMethodField;
     __weak IBOutlet UITextField *AgeDataTypeField;
     __weak IBOutlet UITextField *DateField;
+   
+    __weak IBOutlet UILabel *TypeLabel;
+    __weak IBOutlet UILabel *LithologyLabel;
+    __weak IBOutlet UILabel *DeposystemLabel;
+    __weak IBOutlet UILabel *GroupLabel;
+    __weak IBOutlet UILabel *FormationLabel;
+    __weak IBOutlet UILabel *MemberLabel;
+    __weak IBOutlet UILabel *RegionLabel;
+    __weak IBOutlet UILabel *LocalityLabel;
+    __weak IBOutlet UILabel *SectionLabel;
+    __weak IBOutlet UILabel *MeterLabel;
+    __weak IBOutlet UILabel *LatitudeLabel;
+    __weak IBOutlet UILabel *LongitudeLabel;
+    __weak IBOutlet UILabel *AgeLabel;
+    __weak IBOutlet UILabel *AgeMethodLabel;
+    __weak IBOutlet UILabel *AgeDataTypeLabel;
+    __weak IBOutlet UILabel *DateLabel;
 }
 @property (nonatomic, strong) IBOutlet UIScrollView *scroller;
 @property (nonatomic, strong) Source *selectedSource;

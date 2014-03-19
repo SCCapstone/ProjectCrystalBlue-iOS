@@ -7,8 +7,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SourceEditViewController">
             <connections>
                 <outlet property="AgeDataTypeField" destination="hIg-va-ada" id="j1e-FN-EvT"/>
+                <outlet property="AgeDataTypeLabel" destination="RL2-Ej-0xW" id="owZ-LU-0Wp"/>
                 <outlet property="AgeField" destination="KcI-Tp-tqr" id="N7X-dN-hwC"/>
+                <outlet property="AgeLabel" destination="kgL-54-ueV" id="mZY-pH-X7N"/>
                 <outlet property="AgeMethodField" destination="V1J-vA-NWp" id="0Gl-Tk-hsf"/>
+                <outlet property="AgeMethodLabel" destination="uVD-5a-e0X" id="5mP-XJ-6Gh"/>
                 <outlet property="DateField" destination="G41-ib-rYs" id="Qh9-qw-Kgk"/>
                 <outlet property="DateLabel" destination="nK6-ta-RR7" id="4KN-Lu-vFW"/>
                 <outlet property="DeposystemField" destination="Vaz-UL-vob" id="bei-ft-5JT"/>
@@ -26,10 +29,13 @@
                 <outlet property="LongitudeField" destination="dQt-0T-LXv" id="RGX-e1-dq3"/>
                 <outlet property="LongitudeLabel" destination="5w5-Xh-vez" id="DAZ-uT-Cw1"/>
                 <outlet property="MemberField" destination="3Ov-WU-5K7" id="Ggy-el-497"/>
+                <outlet property="MemberLabel" destination="eua-Uk-Q0P" id="EzU-wX-knB"/>
                 <outlet property="MeterField" destination="HAo-kF-6jr" id="Z3V-ie-A4q"/>
+                <outlet property="MeterLabel" destination="lXJ-Pd-huD" id="8o4-J8-77c"/>
                 <outlet property="RegionField" destination="Hot-zw-WzQ" id="yP1-6O-7dG"/>
                 <outlet property="RegionLabel" destination="DRO-Qz-d73" id="HvS-fL-ALT"/>
                 <outlet property="SectionField" destination="XW4-Lh-Khd" id="uQw-Oc-nha"/>
+                <outlet property="SectionLabel" destination="UNg-sQ-y1k" id="cFr-MM-YkX"/>
                 <outlet property="TypeField" destination="aVr-cG-eUZ" id="tie-RF-wSq"/>
                 <outlet property="TypeLabel" destination="pYK-rz-VM1" id="cfs-mn-wT3"/>
                 <outlet property="scroller" destination="h8Y-bc-RnQ" id="gih-UR-FM4"/>
@@ -57,7 +63,7 @@
                     </connections>
                 </textField>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latitude" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EtW-XY-aX6">
-                    <rect key="frame" x="16" y="413" width="107" height="21"/>
+                    <rect key="frame" x="16" y="410" width="107" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
@@ -72,7 +78,7 @@
                     </connections>
                 </textField>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longitude" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5w5-Xh-vez">
-                    <rect key="frame" x="16" y="451" width="102" height="21"/>
+                    <rect key="frame" x="14" y="450" width="102" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
@@ -158,8 +164,8 @@
                         <outlet property="delegate" destination="-1" id="0Ow-q3-lNN"/>
                     </connections>
                 </textField>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meter Level" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lXJ-Pd-huD">
-                    <rect key="frame" x="16" y="374" width="107" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lXJ-Pd-huD">
+                    <rect key="frame" x="14" y="374" width="107" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
@@ -276,7 +282,7 @@
                     </connections>
                 </textField>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Gathered" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nK6-ta-RR7">
-                    <rect key="frame" x="16" y="603" width="116" height="21"/>
+                    <rect key="frame" x="15" y="603" width="116" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
