@@ -32,6 +32,8 @@
 		B446B94F18C2E8B000AB4E88 /* AddSampleSevenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B94D18C2E8B000AB4E88 /* AddSampleSevenViewController.xib */; };
 		B45379EF18DD4C5F008A9EBB /* AddSampleImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B45379ED18DD4C5F008A9EBB /* AddSampleImageViewController.m */; };
 		B45379F018DD4C5F008A9EBB /* AddSampleImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B45379EE18DD4C5F008A9EBB /* AddSampleImageViewController.xib */; };
+		B45379F418DD5B66008A9EBB /* InitialsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B45379F218DD5B66008A9EBB /* InitialsViewController.m */; };
+		B45379F518DD5B66008A9EBB /* InitialsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B45379F318DD5B66008A9EBB /* InitialsViewController.xib */; };
 		B46C93C518C64A920057078B /* EditLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B46C93C318C64A920057078B /* EditLocationViewController.m */; };
 		B46C93C618C64A920057078B /* EditLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B46C93C418C64A920057078B /* EditLocationViewController.xib */; };
 		D001B3BF18B039C000975620 /* LocalLibraryObjectStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D001B3BE18B039C000975620 /* LocalLibraryObjectStoreTests.m */; };
@@ -153,6 +155,9 @@
 		B45379EC18DD4C5F008A9EBB /* AddSampleImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSampleImageViewController.h; sourceTree = "<group>"; };
 		B45379ED18DD4C5F008A9EBB /* AddSampleImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleImageViewController.m; sourceTree = "<group>"; };
 		B45379EE18DD4C5F008A9EBB /* AddSampleImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSampleImageViewController.xib; sourceTree = "<group>"; };
+		B45379F118DD5B66008A9EBB /* InitialsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialsViewController.h; sourceTree = "<group>"; };
+		B45379F218DD5B66008A9EBB /* InitialsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialsViewController.m; sourceTree = "<group>"; };
+		B45379F318DD5B66008A9EBB /* InitialsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InitialsViewController.xib; sourceTree = "<group>"; };
 		B46C93C218C64A920057078B /* EditLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditLocationViewController.h; sourceTree = "<group>"; };
 		B46C93C318C64A920057078B /* EditLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditLocationViewController.m; sourceTree = "<group>"; };
 		B46C93C418C64A920057078B /* EditLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditLocationViewController.xib; sourceTree = "<group>"; };
@@ -311,6 +316,7 @@
 				B45379EE18DD4C5F008A9EBB /* AddSampleImageViewController.xib */,
 				B446B92A18C2589900AB4E88 /* SearchSampleViewController.xib */,
 				B46C93C418C64A920057078B /* EditLocationViewController.xib */,
+				B45379F318DD5B66008A9EBB /* InitialsViewController.xib */,
 			);
 			name = XIBs;
 			sourceTree = "<group>";
@@ -434,6 +440,8 @@
 				B446B92918C2589900AB4E88 /* SearchSampleViewController.m */,
 				B46C93C218C64A920057078B /* EditLocationViewController.h */,
 				B46C93C318C64A920057078B /* EditLocationViewController.m */,
+				B45379F118DD5B66008A9EBB /* InitialsViewController.h */,
+				B45379F218DD5B66008A9EBB /* InitialsViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -804,6 +812,7 @@
 			files = (
 				D7B5867F18C3AD75003C19C0 /* SourceEditViewController.xib in Resources */,
 				B446B94518C2E49D00AB4E88 /* AddSampleFiveViewController.xib in Resources */,
+				B45379F518DD5B66008A9EBB /* InitialsViewController.xib in Resources */,
 				D729BD45181C24A000F762A3 /* InfoPlist.strings in Resources */,
 				B446B94F18C2E8B000AB4E88 /* AddSampleSevenViewController.xib in Resources */,
 				B45379F018DD4C5F008A9EBB /* AddSampleImageViewController.xib in Resources */,
@@ -842,6 +851,7 @@
 				D72FE4B118B59F0D00C6452F /* ProcedureRecord.m in Sources */,
 				D075270618B009C600622CBA /* AbstractCloudLibraryObjectStore.m in Sources */,
 				B4383ACB189C42B700DAC28F /* SourceViewController.m in Sources */,
+				B45379F418DD5B66008A9EBB /* InitialsViewController.m in Sources */,
 				D7EFB3D618AEC695004EAB88 /* AbstractMobileImageStore.m in Sources */,
 				D7D76B0C189EED060056CDE4 /* DDTTYLogger.m in Sources */,
 				D01DDDC2188DDC5E0059AF09 /* SourceConstants.m in Sources */,

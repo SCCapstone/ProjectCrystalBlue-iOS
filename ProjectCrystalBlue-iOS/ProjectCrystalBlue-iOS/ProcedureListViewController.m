@@ -15,6 +15,7 @@
 #import "ProcedureNameConstants.h"
 #import "EditLocationViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "InitialsViewController.h"
 
 @interface ProcedureListViewController ()
 {
@@ -173,7 +174,9 @@
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *dummyInitials = @"ANONYMOUS";
+   // NSString *dummyInitials = @"ANONYMOUS";
+    InitialsViewController *initialsViewController = [[InitialsViewController alloc] initWithSample:selectedSample withLibrary:libraryObjectStore withRow:0 withTitle:NULL];
+    
     
     if(indexPath.section == 0)
     {
@@ -188,25 +191,30 @@
     {
         if([indexPath row] == 0)
         {
-            [Procedures makeSlabfromSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-            [self.navigationController popViewControllerAnimated:YES];
+            initialsViewController.selectedRow = 1;
+            initialsViewController.title = @"Make Slab";
+            [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
         if([indexPath row] == 1)
         {
-            [Procedures makeBilletfromSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-            [self.navigationController popViewControllerAnimated:YES];
+            initialsViewController.selectedRow = 2;
+            initialsViewController.title = @"Make Billet";
+            [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
         if([indexPath row] == 2)
         {
-            [Procedures makeThinSectionfromSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-            [self.navigationController popViewControllerAnimated:YES];
+             initialsViewController.selectedRow = 3;
+             initialsViewController.title = @"Make Thin Section";
+             [[self navigationController] pushViewController:initialsViewController  animated:YES];
+
         }
         if([indexPath row] == 3)
         {
-            [Procedures trimSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-            [self.navigationController popViewControllerAnimated:YES];
+            initialsViewController.selectedRow = 4;
+             initialsViewController.title = @"Trim";
+             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     }
     
@@ -214,62 +222,75 @@
     {
         if([indexPath row] == 0)
         {
-            [Procedures pulverizeSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-            [self.navigationController popViewControllerAnimated:YES];
+            initialsViewController.selectedRow = 5;
+             initialsViewController.title = @"Pulverize";
+             [[self navigationController] pushViewController:initialsViewController  animated:YES];
+
         }
     
         if([indexPath row] == 1)
         {
-            [Procedures jawCrushSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-            [self.navigationController popViewControllerAnimated:YES];
+            initialsViewController.selectedRow = 6;
+            initialsViewController.title = @"Jaw Crush";
+            [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
         if([indexPath row] == 2)
         {
-            [Procedures geminiSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-            [self.navigationController popViewControllerAnimated:YES];
+            initialsViewController.selectedRow = 7;
+            initialsViewController.title = @"Gemeni";
+            [[self navigationController] pushViewController:initialsViewController  animated:YES];
+
         }
     
         if([indexPath row] == 3)
         {
-            [Procedures panSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-            [self.navigationController popViewControllerAnimated:YES];
+             initialsViewController.selectedRow = 8;
+                 initialsViewController.title = @"Pan";
+                 [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
         if([indexPath row] == 4)
         {
-            [Procedures sievesTenSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-            [self.navigationController popViewControllerAnimated:YES];
+            initialsViewController.selectedRow = 9;
+            initialsViewController.title = @"Sieves";
+            [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     }
+        
     if(indexPath.section == 3)
     {
         if([indexPath row] == 0)
         {
-            [Procedures heavyLiquid_330_Sample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-            [self.navigationController popViewControllerAnimated:YES];
+            initialsViewController.selectedRow = 10;
+            initialsViewController.title = @"Heavy Liquid 330";
+            [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
     
         if([indexPath row] == 1)
         {
-            [Procedures heavyLiquid_290_Sample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-            [self.navigationController popViewControllerAnimated:YES];
+            initialsViewController.selectedRow = 11;
+            initialsViewController.title = @"Heavy Liquid 290";
+            [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
    
     
         if([indexPath row] == 2)
         {
-            [Procedures heavyLiquid_265_Sample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-            [self.navigationController popViewControllerAnimated:YES];
+            initialsViewController.selectedRow = 12;
+            initialsViewController.title = @"Heavy Liquid 265";
+            [[self navigationController] pushViewController:initialsViewController  animated:YES];
+
         }
     
     
         if([indexPath row] == 3)
         {
-            [Procedures heavyLiquid_255_Sample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-            [self.navigationController popViewControllerAnimated:YES];
+            initialsViewController.selectedRow = 13;
+            initialsViewController.title = @"Heavy Liquid 255";
+            [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     }
     
@@ -277,56 +298,65 @@
     {
         if([indexPath row] == 0)
         {
-            [Procedures handMagnetSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-            [self.navigationController popViewControllerAnimated:YES];
+            initialsViewController.selectedRow = 14;
+            initialsViewController.title = @"Hand Magnet";
+            [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
         if([indexPath row] == 1)
         {
-            [Procedures  magnet02AmpsSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-            [self.navigationController popViewControllerAnimated:YES];
+            initialsViewController.selectedRow = 15;
+            initialsViewController.title = @"Magnet 0.2A";
+            [[self navigationController] pushViewController:initialsViewController  animated:YES];
+
         }
     
     
         if([indexPath row] == 2)
         {
-            [Procedures  magnet04AmpsSample:selectedSample withInitials:dummyInitials inStore:  libraryObjectStore];
-            [self.navigationController popViewControllerAnimated:YES];
+            initialsViewController.selectedRow = 16;
+            initialsViewController.title = @"Magnet 0.4A";
+            [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
     
         if([indexPath row] == 3)
         {
-            [Procedures  magnet06AmpsSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-            [self.navigationController popViewControllerAnimated:YES];
+            initialsViewController.selectedRow = 17;
+            initialsViewController.title = @"Magnet 0.6A";
+            [[self navigationController] pushViewController:initialsViewController  animated:YES];
+
         }
     
     
         if([indexPath row] == 4)
         {
-            [Procedures  magnet08AmpsSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-            [self.navigationController popViewControllerAnimated:YES];
+            initialsViewController.selectedRow = 18;
+            initialsViewController.title = @"Magnet 0.8A";
+            [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
     
         if([indexPath row] == 5)
         {
-            [Procedures  magnet10AmpsSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-            [self.navigationController popViewControllerAnimated:YES];
+            initialsViewController.selectedRow = 19;
+            initialsViewController.title = @"Magnet 1.0A";
+            [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
         if([indexPath row] == 6)
         {
-            [Procedures  magnet12AmpsSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-            [self.navigationController popViewControllerAnimated:YES];
+            initialsViewController.selectedRow = 20;
+            initialsViewController.title = @"Magnet 1.2A";
+            [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
   
         if([indexPath row] == 7)
         {
-            [Procedures  magnet14AmpsSample:selectedSample withInitials:dummyInitials inStore:libraryObjectStore];
-            [self.navigationController popViewControllerAnimated:YES];
+            initialsViewController.selectedRow = 21;
+            initialsViewController.title = @"Magnet 1.4A";
+            [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
-    
     }
 }
 
