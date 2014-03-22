@@ -154,7 +154,7 @@
     
     if([option isEqualToString:@"VIEW"])
     {
-        SampleEditViewController *sampleEditViewController = [[SampleEditViewController alloc] initWithSample:selectedSample];
+        SampleEditViewController *sampleEditViewController = [[SampleEditViewController alloc] initWithSample:selectedSample WithOption:@"EDIT"];
         //[sampleEditViewController setSelectedSample:selectedSample];
         [sampleEditViewController setLibraryObjectStore:libraryObjectStore];
         [[self navigationController] pushViewController:sampleEditViewController  animated:YES];

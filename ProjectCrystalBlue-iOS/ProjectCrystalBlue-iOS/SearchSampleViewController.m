@@ -53,7 +53,7 @@
     searchKey = [searchField text];
     searchSample = (Sample*)[libraryObjectStore getLibraryObjectForKey:searchKey FromTable:[SampleConstants tableName]];
     
-    SampleEditViewController *sampleEditViewController = [[SampleEditViewController alloc] initWithSample:searchSample];
+    SampleEditViewController *sampleEditViewController = [[SampleEditViewController alloc] initWithSample:searchSample WithOption:@"SEARCH"];
     [sampleEditViewController setLibraryObjectStore:libraryObjectStore];
     [[self navigationController] pushViewController:sampleEditViewController  animated:YES];
     

@@ -22,12 +22,13 @@
 
 @implementation SampleEditViewController
 
-@synthesize selectedSample, libraryObjectStore;
+@synthesize selectedSample, libraryObjectStore, option;
 
-- (id)initWithSample:(Sample*)initSample {
+-(id)initWithSample:(Sample *)initSample WithOption:(NSString *) initOption{
     // Call the superclass's designated initializer
     selectedSample = initSample;
     tags = [[NSMutableArray alloc] init];
+    option = initOption;
     
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
@@ -49,7 +50,15 @@
 
 -(void) goBack:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    if([option isEqualToString:@"SEARCH"])
+    {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    
+    else
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 -(void) multiOptions:(id)sender
