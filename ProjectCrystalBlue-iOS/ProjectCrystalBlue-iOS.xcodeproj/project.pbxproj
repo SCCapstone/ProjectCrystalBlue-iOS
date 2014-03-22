@@ -30,6 +30,8 @@
 		B446B94A18C2E67C00AB4E88 /* AddSampleSixViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B94818C2E67C00AB4E88 /* AddSampleSixViewController.xib */; };
 		B446B94E18C2E8B000AB4E88 /* AddSampleSevenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B94C18C2E8B000AB4E88 /* AddSampleSevenViewController.m */; };
 		B446B94F18C2E8B000AB4E88 /* AddSampleSevenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B94D18C2E8B000AB4E88 /* AddSampleSevenViewController.xib */; };
+		B45379EF18DD4C5F008A9EBB /* AddSampleImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B45379ED18DD4C5F008A9EBB /* AddSampleImageViewController.m */; };
+		B45379F018DD4C5F008A9EBB /* AddSampleImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B45379EE18DD4C5F008A9EBB /* AddSampleImageViewController.xib */; };
 		B46C93C518C64A920057078B /* EditLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B46C93C318C64A920057078B /* EditLocationViewController.m */; };
 		B46C93C618C64A920057078B /* EditLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B46C93C418C64A920057078B /* EditLocationViewController.xib */; };
 		D001B3BF18B039C000975620 /* LocalLibraryObjectStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D001B3BE18B039C000975620 /* LocalLibraryObjectStoreTests.m */; };
@@ -148,6 +150,9 @@
 		B446B94B18C2E8B000AB4E88 /* AddSampleSevenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSampleSevenViewController.h; sourceTree = "<group>"; };
 		B446B94C18C2E8B000AB4E88 /* AddSampleSevenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleSevenViewController.m; sourceTree = "<group>"; };
 		B446B94D18C2E8B000AB4E88 /* AddSampleSevenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSampleSevenViewController.xib; sourceTree = "<group>"; };
+		B45379EC18DD4C5F008A9EBB /* AddSampleImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSampleImageViewController.h; sourceTree = "<group>"; };
+		B45379ED18DD4C5F008A9EBB /* AddSampleImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleImageViewController.m; sourceTree = "<group>"; };
+		B45379EE18DD4C5F008A9EBB /* AddSampleImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSampleImageViewController.xib; sourceTree = "<group>"; };
 		B46C93C218C64A920057078B /* EditLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditLocationViewController.h; sourceTree = "<group>"; };
 		B46C93C318C64A920057078B /* EditLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditLocationViewController.m; sourceTree = "<group>"; };
 		B46C93C418C64A920057078B /* EditLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditLocationViewController.xib; sourceTree = "<group>"; };
@@ -303,6 +308,7 @@
 				B446B94318C2E49D00AB4E88 /* AddSampleFiveViewController.xib */,
 				B446B94818C2E67C00AB4E88 /* AddSampleSixViewController.xib */,
 				B446B94D18C2E8B000AB4E88 /* AddSampleSevenViewController.xib */,
+				B45379EE18DD4C5F008A9EBB /* AddSampleImageViewController.xib */,
 				B446B92A18C2589900AB4E88 /* SearchSampleViewController.xib */,
 				B46C93C418C64A920057078B /* EditLocationViewController.xib */,
 			);
@@ -343,6 +349,8 @@
 				B446B94718C2E67C00AB4E88 /* AddSampleSixViewController.m */,
 				B446B94B18C2E8B000AB4E88 /* AddSampleSevenViewController.h */,
 				B446B94C18C2E8B000AB4E88 /* AddSampleSevenViewController.m */,
+				B45379EC18DD4C5F008A9EBB /* AddSampleImageViewController.h */,
+				B45379ED18DD4C5F008A9EBB /* AddSampleImageViewController.m */,
 			);
 			name = AddSampleWalkthrough;
 			sourceTree = "<group>";
@@ -798,6 +806,7 @@
 				B446B94518C2E49D00AB4E88 /* AddSampleFiveViewController.xib in Resources */,
 				D729BD45181C24A000F762A3 /* InfoPlist.strings in Resources */,
 				B446B94F18C2E8B000AB4E88 /* AddSampleSevenViewController.xib in Resources */,
+				B45379F018DD4C5F008A9EBB /* AddSampleImageViewController.xib in Resources */,
 				B446B94A18C2E67C00AB4E88 /* AddSampleSixViewController.xib in Resources */,
 				D729BD4D181C24A000F762A3 /* Images.xcassets in Resources */,
 				B446B92C18C2589900AB4E88 /* SearchSampleViewController.xib in Resources */,
@@ -850,6 +859,7 @@
 				D07526DF18B0084400622CBA /* Transaction.m in Sources */,
 				B446B93B18C2DA7900AB4E88 /* AddSampleFourViewController.m in Sources */,
 				D729BD47181C24A000F762A3 /* main.m in Sources */,
+				B45379EF18DD4C5F008A9EBB /* AddSampleImageViewController.m in Sources */,
 				D07526F018B008E300622CBA /* FMDatabase.m in Sources */,
 				D01DDDBF188DDC5E0059AF09 /* Sample.m in Sources */,
 				B42DF81318B1DB3B001C0E09 /* ProcedureListViewController.m in Sources */,

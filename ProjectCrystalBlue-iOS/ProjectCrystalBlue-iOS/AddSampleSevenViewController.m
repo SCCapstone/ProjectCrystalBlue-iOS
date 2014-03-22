@@ -7,14 +7,10 @@
 //
 
 #import "AddSampleSevenViewController.h"
+#import "AddSampleImageViewController.h"
 #import "Sample.h"
 #import "DDLog.h"
 
-#ifdef DEBUG
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
-#else
-static const int ddLogLevel = LOG_LEVEL_WARN;
-#endif
 
 @interface AddSampleSevenViewController ()
 
@@ -31,7 +27,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Add Sample Cont."];
         
-        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(addSource:)];
+        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(addSource:)];
         
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         
@@ -48,6 +44,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [[sourceToAdd attributes] setObject:[AgeMethodField text] forKey:SRC_AGE_METHOD];
     [[sourceToAdd attributes] setObject:[AgeDataTypeField text] forKey:SRC_AGE_DATATYPE];
     
+    AddSampleImageViewController *asiViewController = [[AddSampleImageViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore WithTitle:@"Far View Outcrop"];
+    
+    [[self navigationController] pushViewController:asiViewController  animated:YES];
+
+    /**
     DDLogInfo(@"Adding new source %@", sourceToAdd.key);
     [libraryObjectStore putLibraryObject:sourceToAdd IntoTable:[SourceConstants tableName]];
     
@@ -56,8 +57,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                       AndWithValues:[SampleConstants attributeDefaultValues]];
     [[newSample attributes] setObject:[sourceToAdd key] forKey:@"sourceKey"];
     [libraryObjectStore putLibraryObject:newSample IntoTable:[SampleConstants tableName]];
+     [self navigationController] popToRootViewControllerAnimated:YES];
+     **/
     
-    [[self navigationController] popToRootViewControllerAnimated:YES];
+    
 }
 
 -(void) goBack:(id)sender
