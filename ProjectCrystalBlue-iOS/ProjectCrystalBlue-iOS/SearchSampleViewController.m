@@ -53,9 +53,22 @@
     searchKey = [searchField text];
     searchSample = (Sample*)[libraryObjectStore getLibraryObjectForKey:searchKey FromTable:[SampleConstants tableName]];
     
-    SampleEditViewController *sampleEditViewController = [[SampleEditViewController alloc] initWithSample:searchSample WithOption:@"SEARCH"];
-    [sampleEditViewController setLibraryObjectStore:libraryObjectStore];
-    [[self navigationController] pushViewController:sampleEditViewController  animated:YES];
+    if (!searchSample) {
+        NSString* message = @"Sample Doesn't Exist!";
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+
+    }
+    else{
+        SampleEditViewController *sampleEditViewController = [[SampleEditViewController alloc] initWithSample:searchSample WithOption:@"SEARCH"];
+        [sampleEditViewController setLibraryObjectStore:libraryObjectStore];
+        [[self navigationController] pushViewController:sampleEditViewController  animated:YES];
+    }
     
     
     
