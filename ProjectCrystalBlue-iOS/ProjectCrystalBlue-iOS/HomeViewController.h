@@ -16,5 +16,6 @@
 
 - (IBAction)addSource:(id)sender;
 
+- (IBAction)scan:(id)sender;
 
 @end

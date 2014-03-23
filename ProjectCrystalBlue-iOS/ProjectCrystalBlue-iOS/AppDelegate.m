@@ -29,6 +29,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     DDLogInfo(@"Starting Lumberjack log!");
     
+    // force view class to load so it may be referenced directly from NIB
+    [ZBarReaderView class];
+    
     HomeViewController *homeViewController = [[HomeViewController alloc] init];
     
     UINavigationController *navController = [[UINavigationController alloc]

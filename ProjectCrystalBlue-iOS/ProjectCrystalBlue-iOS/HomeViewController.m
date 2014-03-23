@@ -11,6 +11,7 @@
 #import "SearchSampleViewController.h"
 #import "AddSampleOneViewController.h"
 #import "DeleteSourcesViewController.h"
+#import "EmbedReaderViewController.h"
 
 @interface HomeViewController ()
 
@@ -55,6 +56,11 @@
 - (IBAction)addSource:(id)sender {
     AddSampleOneViewController *asoViewController = [[AddSampleOneViewController alloc] init];
     [[self navigationController] pushViewController:asoViewController  animated:YES];
+}
+
+- (IBAction)scan:(id)sender {
+    EmbedReaderViewController *scanViewController = [[EmbedReaderViewController alloc] init];
+    [[self navigationController] pushViewController:scanViewController animated:YES];
 }
 
 @end
