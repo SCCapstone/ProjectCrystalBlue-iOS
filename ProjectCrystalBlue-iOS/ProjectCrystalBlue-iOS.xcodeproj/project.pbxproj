@@ -67,6 +67,10 @@
 		D0B1B728189C876000052443 /* LibraryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B1B727189C876000052443 /* LibraryObject.m */; };
 		D0C85BD518BDB0C00002033E /* ConflictResolution.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C85BD418BDB0C00002033E /* ConflictResolution.m */; };
 		D0C85BD818BDB4810002033E /* SimpleDBUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C85BD718BDB4810002033E /* SimpleDBUtils.m */; };
+		D70BD23F18DFA15300FECBD7 /* PrimitiveFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BD23C18DFA15300FECBD7 /* PrimitiveFieldValidator.m */; };
+		D70BD24018DFA15300FECBD7 /* SampleFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BD23E18DFA15300FECBD7 /* SampleFieldValidator.m */; };
+		D70BD24418DFA16E00FECBD7 /* PrimitiveValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BD24218DFA16E00FECBD7 /* PrimitiveValidatorTests.m */; };
+		D70BD24518DFA16E00FECBD7 /* SampleFieldValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BD24318DFA16E00FECBD7 /* SampleFieldValidatorTests.m */; };
 		D71EE32E18518C5F007D4018 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D71EE32D18518C5F007D4018 /* libsqlite3.dylib */; };
 		D729BD3B181C24A000F762A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3A181C24A000F762A3 /* Foundation.framework */; };
 		D729BD3D181C24A000F762A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3C181C24A000F762A3 /* CoreGraphics.framework */; };
@@ -244,6 +248,12 @@
 		D0C85BD418BDB0C00002033E /* ConflictResolution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConflictResolution.m; sourceTree = "<group>"; };
 		D0C85BD618BDB4810002033E /* SimpleDBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleDBUtils.h; sourceTree = "<group>"; };
 		D0C85BD718BDB4810002033E /* SimpleDBUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBUtils.m; sourceTree = "<group>"; };
+		D70BD23B18DFA15300FECBD7 /* PrimitiveFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitiveFieldValidator.h; sourceTree = "<group>"; };
+		D70BD23C18DFA15300FECBD7 /* PrimitiveFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveFieldValidator.m; sourceTree = "<group>"; };
+		D70BD23D18DFA15300FECBD7 /* SampleFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleFieldValidator.h; sourceTree = "<group>"; };
+		D70BD23E18DFA15300FECBD7 /* SampleFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleFieldValidator.m; sourceTree = "<group>"; };
+		D70BD24218DFA16E00FECBD7 /* PrimitiveValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveValidatorTests.m; sourceTree = "<group>"; };
+		D70BD24318DFA16E00FECBD7 /* SampleFieldValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleFieldValidatorTests.m; sourceTree = "<group>"; };
 		D71EE32D18518C5F007D4018 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		D729BD37181C24A000F762A3 /* ProjectCrystalBlue-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ProjectCrystalBlue-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D729BD3A181C24A000F762A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -543,6 +553,7 @@
 		D01DDDB6188DDC0F0059AF09 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				D70BD23A18DFA14800FECBD7 /* Validation */,
 				D07526E518B008D200622CBA /* FMDB */,
 				D7EFB3E518AECB9D004EAB88 /* MobileImageUtils */,
 				D7D76B00189EEB6B0056CDE4 /* Lumberjack */,
@@ -654,6 +665,26 @@
 			name = "Procedure Tests";
 			sourceTree = "<group>";
 		};
+		D70BD23A18DFA14800FECBD7 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				D70BD23B18DFA15300FECBD7 /* PrimitiveFieldValidator.h */,
+				D70BD23C18DFA15300FECBD7 /* PrimitiveFieldValidator.m */,
+				D70BD23D18DFA15300FECBD7 /* SampleFieldValidator.h */,
+				D70BD23E18DFA15300FECBD7 /* SampleFieldValidator.m */,
+			);
+			name = Validation;
+			sourceTree = "<group>";
+		};
+		D70BD24118DFA15E00FECBD7 /* Validator Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D70BD24218DFA16E00FECBD7 /* PrimitiveValidatorTests.m */,
+				D70BD24318DFA16E00FECBD7 /* SampleFieldValidatorTests.m */,
+			);
+			name = "Validator Tests";
+			sourceTree = "<group>";
+		};
 		D729BD2E181C24A000F762A3 = {
 			isa = PBXGroup;
 			children = (
@@ -727,6 +758,7 @@
 		D729BD59181C24A000F762A3 /* ProjectCrystalBlue-iOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				D70BD24118DFA15E00FECBD7 /* Validator Tests */,
 				D704E1C218B194A200170B7E /* Model Tests */,
 				D7EFB3DA18AEC872004EAB88 /* Store Tests */,
 				D729BD5F181C24A000F762A3 /* ProjectCrystalBlue_iOSTests.m */,
@@ -986,11 +1018,13 @@
 				D07526E018B0084400622CBA /* TransactionConstants.m in Sources */,
 				D07526E418B008B600622CBA /* TransactionStore.m in Sources */,
 				D07526F118B008E300622CBA /* FMDatabaseAdditions.m in Sources */,
+				D70BD23F18DFA15300FECBD7 /* PrimitiveFieldValidator.m in Sources */,
 				B46C93C518C64A920057078B /* EditLocationViewController.m in Sources */,
 				D07526F418B008E300622CBA /* FMResultSet.m in Sources */,
 				B446B92B18C2589900AB4E88 /* SearchSampleViewController.m in Sources */,
 				B446B94E18C2E8B000AB4E88 /* AddSampleSevenViewController.m in Sources */,
 				D07526F218B008E300622CBA /* FMDatabasePool.m in Sources */,
+				D70BD24018DFA15300FECBD7 /* SampleFieldValidator.m in Sources */,
 				D7D76B07189EED000056CDE4 /* DDASLLogger.m in Sources */,
 				B446B93818C2D3D900AB4E88 /* AddSampleThreeViewController.m in Sources */,
 				D7EFB3D918AEC7DD004EAB88 /* AbstractMobileCloudImageStore.m in Sources */,
@@ -1009,6 +1043,8 @@
 				D001B3C118B039CB00975620 /* TransactionStoreTests.m in Sources */,
 				D729BD60181C24A000F762A3 /* ProjectCrystalBlue_iOSTests.m in Sources */,
 				D7EFB3EB18AECD09004EAB88 /* LocalImageStoreTests.m in Sources */,
+				D70BD24418DFA16E00FECBD7 /* PrimitiveValidatorTests.m in Sources */,
+				D70BD24518DFA16E00FECBD7 /* SampleFieldValidatorTests.m in Sources */,
 				D031240B18BDBD9700F3AAD9 /* SimpleDBUtilsTests.m in Sources */,
 				D7EFB3DE18AEC88E004EAB88 /* AbstractImageStoreTests.m in Sources */,
 				D72FE4B718B59F8200C6452F /* PrimitiveProcedureTests.m in Sources */,
