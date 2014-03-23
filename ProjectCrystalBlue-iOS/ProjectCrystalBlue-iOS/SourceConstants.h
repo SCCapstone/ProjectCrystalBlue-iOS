@@ -54,7 +54,7 @@ static NSString *const SRC_DEF_VAL_AGE_DATATYPE = @"Age data type here";
 static NSString *const SRC_DEF_VAL_DATE_COLLECTED = @"Date collected here";
 static NSString *const SRC_DEF_VAL_NOTES        = @"Notes here";
 static NSString *const SRC_DEF_VAL_HYPERLINKS   = @"Hyperlinks here";
-static NSString *const SRC_DEF_VAL_IMAGES       = @"Images here";
+static NSString *const SRC_DEF_VAL_IMAGES       = @""; /* intentionally blank */
 
 /*  Human-readable attribute names
  */

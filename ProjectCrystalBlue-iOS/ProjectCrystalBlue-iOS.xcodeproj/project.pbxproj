@@ -71,6 +71,14 @@
 		D70BD24018DFA15300FECBD7 /* SampleFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BD23E18DFA15300FECBD7 /* SampleFieldValidator.m */; };
 		D70BD24418DFA16E00FECBD7 /* PrimitiveValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BD24218DFA16E00FECBD7 /* PrimitiveValidatorTests.m */; };
 		D70BD24518DFA16E00FECBD7 /* SampleFieldValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BD24318DFA16E00FECBD7 /* SampleFieldValidatorTests.m */; };
+		D70BD24818DFA33200FECBD7 /* SourceImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BD24718DFA33200FECBD7 /* SourceImageUtils.m */; };
+		D70BD24E18DFA39700FECBD7 /* S3ImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BD24B18DFA39700FECBD7 /* S3ImageStore.m */; };
+		D70BD24F18DFA39700FECBD7 /* S3Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BD24D18DFA39700FECBD7 /* S3Utils.m */; };
+		D70BD25218DFA3D100FECBD7 /* LocalTransactionCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BD25118DFA3D100FECBD7 /* LocalTransactionCache.m */; };
+		D70BD25718DFA60800FECBD7 /* UNIT_TEST_UPLOAD_IMAGE_16x16.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D70BD25418DFA60800FECBD7 /* UNIT_TEST_UPLOAD_IMAGE_16x16.jpg */; };
+		D70BD25818DFA60800FECBD7 /* S3ImageStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BD25518DFA60800FECBD7 /* S3ImageStoreTests.m */; };
+		D70BD25918DFA60800FECBD7 /* S3UtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BD25618DFA60800FECBD7 /* S3UtilsTests.m */; };
+		D70BD25C18DFA67500FECBD7 /* SourceImageUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BD25B18DFA67500FECBD7 /* SourceImageUtilsTests.m */; };
 		D71EE32E18518C5F007D4018 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D71EE32D18518C5F007D4018 /* libsqlite3.dylib */; };
 		D729BD3B181C24A000F762A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3A181C24A000F762A3 /* Foundation.framework */; };
 		D729BD3D181C24A000F762A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3C181C24A000F762A3 /* CoreGraphics.framework */; };
@@ -254,6 +262,18 @@
 		D70BD23E18DFA15300FECBD7 /* SampleFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleFieldValidator.m; sourceTree = "<group>"; };
 		D70BD24218DFA16E00FECBD7 /* PrimitiveValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveValidatorTests.m; sourceTree = "<group>"; };
 		D70BD24318DFA16E00FECBD7 /* SampleFieldValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleFieldValidatorTests.m; sourceTree = "<group>"; };
+		D70BD24618DFA33200FECBD7 /* SourceImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceImageUtils.h; sourceTree = "<group>"; };
+		D70BD24718DFA33200FECBD7 /* SourceImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceImageUtils.m; sourceTree = "<group>"; };
+		D70BD24A18DFA39700FECBD7 /* S3ImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3ImageStore.h; sourceTree = "<group>"; };
+		D70BD24B18DFA39700FECBD7 /* S3ImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3ImageStore.m; sourceTree = "<group>"; };
+		D70BD24C18DFA39700FECBD7 /* S3Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3Utils.h; sourceTree = "<group>"; };
+		D70BD24D18DFA39700FECBD7 /* S3Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3Utils.m; sourceTree = "<group>"; };
+		D70BD25018DFA3D100FECBD7 /* LocalTransactionCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalTransactionCache.h; sourceTree = "<group>"; };
+		D70BD25118DFA3D100FECBD7 /* LocalTransactionCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalTransactionCache.m; sourceTree = "<group>"; };
+		D70BD25418DFA60800FECBD7 /* UNIT_TEST_UPLOAD_IMAGE_16x16.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = UNIT_TEST_UPLOAD_IMAGE_16x16.jpg; sourceTree = "<group>"; };
+		D70BD25518DFA60800FECBD7 /* S3ImageStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3ImageStoreTests.m; sourceTree = "<group>"; };
+		D70BD25618DFA60800FECBD7 /* S3UtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3UtilsTests.m; sourceTree = "<group>"; };
+		D70BD25B18DFA67500FECBD7 /* SourceImageUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceImageUtilsTests.m; sourceTree = "<group>"; };
 		D71EE32D18518C5F007D4018 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		D729BD37181C24A000F762A3 /* ProjectCrystalBlue-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ProjectCrystalBlue-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D729BD3A181C24A000F762A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -685,6 +705,37 @@
 			name = "Validator Tests";
 			sourceTree = "<group>";
 		};
+		D70BD24918DFA38900FECBD7 /* S3ImageStore */ = {
+			isa = PBXGroup;
+			children = (
+				D70BD24A18DFA39700FECBD7 /* S3ImageStore.h */,
+				D70BD24B18DFA39700FECBD7 /* S3ImageStore.m */,
+				D70BD24C18DFA39700FECBD7 /* S3Utils.h */,
+				D70BD24D18DFA39700FECBD7 /* S3Utils.m */,
+				D70BD25018DFA3D100FECBD7 /* LocalTransactionCache.h */,
+				D70BD25118DFA3D100FECBD7 /* LocalTransactionCache.m */,
+			);
+			name = S3ImageStore;
+			sourceTree = "<group>";
+		};
+		D70BD25318DFA5F200FECBD7 /* S3ImageStore */ = {
+			isa = PBXGroup;
+			children = (
+				D70BD25418DFA60800FECBD7 /* UNIT_TEST_UPLOAD_IMAGE_16x16.jpg */,
+				D70BD25518DFA60800FECBD7 /* S3ImageStoreTests.m */,
+				D70BD25618DFA60800FECBD7 /* S3UtilsTests.m */,
+			);
+			name = S3ImageStore;
+			sourceTree = "<group>";
+		};
+		D70BD25A18DFA66900FECBD7 /* SourceImageUtils */ = {
+			isa = PBXGroup;
+			children = (
+				D70BD25B18DFA67500FECBD7 /* SourceImageUtilsTests.m */,
+			);
+			name = SourceImageUtils;
+			sourceTree = "<group>";
+		};
 		D729BD2E181C24A000F762A3 = {
 			isa = PBXGroup;
 			children = (
@@ -794,8 +845,11 @@
 		D7EFB3D218AEC66C004EAB88 /* ImageStore */ = {
 			isa = PBXGroup;
 			children = (
+				D70BD24918DFA38900FECBD7 /* S3ImageStore */,
 				D7EFB3E218AECB38004EAB88 /* ImageStoreResources */,
 				D7EFB3D318AEC675004EAB88 /* Abstract Classes */,
+				D70BD24618DFA33200FECBD7 /* SourceImageUtils.h */,
+				D70BD24718DFA33200FECBD7 /* SourceImageUtils.m */,
 				D7EFB3DF18AEC9A3004EAB88 /* LocalImageStore.h */,
 				D7EFB3E018AEC9A3004EAB88 /* LocalImageStore.m */,
 			);
@@ -826,6 +880,8 @@
 		D7EFB3DB18AEC876004EAB88 /* Image Store */ = {
 			isa = PBXGroup;
 			children = (
+				D70BD25A18DFA66900FECBD7 /* SourceImageUtils */,
+				D70BD25318DFA5F200FECBD7 /* S3ImageStore */,
 				D7EFB3E918AECCF9004EAB88 /* LocalImageStore */,
 				D7EFB3DC18AEC87A004EAB88 /* AbstractMobileImageStore */,
 			);
@@ -963,6 +1019,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D70BD25718DFA60800FECBD7 /* UNIT_TEST_UPLOAD_IMAGE_16x16.jpg in Resources */,
 				D7EFB3ED18AECD0F004EAB88 /* big_test_image_4096-4096.jpg in Resources */,
 				D729BD5E181C24A000F762A3 /* InfoPlist.strings in Resources */,
 			);
@@ -998,6 +1055,7 @@
 				D7D76B09189EED000056CDE4 /* DDLog.m in Sources */,
 				B4014E8D18A7203300D8F4BA /* SampleViewController.m in Sources */,
 				D0B1B728189C876000052443 /* LibraryObject.m in Sources */,
+				D70BD25218DFA3D100FECBD7 /* LocalTransactionCache.m in Sources */,
 				D075270018B009A500622CBA /* LocalLibraryObjectStore.m in Sources */,
 				D72FE4B018B59F0D00C6452F /* Procedures.m in Sources */,
 				D07526DF18B0084400622CBA /* Transaction.m in Sources */,
@@ -1014,9 +1072,11 @@
 				B42DF80D18AFC4CD001C0E09 /* SampleEditViewController.m in Sources */,
 				D72FE4AE18B59F0D00C6452F /* PrimitiveProcedures.m in Sources */,
 				D7EFB3E118AEC9A3004EAB88 /* LocalImageStore.m in Sources */,
+				D70BD24E18DFA39700FECBD7 /* S3ImageStore.m in Sources */,
 				B4383AE2189C71B200DAC28F /* SourceEditViewController.m in Sources */,
 				D07526E018B0084400622CBA /* TransactionConstants.m in Sources */,
 				D07526E418B008B600622CBA /* TransactionStore.m in Sources */,
+				D70BD24818DFA33200FECBD7 /* SourceImageUtils.m in Sources */,
 				D07526F118B008E300622CBA /* FMDatabaseAdditions.m in Sources */,
 				D70BD23F18DFA15300FECBD7 /* PrimitiveFieldValidator.m in Sources */,
 				B46C93C518C64A920057078B /* EditLocationViewController.m in Sources */,
@@ -1024,6 +1084,7 @@
 				B446B92B18C2589900AB4E88 /* SearchSampleViewController.m in Sources */,
 				B446B94E18C2E8B000AB4E88 /* AddSampleSevenViewController.m in Sources */,
 				D07526F218B008E300622CBA /* FMDatabasePool.m in Sources */,
+				D70BD24F18DFA39700FECBD7 /* S3Utils.m in Sources */,
 				D70BD24018DFA15300FECBD7 /* SampleFieldValidator.m in Sources */,
 				D7D76B07189EED000056CDE4 /* DDASLLogger.m in Sources */,
 				B446B93818C2D3D900AB4E88 /* AddSampleThreeViewController.m in Sources */,
@@ -1042,11 +1103,14 @@
 				D72FE4BB18B59F8200C6452F /* ProcedureRecordTests.m in Sources */,
 				D001B3C118B039CB00975620 /* TransactionStoreTests.m in Sources */,
 				D729BD60181C24A000F762A3 /* ProjectCrystalBlue_iOSTests.m in Sources */,
+				D70BD25818DFA60800FECBD7 /* S3ImageStoreTests.m in Sources */,
 				D7EFB3EB18AECD09004EAB88 /* LocalImageStoreTests.m in Sources */,
 				D70BD24418DFA16E00FECBD7 /* PrimitiveValidatorTests.m in Sources */,
 				D70BD24518DFA16E00FECBD7 /* SampleFieldValidatorTests.m in Sources */,
 				D031240B18BDBD9700F3AAD9 /* SimpleDBUtilsTests.m in Sources */,
+				D70BD25C18DFA67500FECBD7 /* SourceImageUtilsTests.m in Sources */,
 				D7EFB3DE18AEC88E004EAB88 /* AbstractImageStoreTests.m in Sources */,
+				D70BD25918DFA60800FECBD7 /* S3UtilsTests.m in Sources */,
 				D72FE4B718B59F8200C6452F /* PrimitiveProcedureTests.m in Sources */,
 				D72FE4B818B59F8200C6452F /* ProcedureNameConstantsTests.m in Sources */,
 				D72FE4B918B59F8200C6452F /* ProcedureRecordParserTests.m in Sources */,
