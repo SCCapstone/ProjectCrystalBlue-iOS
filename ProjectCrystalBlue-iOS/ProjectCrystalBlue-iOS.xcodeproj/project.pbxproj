@@ -154,7 +154,6 @@
 		035508AE18DF41BF007D8A64 /* ZBarReaderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBarReaderViewController.h; sourceTree = "<group>"; };
 		035508AF18DF41BF007D8A64 /* ZBarSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBarSDK.h; sourceTree = "<group>"; };
 		035508B018DF41BF007D8A64 /* ZBarSymbol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBarSymbol.h; sourceTree = "<group>"; };
-		03AE34DB18B1F3F1006AD856 /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libzbar.a; path = include/libzbar.a; sourceTree = "<group>"; };
 		B4014E8B18A7203300D8F4BA /* SampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleViewController.h; sourceTree = "<group>"; };
 		B4014E8C18A7203300D8F4BA /* SampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleViewController.m; sourceTree = "<group>"; };
 		B42DF80B18AFC4CD001C0E09 /* SampleEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleEditViewController.h; sourceTree = "<group>"; };
@@ -685,7 +684,6 @@
 				0355088A18DF3925007D8A64 /* AVFoundation.framework */,
 				0355088418DF259D007D8A64 /* libzbar.a */,
 				B43DCE9518C67A8C00FD9B53 /* CoreLocation.framework */,
-				03AE34DB18B1F3F1006AD856 /* libzbar.a */,
 				D7E0AFD618B00D410005DFDA /* AWSRuntime.framework */,
 				D7EFB3F218AECF64004EAB88 /* AWSSimpleDB.framework */,
 				D7EFB3F018AECF5C004EAB88 /* AWSS3.framework */,
