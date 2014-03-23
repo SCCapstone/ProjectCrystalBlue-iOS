@@ -6,6 +6,7 @@
 //
 
 #import "EmbedReaderViewController.h"
+#import "SearchSampleViewController.h"
 
 @interface EmbedReaderViewController ()
 @end
@@ -86,6 +87,13 @@
         resultText.text = sym.data;
         break;
     }
+
+    SearchSampleViewController *searchView =
+        [[SearchSampleViewController alloc] initWithNibName:@"SearchSampleViewController"
+                                                     bundle:nil];
+
+    [searchView setPrefilledSearchString:resultText.text];
+    [self.navigationController pushViewController:searchView animated:YES];
 }
 
 @end

@@ -10,6 +10,7 @@
 
 @interface SearchSampleViewController : UIViewController <UIAlertViewDelegate>
 
+@property NSString *prefilledSearchString;
 @property (weak, nonatomic) IBOutlet UITextField *searchField;
 
 - (IBAction)searchSample:(id)sender;

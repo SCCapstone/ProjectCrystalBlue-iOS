@@ -24,6 +24,7 @@
 
 @implementation SearchSampleViewController
 @synthesize searchField;
+@synthesize prefilledSearchString;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +34,7 @@
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Search Sample"];
+
     }
     return self;
 }
@@ -40,7 +42,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    if (prefilledSearchString) {
+        [searchField setText:prefilledSearchString];
+    }
 }
 
 - (void)didReceiveMemoryWarning
