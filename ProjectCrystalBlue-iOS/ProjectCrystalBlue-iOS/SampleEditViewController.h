@@ -15,8 +15,9 @@
 
 @property (nonatomic, strong) Sample *selectedSample;
 @property (nonatomic, strong) AbstractCloudLibraryObjectStore *libraryObjectStore;
+@property (nonatomic)         NSString *option;
 
 
--(id)initWithSample:(Sample *)initSample;
+-(id)initWithSample:(Sample *)initSample WithOption:(NSString *) initOption;
 
 @end

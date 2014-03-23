@@ -45,7 +45,7 @@
 
 - (IBAction)addSource:(id)sender {
     
-    if (![libraryObjectStore libraryObjectExistsForKey:[KeyField text] FromTable:[SourceConstants tableName]])
+    if (![libraryObjectStore libraryObjectExistsForKey:[KeyField text] FromTable:[SourceConstants tableName]] && ![[KeyField text] isEqualToString:@""])
     {
         sourceToAdd = [[Source alloc] initWithKey:[KeyField text]
                                         AndWithValues:[SourceConstants attributeDefaultValues]];
@@ -62,9 +62,15 @@
     
     else
     {
-        NSString *message = @"Source already exist for key '";
+        NSString *message;
+        
+        if ([[KeyField text] isEqualToString:@""]) {
+            message = @"Please enter Key Value";
+        }
+        else{
+            message = @"Source already exist for key: ";
+        }
         message = [message stringByAppendingString:[KeyField text]];
-        message = [message stringByAppendingString:@"'"];
         UIAlertView *alert = [[UIAlertView alloc]
                               initWithTitle:message
                               message:nil
