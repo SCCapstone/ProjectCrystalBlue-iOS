@@ -113,7 +113,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
-     self.navigationController.toolbarHidden = NO;
 }
 
 - (void)didReceiveMemoryWarning
