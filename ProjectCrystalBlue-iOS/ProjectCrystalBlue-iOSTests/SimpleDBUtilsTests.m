@@ -118,7 +118,7 @@
                                       WithReturnedObjectClass:[Transaction class]
                                                   UsingClient:simpleDBClient];
     XCTAssertNotNil(transactions, @"The query to SimpleDB was unsuccessful.");
-    XCTAssertTrue(transactions.count == 4ul, @"SimpleDB returned the incorrect number of transactions.");
+    XCTAssertTrue(transactions.count == 4ul, @"SimpleDB returned the incorrect number of transactions; returned %lu.", (unsigned long)transactions.count);
     
     // Delete test objects
     NSMutableArray *objectNames = [[NSMutableArray alloc] initWithCapacity:testObjects.count];

@@ -12,7 +12,7 @@
  */
 static NSString *const SRC_KEY              = @"KEY";
 static NSString *const SRC_CONTINENT        = @"CONTINENT";
-static NSString *const SRC_TYPE             = @"TYPE";
+static NSString *const SRC_TYPE             = @"ROCK_TYPE";
 static NSString *const SRC_LITHOLOGY        = @"LITHOLOGY";
 static NSString *const SRC_DEPOSYSTEM       = @"DEPOSYSTEM";
 static NSString *const SRC_GROUP            = @"ROCK_GROUP";
