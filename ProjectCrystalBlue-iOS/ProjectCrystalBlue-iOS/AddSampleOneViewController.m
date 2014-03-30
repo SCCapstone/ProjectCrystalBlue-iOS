@@ -139,8 +139,8 @@
     CLLocation *currentLocation = newLocation;
     
     if (currentLocation != nil) {
-        LatitudeField.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
-        LongitudeField.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
+        LatitudeField.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
+        LongitudeField.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
     }
     
     [locationManager stopUpdatingLocation];
