@@ -112,9 +112,42 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
         [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
+     [imagePicker setDelegate:self];
+        // Do popover if iPad
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+        {
+            imagePickerPopover = [[UIPopoverController alloc] initWithContentViewController:imagePicker];
+            
+            [imagePickerPopover setDelegate:self];
+            [imagePickerPopover presentPopoverFromBarButtonItem:sender
+                                       permittedArrowDirections:UIPopoverArrowDirectionAny
+                                                       animated:YES];
+        }
+        // iPhone/iPod touch - modal display
+        else
+            [self presentViewController:imagePicker animated:YES completion:nil];
+    }
     else
-        [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    {
+        NSString *message = @"Device doesn't have a camera.";
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+    }
+}
+
+- (IBAction)uploadPhoto:(id)sender
+{
+     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    
+    [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     
     [imagePicker setDelegate:self];
     

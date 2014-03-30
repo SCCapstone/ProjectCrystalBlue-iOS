@@ -10,7 +10,7 @@
 #import "Source.h"
 #import "AbstractCloudLibraryObjectStore.h"
 
-@interface AddSampleImageViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPopoverControllerDelegate>
+@interface AddSampleImageViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPopoverControllerDelegate, UIAlertViewDelegate>
 {
     __weak IBOutlet UIImageView *imageView;
     UIPopoverController *imagePickerPopover;
@@ -23,4 +23,5 @@
 
 - (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary WithTitle:(NSString*) initTitle;
 - (IBAction)takePicture:(id)sender;
+- (IBAction)uploadPhoto:(id)sender;
 @end
