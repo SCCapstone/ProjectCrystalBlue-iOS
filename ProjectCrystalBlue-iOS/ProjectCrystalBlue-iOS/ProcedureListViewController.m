@@ -192,28 +192,28 @@
         if([indexPath row] == 0)
         {
             initialsViewController.selectedRow = 1;
-            initialsViewController.title = @"Make Slab";
+            initialsViewController.titleNav = @"Make Slab";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
         if([indexPath row] == 1)
         {
             initialsViewController.selectedRow = 2;
-            initialsViewController.title = @"Make Billet";
+            initialsViewController.titleNav = @"Make Billet";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
         if([indexPath row] == 2)
         {
              initialsViewController.selectedRow = 3;
-             initialsViewController.title = @"Make Thin Section";
+             initialsViewController.titleNav = @"Make Thin Section";
              [[self navigationController] pushViewController:initialsViewController  animated:YES];
 
         }
         if([indexPath row] == 3)
         {
             initialsViewController.selectedRow = 4;
-             initialsViewController.title = @"Trim";
+             initialsViewController.titleNav = @"Trim";
              [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     }
@@ -223,7 +223,7 @@
         if([indexPath row] == 0)
         {
             initialsViewController.selectedRow = 5;
-             initialsViewController.title = @"Pulverize";
+             initialsViewController.titleNav = @"Pulverize";
              [[self navigationController] pushViewController:initialsViewController  animated:YES];
 
         }
@@ -231,14 +231,14 @@
         if([indexPath row] == 1)
         {
             initialsViewController.selectedRow = 6;
-            initialsViewController.title = @"Jaw Crush";
+            initialsViewController.titleNav = @"Jaw Crush";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
         if([indexPath row] == 2)
         {
             initialsViewController.selectedRow = 7;
-            initialsViewController.title = @"Gemeni";
+            initialsViewController.titleNav = @"Gemeni";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
 
         }
@@ -246,14 +246,14 @@
         if([indexPath row] == 3)
         {
              initialsViewController.selectedRow = 8;
-                 initialsViewController.title = @"Pan";
+                 initialsViewController.titleNav = @"Pan";
                  [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
         if([indexPath row] == 4)
         {
             initialsViewController.selectedRow = 9;
-            initialsViewController.title = @"Sieves";
+            initialsViewController.titleNav = @"Sieves";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     }
@@ -263,7 +263,7 @@
         if([indexPath row] == 0)
         {
             initialsViewController.selectedRow = 10;
-            initialsViewController.title = @"Heavy Liquid 330";
+            initialsViewController.titleNav = @"Heavy Liquid 330";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
@@ -271,7 +271,7 @@
         if([indexPath row] == 1)
         {
             initialsViewController.selectedRow = 11;
-            initialsViewController.title = @"Heavy Liquid 290";
+            initialsViewController.titleNav = @"Heavy Liquid 290";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
@@ -280,7 +280,7 @@
         if([indexPath row] == 2)
         {
             initialsViewController.selectedRow = 12;
-            initialsViewController.title = @"Heavy Liquid 265";
+            initialsViewController.titleNav = @"Heavy Liquid 265";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
 
         }
@@ -289,7 +289,7 @@
         if([indexPath row] == 3)
         {
             initialsViewController.selectedRow = 13;
-            initialsViewController.title = @"Heavy Liquid 255";
+            initialsViewController.titleNav = @"Heavy Liquid 255";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     }
@@ -299,14 +299,14 @@
         if([indexPath row] == 0)
         {
             initialsViewController.selectedRow = 14;
-            initialsViewController.title = @"Hand Magnet";
+            initialsViewController.titleNav = @"Hand Magnet";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
         if([indexPath row] == 1)
         {
             initialsViewController.selectedRow = 15;
-            initialsViewController.title = @"Magnet 0.2A";
+            initialsViewController.titleNav = @"Magnet 0.2A";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
 
         }
@@ -315,7 +315,7 @@
         if([indexPath row] == 2)
         {
             initialsViewController.selectedRow = 16;
-            initialsViewController.title = @"Magnet 0.4A";
+            initialsViewController.titleNav = @"Magnet 0.4A";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
@@ -323,7 +323,7 @@
         if([indexPath row] == 3)
         {
             initialsViewController.selectedRow = 17;
-            initialsViewController.title = @"Magnet 0.6A";
+            initialsViewController.titleNav = @"Magnet 0.6A";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
 
         }
@@ -332,7 +332,7 @@
         if([indexPath row] == 4)
         {
             initialsViewController.selectedRow = 18;
-            initialsViewController.title = @"Magnet 0.8A";
+            initialsViewController.titleNav = @"Magnet 0.8A";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
@@ -340,21 +340,21 @@
         if([indexPath row] == 5)
         {
             initialsViewController.selectedRow = 19;
-            initialsViewController.title = @"Magnet 1.0A";
+            initialsViewController.titleNav = @"Magnet 1.0A";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
         if([indexPath row] == 6)
         {
             initialsViewController.selectedRow = 20;
-            initialsViewController.title = @"Magnet 1.2A";
+            initialsViewController.titleNav = @"Magnet 1.2A";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
   
         if([indexPath row] == 7)
         {
             initialsViewController.selectedRow = 21;
-            initialsViewController.title = @"Magnet 1.4A";
+            initialsViewController.titleNav = @"Magnet 1.4A";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     }

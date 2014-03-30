@@ -31,7 +31,7 @@
     
     if (self) {
         UINavigationItem *n = [self navigationItem];
-        [n setTitle:titleNav];
+        [n setTitle:[selectedSample key]];
         
         UIBarButtonItem *nextbtn = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(procedure:)];
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
@@ -167,14 +167,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationController.title = titleNav;
-    NSString* tempString = @"Applying ";
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    NSString* tempString = @"Applying '";
     tempString = [tempString stringByAppendingString:titleNav];
-    tempString = [tempString stringByAppendingString:@" to "];
+    tempString = [tempString stringByAppendingString:@"' to "];
     tempString = [tempString stringByAppendingString:[selectedSample key]];
     [descriptionLabel setText:tempString];
-    // Do any additional setup after loading the view from its nib.
 }
+
+
+
 
 - (void)didReceiveMemoryWarning
 {
