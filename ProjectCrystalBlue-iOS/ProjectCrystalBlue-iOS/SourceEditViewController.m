@@ -105,8 +105,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
     else
     {
-        
-        [imageView setImage:[imageArray objectAtIndex:0]];
+        img = [imageArray objectAtIndex:0];
+        [imageView setImage:img];
         
     }
      

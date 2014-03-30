@@ -26,13 +26,15 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @implementation AddSampleImageViewController
 
-@synthesize libraryObjectStore, sourceToAdd, titleNav;
+@synthesize libraryObjectStore, sourceToAdd, titleNav, imageArray, descriptionArray;
 
-- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary WithTitle:(NSString*) initTitle{
+- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary WithTitle:(NSString*) initTitle withImages:(NSMutableArray *) initImages withDescriptions:(NSMutableArray *) initDescriptions{
     if (self) {
         sourceToAdd = initSource;
         libraryObjectStore = initLibrary;
         titleNav = initTitle;
+        imageArray = initImages;
+        descriptionArray = initDescriptions;
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:titleNav];
@@ -60,10 +62,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     if ([titleNav isEqualToString:@"Far View Outcrop"]) {
         if(image)
         {
-         [SourceImageUtils addImage:image forSource:sourceToAdd inDataStore:libraryObjectStore withImageTag:(NSString *)@"Far View Outcrop" intoImageStore:[SourceImageUtils defaultImageStore]];
+            [imageArray addObject:image];
+            [descriptionArray addObject:@"Far View Outcrop"];
         }
         
-        AddSampleImageViewController *asiViewController = [[AddSampleImageViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore WithTitle:@"Medium View Outcrop"];
+        AddSampleImageViewController *asiViewController = [[AddSampleImageViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore WithTitle:@"Medium View Outcrop" withImages:imageArray withDescriptions:descriptionArray];
         
          [[self navigationController] pushViewController:asiViewController  animated:YES];
     }
@@ -71,10 +74,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     else if ([titleNav isEqualToString:@"Medium View Outcrop"]) {
         if(image)
         {
-         [SourceImageUtils addImage:image forSource:sourceToAdd inDataStore:libraryObjectStore withImageTag:(NSString *)@"Medium View Outcrop" intoImageStore:[SourceImageUtils defaultImageStore]];
+            [imageArray addObject:image];
+            [descriptionArray addObject:@"Medium View Outcrop"];
         }
         
-        AddSampleImageViewController *asiViewController = [[AddSampleImageViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore WithTitle:@"Close View Outcrop"];
+        AddSampleImageViewController *asiViewController = [[AddSampleImageViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore WithTitle:@"Close View Outcrop" withImages:imageArray withDescriptions:descriptionArray];
         [[self navigationController] pushViewController:asiViewController  animated:YES];
     }
     
@@ -82,7 +86,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     {
         if(image)
         {
-         [SourceImageUtils addImage:image forSource:sourceToAdd inDataStore:libraryObjectStore withImageTag:(NSString *)@"Close View Outcrop" intoImageStore:[SourceImageUtils defaultImageStore]];
+            [imageArray addObject:image];
+            [descriptionArray addObject:@"Close View Outcrop"];
+        }
+        
+        for(int i = 0; i < [imageArray count]; i++)
+        {
+            [SourceImageUtils addImage:[imageArray objectAtIndex:i] forSource:sourceToAdd inDataStore:libraryObjectStore withImageTag:[descriptionArray objectAtIndex:i] intoImageStore:[SourceImageUtils defaultImageStore]];
         }
         
      DDLogInfo(@"Adding new source %@", sourceToAdd.key);
@@ -135,7 +145,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
         [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
-     [imagePicker setDelegate:self];
+        [imagePicker setDelegate:self];
         // Do popover if iPad
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
         {
@@ -189,8 +199,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
-    image = info[UIImagePickerControllerEditedImage];
-    imageView.image = image;
+    image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    [imageView setImage:image];
+    
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
