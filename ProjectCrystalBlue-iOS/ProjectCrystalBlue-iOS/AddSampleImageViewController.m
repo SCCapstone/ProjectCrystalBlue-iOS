@@ -90,10 +90,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             [descriptionArray addObject:@"Close View Outcrop"];
         }
         
-        for(int i = 0; i < [imageArray count]; i++)
-        {
-            [SourceImageUtils addImage:[imageArray objectAtIndex:i] forSource:sourceToAdd inDataStore:libraryObjectStore withImageTag:[descriptionArray objectAtIndex:i] intoImageStore:[SourceImageUtils defaultImageStore]];
-        }
         
      DDLogInfo(@"Adding new source %@", sourceToAdd.key);
      [libraryObjectStore putLibraryObject:sourceToAdd IntoTable:[SourceConstants tableName]];
@@ -103,6 +99,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
      AndWithValues:[SampleConstants attributeDefaultValues]];
      [[newSample attributes] setObject:[sourceToAdd key] forKey:SMP_SOURCE_KEY];
      [libraryObjectStore putLibraryObject:newSample IntoTable:[SampleConstants tableName]];
+        
+        for(int i = 0; i < [imageArray count]; i++)
+        {
+            [SourceImageUtils addImage:[imageArray objectAtIndex:i] forSource:sourceToAdd inDataStore:libraryObjectStore withImageTag:[descriptionArray objectAtIndex:i] intoImageStore:[SourceImageUtils defaultImageStore]];
+        }
  
     [[self navigationController] popToRootViewControllerAnimated:YES];
     }

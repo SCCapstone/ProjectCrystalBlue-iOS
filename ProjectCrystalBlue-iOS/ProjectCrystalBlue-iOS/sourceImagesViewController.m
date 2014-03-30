@@ -9,11 +9,14 @@
 #import "sourceImagesViewController.h"
 #import "Source.h"
 #import "AbstractCloudLibraryObjectStore.h"
+#import "SourceImageUtils.h"
 
 
 @interface sourceImagesViewController ()
 {
     UIImage* defaultImage;
+    NSArray* imageArray;
+    NSArray* descriptionArray;
 }
 @end
 
@@ -24,9 +27,11 @@
 {
     selectedSource = initSource;
     libraryObjectStore = initLibrary;
+    NSString* title = @"Images for ";
+    title = [title stringByAppendingString:selectedSource.key];
     if (self) {
         UINavigationItem *n = [self navigationItem];
-        [n setTitle:[selectedSource key]];
+        [n setTitle:title];
         
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         
@@ -54,22 +59,26 @@
 
 -(void) loadImages
 {
+    imageArray = [SourceImageUtils imagesForSource:selectedSource inImageStore:[SourceImageUtils defaultImageStore]];
+    descriptionArray = [SourceImageUtils imageKeysForSource:selectedSource];
     
-    int xInc = 0;
     int yInc = 0;
     NSString* imageName = @"no_image.png";
     
     defaultImage = [UIImage imageNamed:imageName];
-    for(int i = 0; i < 10; i++)
+    for(int i = 0; i < [imageArray count]; i++)
     {
-        UIImageView* imgView = [[UIImageView alloc] initWithImage:defaultImage];
-        //[[UIImageView alloc] initWithFrame:CGRectMake(14+xInc, 100+yInc, 137, 44)];
-        imgView.frame = CGRectMake(10+xInc, 10+yInc, 137, 100);
+        //UIImageView* imgView = [[UIImageView alloc] initWithImage:defaultImage];
+        UIImageView* imgView = [[UIImageView alloc] initWithImage:[imageArray objectAtIndex:i]];
+        UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(14, 175+yInc, 300, 30)];
+        imgView.frame = CGRectMake(10, 10+yInc, 200, 150);
+        [label setText:[descriptionArray objectAtIndex:i]];
         
-        xInc = i % 4 ? xInc + 160 : 0;
-        yInc = i % 4 ? yInc : yInc + 150;
+        yInc = yInc + 225;
         [_scrollView addSubview:imgView];
-        [_scrollView setContentSize:CGSizeMake(640, 450)];
+        [_scrollView addSubview:label];
     }
+    
+    [_scrollView setContentSize:CGSizeMake(320, (225*[imageArray count])+100)];
 }
 @end
