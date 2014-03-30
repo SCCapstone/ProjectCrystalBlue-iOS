@@ -49,7 +49,7 @@
     
     AddSampleImageViewController *asiViewController = [[AddSampleImageViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore WithTitle:@"Far View Outcrop" withImages:images withDescriptions:desriptions];
     
-    [[self navigationController] pushViewController:asiViewController  animated:YES];    
+    [[self navigationController] pushViewController:asiViewController  animated:YES];
 }
 
 -(void) goBack:(id)sender
