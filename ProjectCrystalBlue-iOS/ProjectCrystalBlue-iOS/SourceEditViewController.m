@@ -61,7 +61,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (void)viewDidLoad {
     [self.scroller setScrollEnabled:YES];
-    [scroller setContentSize:CGSizeMake(320, 1000)];
+    [scroller setContentSize:CGSizeMake(320, 1050)];
     
     [super viewDidLoad];
     [[self view] setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
