@@ -57,7 +57,7 @@
 -(void) loadImages
 {
     imageArray = [SourceImageUtils imagesForSource:selectedSource inImageStore:[SourceImageUtils defaultImageStore]];
-    int xInc = 0;
+    
     int yInc = 0;
     NSString* imageName = @"no_image.png";
     
@@ -67,12 +67,12 @@
         //UIImageView* imgView = [[UIImageView alloc] initWithImage:defaultImage];
         UIImageView* imgView = [[UIImageView alloc] initWithImage:[imageArray objectAtIndex:i]];
         //[[UIImageView alloc] initWithFrame:CGRectMake(14+xInc, 100+yInc, 137, 44)];
-        imgView.frame = CGRectMake(10+xInc, 10+yInc, 137, 100);
+        imgView.frame = CGRectMake(10, 10+yInc, 200, 150);
         
-        xInc = i % 4 ? xInc + 160 : 0;
-        yInc = i % 4 ? yInc : yInc + 150;
+        yInc = yInc + 225;
         [_scrollView addSubview:imgView];
-        [_scrollView setContentSize:CGSizeMake(640, 450)];
     }
+    
+    [_scrollView setContentSize:CGSizeMake(320, (225*[imageArray count])+100)];
 }
 @end
