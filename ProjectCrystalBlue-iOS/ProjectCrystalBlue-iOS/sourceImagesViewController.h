@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Source.h"
+#import "AbstractCloudLibraryObjectStore.h"
 
-@interface sourceImagesViewController : UIViewController
+@interface sourceImagesViewController : UIViewController<UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
+- (id)initWithSource:(Source*)initSource withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary;
+
+@property (nonatomic, strong) Source *selectedSource;
+@property (nonatomic, strong) AbstractCloudLibraryObjectStore *libraryObjectStore;
 @end

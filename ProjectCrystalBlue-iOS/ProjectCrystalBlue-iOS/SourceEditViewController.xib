@@ -289,10 +289,23 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="PHf-KM-FwT">
-                    <rect key="frame" x="40" y="662" width="240" height="128"/>
+                <imageView contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="PHf-KM-FwT">
+                    <rect key="frame" x="40" y="660" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
+                    </accessibility>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3be-6H-Qub">
+                    <rect key="frame" x="40" y="655" width="240" height="133"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="picturedTapped:" destination="-1" eventType="touchUpInside" id="0sU-RJ-XLV"/>
+                    </connections>
+                </button>
             </subviews>
             <connections>
                 <outlet property="delegate" destination="-1" id="YYr-si-crw"/>

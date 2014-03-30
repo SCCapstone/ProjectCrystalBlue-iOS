@@ -15,6 +15,7 @@
 #import "SimpleDBLibraryObjectStore.h"
 #import "SourceConstants.h"
 #import "SourceImageUtils.h"
+#import "sourceImagesViewController.h"
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -50,6 +51,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [[self navigationItem] setRightBarButtonItem:savebtn];
     }
     return self;
+}
+
+- (IBAction)picturedTapped:(id)sender {
+    sourceImagesViewController *imgViewController = [[sourceImagesViewController alloc] initWithSource:selectedSource withLibrary:libraryObjectStore];
+    [[self navigationController] pushViewController:imgViewController  animated:YES];
+
 }
 
 - (void)viewDidLoad {

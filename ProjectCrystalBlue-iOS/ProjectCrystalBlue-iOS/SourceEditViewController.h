@@ -60,5 +60,6 @@
 
 - (IBAction)backgroundTapped:(id)sender;
 - (id)initWithSource:(Source*)initSource withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary;
+- (IBAction)picturedTapped:(id)sender;
 
 @end

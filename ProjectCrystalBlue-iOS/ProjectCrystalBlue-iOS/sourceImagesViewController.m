@@ -7,6 +7,9 @@
 //
 
 #import "sourceImagesViewController.h"
+#import "Source.h"
+#import "AbstractCloudLibraryObjectStore.h"
+
 
 @interface sourceImagesViewController ()
 {
@@ -15,7 +18,27 @@
 @end
 
 @implementation sourceImagesViewController
+@synthesize selectedSource, libraryObjectStore;
 
+- (id)initWithSource:(Source*)initSource withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary
+{
+    selectedSource = initSource;
+    libraryObjectStore = initLibrary;
+    if (self) {
+        UINavigationItem *n = [self navigationItem];
+        [n setTitle:[selectedSource key]];
+        
+        UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
+        
+        [[self navigationItem] setLeftBarButtonItem:backbtn];
+    }
+    return self;
+}
+
+-(void) goBack:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)viewDidLoad
 {
@@ -37,7 +60,7 @@
     NSString* imageName = @"no_image.png";
     
     defaultImage = [UIImage imageNamed:imageName];
-    for(int i = 1; i < 10; i++)
+    for(int i = 0; i < 10; i++)
     {
         UIImageView* imgView = [[UIImageView alloc] initWithImage:defaultImage];
         //[[UIImageView alloc] initWithFrame:CGRectMake(14+xInc, 100+yInc, 137, 44)];
