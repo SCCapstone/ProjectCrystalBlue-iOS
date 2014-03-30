@@ -91,7 +91,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
      NSString *newSampleKey = [NSString stringWithFormat:@"%@%@", [sourceToAdd key], @".001"];
      Sample *newSample = [[Sample alloc] initWithKey:newSampleKey
      AndWithValues:[SampleConstants attributeDefaultValues]];
-     [[newSample attributes] setObject:[sourceToAdd key] forKey:@"sourceKey"];
+     [[newSample attributes] setObject:[sourceToAdd key] forKey:SMP_SOURCE_KEY];
      [libraryObjectStore putLibraryObject:newSample IntoTable:[SampleConstants tableName]];
  
     [[self navigationController] popToRootViewControllerAnimated:YES];
