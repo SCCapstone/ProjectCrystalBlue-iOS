@@ -20,7 +20,7 @@
 
 @implementation InitialsViewController
 
-@synthesize initialsField, selectedSample, libraryObjectStore, selectedRow, titleNav;
+@synthesize initialsField, selectedSample, libraryObjectStore, selectedRow, titleNav, descriptionLabel;
 
 - (id)initWithSample:(Sample*)initSample withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary withRow:(int) initRow withTitle:(NSString*)initTitle
 {
@@ -168,6 +168,11 @@
 {
     [super viewDidLoad];
     self.navigationController.title = titleNav;
+    NSString* tempString = @"Applying ";
+    tempString = [tempString stringByAppendingString:titleNav];
+    tempString = [tempString stringByAppendingString:@" to "];
+    tempString = [tempString stringByAppendingString:[selectedSample key]];
+    [descriptionLabel setText:tempString];
     // Do any additional setup after loading the view from its nib.
 }
 
