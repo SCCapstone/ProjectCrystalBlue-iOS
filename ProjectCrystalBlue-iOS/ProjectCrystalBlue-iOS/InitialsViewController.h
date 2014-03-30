@@ -17,6 +17,7 @@
 @property(nonatomic) AbstractCloudLibraryObjectStore *libraryObjectStore;
 @property(nonatomic) int selectedRow;
 @property(nonatomic) NSString* titleNav;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
 - (id)initWithSample:(Sample*)initSample withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary withRow:(int) initRow withTitle:(NSString*)initTitle;
 
