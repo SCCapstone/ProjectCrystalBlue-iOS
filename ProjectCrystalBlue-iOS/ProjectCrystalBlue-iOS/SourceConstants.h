@@ -21,7 +21,7 @@ static NSString *const SRC_MEMBER           = @"MEMBER";
 static NSString *const SRC_REGION           = @"REGION";
 static NSString *const SRC_LOCALITY         = @"LOCALITY";
 static NSString *const SRC_SECTION          = @"SECTION";
-static NSString *const SRC_METER            = @"METER_LEVEL";
+static NSString *const SRC_METER            = @"METER";
 static NSString *const SRC_LATITUDE         = @"LATITUDE";
 static NSString *const SRC_LONGITUDE        = @"LONGITUDE";
 static NSString *const SRC_AGE              = @"AGE";
@@ -45,16 +45,17 @@ static NSString *const SRC_DEF_VAL_MEMBER       = @"Member here";
 static NSString *const SRC_DEF_VAL_REGION       = @"Region here";
 static NSString *const SRC_DEF_VAL_LOCALITY     = @"Locality here";
 static NSString *const SRC_DEF_VAL_SECTION      = @"Section here";
-static NSString *const SRC_DEF_VAL_METER        = @"Meter here";
-static NSString *const SRC_DEF_VAL_LATITUDE     = @"Latitude here";
-static NSString *const SRC_DEF_VAL_LONGITUDE    = @"Longitude here";
-static NSString *const SRC_DEF_VAL_AGE          = @"Age here";
+static NSString *const SRC_DEF_VAL_METER        = @"0.00";
+static NSString *const SRC_DEF_VAL_LATITUDE     = @"0.00";
+static NSString *const SRC_DEF_VAL_LONGITUDE    = @"0.00";
+static NSString *const SRC_DEF_VAL_AGE          = @"0.00";
 static NSString *const SRC_DEF_VAL_AGE_METHOD   = @"Age method here";
 static NSString *const SRC_DEF_VAL_AGE_DATATYPE = @"Age data type here";
 static NSString *const SRC_DEF_VAL_DATE_COLLECTED = @"Date collected here";
 static NSString *const SRC_DEF_VAL_NOTES        = @"Notes here";
 static NSString *const SRC_DEF_VAL_HYPERLINKS   = @"Hyperlinks here";
-static NSString *const SRC_DEF_VAL_IMAGES       = @""; /* intentionally blank */
+/* default value for "Images" should be empty string, since this will be a list of image names */
+static NSString *const SRC_DEF_VAL_IMAGES       = @"";
 
 /*  Human-readable attribute names
  */
