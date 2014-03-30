@@ -30,7 +30,6 @@
     __weak IBOutlet UITextField *AgeField;
     __weak IBOutlet UITextField *AgeMethodField;
     __weak IBOutlet UITextField *AgeDataTypeField;
-    __weak IBOutlet UITextField *DateField;
    
     __weak IBOutlet UILabel *TypeLabel;
     __weak IBOutlet UILabel *LithologyLabel;
@@ -47,7 +46,10 @@
     __weak IBOutlet UILabel *AgeLabel;
     __weak IBOutlet UILabel *AgeMethodLabel;
     __weak IBOutlet UILabel *AgeDataTypeLabel;
+    
     __weak IBOutlet UILabel *DateLabel;
+   
+    __weak IBOutlet UIDatePicker *DatePicker;
     __weak IBOutlet UIImageView *imageView;
     
 }

@@ -61,7 +61,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (void)viewDidLoad {
     [self.scroller setScrollEnabled:YES];
-    [scroller setContentSize:CGSizeMake(320, 850)];
+    [scroller setContentSize:CGSizeMake(320, 1050)];
     
     [super viewDidLoad];
     [[self view] setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
@@ -93,7 +93,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [AgeField setText:[[selectedSource attributes] objectForKey:SRC_AGE]];
     [AgeMethodField setText:[[selectedSource attributes] objectForKey:SRC_AGE_METHOD]];
     [AgeDataTypeField setText:[[selectedSource attributes] objectForKey:SRC_AGE_DATATYPE]];
-    [DateField setText:[[selectedSource attributes] objectForKey:SRC_DATE_COLLECTED]];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterShortStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    NSDate *newDate = [formatter dateFromString:[[selectedSource attributes] objectForKey:SRC_DATE_COLLECTED]];
+    [DatePicker setDate:newDate];
     
     imageArray = [SourceImageUtils imagesForSource:selectedSource inImageStore:[SourceImageUtils defaultImageStore]];
 
@@ -149,7 +154,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [[selectedSource attributes] setObject:[AgeField text] forKey:SRC_AGE];
     [[selectedSource attributes] setObject:[AgeMethodField text] forKey:SRC_AGE_METHOD];
     [[selectedSource attributes] setObject:[AgeDataTypeField text] forKey:SRC_AGE_DATATYPE];
-    [[selectedSource attributes] setObject:[DateField text] forKey:SRC_DATE_COLLECTED];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterShortStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    NSString *dateString = [formatter stringFromDate:DatePicker.date];
+    [[selectedSource attributes] setObject:dateString forKey:SRC_DATE_COLLECTED];
+
     
     [libraryObjectStore updateLibraryObject:selectedSource IntoTable:[SourceConstants tableName]];
     
@@ -242,10 +253,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         if(textField == AgeDataTypeField)
         {
             AgeDataTypeLabel.textColor = [UIColor redColor];
-        }
-        if(textField == DateField)
-        {
-            DateLabel.textColor = [UIColor redColor];
         }
     }
 }
