@@ -21,7 +21,7 @@
 @end
 
 @implementation AddSampleOneViewController
-@synthesize KeyField, LatitudeField, LongitudeField, DateField;
+@synthesize KeyField, LatitudeField, LongitudeField, DatePicker;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,12 +47,17 @@
     
     if (![libraryObjectStore libraryObjectExistsForKey:[KeyField text] FromTable:[SourceConstants tableName]] && ![[KeyField text] isEqualToString:@""])
     {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateStyle:NSDateFormatterShortStyle];
+        [formatter setTimeStyle:NSDateFormatterShortStyle];
+        NSString *dateString = [formatter stringFromDate:DatePicker.date];
+        
         sourceToAdd = [[Source alloc] initWithKey:[KeyField text]
                                         AndWithValues:[SourceConstants attributeDefaultValues]];
     
         [[sourceToAdd attributes] setObject:[LatitudeField text] forKey:SRC_LATITUDE];
         [[sourceToAdd attributes] setObject:[LongitudeField text] forKey:SRC_LONGITUDE];
-        [[sourceToAdd attributes] setObject:[DateField text] forKey:SRC_DATE_COLLECTED];
+        [[sourceToAdd attributes] setObject:dateString forKey:SRC_DATE_COLLECTED];
     
         AddSampleTwoViewController *astViewController = [[AddSampleTwoViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
     
@@ -92,18 +97,6 @@
 {
     [super viewDidLoad];
     locationManager = [[CLLocationManager alloc] init];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    //uncomment to get the time only
-    //[formatter setDateFormat:@"hh:mm a"];
-    //[formatter setDateFormat:@"MMM dd, YYYY"];
-    [formatter setDateStyle:NSDateFormatterMediumStyle];
-    
-    
-    //get the date today
-    NSString *dateToday = [formatter stringFromDate:[NSDate date]];
-    
-    DateField.text = dateToday;
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning
