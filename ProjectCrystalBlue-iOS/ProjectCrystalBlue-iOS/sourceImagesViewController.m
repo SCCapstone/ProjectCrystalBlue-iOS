@@ -9,11 +9,13 @@
 #import "sourceImagesViewController.h"
 #import "Source.h"
 #import "AbstractCloudLibraryObjectStore.h"
+#import "SourceImageUtils.h"
 
 
 @interface sourceImagesViewController ()
 {
     UIImage* defaultImage;
+    NSArray* imageArray;
 }
 @end
 
@@ -54,15 +56,16 @@
 
 -(void) loadImages
 {
-    
+    imageArray = [SourceImageUtils imagesForSource:selectedSource inImageStore:[SourceImageUtils defaultImageStore]];
     int xInc = 0;
     int yInc = 0;
     NSString* imageName = @"no_image.png";
     
     defaultImage = [UIImage imageNamed:imageName];
-    for(int i = 0; i < 10; i++)
+    for(int i = 0; i < [imageArray count]; i++)
     {
-        UIImageView* imgView = [[UIImageView alloc] initWithImage:defaultImage];
+        //UIImageView* imgView = [[UIImageView alloc] initWithImage:defaultImage];
+        UIImageView* imgView = [[UIImageView alloc] initWithImage:[imageArray objectAtIndex:i]];
         //[[UIImageView alloc] initWithFrame:CGRectMake(14+xInc, 100+yInc, 137, 44)];
         imgView.frame = CGRectMake(10+xInc, 10+yInc, 137, 100);
         
