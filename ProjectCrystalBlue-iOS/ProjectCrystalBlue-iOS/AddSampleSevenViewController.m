@@ -46,21 +46,7 @@
     
     AddSampleImageViewController *asiViewController = [[AddSampleImageViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore WithTitle:@"Far View Outcrop"];
     
-    [[self navigationController] pushViewController:asiViewController  animated:YES];
-
-    /**
-    DDLogInfo(@"Adding new source %@", sourceToAdd.key);
-    [libraryObjectStore putLibraryObject:sourceToAdd IntoTable:[SourceConstants tableName]];
-    
-    NSString *newSampleKey = [NSString stringWithFormat:@"%@%@", [sourceToAdd key], @".001"];
-    Sample *newSample = [[Sample alloc] initWithKey:newSampleKey
-                                      AndWithValues:[SampleConstants attributeDefaultValues]];
-    [[newSample attributes] setObject:[sourceToAdd key] forKey:@"sourceKey"];
-    [libraryObjectStore putLibraryObject:newSample IntoTable:[SampleConstants tableName]];
-     [self navigationController] popToRootViewControllerAnimated:YES];
-     **/
-    
-    
+    [[self navigationController] pushViewController:asiViewController  animated:YES];    
 }
 
 -(void) goBack:(id)sender
