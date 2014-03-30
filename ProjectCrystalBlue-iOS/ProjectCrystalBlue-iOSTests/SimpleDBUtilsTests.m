@@ -113,12 +113,12 @@
     sleep(1);
     
     // Make sure objects have been put
-    NSString *query = [NSString stringWithFormat:@"select * from %@ where timestamp >= '200' order by timestamp limit 250", TEST_DOMAIN_NAME];
+    NSString *query = [NSString stringWithFormat:@"select * from %@ where TIMESTAMP >= '0000002000' order by TIMESTAMP limit 250", TEST_DOMAIN_NAME];
     NSArray *transactions = [SimpleDBUtils executeSelectQuery:query
                                       WithReturnedObjectClass:[Transaction class]
                                                   UsingClient:simpleDBClient];
     XCTAssertNotNil(transactions, @"The query to SimpleDB was unsuccessful.");
-    XCTAssertTrue(transactions.count == 4ul, @"SimpleDB returned the incorrect number of transactions.");
+    XCTAssertTrue(transactions.count == 4ul, @"SimpleDB returned the incorrect number of transactions; returned %lu.", (unsigned long)transactions.count);
     
     // Delete test objects
     NSMutableArray *objectNames = [[NSMutableArray alloc] initWithCapacity:testObjects.count];
