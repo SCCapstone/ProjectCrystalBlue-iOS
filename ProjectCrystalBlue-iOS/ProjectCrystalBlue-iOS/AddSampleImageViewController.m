@@ -9,6 +9,7 @@
 #import "AddSampleImageViewController.h"
 #import "Sample.h"
 #import "DDLog.h"
+#import "SourceImageUtils.h"
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -17,6 +18,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 #endif
 
 @interface AddSampleImageViewController ()
+{
+    UIImage *image;
+}
 
 @end
 
@@ -50,19 +54,37 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (IBAction)addSource:(id)sender {
     
+    
+    //[info objectForKey:UIImagePickerControllerOriginalImage];
+    
     if ([titleNav isEqualToString:@"Far View Outcrop"]) {
+        if(image)
+        {
+         [SourceImageUtils addImage:image forSource:sourceToAdd inDataStore:libraryObjectStore withImageTag:(NSString *)@"Far View Outcrop" intoImageStore:[SourceImageUtils defaultImageStore]];
+        }
+        
         AddSampleImageViewController *asiViewController = [[AddSampleImageViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore WithTitle:@"Medium View Outcrop"];
         
          [[self navigationController] pushViewController:asiViewController  animated:YES];
     }
     
     else if ([titleNav isEqualToString:@"Medium View Outcrop"]) {
+        if(image)
+        {
+         [SourceImageUtils addImage:image forSource:sourceToAdd inDataStore:libraryObjectStore withImageTag:(NSString *)@"Medium View Outcrop" intoImageStore:[SourceImageUtils defaultImageStore]];
+        }
+        
         AddSampleImageViewController *asiViewController = [[AddSampleImageViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore WithTitle:@"Close View Outcrop"];
         [[self navigationController] pushViewController:asiViewController  animated:YES];
     }
     
     else
     {
+        if(image)
+        {
+         [SourceImageUtils addImage:image forSource:sourceToAdd inDataStore:libraryObjectStore withImageTag:(NSString *)@"Close View Outcrop" intoImageStore:[SourceImageUtils defaultImageStore]];
+          }
+        
      DDLogInfo(@"Adding new source %@", sourceToAdd.key);
      [libraryObjectStore putLibraryObject:sourceToAdd IntoTable:[SourceConstants tableName]];
      
@@ -164,5 +186,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     // iPhone/iPod touch - modal display
     else
         [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    image = info[UIImagePickerControllerEditedImage];
+    imageView.image = image;
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
 }
 @end
