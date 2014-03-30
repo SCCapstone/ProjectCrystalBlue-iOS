@@ -14,6 +14,7 @@
 #import "AbstractCloudLibraryObjectStore.h"
 #import "SimpleDBLibraryObjectStore.h"
 #import "SourceConstants.h"
+#import "SourceImageUtils.h"
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -24,6 +25,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 @interface SourceEditViewController ()
 {
     NSString* textString;
+    NSArray* imageArray;
+    UIImage* img;
 }
 
 @end
@@ -84,6 +87,22 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [AgeMethodField setText:[[selectedSource attributes] objectForKey:SRC_AGE_METHOD]];
     [AgeDataTypeField setText:[[selectedSource attributes] objectForKey:SRC_AGE_DATATYPE]];
     [DateField setText:[[selectedSource attributes] objectForKey:SRC_DATE_COLLECTED]];
+    
+    imageArray = [SourceImageUtils imagesForSource:selectedSource inImageStore:[SourceImageUtils defaultImageStore]];
+
+    
+    if([imageArray count] == 0)
+    {
+        img = [UIImage imageNamed:@"no_image.png"];
+        [imageView setImage:img];
+    }
+    else
+    {
+        
+        [imageView setImage:[imageArray objectAtIndex:0]];
+        
+    }
+     
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

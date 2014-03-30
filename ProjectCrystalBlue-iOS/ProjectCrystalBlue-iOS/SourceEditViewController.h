@@ -48,6 +48,8 @@
     __weak IBOutlet UILabel *AgeMethodLabel;
     __weak IBOutlet UILabel *AgeDataTypeLabel;
     __weak IBOutlet UILabel *DateLabel;
+    __weak IBOutlet UIImageView *imageView;
+    
 }
 @property (nonatomic, strong) IBOutlet UIScrollView *scroller;
 @property (nonatomic, strong) Source *selectedSource;

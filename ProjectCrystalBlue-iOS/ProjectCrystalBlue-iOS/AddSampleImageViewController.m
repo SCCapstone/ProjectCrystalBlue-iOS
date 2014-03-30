@@ -83,7 +83,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         if(image)
         {
          [SourceImageUtils addImage:image forSource:sourceToAdd inDataStore:libraryObjectStore withImageTag:(NSString *)@"Close View Outcrop" intoImageStore:[SourceImageUtils defaultImageStore]];
-          }
+        }
         
      DDLogInfo(@"Adding new source %@", sourceToAdd.key);
      [libraryObjectStore putLibraryObject:sourceToAdd IntoTable:[SourceConstants tableName]];
