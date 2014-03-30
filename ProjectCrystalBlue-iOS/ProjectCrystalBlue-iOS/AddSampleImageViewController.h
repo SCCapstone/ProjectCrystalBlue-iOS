@@ -20,8 +20,10 @@
 @property(nonatomic) Source* sourceToAdd;
 @property(nonatomic) AbstractCloudLibraryObjectStore *libraryObjectStore;
 @property(nonatomic) NSString *titleNav;
+@property(nonatomic) NSMutableArray *imageArray;
+@property(nonatomic) NSMutableArray *descriptionArray;
 
-- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary WithTitle:(NSString*) initTitle;
+- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary WithTitle:(NSString*) initTitle withImages:(NSMutableArray *) initImages withDescriptions:(NSMutableArray *) initDescriptions;
 - (IBAction)takePicture:(id)sender;
 - (IBAction)uploadPhoto:(id)sender;
 @end

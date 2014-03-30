@@ -44,7 +44,10 @@
     [[sourceToAdd attributes] setObject:[AgeMethodField text] forKey:SRC_AGE_METHOD];
     [[sourceToAdd attributes] setObject:[AgeDataTypeField text] forKey:SRC_AGE_DATATYPE];
     
-    AddSampleImageViewController *asiViewController = [[AddSampleImageViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore WithTitle:@"Far View Outcrop"];
+    NSMutableArray *images = [[NSMutableArray alloc] init];
+    NSMutableArray *desriptions = [[NSMutableArray alloc] init];
+    
+    AddSampleImageViewController *asiViewController = [[AddSampleImageViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore WithTitle:@"Far View Outcrop" withImages:images withDescriptions:desriptions];
     
     [[self navigationController] pushViewController:asiViewController  animated:YES];
 
