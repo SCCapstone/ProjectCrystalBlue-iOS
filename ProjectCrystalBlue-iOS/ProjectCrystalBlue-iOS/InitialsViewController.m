@@ -9,6 +9,7 @@
 #import "InitialsViewController.h"
 #import "Sample.h"
 #import "Procedures.h"
+#import "ProcedureFieldValidator.h"
 
 
 @interface InitialsViewController ()
@@ -43,6 +44,10 @@
 }
 
 - (IBAction)procedure:(id)sender {
+    if (![self validateTextFieldValues]) {
+        return;
+    }
+    
     initials = [initialsField text];
         if (selectedRow == 1)
         {
@@ -187,4 +192,25 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)validateTextFieldValues
+{
+    BOOL validationPassed = YES;
+    
+    ValidationResponse *initialsOK = [ProcedureFieldValidator validateInitials:[initialsField text]];
+    if (!initialsOK.isValid && validationPassed == YES) {
+        validationPassed = NO;
+        
+        NSString *message = [initialsOK alertWithFieldName:@"initials" fieldValue:[initialsField text]];
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+    }
+
+    return validationPassed;
+}
 @end
