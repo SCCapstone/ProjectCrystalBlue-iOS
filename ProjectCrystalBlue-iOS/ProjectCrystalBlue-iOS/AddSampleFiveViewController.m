@@ -11,13 +11,9 @@
 #import "AddSampleSixViewController.h"
 #import "AbstractLibraryObjectStore.h"
 #import "SampleConstants.h"
-
+#import "SourceFieldValidator.h"
 
 @interface AddSampleFiveViewController ()
-
-{
-    UITableView *autocompleteTableView;
-}
 
 @end
 
@@ -46,7 +42,9 @@
 }
 
 - (IBAction)addSource:(id)sender {
-    autocompleteTableView.hidden = YES;
+    if (![self validateTextFieldValues]) {
+        return;
+    }
     
     [[sourceToAdd attributes] setObject:[GroupField text] forKey:SRC_GROUP];
     [[sourceToAdd attributes] setObject:[FormationField text] forKey:SRC_FORMATION];
@@ -78,12 +76,10 @@
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
-    autocompleteTableView.hidden = YES;
     return YES;
 }
 
 - (IBAction)backgroundTapped:(id)sender {
-    autocompleteTableView.hidden = YES;
     [[self view] endEditing:YES];
 }
 
@@ -125,6 +121,42 @@
     [UIView commitAnimations];
 }
 
+- (BOOL)validateTextFieldValues
+{
+    BOOL validationPassed = YES;
+    
+    ValidationResponse *formationOK = [SourceFieldValidator validateFormation:[FormationField text]];
+    if (!formationOK.isValid && validationPassed == YES) {
+        validationPassed = NO;
+        
+        NSString *message = [formationOK alertWithFieldName:@"formation" fieldValue:[FormationField text]];
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    
+    ValidationResponse *memberOK = [SourceFieldValidator validateMember:[MemberField text]];
+    if (!memberOK.isValid && validationPassed == YES) {
+        validationPassed = NO;
+        
+        NSString *message = [memberOK alertWithFieldName:@"member" fieldValue:[MemberField text]];
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+        
+    }
 
+    return validationPassed;
+}
 
 @end

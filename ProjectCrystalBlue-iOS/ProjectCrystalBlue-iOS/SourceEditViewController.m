@@ -16,7 +16,6 @@
 #import "SourceImageUtils.h"
 #import "sourceImagesViewController.h"
 #import "SourceFieldValidator.h"
-#import "ValidationResponse.h"
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;

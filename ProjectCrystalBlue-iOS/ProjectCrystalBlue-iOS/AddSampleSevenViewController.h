@@ -10,7 +10,7 @@
 #import "Source.h"
 #import "AbstractCloudLibraryObjectStore.h"
 
-@interface AddSampleSevenViewController : UIViewController<UITextFieldDelegate>
+@interface AddSampleSevenViewController : UIViewController<UITextFieldDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *AgeField;
 @property (weak, nonatomic) IBOutlet UITextField *AgeDataTypeField;
 
