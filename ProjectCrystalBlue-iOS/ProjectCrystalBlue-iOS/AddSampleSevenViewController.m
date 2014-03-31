@@ -17,7 +17,7 @@
 @end
 
 @implementation AddSampleSevenViewController
-@synthesize libraryObjectStore, sourceToAdd, AgeField, AgeMethodField, AgeDataTypeField;
+@synthesize libraryObjectStore, sourceToAdd, AgeField, AgeDataTypeField;
 
 - (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary{
     if (self) {
@@ -41,7 +41,6 @@
 
 - (IBAction)addSource:(id)sender {
     [[sourceToAdd attributes] setObject:[AgeField text] forKey:SRC_AGE];
-    [[sourceToAdd attributes] setObject:[AgeMethodField text] forKey:SRC_AGE_METHOD];
     [[sourceToAdd attributes] setObject:[AgeDataTypeField text] forKey:SRC_AGE_DATATYPE];
     
     NSMutableArray *images = [[NSMutableArray alloc] init];

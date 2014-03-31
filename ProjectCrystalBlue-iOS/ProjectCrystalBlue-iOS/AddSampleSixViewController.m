@@ -7,7 +7,7 @@
 //
 
 #import "AddSampleSixViewController.h"
-#import "AddSampleSevenViewController.h"
+#import "AddSampleAgeViewController.h"
 
 
 @interface AddSampleSixViewController ()
@@ -43,9 +43,9 @@
     [[sourceToAdd attributes] setObject:[SectionField text] forKey:SRC_SECTION];
     [[sourceToAdd attributes] setObject:[MeterField text] forKey:SRC_METER];
     
-    AddSampleSevenViewController *assViewController = [[AddSampleSevenViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
+    AddSampleAgeViewController *asaViewController = [[AddSampleAgeViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
     
-    [[self navigationController] pushViewController:assViewController  animated:YES];
+    [[self navigationController] pushViewController:asaViewController  animated:YES];
 
    }
 

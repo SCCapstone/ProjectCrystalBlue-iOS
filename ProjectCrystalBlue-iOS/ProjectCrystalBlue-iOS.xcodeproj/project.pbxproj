@@ -47,6 +47,7 @@
 		B46C93C618C64A920057078B /* EditLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B46C93C418C64A920057078B /* EditLocationViewController.xib */; };
 		B4981F9A18E9132B00EA0741 /* AddImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4981F9818E9132B00EA0741 /* AddImageViewController.m */; };
 		B4981F9B18E9132B00EA0741 /* AddImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4981F9918E9132B00EA0741 /* AddImageViewController.xib */; };
+		B4981F9E18E937DC00EA0741 /* AddSampleAgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4981F9D18E937DC00EA0741 /* AddSampleAgeViewController.m */; };
 		D001B3BF18B039C000975620 /* LocalLibraryObjectStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D001B3BE18B039C000975620 /* LocalLibraryObjectStoreTests.m */; };
 		D001B3C118B039CB00975620 /* TransactionStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D001B3C018B039CB00975620 /* TransactionStoreTests.m */; };
 		D01DDDBF188DDC5E0059AF09 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDB8188DDC5E0059AF09 /* Sample.m */; };
@@ -229,6 +230,8 @@
 		B4981F9718E9132B00EA0741 /* AddImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddImageViewController.h; sourceTree = "<group>"; };
 		B4981F9818E9132B00EA0741 /* AddImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddImageViewController.m; sourceTree = "<group>"; };
 		B4981F9918E9132B00EA0741 /* AddImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddImageViewController.xib; sourceTree = "<group>"; };
+		B4981F9C18E937DC00EA0741 /* AddSampleAgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSampleAgeViewController.h; sourceTree = "<group>"; };
+		B4981F9D18E937DC00EA0741 /* AddSampleAgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleAgeViewController.m; sourceTree = "<group>"; };
 		D001B3BE18B039C000975620 /* LocalLibraryObjectStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalLibraryObjectStoreTests.m; sourceTree = "<group>"; };
 		D001B3C018B039CB00975620 /* TransactionStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionStoreTests.m; sourceTree = "<group>"; };
 		D01DDDB7188DDC5E0059AF09 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
@@ -505,6 +508,8 @@
 				B446B94218C2E49D00AB4E88 /* AddSampleFiveViewController.m */,
 				B446B94618C2E67C00AB4E88 /* AddSampleSixViewController.h */,
 				B446B94718C2E67C00AB4E88 /* AddSampleSixViewController.m */,
+				B4981F9C18E937DC00EA0741 /* AddSampleAgeViewController.h */,
+				B4981F9D18E937DC00EA0741 /* AddSampleAgeViewController.m */,
 				B446B94B18C2E8B000AB4E88 /* AddSampleSevenViewController.h */,
 				B446B94C18C2E8B000AB4E88 /* AddSampleSevenViewController.m */,
 				B45379EC18DD4C5F008A9EBB /* AddSampleImageViewController.h */,
@@ -1097,6 +1102,7 @@
 				D72FE4B118B59F0D00C6452F /* ProcedureRecord.m in Sources */,
 				D77F88CF18E8ABB800734631 /* SampleFieldValidator.m in Sources */,
 				D075270618B009C600622CBA /* AbstractCloudLibraryObjectStore.m in Sources */,
+				B4981F9E18E937DC00EA0741 /* AddSampleAgeViewController.m in Sources */,
 				B4383ACB189C42B700DAC28F /* SourceViewController.m in Sources */,
 				B45379F418DD5B66008A9EBB /* InitialsViewController.m in Sources */,
 				D7EFB3D618AEC695004EAB88 /* AbstractMobileImageStore.m in Sources */,
