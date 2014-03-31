@@ -9,6 +9,11 @@
 #import <XCTest/XCTest.h>
 #import "SourceFieldValidator.h"
 #import "ValidationResponse.h"
+#import "LocalLibraryObjectStore.h"
+#import "Source.h"
+
+#define TEST_DIRECTORY @"project-crystal-blue-test-temp"
+#define DATABASE_NAME @"test_database.db"
 
 @interface SourceFieldValidatorTests : XCTestCase
 
@@ -31,37 +36,45 @@
 - (void)testValidateSourceKey
 {
     NSString *validKey = @"This is an valid key 1234";
+    NSString *keyNotUnique = @"This already exists";
     NSString *invalidChars1 = @"Underscores_must_not_allowed_in_keys";
     NSString *invalidChars2 = @"Neither.Can.Periods";
-
+    
     NSString *tooShort = @"";
     NSMutableString *tooLong = [NSMutableString stringWithString:@""];
     for (int i = 0; i < 91; ++i) {
         [tooLong appendString:@"a"];
     }
-
-    XCTAssertTrue([[SourceFieldValidator validateSourceKey:validKey] isValid]);
-
-    XCTAssertFalse([[SourceFieldValidator validateSourceKey:invalidChars1] isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateSourceKey:invalidChars2] isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateSourceKey:tooShort] isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateSourceKey:tooLong] isValid]);
+    
+    AbstractLibraryObjectStore *dataStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
+                                                                                 WithDatabaseName:DATABASE_NAME];
+    
+    Source *source = [[Source alloc] initWithKey:keyNotUnique
+                                   AndWithValues:[SourceConstants attributeDefaultValues]];
+    [dataStore putLibraryObject:source IntoTable:[SourceConstants tableName]];
+    
+    
+    XCTAssertTrue([[SourceFieldValidator validateSourceKey:validKey WithDataStore:dataStore] isValid]);
+    
+    XCTAssertFalse([[SourceFieldValidator validateSourceKey:keyNotUnique WithDataStore:dataStore] isValid]);
+    XCTAssertFalse([[SourceFieldValidator validateSourceKey:invalidChars1 WithDataStore:dataStore] isValid]);
+    XCTAssertFalse([[SourceFieldValidator validateSourceKey:invalidChars2 WithDataStore:dataStore] isValid]);
+    XCTAssertFalse([[SourceFieldValidator validateSourceKey:tooShort WithDataStore:dataStore] isValid]);
+    XCTAssertFalse([[SourceFieldValidator validateSourceKey:tooLong WithDataStore:dataStore] isValid]);
 }
 
 - (void)testValidateContinent
 {
     NSString *valid = @"North America";
     NSString *invalid = @"#@*(@$&(4892374892734'''/./'.'/";
-    NSString *tooShort = @"";
     NSMutableString *tooLong = [NSMutableString stringWithString:@""];
     for (int i = 0; i < 91; ++i) {
         [tooLong appendString:@"a"];
     }
-
+    
     XCTAssertTrue([[SourceFieldValidator validateContinent:valid] isValid]);
-
+    
     XCTAssertFalse([[SourceFieldValidator validateContinent:invalid] isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateContinent:tooShort] isValid]);
     XCTAssertFalse([[SourceFieldValidator validateContinent:tooLong] isValid]);
 }
 
@@ -69,16 +82,14 @@
 {
     NSString *valid = @"Some Formation Somewhere 2";
     NSString *invalid = @"#@*(@$&(4892374892734'''/./'.'/";
-    NSString *tooShort = @"";
     NSMutableString *tooLong = [NSMutableString stringWithString:@""];
     for (int i = 0; i < 91; ++i) {
         [tooLong appendString:@"a"];
     }
-
+    
     XCTAssertTrue([[SourceFieldValidator validateFormation:valid] isValid]);
-
+    
     XCTAssertFalse([[SourceFieldValidator validateFormation:invalid] isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateFormation:tooShort] isValid]);
     XCTAssertFalse([[SourceFieldValidator validateFormation:tooLong] isValid]);
 }
 
@@ -86,16 +97,14 @@
 {
     NSString *valid = @"a member 15";
     NSString *invalid = @"#@*(@$&(4892374892734'''/./'.'/";
-    NSString *tooShort = @"";
     NSMutableString *tooLong = [NSMutableString stringWithString:@""];
     for (int i = 0; i < 91; ++i) {
         [tooLong appendString:@"a"];
     }
-
+    
     XCTAssertTrue([[SourceFieldValidator validateMember:valid] isValid]);
-
+    
     XCTAssertFalse([[SourceFieldValidator validateMember:invalid] isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateMember:tooShort] isValid]);
     XCTAssertFalse([[SourceFieldValidator validateMember:tooLong] isValid]);
 }
 
@@ -108,7 +117,7 @@
     for (int i = 0; i < 91; ++i) {
         [tooLong appendString:@"a"];
     }
-
+    
     XCTAssertTrue( [[SourceFieldValidator validateGroup:emptyStr]   isValid]);
     XCTAssertTrue( [[SourceFieldValidator validateGroup:valid]      isValid]);
     XCTAssertFalse([[SourceFieldValidator validateGroup:invalid]    isValid]);
@@ -124,7 +133,7 @@
     for (int i = 0; i < 91; ++i) {
         [tooLong appendString:@"a"];
     }
-
+    
     XCTAssertTrue( [[SourceFieldValidator validateType:emptyStr]   isValid]);
     XCTAssertTrue( [[SourceFieldValidator validateType:valid]      isValid]);
     XCTAssertFalse([[SourceFieldValidator validateType:invalid]    isValid]);
@@ -140,7 +149,7 @@
     for (int i = 0; i < 91; ++i) {
         [tooLong appendString:@"a"];
     }
-
+    
     XCTAssertTrue( [[SourceFieldValidator validateDeposystem:emptyStr]   isValid]);
     XCTAssertTrue( [[SourceFieldValidator validateDeposystem:valid]      isValid]);
     XCTAssertFalse([[SourceFieldValidator validateDeposystem:invalid]    isValid]);
@@ -151,16 +160,14 @@
 {
     NSString *valid = @"region north 1";
     NSString *invalid = @"#@*(@$&(4892374892734'''/./'.'/";
-    NSString *tooShort = @"";
     NSMutableString *tooLong = [NSMutableString stringWithString:@""];
     for (int i = 0; i < 91; ++i) {
         [tooLong appendString:@"a"];
     }
-
+    
     XCTAssertTrue([[SourceFieldValidator validateRegion:valid] isValid]);
-
+    
     XCTAssertFalse([[SourceFieldValidator validateRegion:invalid]   isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateRegion:tooShort]  isValid]);
     XCTAssertFalse([[SourceFieldValidator validateRegion:tooLong]   isValid]);
 }
 
@@ -168,16 +175,14 @@
 {
     NSString *valid = @"section 42 ";
     NSString *invalid = @"#@*(@$&(4892374892734'''/./'.'/";
-    NSString *tooShort = @"";
     NSMutableString *tooLong = [NSMutableString stringWithString:@""];
     for (int i = 0; i < 91; ++i) {
         [tooLong appendString:@"a"];
     }
-
+    
     XCTAssertTrue([[SourceFieldValidator validateSection:valid] isValid]);
-
+    
     XCTAssertFalse([[SourceFieldValidator validateSection:invalid] isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateSection:tooShort] isValid]);
     XCTAssertFalse([[SourceFieldValidator validateSection:tooLong] isValid]);
 }
 
@@ -187,7 +192,7 @@
     NSString *zero = @"0";
     NSString *negative = @"-99.99";
     NSString *invalid = @"12gkjla";
-
+    
     XCTAssertTrue([[SourceFieldValidator validateMeters:positive] isValid]);
     XCTAssertTrue([[SourceFieldValidator validateMeters:zero] isValid]);
     XCTAssertTrue([[SourceFieldValidator validateMeters:negative] isValid]);
@@ -200,7 +205,7 @@
     NSString *zero = @"0";
     NSString *negative = @"-99.99";
     NSString *invalid = @"12gkjla";
-
+    
     XCTAssertTrue([[SourceFieldValidator validateLatitude:positive] isValid]);
     XCTAssertTrue([[SourceFieldValidator validateLatitude:zero] isValid]);
     XCTAssertTrue([[SourceFieldValidator validateLatitude:negative] isValid]);
@@ -213,7 +218,7 @@
     NSString *zero = @"0";
     NSString *negative = @"-99.99";
     NSString *invalid = @"12gkjla";
-
+    
     XCTAssertTrue([[SourceFieldValidator validateLongitude:positive] isValid]);
     XCTAssertTrue([[SourceFieldValidator validateLongitude:zero] isValid]);
     XCTAssertTrue([[SourceFieldValidator validateLongitude:negative] isValid]);
@@ -224,7 +229,7 @@
 {
     NSTimeInterval unixTime = NSTimeIntervalSince1970;
     NSString *unixTimeInString = [NSString stringWithFormat:@"%f", unixTime];
-
+    
     XCTAssertTrue([[SourceFieldValidator validateAge:unixTimeInString] isValid]);
 }
 
@@ -232,7 +237,7 @@
 {
     NSTimeInterval unixTime = NSTimeIntervalSince1970;
     NSString *unixTimeInString = [NSString stringWithFormat:@"%f", unixTime];
-
+    
     XCTAssertTrue([[SourceFieldValidator validateDateCollected:unixTimeInString] isValid]);
 }
 
@@ -240,15 +245,15 @@
 {
     NSString *validNotes = @"These notes are valid";
     NSString *emptyStr = @"";
-
+    
     NSMutableString *tooLong = [NSMutableString stringWithString:@""];
     for (int i = 0; i < 2001; ++i) {
         [tooLong appendString:@"a"];
     }
-
+    
     XCTAssertTrue([[SourceFieldValidator validateNotes:validNotes] isValid]);
     XCTAssertTrue([[SourceFieldValidator validateNotes:emptyStr] isValid]);
-
+    
     XCTAssertFalse([[SourceFieldValidator validateNotes:tooLong] isValid]);
 }
 
@@ -256,15 +261,15 @@
 {
     NSString *validLinks = @"http://www.test.com,http://www.test.com";
     NSString *emptyStr = @"";
-
+    
     NSMutableString *tooLong = [NSMutableString stringWithString:@""];
     for (int i = 0; i < 2001; ++i) {
         [tooLong appendString:@"a"];
     }
-
+    
     XCTAssertTrue([[SourceFieldValidator validateNotes:validLinks] isValid]);
     XCTAssertTrue([[SourceFieldValidator validateNotes:emptyStr] isValid]);
-
+    
     XCTAssertFalse([[SourceFieldValidator validateNotes:tooLong] isValid]);
 }
 

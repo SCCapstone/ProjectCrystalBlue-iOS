@@ -11,6 +11,7 @@
 #import "FMDatabaseQueue.h"
 #import "FMResultSet.h"
 #import "Source.h"
+#import "SourceImageUtils.h"
 #import "Sample.h"
 #import "DDLog.h"
 
@@ -42,12 +43,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         // Setup local directory
         NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
         NSString *localDirectory = [documentsDirectory stringByAppendingPathComponent:directory];
-
+        
         [[NSFileManager defaultManager] createDirectoryAtPath:localDirectory
                                   withIntermediateDirectories:YES
                                                    attributes:nil
                                                         error:nil];
-
+        
         localQueue = [FMDatabaseQueue databaseQueueWithPath:[localDirectory stringByAppendingPathComponent:databaseName]];
         
         // Setup tables
@@ -186,6 +187,34 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return libraryObjects;
 }
 
+- (NSArray *)getAllSamplesForSourceKey:(NSString *)sourceKey
+                   AndForAttributeName:(NSString *)attributeName
+                    WithAttributeValue:(NSString *)attributeValue
+{
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE SOURCE_KEY='%@' AND %@ LIKE '%%%@%%'", [SampleConstants tableName], sourceKey, attributeName, attributeValue];
+    
+    // Get all corresponding samples from table
+    __block NSMutableArray *samples = [[NSMutableArray alloc] init];;
+    [localQueue inDatabase:^(FMDatabase *localDatabase) {
+        FMResultSet *results = [localDatabase executeQuery:sql];
+        
+        if (localDatabase.hadError) {
+            DDLogCError(@"%@: Failed to get all library objects for attributeName. Error: %@", NSStringFromClass(self.class), localDatabase.lastError);
+            [results close];
+            [[NSException exceptionWithName:@"SQLiteException" reason:@"SQLite failed to get all library objects for attributeName." userInfo:nil] raise];
+        }
+        
+        // Add all the results to the samples array
+        while (results.next) {
+            NSString *key = [results.resultDictionary objectForKey:@"KEY"];
+            [samples addObject:[[Sample alloc] initWithKey:key AndWithAttributeDictionary:results.resultDictionary]];
+        }
+        [results close];
+    }];
+    
+    return samples;
+}
+
 - (NSArray *)getUniqueAttributeValuesForAttributeName:(NSString *)attributeName
                                             FromTable:(NSString *)tableName
 {
@@ -295,13 +324,17 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return NO;
     }
     
-    NSArray *attrKeys = [libraryObject.attributes allKeys];
+    NSArray *attrKeys = [tableName isEqualToString:[SourceConstants tableName]] ? [SourceConstants attributeNames] : [SampleConstants attributeNames];
     NSString *setSql;
     
     // Build the sql command, only update attributes that have changed
     for (int i=0; i<attrKeys.count; i++) {
         NSString *attrValue = [libraryObject.attributes objectForKey:[attrKeys objectAtIndex:i]];
         NSString *oldAttrValue = [oldObject.attributes objectForKey:[attrKeys objectAtIndex:i]];
+        
+        // If somehow got set to nil, change to empty string
+        if (!attrValue)
+            attrValue = @"";
         
         if (![attrValue isEqualToString:oldAttrValue]) {
             if (!setSql)
@@ -312,10 +345,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
     
     // No attributes have changed
-    if (!setSql) {
-        DDLogCInfo(@"%@: There were no attributes to update.", NSStringFromClass(self.class));
+    if (!setSql)
         return YES;
-    }
     
     NSString *sql = [NSString stringWithFormat:@"UPDATE %@ %@ WHERE KEY='%@'", tableName, setSql, libraryObject.key];
     

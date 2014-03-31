@@ -13,7 +13,7 @@
 
 @interface AddSampleTwoViewController ()
 {
-    NSMutableArray *typeArray;
+    NSArray *typeArray;
 }
 @end
 
@@ -25,7 +25,7 @@
 {
     sourceToAdd = initSource;
     libraryObjectStore = initLibrary;
-    typeArray = [[NSMutableArray alloc] init];
+    typeArray = [[NSArray alloc] init];
     
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
@@ -77,101 +77,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [typeArray addObject:@"Siliciclastic"];
-    [typeArray addObject:@"Carbonate"];
-    [typeArray addObject:@"Authigenic"];
-    [typeArray addObject:@"Plutonic"];
-    [typeArray addObject:@"Volcanic"];
-    [typeArray addObject:@"Metasedimentary"];
-    [typeArray addObject:@"Metaigneous"];
-    [typeArray addObject:@"Igneous"];
-    [typeArray addObject:@"Metamorphic"];
-    [typeArray addObject:@"Unknown"];
+    typeArray = [SourceConstants rockTypes];
 }
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AddSampleThreeViewController *astViewController = [[AddSampleThreeViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
-    AddSampleFiveViewController *asfViewController = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
+    NSString *typeSelected = [typeArray objectAtIndex:indexPath.row];
+    NSArray *lithologies = [SourceConstants lithologiesForRockType:typeSelected];
     
-    if ([indexPath row] == 0)
-    {
-        [astViewController setTypeSelected:@"Siliciclastic"];
-        [astViewController setNumRows:8];
-        [[sourceToAdd attributes] setObject:@"Siliciclastic" forKey:SRC_TYPE];
-        [[self navigationController] pushViewController:astViewController  animated:YES];
+    // Has available lithologies, next view
+    if (lithologies) {
+        AddSampleThreeViewController *viewControllerThree = [[AddSampleThreeViewController alloc] initWithSource:sourceToAdd
+                                                                                               WithLibraryObject:libraryObjectStore];
+        [viewControllerThree setTypeSelected:typeSelected];
+        [viewControllerThree setNumRows:lithologies.count];
+        [sourceToAdd.attributes setObject:typeSelected forKey:SRC_TYPE];
+        [[self navigationController] pushViewController:viewControllerThree animated:YES];
     }
-    
-    if ([indexPath row] == 1)
-    {
-        [astViewController setTypeSelected:@"Carbonate"];
-        [astViewController setNumRows:7];
-        [[sourceToAdd attributes] setObject:@"Carbonate" forKey:SRC_TYPE];
-        [[self navigationController] pushViewController:astViewController  animated:YES];
-    }
-    
-    if ([indexPath row] == 2)
-    {
-        [astViewController setTypeSelected:@"Authigenic"];
-        [astViewController setNumRows:2];
-        [[sourceToAdd attributes] setObject:@"Authigenic" forKey:SRC_TYPE];
-        [[self navigationController] pushViewController:astViewController  animated:YES];
-    }
-    
-    if ([indexPath row] == 3)
-    {
-        [astViewController setTypeSelected:@"Plutonic"];
-        [astViewController setNumRows:9];
-        [[sourceToAdd attributes] setObject:@"Plutonic" forKey:SRC_TYPE];
-        [[self navigationController] pushViewController:astViewController  animated:YES];
-    }
-    
-    if ([indexPath row] == 4)
-    {
-        [astViewController setTypeSelected:@"Volcanic"];
-        [astViewController setNumRows:7];
-         [[sourceToAdd attributes] setObject:@"Volcanic" forKey:SRC_TYPE];
-        [[self navigationController] pushViewController:astViewController  animated:YES];
-    }
-    
-    if ([indexPath row] == 5)
-    {
-        [astViewController setTypeSelected:@"Metasedimentary"];
-        [astViewController setNumRows:5];
-         [[sourceToAdd attributes] setObject:@"Metasedimentary" forKey:SRC_TYPE];
-        [[self navigationController] pushViewController:astViewController  animated:YES];
-    }
-    
-    if ([indexPath row] == 6)
-    {
-        [astViewController setTypeSelected:@"Metaigneous"];
-        [astViewController setNumRows:6];
-        [[sourceToAdd attributes] setObject:@"Metaigneous" forKey:SRC_TYPE];
-        [[self navigationController] pushViewController:astViewController  animated:YES];
-    }
-    
-    if ([indexPath row] == 7)
-    {
-        [[sourceToAdd attributes] setObject:@"Igneous" forKey:SRC_TYPE];
-        [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_LITHOLOGY];
-        [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-        [[self navigationController] pushViewController:asfViewController  animated:YES];
-    }
-    
-    if ([indexPath row] == 8)
-    {
-        [[sourceToAdd attributes] setObject:@"Metamorphic" forKey:SRC_TYPE];
-        [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_LITHOLOGY];
-        [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-        [[self navigationController] pushViewController:asfViewController  animated:YES];
-    }
-    
-    if ([indexPath row] == 9)
-    {
-        [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_TYPE];
-        [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_LITHOLOGY];
-        [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
-        [[self navigationController] pushViewController:asfViewController  animated:YES];
+    // Does not, skip to fifth view
+    else {
+        AddSampleFiveViewController *viewControllerFive = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd
+                                                                                            WithLibraryObject:libraryObjectStore];
+        // If type selected is unknown, set to empty string
+        typeSelected = [typeSelected isEqualToString:@"Unknown"] ? @"" : typeSelected;
+        [sourceToAdd.attributes setObject:typeSelected forKey:SRC_TYPE];
+        [sourceToAdd.attributes setObject:@"" forKey:SRC_LITHOLOGY];
+        [sourceToAdd.attributes setObject:@"" forKey:SRC_DEPOSYSTEM];
+        [[self navigationController] pushViewController:viewControllerFive animated:YES];
     }
 }
 

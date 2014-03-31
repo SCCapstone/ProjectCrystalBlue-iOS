@@ -6,14 +6,17 @@
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 #import "ValidationResponse.h"
+
+@class AbstractLibraryObjectStore;
 
 @interface SourceFieldValidator : NSObject
 
-/// Validates that a source key is between 1 and 90 characters, and contains alphanumeric
-/// characters and whitespace only.
-+(ValidationResponse *)validateSourceKey:(NSString *)key;
+/// Validates that a source key is between 1 and 90 characters, contains alphanumeric
+/// characters and whitespace only, and it is a unique key
++(ValidationResponse *)validateSourceKey:(NSString *)key
+                           WithDataStore:(AbstractLibraryObjectStore *)dataStore;
 
 /// Validates that a continent is between 1 and 90 characters, and contains letters and spaces
 /// only.
@@ -21,6 +24,9 @@
 
 /// Validates that type is an expected value.
 +(ValidationResponse *)validateType:(NSString *)type;
+
+// Validates that lithology is an expected value.
++(ValidationResponse *)validateLithology:(NSString *)lithology;
 
 /// Validates that deposystem is an expected value.
 +(ValidationResponse *)validateDeposystem:(NSString *)deposystem;

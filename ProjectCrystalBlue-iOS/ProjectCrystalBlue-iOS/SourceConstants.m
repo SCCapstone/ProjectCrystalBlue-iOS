@@ -32,23 +32,23 @@ static NSString *const SOURCE_TABLE_NAME = @"prod_source_table";
     {
         attributeNames = [NSArray arrayWithObjects:
                           SRC_KEY,
+                          SRC_REGION,
                           SRC_CONTINENT,
                           SRC_TYPE,
                           SRC_LITHOLOGY,
-                          SRC_DEPOSYSTEM,
-                          SRC_GROUP,
-                          SRC_FORMATION,
-                          SRC_MEMBER,
-                          SRC_REGION,
                           SRC_LOCALITY,
-                          SRC_SECTION,
-                          SRC_METER,
                           SRC_LATITUDE,
                           SRC_LONGITUDE,
+                          SRC_DATE_COLLECTED,
                           SRC_AGE,
                           SRC_AGE_METHOD,
                           SRC_AGE_DATATYPE,
-                          SRC_DATE_COLLECTED,
+                          SRC_GROUP,
+                          SRC_FORMATION,
+                          SRC_MEMBER,
+                          SRC_DEPOSYSTEM,
+                          SRC_SECTION,
+                          SRC_METER,
                           SRC_NOTES,
                           SRC_HYPERLINKS,
                           SRC_IMAGES, nil];
@@ -64,23 +64,23 @@ static NSString *const SOURCE_TABLE_NAME = @"prod_source_table";
     {
         attributeDefaultValues = [NSArray arrayWithObjects:
                                   SRC_DEF_VAL_KEY,
+                                  SRC_DEF_VAL_REGION,
                                   SRC_DEF_VAL_CONTINENT,
                                   SRC_DEF_VAL_TYPE,
                                   SRC_DEF_VAL_LITHOLOGY,
-                                  SRC_DEF_VAL_DEPOSYSTEM,
-                                  SRC_DEF_VAL_GROUP,
-                                  SRC_DEF_VAL_FORMATION,
-                                  SRC_DEF_VAL_MEMBER,
-                                  SRC_DEF_VAL_REGION,
                                   SRC_DEF_VAL_LOCALITY,
-                                  SRC_DEF_VAL_SECTION,
-                                  SRC_DEF_VAL_METER,
                                   SRC_DEF_VAL_LATITUDE,
                                   SRC_DEF_VAL_LONGITUDE,
+                                  SRC_DEF_VAL_DATE_COLLECTED,
                                   SRC_DEF_VAL_AGE,
                                   SRC_DEF_VAL_AGE_METHOD,
                                   SRC_DEF_VAL_AGE_DATATYPE,
-                                  SRC_DEF_VAL_DATE_COLLECTED,
+                                  SRC_DEF_VAL_GROUP,
+                                  SRC_DEF_VAL_FORMATION,
+                                  SRC_DEF_VAL_MEMBER,
+                                  SRC_DEF_VAL_DEPOSYSTEM,
+                                  SRC_DEF_VAL_SECTION,
+                                  SRC_DEF_VAL_METER,
                                   SRC_DEF_VAL_NOTES,
                                   SRC_DEF_VAL_HYPERLINKS,
                                   SRC_DEF_VAL_IMAGES, nil];
@@ -95,23 +95,23 @@ static NSString *const SOURCE_TABLE_NAME = @"prod_source_table";
     {
         attributeLabelValues = [NSArray arrayWithObjects:
                                 SRC_DISPLAY_KEY,
+                                SRC_DISPLAY_REGION,
                                 SRC_DISPLAY_CONTINENT,
                                 SRC_DISPLAY_TYPE,
                                 SRC_DISPLAY_LITHOLOGY,
-                                SRC_DISPLAY_DEPOSYSTEM,
-                                SRC_DISPLAY_GROUP,
-                                SRC_DISPLAY_FORMATION,
-                                SRC_DISPLAY_MEMBER,
-                                SRC_DISPLAY_REGION,
                                 SRC_DISPLAY_LOCALITY,
-                                SRC_DISPLAY_SECTION,
-                                SRC_DISPLAY_METER,
                                 SRC_DISPLAY_LATITUDE,
                                 SRC_DISPLAY_LONGITUDE,
+                                SRC_DISPLAY_DATE_COLLECTED,
                                 SRC_DISPLAY_AGE,
                                 SRC_DISPLAY_AGE_METHOD,
                                 SRC_DISPLAY_AGE_DATATYPE,
-                                SRC_DISPLAY_DATE_COLLECTED,
+                                SRC_DISPLAY_GROUP,
+                                SRC_DISPLAY_FORMATION,
+                                SRC_DISPLAY_MEMBER,
+                                SRC_DISPLAY_DEPOSYSTEM,
+                                SRC_DISPLAY_SECTION,
+                                SRC_DISPLAY_METER,
                                 SRC_DISPLAY_NOTES,
                                 SRC_DISPLAY_HYPERLINKS,
                                 SRC_DISPLAY_IMAGES, nil];
@@ -190,6 +190,64 @@ static NSString *const SOURCE_TABLE_NAME = @"prod_source_table";
         valueKeys = [attrNames componentsJoinedByString:@","];
     }
     return valueKeys;
+}
+
++ (NSArray *)rockTypes
+{
+    return [NSArray arrayWithObjects: @"Siliciclastic", @"Carbonate", @"Authigenic", @"Plutonic", @"Volcanic",
+            @"Metasedimentary", @"Metaigneous", @"Igneous", @"Metamorphic", @"Unknown", nil];
+}
+
++ (NSArray *)lithologiesForRockType:(NSString *)rockType
+{
+    if ([rockType isEqualToString:@"Siliciclastic"]) {
+        return [NSArray arrayWithObjects: @"Conglomerate", @"Breccia", @"Sandstone", @"Mudstone", @"Gravel",
+                @"Sand", @"Mud", @"Unknown", nil];
+    }
+    else if ([rockType isEqualToString:@"Carbonate"]) {
+        return [NSArray arrayWithObjects: @"Marl", @"Micrate", @"Wackestone", @"Packstone", @"Grainstone",
+                @"Boundstone", @"Unknown", nil];
+    }
+    else if ([rockType isEqualToString:@"Authigenic"]) {
+        return [NSArray arrayWithObjects: @"Glauconite", @"Unknown", nil];
+    }
+    else if ([rockType isEqualToString:@"Plutonic"]) {
+        return [NSArray arrayWithObjects: @"Granitoid", @"Granite", @"Granodiorite", @"Tonalite", @"Diorite",
+                @"Gabbro", @"Monzonite", @"Syenite", @"Unknown", nil];
+    }
+    else if ([rockType isEqualToString:@"Volcanic"]) {
+        return [NSArray arrayWithObjects: @"Ash", @"Rhyolite", @"Dacite", @"Andesite", @"Basalt", @"Trachyte", @"Unknown", nil];
+    }
+    else if ([rockType isEqualToString:@"Metasedimentary"]) {
+        return [NSArray arrayWithObjects: @"Slate", @"Phyllite", @"Schist", @"Gneiss", @"Unknown", nil];
+    }
+    else if ([rockType isEqualToString:@"Metaigneous"]) {
+        return [NSArray arrayWithObjects: @"Felsic Orthoschist", @"Felsic Orthogneiss", @"Intermediate Orthoschist",
+                @"Intermediate Orthogneiss", @"Amphobite", @"Unknown", nil];
+    }
+    else {
+        return nil;
+    }
+}
+
++ (NSArray *)deposystemsForRockType:(NSString *)rockType
+{
+    if ([rockType isEqualToString:@"Siliciclastic"]) {
+        return [NSArray arrayWithObjects: @"Alluvial Fan", @"Fluvial Megafan", @"Meandering Fluvial", @"Alpine Glacial", @"Ice Sheet",
+                @"Lacustrine", @"Eolian", @"Deltac", @"Estuarine", @"Shallow Marine", @"Shelf", @"Pelagic", @"Submarine Fan", @"Unknown", nil];
+    }
+    else if ([rockType isEqualToString:@"Carbonate"]) {
+        return [NSArray arrayWithObjects: @"Carbonate Platform", @"Carbonate Reef", @"Pelagic", @"Eolian", @"Unknown", nil];
+    }
+    else {
+        return nil;
+    }
+}
+
++ (NSArray *)ageMethods
+{
+    return [NSArray arrayWithObjects: @"Biostratigraphy", @"Magnetostratigraphy", @"Chemostratigraphy", @"Geochronology",
+            @"Thermochronology", @"Other", nil];
 }
 
 @end
