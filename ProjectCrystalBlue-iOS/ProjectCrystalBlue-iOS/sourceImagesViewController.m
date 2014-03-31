@@ -10,6 +10,7 @@
 #import "Source.h"
 #import "AbstractCloudLibraryObjectStore.h"
 #import "SourceImageUtils.h"
+#import "AddImageViewController.h"
 
 
 @interface sourceImagesViewController ()
@@ -33,11 +34,19 @@
         UINavigationItem *n = [self navigationItem];
         [n setTitle:title];
         
+        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStyleBordered target:self action:@selector(addImage:)];
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         
+        [[self navigationItem] setRightBarButtonItem:bbi];
         [[self navigationItem] setLeftBarButtonItem:backbtn];
     }
     return self;
+}
+
+- (IBAction)addImage:(id)sender {
+    AddImageViewController* imgViewController = [[AddImageViewController alloc] initWithSource:selectedSource WithLibraryObject:libraryObjectStore];
+    
+    [[self navigationController] pushViewController:imgViewController  animated:YES];
 }
 
 -(void) goBack:(id)sender
@@ -48,6 +57,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self loadImages];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
     [self loadImages];
 }
 
