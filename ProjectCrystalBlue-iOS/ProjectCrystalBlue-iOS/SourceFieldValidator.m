@@ -9,19 +9,30 @@
 #import "SourceFieldValidator.h"
 #import "PrimitiveFieldValidator.h"
 #import "ValidationResponse.h"
+#import "SourceConstants.h"
 
 @implementation SourceFieldValidator
 
 /// Validates that a source key is between 1 and 90 characters, and contains alphanumeric
 /// characters and whitespace only.
 +(ValidationResponse *)validateSourceKey:(NSString *)key
+                           WithDataStore:(AbstractLibraryObjectStore *)dataStore
 {
     const NSUInteger maxLength = 90;
     const NSUInteger minLength = 1;
-
+    
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
-
+    
+    if (![PrimitiveFieldValidator validateKey:key
+                          isUniqueInDataStore:dataStore
+                                      inTable:[SourceConstants tableName]])
+    {
+        [valid setIsValid:NO];
+        NSString *errorStr = [NSString stringWithFormat:@"%@ is not a unique source key.", key];
+        [valid.errors addObject:errorStr];
+    }
+    
     if (![PrimitiveFieldValidator validateField:key
                           isNoMoreThanMaxLength:maxLength])
     {
@@ -31,7 +42,7 @@
                               key.length];
         [valid.errors addObject:errorStr];
     }
-
+    
     if (![PrimitiveFieldValidator validateField:key
                              isAtLeastMinLength:minLength])
     {
@@ -41,12 +52,12 @@
                               key.length];
         [valid.errors addObject:errorStr];
     }
-
+    
     NSMutableCharacterSet *validCharacters = [[NSMutableCharacterSet alloc] init];
-
+    
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
-
+    
     if (![PrimitiveFieldValidator validateField:key
                             containsOnlyCharSet:validCharacters])
     {
@@ -57,7 +68,6 @@
     }
     
     return valid;
-
 }
 
 /// Validates that a continent is between 1 and 90 characters, and contains letters and spaces
@@ -66,10 +76,10 @@
 {
     const NSUInteger maxLength = 90;
     const NSUInteger minLength = 0;
-
+    
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
-
+    
     if (![PrimitiveFieldValidator validateField:continent
                           isNoMoreThanMaxLength:maxLength])
     {
@@ -79,7 +89,7 @@
                               continent.length];
         [valid.errors addObject:errorStr];
     }
-
+    
     if (![PrimitiveFieldValidator validateField:continent
                              isAtLeastMinLength:minLength])
     {
@@ -89,12 +99,12 @@
                               continent.length];
         [valid.errors addObject:errorStr];
     }
-
+    
     NSMutableCharacterSet *validCharacters = [[NSMutableCharacterSet alloc] init];
-
+    
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet letterCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
-
+    
     if (![PrimitiveFieldValidator validateField:continent
                             containsOnlyCharSet:validCharacters])
     {
@@ -105,7 +115,7 @@
     }
     
     return valid;
-
+    
 }
 
 /// Validates that Type is no more than 90 characters, and contains alphanumeric
@@ -113,10 +123,10 @@
 +(ValidationResponse *)validateType:(NSString *)type
 {
     const NSUInteger maxLength = 90;
-
+    
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
-
+    
     if (![PrimitiveFieldValidator validateField:type
                           isNoMoreThanMaxLength:maxLength])
     {
@@ -126,13 +136,49 @@
                               type.length];
         [valid.errors addObject:errorStr];
     }
-
+    
     NSMutableCharacterSet *validCharacters = [[NSMutableCharacterSet alloc] init];
-
+    
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
-
+    
     if (![PrimitiveFieldValidator validateField:type
+                            containsOnlyCharSet:validCharacters])
+    {
+        [valid setIsValid:NO];
+        NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_INVALID_CHARACTERS copy],
+                              @"letters, numbers, and spaces"];
+        [valid.errors addObject:errorStr];
+    }
+    return valid;
+}
+
+
+/// Validates that Lithology is no more than 90 characters, and contains alphanumeric
+/// characters and whitespace only.
++(ValidationResponse *)validateLithology:(NSString *)lithology
+{
+    const NSUInteger maxLength = 90;
+    
+    ValidationResponse *valid = [[ValidationResponse alloc] init];
+    [valid setIsValid:YES];
+    
+    if (![PrimitiveFieldValidator validateField:lithology
+                          isNoMoreThanMaxLength:maxLength])
+    {
+        [valid setIsValid:NO];
+        NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_MAX_CHARS copy],
+                              maxLength,
+                              lithology.length];
+        [valid.errors addObject:errorStr];
+    }
+    
+    NSMutableCharacterSet *validCharacters = [[NSMutableCharacterSet alloc] init];
+    
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if (![PrimitiveFieldValidator validateField:lithology
                             containsOnlyCharSet:validCharacters])
     {
         [valid setIsValid:NO];
@@ -148,10 +194,10 @@
 +(ValidationResponse *)validateDeposystem:(NSString *)deposystem
 {
     const NSUInteger maxLength = 90;
-
+    
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
-
+    
     if (![PrimitiveFieldValidator validateField:deposystem
                           isNoMoreThanMaxLength:maxLength])
     {
@@ -161,12 +207,12 @@
                               deposystem.length];
         [valid.errors addObject:errorStr];
     }
-
+    
     NSMutableCharacterSet *validCharacters = [[NSMutableCharacterSet alloc] init];
-
+    
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
-
+    
     if (![PrimitiveFieldValidator validateField:deposystem
                             containsOnlyCharSet:validCharacters])
     {
@@ -178,15 +224,16 @@
     return valid;
 }
 
+
 /// Validates that Group is no more than 90 characters, and contains alphanumeric
 /// characters and whitespace only.
 +(ValidationResponse *)validateGroup:(NSString *)group
 {
     const NSUInteger maxLength = 90;
-
+    
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
-
+    
     if (![PrimitiveFieldValidator validateField:group
                           isNoMoreThanMaxLength:maxLength])
     {
@@ -196,12 +243,12 @@
                               group.length];
         [valid.errors addObject:errorStr];
     }
-
+    
     NSMutableCharacterSet *validCharacters = [[NSMutableCharacterSet alloc] init];
-
+    
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
-
+    
     if (![PrimitiveFieldValidator validateField:group
                             containsOnlyCharSet:validCharacters])
     {
@@ -219,10 +266,10 @@
 {
     const NSUInteger maxLength = 90;
     const NSUInteger minLength = 0;
-
+    
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
-
+    
     if (![PrimitiveFieldValidator validateField:formation
                           isNoMoreThanMaxLength:maxLength])
     {
@@ -232,7 +279,7 @@
                               formation.length];
         [valid.errors addObject:errorStr];
     }
-
+    
     if (![PrimitiveFieldValidator validateField:formation
                              isAtLeastMinLength:minLength])
     {
@@ -242,12 +289,12 @@
                               formation.length];
         [valid.errors addObject:errorStr];
     }
-
+    
     NSMutableCharacterSet *validCharacters = [[NSMutableCharacterSet alloc] init];
-
+    
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
-
+    
     if (![PrimitiveFieldValidator validateField:formation
                             containsOnlyCharSet:validCharacters])
     {
@@ -265,10 +312,10 @@
 {
     const NSUInteger maxLength = 90;
     const NSUInteger minLength = 0;
-
+    
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
-
+    
     if (![PrimitiveFieldValidator validateField:member
                           isNoMoreThanMaxLength:maxLength])
     {
@@ -278,7 +325,7 @@
                               member.length];
         [valid.errors addObject:errorStr];
     }
-
+    
     if (![PrimitiveFieldValidator validateField:member
                              isAtLeastMinLength:minLength])
     {
@@ -288,12 +335,12 @@
                               member.length];
         [valid.errors addObject:errorStr];
     }
-
+    
     NSMutableCharacterSet *validCharacters = [[NSMutableCharacterSet alloc] init];
-
+    
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
-
+    
     if (![PrimitiveFieldValidator validateField:member
                             containsOnlyCharSet:validCharacters])
     {
@@ -311,10 +358,10 @@
 {
     const NSUInteger maxLength = 90;
     const NSUInteger minLength = 0;
-
+    
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
-
+    
     if (![PrimitiveFieldValidator validateField:region
                           isNoMoreThanMaxLength:maxLength])
     {
@@ -324,7 +371,7 @@
                               region.length];
         [valid.errors addObject:errorStr];
     }
-
+    
     if (![PrimitiveFieldValidator validateField:region
                              isAtLeastMinLength:minLength])
     {
@@ -334,12 +381,12 @@
                               region.length];
         [valid.errors addObject:errorStr];
     }
-
+    
     NSMutableCharacterSet *validCharacters = [[NSMutableCharacterSet alloc] init];
-
+    
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
-
+    
     if (![PrimitiveFieldValidator validateField:region
                             containsOnlyCharSet:validCharacters])
     {
@@ -357,10 +404,10 @@
 {
     const NSUInteger maxLength = 90;
     const NSUInteger minLength = 0;
-
+    
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
-
+    
     if (![PrimitiveFieldValidator validateField:locality
                           isNoMoreThanMaxLength:maxLength])
     {
@@ -370,7 +417,7 @@
                               locality.length];
         [valid.errors addObject:errorStr];
     }
-
+    
     if (![PrimitiveFieldValidator validateField:locality
                              isAtLeastMinLength:minLength])
     {
@@ -380,12 +427,12 @@
                               locality.length];
         [valid.errors addObject:errorStr];
     }
-
+    
     NSMutableCharacterSet *validCharacters = [[NSMutableCharacterSet alloc] init];
-
+    
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
-
+    
     if (![PrimitiveFieldValidator validateField:locality
                             containsOnlyCharSet:validCharacters])
     {
@@ -403,10 +450,10 @@
 {
     const NSUInteger maxLength = 90;
     const NSUInteger minLength = 0;
-
+    
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
-
+    
     if (![PrimitiveFieldValidator validateField:section
                           isNoMoreThanMaxLength:maxLength])
     {
@@ -416,7 +463,7 @@
                               section.length];
         [valid.errors addObject:errorStr];
     }
-
+    
     if (![PrimitiveFieldValidator validateField:section
                              isAtLeastMinLength:minLength])
     {
@@ -426,12 +473,12 @@
                               section.length];
         [valid.errors addObject:errorStr];
     }
-
+    
     NSMutableCharacterSet *validCharacters = [[NSMutableCharacterSet alloc] init];
-
+    
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
-
+    
     if (![PrimitiveFieldValidator validateField:section
                             containsOnlyCharSet:validCharacters])
     {
@@ -441,7 +488,7 @@
         [valid.errors addObject:errorStr];
     }
     return valid;
-
+    
 }
 
 /// Validates that meters is a properly formatted decimal number.
@@ -449,12 +496,12 @@
 {
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
-
-    if (![PrimitiveFieldValidator validateFieldIsDecimal:meters]) {
+    
+    if (![meters isEqualToString:@""] && ![PrimitiveFieldValidator validateFieldIsDecimal:meters]) {
         [valid setIsValid:NO];
         [valid.errors addObject:@"Should be formatted as a decimal (e.g. -3.1415)"];
     }
-
+    
     return valid;
 }
 
@@ -463,12 +510,12 @@
 {
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
-
-    if (![PrimitiveFieldValidator validateFieldIsDecimal:latitude]) {
+    
+    if (![latitude isEqualToString:@""] && ![PrimitiveFieldValidator validateFieldIsDecimal:latitude]) {
         [valid setIsValid:NO];
         [valid.errors addObject:@"Should be formatted as a decimal (e.g. -3.1415)"];
     }
-
+    
     return valid;
 }
 
@@ -477,12 +524,12 @@
 {
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
-
-    if (![PrimitiveFieldValidator validateFieldIsDecimal:longitude]) {
+    
+    if (![longitude isEqualToString:@""] && ![PrimitiveFieldValidator validateFieldIsDecimal:longitude]) {
         [valid setIsValid:NO];
         [valid.errors addObject:@"Should be formatted as a decimal (e.g. -3.1415)"];
     }
-
+    
     return valid;
 }
 
@@ -491,12 +538,12 @@
 {
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
-
-    if (![PrimitiveFieldValidator validateFieldIsDecimal:age]) {
+    
+    if (![age isEqualToString:@""] && ![PrimitiveFieldValidator validateFieldIsDecimal:age]) {
         [valid setIsValid:NO];
         [valid.errors addObject:@"Should be formatted as a decimal (e.g. -3.1415)"];
     }
-
+    
     return valid;
 }
 
@@ -504,10 +551,10 @@
 +(ValidationResponse *)validateAgeMethod:(NSString *)ageMethod
 {
     const NSUInteger maxLength = 90;
-
+    
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
-
+    
     if (![PrimitiveFieldValidator validateField:ageMethod
                           isNoMoreThanMaxLength:maxLength])
     {
@@ -517,12 +564,12 @@
                               ageMethod.length];
         [valid.errors addObject:errorStr];
     }
-
+    
     NSMutableCharacterSet *validCharacters = [[NSMutableCharacterSet alloc] init];
-
+    
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
-
+    
     if (![PrimitiveFieldValidator validateField:ageMethod
                             containsOnlyCharSet:validCharacters])
     {
@@ -538,10 +585,10 @@
 +(ValidationResponse *)validateAgeDatatype:(NSString *)ageDatatype
 {
     const NSUInteger maxLength = 90;
-
+    
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
-
+    
     if (![PrimitiveFieldValidator validateField:ageDatatype
                           isNoMoreThanMaxLength:maxLength])
     {
@@ -551,12 +598,12 @@
                               ageDatatype.length];
         [valid.errors addObject:errorStr];
     }
-
+    
     NSMutableCharacterSet *validCharacters = [[NSMutableCharacterSet alloc] init];
-
+    
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
-
+    
     if (![PrimitiveFieldValidator validateField:ageDatatype
                             containsOnlyCharSet:validCharacters])
     {
@@ -573,9 +620,9 @@
 {
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
-
+    
     // TODO
-
+    
     return valid;
 }
 
@@ -583,10 +630,10 @@
 +(ValidationResponse *)validateNotes:(NSString *)notes
 {
     const int maxLength = 2000;
-
+    
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
-
+    
     if (![PrimitiveFieldValidator validateField:notes
                           isNoMoreThanMaxLength:maxLength])
     {
@@ -596,7 +643,7 @@
                               notes.length];
         [valid.errors addObject:errorStr];
     }
-
+    
     return valid;
 }
 
@@ -604,10 +651,10 @@
 +(ValidationResponse *)validateHyperlinks:(NSString *)hyperlinks
 {
     const int maxLength = 2000;
-
+    
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
-
+    
     if (![PrimitiveFieldValidator validateField:hyperlinks
                           isNoMoreThanMaxLength:maxLength])
     {
@@ -617,7 +664,7 @@
                               hyperlinks.length];
         [valid.errors addObject:errorStr];
     }
-
+    
     return valid;
 }
 
