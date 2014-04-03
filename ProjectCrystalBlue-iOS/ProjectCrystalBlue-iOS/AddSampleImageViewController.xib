@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="kKH-Cn-AdE">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="kKH-Cn-AdE">
                     <rect key="frame" x="40" y="64" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
@@ -24,7 +24,7 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJg-8f-Ggm">
-                    <rect key="frame" x="20" y="292" width="100" height="30"/>
+                    <rect key="frame" x="20" y="212" width="100" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="LDp-oN-rRJ"/>
@@ -37,7 +37,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HAJ-lm-WZ4">
-                    <rect key="frame" x="200" y="292" width="100" height="30"/>
+                    <rect key="frame" x="200" y="212" width="100" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Upload Photo">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -54,8 +54,9 @@
                 <constraint firstItem="kKH-Cn-AdE" firstAttribute="leading" secondItem="1Kj-bu-nUp" secondAttribute="leading" constant="40" id="CRQ-bm-chi"/>
                 <constraint firstItem="kKH-Cn-AdE" firstAttribute="top" secondItem="1Kj-bu-nUp" secondAttribute="top" constant="64" id="N7R-Ut-KNX"/>
                 <constraint firstItem="kKH-Cn-AdE" firstAttribute="centerX" secondItem="1Kj-bu-nUp" secondAttribute="centerX" id="QSn-Sv-Uiw"/>
-                <constraint firstAttribute="bottom" secondItem="gJg-8f-Ggm" secondAttribute="bottom" constant="246" id="Zlz-Is-tRY"/>
                 <constraint firstItem="HAJ-lm-WZ4" firstAttribute="leading" secondItem="gJg-8f-Ggm" secondAttribute="trailing" constant="80" id="dDG-Bp-BrC"/>
+                <constraint firstItem="HAJ-lm-WZ4" firstAttribute="top" secondItem="kKH-Cn-AdE" secondAttribute="bottom" constant="20" id="pUq-bw-TpO"/>
+                <constraint firstItem="gJg-8f-Ggm" firstAttribute="top" secondItem="kKH-Cn-AdE" secondAttribute="bottom" constant="20" id="wX1-16-Uhc"/>
                 <constraint firstItem="gJg-8f-Ggm" firstAttribute="leading" secondItem="1Kj-bu-nUp" secondAttribute="leading" constant="20" symbolic="YES" id="zJT-kL-8VZ"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
