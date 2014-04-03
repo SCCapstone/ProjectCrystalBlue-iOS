@@ -18,25 +18,28 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Key" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YI0-U4-YGu">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Key" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YI0-U4-YGu">
                     <rect key="frame" x="29" y="103" width="96" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="96" id="cB4-pT-WhP"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Latitude" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KyI-Pz-ne1">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latitude" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KyI-Pz-ne1">
                     <rect key="frame" x="29" y="153" width="96" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Longitude" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n8R-jy-ArJ">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longitude" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n8R-jy-ArJ">
                     <rect key="frame" x="29" y="203" width="96" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PEE-6W-AXi">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PEE-6W-AXi">
                     <rect key="frame" x="135" y="97" width="165" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -45,7 +48,7 @@
                         <outlet property="delegate" destination="-1" id="k8Q-vv-Fw8"/>
                     </connections>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tJt-tF-kjN">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tJt-tF-kjN">
                     <rect key="frame" x="133" y="150" width="136" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -54,7 +57,7 @@
                         <outlet property="delegate" destination="-1" id="zCj-sl-qyj"/>
                     </connections>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lem-ex-586">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lem-ex-586">
                     <rect key="frame" x="135" y="200" width="134" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -63,9 +66,12 @@
                         <outlet property="delegate" destination="-1" id="z2C-8C-mcy"/>
                     </connections>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3yS-2T-b2P">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3yS-2T-b2P">
                     <rect key="frame" x="277" y="149" width="32" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="AYy-GJ-uSf"/>
+                    </constraints>
                     <state key="normal" title="Fill">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -73,7 +79,7 @@
                         <action selector="getLocation:" destination="-1" eventType="touchUpInside" id="KaJ-kU-eSI"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6z-Pg-XyS">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6z-Pg-XyS">
                     <rect key="frame" x="277" y="199" width="32" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Fill">
@@ -83,14 +89,14 @@
                         <action selector="getLocation:" destination="-1" eventType="touchUpInside" id="d9v-jh-1CM"/>
                     </connections>
                 </button>
-                <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="llB-pv-v9q">
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="llB-pv-v9q">
                     <rect key="frame" x="15" y="253" width="291" height="162"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <date key="date" timeIntervalSinceReferenceDate="417890860.21067297">
                         <!--2014-03-30 16:47:40 +0000-->
                     </date>
                     <timeZone key="timeZone" name="America/Los_Angeles">
-                        <mutableData key="data">
+                        <data key="data">
 VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
 y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
 5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
@@ -108,11 +114,38 @@ f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
-</mutableData>
+</data>
                     </timeZone>
                 </datePicker>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="KyI-Pz-ne1" firstAttribute="leading" secondItem="YI0-U4-YGu" secondAttribute="leading" id="08L-O0-3au"/>
+                <constraint firstItem="KyI-Pz-ne1" firstAttribute="leading" secondItem="n8R-jy-ArJ" secondAttribute="leading" id="1cA-4l-keP"/>
+                <constraint firstItem="lem-ex-586" firstAttribute="leading" secondItem="PEE-6W-AXi" secondAttribute="leading" id="33h-kc-CS9"/>
+                <constraint firstItem="YI0-U4-YGu" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="29" id="5wa-fw-m5u"/>
+                <constraint firstAttribute="trailing" secondItem="3yS-2T-b2P" secondAttribute="trailing" constant="11" id="64s-P6-wKA"/>
+                <constraint firstItem="llB-pv-v9q" firstAttribute="top" secondItem="lem-ex-586" secondAttribute="bottom" constant="23" id="9U3-6y-4JE"/>
+                <constraint firstItem="3yS-2T-b2P" firstAttribute="leading" secondItem="m6z-Pg-XyS" secondAttribute="leading" id="G3o-OP-nO4"/>
+                <constraint firstAttribute="trailing" secondItem="PEE-6W-AXi" secondAttribute="trailing" constant="20" symbolic="YES" id="Hpg-1j-zQL"/>
+                <constraint firstItem="PEE-6W-AXi" firstAttribute="top" secondItem="1" secondAttribute="top" constant="97" id="NFN-kn-X2d"/>
+                <constraint firstItem="KyI-Pz-ne1" firstAttribute="trailing" secondItem="n8R-jy-ArJ" secondAttribute="trailing" id="NYw-s2-P7G"/>
+                <constraint firstItem="3yS-2T-b2P" firstAttribute="trailing" secondItem="m6z-Pg-XyS" secondAttribute="trailing" id="Pu6-fS-pEU"/>
+                <constraint firstItem="3yS-2T-b2P" firstAttribute="leading" secondItem="tJt-tF-kjN" secondAttribute="trailing" constant="8" symbolic="YES" id="Qa1-bF-4VQ"/>
+                <constraint firstItem="tJt-tF-kjN" firstAttribute="baseline" secondItem="3yS-2T-b2P" secondAttribute="baseline" id="Qax-O7-ZxV"/>
+                <constraint firstItem="llB-pv-v9q" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="Qek-8S-8XE"/>
+                <constraint firstItem="lem-ex-586" firstAttribute="baseline" secondItem="m6z-Pg-XyS" secondAttribute="baseline" id="VLR-wa-mdR"/>
+                <constraint firstItem="m6z-Pg-XyS" firstAttribute="leading" secondItem="lem-ex-586" secondAttribute="trailing" constant="8" symbolic="YES" id="YMG-nb-P7w"/>
+                <constraint firstItem="tJt-tF-kjN" firstAttribute="baseline" secondItem="KyI-Pz-ne1" secondAttribute="baseline" id="Z7k-jU-s2S"/>
+                <constraint firstItem="KyI-Pz-ne1" firstAttribute="top" secondItem="YI0-U4-YGu" secondAttribute="bottom" constant="29" id="fHt-ZT-dzK"/>
+                <constraint firstItem="tJt-tF-kjN" firstAttribute="leading" secondItem="KyI-Pz-ne1" secondAttribute="trailing" constant="8" symbolic="YES" id="j82-wG-V8o"/>
+                <constraint firstItem="lem-ex-586" firstAttribute="baseline" secondItem="n8R-jy-ArJ" secondAttribute="baseline" id="kRO-Qs-7wn"/>
+                <constraint firstItem="3yS-2T-b2P" firstAttribute="top" secondItem="PEE-6W-AXi" secondAttribute="bottom" constant="22" id="liv-Yd-ksH"/>
+                <constraint firstItem="YI0-U4-YGu" firstAttribute="trailing" secondItem="KyI-Pz-ne1" secondAttribute="trailing" id="nsD-eq-lDv"/>
+                <constraint firstItem="lem-ex-586" firstAttribute="top" secondItem="tJt-tF-kjN" secondAttribute="bottom" constant="20" id="rIL-tV-fym"/>
+                <constraint firstItem="PEE-6W-AXi" firstAttribute="leading" secondItem="YI0-U4-YGu" secondAttribute="trailing" constant="10" id="rXW-cc-uwB"/>
+                <constraint firstItem="llB-pv-v9q" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="15" id="zPb-rz-VAn"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

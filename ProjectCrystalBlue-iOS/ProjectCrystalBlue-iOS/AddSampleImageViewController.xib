@@ -15,14 +15,20 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="no_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="kKH-Cn-AdE">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="kKH-Cn-AdE">
                     <rect key="frame" x="40" y="64" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="b7N-Li-Jcv"/>
+                    </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJg-8f-Ggm">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJg-8f-Ggm">
                     <rect key="frame" x="20" y="292" width="100" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="LDp-oN-rRJ"/>
+                    </constraints>
                     <state key="normal" title="Take Picture">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -30,7 +36,7 @@
                         <action selector="takePicture:" destination="-1" eventType="touchUpInside" id="yxD-yb-siI"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HAJ-lm-WZ4">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HAJ-lm-WZ4">
                     <rect key="frame" x="200" y="292" width="100" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Upload Photo">
@@ -42,6 +48,16 @@
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="gJg-8f-Ggm" firstAttribute="baseline" secondItem="HAJ-lm-WZ4" secondAttribute="baseline" id="53d-lW-Fkr"/>
+                <constraint firstAttribute="trailing" secondItem="HAJ-lm-WZ4" secondAttribute="trailing" constant="20" symbolic="YES" id="8V3-MT-Hjn"/>
+                <constraint firstItem="kKH-Cn-AdE" firstAttribute="leading" secondItem="1Kj-bu-nUp" secondAttribute="leading" constant="40" id="CRQ-bm-chi"/>
+                <constraint firstItem="kKH-Cn-AdE" firstAttribute="top" secondItem="1Kj-bu-nUp" secondAttribute="top" constant="64" id="N7R-Ut-KNX"/>
+                <constraint firstItem="kKH-Cn-AdE" firstAttribute="centerX" secondItem="1Kj-bu-nUp" secondAttribute="centerX" id="QSn-Sv-Uiw"/>
+                <constraint firstAttribute="bottom" secondItem="gJg-8f-Ggm" secondAttribute="bottom" constant="246" id="Zlz-Is-tRY"/>
+                <constraint firstItem="HAJ-lm-WZ4" firstAttribute="leading" secondItem="gJg-8f-Ggm" secondAttribute="trailing" constant="80" id="dDG-Bp-BrC"/>
+                <constraint firstItem="gJg-8f-Ggm" firstAttribute="leading" secondItem="1Kj-bu-nUp" secondAttribute="leading" constant="20" symbolic="YES" id="zJT-kL-8VZ"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
