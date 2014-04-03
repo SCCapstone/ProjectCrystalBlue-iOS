@@ -95,9 +95,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [AgeDataTypeField setText:[[selectedSource attributes] objectForKey:SRC_AGE_DATATYPE]];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateStyle:NSDateFormatterShortStyle];
-    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:@"mm/dd/yyyy, hh:mm a"];
     NSDate *newDate = [formatter dateFromString:[[selectedSource attributes] objectForKey:SRC_DATE_COLLECTED]];
+    if (!newDate)
+        newDate = [NSDate dateWithTimeIntervalSince1970:0];
     [DatePicker setDate:newDate];
     
     imageArray = [SourceImageUtils imagesForSource:selectedSource inImageStore:[SourceImageUtils defaultImageStore]];
