@@ -25,15 +25,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentDirectory = [documentDirectories objectAtIndex:0];
         localDirectory = [documentDirectory stringByAppendingFormat:@"/%@", directory];
-        
-        BOOL imgDirectoryExists;
-        [[NSFileManager defaultManager] fileExistsAtPath:localDirectory isDirectory:&imgDirectoryExists];
-        if (!imgDirectoryExists) {
-            [[NSFileManager defaultManager] createDirectoryAtPath:localDirectory
-                                      withIntermediateDirectories:YES
-                                                       attributes:nil
-                                                            error:nil];
-        }
+
+        [[NSFileManager defaultManager] createDirectoryAtPath:localDirectory
+                                  withIntermediateDirectories:YES
+                                                   attributes:nil
+                                                        error:nil];
     }
     return self;
 }
