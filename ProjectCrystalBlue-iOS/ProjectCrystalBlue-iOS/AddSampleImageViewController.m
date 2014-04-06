@@ -183,19 +183,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     [imagePicker setDelegate:self];
     
-    // Do popover if iPad
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
-    {
-        imagePickerPopover = [[UIPopoverController alloc] initWithContentViewController:imagePicker];
-        
-        [imagePickerPopover setDelegate:self];
-        [imagePickerPopover presentPopoverFromBarButtonItem:sender
-                                   permittedArrowDirections:UIPopoverArrowDirectionAny
-                                                   animated:YES];
-    }
-    // iPhone/iPod touch - modal display
-    else
-        [self presentViewController:imagePicker animated:YES completion:nil];
+    [self presentViewController:imagePicker animated:YES completion:nil];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
