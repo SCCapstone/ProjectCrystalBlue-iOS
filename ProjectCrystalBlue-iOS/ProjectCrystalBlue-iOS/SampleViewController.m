@@ -133,25 +133,26 @@
 {
     
     Sample *selectedSample = [samples objectAtIndex:[indexPath row]];
-    
+
     UIActionSheet *message;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
-        message = [[UIActionSheet alloc] initWithTitle:@"Action:" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Edit Source", @"View Samples", nil];
+
+        message = [[UIActionSheet alloc] initWithTitle:@"Action:" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Perform Procedure", @"View Sample", nil];
     }
     else
     {
-        message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Edit Source", @"View Samples", nil];
+        message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Perform Procedure", @"View Sample", nil];
     }
     
     CGRect cellRect = [self.tableView cellForRowAtIndexPath:indexPath].frame;
     cellRect.origin.y += cellRect.size.height;
     cellRect.origin.y -= self.tableView.contentOffset.y;
     cellRect.size.height = 1;
-
+    
     //[message showInView:[UIApplication sharedApplication].keyWindow];
     [message showFromRect:cellRect inView:[UIApplication sharedApplication].keyWindow animated:YES];
-
+    
     while ((!message.hidden) && (message.superview != nil))
     {
         [[NSRunLoop currentRunLoop] limitDateForMode:NSDefaultRunLoopMode];
