@@ -53,6 +53,7 @@
 		D01DDDC0188DDC5E0059AF09 /* SampleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDBA188DDC5E0059AF09 /* SampleConstants.m */; };
 		D01DDDC1188DDC5E0059AF09 /* Source.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDBC188DDC5E0059AF09 /* Source.m */; };
 		D01DDDC2188DDC5E0059AF09 /* SourceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDBE188DDC5E0059AF09 /* SourceConstants.m */; };
+		D021B93618F0EEBA00ADE234 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D021B93518F0EEBA00ADE234 /* Reachability.m */; };
 		D031240B18BDBD9700F3AAD9 /* SimpleDBUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D031240A18BDBD9700F3AAD9 /* SimpleDBUtilsTests.m */; };
 		D04AD3981851BDAB0079B2EE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04AD3971851BDAB0079B2EE /* CFNetwork.framework */; };
 		D07526DF18B0084400622CBA /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = D07526DC18B0084400622CBA /* Transaction.m */; };
@@ -239,6 +240,8 @@
 		D01DDDBC188DDC5E0059AF09 /* Source.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Source.m; sourceTree = "<group>"; };
 		D01DDDBD188DDC5E0059AF09 /* SourceConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceConstants.h; sourceTree = "<group>"; };
 		D01DDDBE188DDC5E0059AF09 /* SourceConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceConstants.m; sourceTree = "<group>"; };
+		D021B93418F0EEBA00ADE234 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		D021B93518F0EEBA00ADE234 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		D031240A18BDBD9700F3AAD9 /* SimpleDBUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBUtilsTests.m; sourceTree = "<group>"; };
 		D04AD3971851BDAB0079B2EE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D07526DB18B0084400622CBA /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transaction.h; sourceTree = "<group>"; };
@@ -615,10 +618,13 @@
 		D01DDDB6188DDC0F0059AF09 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				D70BD23A18DFA14800FECBD7 /* Validation */,
 				D07526E518B008D200622CBA /* FMDB */,
-				D7EFB3E518AECB9D004EAB88 /* MobileImageUtils */,
 				D7D76B00189EEB6B0056CDE4 /* Lumberjack */,
+				D70BD23A18DFA14800FECBD7 /* Validation */,
+				D7EFB3E618AECBB2004EAB88 /* ImageUtils.h */,
+				D7EFB3E718AECBB2004EAB88 /* ImageUtils.m */,
+				D021B93418F0EEBA00ADE234 /* Reachability.h */,
+				D021B93518F0EEBA00ADE234 /* Reachability.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -957,15 +963,6 @@
 			name = ImageStoreResources;
 			sourceTree = "<group>";
 		};
-		D7EFB3E518AECB9D004EAB88 /* MobileImageUtils */ = {
-			isa = PBXGroup;
-			children = (
-				D7EFB3E618AECBB2004EAB88 /* ImageUtils.h */,
-				D7EFB3E718AECBB2004EAB88 /* ImageUtils.m */,
-			);
-			name = MobileImageUtils;
-			sourceTree = "<group>";
-		};
 		D7EFB3E918AECCF9004EAB88 /* LocalImageStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -1145,6 +1142,7 @@
 				B446B92B18C2589900AB4E88 /* SearchSampleViewController.m in Sources */,
 				B446B94E18C2E8B000AB4E88 /* AddSampleSevenViewController.m in Sources */,
 				D07526F218B008E300622CBA /* FMDatabasePool.m in Sources */,
+				D021B93618F0EEBA00ADE234 /* Reachability.m in Sources */,
 				D70BD24F18DFA39700FECBD7 /* S3Utils.m in Sources */,
 				D7D76B07189EED000056CDE4 /* DDASLLogger.m in Sources */,
 				D77F88CE18E8ABB800734631 /* PrimitiveFieldValidator.m in Sources */,
