@@ -15,7 +15,7 @@
 
 {
     NSArray *tags;
-    NSString *option;
+    NSString *optionAS;
 }
 
 @end
@@ -63,9 +63,19 @@
 
 -(void) multiOptions:(id)sender
 {
-    UIActionSheet *message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"View Source", @"Apply Procedure", nil];
+    UIActionSheet *message;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
+        
+        message = [[UIActionSheet alloc] initWithTitle:@"Action:" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"View Source", @"Apply Procedure", nil];
+    }
+    else
+    {
+        message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"View Source", @"Apply Procedure", nil];
+    }
     
     [message showInView:[UIApplication sharedApplication].keyWindow];
+    //[message showFromRect:cellRect inView:[UIApplication sharedApplication].keyWindow animated:YES];
     
     while ((!message.hidden) && (message.superview != nil))
     {
@@ -73,7 +83,7 @@
         
     }
     
-    if([option isEqualToString:@"VIEW"])
+    if([optionAS isEqualToString:@"VIEW"])
     {
         
         NSString *temp = [selectedSample sourceKey];
@@ -83,7 +93,7 @@
         [[self navigationController] pushViewController:sourceEditViewController  animated:YES];
     }
     
-    if([option isEqualToString:@"APPLY"])
+    if([optionAS isEqualToString:@"APPLY"])
     {
         ProcedureListViewController *procedureListViewController = [[ProcedureListViewController alloc] initWithSample:selectedSample];
         //[procedureListViewController setLibraryObjectStore:libraryObjectStore];
@@ -97,13 +107,13 @@
     switch (buttonIndex)
     {
         case 0:
-            option = @"VIEW";
+            optionAS = @"VIEW";
             break;
         case 1:
-            option = @"APPLY";
+            optionAS = @"APPLY";
             break;
         case 2:
-            option = @"NOTHING";
+            optionAS = @"NOTHING";
             break;
     }
 }
