@@ -12,7 +12,7 @@
 
 @interface AddSampleAgeViewController ()
 {
-    NSMutableArray *ageArray;
+    NSArray *ageArray;
 }
 @end
 
@@ -43,12 +43,7 @@
 {
     [super viewDidLoad];
     
-    [ageArray addObject:@"Biostratigraphy"];
-    [ageArray addObject:@"Magnetostratigraphy"];
-    [ageArray addObject:@"Chemostratigraphy"];
-    [ageArray addObject:@"Geochronology"];
-    [ageArray addObject:@"Thermochronology"];
-    [ageArray addObject:@"Unknown"];
+    ageArray = [SourceConstants ageMethods];
 }
 
 -(void) goBack:(id)sender
@@ -88,42 +83,9 @@
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AddSampleSevenViewController *assViewController = [[AddSampleSevenViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
-
-    if ([indexPath row] == 0)
-    {
-        [[sourceToAdd attributes] setObject:@"Biostratigraphy" forKey:SRC_AGE_METHOD];
-        [[self navigationController] pushViewController:assViewController  animated:YES];
-    }
     
-    if ([indexPath row] == 1)
-    {
-        [[sourceToAdd attributes] setObject:@"Magnetostratigraphy" forKey:SRC_AGE_METHOD];
-        [[self navigationController] pushViewController:assViewController  animated:YES];
-    }
-    
-    if ([indexPath row] == 2)
-    {
-        [[sourceToAdd attributes] setObject:@"Chemostratigraphy" forKey:SRC_AGE_METHOD];
-        [[self navigationController] pushViewController:assViewController  animated:YES];
-    }
-    
-    if ([indexPath row] == 3)
-    {
-        [[sourceToAdd attributes] setObject:@"Geochronology" forKey:SRC_AGE_METHOD];
-        [[self navigationController] pushViewController:assViewController  animated:YES];
-    }
-    
-    if ([indexPath row] == 4)
-    {
-        [[sourceToAdd attributes] setObject:@"Thermochronology" forKey:SRC_AGE_METHOD];
-        [[self navigationController] pushViewController:assViewController  animated:YES];
-    }
-    
-    if ([indexPath row] == 5)
-    {
-        [[sourceToAdd attributes] setObject:@"N/A" forKey:SRC_AGE_METHOD];
-        [[self navigationController] pushViewController:assViewController  animated:YES];
-    }
+    [sourceToAdd.attributes setObject:[ageArray objectAtIndex:indexPath.row] forKey:SRC_AGE_METHOD];
+    [[self navigationController] pushViewController:assViewController  animated:YES];
 }
 
 
