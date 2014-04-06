@@ -10,7 +10,7 @@
 #import "Source.h"
 #import "AbstractCloudLibraryObjectStore.h"
 
-@interface AddSampleSixViewController : UIViewController<UITextFieldDelegate>
+@interface AddSampleSixViewController : UIViewController<UITextFieldDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *RegionField;
 @property (weak, nonatomic) IBOutlet UITextField *LocalityField;
 @property (weak, nonatomic) IBOutlet UITextField *SectionField;

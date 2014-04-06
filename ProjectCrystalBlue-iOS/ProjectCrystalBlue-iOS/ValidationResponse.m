@@ -23,27 +23,23 @@
     return self;
 }
 
-//-(NSAlert *)alertWithFieldName:(NSString *)fieldName
-//                    fieldValue:(NSString *)fieldValue
-//{
-//    if (self.isValid) {
-//        return nil;
-//    }
-//
-//    NSAlert *alert = [[NSAlert alloc] init];
-//    [alert setAlertStyle:NSWarningAlertStyle];
-//
-//    NSString *message = [NSString stringWithFormat:@"Invalid %@ \"%@\"", fieldName, fieldValue];
-//    [alert setMessageText:message];
-//
-//    NSMutableString *info = [[NSMutableString alloc] init];
-//    for (NSString *validationError in self.errors) {
-//        [info appendFormat:@"- %@\n", validationError];
-//    }
-//    [alert setInformativeText:info];
-//
-//    return alert;
-//}
+-(NSString *)alertWithFieldName:(NSString *)fieldName
+                    fieldValue:(NSString *)fieldValue
+{
+    if (self.isValid) {
+        return nil;
+    }
+    
+    
+    NSString *message = [NSString stringWithFormat:@"Invalid %@ \"%@\"", fieldName, fieldValue];
+    
+    NSMutableString *info = [[NSMutableString alloc] init];
+    for (NSString *validationError in self.errors) {
+        [info appendFormat:@"- %@\n", validationError];
+    }
+
+    return message;
+}
 
 
 @end

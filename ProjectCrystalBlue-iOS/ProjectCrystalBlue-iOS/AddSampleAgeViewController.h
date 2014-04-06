@@ -1,8 +1,8 @@
 //
-//  AddSampleSevenViewController.h
+//  AddSampleAgeViewController.h
 //  ProjectCrystalBlue-iOS
 //
-//  Created by Ryan McGraw on 3/1/14.
+//  Created by Ryan McGraw on 3/31/14.
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
@@ -10,9 +10,7 @@
 #import "Source.h"
 #import "AbstractCloudLibraryObjectStore.h"
 
-@interface AddSampleSevenViewController : UIViewController<UITextFieldDelegate, UIAlertViewDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *AgeField;
-@property (weak, nonatomic) IBOutlet UITextField *AgeDataTypeField;
+@interface AddSampleAgeViewController : UITableViewController
 
 @property(nonatomic) Source* sourceToAdd;
 @property(nonatomic) AbstractCloudLibraryObjectStore *libraryObjectStore;

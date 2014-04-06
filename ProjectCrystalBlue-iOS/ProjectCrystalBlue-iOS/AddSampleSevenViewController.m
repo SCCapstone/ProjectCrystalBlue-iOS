@@ -10,6 +10,7 @@
 #import "AddSampleImageViewController.h"
 #import "Sample.h"
 #import "DDLog.h"
+#import "SourceFieldValidator.h"
 
 
 @interface AddSampleSevenViewController ()
@@ -17,7 +18,7 @@
 @end
 
 @implementation AddSampleSevenViewController
-@synthesize libraryObjectStore, sourceToAdd, AgeField, AgeMethodField, AgeDataTypeField;
+@synthesize libraryObjectStore, sourceToAdd, AgeField, AgeDataTypeField;
 
 - (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary{
     if (self) {
@@ -40,8 +41,11 @@
 }
 
 - (IBAction)addSource:(id)sender {
+    if (![self validateTextFieldValues]) {
+        return;
+    }
+    
     [[sourceToAdd attributes] setObject:[AgeField text] forKey:SRC_AGE];
-    [[sourceToAdd attributes] setObject:[AgeMethodField text] forKey:SRC_AGE_METHOD];
     [[sourceToAdd attributes] setObject:[AgeDataTypeField text] forKey:SRC_AGE_DATATYPE];
     
     NSMutableArray *images = [[NSMutableArray alloc] init];
@@ -103,6 +107,45 @@
     [UIView setAnimationDuration: movementDuration];
     self.view.frame = CGRectOffset(self.view.frame, 0, movement);
     [UIView commitAnimations];
+}
+
+- (BOOL)validateTextFieldValues
+{
+    BOOL validationPassed = YES;
+
+    ValidationResponse *ageOK = [SourceFieldValidator validateAge:[AgeField text]];
+    if (!ageOK.isValid && validationPassed == YES) {
+        validationPassed = NO;
+        
+        NSString *message = [ageOK alertWithFieldName:@"age" fieldValue:[AgeField text]];
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+        
+    }
+    
+    ValidationResponse *ageDatatypeOK = [SourceFieldValidator validateAgeDatatype:[AgeDataTypeField text]];
+    if (!ageDatatypeOK.isValid && validationPassed == YES) {
+        validationPassed = NO;
+        
+        NSString *message = [ageDatatypeOK alertWithFieldName:@"age datatype" fieldValue:[AgeDataTypeField text]];
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+        
+    }
+    
+    return validationPassed;
 }
 
 @end

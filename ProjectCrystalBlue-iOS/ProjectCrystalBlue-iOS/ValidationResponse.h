@@ -21,8 +21,8 @@
 
 /// Generates an NSAlert containing the information from this ValidationResponse.
 /// Returns nil if there are no errors.
-//-(NSAlert *)alertWithFieldName:(NSString *)fieldName
-//                    fieldValue:(NSString *)fieldValue;
+-(NSString *)alertWithFieldName:(NSString *)fieldName
+                    fieldValue:(NSString *)fieldValue;
 
 @end
 
@@ -40,3 +40,4 @@ static const NSString *VALIDATION_FRMT_MAX_CHARS =
 /// arg is a description of the set of valid characters, e.g. "alphanumeric characters" or
 /// "letters, spaces, and punctuation".
 static const NSString *VALIDATION_FRMT_INVALID_CHARACTERS = @"This field only allows %@.";
+

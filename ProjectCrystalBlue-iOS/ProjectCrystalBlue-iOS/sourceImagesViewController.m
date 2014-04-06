@@ -84,6 +84,7 @@
     {
         //UIImageView* imgView = [[UIImageView alloc] initWithImage:defaultImage];
         UIImageView* imgView = [[UIImageView alloc] initWithImage:[imageArray objectAtIndex:i]];
+        [imgView setContentMode:UIViewContentModeScaleAspectFit];
         UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(14, 175+yInc, 300, 30)];
         imgView.frame = CGRectMake(10, 10+yInc, 200, 150);
         [label setText:[descriptionArray objectAtIndex:i]];

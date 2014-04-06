@@ -12,6 +12,7 @@
 #import "Sample.h"
 #import "SampleConstants.h"
 #import "Procedures.h"
+#import "SampleFieldValidator.h"
 
 @interface EditLocationViewController ()
 {
@@ -51,6 +52,9 @@
 }
 
 - (IBAction)updateLocation:(id)sender {
+    if (![self validateTextFieldValues]) {
+        return;
+    }
     newLocation = [LocationField text];
     [Procedures moveSample:selectedSample toLocation:newLocation inStore:libraryObjectStore];
      [self.navigationController popViewControllerAnimated:YES];
@@ -93,6 +97,28 @@
     [UIView setAnimationDuration: movementDuration];
     self.view.frame = CGRectOffset(self.view.frame, 0, movement);
     [UIView commitAnimations];
+}
+
+- (BOOL)validateTextFieldValues
+{
+    BOOL validationPassed = YES;
+    
+    ValidationResponse *locationOK = [SampleFieldValidator validateCurrentLocation:[LocationField text]];
+    if (!locationOK.isValid && validationPassed == YES) {
+        validationPassed = NO;
+        
+        NSString *message = [locationOK alertWithFieldName:@"location" fieldValue:[LocationField text]];
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    
+    return validationPassed;
 }
 
 @end

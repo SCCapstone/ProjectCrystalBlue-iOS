@@ -11,6 +11,7 @@
 #import "SourceConstants.h"
 #import "Source.h"
 #import "AddSampleTwoViewController.h"
+#import "SourceFieldValidator.h"
 
 @interface AddSampleOneViewController ()
 {
@@ -44,6 +45,10 @@
 }
 
 - (IBAction)addSource:(id)sender {
+    
+    if (![self validateTextFieldValues]) {
+        return;
+    }
     
     if (![libraryObjectStore libraryObjectExistsForKey:[KeyField text] FromTable:[SourceConstants tableName]] && ![[KeyField text] isEqualToString:@""])
     {
@@ -170,6 +175,45 @@
     [UIView setAnimationDuration: movementDuration];
     self.view.frame = CGRectOffset(self.view.frame, 0, movement);
     [UIView commitAnimations];
+}
+
+- (BOOL)validateTextFieldValues
+{
+    BOOL validationPassed = YES;
+
+    ValidationResponse *latitudeOK = [SourceFieldValidator validateLatitude:[LatitudeField text]];
+    if (!latitudeOK.isValid && validationPassed == YES) {
+        validationPassed = NO;
+        
+        NSString *message = [latitudeOK alertWithFieldName:@"latitude" fieldValue:[LatitudeField text]];
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+        
+    }
+    
+    ValidationResponse *longitudeOK = [SourceFieldValidator validateLongitude:[LongitudeField text]];
+    if (!longitudeOK.isValid && validationPassed == YES) {
+        validationPassed = NO;
+        
+        NSString *message = [longitudeOK alertWithFieldName:@"longitude" fieldValue:[LongitudeField text]];
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+        
+    }
+    
+    return validationPassed;
 }
 
 @end

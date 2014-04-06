@@ -12,10 +12,10 @@
 #import "DDLog.h"
 #import "Sample.h"
 #import "AbstractCloudLibraryObjectStore.h"
-#import "SimpleDBLibraryObjectStore.h"
 #import "SourceConstants.h"
 #import "SourceImageUtils.h"
 #import "sourceImagesViewController.h"
+#import "SourceFieldValidator.h"
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -95,9 +95,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [AgeDataTypeField setText:[[selectedSource attributes] objectForKey:SRC_AGE_DATATYPE]];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateStyle:NSDateFormatterShortStyle];
-    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:@"mm/dd/yyyy, hh:mm a"];
     NSDate *newDate = [formatter dateFromString:[[selectedSource attributes] objectForKey:SRC_DATE_COLLECTED]];
+    if (!newDate)
+        newDate = [NSDate dateWithTimeIntervalSince1970:0];
     [DatePicker setDate:newDate];
     
     imageArray = [SourceImageUtils imagesForSource:selectedSource inImageStore:[SourceImageUtils defaultImageStore]];
@@ -139,6 +140,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 -(void) save:(id)sender
 {
+    if (![self validateTextFieldValues]) {
+        return;
+    }
     [[selectedSource attributes] setObject:[TypeField text] forKey:SRC_TYPE];
     [[selectedSource attributes] setObject:[LithologyField text] forKey:SRC_LITHOLOGY];
     [[selectedSource attributes] setObject:[DeposystemField text] forKey:SRC_DEPOSYSTEM];
@@ -270,6 +274,173 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     self.view.frame = CGRectOffset(self.view.frame, 0, movement);
     [UIView commitAnimations];
 }
+
+- (BOOL)validateTextFieldValues
+{
+    BOOL validationPassed = YES;
+
+    ValidationResponse *formationOK = [SourceFieldValidator validateFormation:[FormationField text]];
+    if (!formationOK.isValid && validationPassed == YES) {
+        validationPassed = NO;
+        
+        NSString *message = [formationOK alertWithFieldName:@"formation" fieldValue:[FormationField text]];
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    
+    ValidationResponse *memberOK = [SourceFieldValidator validateMember:[MemberField text]];
+    if (!memberOK.isValid && validationPassed == YES) {
+        validationPassed = NO;
+        
+        NSString *message = [memberOK alertWithFieldName:@"member" fieldValue:[MemberField text]];
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+
+    }
+    
+    ValidationResponse *regionOK = [SourceFieldValidator validateRegion:[RegionField text]];
+    if (!regionOK.isValid && validationPassed == YES) {
+        validationPassed = NO;
+        
+        NSString *message = [regionOK alertWithFieldName:@"region" fieldValue:[RegionField text]];
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+
+    }
+    
+    ValidationResponse *localityOK = [SourceFieldValidator validateLocality:[LocalityField text]];
+    if (!localityOK.isValid && validationPassed == YES) {
+        validationPassed = NO;
+        
+        NSString *message = [localityOK alertWithFieldName:@"locality" fieldValue:[LocalityField text]];
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+
+    }
+    
+    ValidationResponse *sectionOK = [SourceFieldValidator validateContinent:[SectionField text]];
+    if (!sectionOK.isValid && validationPassed == YES) {
+        validationPassed = NO;
+        
+        NSString *message = [sectionOK alertWithFieldName:@"section" fieldValue:[SectionField text]];
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+
+    }
+    
+    ValidationResponse *meterOK = [SourceFieldValidator validateMeters:[MeterField text]];
+    if (!meterOK.isValid && validationPassed == YES) {
+        validationPassed = NO;
+        
+        NSString *message = [meterOK alertWithFieldName:@"meter" fieldValue:[MeterField text]];
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+
+    }
+    
+    ValidationResponse *latitudeOK = [SourceFieldValidator validateLatitude:[LatitudeField text]];
+    if (!latitudeOK.isValid && validationPassed == YES) {
+        validationPassed = NO;
+        
+        NSString *message = [latitudeOK alertWithFieldName:@"latitude" fieldValue:[LatitudeField text]];
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+
+    }
+    
+    ValidationResponse *longitudeOK = [SourceFieldValidator validateLongitude:[LongitudeField text]];
+    if (!longitudeOK.isValid && validationPassed == YES) {
+        validationPassed = NO;
+        
+        NSString *message = [longitudeOK alertWithFieldName:@"longitude" fieldValue:[LongitudeField text]];
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+
+    }
+    
+    ValidationResponse *ageOK = [SourceFieldValidator validateAge:[AgeField text]];
+    if (!ageOK.isValid && validationPassed == YES) {
+        validationPassed = NO;
+        
+        NSString *message = [ageOK alertWithFieldName:@"age" fieldValue:[AgeField text]];
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+
+    }
+    
+    ValidationResponse *ageDatatypeOK = [SourceFieldValidator validateAgeDatatype:[AgeDataTypeField text]];
+    if (!ageDatatypeOK.isValid && validationPassed == YES) {
+        validationPassed = NO;
+        
+        NSString *message = [ageDatatypeOK alertWithFieldName:@"age datatype" fieldValue:[AgeDataTypeField text]];
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+
+    }
+    
+    return validationPassed;
+}
+
 
 
 @end

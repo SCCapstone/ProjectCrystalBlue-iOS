@@ -10,10 +10,12 @@
 #import "Source.h"
 #import "AbstractCloudLibraryObjectStore.h"
 #import "SourceImageUtils.h"
+#import "ImagesFieldValidator.h"
 
 @interface AddImageViewController ()
 {
     UIImage *image;
+    UIImage *img;
 }
 @end
 
@@ -41,8 +43,26 @@
 }
 
 - (IBAction)addImage:(id)sender {
-    [SourceImageUtils addImage:image forSource:selectedSource inDataStore:libraryObjectStore withImageTag:[descriptionField text] intoImageStore:[SourceImageUtils defaultImageStore]];
-    [self.navigationController popViewControllerAnimated:YES];
+    if (![self validateTextFieldValues]) {
+        return;
+    }
+    
+    if(!image)
+    {
+        NSString *message = @"Image Not Selected.";
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    else{
+        [SourceImageUtils addImage:image forSource:selectedSource inDataStore:libraryObjectStore withImageTag:[descriptionField text] intoImageStore:[SourceImageUtils defaultImageStore]];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 -(void) goBack:(id)sender
@@ -172,5 +192,28 @@
     self.view.frame = CGRectOffset(self.view.frame, 0, movement);
     [UIView commitAnimations];
 }
+
+- (BOOL)validateTextFieldValues
+{
+    BOOL validationPassed = YES;
+    
+    ValidationResponse *imagesOK = [ImagesFieldValidator validateImageTag:[descriptionField text]];
+    if (!imagesOK.isValid && validationPassed == YES) {
+        validationPassed = NO;
+        
+        NSString *message = [imagesOK alertWithFieldName:@"Descripition" fieldValue:[descriptionField text]];
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    
+    return validationPassed;
+}
+
 
 @end

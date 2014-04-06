@@ -8,7 +8,6 @@
             <connections>
                 <outlet property="AgeDataTypeField" destination="XRQ-ST-CPA" id="iXf-PQ-d8V"/>
                 <outlet property="AgeField" destination="GpL-t5-P9c" id="9ei-9A-4w9"/>
-                <outlet property="AgeMethodField" destination="Uhc-V2-Y5j" id="wPU-ix-6pG"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -17,25 +16,19 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOV-zz-p35">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOV-zz-p35">
                     <rect key="frame" x="15" y="79" width="96" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age Method" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aa6-yw-e22">
-                    <rect key="frame" x="15" y="129" width="96" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age Data Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQj-hl-CbM">
+                    <rect key="frame" x="15" y="131" width="112" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age Data Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQj-hl-CbM">
-                    <rect key="frame" x="15" y="179" width="112" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GpL-t5-P9c">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GpL-t5-P9c">
                     <rect key="frame" x="135" y="75" width="165" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -44,17 +37,8 @@
                         <outlet property="delegate" destination="-1" id="zdC-JN-kAw"/>
                     </connections>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uhc-V2-Y5j">
-                    <rect key="frame" x="135" y="125" width="165" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="f7M-2z-mnn"/>
-                    </connections>
-                </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XRQ-ST-CPA">
-                    <rect key="frame" x="135" y="175" width="165" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XRQ-ST-CPA">
+                    <rect key="frame" x="135" y="131" width="165" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -64,6 +48,19 @@
                 </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="XRQ-ST-CPA" firstAttribute="leading" secondItem="kQj-hl-CbM" secondAttribute="trailing" constant="8" symbolic="YES" id="0Ul-x5-sdv"/>
+                <constraint firstItem="XRQ-ST-CPA" firstAttribute="leading" secondItem="GpL-t5-P9c" secondAttribute="leading" id="8nh-mk-PrA"/>
+                <constraint firstItem="XRQ-ST-CPA" firstAttribute="top" secondItem="GpL-t5-P9c" secondAttribute="bottom" constant="26" id="A5r-YP-Yyi"/>
+                <constraint firstItem="XRQ-ST-CPA" firstAttribute="trailing" secondItem="GpL-t5-P9c" secondAttribute="trailing" id="HIj-d0-YZc"/>
+                <constraint firstItem="dOV-zz-p35" firstAttribute="leading" secondItem="kQj-hl-CbM" secondAttribute="leading" id="HaU-MR-MdY"/>
+                <constraint firstItem="XRQ-ST-CPA" firstAttribute="top" secondItem="kQj-hl-CbM" secondAttribute="top" id="LSG-LC-KQW"/>
+                <constraint firstItem="kQj-hl-CbM" firstAttribute="top" secondItem="dOV-zz-p35" secondAttribute="bottom" constant="31" id="Xcl-7E-YYB"/>
+                <constraint firstItem="GpL-t5-P9c" firstAttribute="leading" secondItem="dOV-zz-p35" secondAttribute="trailing" constant="24" id="fds-NO-Nqa"/>
+                <constraint firstAttribute="trailing" secondItem="GpL-t5-P9c" secondAttribute="trailing" constant="20" symbolic="YES" id="guq-TQ-UR0"/>
+                <constraint firstItem="GpL-t5-P9c" firstAttribute="top" secondItem="1" secondAttribute="top" constant="75" id="jqg-Fd-qCz"/>
+                <constraint firstItem="dOV-zz-p35" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="15" id="mVH-l1-4Y2"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
