@@ -14,6 +14,7 @@
 #import "Sample.h"
 #import "AbstractCloudLibraryObjectStore.h"
 #import "SimpleDBLibraryObjectStore.h"
+#import "Reachability.h"
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -39,7 +40,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         libraryObjectStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data"
                                                                      WithDatabaseName:@"test_database.db"];
         
-        [libraryObjectStore synchronizeWithCloud];
+        // Sync if can connect to internet
+        Reachability *reach = [Reachability reachabilityForInternetConnection];
+        if ([reach isReachable])
+            [libraryObjectStore synchronizeWithCloud];
+        
         displayedSources = [libraryObjectStore getAllLibraryObjectsFromTable:[SourceConstants tableName]].mutableCopy;
         
         UINavigationItem *n = [self navigationItem];

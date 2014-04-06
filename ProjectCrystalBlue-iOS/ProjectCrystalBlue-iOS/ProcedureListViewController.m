@@ -187,7 +187,7 @@
         }
     }
 
-    if(indexPath.section == 1)
+    else if(indexPath.section == 1)
     {
         if([indexPath row] == 0)
         {
@@ -196,21 +196,21 @@
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
-        if([indexPath row] == 1)
+        else if([indexPath row] == 1)
         {
             initialsViewController.selectedRow = 2;
             initialsViewController.titleNav = @"Make Billet";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
-        if([indexPath row] == 2)
+        else if([indexPath row] == 2)
         {
              initialsViewController.selectedRow = 3;
              initialsViewController.titleNav = @"Make Thin Section";
              [[self navigationController] pushViewController:initialsViewController  animated:YES];
 
         }
-        if([indexPath row] == 3)
+        else if([indexPath row] == 3)
         {
             initialsViewController.selectedRow = 4;
              initialsViewController.titleNav = @"Trim";
@@ -218,7 +218,7 @@
         }
     }
     
-    if(indexPath.section == 2)
+    else if(indexPath.section == 2)
     {
         if([indexPath row] == 0)
         {
@@ -228,14 +228,14 @@
 
         }
     
-        if([indexPath row] == 1)
+        else if([indexPath row] == 1)
         {
             initialsViewController.selectedRow = 6;
             initialsViewController.titleNav = @"Jaw Crush";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
-        if([indexPath row] == 2)
+        else if([indexPath row] == 2)
         {
             initialsViewController.selectedRow = 7;
             initialsViewController.titleNav = @"Gemeni";
@@ -243,14 +243,14 @@
 
         }
     
-        if([indexPath row] == 3)
+        else if([indexPath row] == 3)
         {
              initialsViewController.selectedRow = 8;
                  initialsViewController.titleNav = @"Pan";
                  [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
-        if([indexPath row] == 4)
+        else if([indexPath row] == 4)
         {
             initialsViewController.selectedRow = 9;
             initialsViewController.titleNav = @"Sieves";
@@ -258,7 +258,7 @@
         }
     }
         
-    if(indexPath.section == 3)
+    else if(indexPath.section == 3)
     {
         if([indexPath row] == 0)
         {
@@ -268,7 +268,7 @@
         }
     
     
-        if([indexPath row] == 1)
+        else if([indexPath row] == 1)
         {
             initialsViewController.selectedRow = 11;
             initialsViewController.titleNav = @"Heavy Liquid 290";
@@ -277,7 +277,7 @@
     
    
     
-        if([indexPath row] == 2)
+        else if([indexPath row] == 2)
         {
             initialsViewController.selectedRow = 12;
             initialsViewController.titleNav = @"Heavy Liquid 265";
@@ -286,7 +286,7 @@
         }
     
     
-        if([indexPath row] == 3)
+        else if([indexPath row] == 3)
         {
             initialsViewController.selectedRow = 13;
             initialsViewController.titleNav = @"Heavy Liquid 255";
@@ -294,7 +294,7 @@
         }
     }
     
-    if(indexPath.section == 4)
+    else if(indexPath.section == 4)
     {
         if([indexPath row] == 0)
         {
@@ -303,7 +303,7 @@
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
-        if([indexPath row] == 1)
+        else if([indexPath row] == 1)
         {
             initialsViewController.selectedRow = 15;
             initialsViewController.titleNav = @"Magnet 0.2A";
@@ -312,7 +312,7 @@
         }
     
     
-        if([indexPath row] == 2)
+        else if([indexPath row] == 2)
         {
             initialsViewController.selectedRow = 16;
             initialsViewController.titleNav = @"Magnet 0.4A";
@@ -320,7 +320,7 @@
         }
     
     
-        if([indexPath row] == 3)
+        else if([indexPath row] == 3)
         {
             initialsViewController.selectedRow = 17;
             initialsViewController.titleNav = @"Magnet 0.6A";
@@ -329,7 +329,7 @@
         }
     
     
-        if([indexPath row] == 4)
+        else if([indexPath row] == 4)
         {
             initialsViewController.selectedRow = 18;
             initialsViewController.titleNav = @"Magnet 0.8A";
@@ -337,21 +337,21 @@
         }
     
     
-        if([indexPath row] == 5)
+        else if([indexPath row] == 5)
         {
             initialsViewController.selectedRow = 19;
             initialsViewController.titleNav = @"Magnet 1.0A";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
-        if([indexPath row] == 6)
+        else if([indexPath row] == 6)
         {
             initialsViewController.selectedRow = 20;
             initialsViewController.titleNav = @"Magnet 1.2A";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
   
-        if([indexPath row] == 7)
+        else if([indexPath row] == 7)
         {
             initialsViewController.selectedRow = 21;
             initialsViewController.titleNav = @"Magnet 1.4A";

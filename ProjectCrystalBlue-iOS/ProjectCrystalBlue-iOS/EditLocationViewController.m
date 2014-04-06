@@ -57,7 +57,7 @@
     }
     newLocation = [LocationField text];
     [Procedures moveSample:selectedSample toLocation:newLocation inStore:libraryObjectStore];
-     [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)cancel:(id)sender {
