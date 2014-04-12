@@ -10,7 +10,10 @@
 #import "Source.h"
 #import "AbstractCloudLibraryObjectStore.h"
 
-@interface AddImageViewController : UIViewController<UIAlertViewDelegate>
+@interface AddImageViewController : UIViewController<UIAlertViewDelegate,
+                                                     UIImagePickerControllerDelegate,
+                                                     UIPopoverControllerDelegate,
+                                                     UINavigationControllerDelegate>
 
 {
     

@@ -9,19 +9,12 @@
 #import "SourceEditViewController.h"
 #import "Source.h"
 #import "LibraryObject.h"
-#import "DDLog.h"
 #import "Sample.h"
 #import "AbstractCloudLibraryObjectStore.h"
 #import "SourceConstants.h"
 #import "SourceImageUtils.h"
 #import "sourceImagesViewController.h"
 #import "SourceFieldValidator.h"
-
-#ifdef DEBUG
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
-#else
-static const int ddLogLevel = LOG_LEVEL_WARN;
-#endif
 
 @interface SourceEditViewController ()
 {

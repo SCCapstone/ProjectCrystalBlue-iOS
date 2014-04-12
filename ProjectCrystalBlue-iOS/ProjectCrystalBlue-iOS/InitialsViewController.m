@@ -155,7 +155,7 @@
         [Procedures  magnet14AmpsSample:selectedSample withInitials:initials inStore:libraryObjectStore];
     }
     
-    int temp = self.navigationController.viewControllers.count - 3;
+    NSUInteger temp = self.navigationController.viewControllers.count - 3;
     UIViewController* tempController = [self.navigationController.viewControllers objectAtIndex:temp];
     
     [self.navigationController popToViewController:tempController animated:YES];

@@ -8,19 +8,12 @@
 
 #import "SourceViewController.h"
 #import "Source.h"
-#import "DDLog.h"
 #import "SourceEditViewController.h"
 #import "SampleViewController.h"
 #import "Sample.h"
 #import "AbstractCloudLibraryObjectStore.h"
 #import "SimpleDBLibraryObjectStore.h"
 #import "Reachability.h"
-
-#ifdef DEBUG
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
-#else
-static const int ddLogLevel = LOG_LEVEL_WARN;
-#endif
 
 @interface SourceViewController()
 {
