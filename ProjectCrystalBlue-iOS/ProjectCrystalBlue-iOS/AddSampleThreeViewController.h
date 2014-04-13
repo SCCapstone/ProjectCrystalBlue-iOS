@@ -15,6 +15,6 @@
 @property(nonatomic) Source* sourceToAdd;
 @property(nonatomic) AbstractCloudLibraryObjectStore *libraryObjectStore;
 @property(nonatomic) NSString* typeSelected;
-@property(nonatomic) int numRows;
+@property(nonatomic) NSUInteger numRows;
 
 - (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary;@end
