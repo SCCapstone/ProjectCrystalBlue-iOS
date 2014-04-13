@@ -71,6 +71,8 @@
 		D075270618B009C600622CBA /* AbstractCloudLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D075270418B009C600622CBA /* AbstractCloudLibraryObjectStore.m */; };
 		D075270918B021AD00622CBA /* HardcodedCredentialsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D075270818B021AD00622CBA /* HardcodedCredentialsProvider.m */; };
 		D0B1B728189C876000052443 /* LibraryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B1B727189C876000052443 /* LibraryObject.m */; };
+		D0C31B2818FA389D00F4792C /* SimpleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C31B2618FA389D00F4792C /* SimpleTableViewController.m */; };
+		D0C31B2918FA389D00F4792C /* SimpleTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0C31B2718FA389D00F4792C /* SimpleTableViewController.xib */; };
 		D0C85BD518BDB0C00002033E /* ConflictResolution.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C85BD418BDB0C00002033E /* ConflictResolution.m */; };
 		D0C85BD818BDB4810002033E /* SimpleDBUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C85BD718BDB4810002033E /* SimpleDBUtils.m */; };
 		D70BD24818DFA33200FECBD7 /* SourceImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BD24718DFA33200FECBD7 /* SourceImageUtils.m */; };
@@ -275,6 +277,9 @@
 		D075270818B021AD00622CBA /* HardcodedCredentialsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HardcodedCredentialsProvider.m; sourceTree = "<group>"; };
 		D0B1B726189C876000052443 /* LibraryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryObject.h; sourceTree = "<group>"; };
 		D0B1B727189C876000052443 /* LibraryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObject.m; sourceTree = "<group>"; };
+		D0C31B2518FA389D00F4792C /* SimpleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTableViewController.h; sourceTree = "<group>"; };
+		D0C31B2618FA389D00F4792C /* SimpleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleTableViewController.m; sourceTree = "<group>"; };
+		D0C31B2718FA389D00F4792C /* SimpleTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleTableViewController.xib; sourceTree = "<group>"; };
 		D0C85BD318BDB0C00002033E /* ConflictResolution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConflictResolution.h; sourceTree = "<group>"; };
 		D0C85BD418BDB0C00002033E /* ConflictResolution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConflictResolution.m; sourceTree = "<group>"; };
 		D0C85BD618BDB4810002033E /* SimpleDBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleDBUtils.h; sourceTree = "<group>"; };
@@ -475,6 +480,7 @@
 				B46C93C418C64A920057078B /* EditLocationViewController.xib */,
 				B45379F318DD5B66008A9EBB /* InitialsViewController.xib */,
 				B44D915818E7D55F005F937C /* sourceImagesViewController.xib */,
+				D0C31B2718FA389D00F4792C /* SimpleTableViewController.xib */,
 			);
 			name = XIBs;
 			sourceTree = "<group>";
@@ -616,6 +622,8 @@
 				B46C93C318C64A920057078B /* EditLocationViewController.m */,
 				B45379F118DD5B66008A9EBB /* InitialsViewController.h */,
 				B45379F218DD5B66008A9EBB /* InitialsViewController.m */,
+				D0C31B2518FA389D00F4792C /* SimpleTableViewController.h */,
+				D0C31B2618FA389D00F4792C /* SimpleTableViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -1062,6 +1070,7 @@
 				B4981F9B18E9132B00EA0741 /* AddImageViewController.xib in Resources */,
 				B446B94A18C2E67C00AB4E88 /* AddSampleSixViewController.xib in Resources */,
 				D729BD4D181C24A000F762A3 /* Images.xcassets in Resources */,
+				D0C31B2918FA389D00F4792C /* SimpleTableViewController.xib in Resources */,
 				B446B92C18C2589900AB4E88 /* SearchSampleViewController.xib in Resources */,
 				0355088018DF2439007D8A64 /* EmbedReaderViewController.xib in Resources */,
 				B446B92718C2403C00AB4E88 /* HomeViewController.xib in Resources */,
@@ -1096,6 +1105,7 @@
 				D72FE4AF18B59F0D00C6452F /* ProcedureRecordParser.m in Sources */,
 				D7D76B08189EED000056CDE4 /* DDFileLogger.m in Sources */,
 				B446B94918C2E67C00AB4E88 /* AddSampleSixViewController.m in Sources */,
+				D0C31B2818FA389D00F4792C /* SimpleTableViewController.m in Sources */,
 				D72FE4B118B59F0D00C6452F /* ProcedureRecord.m in Sources */,
 				D77F88CF18E8ABB800734631 /* SampleFieldValidator.m in Sources */,
 				D075270618B009C600622CBA /* AbstractCloudLibraryObjectStore.m in Sources */,

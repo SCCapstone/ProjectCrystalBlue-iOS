@@ -44,7 +44,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         UINavigationItem *n = [self navigationItem];
         [n setTitle:[selectedSource key]];
         
-        UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Return" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
+        UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         UIBarButtonItem *savebtn = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleBordered target:self action:@selector(save:)];
         
         [[self navigationItem] setLeftBarButtonItem:backbtn];
@@ -59,25 +59,107 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 }
 
+- (IBAction)showRockTypeOptions:(id)sender
+{
+    SimpleTableViewController *typeOptions = [[SimpleTableViewController alloc] initWithNibName:@"SimpleTableViewController"
+                                                                                         bundle:nil];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:typeOptions];
+    typeOptions.tableData = [SourceConstants rockTypes];
+    typeOptions.tag = 0;
+    typeOptions.navigationItem.title = @"Rock Types";
+    typeOptions.delegate = self;
+    [self presentViewController:navController animated:YES completion:nil];
+}
+
+- (void)showLithologyOptions:(id)sender
+{
+    NSArray *lithologies = [SourceConstants lithologiesForRockType:TypeField.text];
+    if (!lithologies) {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"There are no known lithologies for the entered rock type."
+                              message:nil
+                              delegate:nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    SimpleTableViewController *lithologyOptions = [[SimpleTableViewController alloc] initWithNibName:@"SimpleTableViewController"
+                                                                                              bundle:nil];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:lithologyOptions];
+    lithologyOptions.tableData = lithologies;
+    lithologyOptions.tag = 1;
+    lithologyOptions.navigationItem.title = @"Lithologies";
+    lithologyOptions.delegate = self;
+    [self presentViewController:navController animated:YES completion:nil];
+}
+
+- (void)showDeposytemOptions:(id)sender
+{
+    NSArray *deposystems = [SourceConstants deposystemsForRockType:TypeField.text];
+    if (!deposystems) {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"There are no known deposystems for the entered rock type."
+                              message:nil
+                              delegate:nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    SimpleTableViewController *deposystemOptions = [[SimpleTableViewController alloc] initWithNibName:@"SimpleTableViewController"
+                                                                                               bundle:nil];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:deposystemOptions];
+    deposystemOptions.tableData = deposystems;
+    deposystemOptions.tag = 2;
+    deposystemOptions.navigationItem.title = @"Deposystems";
+    deposystemOptions.delegate = self;
+    [self presentViewController:navController animated:YES completion:nil];
+}
+
+- (void)showAgeMethodOptions:(id)sender
+{
+    SimpleTableViewController *ageMethodOptions = [[SimpleTableViewController alloc] initWithNibName:@"SimpleTableViewController"
+                                                                                              bundle:nil];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:ageMethodOptions];
+    ageMethodOptions.tableData = [SourceConstants ageMethods];
+    ageMethodOptions.tag = 3;
+    ageMethodOptions.navigationItem.title = @"Age Methods";
+    ageMethodOptions.delegate = self;
+    [self presentViewController:navController animated:YES completion:nil];
+}
+
+- (void)itemSelectedAtRow:(NSInteger)row
+                  WithTag:(NSUInteger)tag
+{
+    NSString *rockType = TypeField.text;
+
+    if (tag == 0) {
+        [TypeField setText:[[SourceConstants rockTypes] objectAtIndex:row]];
+        TypeLabel.textColor = [UIColor redColor];
+    }
+    else if (tag == 1) {
+        [LithologyField setText:[[SourceConstants lithologiesForRockType:rockType] objectAtIndex:row]];
+        LithologyLabel.textColor = [UIColor redColor];
+    }
+    else if (tag == 2) {
+        [DeposystemField setText:[[SourceConstants deposystemsForRockType:rockType] objectAtIndex:row]];
+        DeposystemLabel.textColor = [UIColor redColor];
+    }
+    else if (tag == 3) {
+        [AgeMethodField setText:[[SourceConstants ageMethods] objectAtIndex:row]];
+        AgeMethodLabel.textColor = [UIColor redColor];
+    }
+}
+
 - (void)viewDidLoad {
+    [super viewDidLoad];
+    
     [self.scroller setScrollEnabled:YES];
     [scroller setContentSize:CGSizeMake(320, 1050)];
     
-    [super viewDidLoad];
     [[self view] setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     
-    
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     [TypeField setText:[[selectedSource attributes] objectForKey:SRC_TYPE]];
     [LithologyField setText:[[selectedSource attributes] objectForKey:SRC_LITHOLOGY]];
     [DeposystemField setText:[[selectedSource attributes] objectForKey:SRC_DEPOSYSTEM]];
@@ -123,7 +205,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [[self view] endEditing:YES];
 }
 
--(BOOL) textFieldShouldReturn:(UITextField *)textField
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     return YES;
@@ -133,12 +215,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [[self view] endEditing:YES];
 }
 
--(void) goBack:(id)sender
+- (void)goBack:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void) save:(id)sender
+- (void)save:(id)sender
 {
     if (![self validateTextFieldValues]) {
         return;

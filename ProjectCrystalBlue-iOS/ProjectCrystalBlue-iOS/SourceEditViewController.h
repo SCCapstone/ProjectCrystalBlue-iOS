@@ -10,9 +10,10 @@
 #import "Source.h"
 #import "AbstractCloudLibraryObjectStore.h"
 #import "SimpleDBLibraryObjectStore.h"
+#import "SimpleTableViewController.h"
 
 @interface SourceEditViewController : UIViewController
-<UINavigationControllerDelegate,UITextFieldDelegate, UIAlertViewDelegate>
+<UINavigationControllerDelegate,UITextFieldDelegate, UIAlertViewDelegate, SimpleTableViewControllerDelegate>
 
 {
     __weak IBOutlet UITextField *TypeField;
@@ -63,5 +64,9 @@
 - (IBAction)backgroundTapped:(id)sender;
 - (id)initWithSource:(Source*)initSource withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary;
 - (IBAction)picturedTapped:(id)sender;
+- (IBAction)showRockTypeOptions:(id)sender;
+- (IBAction)showLithologyOptions:(id)sender;
+- (IBAction)showDeposytemOptions:(id)sender;
+- (IBAction)showAgeMethodOptions:(id)sender;
 
 @end
