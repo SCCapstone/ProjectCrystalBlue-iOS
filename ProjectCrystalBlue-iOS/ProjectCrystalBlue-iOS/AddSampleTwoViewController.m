@@ -23,12 +23,11 @@
 
 - (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary
 {
-    sourceToAdd = initSource;
-    libraryObjectStore = initLibrary;
-    typeArray = [[NSArray alloc] init];
-    
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
+        sourceToAdd = initSource;
+        libraryObjectStore = initLibrary;
+        typeArray = [[NSArray alloc] init];
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Select Type"];

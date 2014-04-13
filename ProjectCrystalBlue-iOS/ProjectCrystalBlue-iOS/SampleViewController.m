@@ -28,7 +28,8 @@
 
 @synthesize selectedSource, libraryObjectStore;
 
-- (id)initWithSource:(Source *) initSource {
+- (id)initWithSource:(Source *) initSource
+{
     // Call the superclass's designated initializer
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
@@ -161,7 +162,7 @@
     
     if([option isEqualToString:@"PROC"])
     {
-        ProcedureListViewController *procedureListViewController = [[ProcedureListViewController alloc] initWithSample:selectedSample];
+        ProcedureListViewController *procedureListViewController = [[ProcedureListViewController alloc] initWithSample:selectedSample WithLibrary:libraryObjectStore];
         [[self navigationController] pushViewController:procedureListViewController  animated:YES];
     }
     

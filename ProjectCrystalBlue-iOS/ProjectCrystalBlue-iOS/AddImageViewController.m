@@ -22,7 +22,9 @@
 @implementation AddImageViewController
 @synthesize selectedSource, libraryObjectStore;
 
-- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary{
+- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary
+{
+    self = [super init];
     if (self) {
         selectedSource = initSource;
         libraryObjectStore = initLibrary;

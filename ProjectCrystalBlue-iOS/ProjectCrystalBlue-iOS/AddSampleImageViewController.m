@@ -28,7 +28,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @synthesize libraryObjectStore, sourceToAdd, titleNav, imageArray, descriptionArray;
 
-- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary WithTitle:(NSString*) initTitle withImages:(NSMutableArray *) initImages withDescriptions:(NSMutableArray *) initDescriptions{
+- (id)initWithSource:(Source *)initSource
+   WithLibraryObject:(AbstractCloudLibraryObjectStore *)initLibrary
+           WithTitle:(NSString*)initTitle
+          withImages:(NSMutableArray *)initImages
+    withDescriptions:(NSMutableArray *)initDescriptions
+{
+    self = [super init];
     if (self) {
         sourceToAdd = initSource;
         libraryObjectStore = initLibrary;

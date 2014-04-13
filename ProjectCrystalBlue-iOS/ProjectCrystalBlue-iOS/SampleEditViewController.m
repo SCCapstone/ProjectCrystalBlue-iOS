@@ -26,12 +26,11 @@
 
 -(id)initWithSample:(Sample *)initSample WithOption:(NSString *) initOption{
     // Call the superclass's designated initializer
-    selectedSample = initSample;
-    tags = [[NSMutableArray alloc] init];
-    option = initOption;
-    
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
+        selectedSample = initSample;
+        tags = [[NSMutableArray alloc] init];
+        option = initOption;
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:[selectedSample key]];
@@ -95,7 +94,7 @@
     
     if([optionAS isEqualToString:@"APPLY"])
     {
-        ProcedureListViewController *procedureListViewController = [[ProcedureListViewController alloc] initWithSample:selectedSample];
+        ProcedureListViewController *procedureListViewController = [[ProcedureListViewController alloc] initWithSample:selectedSample WithLibrary:libraryObjectStore];
         //[procedureListViewController setLibraryObjectStore:libraryObjectStore];
         [[self navigationController] pushViewController:procedureListViewController  animated:YES];
     }

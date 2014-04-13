@@ -21,12 +21,11 @@
 
 - (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary
 {
-    sourceToAdd = initSource;
-    libraryObjectStore = initLibrary;
-    ageArray = [[NSMutableArray alloc] init];
-    
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
+        sourceToAdd = initSource;
+        libraryObjectStore = initLibrary;
+        ageArray = [[NSMutableArray alloc] init];
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Select Age Method"];

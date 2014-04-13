@@ -18,7 +18,9 @@
 @implementation AddSampleSixViewController
 @synthesize libraryObjectStore, sourceToAdd, RegionField, LocalityField, SectionField, MeterField;
 
-- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary{
+- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary
+{
+    self = [super init];
     if (self) {
         
         sourceToAdd = initSource;

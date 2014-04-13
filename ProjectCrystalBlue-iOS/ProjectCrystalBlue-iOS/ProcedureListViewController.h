@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "Sample.h"
+#import "AbstractCloudLibraryObjectStore.h"
 
 @interface ProcedureListViewController : UITableViewController <UINavigationControllerDelegate>
 
 @property (nonatomic, strong) Sample *selectedSample;
+@property (strong) AbstractCloudLibraryObjectStore *libraryObjectStore;
 
--(id)initWithSample:(Sample *)initSample;
+- (id)initWithSample:(Sample*)initSample WithLibrary:(AbstractCloudLibraryObjectStore *)library;
+
 @end

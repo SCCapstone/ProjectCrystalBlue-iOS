@@ -13,7 +13,7 @@
 #import "AbstractCloudLibraryObjectStore.h"
 #import "SourceConstants.h"
 #import "SourceImageUtils.h"
-#import "sourceImagesViewController.h"
+#import "SourceImagesViewController.h"
 #import "SourceFieldValidator.h"
 
 @interface SourceEditViewController ()
@@ -31,13 +31,15 @@
 
 - (id)initWithSource:(Source*)initSource withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary
 {
-    selectedSource = initSource;
-    libraryObjectStore = initLibrary;
+    self = [super init];
     if (self) {
+        selectedSource = initSource;
+        libraryObjectStore = initLibrary;
+        
         UINavigationItem *n = [self navigationItem];
         [n setTitle:[selectedSource key]];
         
-        UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
+        UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         UIBarButtonItem *savebtn = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleBordered target:self action:@selector(save:)];
         
         [[self navigationItem] setLeftBarButtonItem:backbtn];
@@ -47,7 +49,8 @@
 }
 
 - (IBAction)picturedTapped:(id)sender {
-    sourceImagesViewController *imgViewController = [[sourceImagesViewController alloc] initWithSource:selectedSource withLibrary:libraryObjectStore];
+    SourceImagesViewController *imgViewController = [[SourceImagesViewController alloc] initWithSource:selectedSource
+                                                                                           withLibrary:libraryObjectStore];
     [[self navigationController] pushViewController:imgViewController  animated:YES];
 
 }

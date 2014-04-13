@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="sourceImagesViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SourceImagesViewController">
             <connections>
                 <outlet property="scrollView" destination="rMO-vY-Vrk" id="K93-C1-Zve"/>
                 <outlet property="view" destination="rMO-vY-Vrk" id="pPI-sc-slD"/>

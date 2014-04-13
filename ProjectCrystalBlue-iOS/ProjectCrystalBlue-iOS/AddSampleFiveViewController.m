@@ -22,6 +22,7 @@
 
 - (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary
 {
+    self = [super init];
     if (self) {
         sourceToAdd = initSource;
         libraryObjectStore = initLibrary;

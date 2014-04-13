@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import "sourceImagesViewController.h"
+#import "SourceImagesViewController.h"
 #import "Source.h"
 #import "AbstractCloudLibraryObjectStore.h"
 #import "SourceImageUtils.h"
 #import "AddImageViewController.h"
 
 
-@interface sourceImagesViewController ()
+@interface SourceImagesViewController ()
 {
     UIImage* defaultImage;
     NSArray* imageArray;
@@ -21,16 +21,18 @@
 }
 @end
 
-@implementation sourceImagesViewController
+@implementation SourceImagesViewController
 @synthesize selectedSource, libraryObjectStore;
 
 - (id)initWithSource:(Source*)initSource withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary
 {
-    selectedSource = initSource;
-    libraryObjectStore = initLibrary;
-    NSString* title = @"Images for ";
-    title = [title stringByAppendingString:selectedSource.key];
+    self = [super init];
     if (self) {
+        selectedSource = initSource;
+        libraryObjectStore = initLibrary;
+        NSString* title = @"Images for ";
+        title = [title stringByAppendingString:selectedSource.key];
+        
         UINavigationItem *n = [self navigationItem];
         [n setTitle:title];
         
@@ -44,7 +46,8 @@
 }
 
 - (IBAction)addImage:(id)sender {
-    AddImageViewController* imgViewController = [[AddImageViewController alloc] initWithSource:selectedSource WithLibraryObject:libraryObjectStore];
+    AddImageViewController* imgViewController = [[AddImageViewController alloc] initWithSource:selectedSource
+                                                                             WithLibraryObject:libraryObjectStore];
     
     [[self navigationController] pushViewController:imgViewController  animated:YES];
 }
@@ -57,12 +60,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self loadImages];
+    //[self loadImages];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+
+- (void)viewWillAppear:(BOOL)animated
 {
-    [self loadImages];
+    //[self loadImages];
 }
 
 - (void)didReceiveMemoryWarning

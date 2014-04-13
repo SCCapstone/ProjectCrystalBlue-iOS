@@ -20,7 +20,9 @@
 @implementation AddSampleSevenViewController
 @synthesize libraryObjectStore, sourceToAdd, AgeField, AgeDataTypeField;
 
-- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary{
+- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary
+{
+    self = [super init];
     if (self) {
         sourceToAdd = initSource;
         libraryObjectStore = initLibrary;

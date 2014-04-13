@@ -24,27 +24,25 @@
     NSMutableArray *procedureNames2;
     NSMutableArray *procedureNames3;
     NSMutableArray *procedureNames4;
-    SimpleDBLibraryObjectStore *libraryObjectStore;
 }
 @end
 
 @implementation ProcedureListViewController
-@synthesize selectedSample;
+@synthesize selectedSample, libraryObjectStore;
 
-- (id)initWithSample:(Sample*)initSample {
+- (id)initWithSample:(Sample*)initSample WithLibrary:(AbstractCloudLibraryObjectStore *)library
+{
     // Call the superclass's designated initializer
-    
-    libraryObjectStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data" WithDatabaseName:@"test_database.db"];
-    selectedSample = initSample;
-    procedureNames0 = [[NSMutableArray alloc] init];
-    procedureNames1 = [[NSMutableArray alloc] init];
-    procedureNames2 = [[NSMutableArray alloc] init];
-    procedureNames3 = [[NSMutableArray alloc] init];
-    procedureNames4 = [[NSMutableArray alloc] init];
-    
     self = [super initWithStyle:UITableViewStyleGrouped];
-    if (self)
-    {
+    if (self) {
+        selectedSample = initSample;
+        libraryObjectStore = library;
+        procedureNames0 = [[NSMutableArray alloc] init];
+        procedureNames1 = [[NSMutableArray alloc] init];
+        procedureNames2 = [[NSMutableArray alloc] init];
+        procedureNames3 = [[NSMutableArray alloc] init];
+        procedureNames4 = [[NSMutableArray alloc] init];
+        
         UINavigationItem *n = [self navigationItem];
         [n setTitle:[selectedSample key]];
         

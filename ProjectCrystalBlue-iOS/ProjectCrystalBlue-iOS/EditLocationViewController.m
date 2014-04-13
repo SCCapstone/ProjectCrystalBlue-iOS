@@ -29,9 +29,11 @@
 
 - (id)initWithSample:(Sample *) initSample
 {
-    selectedSample = initSample;
+    self = [super init];
     if (self) {
-        libraryObjectStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data"WithDatabaseName:@"test_database.db"];
+        selectedSample = initSample;
+        libraryObjectStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data"
+                                                                     WithDatabaseName:@"test_database.db"];
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Change Sample Location"];

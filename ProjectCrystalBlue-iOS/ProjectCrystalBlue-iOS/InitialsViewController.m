@@ -23,14 +23,18 @@
 
 @synthesize initialsField, selectedSample, libraryObjectStore, selectedRow, titleNav, descriptionLabel;
 
-- (id)initWithSample:(Sample*)initSample withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary withRow:(int) initRow withTitle:(NSString*)initTitle
+- (id)initWithSample:(Sample*)initSample
+         withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary
+             withRow:(int) initRow
+           withTitle:(NSString*)initTitle
 {
-    selectedSample = initSample;
-    libraryObjectStore = initLibrary;
-    selectedRow = initRow;
-    titleNav = initTitle;
-    
+    self = [super init];
     if (self) {
+        selectedSample = initSample;
+        libraryObjectStore = initLibrary;
+        selectedRow = initRow;
+        titleNav = initTitle;
+        
         UINavigationItem *n = [self navigationItem];
         [n setTitle:[selectedSample key]];
         

@@ -10,7 +10,7 @@
 #import "Source.h"
 #import "AbstractCloudLibraryObjectStore.h"
 
-@interface sourceImagesViewController : UIViewController<UINavigationControllerDelegate>
+@interface SourceImagesViewController : UIViewController<UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 - (id)initWithSource:(Source*)initSource withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary;
