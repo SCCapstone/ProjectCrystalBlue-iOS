@@ -13,7 +13,6 @@
 @required
 - (void)itemSelectedAtRow:(NSInteger)row
                   WithTag:(NSUInteger)tag;
-
 @end
 
 @interface SimpleTableViewController : UITableViewController
