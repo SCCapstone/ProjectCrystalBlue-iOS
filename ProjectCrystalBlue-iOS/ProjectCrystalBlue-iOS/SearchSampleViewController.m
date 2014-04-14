@@ -13,12 +13,10 @@
 #import "SampleConstants.h"
 
 @interface SearchSampleViewController ()
-
 {
     SimpleDBLibraryObjectStore *libraryObjectStore;
     NSString *searchKey;
     Sample *searchSample;
-    
 }
 @end
 
@@ -34,7 +32,6 @@
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Search Sample"];
-
     }
     return self;
 }
@@ -42,7 +39,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if (prefilledSearchString) {
+    if (prefilledSearchString)
+    {
         [searchField setText:prefilledSearchString];
     }
 }
@@ -50,10 +48,10 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)searchSample:(id)sender {
+- (IBAction)searchSample:(id)sender
+{
     searchKey = [searchField text];
     searchSample = (Sample*)[libraryObjectStore getLibraryObjectForKey:searchKey FromTable:[SampleConstants tableName]];
     
@@ -66,16 +64,13 @@
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil, nil];
         [alert show];
-
     }
-    else{
+    else
+    {
         SampleEditViewController *sampleEditViewController = [[SampleEditViewController alloc] initWithSample:searchSample WithOption:@"SEARCH"];
         [sampleEditViewController setLibraryObjectStore:libraryObjectStore];
         [[self navigationController] pushViewController:sampleEditViewController  animated:YES];
     }
-    
-    
-    
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
@@ -84,7 +79,8 @@
     return YES;
 }
 
-- (IBAction)backgroundTapped:(id)sender {
+- (IBAction)backgroundTapped:(id)sender
+{
     [[self view] endEditing:YES];
 }
 

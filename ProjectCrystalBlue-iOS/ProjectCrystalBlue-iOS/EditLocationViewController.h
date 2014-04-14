@@ -15,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *LocationField;
 
 - (id)initWithSample:(Sample *) initSample;
-
 - (IBAction)updateLocation:(id)sender;
 - (IBAction)cancel:(id)sender;
 

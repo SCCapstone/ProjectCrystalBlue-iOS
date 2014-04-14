@@ -19,7 +19,6 @@
     SimpleDBLibraryObjectStore *libraryObjectStore;
     NSString *newLocation;
     Sample *editedSample;
-    
 }
 
 @end
@@ -32,8 +31,7 @@
     self = [super init];
     if (self) {
         selectedSample = initSample;
-        libraryObjectStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data"
-                                                                     WithDatabaseName:@"test_database.db"];
+        libraryObjectStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data"           WithDatabaseName:@"test_database.db"];
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Change Sample Location"];
@@ -44,17 +42,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)updateLocation:(id)sender {
-    if (![self validateTextFieldValues]) {
+- (IBAction)updateLocation:(id)sender
+{
+    if (![self validateTextFieldValues])
+    {
         return;
     }
     newLocation = [LocationField text];
@@ -62,7 +60,8 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)cancel:(id)sender {
+- (IBAction)cancel:(id)sender
+{
      [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -72,7 +71,8 @@
     return YES;
 }
 
-- (IBAction)backgroundTapped:(id)sender {
+- (IBAction)backgroundTapped:(id)sender
+{
     [[self view] endEditing:YES];
 }
 
@@ -80,7 +80,6 @@
 {
     [self animateTextField: textField up: YES];
 }
-
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
