@@ -12,14 +12,12 @@
 #import "Sample.h"
 #import "AbstractCloudLibraryObjectStore.h"
 #import "SourceConstants.h"
-#import "SourceImageUtils.h"
 #import "SourceImagesViewController.h"
 #import "SourceFieldValidator.h"
 
 @interface SourceEditViewController ()
 {
     NSString* textString;
-    NSArray* imageArray;
     UIImage* img;
 }
 
@@ -52,7 +50,6 @@
     SourceImagesViewController *imgViewController = [[SourceImagesViewController alloc] initWithSource:selectedSource
                                                                                            withLibrary:libraryObjectStore];
     [[self navigationController] pushViewController:imgViewController  animated:YES];
-
 }
 
 - (IBAction)showRockTypeOptions:(id)sender
@@ -178,22 +175,6 @@
     if (!newDate)
         newDate = [NSDate dateWithTimeIntervalSince1970:0];
     [DatePicker setDate:newDate];
-    
-    imageArray = [SourceImageUtils imagesForSource:selectedSource inImageStore:[SourceImageUtils defaultImageStore]];
-
-    
-    if([imageArray count] == 0)
-    {
-        img = [UIImage imageNamed:@"no_image.png"];
-        [imageView setImage:img];
-    }
-    else
-    {
-        img = [imageArray objectAtIndex:0];
-        [imageView setImage:img];
-        
-    }
-     
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -518,7 +499,5 @@
     
     return validationPassed;
 }
-
-
 
 @end
