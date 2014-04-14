@@ -9,9 +9,7 @@
 #import "ProcedureListViewController.h"
 #import "Sample.h"
 #import "Procedures.h"
-#import "PrimitiveProcedures.h"
 #import "AbstractCloudLibraryObjectStore.h"
-#import "SimpleDBLibraryObjectStore.h"
 #import "ProcedureNameConstants.h"
 #import "EditLocationViewController.h"
 #import <QuartzCore/QuartzCore.h>
@@ -32,7 +30,6 @@
 
 - (id)initWithSample:(Sample*)initSample WithLibrary:(AbstractCloudLibraryObjectStore *)library
 {
-    // Call the superclass's designated initializer
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         selectedSample = initSample;
@@ -49,7 +46,6 @@
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         
         [[self navigationItem] setLeftBarButtonItem:backbtn];
-        
     }
     return self;
 }
@@ -59,9 +55,8 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
-
-- (id)initWithStyle:(UITableViewStyle)style {
+- (id)initWithStyle:(UITableViewStyle)style
+{
     return [self init];
 }
 
@@ -93,18 +88,16 @@
     }
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Create an instance of UITableViewCell, with default appearance
-    // Check for a reusable cell first, use that if it exists
-    UITableViewCell *cell =
-    [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-    // If there is no reusable cell of this type, create a new one
-    if (!cell) {
+    UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+    if (!cell)
+    {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:@"UITableViewCell"];
     }
@@ -166,15 +159,11 @@
     [procedureNames4 addObject:@"Magnet 1.0 Amps"];
     [procedureNames4 addObject:@"Magnet 1.2 Amps"];
     [procedureNames4 addObject:@"Magnet 1.4 Amps"];
-
-    
 }
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   // NSString *dummyInitials = @"ANONYMOUS";
     InitialsViewController *initialsViewController = [[InitialsViewController alloc] initWithSample:selectedSample withLibrary:libraryObjectStore withRow:0 withTitle:NULL];
-    
     
     if(indexPath.section == 0)
     {
@@ -265,15 +254,12 @@
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
-    
         else if([indexPath row] == 1)
         {
             initialsViewController.selectedRow = 11;
             initialsViewController.titleNav = @"Heavy Liquid 290";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
-    
-   
     
         else if([indexPath row] == 2)
         {
@@ -282,7 +268,6 @@
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
 
         }
-    
     
         else if([indexPath row] == 3)
         {
@@ -309,7 +294,6 @@
 
         }
     
-    
         else if([indexPath row] == 2)
         {
             initialsViewController.selectedRow = 16;
@@ -317,15 +301,12 @@
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
-    
         else if([indexPath row] == 3)
         {
             initialsViewController.selectedRow = 17;
             initialsViewController.titleNav = @"Magnet 0.6A";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
-
         }
-    
     
         else if([indexPath row] == 4)
         {
@@ -333,7 +314,6 @@
             initialsViewController.titleNav = @"Magnet 0.8A";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
-    
     
         else if([indexPath row] == 5)
         {

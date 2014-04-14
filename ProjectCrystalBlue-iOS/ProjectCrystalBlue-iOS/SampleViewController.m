@@ -12,7 +12,6 @@
 #import "SampleEditViewController.h"
 #import "ProcedureListViewController.h"
 #import "AbstractCloudLibraryObjectStore.h"
-#import "SimpleDBLibraryObjectStore.h"
 #import "Procedures.h"
 #import "PrimitiveProcedures.h"
 
@@ -21,7 +20,6 @@
     NSArray *samples;
     NSString* option;
 }
-
 @end
 
 @implementation SampleViewController
@@ -30,7 +28,6 @@
 
 - (id)initWithSource:(Source *) initSource
 {
-    // Call the superclass's designated initializer
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         samples = [[NSArray alloc] init];
@@ -47,13 +44,12 @@
         
         [[self navigationItem] setRightBarButtonItem:bbi];
         [[self navigationItem] setLeftBarButtonItem:backbtn];
-        
-        
     }
     return self;
 }
 
-- (id)initWithStyle:(UITableViewStyle)style {
+- (id)initWithStyle:(UITableViewStyle)style
+{
     return [self init];
 }
 
@@ -127,14 +123,11 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     Sample *selectedSample = [samples objectAtIndex:[indexPath row]];
-
     UIActionSheet *message;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
@@ -151,13 +144,11 @@
     cellRect.origin.y -= self.tableView.contentOffset.y;
     cellRect.size.height = 1;
     
-    //[message showInView:[UIApplication sharedApplication].keyWindow];
     [message showFromRect:cellRect inView:[UIApplication sharedApplication].keyWindow animated:YES];
     
     while ((!message.hidden) && (message.superview != nil))
     {
         [[NSRunLoop currentRunLoop] limitDateForMode:NSDefaultRunLoopMode];
-        
     }
     
     if([option isEqualToString:@"PROC"])
@@ -169,7 +160,6 @@
     if([option isEqualToString:@"VIEW"])
     {
         SampleEditViewController *sampleEditViewController = [[SampleEditViewController alloc] initWithSample:selectedSample WithOption:@"EDIT"];
-        //[sampleEditViewController setSelectedSample:selectedSample];
         [sampleEditViewController setLibraryObjectStore:libraryObjectStore];
         [[self navigationController] pushViewController:sampleEditViewController  animated:YES];
     }

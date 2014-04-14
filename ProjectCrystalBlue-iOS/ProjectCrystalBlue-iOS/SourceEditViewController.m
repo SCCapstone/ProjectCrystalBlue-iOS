@@ -8,7 +8,6 @@
 
 #import "SourceEditViewController.h"
 #import "Source.h"
-#import "LibraryObject.h"
 #import "Sample.h"
 #import "AbstractCloudLibraryObjectStore.h"
 #import "SourceConstants.h"
@@ -178,25 +177,10 @@
     if (!newDate)
         newDate = [NSDate dateWithTimeIntervalSince1970:0];
     [DatePicker setDate:newDate];
-    
-    imageArray = [SourceImageUtils imagesForSource:selectedSource inImageStore:[SourceImageUtils defaultImageStore]];
-
-    
-    if([imageArray count] == 0)
-    {
-        img = [UIImage imageNamed:@"no_image.png"];
-        [imageView setImage:img];
-    }
-    else
-    {
-        img = [imageArray objectAtIndex:0];
-        [imageView setImage:img];
-        
-    }
-     
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated
+{
     [super viewWillDisappear:animated];
     [[self view] endEditing:YES];
 }
@@ -207,7 +191,8 @@
     return YES;
 }
 
-- (IBAction)backgroundTapped:(id)sender {
+- (IBAction)backgroundTapped:(id)sender
+{
     [[self view] endEditing:YES];
 }
 
@@ -218,7 +203,8 @@
 
 - (void)save:(id)sender
 {
-    if (![self validateTextFieldValues]) {
+    if (![self validateTextFieldValues])
+    {
         return;
     }
     [[selectedSource attributes] setObject:[TypeField text] forKey:SRC_TYPE];
@@ -243,7 +229,6 @@
     NSString *dateString = [formatter stringFromDate:DatePicker.date];
     [[selectedSource attributes] setObject:dateString forKey:SRC_DATE_COLLECTED];
 
-    
     [libraryObjectStore updateLibraryObject:selectedSource IntoTable:[SourceConstants tableName]];
     
     TypeLabel.textColor = [UIColor blackColor];
@@ -274,8 +259,8 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     [self animateTextField: textField up: NO];
-    if (![textString isEqualToString:[textField text]]) {
-        
+    if (![textString isEqualToString:[textField text]])
+    {
         if(textField == TypeField)
         {
             TypeLabel.textColor = [UIColor redColor];
@@ -385,7 +370,6 @@
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil, nil];
         [alert show];
-
     }
     
     ValidationResponse *regionOK = [SourceFieldValidator validateRegion:[RegionField text]];
@@ -401,7 +385,6 @@
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil, nil];
         [alert show];
-
     }
     
     ValidationResponse *localityOK = [SourceFieldValidator validateLocality:[LocalityField text]];
@@ -417,7 +400,6 @@
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil, nil];
         [alert show];
-
     }
     
     ValidationResponse *sectionOK = [SourceFieldValidator validateContinent:[SectionField text]];
@@ -433,7 +415,6 @@
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil, nil];
         [alert show];
-
     }
     
     ValidationResponse *meterOK = [SourceFieldValidator validateMeters:[MeterField text]];
@@ -449,7 +430,6 @@
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil, nil];
         [alert show];
-
     }
     
     ValidationResponse *latitudeOK = [SourceFieldValidator validateLatitude:[LatitudeField text]];
@@ -465,7 +445,6 @@
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil, nil];
         [alert show];
-
     }
     
     ValidationResponse *longitudeOK = [SourceFieldValidator validateLongitude:[LongitudeField text]];
@@ -481,7 +460,6 @@
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil, nil];
         [alert show];
-
     }
     
     ValidationResponse *ageOK = [SourceFieldValidator validateAge:[AgeField text]];
@@ -497,7 +475,6 @@
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil, nil];
         [alert show];
-
     }
     
     ValidationResponse *ageDatatypeOK = [SourceFieldValidator validateAgeDatatype:[AgeDataTypeField text]];
@@ -513,12 +490,8 @@
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil, nil];
         [alert show];
-
     }
     
     return validationPassed;
 }
-
-
-
 @end
