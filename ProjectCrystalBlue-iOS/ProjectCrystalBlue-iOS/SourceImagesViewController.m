@@ -80,18 +80,27 @@
     imageArray = [SourceImageUtils imagesForSource:selectedSource inImageStore:[SourceImageUtils defaultImageStore]];
     descriptionArray = [SourceImageUtils imageKeysForSource:selectedSource];
     
+    CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
     int yInc = 0;
     NSString* imageName = @"no_image.png";
     
     defaultImage = [UIImage imageNamed:imageName];
     for(int i = 0; i < [imageArray count]; i++)
     {
-        //UIImageView* imgView = [[UIImageView alloc] initWithImage:defaultImage];
-        UIImageView* imgView = [[UIImageView alloc] initWithImage:[imageArray objectAtIndex:i]];
+        UIImage* newImg = [imageArray objectAtIndex:i];
+        UIImageView* imgView = [[UIImageView alloc] initWithImage:newImg];
+        
         [imgView setContentMode:UIViewContentModeScaleAspectFit];
-        UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(14, 175+yInc, 300, 30)];
+        
+        
+        UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2-150, 175+yInc, 300, 30)];
         imgView.frame = CGRectMake(10, 10+yInc, 200, 150);
+        imgView.center = CGPointMake(screenWidth/2, imgView.frame.size.height/2+10+yInc);
+        
         [label setText:[descriptionArray objectAtIndex:i]];
+        [label sizeToFit];
+        label.center = CGPointMake(screenWidth/2, label.frame.size.height/2+175+yInc);
+        
         
         yInc = yInc + 225;
         [_scrollView addSubview:imgView];
