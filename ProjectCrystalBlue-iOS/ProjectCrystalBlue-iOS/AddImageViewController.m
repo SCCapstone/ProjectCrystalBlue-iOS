@@ -116,9 +116,11 @@
             imagePickerPopover = [[UIPopoverController alloc] initWithContentViewController:imagePicker];
             
             [imagePickerPopover setDelegate:self];
-            [imagePickerPopover presentPopoverFromBarButtonItem:sender
-                                       permittedArrowDirections:UIPopoverArrowDirectionAny
-                                                       animated:YES];
+            UIButton *photoButton = (UIButton *)sender;
+            [imagePickerPopover presentPopoverFromRect:photoButton.bounds
+                                                inView:self.view
+                              permittedArrowDirections:UIPopoverArrowDirectionAny
+                                              animated:YES];
         }
         // iPhone/iPod touch - modal display
         else
