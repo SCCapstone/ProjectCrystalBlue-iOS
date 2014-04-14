@@ -15,10 +15,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *FormationField;
 @property (weak, nonatomic) IBOutlet UITextField *MemberField;
 
-
 @property(nonatomic) Source* sourceToAdd;
 @property(nonatomic) AbstractCloudLibraryObjectStore *libraryObjectStore;
-
 
 - (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary;
 @end

@@ -36,14 +36,14 @@
         
         [[self navigationItem] setRightBarButtonItem:bbi];
         [[self navigationItem] setLeftBarButtonItem:backbtn];
-        
     }
     return self;
     
 }
 
 - (IBAction)addSource:(id)sender {
-    if (![self validateTextFieldValues]) {
+    if (![self validateTextFieldValues])
+    {
         return;
     }
     
@@ -67,13 +67,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
@@ -82,7 +80,8 @@
     return YES;
 }
 
-- (IBAction)backgroundTapped:(id)sender {
+- (IBAction)backgroundTapped:(id)sender
+{
     [[self view] endEditing:YES];
 }
 
@@ -128,7 +127,6 @@
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil, nil];
         [alert show];
-        
     }
     
     ValidationResponse *ageDatatypeOK = [SourceFieldValidator validateAgeDatatype:[AgeDataTypeField text]];
@@ -144,9 +142,7 @@
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil, nil];
         [alert show];
-        
     }
-    
     return validationPassed;
 }
 

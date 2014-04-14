@@ -29,7 +29,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         libraryObjectStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data"
-                                                                     WithDatabaseName:@"test_database.db"];
+                WithDatabaseName:@"test_database.db"];
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Add Sample"];
@@ -40,17 +40,15 @@
         
         [[self navigationItem] setRightBarButtonItem:bbi];
         [[self navigationItem] setLeftBarButtonItem:backbtn];
-
     }
     return self;
 }
 
-- (IBAction)addSource:(id)sender {
-    
+- (IBAction)addSource:(id)sender
+{
     if (![self validateTextFieldValues]) {
         return;
     }
-    
     if (![libraryObjectStore libraryObjectExistsForKey:[KeyField text] FromTable:[SourceConstants tableName]] && ![[KeyField text] isEqualToString:@""])
     {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -108,7 +106,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
@@ -117,7 +114,8 @@
     return YES;
 }
 
-- (IBAction)backgroundTapped:(id)sender {
+- (IBAction)backgroundTapped:(id)sender
+{
     [[self view] endEditing:YES];
 }
 
@@ -128,8 +126,6 @@
     
     [locationManager startUpdatingLocation];
 }
-
-#pragma mark - CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
@@ -148,7 +144,6 @@
         LatitudeField.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
         LongitudeField.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
     }
-    
     [locationManager stopUpdatingLocation];
 }
 
@@ -195,7 +190,6 @@
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil, nil];
         [alert show];
-        
     }
     
     ValidationResponse *longitudeOK = [SourceFieldValidator validateLongitude:[LongitudeField text]];
@@ -211,10 +205,8 @@
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil, nil];
         [alert show];
-        
     }
     
     return validationPassed;
 }
-
 @end

@@ -46,8 +46,7 @@
 }
 
 - (IBAction)addImage:(id)sender {
-    AddImageViewController* imgViewController = [[AddImageViewController alloc] initWithSource:selectedSource
-                                                                             WithLibraryObject:libraryObjectStore];
+    AddImageViewController* imgViewController = [[AddImageViewController alloc] initWithSource: selectedSource WithLibraryObject:libraryObjectStore];
     
     [[self navigationController] pushViewController:imgViewController  animated:YES];
 }
@@ -72,7 +71,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void) loadImages

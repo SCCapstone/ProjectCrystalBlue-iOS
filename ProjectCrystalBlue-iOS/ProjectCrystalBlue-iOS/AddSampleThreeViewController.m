@@ -36,7 +36,6 @@
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         
         [[self navigationItem] setLeftBarButtonItem:backbtn];
-        
     }
     return self;
 }
@@ -47,8 +46,10 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (id)initWithStyle:(UITableViewStyle)style {
-    return [self init]; }
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    return [self init];
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -57,19 +58,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Create an instance of UITableViewCell, with default appearance
-    // Check for a reusable cell first, use that if it exists
     UITableViewCell *cell =
     [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-    // If there is no reusable cell of this type, create a new one
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:@"UITableViewCell"];
     }
-    // Set the text on the cell with the description of the item // that is at the nth index of items, where n = row this cell // will appear in on the tableview
     
     NSString *p = [lithArray objectAtIndex:[indexPath row]];
-    
     [[cell textLabel] setText:p];
     return cell;
 }
@@ -87,8 +83,7 @@
     
     // Has available deposystems, next view
     if (deposystems) {
-        AddSampleFourViewController *viewControllerFour = [[AddSampleFourViewController alloc] initWithSource:sourceToAdd
-                                                                                            WithLibraryObject:libraryObjectStore];
+        AddSampleFourViewController *viewControllerFour = [[AddSampleFourViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
         [viewControllerFour setTypeSelected:typeSelected];
         [viewControllerFour setNumRows:deposystems.count];
         [sourceToAdd.attributes setObject:lithologySelected forKey:SRC_LITHOLOGY];
@@ -96,8 +91,8 @@
     }
     // No deposystems available, skip fifth view
     else {
-        AddSampleFiveViewController *viewControllerFive = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd
-                                                                                           WithLibraryObject:libraryObjectStore];
+        AddSampleFiveViewController *viewControllerFive = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
+        
         // If lithology selected is unknown, set to empty string
         lithologySelected = [lithologySelected isEqualToString:@"Unknown"] ? @"" : lithologySelected;
         [sourceToAdd.attributes setObject:lithologySelected forKey:SRC_LITHOLOGY];
