@@ -37,11 +37,12 @@
         [[self navigationItem] setLeftBarButtonItem:backbtn];
     }
     return self;
-    
 }
 
-- (IBAction)addSource:(id)sender {
-    if (![self validateTextFieldValues]) {
+- (IBAction)addSource:(id)sender
+{
+    if (![self validateTextFieldValues])
+    {
         return;
     }
     
@@ -53,7 +54,6 @@
     AddSampleAgeViewController *asaViewController = [[AddSampleAgeViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
     
     [[self navigationController] pushViewController:asaViewController  animated:YES];
-
    }
 
 -(void) goBack:(id)sender
@@ -65,13 +65,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
@@ -80,7 +78,8 @@
     return YES;
 }
 
-- (IBAction)backgroundTapped:(id)sender {
+- (IBAction)backgroundTapped:(id)sender
+{
     [[self view] endEditing:YES];
 }
 
@@ -126,7 +125,6 @@
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil, nil];
         [alert show];
-        
     }
     
     ValidationResponse *localityOK = [SourceFieldValidator validateLocality:[LocalityField text]];
@@ -142,7 +140,6 @@
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil, nil];
         [alert show];
-        
     }
     
     ValidationResponse *sectionOK = [SourceFieldValidator validateContinent:[SectionField text]];
@@ -158,7 +155,6 @@
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil, nil];
         [alert show];
-        
     }
     
     ValidationResponse *meterOK = [SourceFieldValidator validateMeters:[MeterField text]];
@@ -174,9 +170,7 @@
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil, nil];
         [alert show];
-        
     }
-
     return validationPassed;
 }
 

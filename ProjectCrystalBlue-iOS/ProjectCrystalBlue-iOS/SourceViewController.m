@@ -11,7 +11,6 @@
 #import "SourceEditViewController.h"
 #import "SampleViewController.h"
 #import "Sample.h"
-#import "AbstractCloudLibraryObjectStore.h"
 #import "SimpleDBLibraryObjectStore.h"
 #import "Reachability.h"
 
@@ -27,11 +26,10 @@
 @implementation SourceViewController
 
 - (id)init {
-    // Call the superclass's designated initializer
+    
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        libraryObjectStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data"
-                                                                     WithDatabaseName:@"test_database.db"];
+        libraryObjectStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data" WithDatabaseName:@"test_database.db"];
         
         // Sync if can connect to internet
         Reachability *reach = [Reachability reachabilityForInternetConnection];
@@ -63,16 +61,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Create an instance of UITableViewCell, with default appearance
-    // Check for a reusable cell first, use that if it exists
-    UITableViewCell *cell =
-    [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-    // If there is no reusable cell of this type, create a new one
-    if (!cell) {
+    UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+    
+    if (!cell)
+    {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:@"UITableViewCell"];
     }
-    // Set the text on the cell with the description of the item // that is at the nth index of items, where n = row this cell // will appear in on the tableview
     
     Source *source = [displayedSources objectAtIndex:indexPath.row];
     [[cell textLabel] setText:[source description]];
@@ -80,21 +75,24 @@
 }
 
 
-- (IBAction)toggleEditingMode:(id)sender {
-    // If we are currently in editing mode...
-    if ([self isEditing]) {
-        [sender setTitle:@"Edit" forState:UIControlStateNormal]; // Turn off editing mode
+- (IBAction)toggleEditingMode:(id)sender
+{
+    if ([self isEditing])
+    {
+        [sender setTitle:@"Edit" forState:UIControlStateNormal];
         [   self setEditing:NO animated:YES];
     }
-    else {
-        [sender setTitle:@"Done" forState:UIControlStateNormal]; // Enter editing mode
+    else
+    {
+        [sender setTitle:@"Done" forState:UIControlStateNormal];
         [self setEditing:YES animated:YES];
     }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.tableView.editing) {
+    if (self.tableView.editing)
+    {
         self.editButtonItem.title =  @"Done";
     }
     else
@@ -136,17 +134,14 @@
     }
     
     CGRect cellRect = [self.tableView cellForRowAtIndexPath:indexPath].frame;
-   // cellRect.origin.y += cellRect.size.height;
     cellRect.origin.y -= self.tableView.contentOffset.y;
     cellRect.size.height = 1;
     
-    //[message showInView:[UIApplication sharedApplication].keyWindow];
     [message showFromRect:cellRect inView:[UIApplication sharedApplication].keyWindow animated:YES];
     
     while ((!message.hidden) && (message.superview != nil))
     {
         [[NSRunLoop currentRunLoop] limitDateForMode:NSDefaultRunLoopMode];
-        
     }
     
     if([option isEqualToString:@"EDIT"])

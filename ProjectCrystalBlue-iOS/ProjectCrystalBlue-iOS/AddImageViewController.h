@@ -16,7 +16,6 @@
                                                      UINavigationControllerDelegate>
 
 {
-    
     __weak IBOutlet UIImageView *imageView;
     __weak IBOutlet UITextField *descriptionField;
     UIPopoverController *imagePickerPopover;

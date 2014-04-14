@@ -9,12 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "Source.h"
 #import "AbstractCloudLibraryObjectStore.h"
-#import "SimpleDBLibraryObjectStore.h"
 #import "SimpleTableViewController.h"
 
 @interface SourceEditViewController : UIViewController
 <UINavigationControllerDelegate,UITextFieldDelegate, UIAlertViewDelegate, SimpleTableViewControllerDelegate>
-
 {
     __weak IBOutlet UITextField *TypeField;
     __weak IBOutlet UITextField *LithologyField;
@@ -51,14 +49,10 @@
     __weak IBOutlet UILabel *DateLabel;
    
     __weak IBOutlet UIDatePicker *DatePicker;
-    __weak IBOutlet UIImageView *imageView;
-    
 }
 @property (nonatomic, strong) IBOutlet UIScrollView *scroller;
 @property (nonatomic, strong) Source *selectedSource;
 @property (nonatomic, strong) AbstractCloudLibraryObjectStore *libraryObjectStore;
-
-
 @property (nonatomic, copy) void (^dismissBlock)(void);
 
 - (IBAction)backgroundTapped:(id)sender;

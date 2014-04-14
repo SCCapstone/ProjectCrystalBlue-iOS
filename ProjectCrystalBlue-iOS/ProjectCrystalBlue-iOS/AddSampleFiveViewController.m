@@ -36,17 +36,17 @@
         
         [[self navigationItem] setRightBarButtonItem:bbi];
         [[self navigationItem] setLeftBarButtonItem:backbtn];
-        
-            }
+    }
     return self;
 
 }
 
-- (IBAction)addSource:(id)sender {
-    if (![self validateTextFieldValues]) {
+- (IBAction)addSource:(id)sender
+{
+    if (![self validateTextFieldValues])
+    {
         return;
     }
-    
     [[sourceToAdd attributes] setObject:[GroupField text] forKey:SRC_GROUP];
     [[sourceToAdd attributes] setObject:[FormationField text] forKey:SRC_FORMATION];
     [[sourceToAdd attributes] setObject:[MemberField text] forKey:SRC_MEMBER];
@@ -54,7 +54,6 @@
     AddSampleSixViewController *assViewController = [[AddSampleSixViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
     
     [[self navigationController] pushViewController:assViewController  animated:YES];
-    
 }
 
 -(void) goBack:(id)sender
@@ -71,7 +70,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
@@ -80,7 +78,8 @@
     return YES;
 }
 
-- (IBAction)backgroundTapped:(id)sender {
+- (IBAction)backgroundTapped:(id)sender
+{
     [[self view] endEditing:YES];
 }
 
@@ -106,7 +105,6 @@
        movementDuration = 0.3f; // tweak as needed
     }
     
-    //if (textField == FormationField) {
     else
     {
         movementDistance = 40; // tweak as needed
@@ -154,9 +152,7 @@
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil, nil];
         [alert show];
-        
     }
-
     return validationPassed;
 }
 

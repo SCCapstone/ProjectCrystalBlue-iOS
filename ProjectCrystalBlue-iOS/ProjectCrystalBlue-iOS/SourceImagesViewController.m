@@ -46,8 +46,7 @@
 }
 
 - (IBAction)addImage:(id)sender {
-    AddImageViewController* imgViewController = [[AddImageViewController alloc] initWithSource:selectedSource
-                                                                             WithLibraryObject:libraryObjectStore];
+    AddImageViewController* imgViewController = [[AddImageViewController alloc] initWithSource: selectedSource WithLibraryObject:libraryObjectStore];
     
     [[self navigationController] pushViewController:imgViewController  animated:YES];
 }
@@ -72,7 +71,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void) loadImages
@@ -85,28 +83,53 @@
     NSString* imageName = @"no_image.png";
     
     defaultImage = [UIImage imageNamed:imageName];
-    for(int i = 0; i < [imageArray count]; i++)
+    if(![UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
     {
-        UIImage* newImg = [imageArray objectAtIndex:i];
-        UIImageView* imgView = [[UIImageView alloc] initWithImage:newImg];
+        for(int i = 0; i < [imageArray count]; i++)
+        {
+            UIImage* newImg = [imageArray objectAtIndex:i];
+            UIImageView* imgView = [[UIImageView alloc] initWithImage:newImg];
         
-        [imgView setContentMode:UIViewContentModeScaleAspectFit];
+            [imgView setContentMode:UIViewContentModeScaleAspectFit];
         
+            UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2-150, 175+yInc, 300, 30)];
+            imgView.frame = CGRectMake(10, 10+yInc, 200, 150);
+            imgView.center = CGPointMake(screenWidth/2, imgView.frame.size.height/2+10+yInc);
+            
+            [label setText:[descriptionArray objectAtIndex:i]];
+            [label sizeToFit];
+            label.center = CGPointMake(screenWidth/2, label.frame.size.height/2+175+yInc);
         
-        UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2-150, 175+yInc, 300, 30)];
-        imgView.frame = CGRectMake(10, 10+yInc, 200, 150);
-        imgView.center = CGPointMake(screenWidth/2, imgView.frame.size.height/2+10+yInc);
-        
-        [label setText:[descriptionArray objectAtIndex:i]];
-        [label sizeToFit];
-        label.center = CGPointMake(screenWidth/2, label.frame.size.height/2+175+yInc);
-        
-        
-        yInc = yInc + 225;
-        [_scrollView addSubview:imgView];
-        [_scrollView addSubview:label];
+            yInc = yInc + 225;
+            [_scrollView addSubview:imgView];
+            [_scrollView addSubview:label];
+        }
+        [_scrollView setContentSize:CGSizeMake(screenWidth, (225*[imageArray count])+100)];
     }
     
-    [_scrollView setContentSize:CGSizeMake(320, (225*[imageArray count])+100)];
+   else
+   {
+       for(int i = 0; i < [imageArray count]; i++)
+       {
+           UIImage* newImg = [imageArray objectAtIndex:i];
+           UIImageView* imgView = [[UIImageView alloc] initWithImage:newImg];
+           
+           [imgView setContentMode:UIViewContentModeScaleAspectFit];
+           
+           UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2-150, 525+yInc, 300, 30)];
+           imgView.frame = CGRectMake(10, 50+yInc, 600, 450);
+           imgView.center = CGPointMake(screenWidth/2, imgView.frame.size.height/2+10+yInc);
+           
+           [label setText:[descriptionArray objectAtIndex:i]];
+           [label sizeToFit];
+           label.center = CGPointMake(screenWidth/2, label.frame.size.height/2+525+yInc);
+           
+           yInc = yInc + 650;
+           [_scrollView addSubview:imgView];
+           [_scrollView addSubview:label];
+       }
+       [_scrollView setContentSize:CGSizeMake(screenWidth, (650*[imageArray count])+100)];
+   }
 }
+
 @end

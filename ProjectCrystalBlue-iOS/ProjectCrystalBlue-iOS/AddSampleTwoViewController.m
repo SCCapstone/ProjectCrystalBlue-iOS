@@ -36,7 +36,6 @@
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         
         [[self navigationItem] setLeftBarButtonItem:backbtn];
-        
     }
     return self;
 }
@@ -46,8 +45,10 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (id)initWithStyle:(UITableViewStyle)style {
-    return [self init]; }
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    return [self init];
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -56,19 +57,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Create an instance of UITableViewCell, with default appearance
-    // Check for a reusable cell first, use that if it exists
     UITableViewCell *cell =
     [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-    // If there is no reusable cell of this type, create a new one
+    
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:@"UITableViewCell"];
     }
-    // Set the text on the cell with the description of the item // that is at the nth index of items, where n = row this cell // will appear in on the tableview
     
     NSString *p = [typeArray objectAtIndex:[indexPath row]];
-    
     [[cell textLabel] setText:p];
     return cell;
 }
@@ -86,8 +83,7 @@
     
     // Has available lithologies, next view
     if (lithologies) {
-        AddSampleThreeViewController *viewControllerThree = [[AddSampleThreeViewController alloc] initWithSource:sourceToAdd
-                                                                                               WithLibraryObject:libraryObjectStore];
+        AddSampleThreeViewController *viewControllerThree = [[AddSampleThreeViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
         [viewControllerThree setTypeSelected:typeSelected];
         [viewControllerThree setNumRows:lithologies.count];
         [sourceToAdd.attributes setObject:typeSelected forKey:SRC_TYPE];
@@ -95,8 +91,7 @@
     }
     // Does not, skip to fifth view
     else {
-        AddSampleFiveViewController *viewControllerFive = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd
-                                                                                            WithLibraryObject:libraryObjectStore];
+        AddSampleFiveViewController *viewControllerFive = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
         // If type selected is unknown, set to empty string
         typeSelected = [typeSelected isEqualToString:@"Unknown"] ? @"" : typeSelected;
         [sourceToAdd.attributes setObject:typeSelected forKey:SRC_TYPE];

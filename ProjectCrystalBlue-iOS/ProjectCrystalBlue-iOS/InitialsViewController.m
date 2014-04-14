@@ -47,8 +47,10 @@
     return self;
 }
 
-- (IBAction)procedure:(id)sender {
-    if (![self validateTextFieldValues]) {
+- (IBAction)procedure:(id)sender
+{
+    if (![self validateTextFieldValues])
+    {
         return;
     }
     
@@ -161,9 +163,7 @@
     
     NSUInteger temp = self.navigationController.viewControllers.count - 3;
     UIViewController* tempController = [self.navigationController.viewControllers objectAtIndex:temp];
-    
     [self.navigationController popToViewController:tempController animated:YES];
-    
 }
 
 -(void) goBack:(id)sender
@@ -188,7 +188,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (BOOL)validateTextFieldValues

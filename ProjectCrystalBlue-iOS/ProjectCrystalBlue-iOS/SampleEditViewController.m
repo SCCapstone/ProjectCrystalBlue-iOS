@@ -41,7 +41,6 @@
         
         [[self navigationItem] setRightBarButtonItem:actions];
         [[self navigationItem] setLeftBarButtonItem:backbtn];
-        
     }
     return self;
 }
@@ -53,7 +52,6 @@
     {
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
-    
     else
     {
         [self.navigationController popViewControllerAnimated:YES];
@@ -65,7 +63,6 @@
     UIActionSheet *message;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
-        
         message = [[UIActionSheet alloc] initWithTitle:@"Action:" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"View Source", @"Apply Procedure", nil];
     }
     else
@@ -74,12 +71,10 @@
     }
     
     [message showInView:[UIApplication sharedApplication].keyWindow];
-    //[message showFromRect:cellRect inView:[UIApplication sharedApplication].keyWindow animated:YES];
     
     while ((!message.hidden) && (message.superview != nil))
     {
         [[NSRunLoop currentRunLoop] limitDateForMode:NSDefaultRunLoopMode];
-        
     }
     
     if([optionAS isEqualToString:@"VIEW"])
@@ -95,10 +90,8 @@
     if([optionAS isEqualToString:@"APPLY"])
     {
         ProcedureListViewController *procedureListViewController = [[ProcedureListViewController alloc] initWithSample:selectedSample WithLibrary:libraryObjectStore];
-        //[procedureListViewController setLibraryObjectStore:libraryObjectStore];
         [[self navigationController] pushViewController:procedureListViewController  animated:YES];
     }
-    
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -117,23 +110,24 @@
     }
 }
 
-
-- (id)initWithStyle:(UITableViewStyle)style {
+- (id)initWithStyle:(UITableViewStyle)style
+{
     return [self init];
 }
 
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
+    if (section == 0)
+    {
         return 1;
     }
-    
-    else{
+    else
+    {
         if([tags count] == 0)
             return 1;
         else
@@ -143,23 +137,22 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Create an instance of UITableViewCell, with default appearance
-    // Check for a reusable cell first, use that if it exists
-    UITableViewCell *cell =
-    [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-    // If there is no reusable cell of this type, create a new one
-    if (!cell) {
+    UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+    if (!cell)
+    {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:@"UITableViewCell"];
     }
  
-    if (indexPath.section==0) {
+    if (indexPath.section==0)
+    {
         NSString *p = [[selectedSample attributes] objectForKey:SMP_CURRENT_LOCATION];
          [[cell textLabel] setText:p];
         return cell;
     }
     
-    if ([tags count] > 0) {
+    if ([tags count] > 0)
+    {
         NSString *p = [tags objectAtIndex:[indexPath row]];
         [[cell textLabel] setText:p];
     }

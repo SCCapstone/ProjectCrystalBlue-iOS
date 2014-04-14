@@ -41,14 +41,12 @@
         
     }
     return self;
-    
 }
 
 - (IBAction)addImage:(id)sender {
     if (![self validateTextFieldValues]) {
         return;
     }
-    
     if(!image)
     {
         NSString *message = @"Image Not Selected.";
@@ -61,7 +59,8 @@
                               otherButtonTitles:nil, nil];
         [alert show];
     }
-    else{
+    else
+    {
         [SourceImageUtils addImage:image forSource:selectedSource inDataStore:libraryObjectStore withImageTag:[descriptionField text] intoImageStore:[SourceImageUtils defaultImageStore]];
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -76,13 +75,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
@@ -110,7 +107,7 @@
     {
         [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
         [imagePicker setDelegate:self];
-        // Do popover if iPad
+        
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
         {
             imagePickerPopover = [[UIPopoverController alloc] initWithContentViewController:imagePicker];
@@ -122,7 +119,6 @@
                               permittedArrowDirections:UIPopoverArrowDirectionAny
                                               animated:YES];
         }
-        // iPhone/iPod touch - modal display
         else
             [self presentViewController:imagePicker animated:YES completion:nil];
     }
@@ -138,10 +134,10 @@
                               otherButtonTitles:nil, nil];
         [alert show];
     }
-
 }
 
-- (IBAction)UploadPhoto:(id)sender {
+- (IBAction)UploadPhoto:(id)sender
+{
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     
     [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
@@ -149,12 +145,10 @@
     [self presentViewController:imagePicker animated:YES completion:nil];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
     image = [info objectForKey:UIImagePickerControllerOriginalImage];
     [imageView setImage:image];
-    
-    
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
@@ -201,9 +195,6 @@
                               otherButtonTitles:nil, nil];
         [alert show];
     }
-    
     return validationPassed;
 }
-
-
 @end

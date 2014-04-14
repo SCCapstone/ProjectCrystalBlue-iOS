@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "Source.h"
 #import "AbstractCloudLibraryObjectStore.h"
-@class AbstractLibraryObjectStore;
 
 @interface SampleViewController : UITableViewController <UIActionSheetDelegate>
 

@@ -32,33 +32,34 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)viewSources:(id)sender {
-    
+- (IBAction)viewSources:(id)sender
+{
     SourceViewController *sourceViewController = [[SourceViewController alloc] init];
     [[self navigationController] pushViewController:sourceViewController  animated:YES];
     
 }
 
-- (IBAction)searchSample:(id)sender {
+- (IBAction)searchSample:(id)sender
+{
     SearchSampleViewController *searchSampleViewController = [[SearchSampleViewController alloc] init];
     [[self navigationController] pushViewController:searchSampleViewController  animated:YES];
 }
 
-- (IBAction)addSource:(id)sender {
+- (IBAction)addSource:(id)sender
+{
     AddSampleOneViewController *asoViewController = [[AddSampleOneViewController alloc] init];
     [[self navigationController] pushViewController:asoViewController  animated:YES];
 }
 
-- (IBAction)scan:(id)sender {
+- (IBAction)scan:(id)sender
+{
     EmbedReaderViewController *scanViewController = [[EmbedReaderViewController alloc] init];
     [[self navigationController] pushViewController:scanViewController animated:YES];
 }

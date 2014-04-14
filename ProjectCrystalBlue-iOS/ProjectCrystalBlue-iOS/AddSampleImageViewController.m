@@ -54,18 +54,15 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         
         [[self navigationItem] setRightBarButtonItem:bbi];
         [[self navigationItem] setLeftBarButtonItem:backbtn];
-        
     }
     return self;
     
 }
 
-- (IBAction)addSource:(id)sender {
-    
-    
-    //[info objectForKey:UIImagePickerControllerOriginalImage];
-    
-    if ([titleNav isEqualToString:@"Far View Outcrop"]) {
+- (IBAction)addSource:(id)sender
+{
+    if ([titleNav isEqualToString:@"Far View Outcrop"])
+    {
         if(image)
         {
             [imageArray addObject:image];
@@ -76,8 +73,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         
          [[self navigationController] pushViewController:asiViewController  animated:YES];
     }
-    
-    else if ([titleNav isEqualToString:@"Medium View Outcrop"]) {
+    else if ([titleNav isEqualToString:@"Medium View Outcrop"])
+    {
         if(image)
         {
             [imageArray addObject:image];
@@ -124,7 +121,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -135,7 +131,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)takePicture:(id)sender
@@ -153,7 +148,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     {
         [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
         [imagePicker setDelegate:self];
-        // Do popover if iPad
+        
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
         {
             imagePickerPopover = [[UIPopoverController alloc] initWithContentViewController:imagePicker];
@@ -166,7 +161,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                               permittedArrowDirections:UIPopoverArrowDirectionAny
                                               animated:YES];
         }
-        // iPhone/iPod touch - modal display
         else
             [self presentViewController:imagePicker animated:YES completion:nil];
     }
@@ -195,13 +189,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [self presentViewController:imagePicker animated:YES completion:nil];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
     image = [info objectForKey:UIImagePickerControllerOriginalImage];
     [imageView setImage:image];
-    
-    
     [picker dismissViewControllerAnimated:YES completion:NULL];
-    
 }
 @end
