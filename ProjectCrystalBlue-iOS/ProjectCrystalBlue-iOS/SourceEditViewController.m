@@ -11,14 +11,12 @@
 #import "Sample.h"
 #import "AbstractCloudLibraryObjectStore.h"
 #import "SourceConstants.h"
-#import "SourceImageUtils.h"
 #import "SourceImagesViewController.h"
 #import "SourceFieldValidator.h"
 
 @interface SourceEditViewController ()
 {
     NSString* textString;
-    NSArray* imageArray;
     UIImage* img;
 }
 
@@ -51,7 +49,6 @@
     SourceImagesViewController *imgViewController = [[SourceImagesViewController alloc] initWithSource:selectedSource
                                                                                            withLibrary:libraryObjectStore];
     [[self navigationController] pushViewController:imgViewController  animated:YES];
-
 }
 
 - (IBAction)showRockTypeOptions:(id)sender
@@ -494,4 +491,5 @@
     
     return validationPassed;
 }
+
 @end
