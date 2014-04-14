@@ -60,13 +60,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //[self loadImages];
+    [self loadImages];
 }
 
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    //[self loadImages];
+    [self loadImages];
 }
 
 - (void)didReceiveMemoryWarning
