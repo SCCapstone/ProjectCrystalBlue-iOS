@@ -36,7 +36,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     UINavigationController *navController = [[UINavigationController alloc]
                                              initWithRootViewController:homeViewController];
-    [[self window] setRootViewController:homeViewController];
     [[self window] setRootViewController:navController];
     
     self.window.backgroundColor = [UIColor whiteColor];
