@@ -16,7 +16,6 @@
 		0355089318DF3961007D8A64 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0355089218DF3961007D8A64 /* libiconv.dylib */; };
 		035508B118DF41CE007D8A64 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0355089B18DF41BF007D8A64 /* libzbar.a */; };
 		B4014E8D18A7203300D8F4BA /* SampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4014E8C18A7203300D8F4BA /* SampleViewController.m */; };
-		B40CD0AE18FCCC9F00B20CA7 /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B40CD0AD18FCCC9F00B20CA7 /* SpinnerView.m */; };
 		B42DF80D18AFC4CD001C0E09 /* SampleEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B42DF80C18AFC4CD001C0E09 /* SampleEditViewController.m */; };
 		B42DF81318B1DB3B001C0E09 /* ProcedureListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B42DF81218B1DB3B001C0E09 /* ProcedureListViewController.m */; };
 		B4383ACB189C42B700DAC28F /* SourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383ACA189C42B700DAC28F /* SourceViewController.m */; };
@@ -183,8 +182,6 @@
 		035508B018DF41BF007D8A64 /* ZBarSymbol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBarSymbol.h; sourceTree = "<group>"; };
 		B4014E8B18A7203300D8F4BA /* SampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleViewController.h; sourceTree = "<group>"; };
 		B4014E8C18A7203300D8F4BA /* SampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleViewController.m; sourceTree = "<group>"; };
-		B40CD0AC18FCCC9F00B20CA7 /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
-		B40CD0AD18FCCC9F00B20CA7 /* SpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerView.m; sourceTree = "<group>"; };
 		B42DF80B18AFC4CD001C0E09 /* SampleEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleEditViewController.h; sourceTree = "<group>"; };
 		B42DF80C18AFC4CD001C0E09 /* SampleEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleEditViewController.m; sourceTree = "<group>"; };
 		B42DF81118B1DB3B001C0E09 /* ProcedureListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureListViewController.h; sourceTree = "<group>"; };
@@ -636,8 +633,6 @@
 				D7EFB3E718AECBB2004EAB88 /* ImageUtils.m */,
 				D021B93418F0EEBA00ADE234 /* Reachability.h */,
 				D021B93518F0EEBA00ADE234 /* Reachability.m */,
-				B40CD0AC18FCCC9F00B20CA7 /* SpinnerView.h */,
-				B40CD0AD18FCCC9F00B20CA7 /* SpinnerView.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1148,7 +1143,6 @@
 				D7EFB3E118AEC9A3004EAB88 /* LocalImageStore.m in Sources */,
 				D70BD24E18DFA39700FECBD7 /* S3ImageStore.m in Sources */,
 				B4383AE2189C71B200DAC28F /* SourceEditViewController.m in Sources */,
-				B40CD0AE18FCCC9F00B20CA7 /* SpinnerView.m in Sources */,
 				D07526E018B0084400622CBA /* TransactionConstants.m in Sources */,
 				D77F88D118E8ABB800734631 /* ProcedureFieldValidator.m in Sources */,
 				D07526E418B008B600622CBA /* TransactionStore.m in Sources */,
