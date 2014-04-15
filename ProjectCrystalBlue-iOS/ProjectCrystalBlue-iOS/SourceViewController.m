@@ -184,7 +184,7 @@
     
     CGFloat contentYoffset = scrollView.contentOffset.y;
     
-    if(contentYoffset < -64)
+    if(contentYoffset < -70)
     {
         Reachability *reach = [Reachability reachabilityForInternetConnection];
         if ([reach isReachable])
