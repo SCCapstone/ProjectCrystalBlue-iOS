@@ -13,6 +13,7 @@
 #import "Sample.h"
 #import "SimpleDBLibraryObjectStore.h"
 #import "Reachability.h"
+#import "SpinnerView.h"
 
 @interface SourceViewController()
 {
@@ -188,6 +189,13 @@
         Reachability *reach = [Reachability reachabilityForInternetConnection];
         if ([reach isReachable])
             [libraryObjectStore synchronizeWithCloud];
+        
+        SpinnerView * spinner = [SpinnerView loadSpinnerIntoView:self.view];
+        
+        [NSTimer scheduledTimerWithTimeInterval:2.0
+                                         target:spinner
+                                       selector:@selector(removeSpinner)
+                                       userInfo:nil repeats:NO];
         
         displayedSources = [libraryObjectStore getAllLibraryObjectsFromTable:[SourceConstants tableName]].mutableCopy;
         NSLog(@"Scroll");
