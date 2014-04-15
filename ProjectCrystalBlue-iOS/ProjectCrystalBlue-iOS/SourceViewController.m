@@ -70,6 +70,7 @@
         [libraryObjectStore synchronizeWithCloud];
     }
     
+    displayedSources = [libraryObjectStore getAllLibraryObjectsFromTable:[SourceConstants tableName]].mutableCopy;
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
 }

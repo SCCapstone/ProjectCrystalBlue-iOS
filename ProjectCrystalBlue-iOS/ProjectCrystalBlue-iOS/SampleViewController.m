@@ -74,6 +74,7 @@
         [libraryObjectStore synchronizeWithCloud];
     }
     
+    samples = [libraryObjectStore getAllSamplesForSourceKey:selectedSource.key];
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
 }
