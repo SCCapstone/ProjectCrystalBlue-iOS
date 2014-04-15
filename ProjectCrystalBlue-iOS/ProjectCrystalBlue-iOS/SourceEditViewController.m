@@ -28,7 +28,7 @@
 @synthesize selectedSource, scroller, libraryObjectStore;
 
 - (id)initWithSource:(Source*)initSource
-         withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary
+         WithLibrary:(AbstractCloudLibraryObjectStore*)initLibrary
 AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
 {
     self = [super init];
