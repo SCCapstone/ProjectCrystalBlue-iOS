@@ -328,7 +328,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
     }
 }
 
-- (void) animateTextField: (UITextField*) textField up: (BOOL) up
+- (void) animateTextField:(UITextField*)textField up:(BOOL)up
 {
     const int movementDistance = 40; // tweak as needed
     const float movementDuration = 0.3f; // tweak as needed

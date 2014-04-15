@@ -32,11 +32,6 @@
     if (self) {
         libraryObjectStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data" WithDatabaseName:@"test_database.db"];
         
-        // Sync if can connect to internet
-        Reachability *reach = [Reachability reachabilityForInternetConnection];
-        if ([reach isReachable])
-            [libraryObjectStore synchronizeWithCloud];
-        
         displayedSources = [libraryObjectStore getAllLibraryObjectsFromTable:[SourceConstants tableName]].mutableCopy;
         
         UINavigationItem *n = [self navigationItem];
@@ -53,6 +48,30 @@
 - (id)initWithStyle:(UITableViewStyle)style
 {
     return [self init];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    // Control for sync visual cue
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self
+                       action:@selector(syncSources)
+             forControlEvents:UIControlEventValueChanged];
+    
+    self.refreshControl = refreshControl;
+}
+
+- (void)syncSources
+{
+    Reachability *reach = [Reachability reachabilityForInternetConnection];
+    if ([reach isReachable]) {
+        [libraryObjectStore synchronizeWithCloud];
+    }
+    
+    [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -75,6 +94,16 @@
     return cell;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.tableView.editing)
+    {
+        self.editButtonItem.title =  @"Done";
+    }
+    else
+        self.editButtonItem.title = @"Delete";
+    return YES;
+}
 
 - (IBAction)toggleEditingMode:(id)sender
 {
@@ -89,23 +118,6 @@
         [self setEditing:YES animated:YES];
     }
 }
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (self.tableView.editing)
-    {
-        self.editButtonItem.title =  @"Done";
-    }
-    else
-        self.editButtonItem.title = @"Delete";
-    return YES;
-}
-         
--(void) goBack:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -148,9 +160,9 @@
     if([option isEqualToString:@"EDIT"])
     {
         SourceEditViewController *sourceEditViewController =
-            [[SourceEditViewController alloc] initWithSource:selectedSource
-                                                 WithLibrary:libraryObjectStore
-                                       AndNavigateBackToRoot:NO];
+        [[SourceEditViewController alloc] initWithSource:selectedSource
+                                             WithLibrary:libraryObjectStore
+                                   AndNavigateBackToRoot:NO];
         [[self navigationController] pushViewController:sourceEditViewController  animated:YES];
     }
     
@@ -161,6 +173,11 @@
         [[self navigationController] pushViewController:sampleViewController  animated:YES];
     }
     
+}
+
+-(void) goBack:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -178,33 +195,5 @@
             break;
     }
 }
-
--(void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    
-    CGFloat contentYoffset = scrollView.contentOffset.y;
-    
-    if(contentYoffset < -70)
-    {
-        Reachability *reach = [Reachability reachabilityForInternetConnection];
-        if ([reach isReachable])
-            [libraryObjectStore synchronizeWithCloud];
-        
-        SpinnerView * spinner = [SpinnerView loadSpinnerIntoView:self.view];
-        
-        [NSTimer scheduledTimerWithTimeInterval:2.0
-                                         target:spinner
-                                       selector:@selector(removeSpinner)
-                                       userInfo:nil repeats:NO];
-        
-        displayedSources = [libraryObjectStore getAllLibraryObjectsFromTable:[SourceConstants tableName]].mutableCopy;
-        NSLog(@"Scroll");
-        [scrollView setContentOffset:CGPointMake(0, -64) animated:NO];
-        scrollView.scrollEnabled = NO;
-        scrollView.scrollEnabled = YES;
-    }
-    
-}
-
 
 @end

@@ -14,6 +14,7 @@
 #import "AbstractCloudLibraryObjectStore.h"
 #import "Procedures.h"
 #import "PrimitiveProcedures.h"
+#import "Reachability.h"
 
 @interface SampleViewController ()
 {
@@ -30,7 +31,7 @@
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        samples = [[NSArray alloc] init];
+        samples = [libraryObjectStore getAllSamplesForSourceKey:selectedSource.key];
         selectedSource = initSource;
         
         UINavigationItem *n = [self navigationItem];
@@ -53,6 +54,36 @@
     return [self init];
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    // Control for sync visual cue
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self
+                       action:@selector(syncSamples)
+             forControlEvents:UIControlEventValueChanged];
+    
+    self.refreshControl = refreshControl;
+}
+
+- (void)syncSamples
+{
+    Reachability *reach = [Reachability reachabilityForInternetConnection];
+    if ([reach isReachable]) {
+        [libraryObjectStore synchronizeWithCloud];
+    }
+    
+    [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    samples = [libraryObjectStore getAllSamplesForSourceKey:selectedSource.key];
+    [self.tableView reloadData];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [samples count];
@@ -72,6 +103,49 @@
     [[cell textLabel] setText:[sample description]];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Sample *selectedSample = [samples objectAtIndex:[indexPath row]];
+    UIActionSheet *message;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
+        
+        message = [[UIActionSheet alloc] initWithTitle:@"Action:" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Perform Procedure", @"View Sample", nil];
+    }
+    else
+    {
+        message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Perform Procedure", @"View Sample", nil];
+    }
+    
+    CGRect cellRect = [self.tableView cellForRowAtIndexPath:indexPath].frame;
+    cellRect.origin.y += cellRect.size.height;
+    cellRect.origin.y -= self.tableView.contentOffset.y;
+    cellRect.size.height = 1;
+    
+    [message showFromRect:cellRect inView:[UIApplication sharedApplication].keyWindow animated:YES];
+    
+    while ((!message.hidden) && (message.superview != nil))
+    {
+        [[NSRunLoop currentRunLoop] limitDateForMode:NSDefaultRunLoopMode];
+    }
+    
+    if([option isEqualToString:@"PROC"])
+    {
+        ProcedureListViewController *procedureListViewController = [[ProcedureListViewController alloc] initWithSample:selectedSample WithLibrary:libraryObjectStore];
+        [[self navigationController] pushViewController:procedureListViewController  animated:YES];
+    }
+    
+    if([option isEqualToString:@"VIEW"])
+    {
+        SampleEditViewController *sampleEditViewController =
+        [[SampleEditViewController alloc] initWithSample:selectedSample
+                                             WithLibrary:libraryObjectStore
+                                   AndNavigateBackToRoot:NO];
+        
+        [[self navigationController] pushViewController:sampleEditViewController animated:YES];
+    }
 }
 
 -(void) goBack:(id)sender
@@ -106,68 +180,6 @@
     samples = [libraryObjectStore getAllSamplesForSourceKey:selectedSource.key];
     [self.tableView reloadData];
 }
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    samples = [libraryObjectStore getAllSamplesForSourceKey:selectedSource.key];
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
-    samples = [libraryObjectStore getAllSamplesForSourceKey:selectedSource.key];
-    [self.tableView reloadData];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
-
-- (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    Sample *selectedSample = [samples objectAtIndex:[indexPath row]];
-    UIActionSheet *message;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
-    {
-
-        message = [[UIActionSheet alloc] initWithTitle:@"Action:" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Perform Procedure", @"View Sample", nil];
-    }
-    else
-    {
-        message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Perform Procedure", @"View Sample", nil];
-    }
-    
-    CGRect cellRect = [self.tableView cellForRowAtIndexPath:indexPath].frame;
-    cellRect.origin.y += cellRect.size.height;
-    cellRect.origin.y -= self.tableView.contentOffset.y;
-    cellRect.size.height = 1;
-    
-    [message showFromRect:cellRect inView:[UIApplication sharedApplication].keyWindow animated:YES];
-    
-    while ((!message.hidden) && (message.superview != nil))
-    {
-        [[NSRunLoop currentRunLoop] limitDateForMode:NSDefaultRunLoopMode];
-    }
-    
-    if([option isEqualToString:@"PROC"])
-    {
-        ProcedureListViewController *procedureListViewController = [[ProcedureListViewController alloc] initWithSample:selectedSample WithLibrary:libraryObjectStore];
-        [[self navigationController] pushViewController:procedureListViewController  animated:YES];
-    }
-    
-    if([option isEqualToString:@"VIEW"])
-    {
-        SampleEditViewController *sampleEditViewController =
-            [[SampleEditViewController alloc] initWithSample:selectedSample
-                                                 WithLibrary:libraryObjectStore
-                                       AndNavigateBackToRoot:NO];
-        
-        [[self navigationController] pushViewController:sampleEditViewController animated:YES];
-    }
-}
-
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
