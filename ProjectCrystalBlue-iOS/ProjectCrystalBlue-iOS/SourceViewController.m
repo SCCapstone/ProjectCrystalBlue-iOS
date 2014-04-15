@@ -178,4 +178,25 @@
     }
 }
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    
+    CGFloat contentYoffset = scrollView.contentOffset.y;
+    
+    if(contentYoffset < -64)
+    {
+        Reachability *reach = [Reachability reachabilityForInternetConnection];
+        if ([reach isReachable])
+            [libraryObjectStore synchronizeWithCloud];
+        
+        displayedSources = [libraryObjectStore getAllLibraryObjectsFromTable:[SourceConstants tableName]].mutableCopy;
+        NSLog(@"Scroll");
+        [scrollView setContentOffset:CGPointMake(0, -64) animated:NO];
+        scrollView.scrollEnabled = NO;
+        scrollView.scrollEnabled = YES;
+    }
+    
+}
+
+
 @end
