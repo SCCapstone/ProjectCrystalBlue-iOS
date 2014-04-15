@@ -11,8 +11,7 @@
 @interface HomeViewController : UIViewController
 
 - (IBAction)viewSources:(id)sender;
-- (IBAction)searchSample:(id)sender;
 - (IBAction)addSource:(id)sender;
-- (IBAction)scan:(id)sender;
+- (IBAction)scanQRCode:(id)sender;
 
 @end

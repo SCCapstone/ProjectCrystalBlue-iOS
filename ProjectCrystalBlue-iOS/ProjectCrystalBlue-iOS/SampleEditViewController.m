@@ -16,21 +16,26 @@
 {
     NSArray *tags;
     NSString *optionAS;
+    BOOL navigateToRoot;
 }
 
 @end
 
 @implementation SampleEditViewController
 
-@synthesize selectedSample, libraryObjectStore, option;
+@synthesize selectedSample, libraryObjectStore;
 
--(id)initWithSample:(Sample *)initSample WithOption:(NSString *) initOption{
+- (id)initWithSample:(Sample *)initSample
+         WithLibrary:(AbstractCloudLibraryObjectStore*)initLibrary
+AndNavigateBackToRoot:(BOOL)navigateBackToRoot
+{
     // Call the superclass's designated initializer
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         selectedSample = initSample;
+        libraryObjectStore = initLibrary;
+        navigateToRoot = navigateBackToRoot;
         tags = [[NSMutableArray alloc] init];
-        option = initOption;
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:[selectedSample key]];
@@ -48,14 +53,10 @@
 
 -(void) goBack:(id)sender
 {
-    if([option isEqualToString:@"SEARCH"])
-    {
+    if (navigateToRoot)
         [self.navigationController popToRootViewControllerAnimated:YES];
-    }
     else
-    {
         [self.navigationController popViewControllerAnimated:YES];
-    }
 }
 
 -(void) multiOptions:(id)sender
@@ -83,8 +84,12 @@
         NSString *temp = [selectedSample sourceKey];
         Source *selectedSource = (Source*)[libraryObjectStore getLibraryObjectForKey:temp FromTable:[SourceConstants tableName]];
         
-        SourceEditViewController *sourceEditViewController = [[SourceEditViewController alloc] initWithSource:selectedSource withLibrary:libraryObjectStore];
-        [[self navigationController] pushViewController:sourceEditViewController  animated:YES];
+        SourceEditViewController *sourceEditViewController =
+            [[SourceEditViewController alloc] initWithSource:selectedSource
+                                                 WithLibrary:libraryObjectStore
+                                       AndNavigateBackToRoot:NO];
+        
+        [[self navigationController] pushViewController:sourceEditViewController animated:YES];
     }
     
     if([optionAS isEqualToString:@"APPLY"])

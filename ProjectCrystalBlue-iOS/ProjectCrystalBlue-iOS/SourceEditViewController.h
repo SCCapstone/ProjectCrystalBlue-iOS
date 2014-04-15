@@ -55,8 +55,11 @@
 @property (nonatomic, strong) AbstractCloudLibraryObjectStore *libraryObjectStore;
 @property (nonatomic, copy) void (^dismissBlock)(void);
 
+- (id)initWithSource:(Source*)initSource
+         WithLibrary:(AbstractCloudLibraryObjectStore*)initLibrary
+AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
+
 - (IBAction)backgroundTapped:(id)sender;
-- (id)initWithSource:(Source*)initSource withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary;
 - (IBAction)picturedTapped:(id)sender;
 - (IBAction)showRockTypeOptions:(id)sender;
 - (IBAction)showLithologyOptions:(id)sender;

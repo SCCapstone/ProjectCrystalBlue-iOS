@@ -146,7 +146,10 @@
     
     if([option isEqualToString:@"EDIT"])
     {
-        SourceEditViewController *sourceEditViewController = [[SourceEditViewController alloc] initWithSource:selectedSource withLibrary:libraryObjectStore];
+        SourceEditViewController *sourceEditViewController =
+            [[SourceEditViewController alloc] initWithSource:selectedSource
+                                                 WithLibrary:libraryObjectStore
+                                       AndNavigateBackToRoot:NO];
         [[self navigationController] pushViewController:sourceEditViewController  animated:YES];
     }
     

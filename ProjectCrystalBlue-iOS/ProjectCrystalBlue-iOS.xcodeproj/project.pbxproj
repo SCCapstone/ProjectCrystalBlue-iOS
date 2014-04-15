@@ -24,7 +24,6 @@
 		B43DCE9618C67A8C00FD9B53 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43DCE9518C67A8C00FD9B53 /* CoreLocation.framework */; };
 		B446B92618C2403C00AB4E88 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B92418C2403C00AB4E88 /* HomeViewController.m */; };
 		B446B92718C2403C00AB4E88 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B92518C2403C00AB4E88 /* HomeViewController.xib */; };
-		B446B92B18C2589900AB4E88 /* SearchSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B92918C2589900AB4E88 /* SearchSampleViewController.m */; };
 		B446B92C18C2589900AB4E88 /* SearchSampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B92A18C2589900AB4E88 /* SearchSampleViewController.xib */; };
 		B446B93118C2C85900AB4E88 /* AddSampleOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B92F18C2C85900AB4E88 /* AddSampleOneViewController.m */; };
 		B446B93218C2C85900AB4E88 /* AddSampleOneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B93018C2C85900AB4E88 /* AddSampleOneViewController.xib */; };
@@ -197,8 +196,6 @@
 		B446B92318C2403C00AB4E88 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		B446B92418C2403C00AB4E88 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		B446B92518C2403C00AB4E88 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
-		B446B92818C2589900AB4E88 /* SearchSampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchSampleViewController.h; sourceTree = "<group>"; };
-		B446B92918C2589900AB4E88 /* SearchSampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchSampleViewController.m; sourceTree = "<group>"; };
 		B446B92A18C2589900AB4E88 /* SearchSampleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchSampleViewController.xib; sourceTree = "<group>"; };
 		B446B92E18C2C85900AB4E88 /* AddSampleOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSampleOneViewController.h; sourceTree = "<group>"; };
 		B446B92F18C2C85900AB4E88 /* AddSampleOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleOneViewController.m; sourceTree = "<group>"; };
@@ -614,8 +611,6 @@
 				B446B92218C23FB800AB4E88 /* ModelViews */,
 				B446B92318C2403C00AB4E88 /* HomeViewController.h */,
 				B446B92418C2403C00AB4E88 /* HomeViewController.m */,
-				B446B92818C2589900AB4E88 /* SearchSampleViewController.h */,
-				B446B92918C2589900AB4E88 /* SearchSampleViewController.m */,
 				0355088118DF249B007D8A64 /* EmbedReaderViewController.h */,
 				0355088218DF249B007D8A64 /* EmbedReaderViewController.m */,
 				B46C93C218C64A920057078B /* EditLocationViewController.h */,
@@ -1155,7 +1150,6 @@
 				D07526F118B008E300622CBA /* FMDatabaseAdditions.m in Sources */,
 				B46C93C518C64A920057078B /* EditLocationViewController.m in Sources */,
 				D07526F418B008E300622CBA /* FMResultSet.m in Sources */,
-				B446B92B18C2589900AB4E88 /* SearchSampleViewController.m in Sources */,
 				B446B94E18C2E8B000AB4E88 /* AddSampleSevenViewController.m in Sources */,
 				D07526F218B008E300622CBA /* FMDatabasePool.m in Sources */,
 				D021B93618F0EEBA00ADE234 /* Reachability.m in Sources */,

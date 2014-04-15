@@ -18,6 +18,7 @@
 {
     NSString* textString;
     UIImage* img;
+    BOOL navigateToRoot;
 }
 
 @end
@@ -26,12 +27,15 @@
 
 @synthesize selectedSource, scroller, libraryObjectStore;
 
-- (id)initWithSource:(Source*)initSource withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary
+- (id)initWithSource:(Source*)initSource
+         withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary
+AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
 {
     self = [super init];
     if (self) {
         selectedSource = initSource;
         libraryObjectStore = initLibrary;
+        navigateToRoot = navigateBackToRoot;
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:[selectedSource key]];
@@ -195,7 +199,10 @@
 
 - (void)goBack:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (navigateToRoot)
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    else
+        [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)save:(id)sender
