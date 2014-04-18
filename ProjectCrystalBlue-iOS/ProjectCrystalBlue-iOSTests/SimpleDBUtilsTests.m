@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "SimpleDBUtils.h"
-#import "HardcodedCredentialsProvider.h"
+#import "LocalEncryptedCredentialsProvider.h"
 #import "Transaction.h"
 #import "Source.h"
 
@@ -22,12 +22,16 @@
 @end
 
 @implementation SimpleDBUtilsTests
+/* IMPORTANT: If these unit tests are failing due to AWS exceptions, it is probably because
+ * credentials aren't available. Try running the application and entering your credentials with a
+ * local passcode "1234", then re-running the tests. */
 
 - (void)setUp
 {
     [super setUp];
-    
-    NSObject<AmazonCredentialsProvider> *credentialsProvider = [[HardcodedCredentialsProvider alloc] init];
+
+    [[LocalEncryptedCredentialsProvider sharedInstance] setLocalKey:@"1234"];
+    id<AmazonCredentialsProvider> credentialsProvider = [LocalEncryptedCredentialsProvider sharedInstance];
     simpleDBClient = [[AmazonSimpleDBClient alloc] initWithCredentialsProvider:credentialsProvider];
 
     @try {

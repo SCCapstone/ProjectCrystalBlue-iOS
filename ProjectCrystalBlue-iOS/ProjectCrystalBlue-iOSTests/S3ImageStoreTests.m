@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "AbstractMobileCloudImageStore.h"
 #import "LocalImageStore.h"
+#import "LocalEncryptedCredentialsProvider.h"
 #import "S3ImageStore.h"
 
 #define IMAGE_DIRECTORY @"project-crystal-blue-test-temp"
@@ -19,9 +20,14 @@
 @end
 
 @implementation S3ImageStoreTests
+/* IMPORTANT: If these unit tests are failing due to AWS exceptions, it is probably because
+ * credentials aren't available. Try running the application and entering your credentials with a
+ * local passcode "1234", then re-running the tests. */
 
 - (void)setUp
 {
+    // Sets the local passcode to 1234
+    [[LocalEncryptedCredentialsProvider sharedInstance] setLocalKey:@"1234"];
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }
