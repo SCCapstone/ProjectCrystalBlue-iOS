@@ -74,8 +74,20 @@
     // Decrypt the data
     NSData *decryptedData = [CredentialsEncryption decryptData:dataFromFile WithKey:localKey];
 
-    AmazonCredentialsEncodable *decodedCredentials = [NSKeyedUnarchiver unarchiveObjectWithData:decryptedData];
-    return [decodedCredentials asAmazonCredentials];
+    AmazonCredentials *returnedCredentials;
+
+    @try {
+        AmazonCredentialsEncodable *decodedCredentials = [NSKeyedUnarchiver unarchiveObjectWithData:decryptedData];
+        returnedCredentials = [decodedCredentials asAmazonCredentials];
+    }
+    @catch (NSException *exception) {
+        // Some issue is encountered when trying to decode the credentials.
+        // Most likely this is because the user entered the wrong local key.
+        returnedCredentials = nil;
+    }
+    @finally {
+        return returnedCredentials;
+    }
 }
 
 +(LocalEncryptedCredentialsProvider *)sharedInstance {
