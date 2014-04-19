@@ -20,6 +20,8 @@
     UIImage* img;
     BOOL navigateToRoot;
     CLLocationManager *locationManager;
+    CLLocation *currentLocation;
+    CLLocation *start;
 }
 
 @end
@@ -507,6 +509,13 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
+    
+    if(currentLocation != start)
+    {
+        LatitudeLabel.textColor = [UIColor redColor];
+        LongitudeLabel.textColor = [UIColor redColor];
+    }
+
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -520,7 +529,8 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
     NSLog(@"didUpdateToLocation: %@", newLocation);
-    CLLocation *currentLocation = newLocation;
+    currentLocation = newLocation;
+    start = [[CLLocation alloc] initWithLatitude:[[LatitudeField text] floatValue] longitude:[[LongitudeField text] floatValue]];
     
     if (currentLocation != nil) {
         LatitudeField.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];

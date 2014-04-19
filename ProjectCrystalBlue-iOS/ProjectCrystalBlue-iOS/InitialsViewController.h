@@ -20,5 +20,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
 - (id)initWithSample:(Sample*)initSample withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary withRow:(int) initRow withTitle:(NSString*)initTitle;
-
+- (IBAction)backgroundTapped:(id)sender;
 @end
