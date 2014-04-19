@@ -10,9 +10,10 @@
 #import "Source.h"
 #import "AbstractCloudLibraryObjectStore.h"
 #import "SimpleTableViewController.h"
+#import "CoreLocation/CoreLocation.h"
 
 @interface SourceEditViewController : UIViewController
-<UINavigationControllerDelegate,UITextFieldDelegate, UIAlertViewDelegate, SimpleTableViewControllerDelegate>
+<UINavigationControllerDelegate,UITextFieldDelegate, UIAlertViewDelegate,CLLocationManagerDelegate, SimpleTableViewControllerDelegate>
 {
     __weak IBOutlet UITextField *TypeField;
     __weak IBOutlet UITextField *LithologyField;
@@ -65,5 +66,6 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
 - (IBAction)showLithologyOptions:(id)sender;
 - (IBAction)showDeposytemOptions:(id)sender;
 - (IBAction)showAgeMethodOptions:(id)sender;
+- (IBAction)getLocation:(id)sender;
 
 @end
