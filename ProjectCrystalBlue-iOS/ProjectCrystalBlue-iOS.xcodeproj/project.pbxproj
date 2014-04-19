@@ -1389,12 +1389,14 @@
 					"$(SRCROOT)/include/ZBarSDK",
 				);
 				INFOPLIST_FILE = "ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/include",
 					"$(PROJECT_DIR)/include/ZBarSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1417,12 +1419,14 @@
 					"$(SRCROOT)/include/ZBarSDK",
 				);
 				INFOPLIST_FILE = "ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/include",
 					"$(PROJECT_DIR)/include/ZBarSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

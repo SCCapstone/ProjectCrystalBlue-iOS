@@ -160,6 +160,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
     [[self view] setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     
     locationManager = [[CLLocationManager alloc] init];
+    start = [[CLLocation alloc] initWithLatitude:[[LatitudeField text] floatValue] longitude:[[LongitudeField text] floatValue]];
     
     [TypeField setText:[[selectedSource attributes] objectForKey:SRC_TYPE]];
     [LithologyField setText:[[selectedSource attributes] objectForKey:SRC_LITHOLOGY]];
@@ -510,11 +511,6 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
     
-    if(currentLocation != start)
-    {
-        LatitudeLabel.textColor = [UIColor redColor];
-        LongitudeLabel.textColor = [UIColor redColor];
-    }
 
 }
 
@@ -530,11 +526,15 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
 {
     NSLog(@"didUpdateToLocation: %@", newLocation);
     currentLocation = newLocation;
-    start = [[CLLocation alloc] initWithLatitude:[[LatitudeField text] floatValue] longitude:[[LongitudeField text] floatValue]];
     
     if (currentLocation != nil) {
         LatitudeField.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
         LongitudeField.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
+    }
+    if(currentLocation != start)
+    {
+        LatitudeLabel.textColor = [UIColor redColor];
+        LongitudeLabel.textColor = [UIColor redColor];
     }
     [locationManager stopUpdatingLocation];
 }
