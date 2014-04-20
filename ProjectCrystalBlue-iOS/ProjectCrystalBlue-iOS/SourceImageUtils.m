@@ -233,6 +233,17 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return [numberSuffix integerValue];
 }
 
++ (NSString *)extractImageTagFromKey:(NSString *)key
+{
+    NSScanner *scanner = [[NSScanner alloc] initWithString:key];
 
+    // throw away the first two parts of the key
+    [scanner scanUpToString:@"." intoString:nil];
+    [scanner scanString:@"."     intoString:nil];
+
+    NSString *imageTag;
+    [scanner scanUpToString:@"." intoString:&imageTag];
+    return imageTag;
+}
 
 @end

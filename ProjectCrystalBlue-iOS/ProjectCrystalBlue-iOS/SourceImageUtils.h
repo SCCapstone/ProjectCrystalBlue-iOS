@@ -83,4 +83,11 @@ static const NSString *IMAGE_LIST_DELIMITER = @",";
 ///
 + (NSInteger)extractNumberSuffixFromKey:(NSString *)key;
 
+/// Assuming a key with a format that looks something like this:
+///     SOURCEKEY_i123.IMAGETAG.jpg
+///
+/// then "IMAGETAG" will be returned.
+///
++ (NSString *)extractImageTagFromKey:(NSString *)key;
+
 @end
