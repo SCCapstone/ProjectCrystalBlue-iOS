@@ -53,6 +53,7 @@
     imgView =[[UIImageView alloc] init];
     [imgView setImage:image];
     imgView.frame = CGRectMake(0, heightNav, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-heightNav);
+    [imgView setContentMode:UIViewContentModeScaleAspectFit];
     [self.view addSubview:imgView];
 }
 
