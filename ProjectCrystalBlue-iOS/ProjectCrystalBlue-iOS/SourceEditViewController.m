@@ -19,6 +19,9 @@
     NSString* textString;
     UIImage* img;
     BOOL navigateToRoot;
+    CLLocationManager *locationManager;
+    CLLocation *currentLocation;
+    CLLocation *start;
 }
 
 @end
@@ -128,18 +131,33 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
 - (void)itemSelectedAtRow:(NSInteger)row
                   WithTag:(NSUInteger)tag
 {
-    NSString *rockType = TypeField.text;
+    NSString *oldRockType = TypeField.text;
 
     if (tag == 0) {
-        [TypeField setText:[[SourceConstants rockTypes] objectAtIndex:row]];
+        NSString *newRockType = [[SourceConstants rockTypes] objectAtIndex:row];
+        [TypeField setText:newRockType];
         TypeLabel.textColor = [UIColor redColor];
+        
+        [LithologyField setText:@""];
+        LithologyLabel.textColor = [UIColor redColor];
+        
+        if ([newRockType isEqualToString:@"Siliciclastic"] || [newRockType isEqualToString:@"Carbonate"] ||
+                [newRockType isEqualToString:@"Authigenic"] || [newRockType isEqualToString:@"Volcanic"] ||
+                [newRockType isEqualToString:@"Fossil"]) {
+            DeposystemLabel.textColor = [UIColor redColor];
+            [DeposystemField setText:@""];
+        }
+        else {
+            DeposystemLabel.textColor = [UIColor redColor];
+            [DeposystemField setText:@"N/A"];
+        }
     }
     else if (tag == 1) {
-        [LithologyField setText:[[SourceConstants lithologiesForRockType:rockType] objectAtIndex:row]];
+        [LithologyField setText:[[SourceConstants lithologiesForRockType:oldRockType] objectAtIndex:row]];
         LithologyLabel.textColor = [UIColor redColor];
     }
     else if (tag == 2) {
-        [DeposystemField setText:[[SourceConstants deposystemsForRockType:rockType] objectAtIndex:row]];
+        [DeposystemField setText:[[SourceConstants deposystemsForRockType:oldRockType] objectAtIndex:row]];
         DeposystemLabel.textColor = [UIColor redColor];
     }
     else if (tag == 3) {
@@ -155,6 +173,9 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
     [scroller setContentSize:CGSizeMake(320, 1050)];
     
     [[self view] setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    
+    locationManager = [[CLLocationManager alloc] init];
+    start = [[CLLocation alloc] initWithLatitude:[[LatitudeField text] floatValue] longitude:[[LongitudeField text] floatValue]];
     
     [TypeField setText:[[selectedSource attributes] objectForKey:SRC_TYPE]];
     [LithologyField setText:[[selectedSource attributes] objectForKey:SRC_LITHOLOGY]];
@@ -227,12 +248,25 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
     [[selectedSource attributes] setObject:[AgeMethodField text] forKey:SRC_AGE_METHOD];
     [[selectedSource attributes] setObject:[AgeDataTypeField text] forKey:SRC_AGE_DATATYPE];
     
+    // Logic to set to current time and user entered date
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterShortStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
-    NSString *dateString = [formatter stringFromDate:DatePicker.date];
+    
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDate *now = [NSDate date];
+    NSDateComponents *nowComp = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:now];
+    NSDate *date = DatePicker.date;
+    NSDateComponents *comp = [calendar components:(NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:date];
+    
+    comp.hour = nowComp.hour;
+    comp.minute = nowComp.minute;
+    date = [calendar dateFromComponents:comp];
+    
+    NSString *dateString = [formatter stringFromDate:date];
     [[selectedSource attributes] setObject:dateString forKey:SRC_DATE_COLLECTED];
 
+    
     [libraryObjectStore updateLibraryObject:selectedSource IntoTable:[SourceConstants tableName]];
     
     TypeLabel.textColor = [UIColor blackColor];
@@ -498,5 +532,45 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
     
     return validationPassed;
 }
+
+- (IBAction)getLocation:(id)sender
+{
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager startUpdatingLocation];
+    
+
+}
+
+- (IBAction)dateChanged:(id)sender
+{
+    DateLabel.textColor = [UIColor redColor];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"didFailWithError: %@", error);
+    UIAlertView *errorAlert = [[UIAlertView alloc]
+                               initWithTitle:@"Error" message:@"Failed to Get Your Location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [errorAlert show];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    NSLog(@"didUpdateToLocation: %@", newLocation);
+    currentLocation = newLocation;
+    
+    if (currentLocation != nil) {
+        LatitudeField.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
+        LongitudeField.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
+    }
+    if(currentLocation != start)
+    {
+        LatitudeLabel.textColor = [UIColor redColor];
+        LongitudeLabel.textColor = [UIColor redColor];
+    }
+    [locationManager stopUpdatingLocation];
+}
+
 
 @end

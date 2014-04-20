@@ -57,6 +57,9 @@
     
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet punctuationCharacterSet]];
+    [validCharacters removeCharactersInString:@"_."];
+    [validCharacters removeCharactersInString:@"'"];
     
     if (![PrimitiveFieldValidator validateField:key
                             containsOnlyCharSet:validCharacters])
@@ -103,7 +106,10 @@
     NSMutableCharacterSet *validCharacters = [[NSMutableCharacterSet alloc] init];
     
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet letterCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet decimalDigitCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet punctuationCharacterSet]];
+    [validCharacters removeCharactersInString:@"'"];
     
     if (![PrimitiveFieldValidator validateField:continent
                             containsOnlyCharSet:validCharacters])
@@ -141,6 +147,8 @@
     
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet punctuationCharacterSet]];
+    [validCharacters removeCharactersInString:@"'"];
     
     if (![PrimitiveFieldValidator validateField:type
                             containsOnlyCharSet:validCharacters])
@@ -177,6 +185,8 @@
     
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet punctuationCharacterSet]];
+    [validCharacters removeCharactersInString:@"'"];
     
     if (![PrimitiveFieldValidator validateField:lithology
                             containsOnlyCharSet:validCharacters])
@@ -212,6 +222,8 @@
     
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet punctuationCharacterSet]];
+    [validCharacters removeCharactersInString:@"'"];
     
     if (![PrimitiveFieldValidator validateField:deposystem
                             containsOnlyCharSet:validCharacters])
@@ -248,6 +260,8 @@
     
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet punctuationCharacterSet]];
+    [validCharacters removeCharactersInString:@"'"];
     
     if (![PrimitiveFieldValidator validateField:group
                             containsOnlyCharSet:validCharacters])
@@ -294,6 +308,8 @@
     
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet punctuationCharacterSet]];
+    [validCharacters removeCharactersInString:@"'"];
     
     if (![PrimitiveFieldValidator validateField:formation
                             containsOnlyCharSet:validCharacters])
@@ -340,6 +356,8 @@
     
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet punctuationCharacterSet]];
+    [validCharacters removeCharactersInString:@"'"];
     
     if (![PrimitiveFieldValidator validateField:member
                             containsOnlyCharSet:validCharacters])
@@ -386,6 +404,8 @@
     
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet punctuationCharacterSet]];
+    [validCharacters removeCharactersInString:@"'"];
     
     if (![PrimitiveFieldValidator validateField:region
                             containsOnlyCharSet:validCharacters])
@@ -432,6 +452,8 @@
     
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet punctuationCharacterSet]];
+    [validCharacters removeCharactersInString:@"'"];
     
     if (![PrimitiveFieldValidator validateField:locality
                             containsOnlyCharSet:validCharacters])
@@ -478,6 +500,8 @@
     
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet punctuationCharacterSet]];
+    [validCharacters removeCharactersInString:@"'"];
     
     if (![PrimitiveFieldValidator validateField:section
                             containsOnlyCharSet:validCharacters])
@@ -569,6 +593,8 @@
     
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet punctuationCharacterSet]];
+    [validCharacters removeCharactersInString:@"'"];
     
     if (![PrimitiveFieldValidator validateField:ageMethod
                             containsOnlyCharSet:validCharacters])
@@ -603,6 +629,8 @@
     
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet punctuationCharacterSet]];
+    [validCharacters removeCharactersInString:@"'"];
     
     if (![PrimitiveFieldValidator validateField:ageDatatype
                             containsOnlyCharSet:validCharacters])
@@ -644,6 +672,13 @@
         [valid.errors addObject:errorStr];
     }
     
+    if ([notes rangeOfString:@"'"].location != NSNotFound)
+    {
+        [valid setIsValid:NO];
+        NSString *errorStr = @"Notes may not contain the ' character";
+        [valid.errors addObject:errorStr];
+    }
+    
     return valid;
 }
 
@@ -662,6 +697,13 @@
         NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_MAX_CHARS copy],
                               hyperlinks,
                               hyperlinks.length];
+        [valid.errors addObject:errorStr];
+    }
+    
+    if ([hyperlinks rangeOfString:@"'"].location != NSNotFound)
+    {
+        [valid setIsValid:NO];
+        NSString *errorStr = @"Notes may not contain the ' character";
         [valid.errors addObject:errorStr];
     }
     

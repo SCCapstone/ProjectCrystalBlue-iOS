@@ -13,7 +13,6 @@
 #import "Sample.h"
 #import "SimpleDBLibraryObjectStore.h"
 #import "Reachability.h"
-#import "SpinnerView.h"
 
 @interface SourceViewController()
 {

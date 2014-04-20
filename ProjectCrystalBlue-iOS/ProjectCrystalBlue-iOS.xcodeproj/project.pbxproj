@@ -47,6 +47,8 @@
 		B4981F9A18E9132B00EA0741 /* AddImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4981F9818E9132B00EA0741 /* AddImageViewController.m */; };
 		B4981F9B18E9132B00EA0741 /* AddImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4981F9918E9132B00EA0741 /* AddImageViewController.xib */; };
 		B4981F9E18E937DC00EA0741 /* AddSampleAgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4981F9D18E937DC00EA0741 /* AddSampleAgeViewController.m */; };
+		B4E755F81904396B00D5CCF7 /* EnlargedImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E755F61904396B00D5CCF7 /* EnlargedImageViewController.m */; };
+		B4E755F91904396B00D5CCF7 /* EnlargedImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4E755F71904396B00D5CCF7 /* EnlargedImageViewController.xib */; };
 		D001B3BF18B039C000975620 /* LocalLibraryObjectStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D001B3BE18B039C000975620 /* LocalLibraryObjectStoreTests.m */; };
 		D001B3C118B039CB00975620 /* TransactionStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D001B3C018B039CB00975620 /* TransactionStoreTests.m */; };
 		D01DDDBF188DDC5E0059AF09 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDB8188DDC5E0059AF09 /* Sample.m */; };
@@ -242,6 +244,9 @@
 		B4981F9918E9132B00EA0741 /* AddImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddImageViewController.xib; sourceTree = "<group>"; };
 		B4981F9C18E937DC00EA0741 /* AddSampleAgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSampleAgeViewController.h; sourceTree = "<group>"; };
 		B4981F9D18E937DC00EA0741 /* AddSampleAgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleAgeViewController.m; sourceTree = "<group>"; };
+		B4E755F51904396B00D5CCF7 /* EnlargedImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnlargedImageViewController.h; sourceTree = "<group>"; };
+		B4E755F61904396B00D5CCF7 /* EnlargedImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnlargedImageViewController.m; sourceTree = "<group>"; };
+		B4E755F71904396B00D5CCF7 /* EnlargedImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnlargedImageViewController.xib; sourceTree = "<group>"; };
 		D001B3BE18B039C000975620 /* LocalLibraryObjectStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalLibraryObjectStoreTests.m; sourceTree = "<group>"; };
 		D001B3C018B039CB00975620 /* TransactionStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionStoreTests.m; sourceTree = "<group>"; };
 		D01DDDB7188DDC5E0059AF09 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
@@ -485,9 +490,9 @@
 		B4383AE4189C71B800DAC28F /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
-				D73C2EEE1900A63100223755 /* CredentialsViewController.xib */,
 				B446B92518C2403C00AB4E88 /* HomeViewController.xib */,
 				D7B5867E18C3AD75003C19C0 /* SourceEditViewController.xib */,
+				D73C2EEE1900A63100223755 /* CredentialsViewController.xib */,
 				B446B93018C2C85900AB4E88 /* AddSampleOneViewController.xib */,
 				B446B94318C2E49D00AB4E88 /* AddSampleFiveViewController.xib */,
 				B446B94818C2E67C00AB4E88 /* AddSampleSixViewController.xib */,
@@ -500,6 +505,7 @@
 				B45379F318DD5B66008A9EBB /* InitialsViewController.xib */,
 				B44D915818E7D55F005F937C /* SourceImagesViewController.xib */,
 				D0C31B2718FA389D00F4792C /* SimpleTableViewController.xib */,
+				B4E755F71904396B00D5CCF7 /* EnlargedImageViewController.xib */,
 			);
 			name = XIBs;
 			sourceTree = "<group>";
@@ -553,6 +559,8 @@
 				B44D915718E7D55F005F937C /* SourceImagesViewController.m */,
 				B4981F9718E9132B00EA0741 /* AddImageViewController.h */,
 				B4981F9818E9132B00EA0741 /* AddImageViewController.m */,
+				B4E755F51904396B00D5CCF7 /* EnlargedImageViewController.h */,
+				B4E755F61904396B00D5CCF7 /* EnlargedImageViewController.m */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -1126,6 +1134,7 @@
 				B446B92C18C2589900AB4E88 /* SearchSampleViewController.xib in Resources */,
 				0355088018DF2439007D8A64 /* EmbedReaderViewController.xib in Resources */,
 				B446B92718C2403C00AB4E88 /* HomeViewController.xib in Resources */,
+				B4E755F91904396B00D5CCF7 /* EnlargedImageViewController.xib in Resources */,
 				B46C93C618C64A920057078B /* EditLocationViewController.xib in Resources */,
 				B44D915A18E7D55F005F937C /* SourceImagesViewController.xib in Resources */,
 				D7EFB3E418AECB45004EAB88 /* no_image.png in Resources */,
@@ -1202,6 +1211,7 @@
 				D7EFB3E118AEC9A3004EAB88 /* LocalImageStore.m in Sources */,
 				D70BD24E18DFA39700FECBD7 /* S3ImageStore.m in Sources */,
 				B4383AE2189C71B200DAC28F /* SourceEditViewController.m in Sources */,
+				B4E755F81904396B00D5CCF7 /* EnlargedImageViewController.m in Sources */,
 				D07526E018B0084400622CBA /* TransactionConstants.m in Sources */,
 				D77F88D118E8ABB800734631 /* ProcedureFieldValidator.m in Sources */,
 				D07526E418B008B600622CBA /* TransactionStore.m in Sources */,
@@ -1389,12 +1399,14 @@
 					"$(SRCROOT)/include/ZBarSDK",
 				);
 				INFOPLIST_FILE = "ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/include",
 					"$(PROJECT_DIR)/include/ZBarSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1417,12 +1429,14 @@
 					"$(SRCROOT)/include/ZBarSDK",
 				);
 				INFOPLIST_FILE = "ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/include",
 					"$(PROJECT_DIR)/include/ZBarSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

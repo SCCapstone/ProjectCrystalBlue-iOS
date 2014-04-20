@@ -51,11 +51,22 @@
     }
     if (![libraryObjectStore libraryObjectExistsForKey:[KeyField text] FromTable:[SourceConstants tableName]] && ![[KeyField text] isEqualToString:@""])
     {
+        // Logic to set to current time and user entered date
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateStyle:NSDateFormatterShortStyle];
         [formatter setTimeStyle:NSDateFormatterShortStyle];
-        NSString *dateString = [formatter stringFromDate:DatePicker.date];
         
+        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        NSDate *now = [NSDate date];
+        NSDateComponents *nowComp = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:now];
+        NSDate *date = DatePicker.date;
+        NSDateComponents *comp = [calendar components:(NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:date];
+        
+        comp.hour = nowComp.hour;
+        comp.minute = nowComp.minute;
+        date = [calendar dateFromComponents:comp];
+        
+        NSString *dateString = [formatter stringFromDate:date];
         sourceToAdd = [[Source alloc] initWithKey:[KeyField text]
                                         AndWithValues:[SourceConstants attributeDefaultValues]];
     
@@ -123,7 +134,6 @@
 {
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    
     [locationManager startUpdatingLocation];
 }
 

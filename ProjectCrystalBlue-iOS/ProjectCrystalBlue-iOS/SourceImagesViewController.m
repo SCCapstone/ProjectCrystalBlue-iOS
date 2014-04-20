@@ -11,6 +11,7 @@
 #import "AbstractCloudLibraryObjectStore.h"
 #import "SourceImageUtils.h"
 #import "AddImageViewController.h"
+#import "EnlargedImageViewController.h"
 
 
 @interface SourceImagesViewController ()
@@ -18,6 +19,7 @@
     UIImage* defaultImage;
     NSArray* imageArray;
     NSArray* descriptionArray;
+    UIImageView* imgView;
 }
 @end
 
@@ -59,12 +61,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self loadImages];
+   // [self loadImages];
 }
 
-
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
+    for (UIView *view in self.view.subviews)
+    {
+        [view removeFromSuperview];
+    }
     [self loadImages];
 }
 
@@ -88,7 +93,13 @@
         for(int i = 0; i < [imageArray count]; i++)
         {
             UIImage* newImg = [imageArray objectAtIndex:i];
-            UIImageView* imgView = [[UIImageView alloc] initWithImage:newImg];
+            imgView = [[UIImageView alloc] initWithImage:newImg];
+            imgView.tag = i;
+            
+            UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected:)];
+            singleTap.numberOfTapsRequired = 1;
+            imgView.userInteractionEnabled = YES;
+            [imgView addGestureRecognizer:singleTap];
         
             [imgView setContentMode:UIViewContentModeScaleAspectFit];
         
@@ -112,7 +123,13 @@
        for(int i = 0; i < [imageArray count]; i++)
        {
            UIImage* newImg = [imageArray objectAtIndex:i];
-           UIImageView* imgView = [[UIImageView alloc] initWithImage:newImg];
+           imgView = [[UIImageView alloc] initWithImage:newImg];
+           
+           UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected:)];
+           singleTap.numberOfTapsRequired = 1;
+           imgView.userInteractionEnabled = YES;
+           [imgView addGestureRecognizer:singleTap];
+
            
            [imgView setContentMode:UIViewContentModeScaleAspectFit];
            
@@ -130,6 +147,21 @@
        }
        [_scrollView setContentSize:CGSizeMake(screenWidth, (650*[imageArray count])+100)];
    }
+}
+
+-(IBAction)tapDetected:(id)sender
+{
+    UITapGestureRecognizer *tempView = sender;
+    UIImageView *tempImageView = (UIImageView*) tempView.view;
+    int index = tempImageView.tag;
+    NSString* desc = [descriptionArray objectAtIndex:index];
+    
+    EnlargedImageViewController* eIVC = [[EnlargedImageViewController alloc] initWithSource:selectedSource withLibrary:libraryObjectStore withImage:tempImageView.image withDescription:desc];
+    
+    [[self navigationController] pushViewController:eIVC animated:YES];
+
+    
+    
 }
 
 @end
