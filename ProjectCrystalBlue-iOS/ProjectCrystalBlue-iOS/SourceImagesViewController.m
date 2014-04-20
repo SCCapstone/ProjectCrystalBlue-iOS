@@ -61,12 +61,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self loadImages];
+   // [self loadImages];
 }
 
-
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
+    for (UIView *view in self.view.subviews)
+    {
+        [view removeFromSuperview];
+    }
     [self loadImages];
 }
 
@@ -150,8 +153,10 @@
 {
     UITapGestureRecognizer *tempView = sender;
     UIImageView *tempImageView = (UIImageView*) tempView.view;
+    int index = tempImageView.tag;
+    NSString* desc = [descriptionArray objectAtIndex:index];
     
-    EnlargedImageViewController* eIVC = [[EnlargedImageViewController alloc] initWithImage:tempImageView.image withTag:@"Image Title"];
+    EnlargedImageViewController* eIVC = [[EnlargedImageViewController alloc] initWithSource:selectedSource withLibrary:libraryObjectStore withImage:tempImageView.image withDescription:desc];
     
     [[self navigationController] pushViewController:eIVC animated:YES];
 

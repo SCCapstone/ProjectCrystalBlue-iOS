@@ -7,12 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Source.h"
+#import "AbstractCloudLibraryObjectStore.h"
 
-@interface EnlargedImageViewController : UIViewController
+@interface EnlargedImageViewController : UIViewController<UIActionSheetDelegate>
 {
     __strong IBOutlet UIImageView *imgView;
 }
 
-- (id)initWithImage:(UIImage*)initImage withTag:(NSString*)initTag;
+@property(nonatomic) Source* selectedSource;
+@property (nonatomic, strong) AbstractCloudLibraryObjectStore *libraryObjectStore;
+
+- (id)initWithSource:(Source*) initSource withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary withImage:(UIImage*)initImage withDescription:(NSString*)initDescription;
 
 @end

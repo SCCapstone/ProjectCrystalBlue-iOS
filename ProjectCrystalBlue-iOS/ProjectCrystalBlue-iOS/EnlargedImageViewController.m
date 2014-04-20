@@ -7,25 +7,34 @@
 //
 
 #import "EnlargedImageViewController.h"
+#import "SourceImageUtils.h"
+#import "Source.h"
+#import "AbstractCloudLibraryObjectStore.h"
 
 @interface EnlargedImageViewController ()
 {
-    NSString* tag;
     UIImage* image;
+    NSString* description;
+    NSString* option;
 }
 @end
 
 @implementation EnlargedImageViewController
 
-- (id)initWithImage:(UIImage*)initImage withTag:(NSString*)initTag
+@synthesize selectedSource, libraryObjectStore;
+
+- (id)initWithSource:(Source*) initSource  withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary withImage:(UIImage*)initImage withDescription:(NSString*)initDescription
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         image = initImage;
-        tag = initTag;
+        selectedSource = initSource;
+        libraryObjectStore = initLibrary;
+        description = initDescription;
         
         UINavigationItem *n = [self navigationItem];
-        [n setTitle:tag];
+        [n setTitle:description];
         
         UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"Delete" style:UIBarButtonItemStyleBordered target:self action:@selector(deleteImage:)];
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
@@ -43,7 +52,35 @@
 
 -(void) deleteImage:(id)sender
 {
+    UIActionSheet *message;
     
+    if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
+    {
+        
+        message = [[UIActionSheet alloc] initWithTitle:@"Deleting will remove image from image store:" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Delete", @"Cancel", nil];
+
+        CGFloat wid = [[UIScreen mainScreen] bounds].size.width;
+        CGFloat hei = [[UIScreen mainScreen] bounds].size.height;
+        
+        [message showFromRect:CGRectMake(wid/2-75, hei-50, 150, 100) inView:self.view animated:YES];
+    }
+    else
+    {
+        message = [[UIActionSheet alloc] initWithTitle:@"Deleting will remove image from image store:" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Delete", nil];
+
+        [message showInView:self.view];
+    }
+    
+    while ((!message.hidden) && (message.superview != nil))
+    {
+        [[NSRunLoop currentRunLoop] limitDateForMode:NSDefaultRunLoopMode];
+    }
+
+    if([option isEqualToString:@"Delete"])
+    {
+        [SourceImageUtils removeImage:description forSource:selectedSource inDataStore:libraryObjectStore inImageStore:[SourceImageUtils        defaultImageStore]];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (void)viewDidLoad
@@ -55,17 +92,6 @@
     imgView.frame = CGRectMake(0, heightNav, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-heightNav);
     [imgView setContentMode:UIViewContentModeScaleAspectFit];
     [self.view addSubview:imgView];
-}
-
--(void) viewDidAppear:(BOOL)animated
-{
-    
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:
@@ -83,6 +109,20 @@
     {
         imgView.frame = CGRectMake(0, heightNav, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-heightNav);
 
+    }
+}
+
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex)
+    {
+        case 0:
+            option = @"Delete";
+            break;
+        case 1:
+            option = @"NOTHING";
+            break;
     }
 }
 
