@@ -91,8 +91,9 @@
         {
             UIImage* newImg = [imageArray objectAtIndex:i];
             imgView = [[UIImageView alloc] initWithImage:newImg];
-           
-            UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
+            imgView.tag = i;
+            
+            UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected:)];
             singleTap.numberOfTapsRequired = 1;
             imgView.userInteractionEnabled = YES;
             [imgView addGestureRecognizer:singleTap];
@@ -139,10 +140,12 @@
    }
 }
 
--(void)tapDetected
+-(IBAction)tapDetected:(id)sender
 {
-    NSLog(@"single Tap on imageview");
-    EnlargedImageViewController* eIVC = [[EnlargedImageViewController alloc] initWithImage:imgView.image withTag:@"Image Title"];
+    UITapGestureRecognizer *tempView = sender;
+    UIImageView *tempImageView = (UIImageView*) tempView.view;
+    
+    EnlargedImageViewController* eIVC = [[EnlargedImageViewController alloc] initWithImage:tempImageView.image withTag:@"Image Title"];
     
     [[self navigationController] pushViewController:eIVC animated:YES];
 

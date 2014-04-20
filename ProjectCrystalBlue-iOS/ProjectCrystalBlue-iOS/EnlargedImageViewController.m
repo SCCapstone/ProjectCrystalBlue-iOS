@@ -48,10 +48,11 @@
 
 - (void)viewDidLoad
 {
+    CGFloat heightNav = self.navigationController.navigationBar.frame.size.height+20;
     [super viewDidLoad];
     imgView =[[UIImageView alloc] init];
     [imgView setImage:image];
-    imgView.frame = CGRectMake(0, 75, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-75);
+    imgView.frame = CGRectMake(0, heightNav, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-heightNav);
     [self.view addSubview:imgView];
 }
 
