@@ -122,6 +122,12 @@
            UIImage* newImg = [imageArray objectAtIndex:i];
            imgView = [[UIImageView alloc] initWithImage:newImg];
            
+           UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected:)];
+           singleTap.numberOfTapsRequired = 1;
+           imgView.userInteractionEnabled = YES;
+           [imgView addGestureRecognizer:singleTap];
+
+           
            [imgView setContentMode:UIViewContentModeScaleAspectFit];
            
            UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2-150, 525+yInc, 300, 30)];
