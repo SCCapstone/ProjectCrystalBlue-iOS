@@ -19,6 +19,9 @@
     NSString* textString;
     UIImage* img;
     BOOL navigateToRoot;
+    CLLocationManager *locationManager;
+    CLLocation *currentLocation;
+    CLLocation *start;
 }
 
 @end
@@ -155,6 +158,9 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
     [scroller setContentSize:CGSizeMake(320, 1050)];
     
     [[self view] setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    
+    locationManager = [[CLLocationManager alloc] init];
+    start = [[CLLocation alloc] initWithLatitude:[[LatitudeField text] floatValue] longitude:[[LongitudeField text] floatValue]];
     
     [TypeField setText:[[selectedSource attributes] objectForKey:SRC_TYPE]];
     [LithologyField setText:[[selectedSource attributes] objectForKey:SRC_LITHOLOGY]];
@@ -511,5 +517,40 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
     
     return validationPassed;
 }
+
+- (IBAction)getLocation:(id)sender
+{
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager startUpdatingLocation];
+    
+
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"didFailWithError: %@", error);
+    UIAlertView *errorAlert = [[UIAlertView alloc]
+                               initWithTitle:@"Error" message:@"Failed to Get Your Location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [errorAlert show];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    NSLog(@"didUpdateToLocation: %@", newLocation);
+    currentLocation = newLocation;
+    
+    if (currentLocation != nil) {
+        LatitudeField.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
+        LongitudeField.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
+    }
+    if(currentLocation != start)
+    {
+        LatitudeLabel.textColor = [UIColor redColor];
+        LongitudeLabel.textColor = [UIColor redColor];
+    }
+    [locationManager stopUpdatingLocation];
+}
+
 
 @end

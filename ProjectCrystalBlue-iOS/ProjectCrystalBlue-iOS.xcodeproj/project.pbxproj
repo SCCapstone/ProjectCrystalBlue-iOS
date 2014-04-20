@@ -104,6 +104,16 @@
 		D72FE4B918B59F8200C6452F /* ProcedureRecordParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72FE4B418B59F8200C6452F /* ProcedureRecordParserTests.m */; };
 		D72FE4BA18B59F8200C6452F /* ProceduresTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72FE4B518B59F8200C6452F /* ProceduresTests.m */; };
 		D72FE4BB18B59F8200C6452F /* ProcedureRecordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72FE4B618B59F8200C6452F /* ProcedureRecordTests.m */; };
+		D73A024B18FF7019008EE99F /* LocalEncryptedCredentialsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D73A024618FF7019008EE99F /* LocalEncryptedCredentialsProvider.m */; };
+		D73A024C18FF7019008EE99F /* AmazonCredentialsEncodable.m in Sources */ = {isa = PBXBuildFile; fileRef = D73A024818FF7019008EE99F /* AmazonCredentialsEncodable.m */; };
+		D73A024D18FF7019008EE99F /* CredentialsEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = D73A024A18FF7019008EE99F /* CredentialsEncryption.m */; };
+		D73A025118FF727F008EE99F /* CredentialsProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D73A024F18FF727F008EE99F /* CredentialsProviderTests.m */; };
+		D73A025218FF727F008EE99F /* CredentialsEncryptionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D73A025018FF727F008EE99F /* CredentialsEncryptionTests.m */; };
+		D73A025318FF797E008EE99F /* CredentialsEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = D73A024A18FF7019008EE99F /* CredentialsEncryption.m */; };
+		D73A025418FF7989008EE99F /* AmazonCredentialsEncodable.m in Sources */ = {isa = PBXBuildFile; fileRef = D73A024818FF7019008EE99F /* AmazonCredentialsEncodable.m */; };
+		D73A025518FF798F008EE99F /* LocalEncryptedCredentialsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D73A024618FF7019008EE99F /* LocalEncryptedCredentialsProvider.m */; };
+		D73C2EEF1900A63100223755 /* CredentialsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D73C2EED1900A63100223755 /* CredentialsViewController.m */; };
+		D73C2EF01900A63100223755 /* CredentialsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D73C2EEE1900A63100223755 /* CredentialsViewController.xib */; };
 		D77F88CD18E8ABB800734631 /* ValidationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D77F88C218E8ABB800734631 /* ValidationResponse.m */; };
 		D77F88CE18E8ABB800734631 /* PrimitiveFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D77F88C418E8ABB800734631 /* PrimitiveFieldValidator.m */; };
 		D77F88CF18E8ABB800734631 /* SampleFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D77F88C618E8ABB800734631 /* SampleFieldValidator.m */; };
@@ -323,6 +333,17 @@
 		D72FE4B418B59F8200C6452F /* ProcedureRecordParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureRecordParserTests.m; sourceTree = "<group>"; };
 		D72FE4B518B59F8200C6452F /* ProceduresTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProceduresTests.m; sourceTree = "<group>"; };
 		D72FE4B618B59F8200C6452F /* ProcedureRecordTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureRecordTests.m; sourceTree = "<group>"; };
+		D73A024518FF7019008EE99F /* LocalEncryptedCredentialsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalEncryptedCredentialsProvider.h; sourceTree = "<group>"; };
+		D73A024618FF7019008EE99F /* LocalEncryptedCredentialsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalEncryptedCredentialsProvider.m; sourceTree = "<group>"; };
+		D73A024718FF7019008EE99F /* AmazonCredentialsEncodable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmazonCredentialsEncodable.h; sourceTree = "<group>"; };
+		D73A024818FF7019008EE99F /* AmazonCredentialsEncodable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmazonCredentialsEncodable.m; sourceTree = "<group>"; };
+		D73A024918FF7019008EE99F /* CredentialsEncryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CredentialsEncryption.h; sourceTree = "<group>"; };
+		D73A024A18FF7019008EE99F /* CredentialsEncryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialsEncryption.m; sourceTree = "<group>"; };
+		D73A024F18FF727F008EE99F /* CredentialsProviderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialsProviderTests.m; sourceTree = "<group>"; };
+		D73A025018FF727F008EE99F /* CredentialsEncryptionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialsEncryptionTests.m; sourceTree = "<group>"; };
+		D73C2EEC1900A63100223755 /* CredentialsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CredentialsViewController.h; sourceTree = "<group>"; };
+		D73C2EED1900A63100223755 /* CredentialsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialsViewController.m; sourceTree = "<group>"; };
+		D73C2EEE1900A63100223755 /* CredentialsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CredentialsViewController.xib; sourceTree = "<group>"; };
 		D77F88C118E8ABB800734631 /* ValidationResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidationResponse.h; sourceTree = "<group>"; };
 		D77F88C218E8ABB800734631 /* ValidationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidationResponse.m; sourceTree = "<group>"; };
 		D77F88C318E8ABB800734631 /* PrimitiveFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitiveFieldValidator.h; sourceTree = "<group>"; };
@@ -466,6 +487,7 @@
 			children = (
 				B446B92518C2403C00AB4E88 /* HomeViewController.xib */,
 				D7B5867E18C3AD75003C19C0 /* SourceEditViewController.xib */,
+				D73C2EEE1900A63100223755 /* CredentialsViewController.xib */,
 				B446B93018C2C85900AB4E88 /* AddSampleOneViewController.xib */,
 				B446B94318C2E49D00AB4E88 /* AddSampleFiveViewController.xib */,
 				B446B94818C2E67C00AB4E88 /* AddSampleSixViewController.xib */,
@@ -594,11 +616,10 @@
 		D01DDDB4188DDC020059AF09 /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				D73A024418FF7009008EE99F /* Credentials */,
 				D07526E118B008A500622CBA /* TransactionStore */,
 				D07526F518B0092800622CBA /* LibraryObjectStore */,
 				D7EFB3D218AEC66C004EAB88 /* ImageStore */,
-				D075270718B021AD00622CBA /* HardcodedCredentialsProvider.h */,
-				D075270818B021AD00622CBA /* HardcodedCredentialsProvider.m */,
 			);
 			name = Store;
 			sourceTree = "<group>";
@@ -606,6 +627,7 @@
 		D01DDDB5188DDC080059AF09 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D73C2EEB1900A61500223755 /* Credentials */,
 				B4981F9618E9131000EA0741 /* Images */,
 				B446B92D18C2C83300AB4E88 /* AddSampleWalkthrough */,
 				B446B92218C23FB800AB4E88 /* ModelViews */,
@@ -894,6 +916,39 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D73A024418FF7009008EE99F /* Credentials */ = {
+			isa = PBXGroup;
+			children = (
+				D73A024518FF7019008EE99F /* LocalEncryptedCredentialsProvider.h */,
+				D73A024618FF7019008EE99F /* LocalEncryptedCredentialsProvider.m */,
+				D73A024718FF7019008EE99F /* AmazonCredentialsEncodable.h */,
+				D73A024818FF7019008EE99F /* AmazonCredentialsEncodable.m */,
+				D73A024918FF7019008EE99F /* CredentialsEncryption.h */,
+				D73A024A18FF7019008EE99F /* CredentialsEncryption.m */,
+				D075270718B021AD00622CBA /* HardcodedCredentialsProvider.h */,
+				D075270818B021AD00622CBA /* HardcodedCredentialsProvider.m */,
+			);
+			name = Credentials;
+			sourceTree = "<group>";
+		};
+		D73A024E18FF7275008EE99F /* Credentials */ = {
+			isa = PBXGroup;
+			children = (
+				D73A024F18FF727F008EE99F /* CredentialsProviderTests.m */,
+				D73A025018FF727F008EE99F /* CredentialsEncryptionTests.m */,
+			);
+			name = Credentials;
+			sourceTree = "<group>";
+		};
+		D73C2EEB1900A61500223755 /* Credentials */ = {
+			isa = PBXGroup;
+			children = (
+				D73C2EEC1900A63100223755 /* CredentialsViewController.h */,
+				D73C2EED1900A63100223755 /* CredentialsViewController.m */,
+			);
+			name = Credentials;
+			sourceTree = "<group>";
+		};
 		D7D76B00189EEB6B0056CDE4 /* Lumberjack */ = {
 			isa = PBXGroup;
 			children = (
@@ -937,6 +992,7 @@
 		D7EFB3DA18AEC872004EAB88 /* Store Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D73A024E18FF7275008EE99F /* Credentials */,
 				D001B3BB18B0398700975620 /* TransactionStore */,
 				D001B3BC18B0398F00975620 /* LibraryObjectStore */,
 				D7EFB3DB18AEC876004EAB88 /* Image Store */,
@@ -1061,6 +1117,7 @@
 				B45379F518DD5B66008A9EBB /* InitialsViewController.xib in Resources */,
 				D729BD45181C24A000F762A3 /* InfoPlist.strings in Resources */,
 				B446B94F18C2E8B000AB4E88 /* AddSampleSevenViewController.xib in Resources */,
+				D73C2EF01900A63100223755 /* CredentialsViewController.xib in Resources */,
 				B45379F018DD4C5F008A9EBB /* AddSampleImageViewController.xib in Resources */,
 				B4981F9B18E9132B00EA0741 /* AddImageViewController.xib in Resources */,
 				B446B94A18C2E67C00AB4E88 /* AddSampleSixViewController.xib in Resources */,
@@ -1111,11 +1168,13 @@
 				D7D76B0C189EED060056CDE4 /* DDTTYLogger.m in Sources */,
 				D77F88CD18E8ABB800734631 /* ValidationResponse.m in Sources */,
 				D01DDDC2188DDC5E0059AF09 /* SourceConstants.m in Sources */,
+				D73C2EEF1900A63100223755 /* CredentialsViewController.m in Sources */,
 				B446B93518C2CCA200AB4E88 /* AddSampleTwoViewController.m in Sources */,
 				D77F88D218E8ABB800734631 /* ImagesFieldValidator.m in Sources */,
 				B446B94418C2E49D00AB4E88 /* AddSampleFiveViewController.m in Sources */,
 				D0C85BD518BDB0C00002033E /* ConflictResolution.m in Sources */,
 				D7EFB3E818AECBB2004EAB88 /* ImageUtils.m in Sources */,
+				D73A024D18FF7019008EE99F /* CredentialsEncryption.m in Sources */,
 				D01DDDC1188DDC5E0059AF09 /* Source.m in Sources */,
 				D075270918B021AD00622CBA /* HardcodedCredentialsProvider.m in Sources */,
 				D7D76B09189EED000056CDE4 /* DDLog.m in Sources */,
@@ -1149,6 +1208,7 @@
 				D70BD24818DFA33200FECBD7 /* SourceImageUtils.m in Sources */,
 				D07526F118B008E300622CBA /* FMDatabaseAdditions.m in Sources */,
 				B46C93C518C64A920057078B /* EditLocationViewController.m in Sources */,
+				D73A024B18FF7019008EE99F /* LocalEncryptedCredentialsProvider.m in Sources */,
 				D07526F418B008E300622CBA /* FMResultSet.m in Sources */,
 				B446B94E18C2E8B000AB4E88 /* AddSampleSevenViewController.m in Sources */,
 				D07526F218B008E300622CBA /* FMDatabasePool.m in Sources */,
@@ -1160,6 +1220,7 @@
 				D7EFB3D918AEC7DD004EAB88 /* AbstractMobileCloudImageStore.m in Sources */,
 				D07526F318B008E300622CBA /* FMDatabaseQueue.m in Sources */,
 				D0C85BD818BDB4810002033E /* SimpleDBUtils.m in Sources */,
+				D73A024C18FF7019008EE99F /* AmazonCredentialsEncodable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1170,8 +1231,10 @@
 				D77F88D818E8ABF400734631 /* PrimitiveValidatorTests.m in Sources */,
 				D001B3BF18B039C000975620 /* LocalLibraryObjectStoreTests.m in Sources */,
 				D72FE4BA18B59F8200C6452F /* ProceduresTests.m in Sources */,
+				D73A025218FF727F008EE99F /* CredentialsEncryptionTests.m in Sources */,
 				D72FE4BB18B59F8200C6452F /* ProcedureRecordTests.m in Sources */,
 				D001B3C118B039CB00975620 /* TransactionStoreTests.m in Sources */,
+				D73A025118FF727F008EE99F /* CredentialsProviderTests.m in Sources */,
 				D77F88DA18E8ABF400734631 /* SourceFieldValidatorTests.m in Sources */,
 				D77F88D918E8ABF400734631 /* SampleFieldValidatorTests.m in Sources */,
 				D77F88DC18E8ABF400734631 /* ImagesFieldvalidatorTests.m in Sources */,
@@ -1180,12 +1243,15 @@
 				D7EFB3EB18AECD09004EAB88 /* LocalImageStoreTests.m in Sources */,
 				D031240B18BDBD9700F3AAD9 /* SimpleDBUtilsTests.m in Sources */,
 				D70BD25C18DFA67500FECBD7 /* SourceImageUtilsTests.m in Sources */,
+				D73A025318FF797E008EE99F /* CredentialsEncryption.m in Sources */,
+				D73A025518FF798F008EE99F /* LocalEncryptedCredentialsProvider.m in Sources */,
 				D7EFB3DE18AEC88E004EAB88 /* AbstractImageStoreTests.m in Sources */,
 				D70BD25918DFA60800FECBD7 /* S3UtilsTests.m in Sources */,
 				D72FE4B718B59F8200C6452F /* PrimitiveProcedureTests.m in Sources */,
 				D72FE4B818B59F8200C6452F /* ProcedureNameConstantsTests.m in Sources */,
 				D72FE4B918B59F8200C6452F /* ProcedureRecordParserTests.m in Sources */,
 				D77F88DB18E8ABF400734631 /* ProcedureFieldValidatorTests.m in Sources */,
+				D73A025418FF7989008EE99F /* AmazonCredentialsEncodable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1323,12 +1389,14 @@
 					"$(SRCROOT)/include/ZBarSDK",
 				);
 				INFOPLIST_FILE = "ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/include",
 					"$(PROJECT_DIR)/include/ZBarSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1351,12 +1419,14 @@
 					"$(SRCROOT)/include/ZBarSDK",
 				);
 				INFOPLIST_FILE = "ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/include",
 					"$(PROJECT_DIR)/include/ZBarSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

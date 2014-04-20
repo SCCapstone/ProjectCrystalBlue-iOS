@@ -10,6 +10,7 @@
 #import "SourceViewController.h"
 #import "AddSampleOneViewController.h"
 #import "DeleteSourcesViewController.h"
+#import "CredentialsViewController.h"
 #import "EmbedReaderViewController.h"
 
 @interface HomeViewController ()
@@ -31,6 +32,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIViewController *credentialsView = [[CredentialsViewController alloc] initWithNibName:@"CredentialsViewController"
+                                                                                    bundle:nil];
+    [self presentViewController:credentialsView animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
