@@ -19,6 +19,7 @@
     SimpleDBLibraryObjectStore *libraryObjectStore;
     NSMutableArray *displayedSources;
     NSString *option;
+    NSArray *sortedArray;
 }
 
 @end
@@ -32,6 +33,13 @@
         libraryObjectStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data" WithDatabaseName:@"test_database.db"];
         
         displayedSources = [libraryObjectStore getAllLibraryObjectsFromTable:[SourceConstants tableName]].mutableCopy;
+        
+        NSSortDescriptor *sortDescriptor;
+        sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key"
+                                                     ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
+        
+        NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+        sortedArray = [displayedSources sortedArrayUsingDescriptors:sortDescriptors];
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Sources"];
@@ -88,8 +96,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:@"UITableViewCell"];
     }
-    
-    Source *source = [displayedSources objectAtIndex:indexPath.row];
+
+    Source *source = [sortedArray objectAtIndex:indexPath.row];
     [[cell textLabel] setText:[source description]];
     return cell;
 }
