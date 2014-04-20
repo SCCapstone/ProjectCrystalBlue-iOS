@@ -10,7 +10,7 @@
 #import "Source.h"
 #import "AbstractCloudLibraryObjectStore.h"
 
-@interface EnlargedImageViewController : UIViewController<UIActionSheetDelegate>
+@interface EnlargedImageViewController : UIViewController<UIAlertViewDelegate>
 {
     __strong IBOutlet UIImageView *imgView;
 }

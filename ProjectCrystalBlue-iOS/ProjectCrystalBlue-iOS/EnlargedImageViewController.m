@@ -52,35 +52,9 @@
 
 -(void) deleteImage:(id)sender
 {
-    UIActionSheet *message;
-    
-    if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
-    {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Deleting will remove from image store as well" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete", nil];
         
-        message = [[UIActionSheet alloc] initWithTitle:@"Deleting will remove image from image store:" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Delete", @"Cancel", nil];
-
-        CGFloat wid = [[UIScreen mainScreen] bounds].size.width;
-        CGFloat hei = [[UIScreen mainScreen] bounds].size.height;
-        
-        [message showFromRect:CGRectMake(wid/2-75, hei-50, 150, 100) inView:self.view animated:YES];
-    }
-    else
-    {
-        message = [[UIActionSheet alloc] initWithTitle:@"Deleting will remove image from image store:" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Delete", nil];
-
-        [message showInView:self.view];
-    }
-    
-    while ((!message.hidden) && (message.superview != nil))
-    {
-        [[NSRunLoop currentRunLoop] limitDateForMode:NSDefaultRunLoopMode];
-    }
-
-    if([option isEqualToString:@"Delete"])
-    {
-        [SourceImageUtils removeImage:description forSource:selectedSource inDataStore:libraryObjectStore inImageStore:[SourceImageUtils        defaultImageStore]];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+    [alert show];
 }
 
 - (void)viewDidLoad
@@ -113,15 +87,15 @@
 }
 
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     switch (buttonIndex)
     {
         case 0:
-            option = @"Delete";
             break;
         case 1:
-            option = @"NOTHING";
+            [SourceImageUtils removeImage:description forSource:selectedSource inDataStore:libraryObjectStore inImageStore:[SourceImageUtils defaultImageStore]];
+            [self.navigationController popViewControllerAnimated:YES];
             break;
     }
 }
