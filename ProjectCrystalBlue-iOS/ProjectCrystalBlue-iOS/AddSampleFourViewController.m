@@ -79,7 +79,6 @@
     NSString *deposystemSelected = [depoArray objectAtIndex:indexPath.row];
     
     // If lithology selected is unknown, set to empty string
-    deposystemSelected = [deposystemSelected isEqualToString:@"Unknown"] ? @"" : deposystemSelected;
     [sourceToAdd.attributes setObject:deposystemSelected forKey:SRC_DEPOSYSTEM];
     [[self navigationController] pushViewController:viewControllerFive animated:YES];
 }
