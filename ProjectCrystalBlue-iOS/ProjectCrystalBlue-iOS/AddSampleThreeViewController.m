@@ -94,7 +94,6 @@
         AddSampleFiveViewController *viewControllerFive = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
         
         // If lithology selected is unknown, set to empty string
-        lithologySelected = [lithologySelected isEqualToString:@"Unknown"] ? @"" : lithologySelected;
         [sourceToAdd.attributes setObject:lithologySelected forKey:SRC_LITHOLOGY];
         [sourceToAdd.attributes setObject:@"" forKey:SRC_DEPOSYSTEM];
         [[self navigationController] pushViewController:viewControllerFive animated:YES];

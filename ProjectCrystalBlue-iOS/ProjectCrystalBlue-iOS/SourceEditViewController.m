@@ -131,18 +131,33 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
 - (void)itemSelectedAtRow:(NSInteger)row
                   WithTag:(NSUInteger)tag
 {
-    NSString *rockType = TypeField.text;
+    NSString *oldRockType = TypeField.text;
 
     if (tag == 0) {
-        [TypeField setText:[[SourceConstants rockTypes] objectAtIndex:row]];
+        NSString *newRockType = [[SourceConstants rockTypes] objectAtIndex:row];
+        [TypeField setText:newRockType];
         TypeLabel.textColor = [UIColor redColor];
+        
+        [LithologyField setText:@""];
+        LithologyLabel.textColor = [UIColor redColor];
+        
+        if ([newRockType isEqualToString:@"Siliciclastic"] || [newRockType isEqualToString:@"Carbonate"] ||
+                [newRockType isEqualToString:@"Authigenic"] || [newRockType isEqualToString:@"Volcanic"] ||
+                [newRockType isEqualToString:@"Fossil"]) {
+            DeposystemLabel.textColor = [UIColor redColor];
+            [DeposystemField setText:@""];
+        }
+        else {
+            DeposystemLabel.textColor = [UIColor redColor];
+            [DeposystemField setText:@"N/A"];
+        }
     }
     else if (tag == 1) {
-        [LithologyField setText:[[SourceConstants lithologiesForRockType:rockType] objectAtIndex:row]];
+        [LithologyField setText:[[SourceConstants lithologiesForRockType:oldRockType] objectAtIndex:row]];
         LithologyLabel.textColor = [UIColor redColor];
     }
     else if (tag == 2) {
-        [DeposystemField setText:[[SourceConstants deposystemsForRockType:rockType] objectAtIndex:row]];
+        [DeposystemField setText:[[SourceConstants deposystemsForRockType:oldRockType] objectAtIndex:row]];
         DeposystemLabel.textColor = [UIColor redColor];
     }
     else if (tag == 3) {

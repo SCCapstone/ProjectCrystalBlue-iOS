@@ -92,11 +92,17 @@
     // Does not, skip to fifth view
     else {
         AddSampleFiveViewController *viewControllerFive = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
-        // If type selected is unknown, set to empty string
-        typeSelected = [typeSelected isEqualToString:@"Unknown"] ? @"" : typeSelected;
+        
         [sourceToAdd.attributes setObject:typeSelected forKey:SRC_TYPE];
         [sourceToAdd.attributes setObject:@"" forKey:SRC_LITHOLOGY];
-        [sourceToAdd.attributes setObject:@"" forKey:SRC_DEPOSYSTEM];
+        
+        if ([typeSelected isEqualToString:@"Siliciclastic"] || [typeSelected isEqualToString:@"Carbonate"] ||
+            [typeSelected isEqualToString:@"Authigenic"] || [typeSelected isEqualToString:@"Volcanic"] ||
+            [typeSelected isEqualToString:@"Fossil"])
+            [sourceToAdd.attributes setObject:@"" forKey:SRC_DEPOSYSTEM];
+        else
+            [sourceToAdd.attributes setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
+        
         [[self navigationController] pushViewController:viewControllerFive animated:YES];
     }
 }
