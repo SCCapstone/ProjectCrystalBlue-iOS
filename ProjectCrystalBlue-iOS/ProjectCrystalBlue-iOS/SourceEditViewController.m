@@ -227,12 +227,25 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
     [[selectedSource attributes] setObject:[AgeMethodField text] forKey:SRC_AGE_METHOD];
     [[selectedSource attributes] setObject:[AgeDataTypeField text] forKey:SRC_AGE_DATATYPE];
     
+    // Logic to set to current time and user entered date
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterShortStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
-    NSString *dateString = [formatter stringFromDate:DatePicker.date];
+    
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDate *now = [NSDate date];
+    NSDateComponents *nowComp = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:now];
+    NSDate *date = DatePicker.date;
+    NSDateComponents *comp = [calendar components:(NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:date];
+    
+    comp.hour = nowComp.hour;
+    comp.minute = nowComp.minute;
+    date = [calendar dateFromComponents:comp];
+    
+    NSString *dateString = [formatter stringFromDate:date];
     [[selectedSource attributes] setObject:dateString forKey:SRC_DATE_COLLECTED];
 
+    
     [libraryObjectStore updateLibraryObject:selectedSource IntoTable:[SourceConstants tableName]];
     
     TypeLabel.textColor = [UIColor blackColor];
