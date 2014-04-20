@@ -67,4 +67,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)willAnimateRotationToInterfaceOrientation:
+(UIInterfaceOrientation)toInterfaceOrientation
+                                         duration:(NSTimeInterval)duration
+{
+    CGFloat heightNav = self.navigationController.navigationBar.frame.size.height+20;
+    
+    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+        toInterfaceOrientation == UIInterfaceOrientationLandscapeRight)
+    {
+        imgView.frame = CGRectMake(0, heightNav, [[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width-heightNav);
+    }
+    else
+    {
+        imgView.frame = CGRectMake(0, heightNav, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-heightNav);
+
+    }
+}
+
 @end
