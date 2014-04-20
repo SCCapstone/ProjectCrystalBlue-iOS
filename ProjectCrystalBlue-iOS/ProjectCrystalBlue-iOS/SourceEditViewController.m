@@ -542,6 +542,11 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
 
 }
 
+- (IBAction)dateChanged:(id)sender
+{
+    DateLabel.textColor = [UIColor redColor];
+}
+
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
     NSLog(@"didFailWithError: %@", error);

@@ -67,5 +67,6 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
 - (IBAction)showDeposytemOptions:(id)sender;
 - (IBAction)showAgeMethodOptions:(id)sender;
 - (IBAction)getLocation:(id)sender;
+- (IBAction)dateChanged:(id)sender;
 
 @end
