@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class AbstractCloudLibraryObjectStore;
 
 @interface CredentialsViewController : UIViewController <UITextFieldDelegate>
 
@@ -14,6 +15,7 @@
 @property (weak) IBOutlet UITextField *awsSecretKeyField;
 @property (weak) IBOutlet UITextField *localKeyField;
 @property (weak) IBOutlet UITextView  *instructionsDisplay;
+@property AbstractCloudLibraryObjectStore *dataStore;
 
 - (IBAction)cancelButtonPressed:(id)sender;
 - (IBAction)okButtonPressed:(id)sender;

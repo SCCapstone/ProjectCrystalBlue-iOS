@@ -8,6 +8,7 @@
 
 #import "CredentialsViewController.h"
 #import "LocalEncryptedCredentialsProvider.h"
+#import "AbstractCloudLibraryObjectStore.h"
 
 @interface CredentialsViewController ()
 
@@ -65,6 +66,7 @@ NSString *passwordError =
     AmazonCredentials *retrieved;
     retrieved = [[LocalEncryptedCredentialsProvider sharedInstance] retrieveCredentialsWithKey:self.localKeyField.text];
     if (retrieved) {
+        [self.dataStore setupDomains];
         [self dismissViewControllerAnimated:YES completion:nil];
     } else {
         [self.instructionsDisplay setText:passwordError];

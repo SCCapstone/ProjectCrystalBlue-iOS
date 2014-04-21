@@ -12,9 +12,12 @@
 #import "DeleteSourcesViewController.h"
 #import "CredentialsViewController.h"
 #import "EmbedReaderViewController.h"
+#import "SimpleDBLibraryObjectStore.h"
 
 @interface HomeViewController ()
-
+{
+    AbstractCloudLibraryObjectStore *dataStore;
+}
 @end
 
 @implementation HomeViewController
@@ -23,6 +26,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        dataStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data"
+                                                            WithDatabaseName:@"test_database.db"];
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Project Crystal Blue"];
     }
@@ -32,8 +37,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIViewController *credentialsView = [[CredentialsViewController alloc] initWithNibName:@"CredentialsViewController"
-                                                                                    bundle:nil];
+    CredentialsViewController *credentialsView = [[CredentialsViewController alloc] initWithNibName:@"CredentialsViewController"
+                                                                                             bundle:nil];
+    [credentialsView setDataStore:dataStore];
     [self presentViewController:credentialsView animated:YES completion:nil];
 }
 

@@ -24,4 +24,8 @@
  */
 - (BOOL)synchronizeWithCloud;
 
+/*  Sets up the remote domains
+ */
+- (BOOL)setupDomains;
+
 @end
