@@ -19,7 +19,6 @@
     SimpleDBLibraryObjectStore *libraryObjectStore;
     NSMutableArray *displayedSources;
     NSString *option;
-    NSArray *sortedArray;
 }
 
 @end
@@ -32,14 +31,13 @@
     if (self) {
         libraryObjectStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data" WithDatabaseName:@"test_database.db"];
         
-        displayedSources = [libraryObjectStore getAllLibraryObjectsFromTable:[SourceConstants tableName]].mutableCopy;
-        
-        NSSortDescriptor *sortDescriptor;
-        sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key"
-                                                     ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
+        NSArray *temp = [libraryObjectStore getAllLibraryObjectsFromTable:[SourceConstants tableName]];
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key"
+                                                                       ascending:YES
+                                                                        selector:@selector(localizedCaseInsensitiveCompare:)];
         
         NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-        sortedArray = [displayedSources sortedArrayUsingDescriptors:sortDescriptors];
+        displayedSources = [temp sortedArrayUsingDescriptors:sortDescriptors].mutableCopy;
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Sources"];
@@ -77,7 +75,14 @@
         [libraryObjectStore synchronizeWithCloud];
     }
     
-    displayedSources = [libraryObjectStore getAllLibraryObjectsFromTable:[SourceConstants tableName]].mutableCopy;
+    NSArray *temp = [libraryObjectStore getAllLibraryObjectsFromTable:[SourceConstants tableName]];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key"
+                                                                   ascending:YES
+                                                                    selector:@selector(localizedCaseInsensitiveCompare:)];
+    
+    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    displayedSources = [temp sortedArrayUsingDescriptors:sortDescriptors].mutableCopy;
+    
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
 }
@@ -97,7 +102,7 @@
                                       reuseIdentifier:@"UITableViewCell"];
     }
 
-    Source *source = [sortedArray objectAtIndex:indexPath.row];
+    Source *source = [displayedSources objectAtIndex:indexPath.row];
     [[cell textLabel] setText:[source description]];
     return cell;
 }
