@@ -46,7 +46,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.width)];
+    mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-self.navigationController.navigationBar.frame.size.height)];
    
     [mapView setMapType:MKMapTypeStandard];
     [mapView setZoomEnabled:YES];
@@ -61,9 +61,7 @@
 
     MKPlacemark *place = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(region.center.latitude, region.center.longitude) addressDictionary:nil];
     
-    MKMapItem *mapItem = [[MKMapItem alloc]initWithPlacemark:place];
-    
-    [mapItem openInMapsWithLaunchOptions:nil];
+    [mapView addAnnotation:place];
     [self.view addSubview:mapView];
 
 }

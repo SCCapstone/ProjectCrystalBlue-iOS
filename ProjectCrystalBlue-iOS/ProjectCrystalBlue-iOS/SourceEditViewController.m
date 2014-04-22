@@ -553,7 +553,13 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
 {
     if([self validateCoordinates])
     {
-        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"Invalid/Blank Latitude and Longitude Fields"
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
     }
     else
     {
