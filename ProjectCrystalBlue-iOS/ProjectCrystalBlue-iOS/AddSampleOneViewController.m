@@ -153,7 +153,7 @@
     }
     else
     {
-        MapViewController* mapViewController = [[MapViewController alloc] initWithKey:@"'Source To Add'" withLat:[LatitudeField text] withLong:[LongitudeField text]];
+        MapViewController* mapViewController = [[MapViewController alloc] initWithKey:@"Source To Add" withLat:[LatitudeField text] withLong:[LongitudeField text]];
     
         [[self navigationController] pushViewController:mapViewController  animated:YES];
     }

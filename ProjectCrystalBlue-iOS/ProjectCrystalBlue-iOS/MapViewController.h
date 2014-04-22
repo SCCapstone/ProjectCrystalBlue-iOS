@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Source.h"
 #import "CoreLocation/CoreLocation.h"
 #import <MapKit/MapKit.h>
 
@@ -15,7 +14,6 @@
 {
     IBOutlet MKMapView *mapView;
 }
-@property (nonatomic, strong) Source *selectedSource;
 
 - (id)initWithKey:(NSString*) initKey withLat:(NSString*) initLat withLong:(NSString*) initLong;
 @end

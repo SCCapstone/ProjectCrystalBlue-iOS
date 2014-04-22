@@ -8,7 +8,6 @@
 
 #import "MapViewController.h"
 #import <MapKit/MapKit.h>
-#import "Source.h"
 
 @interface MapViewController ()
 {
@@ -26,9 +25,7 @@
         latitude = initLat;
         longitude = initLong;
         UINavigationItem *n = [self navigationItem];
-        NSString* title =@"Map of ";
-        title = [title stringByAppendingString:initKey];
-        [n setTitle:title];
+        [n setTitle:initKey];
         
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         
