@@ -12,6 +12,7 @@
 #import "Source.h"
 #import "AddSampleTwoViewController.h"
 #import "SourceFieldValidator.h"
+#import "MapViewController.h"
 
 @interface AddSampleOneViewController ()
 {
@@ -137,6 +138,28 @@
     [locationManager startUpdatingLocation];
 }
 
+- (IBAction)viewMap:(id)sender
+{
+    bool doIt = [self validateCoordinates];
+    if(!doIt)
+    {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"Invalid/Blank Latitude and Longitude Fields"
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    else
+    {
+        MapViewController* mapViewController = [[MapViewController alloc] initWithKey:@"'Source To Add'" withLat:[LatitudeField text] withLong:[LongitudeField text]];
+    
+        [[self navigationController] pushViewController:mapViewController  animated:YES];
+    }
+
+}
+
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
     NSLog(@"didFailWithError: %@", error);
@@ -219,4 +242,31 @@
     
     return validationPassed;
 }
+
+- (BOOL)validateCoordinates
+{
+    BOOL validationPassed = YES;
+    
+    ValidationResponse *latitudeOK = [SourceFieldValidator validateLatitude:[LatitudeField text]];
+    if (!latitudeOK.isValid && validationPassed == YES) {
+        validationPassed = NO;
+    }
+    
+    ValidationResponse *longitudeOK = [SourceFieldValidator validateLongitude:[LongitudeField text]];
+    if (!longitudeOK.isValid && validationPassed == YES) {
+        validationPassed = NO;
+    }
+    
+    if([LongitudeField.text isEqualToString:@""])
+    {
+        validationPassed = NO;
+    }
+    
+    if([LatitudeField.text isEqualToString:@""])
+    {
+        validationPassed = NO;
+    }
+    return validationPassed;
+}
+
 @end

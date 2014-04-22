@@ -18,5 +18,6 @@
 
 - (IBAction)backgroundTapped:(id)sender;
 - (IBAction)getLocation:(id)sender;
+- (IBAction)viewMap:(id)sender;
 
 @end
