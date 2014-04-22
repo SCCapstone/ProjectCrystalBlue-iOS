@@ -551,7 +551,8 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
 
 - (IBAction)viewMap:(id)sender
 {
-    if([self validateCoordinates])
+    bool doIt = [self validateCoordinates];
+    if(!doIt)
     {
         UIAlertView *alert = [[UIAlertView alloc]
                               initWithTitle:@"Invalid/Blank Latitude and Longitude Fields"
@@ -600,7 +601,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
     
     ValidationResponse *latitudeOK = [SourceFieldValidator validateLatitude:[LatitudeField text]];
     if (!latitudeOK.isValid && validationPassed == YES) {
-
+        validationPassed = NO;
     }
     
     ValidationResponse *longitudeOK = [SourceFieldValidator validateLongitude:[LongitudeField text]];
@@ -608,12 +609,12 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
         validationPassed = NO;
     }
     
-    if(![LongitudeField.text isEqualToString:@""])
+    if([LongitudeField.text isEqualToString:@""])
     {
         validationPassed = NO;
     }
     
-    if(![LatitudeField.text isEqualToString:@""])
+    if([LatitudeField.text isEqualToString:@""])
     {
         validationPassed = NO;
     }
