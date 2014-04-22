@@ -44,10 +44,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:titleNav];
-        
-        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(addSource:)];
-        if ([titleNav isEqualToString:@"Short View Outcrop"]) {
-            bbi.title = @"Done";
+        UIBarButtonItem *bbi;
+        if ([titleNav isEqualToString:@"Close View Outcrop"]) {
+            bbi = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(addSource:)];
+        }
+        else{
+            bbi = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(addSource:)];
         }
         
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
