@@ -47,6 +47,8 @@
 		B4981F9A18E9132B00EA0741 /* AddImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4981F9818E9132B00EA0741 /* AddImageViewController.m */; };
 		B4981F9B18E9132B00EA0741 /* AddImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4981F9918E9132B00EA0741 /* AddImageViewController.xib */; };
 		B4981F9E18E937DC00EA0741 /* AddSampleAgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4981F9D18E937DC00EA0741 /* AddSampleAgeViewController.m */; };
+		B49B21F41906137B00BA7B3B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B49B21F31906137B00BA7B3B /* MapKit.framework */; };
+		B49B21F71906150A00BA7B3B /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B49B21F61906150A00BA7B3B /* MapViewController.m */; };
 		B4E755F81904396B00D5CCF7 /* EnlargedImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E755F61904396B00D5CCF7 /* EnlargedImageViewController.m */; };
 		B4E755F91904396B00D5CCF7 /* EnlargedImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4E755F71904396B00D5CCF7 /* EnlargedImageViewController.xib */; };
 		D001B3BF18B039C000975620 /* LocalLibraryObjectStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D001B3BE18B039C000975620 /* LocalLibraryObjectStoreTests.m */; };
@@ -244,6 +246,9 @@
 		B4981F9918E9132B00EA0741 /* AddImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddImageViewController.xib; sourceTree = "<group>"; };
 		B4981F9C18E937DC00EA0741 /* AddSampleAgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSampleAgeViewController.h; sourceTree = "<group>"; };
 		B4981F9D18E937DC00EA0741 /* AddSampleAgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleAgeViewController.m; sourceTree = "<group>"; };
+		B49B21F31906137B00BA7B3B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		B49B21F51906150A00BA7B3B /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		B49B21F61906150A00BA7B3B /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		B4E755F51904396B00D5CCF7 /* EnlargedImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnlargedImageViewController.h; sourceTree = "<group>"; };
 		B4E755F61904396B00D5CCF7 /* EnlargedImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnlargedImageViewController.m; sourceTree = "<group>"; };
 		B4E755F71904396B00D5CCF7 /* EnlargedImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnlargedImageViewController.xib; sourceTree = "<group>"; };
@@ -397,6 +402,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B49B21F41906137B00BA7B3B /* MapKit.framework in Frameworks */,
 				B43DCE9618C67A8C00FD9B53 /* CoreLocation.framework in Frameworks */,
 				D04AD3981851BDAB0079B2EE /* CFNetwork.framework in Frameworks */,
 				D71EE32E18518C5F007D4018 /* libsqlite3.dylib in Frameworks */,
@@ -649,6 +655,8 @@
 				B45379F218DD5B66008A9EBB /* InitialsViewController.m */,
 				D0C31B2518FA389D00F4792C /* SimpleTableViewController.h */,
 				D0C31B2618FA389D00F4792C /* SimpleTableViewController.m */,
+				B49B21F51906150A00BA7B3B /* MapViewController.h */,
+				B49B21F61906150A00BA7B3B /* MapViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -855,6 +863,7 @@
 		D729BD39181C24A000F762A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B49B21F31906137B00BA7B3B /* MapKit.framework */,
 				0355089618DF41BF007D8A64 /* include */,
 				0355089218DF3961007D8A64 /* libiconv.dylib */,
 				0355089018DF394C007D8A64 /* QuartzCore.framework */,
@@ -1224,6 +1233,7 @@
 				D07526F218B008E300622CBA /* FMDatabasePool.m in Sources */,
 				D021B93618F0EEBA00ADE234 /* Reachability.m in Sources */,
 				D70BD24F18DFA39700FECBD7 /* S3Utils.m in Sources */,
+				B49B21F71906150A00BA7B3B /* MapViewController.m in Sources */,
 				D7D76B07189EED000056CDE4 /* DDASLLogger.m in Sources */,
 				D77F88CE18E8ABB800734631 /* PrimitiveFieldValidator.m in Sources */,
 				B446B93818C2D3D900AB4E88 /* AddSampleThreeViewController.m in Sources */,

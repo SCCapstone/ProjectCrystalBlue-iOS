@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>5FA1654B-25EA-4B02-AA2B-A0A397F6A170</string>
+	<string>85B4300A-81F9-40C7-BF99-74D3BDA35B02</string>
 	<key>IDESourceControlProjectName</key>
 	<string>ProjectCrystalBlue-iOS</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>65AB8B1B-2705-4BB0-8A81-29DA4A78995C</key>
-		<string>https://github.com/SCCapstone/ProjectCrystalBlue-iOS.git</string>
+		<key>E027EAC4-43AB-4725-B310-C1908DD03B1F</key>
+		<string>https://github.com/SCCapstone/ProjectCrystalBlue-iOS</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>ProjectCrystalBlue-iOS/ProjectCrystalBlue-iOS.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>65AB8B1B-2705-4BB0-8A81-29DA4A78995C</key>
+		<key>E027EAC4-43AB-4725-B310-C1908DD03B1F</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/SCCapstone/ProjectCrystalBlue-iOS.git</string>
+	<string>https://github.com/SCCapstone/ProjectCrystalBlue-iOS</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>65AB8B1B-2705-4BB0-8A81-29DA4A78995C</string>
+	<string>E027EAC4-43AB-4725-B310-C1908DD03B1F</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>65AB8B1B-2705-4BB0-8A81-29DA4A78995C</string>
+			<string>E027EAC4-43AB-4725-B310-C1908DD03B1F</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ProjectCrystalBlue-iOS</string>
 		</dict>

@@ -68,5 +68,6 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
 - (IBAction)showAgeMethodOptions:(id)sender;
 - (IBAction)getLocation:(id)sender;
 - (IBAction)dateChanged:(id)sender;
+- (IBAction)viewMap:(id)sender;
 
 @end

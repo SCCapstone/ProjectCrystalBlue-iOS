@@ -13,6 +13,8 @@
 #import "SourceConstants.h"
 #import "SourceImagesViewController.h"
 #import "SourceFieldValidator.h"
+#import <MapKit/MapKit.h>
+#import "MapViewController.h"
 
 @interface SourceEditViewController ()
 {
@@ -547,6 +549,20 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
     DateLabel.textColor = [UIColor redColor];
 }
 
+- (IBAction)viewMap:(id)sender
+{
+    if([self validateCoordinates])
+    {
+        
+    }
+    else
+    {
+        MapViewController* mapViewController = [[MapViewController alloc] initWithKey:[selectedSource key] withLat:[LatitudeField text] withLong:[LongitudeField text]];
+        
+        [[self navigationController] pushViewController:mapViewController  animated:YES];
+    }
+}
+
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
     NSLog(@"didFailWithError: %@", error);
@@ -572,5 +588,29 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
     [locationManager stopUpdatingLocation];
 }
 
+- (BOOL)validateCoordinates
+{
+    BOOL validationPassed = YES;
+    
+    ValidationResponse *latitudeOK = [SourceFieldValidator validateLatitude:[LatitudeField text]];
+    if (!latitudeOK.isValid && validationPassed == YES) {
 
+    }
+    
+    ValidationResponse *longitudeOK = [SourceFieldValidator validateLongitude:[LongitudeField text]];
+    if (!longitudeOK.isValid && validationPassed == YES) {
+        validationPassed = NO;
+    }
+    
+    if(![LongitudeField.text isEqualToString:@""])
+    {
+        validationPassed = NO;
+    }
+    
+    if(![LatitudeField.text isEqualToString:@""])
+    {
+        validationPassed = NO;
+    }
+    return validationPassed;
+}
 @end
