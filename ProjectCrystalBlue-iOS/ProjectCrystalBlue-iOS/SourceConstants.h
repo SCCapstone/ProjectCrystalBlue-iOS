@@ -28,6 +28,7 @@ static NSString *const SRC_AGE              = @"AGE";
 static NSString *const SRC_AGE_METHOD       = @"AGE_METHOD";
 static NSString *const SRC_AGE_DATATYPE     = @"AGE_DATA_TYPE";
 static NSString *const SRC_DATE_COLLECTED   = @"DATE_COLLECTED";
+static NSString *const SRC_COLLECTED_BY     = @"COLLECTED_BY";
 static NSString *const SRC_NOTES            = @"NOTES";
 static NSString *const SRC_HYPERLINKS       = @"HYPERLINKS";
 static NSString *const SRC_IMAGES           = @"IMAGES";
@@ -51,15 +52,16 @@ static NSString *const SRC_DEF_VAL_LONGITUDE    = @"0.00";
 static NSString *const SRC_DEF_VAL_AGE          = @"0.00";
 static NSString *const SRC_DEF_VAL_AGE_METHOD   = @"Age method here";
 static NSString *const SRC_DEF_VAL_AGE_DATATYPE = @"Age data type here";
-static NSString *const SRC_DEF_VAL_DATE_COLLECTED = @"04/20/2014, 12:00 AM";
-static NSString *const SRC_DEF_VAL_NOTES        = @"Notes here";
-static NSString *const SRC_DEF_VAL_HYPERLINKS   = @"Hyperlinks here";
+static NSString *const SRC_DEF_VAL_DATE_COLLECTED = @"01/01/1970, 12:01 AM";
+static NSString *const SRC_DEF_VAL_COLLECTED_BY = @"Collected by here";
+static NSString *const SRC_DEF_VAL_NOTES        = @"";
+static NSString *const SRC_DEF_VAL_HYPERLINKS   = @"http://www.geol.sc.edu";
 /* default value for "Images" should be empty string, since this will be a list of image names */
 static NSString *const SRC_DEF_VAL_IMAGES       = @"";
 
 /*  Human-readable attribute names
  */
-static NSString *const SRC_DISPLAY_KEY          = @"Key";
+static NSString *const SRC_DISPLAY_KEY          = @"Source";
 static NSString *const SRC_DISPLAY_CONTINENT    = @"Continent";
 static NSString *const SRC_DISPLAY_TYPE         = @"Rock Type";
 static NSString *const SRC_DISPLAY_LITHOLOGY    = @"Lithology";
@@ -77,6 +79,7 @@ static NSString *const SRC_DISPLAY_AGE          = @"Age";
 static NSString *const SRC_DISPLAY_AGE_METHOD   = @"Age Method";
 static NSString *const SRC_DISPLAY_AGE_DATATYPE = @"Age Data Type";
 static NSString *const SRC_DISPLAY_DATE_COLLECTED = @"Date Collected";
+static NSString *const SRC_DISPLAY_COLLECTED_BY = @"Collected By";
 static NSString *const SRC_DISPLAY_NOTES        = @"Notes";
 static NSString *const SRC_DISPLAY_HYPERLINKS   = @"Hyperlinks";
 static NSString *const SRC_DISPLAY_IMAGES       = @"Images";
