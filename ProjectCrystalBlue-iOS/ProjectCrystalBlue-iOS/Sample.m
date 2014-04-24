@@ -9,8 +9,12 @@
 #import "Sample.h"
 #import "ValidationResponse.h"
 #import "SampleFieldValidator.h"
+#import "ProcedureRecordParser.h"
 
 @implementation Sample
+{
+    NSArray *tags;
+}
 
 - (id)initWithKey:(NSString *)key
     AndWithValues:(NSArray *)attributeValues
@@ -27,8 +31,31 @@
 
 - (NSString *)description
 {
-    //NSString *descriptionString = [[NSString alloc] initWithFormat:@"Source: %@", [[self attributes] objectForKey:@"Group"]];
-    NSString *descriptionString = [[NSString alloc] initWithFormat:@"Sample: %@", [self key]];
+    NSString *descriptionString = [[NSString alloc] initWithFormat:@"%@    ", [self key]];
+    NSString *procedureRecords = [[self attributes] objectForKey:SMP_TAGS];
+    NSArray *procedureTags = [ProcedureRecordParser tagArrayFromRecordList:procedureRecords];
+    
+    if ([procedureTags count] == 0)
+    {
+        descriptionString = [descriptionString stringByAppendingString:@"(None)"];
+
+    }
+    for(int i = [procedureTags count] - 1; i >= 0; i--)
+    {
+        if(i == [procedureTags count]-1)
+        {
+            descriptionString = [descriptionString stringByAppendingString:@"("];
+        }
+        descriptionString = [descriptionString stringByAppendingString:[procedureTags objectAtIndex:i]];
+        if(i != 0)
+        {
+            descriptionString = [descriptionString stringByAppendingString:@", "];
+        }
+        else
+        {
+            descriptionString = [descriptionString stringByAppendingString:@")"];
+        }
+    }
     return descriptionString;
 }
 
