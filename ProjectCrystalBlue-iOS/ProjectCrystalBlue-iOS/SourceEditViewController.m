@@ -286,6 +286,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
     AgeLabel.textColor = [UIColor blackColor];
     AgeMethodLabel.textColor = [UIColor blackColor];
     AgeDataTypeLabel.textColor = [UIColor blackColor];
+    CollectedLabel.textColor = [UIColor blackColor];
     DateLabel.textColor = [UIColor blackColor];
 }
 
@@ -360,6 +361,10 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
         if(textField == AgeDataTypeField)
         {
             AgeDataTypeLabel.textColor = [UIColor redColor];
+        }
+        if(textField == CollectedField)
+        {
+            CollectedLabel.textColor = [UIColor redColor];
         }
     }
 }
@@ -531,6 +536,22 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
                               otherButtonTitles:nil, nil];
         [alert show];
     }
+    
+    ValidationResponse *collectedOK = [SourceFieldValidator validateCollectedBy:[CollectedField text]];
+    if (!collectedOK.isValid && validationPassed == YES) {
+        validationPassed = NO;
+        
+        NSString *message = [collectedOK alertWithFieldName:@"collected by" fieldValue:[CollectedField text]];
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+    }
+
     
     return validationPassed;
 }
