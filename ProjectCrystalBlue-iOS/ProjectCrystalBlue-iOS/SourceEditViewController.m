@@ -194,6 +194,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
     [AgeField setText:[[selectedSource attributes] objectForKey:SRC_AGE]];
     [AgeMethodField setText:[[selectedSource attributes] objectForKey:SRC_AGE_METHOD]];
     [AgeDataTypeField setText:[[selectedSource attributes] objectForKey:SRC_AGE_DATATYPE]];
+    [CollectedField setText:[[selectedSource attributes] objectForKey:SRC_COLLECTED_BY]];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"mm/dd/yyyy, hh:mm a"];
@@ -249,6 +250,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
     [[selectedSource attributes] setObject:[AgeField text] forKey:SRC_AGE];
     [[selectedSource attributes] setObject:[AgeMethodField text] forKey:SRC_AGE_METHOD];
     [[selectedSource attributes] setObject:[AgeDataTypeField text] forKey:SRC_AGE_DATATYPE];
+    [[selectedSource attributes] setObject:[CollectedField text] forKey:SRC_COLLECTED_BY];
     
     // Logic to set to current time and user entered date
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -293,13 +295,11 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     textString = [textField text];
-    [self animateTextField: textField up: YES];
 }
 
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    [self animateTextField: textField up: NO];
     if (![textString isEqualToString:[textField text]])
     {
         if(textField == TypeField)
@@ -367,20 +367,6 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
             CollectedLabel.textColor = [UIColor redColor];
         }
     }
-}
-
-- (void) animateTextField:(UITextField*)textField up:(BOOL)up
-{
-    const int movementDistance = 40; // tweak as needed
-    const float movementDuration = 0.3f; // tweak as needed
-    
-    int movement = (up ? -movementDistance : movementDistance);
-    
-    [UIView beginAnimations: @"anim" context: nil];
-    [UIView setAnimationBeginsFromCurrentState: YES];
-    [UIView setAnimationDuration: movementDuration];
-    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
-    [UIView commitAnimations];
 }
 
 - (BOOL)validateTextFieldValues

@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *KeyField;
 @property (weak, nonatomic) IBOutlet UITextField *LatitudeField;
 @property (weak, nonatomic) IBOutlet UITextField *LongitudeField;
+@property (weak, nonatomic) IBOutlet UITextField *CollectedByField;
 @property (weak, nonatomic) IBOutlet UIDatePicker *DatePicker;
 
 - (IBAction)backgroundTapped:(id)sender;

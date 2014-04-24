@@ -23,7 +23,7 @@
 @end
 
 @implementation AddSampleOneViewController
-@synthesize KeyField, LatitudeField, LongitudeField, DatePicker;
+@synthesize KeyField, LatitudeField, LongitudeField,CollectedByField, DatePicker;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -73,6 +73,7 @@
     
         [[sourceToAdd attributes] setObject:[LatitudeField text] forKey:SRC_LATITUDE];
         [[sourceToAdd attributes] setObject:[LongitudeField text] forKey:SRC_LONGITUDE];
+        [[sourceToAdd attributes] setObject:[CollectedByField text] forKey:SRC_COLLECTED_BY];
         [[sourceToAdd attributes] setObject:dateString forKey:SRC_DATE_COLLECTED];
     
         AddSampleTwoViewController *astViewController = [[AddSampleTwoViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
@@ -180,32 +181,6 @@
     [locationManager stopUpdatingLocation];
 }
 
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    [self animateTextField: textField up: YES];
-}
-
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    [self animateTextField: textField up: NO];
-}
-
-- (void) animateTextField: (UITextField*) textField up: (BOOL) up
-{
-    const int movementDistance = 30; // tweak as needed
-    const float movementDuration = 0.3f; // tweak as needed
-    
-    int movement = (up ? -movementDistance : movementDistance);
-    
-    [UIView beginAnimations: @"anim" context: nil];
-    [UIView setAnimationBeginsFromCurrentState: YES];
-    [UIView setAnimationDuration: movementDuration];
-    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
-    [UIView commitAnimations];
-}
-
 - (BOOL)validateTextFieldValues
 {
     BOOL validationPassed = YES;
@@ -240,6 +215,21 @@
         [alert show];
     }
     
+    ValidationResponse *collectedOK = [SourceFieldValidator validateCollectedBy:[CollectedByField text]];
+    if (!collectedOK.isValid && validationPassed == YES) {
+        validationPassed = NO;
+        
+        NSString *message = [collectedOK alertWithFieldName:@"collected by" fieldValue:[CollectedByField text]];
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:message
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+    }
+
     return validationPassed;
 }
 
