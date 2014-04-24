@@ -52,8 +52,8 @@
     CLLocation *location = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
     region.center.latitude =  location.coordinate.latitude;
     region.center.longitude = location.coordinate.longitude;
-    region.span.longitudeDelta = 100.00f;
-    region.span.latitudeDelta = 100.00f;
+    region.span.longitudeDelta = 5.00f;
+    region.span.latitudeDelta = 5.00f;
     [mapView setRegion:region animated:YES];
 
     MKPlacemark *place = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(region.center.latitude, region.center.longitude) addressDictionary:nil];
