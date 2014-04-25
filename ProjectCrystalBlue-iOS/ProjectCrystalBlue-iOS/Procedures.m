@@ -122,8 +122,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 /**
-    Functions that are up/down. For up procedures the current sample gets the down and a new sample
-    is created with the up. For down procedures the current sample gets the up and a new sample is created with the down
+    Functions that are up/down. For up procedures the current sample gets the up and new samples get the down
  **/
 
 + (void)geminiSample:(Sample *)sample

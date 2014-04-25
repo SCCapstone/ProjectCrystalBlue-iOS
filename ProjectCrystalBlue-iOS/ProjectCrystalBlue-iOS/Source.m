@@ -22,7 +22,6 @@
 
 - (NSString *)description
 {
-    //NSString *descriptionString = [[NSString alloc] initWithFormat:@"Source: %@", [[self attributes] objectForKey:@"Group"]];
     NSString *descriptionString = [[NSString alloc] initWithFormat:@"%@", [self key]];
     return descriptionString;
 }
