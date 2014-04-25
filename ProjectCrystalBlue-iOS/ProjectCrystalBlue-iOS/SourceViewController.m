@@ -12,6 +12,8 @@
 #import "SampleViewController.h"
 #import "Sample.h"
 #import "SimpleDBLibraryObjectStore.h"
+#import "SourceImageUtils.h"
+#import "AbstractMobileCloudImageStore.h"
 #import "Reachability.h"
 
 @interface SourceViewController()
@@ -73,6 +75,7 @@
     Reachability *reach = [Reachability reachabilityForInternetConnection];
     if ([reach isReachable]) {
         [libraryObjectStore synchronizeWithCloud];
+        [(AbstractMobileCloudImageStore *)[SourceImageUtils defaultImageStore] synchronizeWithCloud];
     }
     
     NSArray *temp = [libraryObjectStore getAllLibraryObjectsFromTable:[SourceConstants tableName]];
