@@ -12,6 +12,8 @@
 #import "SampleEditViewController.h"
 #import "ProcedureListViewController.h"
 #import "AbstractCloudLibraryObjectStore.h"
+#import "AbstractMobileCloudImageStore.h"
+#import "SourceImageUtils.h"
 #import "Procedures.h"
 #import "PrimitiveProcedures.h"
 #import "Reachability.h"
@@ -72,6 +74,7 @@
     Reachability *reach = [Reachability reachabilityForInternetConnection];
     if ([reach isReachable]) {
         [libraryObjectStore synchronizeWithCloud];
+        [(AbstractMobileCloudImageStore *)[SourceImageUtils defaultImageStore] synchronizeWithCloud];
     }
     
     samples = [libraryObjectStore getAllSamplesForSourceKey:selectedSource.key];
