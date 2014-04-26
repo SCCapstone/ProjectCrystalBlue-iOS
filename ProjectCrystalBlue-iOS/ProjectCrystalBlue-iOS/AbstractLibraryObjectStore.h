@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "LibraryObject.h"
 
-@class Source;
+@class Sample;
 
 @interface AbstractLibraryObjectStore : NSObject
 

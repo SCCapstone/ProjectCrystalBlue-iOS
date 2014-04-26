@@ -13,7 +13,7 @@
 #import "ProcedureListViewController.h"
 #import "AbstractCloudLibraryObjectStore.h"
 #import "AbstractMobileCloudImageStore.h"
-#import "SourceImageUtils.h"
+#import "SampleImageUtils.h"
 #import "Procedures.h"
 #import "PrimitiveProcedures.h"
 #import "Reachability.h"
@@ -27,17 +27,17 @@
 
 @implementation SplitViewController
 
-@synthesize selectedSource, libraryObjectStore;
+@synthesize selectedSample, libraryObjectStore;
 
-- (id)initWithSource:(Source *)initSource
+- (id)initWithSample:(Sample *)initSample
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        splits = [libraryObjectStore getAllSplitsForSampleKey:selectedSource.key];
-        selectedSource = initSource;
+        splits = [libraryObjectStore getAllSplitsForSampleKey:selectedSample.key];
+        selectedSample = initSample;
         
         UINavigationItem *n = [self navigationItem];
-        NSString *title = selectedSource.key;
+        NSString *title = selectedSample.key;
         title = [title stringByAppendingString:@" Splits"];
         [n setTitle:title];
         
@@ -74,17 +74,17 @@
     Reachability *reach = [Reachability reachabilityForInternetConnection];
     if ([reach isReachable]) {
         [libraryObjectStore synchronizeWithCloud];
-        [(AbstractMobileCloudImageStore *)[SourceImageUtils defaultImageStore] synchronizeWithCloud];
+        [(AbstractMobileCloudImageStore *)[SampleImageUtils defaultImageStore] synchronizeWithCloud];
     }
     
-    splits = [libraryObjectStore getAllSplitsForSampleKey:selectedSource.key];
+    splits = [libraryObjectStore getAllSplitsForSampleKey:selectedSample.key];
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    splits = [libraryObjectStore getAllSplitsForSampleKey:selectedSource.key];
+    splits = [libraryObjectStore getAllSplitsForSampleKey:selectedSample.key];
     [self.tableView reloadData];
 }
 
@@ -159,29 +159,29 @@
 
 -(void) addNewItem:(id)sender
 {
-    splits = [libraryObjectStore getAllSplitsForSampleKey:selectedSource.key];
+    splits = [libraryObjectStore getAllSplitsForSampleKey:selectedSample.key];
     if([splits count] != 0)
     {
         [Procedures addFreshSplit:[splits objectAtIndex:0] inStore:libraryObjectStore];
     }
     else
     {
-        NSString *temp = selectedSource.key;
+        NSString *temp = selectedSample.key;
         temp = [temp stringByAppendingString:@".001"];
         
-        NSString *key = [PrimitiveProcedures uniqueKeyBasedOn:selectedSource.key
+        NSString *key = [PrimitiveProcedures uniqueKeyBasedOn:selectedSample.key
                                                       inStore:libraryObjectStore
                                                       inTable:[SplitConstants tableName]];
         
         Split *split = [[Split alloc] initWithKey:key
                            AndWithAttributes:[SplitConstants attributeNames]
                                    AndValues:[SplitConstants attributeDefaultValues]];
-        [split.attributes setObject:selectedSource.key
+        [split.attributes setObject:selectedSample.key
                               forKey:SPL_SAMPLE_KEY];
         
         [libraryObjectStore putLibraryObject:split IntoTable:[SplitConstants tableName]];
     }
-    splits = [libraryObjectStore getAllSplitsForSampleKey:selectedSource.key];
+    splits = [libraryObjectStore getAllSplitsForSampleKey:selectedSample.key];
     [self.tableView reloadData];
 }
 

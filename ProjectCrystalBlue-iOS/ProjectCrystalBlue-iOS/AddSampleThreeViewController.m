@@ -7,7 +7,7 @@
 //
 
 
-#import "Source.h"
+#import "Sample.h"
 #import "AddSampleThreeViewController.h"
 #import "AddSampleFourViewController.h"
 #import "AddSampleFiveViewController.h"
@@ -20,13 +20,14 @@
 
 @implementation AddSampleThreeViewController
 
-@synthesize sourceToAdd, libraryObjectStore, typeSelected, numRows;
+@synthesize sampleToAdd, libraryObjectStore, typeSelected;
 
-- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary
+- (id)initWithSample:(Sample *)initSample
+   WithLibraryObject:(AbstractCloudLibraryObjectStore *)initLibrary
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        sourceToAdd = initSource;
+        sampleToAdd = initSample;
         libraryObjectStore = initLibrary;
         lithArray = [[NSArray alloc] init];
         
@@ -40,6 +41,11 @@
     return self;
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    lithArray = [SampleConstants lithologiesForRockType:typeSelected];
+}
 
 -(void) goBack:(id)sender
 {
@@ -53,7 +59,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return numRows;
+    return lithArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -70,32 +76,27 @@
     return cell;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    lithArray = [SourceConstants lithologiesForRockType:typeSelected];
-}
-
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *lithologySelected = [lithArray objectAtIndex:indexPath.row];
-    NSArray *deposystems = [SourceConstants deposystemsForRockType:typeSelected];
+    NSArray *deposystems = [SampleConstants deposystemsForRockType:typeSelected];
     
     // Has available deposystems, next view
     if (deposystems) {
-        AddSampleFourViewController *viewControllerFour = [[AddSampleFourViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
+        AddSampleFourViewController *viewControllerFour = [[AddSampleFourViewController alloc] initWithSample:sampleToAdd
+                                                                                            WithLibraryObject:libraryObjectStore];
         [viewControllerFour setTypeSelected:typeSelected];
-        [viewControllerFour setNumRows:deposystems.count];
-        [sourceToAdd.attributes setObject:lithologySelected forKey:SRC_LITHOLOGY];
+        [sampleToAdd.attributes setObject:lithologySelected forKey:SMP_LITHOLOGY];
         [[self navigationController] pushViewController:viewControllerFour animated:YES];
     }
     // No deposystems available, skip fifth view
     else {
-        AddSampleFiveViewController *viewControllerFive = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
+        AddSampleFiveViewController *viewControllerFive = [[AddSampleFiveViewController alloc] initWithSample:sampleToAdd
+                                                                                            WithLibraryObject:libraryObjectStore];
         
         // If lithology selected is unknown, set to empty string
-        [sourceToAdd.attributes setObject:lithologySelected forKey:SRC_LITHOLOGY];
-        [sourceToAdd.attributes setObject:@"" forKey:SRC_DEPOSYSTEM];
+        [sampleToAdd.attributes setObject:lithologySelected forKey:SMP_LITHOLOGY];
+        [sampleToAdd.attributes setObject:@"" forKey:SMP_DEPOSYSTEM];
         [[self navigationController] pushViewController:viewControllerFive animated:YES];
     }
 }

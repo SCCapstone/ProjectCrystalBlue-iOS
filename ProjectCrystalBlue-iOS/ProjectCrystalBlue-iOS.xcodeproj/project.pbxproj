@@ -18,9 +18,9 @@
 		B4014E8D18A7203300D8F4BA /* SplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4014E8C18A7203300D8F4BA /* SplitViewController.m */; };
 		B42DF80D18AFC4CD001C0E09 /* SplitEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B42DF80C18AFC4CD001C0E09 /* SplitEditViewController.m */; };
 		B42DF81318B1DB3B001C0E09 /* ProcedureListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B42DF81218B1DB3B001C0E09 /* ProcedureListViewController.m */; };
-		B4383ACB189C42B700DAC28F /* SourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383ACA189C42B700DAC28F /* SourceViewController.m */; };
+		B4383ACB189C42B700DAC28F /* SampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383ACA189C42B700DAC28F /* SampleViewController.m */; };
 		B4383AD0189C4A0000DAC28F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383ACF189C4A0000DAC28F /* AppDelegate.m */; };
-		B4383AE2189C71B200DAC28F /* SourceEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383AE0189C71B200DAC28F /* SourceEditViewController.m */; };
+		B4383AE2189C71B200DAC28F /* SampleEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4383AE0189C71B200DAC28F /* SampleEditViewController.m */; };
 		B43DCE9618C67A8C00FD9B53 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43DCE9518C67A8C00FD9B53 /* CoreLocation.framework */; };
 		B446B92618C2403C00AB4E88 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B92418C2403C00AB4E88 /* HomeViewController.m */; };
 		B446B92718C2403C00AB4E88 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B92518C2403C00AB4E88 /* HomeViewController.xib */; };
@@ -36,8 +36,8 @@
 		B446B94A18C2E67C00AB4E88 /* AddSampleSixViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B94818C2E67C00AB4E88 /* AddSampleSixViewController.xib */; };
 		B446B94E18C2E8B000AB4E88 /* AddSampleSevenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B446B94C18C2E8B000AB4E88 /* AddSampleSevenViewController.m */; };
 		B446B94F18C2E8B000AB4E88 /* AddSampleSevenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B446B94D18C2E8B000AB4E88 /* AddSampleSevenViewController.xib */; };
-		B44D915918E7D55F005F937C /* SourceImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B44D915718E7D55F005F937C /* SourceImagesViewController.m */; };
-		B44D915A18E7D55F005F937C /* SourceImagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B44D915818E7D55F005F937C /* SourceImagesViewController.xib */; };
+		B44D915918E7D55F005F937C /* SampleImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B44D915718E7D55F005F937C /* SampleImagesViewController.m */; };
+		B44D915A18E7D55F005F937C /* SampleImagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B44D915818E7D55F005F937C /* SampleImagesViewController.xib */; };
 		B45379EF18DD4C5F008A9EBB /* AddSampleImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B45379ED18DD4C5F008A9EBB /* AddSampleImageViewController.m */; };
 		B45379F018DD4C5F008A9EBB /* AddSampleImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B45379EE18DD4C5F008A9EBB /* AddSampleImageViewController.xib */; };
 		B45379F418DD5B66008A9EBB /* InitialsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B45379F218DD5B66008A9EBB /* InitialsViewController.m */; };
@@ -55,8 +55,8 @@
 		D001B3C118B039CB00975620 /* TransactionStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D001B3C018B039CB00975620 /* TransactionStoreTests.m */; };
 		D01DDDBF188DDC5E0059AF09 /* Split.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDB8188DDC5E0059AF09 /* Split.m */; };
 		D01DDDC0188DDC5E0059AF09 /* SplitConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDBA188DDC5E0059AF09 /* SplitConstants.m */; };
-		D01DDDC1188DDC5E0059AF09 /* Source.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDBC188DDC5E0059AF09 /* Source.m */; };
-		D01DDDC2188DDC5E0059AF09 /* SourceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDBE188DDC5E0059AF09 /* SourceConstants.m */; };
+		D01DDDC1188DDC5E0059AF09 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDBC188DDC5E0059AF09 /* Sample.m */; };
+		D01DDDC2188DDC5E0059AF09 /* SampleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D01DDDBE188DDC5E0059AF09 /* SampleConstants.m */; };
 		D021B93618F0EEBA00ADE234 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D021B93518F0EEBA00ADE234 /* Reachability.m */; };
 		D031240B18BDBD9700F3AAD9 /* SimpleDBUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D031240A18BDBD9700F3AAD9 /* SimpleDBUtilsTests.m */; };
 		D04AD3981851BDAB0079B2EE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04AD3971851BDAB0079B2EE /* CFNetwork.framework */; };
@@ -73,19 +73,22 @@
 		D075270518B009C600622CBA /* AbstractLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D075270218B009C600622CBA /* AbstractLibraryObjectStore.m */; };
 		D075270618B009C600622CBA /* AbstractCloudLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D075270418B009C600622CBA /* AbstractCloudLibraryObjectStore.m */; };
 		D075270918B021AD00622CBA /* HardcodedCredentialsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D075270818B021AD00622CBA /* HardcodedCredentialsProvider.m */; };
+		D091E16C190C3D9F00C94EF1 /* OriginalSplitConstantsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D091E169190C3D9F00C94EF1 /* OriginalSplitConstantsTests.m */; };
+		D091E16D190C3D9F00C94EF1 /* LibraryObjectEqualsAndHashcodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D091E16A190C3D9F00C94EF1 /* LibraryObjectEqualsAndHashcodeTests.m */; };
+		D091E16E190C3D9F00C94EF1 /* TransactionEqualsAndHashcodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D091E16B190C3D9F00C94EF1 /* TransactionEqualsAndHashcodeTests.m */; };
 		D0B1B728189C876000052443 /* LibraryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B1B727189C876000052443 /* LibraryObject.m */; };
 		D0C31B2818FA389D00F4792C /* SimpleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C31B2618FA389D00F4792C /* SimpleTableViewController.m */; };
 		D0C31B2918FA389D00F4792C /* SimpleTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0C31B2718FA389D00F4792C /* SimpleTableViewController.xib */; };
 		D0C85BD518BDB0C00002033E /* ConflictResolution.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C85BD418BDB0C00002033E /* ConflictResolution.m */; };
 		D0C85BD818BDB4810002033E /* SimpleDBUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C85BD718BDB4810002033E /* SimpleDBUtils.m */; };
-		D70BD24818DFA33200FECBD7 /* SourceImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BD24718DFA33200FECBD7 /* SourceImageUtils.m */; };
+		D70BD24818DFA33200FECBD7 /* SampleImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BD24718DFA33200FECBD7 /* SampleImageUtils.m */; };
 		D70BD24E18DFA39700FECBD7 /* S3ImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BD24B18DFA39700FECBD7 /* S3ImageStore.m */; };
 		D70BD24F18DFA39700FECBD7 /* S3Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BD24D18DFA39700FECBD7 /* S3Utils.m */; };
 		D70BD25218DFA3D100FECBD7 /* LocalTransactionCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BD25118DFA3D100FECBD7 /* LocalTransactionCache.m */; };
 		D70BD25718DFA60800FECBD7 /* UNIT_TEST_UPLOAD_IMAGE_16x16.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D70BD25418DFA60800FECBD7 /* UNIT_TEST_UPLOAD_IMAGE_16x16.jpg */; };
 		D70BD25818DFA60800FECBD7 /* S3ImageStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BD25518DFA60800FECBD7 /* S3ImageStoreTests.m */; };
 		D70BD25918DFA60800FECBD7 /* S3UtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BD25618DFA60800FECBD7 /* S3UtilsTests.m */; };
-		D70BD25C18DFA67500FECBD7 /* SourceImageUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BD25B18DFA67500FECBD7 /* SourceImageUtilsTests.m */; };
+		D70BD25C18DFA67500FECBD7 /* SampleImageUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BD25B18DFA67500FECBD7 /* SampleImageUtilsTests.m */; };
 		D71EE32E18518C5F007D4018 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D71EE32D18518C5F007D4018 /* libsqlite3.dylib */; };
 		D729BD3B181C24A000F762A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3A181C24A000F762A3 /* Foundation.framework */; };
 		D729BD3D181C24A000F762A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD3C181C24A000F762A3 /* CoreGraphics.framework */; };
@@ -121,15 +124,15 @@
 		D77F88CD18E8ABB800734631 /* ValidationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D77F88C218E8ABB800734631 /* ValidationResponse.m */; };
 		D77F88CE18E8ABB800734631 /* PrimitiveFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D77F88C418E8ABB800734631 /* PrimitiveFieldValidator.m */; };
 		D77F88CF18E8ABB800734631 /* SplitFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D77F88C618E8ABB800734631 /* SplitFieldValidator.m */; };
-		D77F88D018E8ABB800734631 /* SourceFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D77F88C818E8ABB800734631 /* SourceFieldValidator.m */; };
+		D77F88D018E8ABB800734631 /* SampleFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D77F88C818E8ABB800734631 /* SampleFieldValidator.m */; };
 		D77F88D118E8ABB800734631 /* ProcedureFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D77F88CA18E8ABB800734631 /* ProcedureFieldValidator.m */; };
 		D77F88D218E8ABB800734631 /* ImagesFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D77F88CC18E8ABB800734631 /* ImagesFieldValidator.m */; };
 		D77F88D818E8ABF400734631 /* PrimitiveValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D77F88D318E8ABF400734631 /* PrimitiveValidatorTests.m */; };
 		D77F88D918E8ABF400734631 /* SplitFieldValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D77F88D418E8ABF400734631 /* SplitFieldValidatorTests.m */; };
-		D77F88DA18E8ABF400734631 /* SourceFieldValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D77F88D518E8ABF400734631 /* SourceFieldValidatorTests.m */; };
+		D77F88DA18E8ABF400734631 /* SampleFieldValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D77F88D518E8ABF400734631 /* SampleFieldValidatorTests.m */; };
 		D77F88DB18E8ABF400734631 /* ProcedureFieldValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D77F88D618E8ABF400734631 /* ProcedureFieldValidatorTests.m */; };
 		D77F88DC18E8ABF400734631 /* ImagesFieldvalidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D77F88D718E8ABF400734631 /* ImagesFieldvalidatorTests.m */; };
-		D7B5867F18C3AD75003C19C0 /* SourceEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7B5867E18C3AD75003C19C0 /* SourceEditViewController.xib */; };
+		D7B5867F18C3AD75003C19C0 /* SampleEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7B5867E18C3AD75003C19C0 /* SampleEditViewController.xib */; };
 		D7D76B07189EED000056CDE4 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D76B02189EED000056CDE4 /* DDASLLogger.m */; };
 		D7D76B08189EED000056CDE4 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D76B04189EED000056CDE4 /* DDFileLogger.m */; };
 		D7D76B09189EED000056CDE4 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D76B06189EED000056CDE4 /* DDLog.m */; };
@@ -199,12 +202,12 @@
 		B42DF80C18AFC4CD001C0E09 /* SplitEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitEditViewController.m; sourceTree = "<group>"; };
 		B42DF81118B1DB3B001C0E09 /* ProcedureListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureListViewController.h; sourceTree = "<group>"; };
 		B42DF81218B1DB3B001C0E09 /* ProcedureListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureListViewController.m; sourceTree = "<group>"; };
-		B4383AC9189C42B700DAC28F /* SourceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceViewController.h; sourceTree = "<group>"; };
-		B4383ACA189C42B700DAC28F /* SourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceViewController.m; sourceTree = "<group>"; };
+		B4383AC9189C42B700DAC28F /* SampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleViewController.h; sourceTree = "<group>"; };
+		B4383ACA189C42B700DAC28F /* SampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleViewController.m; sourceTree = "<group>"; };
 		B4383ACE189C4A0000DAC28F /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B4383ACF189C4A0000DAC28F /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B4383ADF189C71B200DAC28F /* SourceEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceEditViewController.h; sourceTree = "<group>"; };
-		B4383AE0189C71B200DAC28F /* SourceEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceEditViewController.m; sourceTree = "<group>"; };
+		B4383ADF189C71B200DAC28F /* SampleEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleEditViewController.h; sourceTree = "<group>"; };
+		B4383AE0189C71B200DAC28F /* SampleEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleEditViewController.m; sourceTree = "<group>"; };
 		B43DCE9518C67A8C00FD9B53 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B446B92318C2403C00AB4E88 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		B446B92418C2403C00AB4E88 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
@@ -228,9 +231,9 @@
 		B446B94B18C2E8B000AB4E88 /* AddSampleSevenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSampleSevenViewController.h; sourceTree = "<group>"; };
 		B446B94C18C2E8B000AB4E88 /* AddSampleSevenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleSevenViewController.m; sourceTree = "<group>"; };
 		B446B94D18C2E8B000AB4E88 /* AddSampleSevenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSampleSevenViewController.xib; sourceTree = "<group>"; };
-		B44D915618E7D55F005F937C /* SourceImagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceImagesViewController.h; sourceTree = "<group>"; };
-		B44D915718E7D55F005F937C /* SourceImagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceImagesViewController.m; sourceTree = "<group>"; };
-		B44D915818E7D55F005F937C /* SourceImagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SourceImagesViewController.xib; sourceTree = "<group>"; };
+		B44D915618E7D55F005F937C /* SampleImagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleImagesViewController.h; sourceTree = "<group>"; };
+		B44D915718E7D55F005F937C /* SampleImagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleImagesViewController.m; sourceTree = "<group>"; };
+		B44D915818E7D55F005F937C /* SampleImagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SampleImagesViewController.xib; sourceTree = "<group>"; };
 		B45379EC18DD4C5F008A9EBB /* AddSampleImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSampleImageViewController.h; sourceTree = "<group>"; };
 		B45379ED18DD4C5F008A9EBB /* AddSampleImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleImageViewController.m; sourceTree = "<group>"; };
 		B45379EE18DD4C5F008A9EBB /* AddSampleImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSampleImageViewController.xib; sourceTree = "<group>"; };
@@ -257,10 +260,10 @@
 		D01DDDB8188DDC5E0059AF09 /* Split.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Split.m; sourceTree = "<group>"; };
 		D01DDDB9188DDC5E0059AF09 /* SplitConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitConstants.h; sourceTree = "<group>"; };
 		D01DDDBA188DDC5E0059AF09 /* SplitConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitConstants.m; sourceTree = "<group>"; };
-		D01DDDBB188DDC5E0059AF09 /* Source.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Source.h; sourceTree = "<group>"; };
-		D01DDDBC188DDC5E0059AF09 /* Source.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Source.m; sourceTree = "<group>"; };
-		D01DDDBD188DDC5E0059AF09 /* SourceConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceConstants.h; sourceTree = "<group>"; };
-		D01DDDBE188DDC5E0059AF09 /* SourceConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceConstants.m; sourceTree = "<group>"; };
+		D01DDDBB188DDC5E0059AF09 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
+		D01DDDBC188DDC5E0059AF09 /* Sample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample.m; sourceTree = "<group>"; };
+		D01DDDBD188DDC5E0059AF09 /* SampleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleConstants.h; sourceTree = "<group>"; };
+		D01DDDBE188DDC5E0059AF09 /* SampleConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleConstants.m; sourceTree = "<group>"; };
 		D021B93418F0EEBA00ADE234 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		D021B93518F0EEBA00ADE234 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		D031240A18BDBD9700F3AAD9 /* SimpleDBUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBUtilsTests.m; sourceTree = "<group>"; };
@@ -291,6 +294,9 @@
 		D075270418B009C600622CBA /* AbstractCloudLibraryObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractCloudLibraryObjectStore.m; sourceTree = "<group>"; };
 		D075270718B021AD00622CBA /* HardcodedCredentialsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HardcodedCredentialsProvider.h; sourceTree = "<group>"; };
 		D075270818B021AD00622CBA /* HardcodedCredentialsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HardcodedCredentialsProvider.m; sourceTree = "<group>"; };
+		D091E169190C3D9F00C94EF1 /* OriginalSplitConstantsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalSplitConstantsTests.m; sourceTree = "<group>"; };
+		D091E16A190C3D9F00C94EF1 /* LibraryObjectEqualsAndHashcodeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObjectEqualsAndHashcodeTests.m; sourceTree = "<group>"; };
+		D091E16B190C3D9F00C94EF1 /* TransactionEqualsAndHashcodeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionEqualsAndHashcodeTests.m; sourceTree = "<group>"; };
 		D0B1B726189C876000052443 /* LibraryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryObject.h; sourceTree = "<group>"; };
 		D0B1B727189C876000052443 /* LibraryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObject.m; sourceTree = "<group>"; };
 		D0C31B2518FA389D00F4792C /* SimpleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTableViewController.h; sourceTree = "<group>"; };
@@ -300,8 +306,8 @@
 		D0C85BD418BDB0C00002033E /* ConflictResolution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConflictResolution.m; sourceTree = "<group>"; };
 		D0C85BD618BDB4810002033E /* SimpleDBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleDBUtils.h; sourceTree = "<group>"; };
 		D0C85BD718BDB4810002033E /* SimpleDBUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBUtils.m; sourceTree = "<group>"; };
-		D70BD24618DFA33200FECBD7 /* SourceImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceImageUtils.h; sourceTree = "<group>"; };
-		D70BD24718DFA33200FECBD7 /* SourceImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceImageUtils.m; sourceTree = "<group>"; };
+		D70BD24618DFA33200FECBD7 /* SampleImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleImageUtils.h; sourceTree = "<group>"; };
+		D70BD24718DFA33200FECBD7 /* SampleImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleImageUtils.m; sourceTree = "<group>"; };
 		D70BD24A18DFA39700FECBD7 /* S3ImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3ImageStore.h; sourceTree = "<group>"; };
 		D70BD24B18DFA39700FECBD7 /* S3ImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3ImageStore.m; sourceTree = "<group>"; };
 		D70BD24C18DFA39700FECBD7 /* S3Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3Utils.h; sourceTree = "<group>"; };
@@ -311,7 +317,7 @@
 		D70BD25418DFA60800FECBD7 /* UNIT_TEST_UPLOAD_IMAGE_16x16.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = UNIT_TEST_UPLOAD_IMAGE_16x16.jpg; sourceTree = "<group>"; };
 		D70BD25518DFA60800FECBD7 /* S3ImageStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3ImageStoreTests.m; sourceTree = "<group>"; };
 		D70BD25618DFA60800FECBD7 /* S3UtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3UtilsTests.m; sourceTree = "<group>"; };
-		D70BD25B18DFA67500FECBD7 /* SourceImageUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceImageUtilsTests.m; sourceTree = "<group>"; };
+		D70BD25B18DFA67500FECBD7 /* SampleImageUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleImageUtilsTests.m; sourceTree = "<group>"; };
 		D71EE32D18518C5F007D4018 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		D729BD37181C24A000F762A3 /* ProjectCrystalBlue-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ProjectCrystalBlue-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D729BD3A181C24A000F762A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -359,18 +365,18 @@
 		D77F88C418E8ABB800734631 /* PrimitiveFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveFieldValidator.m; sourceTree = "<group>"; };
 		D77F88C518E8ABB800734631 /* SplitFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitFieldValidator.h; sourceTree = "<group>"; };
 		D77F88C618E8ABB800734631 /* SplitFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitFieldValidator.m; sourceTree = "<group>"; };
-		D77F88C718E8ABB800734631 /* SourceFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceFieldValidator.h; sourceTree = "<group>"; };
-		D77F88C818E8ABB800734631 /* SourceFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceFieldValidator.m; sourceTree = "<group>"; };
+		D77F88C718E8ABB800734631 /* SampleFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleFieldValidator.h; sourceTree = "<group>"; };
+		D77F88C818E8ABB800734631 /* SampleFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleFieldValidator.m; sourceTree = "<group>"; };
 		D77F88C918E8ABB800734631 /* ProcedureFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureFieldValidator.h; sourceTree = "<group>"; };
 		D77F88CA18E8ABB800734631 /* ProcedureFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureFieldValidator.m; sourceTree = "<group>"; };
 		D77F88CB18E8ABB800734631 /* ImagesFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesFieldValidator.h; sourceTree = "<group>"; };
 		D77F88CC18E8ABB800734631 /* ImagesFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesFieldValidator.m; sourceTree = "<group>"; };
 		D77F88D318E8ABF400734631 /* PrimitiveValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveValidatorTests.m; sourceTree = "<group>"; };
 		D77F88D418E8ABF400734631 /* SplitFieldValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitFieldValidatorTests.m; sourceTree = "<group>"; };
-		D77F88D518E8ABF400734631 /* SourceFieldValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceFieldValidatorTests.m; sourceTree = "<group>"; };
+		D77F88D518E8ABF400734631 /* SampleFieldValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleFieldValidatorTests.m; sourceTree = "<group>"; };
 		D77F88D618E8ABF400734631 /* ProcedureFieldValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureFieldValidatorTests.m; sourceTree = "<group>"; };
 		D77F88D718E8ABF400734631 /* ImagesFieldvalidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesFieldvalidatorTests.m; sourceTree = "<group>"; };
-		D7B5867E18C3AD75003C19C0 /* SourceEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SourceEditViewController.xib; sourceTree = "<group>"; };
+		D7B5867E18C3AD75003C19C0 /* SampleEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SampleEditViewController.xib; sourceTree = "<group>"; };
 		D7D76B01189EED000056CDE4 /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
 		D7D76B02189EED000056CDE4 /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogger.m; sourceTree = "<group>"; };
 		D7D76B03189EED000056CDE4 /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
@@ -496,7 +502,7 @@
 			isa = PBXGroup;
 			children = (
 				B446B92518C2403C00AB4E88 /* HomeViewController.xib */,
-				D7B5867E18C3AD75003C19C0 /* SourceEditViewController.xib */,
+				D7B5867E18C3AD75003C19C0 /* SampleEditViewController.xib */,
 				D73C2EEE1900A63100223755 /* CredentialsViewController.xib */,
 				B446B93018C2C85900AB4E88 /* AddSampleOneViewController.xib */,
 				B446B94318C2E49D00AB4E88 /* AddSampleFiveViewController.xib */,
@@ -508,7 +514,7 @@
 				B446B92A18C2589900AB4E88 /* SearchSampleViewController.xib */,
 				B46C93C418C64A920057078B /* EditLocationViewController.xib */,
 				B45379F318DD5B66008A9EBB /* InitialsViewController.xib */,
-				B44D915818E7D55F005F937C /* SourceImagesViewController.xib */,
+				B44D915818E7D55F005F937C /* SampleImagesViewController.xib */,
 				D0C31B2718FA389D00F4792C /* SimpleTableViewController.xib */,
 				B4E755F71904396B00D5CCF7 /* EnlargedImageViewController.xib */,
 			);
@@ -518,10 +524,10 @@
 		B446B92218C23FB800AB4E88 /* ModelViews */ = {
 			isa = PBXGroup;
 			children = (
-				B4383AC9189C42B700DAC28F /* SourceViewController.h */,
-				B4383ACA189C42B700DAC28F /* SourceViewController.m */,
-				B4383ADF189C71B200DAC28F /* SourceEditViewController.h */,
-				B4383AE0189C71B200DAC28F /* SourceEditViewController.m */,
+				B4383AC9189C42B700DAC28F /* SampleViewController.h */,
+				B4383ACA189C42B700DAC28F /* SampleViewController.m */,
+				B4383ADF189C71B200DAC28F /* SampleEditViewController.h */,
+				B4383AE0189C71B200DAC28F /* SampleEditViewController.m */,
 				B4014E8B18A7203300D8F4BA /* SplitViewController.h */,
 				B4014E8C18A7203300D8F4BA /* SplitViewController.m */,
 				B42DF80B18AFC4CD001C0E09 /* SplitEditViewController.h */,
@@ -560,8 +566,8 @@
 		B4981F9618E9131000EA0741 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				B44D915618E7D55F005F937C /* SourceImagesViewController.h */,
-				B44D915718E7D55F005F937C /* SourceImagesViewController.m */,
+				B44D915618E7D55F005F937C /* SampleImagesViewController.h */,
+				B44D915718E7D55F005F937C /* SampleImagesViewController.m */,
 				B4981F9718E9132B00EA0741 /* AddImageViewController.h */,
 				B4981F9818E9132B00EA0741 /* AddImageViewController.m */,
 				B4E755F51904396B00D5CCF7 /* EnlargedImageViewController.h */,
@@ -601,14 +607,14 @@
 				D704E1B118B1942100170B7E /* Procedure */,
 				D0B1B726189C876000052443 /* LibraryObject.h */,
 				D0B1B727189C876000052443 /* LibraryObject.m */,
-				D01DDDBB188DDC5E0059AF09 /* Source.h */,
-				D01DDDBC188DDC5E0059AF09 /* Source.m */,
+				D01DDDBB188DDC5E0059AF09 /* Sample.h */,
+				D01DDDBC188DDC5E0059AF09 /* Sample.m */,
 				D01DDDB7188DDC5E0059AF09 /* Split.h */,
 				D01DDDB8188DDC5E0059AF09 /* Split.m */,
 				D07526DB18B0084400622CBA /* Transaction.h */,
 				D07526DC18B0084400622CBA /* Transaction.m */,
-				D01DDDBD188DDC5E0059AF09 /* SourceConstants.h */,
-				D01DDDBE188DDC5E0059AF09 /* SourceConstants.m */,
+				D01DDDBD188DDC5E0059AF09 /* SampleConstants.h */,
+				D01DDDBE188DDC5E0059AF09 /* SampleConstants.m */,
 				D01DDDB9188DDC5E0059AF09 /* SplitConstants.h */,
 				D01DDDBA188DDC5E0059AF09 /* SplitConstants.m */,
 				D07526DD18B0084400622CBA /* TransactionConstants.h */,
@@ -762,6 +768,9 @@
 			isa = PBXGroup;
 			children = (
 				D704E1C318B194AE00170B7E /* Procedure Tests */,
+				D091E169190C3D9F00C94EF1 /* OriginalSplitConstantsTests.m */,
+				D091E16A190C3D9F00C94EF1 /* LibraryObjectEqualsAndHashcodeTests.m */,
+				D091E16B190C3D9F00C94EF1 /* TransactionEqualsAndHashcodeTests.m */,
 			);
 			name = "Model Tests";
 			sourceTree = "<group>";
@@ -785,8 +794,8 @@
 				D77F88C218E8ABB800734631 /* ValidationResponse.m */,
 				D77F88C318E8ABB800734631 /* PrimitiveFieldValidator.h */,
 				D77F88C418E8ABB800734631 /* PrimitiveFieldValidator.m */,
-				D77F88C718E8ABB800734631 /* SourceFieldValidator.h */,
-				D77F88C818E8ABB800734631 /* SourceFieldValidator.m */,
+				D77F88C718E8ABB800734631 /* SampleFieldValidator.h */,
+				D77F88C818E8ABB800734631 /* SampleFieldValidator.m */,
 				D77F88C518E8ABB800734631 /* SplitFieldValidator.h */,
 				D77F88C618E8ABB800734631 /* SplitFieldValidator.m */,
 				D77F88C918E8ABB800734631 /* ProcedureFieldValidator.h */,
@@ -801,7 +810,7 @@
 			isa = PBXGroup;
 			children = (
 				D77F88D318E8ABF400734631 /* PrimitiveValidatorTests.m */,
-				D77F88D518E8ABF400734631 /* SourceFieldValidatorTests.m */,
+				D77F88D518E8ABF400734631 /* SampleFieldValidatorTests.m */,
 				D77F88D418E8ABF400734631 /* SplitFieldValidatorTests.m */,
 				D77F88D618E8ABF400734631 /* ProcedureFieldValidatorTests.m */,
 				D77F88D718E8ABF400734631 /* ImagesFieldvalidatorTests.m */,
@@ -832,12 +841,12 @@
 			name = S3ImageStore;
 			sourceTree = "<group>";
 		};
-		D70BD25A18DFA66900FECBD7 /* SourceImageUtils */ = {
+		D70BD25A18DFA66900FECBD7 /* SampleImageUtils */ = {
 			isa = PBXGroup;
 			children = (
-				D70BD25B18DFA67500FECBD7 /* SourceImageUtilsTests.m */,
+				D70BD25B18DFA67500FECBD7 /* SampleImageUtilsTests.m */,
 			);
-			name = SourceImageUtils;
+			name = SampleImageUtils;
 			sourceTree = "<group>";
 		};
 		D729BD2E181C24A000F762A3 = {
@@ -985,8 +994,8 @@
 				D70BD24918DFA38900FECBD7 /* S3ImageStore */,
 				D7EFB3E218AECB38004EAB88 /* ImageStoreResources */,
 				D7EFB3D318AEC675004EAB88 /* Abstract Classes */,
-				D70BD24618DFA33200FECBD7 /* SourceImageUtils.h */,
-				D70BD24718DFA33200FECBD7 /* SourceImageUtils.m */,
+				D70BD24618DFA33200FECBD7 /* SampleImageUtils.h */,
+				D70BD24718DFA33200FECBD7 /* SampleImageUtils.m */,
 				D7EFB3DF18AEC9A3004EAB88 /* LocalImageStore.h */,
 				D7EFB3E018AEC9A3004EAB88 /* LocalImageStore.m */,
 			);
@@ -1018,7 +1027,7 @@
 		D7EFB3DB18AEC876004EAB88 /* Image Store */ = {
 			isa = PBXGroup;
 			children = (
-				D70BD25A18DFA66900FECBD7 /* SourceImageUtils */,
+				D70BD25A18DFA66900FECBD7 /* SampleImageUtils */,
 				D70BD25318DFA5F200FECBD7 /* S3ImageStore */,
 				D7EFB3E918AECCF9004EAB88 /* LocalImageStore */,
 				D7EFB3DC18AEC87A004EAB88 /* AbstractMobileImageStore */,
@@ -1127,7 +1136,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7B5867F18C3AD75003C19C0 /* SourceEditViewController.xib in Resources */,
+				D7B5867F18C3AD75003C19C0 /* SampleEditViewController.xib in Resources */,
 				B446B94518C2E49D00AB4E88 /* AddSampleFiveViewController.xib in Resources */,
 				B45379F518DD5B66008A9EBB /* InitialsViewController.xib in Resources */,
 				D729BD45181C24A000F762A3 /* InfoPlist.strings in Resources */,
@@ -1143,7 +1152,7 @@
 				B446B92718C2403C00AB4E88 /* HomeViewController.xib in Resources */,
 				B4E755F91904396B00D5CCF7 /* EnlargedImageViewController.xib in Resources */,
 				B46C93C618C64A920057078B /* EditLocationViewController.xib in Resources */,
-				B44D915A18E7D55F005F937C /* SourceImagesViewController.xib in Resources */,
+				B44D915A18E7D55F005F937C /* SampleImagesViewController.xib in Resources */,
 				D7EFB3E418AECB45004EAB88 /* no_image.png in Resources */,
 				B446B93218C2C85900AB4E88 /* AddSampleOneViewController.xib in Resources */,
 			);
@@ -1178,12 +1187,12 @@
 				D77F88CF18E8ABB800734631 /* SplitFieldValidator.m in Sources */,
 				D075270618B009C600622CBA /* AbstractCloudLibraryObjectStore.m in Sources */,
 				B4981F9E18E937DC00EA0741 /* AddSampleAgeViewController.m in Sources */,
-				B4383ACB189C42B700DAC28F /* SourceViewController.m in Sources */,
+				B4383ACB189C42B700DAC28F /* SampleViewController.m in Sources */,
 				B45379F418DD5B66008A9EBB /* InitialsViewController.m in Sources */,
 				D7EFB3D618AEC695004EAB88 /* AbstractMobileImageStore.m in Sources */,
 				D7D76B0C189EED060056CDE4 /* DDTTYLogger.m in Sources */,
 				D77F88CD18E8ABB800734631 /* ValidationResponse.m in Sources */,
-				D01DDDC2188DDC5E0059AF09 /* SourceConstants.m in Sources */,
+				D01DDDC2188DDC5E0059AF09 /* SampleConstants.m in Sources */,
 				D73C2EEF1900A63100223755 /* CredentialsViewController.m in Sources */,
 				B446B93518C2CCA200AB4E88 /* AddSampleTwoViewController.m in Sources */,
 				D77F88D218E8ABB800734631 /* ImagesFieldValidator.m in Sources */,
@@ -1191,11 +1200,11 @@
 				D0C85BD518BDB0C00002033E /* ConflictResolution.m in Sources */,
 				D7EFB3E818AECBB2004EAB88 /* ImageUtils.m in Sources */,
 				D73A024D18FF7019008EE99F /* CredentialsEncryption.m in Sources */,
-				D01DDDC1188DDC5E0059AF09 /* Source.m in Sources */,
+				D01DDDC1188DDC5E0059AF09 /* Sample.m in Sources */,
 				D075270918B021AD00622CBA /* HardcodedCredentialsProvider.m in Sources */,
 				D7D76B09189EED000056CDE4 /* DDLog.m in Sources */,
 				B4014E8D18A7203300D8F4BA /* SplitViewController.m in Sources */,
-				D77F88D018E8ABB800734631 /* SourceFieldValidator.m in Sources */,
+				D77F88D018E8ABB800734631 /* SampleFieldValidator.m in Sources */,
 				D0B1B728189C876000052443 /* LibraryObject.m in Sources */,
 				B4981F9A18E9132B00EA0741 /* AddImageViewController.m in Sources */,
 				D70BD25218DFA3D100FECBD7 /* LocalTransactionCache.m in Sources */,
@@ -1208,7 +1217,7 @@
 				D07526F018B008E300622CBA /* FMDatabase.m in Sources */,
 				D01DDDBF188DDC5E0059AF09 /* Split.m in Sources */,
 				B42DF81318B1DB3B001C0E09 /* ProcedureListViewController.m in Sources */,
-				B44D915918E7D55F005F937C /* SourceImagesViewController.m in Sources */,
+				B44D915918E7D55F005F937C /* SampleImagesViewController.m in Sources */,
 				D075270518B009C600622CBA /* AbstractLibraryObjectStore.m in Sources */,
 				D01DDDC0188DDC5E0059AF09 /* SplitConstants.m in Sources */,
 				D72FE4AD18B59F0D00C6452F /* ProcedureNameConstants.m in Sources */,
@@ -1217,12 +1226,12 @@
 				D72FE4AE18B59F0D00C6452F /* PrimitiveProcedures.m in Sources */,
 				D7EFB3E118AEC9A3004EAB88 /* LocalImageStore.m in Sources */,
 				D70BD24E18DFA39700FECBD7 /* S3ImageStore.m in Sources */,
-				B4383AE2189C71B200DAC28F /* SourceEditViewController.m in Sources */,
+				B4383AE2189C71B200DAC28F /* SampleEditViewController.m in Sources */,
 				B4E755F81904396B00D5CCF7 /* EnlargedImageViewController.m in Sources */,
 				D07526E018B0084400622CBA /* TransactionConstants.m in Sources */,
 				D77F88D118E8ABB800734631 /* ProcedureFieldValidator.m in Sources */,
 				D07526E418B008B600622CBA /* TransactionStore.m in Sources */,
-				D70BD24818DFA33200FECBD7 /* SourceImageUtils.m in Sources */,
+				D70BD24818DFA33200FECBD7 /* SampleImageUtils.m in Sources */,
 				D07526F118B008E300622CBA /* FMDatabaseAdditions.m in Sources */,
 				B46C93C518C64A920057078B /* EditLocationViewController.m in Sources */,
 				D73A024B18FF7019008EE99F /* LocalEncryptedCredentialsProvider.m in Sources */,
@@ -1248,19 +1257,22 @@
 			files = (
 				D77F88D818E8ABF400734631 /* PrimitiveValidatorTests.m in Sources */,
 				D001B3BF18B039C000975620 /* LocalLibraryObjectStoreTests.m in Sources */,
+				D091E16E190C3D9F00C94EF1 /* TransactionEqualsAndHashcodeTests.m in Sources */,
 				D72FE4BA18B59F8200C6452F /* ProceduresTests.m in Sources */,
 				D73A025218FF727F008EE99F /* CredentialsEncryptionTests.m in Sources */,
 				D72FE4BB18B59F8200C6452F /* ProcedureRecordTests.m in Sources */,
 				D001B3C118B039CB00975620 /* TransactionStoreTests.m in Sources */,
 				D73A025118FF727F008EE99F /* CredentialsProviderTests.m in Sources */,
-				D77F88DA18E8ABF400734631 /* SourceFieldValidatorTests.m in Sources */,
+				D77F88DA18E8ABF400734631 /* SampleFieldValidatorTests.m in Sources */,
 				D77F88D918E8ABF400734631 /* SplitFieldValidatorTests.m in Sources */,
+				D091E16C190C3D9F00C94EF1 /* OriginalSplitConstantsTests.m in Sources */,
 				D77F88DC18E8ABF400734631 /* ImagesFieldvalidatorTests.m in Sources */,
 				D729BD60181C24A000F762A3 /* ProjectCrystalBlue_iOSTests.m in Sources */,
 				D70BD25818DFA60800FECBD7 /* S3ImageStoreTests.m in Sources */,
 				D7EFB3EB18AECD09004EAB88 /* LocalImageStoreTests.m in Sources */,
 				D031240B18BDBD9700F3AAD9 /* SimpleDBUtilsTests.m in Sources */,
-				D70BD25C18DFA67500FECBD7 /* SourceImageUtilsTests.m in Sources */,
+				D70BD25C18DFA67500FECBD7 /* SampleImageUtilsTests.m in Sources */,
+				D091E16D190C3D9F00C94EF1 /* LibraryObjectEqualsAndHashcodeTests.m in Sources */,
 				D73A025318FF797E008EE99F /* CredentialsEncryption.m in Sources */,
 				D73A025518FF798F008EE99F /* LocalEncryptedCredentialsProvider.m in Sources */,
 				D7EFB3DE18AEC88E004EAB88 /* AbstractImageStoreTests.m in Sources */,

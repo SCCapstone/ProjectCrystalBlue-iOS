@@ -1,5 +1,5 @@
 //
-//  SourceViewController.h
+//  SampleViewController.h
 //  ProjectCrystalBlue-iOS
 //
 //  Created by Ryan McGraw on 1/31/14.
@@ -7,8 +7,8 @@
 // type
 
 #import <Foundation/Foundation.h>
-#import "SourceEditViewController.h"
+#import "SampleEditViewController.h"
 
-@interface SourceViewController : UITableViewController <UIActionSheetDelegate, UIAlertViewDelegate>
+@interface SampleViewController : UITableViewController <UIActionSheetDelegate, UIAlertViewDelegate>
 
 @end

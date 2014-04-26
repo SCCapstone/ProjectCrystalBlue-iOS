@@ -1,48 +1,49 @@
 //
-//  SourceViewController.m
+//  SampleViewController.m
 //  ProjectCrystalBlue-iOS
 //
 //  Created by Ryan McGraw on 1/31/14.
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import "SourceViewController.h"
-#import "Source.h"
-#import "SourceEditViewController.h"
+#import "SampleViewController.h"
+#import "Sample.h"
+#import "SampleEditViewController.h"
 #import "SplitViewController.h"
 #import "Split.h"
 #import "SimpleDBLibraryObjectStore.h"
-#import "SourceImageUtils.h"
+#import "SampleImageUtils.h"
 #import "AbstractMobileCloudImageStore.h"
 #import "Reachability.h"
 
-@interface SourceViewController()
+@interface SampleViewController()
 {
     SimpleDBLibraryObjectStore *libraryObjectStore;
-    NSMutableArray *displayedSources;
+    NSMutableArray *displayedSamples;
     NSString *option;
 }
 
 @end
 
-@implementation SourceViewController
+@implementation SampleViewController
 
-- (id)init {
-    
+- (id)init
+{
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        libraryObjectStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data" WithDatabaseName:@"test_database.db"];
+        libraryObjectStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data"
+                                                                     WithDatabaseName:@"test_database.db"];
         
-        NSArray *temp = [libraryObjectStore getAllLibraryObjectsFromTable:[SourceConstants tableName]];
+        NSArray *temp = [libraryObjectStore getAllLibraryObjectsFromTable:[SampleConstants tableName]];
         NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key"
                                                                        ascending:YES
                                                                         selector:@selector(localizedCaseInsensitiveCompare:)];
         
         NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-        displayedSources = [temp sortedArrayUsingDescriptors:sortDescriptors].mutableCopy;
+        displayedSamples = [temp sortedArrayUsingDescriptors:sortDescriptors].mutableCopy;
         
         UINavigationItem *n = [self navigationItem];
-        [n setTitle:@"Sources"];
+        [n setTitle:@"Samples"];
         
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         
@@ -64,27 +65,27 @@
     // Control for sync visual cue
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self
-                       action:@selector(syncSources)
+                       action:@selector(syncSamples)
              forControlEvents:UIControlEventValueChanged];
     
     self.refreshControl = refreshControl;
 }
 
-- (void)syncSources
+- (void)syncSamples
 {
     Reachability *reach = [Reachability reachabilityForInternetConnection];
     if ([reach isReachable]) {
         [libraryObjectStore synchronizeWithCloud];
-        [(AbstractMobileCloudImageStore *)[SourceImageUtils defaultImageStore] synchronizeWithCloud];
+        [(AbstractMobileCloudImageStore *)[SampleImageUtils defaultImageStore] synchronizeWithCloud];
     }
     
-    NSArray *temp = [libraryObjectStore getAllLibraryObjectsFromTable:[SourceConstants tableName]];
+    NSArray *temp = [libraryObjectStore getAllLibraryObjectsFromTable:[SampleConstants tableName]];
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key"
                                                                    ascending:YES
                                                                     selector:@selector(localizedCaseInsensitiveCompare:)];
     
     NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-    displayedSources = [temp sortedArrayUsingDescriptors:sortDescriptors].mutableCopy;
+    displayedSamples = [temp sortedArrayUsingDescriptors:sortDescriptors].mutableCopy;
     
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
@@ -92,7 +93,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return displayedSources.count;
+    return displayedSamples.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -105,8 +106,8 @@
                                       reuseIdentifier:@"UITableViewCell"];
     }
 
-    Source *source = [displayedSources objectAtIndex:indexPath.row];
-    [[cell textLabel] setText:[source description]];
+    Sample *sample = [displayedSamples objectAtIndex:indexPath.row];
+    [[cell textLabel] setText:[sample description]];
     return cell;
 }
 
@@ -139,9 +140,9 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        Source *source = [displayedSources objectAtIndex:indexPath.row];
-        [libraryObjectStore deleteLibraryObjectWithKey:[source key] FromTable:[SourceConstants tableName]];
-        [displayedSources removeObjectAtIndex:indexPath.row];
+        Sample *sample = [displayedSamples objectAtIndex:indexPath.row];
+        [libraryObjectStore deleteLibraryObjectWithKey:[sample key] FromTable:[SampleConstants tableName]];
+        [displayedSamples removeObjectAtIndex:indexPath.row];
         
         [[self tableView] deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
@@ -150,16 +151,16 @@
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Source *selectedSource = [displayedSources objectAtIndex:indexPath.row];
+    Sample *selectedSample = [displayedSamples objectAtIndex:indexPath.row];
     
     UIActionSheet *message;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
-        message = [[UIActionSheet alloc] initWithTitle:@"Action:" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Edit Source", @"View Splits", nil];
+        message = [[UIActionSheet alloc] initWithTitle:@"Action:" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Edit Sample", @"View Splits", nil];
     }
     else
     {
-        message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Edit Source", @"View Splits", nil];
+        message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Edit Sample", @"View Splits", nil];
     }
     
     CGRect cellRect = [self.tableView cellForRowAtIndexPath:indexPath].frame;
@@ -175,18 +176,18 @@
     
     if([option isEqualToString:@"EDIT"])
     {
-        SourceEditViewController *sourceEditViewController =
-        [[SourceEditViewController alloc] initWithSource:selectedSource
+        SampleEditViewController *sampleEditViewController =
+        [[SampleEditViewController alloc] initWithSample:selectedSample
                                              WithLibrary:libraryObjectStore
                                    AndNavigateBackToRoot:NO];
-        [[self navigationController] pushViewController:sourceEditViewController  animated:YES];
+        [[self navigationController] pushViewController:sampleEditViewController animated:YES];
     }
     
     if([option isEqualToString:@"VIEW"])
     {
-        SplitViewController *splitViewController = [[SplitViewController alloc] initWithSource:selectedSource];
+        SplitViewController *splitViewController = [[SplitViewController alloc] initWithSample:selectedSample];
         [splitViewController setLibraryObjectStore:libraryObjectStore];
-        [[self navigationController] pushViewController:splitViewController  animated:YES];
+        [[self navigationController] pushViewController:splitViewController animated:YES];
     }
     
 }

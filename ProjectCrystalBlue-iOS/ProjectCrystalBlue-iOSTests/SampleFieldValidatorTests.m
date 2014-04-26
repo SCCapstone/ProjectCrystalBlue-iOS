@@ -1,5 +1,5 @@
 //
-//  SourceFieldValidatorTests.m
+//  SampleFieldValidatorTests.m
 //  ProjectCrystalBlueOSX
 //
 //  Created by Logan Hood on 3/28/14.
@@ -7,19 +7,19 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "SourceFieldValidator.h"
+#import "SampleFieldValidator.h"
 #import "ValidationResponse.h"
 #import "LocalLibraryObjectStore.h"
-#import "Source.h"
+#import "Sample.h"
 
 #define TEST_DIRECTORY @"project-crystal-blue-test-temp"
 #define DATABASE_NAME @"test_database.db"
 
-@interface SourceFieldValidatorTests : XCTestCase
+@interface SampleFieldValidatorTests : XCTestCase
 
 @end
 
-@implementation SourceFieldValidatorTests
+@implementation SampleFieldValidatorTests
 
 - (void)setUp
 {
@@ -33,7 +33,7 @@
     [super tearDown];
 }
 
-- (void)testValidateSourceKey
+- (void)testValidateSampleKey
 {
     NSString *validKey = @"This is an valid key 1234";
     NSString *keyNotUnique = @"This already exists";
@@ -49,18 +49,18 @@
     AbstractLibraryObjectStore *dataStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
                                                                                  WithDatabaseName:DATABASE_NAME];
     
-    Source *source = [[Source alloc] initWithKey:keyNotUnique
-                                   AndWithValues:[SourceConstants attributeDefaultValues]];
-    [dataStore putLibraryObject:source IntoTable:[SourceConstants tableName]];
+    Sample *sample = [[Sample alloc] initWithKey:keyNotUnique
+                                   AndWithValues:[SampleConstants attributeDefaultValues]];
+    [dataStore putLibraryObject:sample IntoTable:[SampleConstants tableName]];
     
     
-    XCTAssertTrue([[SourceFieldValidator validateSourceKey:validKey WithDataStore:dataStore] isValid]);
+    XCTAssertTrue([[SampleFieldValidator validateSampleKey:validKey WithDataStore:dataStore] isValid]);
     
-    XCTAssertFalse([[SourceFieldValidator validateSourceKey:keyNotUnique WithDataStore:dataStore] isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateSourceKey:invalidChars1 WithDataStore:dataStore] isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateSourceKey:invalidChars2 WithDataStore:dataStore] isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateSourceKey:tooShort WithDataStore:dataStore] isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateSourceKey:tooLong WithDataStore:dataStore] isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateSampleKey:keyNotUnique WithDataStore:dataStore] isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateSampleKey:invalidChars1 WithDataStore:dataStore] isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateSampleKey:invalidChars2 WithDataStore:dataStore] isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateSampleKey:tooShort WithDataStore:dataStore] isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateSampleKey:tooLong WithDataStore:dataStore] isValid]);
 }
 
 - (void)testValidateContinent
@@ -72,10 +72,10 @@
         [tooLong appendString:@"a"];
     }
     
-    XCTAssertTrue([[SourceFieldValidator validateContinent:valid] isValid]);
+    XCTAssertTrue([[SampleFieldValidator validateContinent:valid] isValid]);
     
-    XCTAssertFalse([[SourceFieldValidator validateContinent:invalid] isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateContinent:tooLong] isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateContinent:invalid] isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateContinent:tooLong] isValid]);
 }
 
 - (void)testValidateFormation
@@ -87,10 +87,10 @@
         [tooLong appendString:@"a"];
     }
     
-    XCTAssertTrue([[SourceFieldValidator validateFormation:valid] isValid]);
+    XCTAssertTrue([[SampleFieldValidator validateFormation:valid] isValid]);
     
-    XCTAssertFalse([[SourceFieldValidator validateFormation:invalid] isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateFormation:tooLong] isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateFormation:invalid] isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateFormation:tooLong] isValid]);
 }
 
 - (void)testValidateMember
@@ -102,55 +102,52 @@
         [tooLong appendString:@"a"];
     }
     
-    XCTAssertTrue([[SourceFieldValidator validateMember:valid] isValid]);
+    XCTAssertTrue([[SampleFieldValidator validateMember:valid] isValid]);
     
-    XCTAssertFalse([[SourceFieldValidator validateMember:invalid] isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateMember:tooLong] isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateMember:invalid] isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateMember:tooLong] isValid]);
 }
 
 - (void)testValidateGroup
 {
     NSString *emptyStr = @"";
     NSString *valid = @"a new start 2222";
-    NSString *invalid = @".";
     NSMutableString *tooLong = [NSMutableString stringWithString:@""];
     for (int i = 0; i < 91; ++i) {
         [tooLong appendString:@"a"];
     }
     
-    XCTAssertTrue( [[SourceFieldValidator validateGroup:emptyStr]   isValid]);
-    XCTAssertTrue( [[SourceFieldValidator validateGroup:valid]      isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateGroup:tooLong]    isValid]);
+    XCTAssertTrue( [[SampleFieldValidator validateGroup:emptyStr]   isValid]);
+    XCTAssertTrue( [[SampleFieldValidator validateGroup:valid]      isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateGroup:tooLong]    isValid]);
 }
 
 - (void)testValidateType
 {
     NSString *emptyStr = @"";
     NSString *valid = @"a new start 2222";
-    NSString *invalid = @".";
     NSMutableString *tooLong = [NSMutableString stringWithString:@""];
     for (int i = 0; i < 91; ++i) {
         [tooLong appendString:@"a"];
     }
     
-    XCTAssertTrue( [[SourceFieldValidator validateType:emptyStr]   isValid]);
-    XCTAssertTrue( [[SourceFieldValidator validateType:valid]      isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateType:tooLong]    isValid]);
+    XCTAssertTrue( [[SampleFieldValidator validateType:emptyStr]   isValid]);
+    XCTAssertTrue( [[SampleFieldValidator validateType:valid]      isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateType:tooLong]    isValid]);
 }
 
 - (void)testValidateDeposystem
 {
     NSString *emptyStr = @"";
     NSString *valid = @"a new start 2222";
-    NSString *invalid = @".";
     NSMutableString *tooLong = [NSMutableString stringWithString:@""];
     for (int i = 0; i < 91; ++i) {
         [tooLong appendString:@"a"];
     }
     
-    XCTAssertTrue( [[SourceFieldValidator validateDeposystem:emptyStr]   isValid]);
-    XCTAssertTrue( [[SourceFieldValidator validateDeposystem:valid]      isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateDeposystem:tooLong]    isValid]);
+    XCTAssertTrue( [[SampleFieldValidator validateDeposystem:emptyStr]   isValid]);
+    XCTAssertTrue( [[SampleFieldValidator validateDeposystem:valid]      isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateDeposystem:tooLong]    isValid]);
 }
 
 - (void)testValidateRegion
@@ -162,10 +159,10 @@
         [tooLong appendString:@"a"];
     }
     
-    XCTAssertTrue([[SourceFieldValidator validateRegion:valid] isValid]);
+    XCTAssertTrue([[SampleFieldValidator validateRegion:valid] isValid]);
     
-    XCTAssertFalse([[SourceFieldValidator validateRegion:invalid]   isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateRegion:tooLong]   isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateRegion:invalid]   isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateRegion:tooLong]   isValid]);
 }
 
 - (void)testValidateSection
@@ -177,10 +174,10 @@
         [tooLong appendString:@"a"];
     }
     
-    XCTAssertTrue([[SourceFieldValidator validateSection:valid] isValid]);
+    XCTAssertTrue([[SampleFieldValidator validateSection:valid] isValid]);
     
-    XCTAssertFalse([[SourceFieldValidator validateSection:invalid] isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateSection:tooLong] isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateSection:invalid] isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateSection:tooLong] isValid]);
 }
 
 - (void)testValidateMeters
@@ -190,10 +187,10 @@
     NSString *negative = @"-99.99";
     NSString *invalid = @"12gkjla";
     
-    XCTAssertTrue([[SourceFieldValidator validateMeters:positive] isValid]);
-    XCTAssertTrue([[SourceFieldValidator validateMeters:zero] isValid]);
-    XCTAssertTrue([[SourceFieldValidator validateMeters:negative] isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateMeters:invalid] isValid]);
+    XCTAssertTrue([[SampleFieldValidator validateMeters:positive] isValid]);
+    XCTAssertTrue([[SampleFieldValidator validateMeters:zero] isValid]);
+    XCTAssertTrue([[SampleFieldValidator validateMeters:negative] isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateMeters:invalid] isValid]);
 }
 
 - (void)testValidateLatitude
@@ -203,10 +200,10 @@
     NSString *negative = @"-99.99";
     NSString *invalid = @"12gkjla";
     
-    XCTAssertTrue([[SourceFieldValidator validateLatitude:positive] isValid]);
-    XCTAssertTrue([[SourceFieldValidator validateLatitude:zero] isValid]);
-    XCTAssertTrue([[SourceFieldValidator validateLatitude:negative] isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateLatitude:invalid] isValid]);
+    XCTAssertTrue([[SampleFieldValidator validateLatitude:positive] isValid]);
+    XCTAssertTrue([[SampleFieldValidator validateLatitude:zero] isValid]);
+    XCTAssertTrue([[SampleFieldValidator validateLatitude:negative] isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateLatitude:invalid] isValid]);
 }
 
 - (void)testValidateLongitude
@@ -216,10 +213,10 @@
     NSString *negative = @"-99.99";
     NSString *invalid = @"12gkjla";
     
-    XCTAssertTrue([[SourceFieldValidator validateLongitude:positive] isValid]);
-    XCTAssertTrue([[SourceFieldValidator validateLongitude:zero] isValid]);
-    XCTAssertTrue([[SourceFieldValidator validateLongitude:negative] isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateLongitude:invalid] isValid]);
+    XCTAssertTrue([[SampleFieldValidator validateLongitude:positive] isValid]);
+    XCTAssertTrue([[SampleFieldValidator validateLongitude:zero] isValid]);
+    XCTAssertTrue([[SampleFieldValidator validateLongitude:negative] isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateLongitude:invalid] isValid]);
 }
 
 - (void)testValidateAge
@@ -227,7 +224,7 @@
     NSTimeInterval unixTime = NSTimeIntervalSince1970;
     NSString *unixTimeInString = [NSString stringWithFormat:@"%f", unixTime];
     
-    XCTAssertTrue([[SourceFieldValidator validateAge:unixTimeInString] isValid]);
+    XCTAssertTrue([[SampleFieldValidator validateAge:unixTimeInString] isValid]);
 }
 
 - (void)testValidateDateCollected
@@ -235,7 +232,7 @@
     NSTimeInterval unixTime = NSTimeIntervalSince1970;
     NSString *unixTimeInString = [NSString stringWithFormat:@"%f", unixTime];
     
-    XCTAssertTrue([[SourceFieldValidator validateDateCollected:unixTimeInString] isValid]);
+    XCTAssertTrue([[SampleFieldValidator validateDateCollected:unixTimeInString] isValid]);
 }
 
 - (void)testValidateNotes
@@ -248,10 +245,10 @@
         [tooLong appendString:@"a"];
     }
     
-    XCTAssertTrue([[SourceFieldValidator validateNotes:validNotes] isValid]);
-    XCTAssertTrue([[SourceFieldValidator validateNotes:emptyStr] isValid]);
+    XCTAssertTrue([[SampleFieldValidator validateNotes:validNotes] isValid]);
+    XCTAssertTrue([[SampleFieldValidator validateNotes:emptyStr] isValid]);
     
-    XCTAssertFalse([[SourceFieldValidator validateNotes:tooLong] isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateNotes:tooLong] isValid]);
 }
 
 - (void)testValidateHyperlinks
@@ -264,10 +261,10 @@
         [tooLong appendString:@"a"];
     }
     
-    XCTAssertTrue([[SourceFieldValidator validateNotes:validLinks] isValid]);
-    XCTAssertTrue([[SourceFieldValidator validateNotes:emptyStr] isValid]);
+    XCTAssertTrue([[SampleFieldValidator validateHyperlinks:validLinks] isValid]);
+    XCTAssertTrue([[SampleFieldValidator validateHyperlinks:emptyStr] isValid]);
     
-    XCTAssertFalse([[SourceFieldValidator validateNotes:tooLong] isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateHyperlinks:tooLong] isValid]);
 }
 
 

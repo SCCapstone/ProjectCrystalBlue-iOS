@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Source.h"
+#import "Sample.h"
 #import "AbstractCloudLibraryObjectStore.h"
 
 @interface AddImageViewController : UIViewController<UIAlertViewDelegate,
@@ -22,11 +22,12 @@
     
 }
 
-@property(nonatomic) Source* selectedSource;
+@property(nonatomic) Sample* selectedSample;
 @property(nonatomic) AbstractCloudLibraryObjectStore *libraryObjectStore;
 
-- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary;
-- (IBAction)TakePicture:(id)sender;
-- (IBAction)UploadPhoto:(id)sender;
+- (id)initWithSample:(Sample *)initSample
+   WithLibraryObject:(AbstractCloudLibraryObjectStore *)initLibrary;
+- (IBAction)takePicture:(id)sender;
+- (IBAction)uploadPhoto:(id)sender;
 
 @end

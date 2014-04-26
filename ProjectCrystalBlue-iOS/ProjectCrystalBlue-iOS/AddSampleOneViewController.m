@@ -8,16 +8,16 @@
 
 #import "AddSampleOneViewController.h"
 #import "AbstractLibraryObjectStore.h"
-#import "SourceConstants.h"
-#import "Source.h"
+#import "SampleConstants.h"
+#import "Sample.h"
 #import "AddSampleTwoViewController.h"
-#import "SourceFieldValidator.h"
+#import "SampleFieldValidator.h"
 #import "MapViewController.h"
 
 @interface AddSampleOneViewController ()
 {
     AbstractCloudLibraryObjectStore *libraryObjectStore;
-    Source *sourceToAdd;
+    Sample *sampleToAdd;
     CLLocationManager *locationManager;
 }
 @end
@@ -35,7 +35,7 @@
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Add Sample"];
         
-        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(addSource:)];
+        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(addSample:)];
         
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         
@@ -45,12 +45,12 @@
     return self;
 }
 
-- (IBAction)addSource:(id)sender
+- (IBAction)addSample:(id)sender
 {
     if (![self validateTextFieldValues]) {
         return;
     }
-    if (![libraryObjectStore libraryObjectExistsForKey:[KeyField text] FromTable:[SourceConstants tableName]] && ![[KeyField text] isEqualToString:@""])
+    if (![libraryObjectStore libraryObjectExistsForKey:[KeyField text] FromTable:[SampleConstants tableName]] && ![[KeyField text] isEqualToString:@""])
     {
         // Logic to set to current time and user entered date
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -68,15 +68,16 @@
         date = [calendar dateFromComponents:comp];
         
         NSString *dateString = [formatter stringFromDate:date];
-        sourceToAdd = [[Source alloc] initWithKey:[KeyField text]
-                                        AndWithValues:[SourceConstants attributeDefaultValues]];
+        sampleToAdd = [[Sample alloc] initWithKey:[KeyField text]
+                                        AndWithValues:[SampleConstants attributeDefaultValues]];
     
-        [[sourceToAdd attributes] setObject:[LatitudeField text] forKey:SRC_LATITUDE];
-        [[sourceToAdd attributes] setObject:[LongitudeField text] forKey:SRC_LONGITUDE];
-        [[sourceToAdd attributes] setObject:[CollectedByField text] forKey:SRC_COLLECTED_BY];
-        [[sourceToAdd attributes] setObject:dateString forKey:SRC_DATE_COLLECTED];
+        [[sampleToAdd attributes] setObject:[LatitudeField text] forKey:SMP_LATITUDE];
+        [[sampleToAdd attributes] setObject:[LongitudeField text] forKey:SMP_LONGITUDE];
+        [[sampleToAdd attributes] setObject:[CollectedByField text] forKey:SMP_COLLECTED_BY];
+        [[sampleToAdd attributes] setObject:dateString forKey:SMP_DATE_COLLECTED];
     
-        AddSampleTwoViewController *astViewController = [[AddSampleTwoViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
+        AddSampleTwoViewController *astViewController = [[AddSampleTwoViewController alloc] initWithSample:sampleToAdd
+                                                                                         WithLibraryObject:libraryObjectStore];
     
         [astViewController setLibraryObjectStore:libraryObjectStore];
         [[self navigationController] pushViewController:astViewController  animated:YES];
@@ -90,7 +91,7 @@
             message = @"Please enter Key Value";
         }
         else{
-            message = @"Source already exist for key: ";
+            message = @"Sample already exist for key: ";
         }
         message = [message stringByAppendingString:[KeyField text]];
         UIAlertView *alert = [[UIAlertView alloc]
@@ -154,7 +155,7 @@
     }
     else
     {
-        MapViewController* mapViewController = [[MapViewController alloc] initWithKey:@"Source To Add" withLat:[LatitudeField text] withLong:[LongitudeField text]];
+        MapViewController* mapViewController = [[MapViewController alloc] initWithKey:@"Sample To Add" withLat:[LatitudeField text] withLong:[LongitudeField text]];
     
         [[self navigationController] pushViewController:mapViewController  animated:YES];
     }
@@ -185,7 +186,7 @@
 {
     BOOL validationPassed = YES;
 
-    ValidationResponse *latitudeOK = [SourceFieldValidator validateLatitude:[LatitudeField text]];
+    ValidationResponse *latitudeOK = [SampleFieldValidator validateLatitude:[LatitudeField text]];
     if (!latitudeOK.isValid && validationPassed == YES) {
         validationPassed = NO;
         
@@ -200,7 +201,7 @@
         [alert show];
     }
     
-    ValidationResponse *longitudeOK = [SourceFieldValidator validateLongitude:[LongitudeField text]];
+    ValidationResponse *longitudeOK = [SampleFieldValidator validateLongitude:[LongitudeField text]];
     if (!longitudeOK.isValid && validationPassed == YES) {
         validationPassed = NO;
         
@@ -215,7 +216,7 @@
         [alert show];
     }
     
-    ValidationResponse *collectedOK = [SourceFieldValidator validateCollectedBy:[CollectedByField text]];
+    ValidationResponse *collectedOK = [SampleFieldValidator validateCollectedBy:[CollectedByField text]];
     if (!collectedOK.isValid && validationPassed == YES) {
         validationPassed = NO;
         
@@ -237,12 +238,12 @@
 {
     BOOL validationPassed = YES;
     
-    ValidationResponse *latitudeOK = [SourceFieldValidator validateLatitude:[LatitudeField text]];
+    ValidationResponse *latitudeOK = [SampleFieldValidator validateLatitude:[LatitudeField text]];
     if (!latitudeOK.isValid && validationPassed == YES) {
         validationPassed = NO;
     }
     
-    ValidationResponse *longitudeOK = [SourceFieldValidator validateLongitude:[LongitudeField text]];
+    ValidationResponse *longitudeOK = [SampleFieldValidator validateLongitude:[LongitudeField text]];
     if (!longitudeOK.isValid && validationPassed == YES) {
         validationPassed = NO;
     }

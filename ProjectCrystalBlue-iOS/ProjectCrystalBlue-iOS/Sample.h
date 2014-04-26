@@ -1,5 +1,5 @@
 //
-//  Source.h
+//  Sample.h
 //  ProjectCrystalBlue-iOS
 //
 //  Created by Justin Baumgartner on 1/18/14.
@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "LibraryObject.h"
-#import "SourceConstants.h"
+#import "SampleConstants.h"
 
-@interface Source : LibraryObject
+@interface Sample : LibraryObject
 
 - (id)initWithKey:(NSString *)key
     AndWithValues:(NSArray *)attributeValues;

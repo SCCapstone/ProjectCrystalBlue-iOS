@@ -1,20 +1,20 @@
 //
-//  sourceImagesViewController.m
+//  SampleImagesViewController.m
 //  ProjectCrystalBlue-iOS
 //
 //  Created by Ryan McGraw on 3/30/14.
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import "SourceImagesViewController.h"
-#import "Source.h"
+#import "SampleImagesViewController.h"
+#import "Sample.h"
 #import "AbstractCloudLibraryObjectStore.h"
-#import "SourceImageUtils.h"
+#import "SampleImageUtils.h"
 #import "AddImageViewController.h"
 #import "EnlargedImageViewController.h"
 
 
-@interface SourceImagesViewController ()
+@interface SampleImagesViewController ()
 {
     UIImage* defaultImage;
     NSArray* imageArray;
@@ -23,17 +23,18 @@
 }
 @end
 
-@implementation SourceImagesViewController
-@synthesize selectedSource, libraryObjectStore;
+@implementation SampleImagesViewController
+@synthesize selectedSample, libraryObjectStore;
 
-- (id)initWithSource:(Source*)initSource withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary
+- (id)initWithSample:(Sample*)initSample
+         withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary
 {
     self = [super init];
     if (self) {
-        selectedSource = initSource;
+        selectedSample = initSample;
         libraryObjectStore = initLibrary;
         NSString* title = @"Images for ";
-        title = [title stringByAppendingString:selectedSource.key];
+        title = [title stringByAppendingString:selectedSample.key];
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:title];
@@ -48,7 +49,8 @@
 }
 
 - (IBAction)addImage:(id)sender {
-    AddImageViewController* imgViewController = [[AddImageViewController alloc] initWithSource: selectedSource WithLibraryObject:libraryObjectStore];
+    AddImageViewController* imgViewController = [[AddImageViewController alloc] initWithSample:selectedSample
+                                                                             WithLibraryObject:libraryObjectStore];
     
     [[self navigationController] pushViewController:imgViewController  animated:YES];
 }
@@ -80,8 +82,8 @@
 
 -(void) loadImages
 {
-    imageArray = [SourceImageUtils imagesForSource:selectedSource inImageStore:[SourceImageUtils defaultImageStore]];
-    descriptionArray = [SourceImageUtils imageKeysForSource:selectedSource];
+    imageArray = [SampleImageUtils imagesForSample:selectedSample inImageStore:[SampleImageUtils defaultImageStore]];
+    descriptionArray = [SampleImageUtils imageKeysForSample:selectedSample];
     
     CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
     int yInc = 0;
@@ -152,11 +154,14 @@
 -(IBAction)tapDetected:(id)sender
 {
     UITapGestureRecognizer *tempView = sender;
-    UIImageView *tempImageView = (UIImageView*) tempView.view;
+    UIImageView *tempImageView = (UIImageView*)tempView.view;
     int index = tempImageView.tag;
     NSString* desc = [descriptionArray objectAtIndex:index];
     
-    EnlargedImageViewController* eIVC = [[EnlargedImageViewController alloc] initWithSource:selectedSource withLibrary:libraryObjectStore withImage:tempImageView.image withDescription:desc];
+    EnlargedImageViewController* eIVC = [[EnlargedImageViewController alloc] initWithSample:selectedSample
+                                                                                withLibrary:libraryObjectStore
+                                                                                  withImage:tempImageView.image
+                                                                            withDescription:desc];
     
     [[self navigationController] pushViewController:eIVC animated:YES];
 

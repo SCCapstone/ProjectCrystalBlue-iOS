@@ -1,22 +1,22 @@
 //
-//  SourceEditViewController.m
+//  SampleEditViewController.m
 //  ProjectCrystalBlue-iOS
 //
 //  Created by Ryan McGraw on 1/31/14.
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import "SourceEditViewController.h"
-#import "Source.h"
+#import "SampleEditViewController.h"
+#import "Sample.h"
 #import "Split.h"
 #import "AbstractCloudLibraryObjectStore.h"
-#import "SourceConstants.h"
-#import "SourceImagesViewController.h"
-#import "SourceFieldValidator.h"
+#import "SampleConstants.h"
+#import "SampleImagesViewController.h"
+#import "SampleFieldValidator.h"
 #import <MapKit/MapKit.h>
 #import "MapViewController.h"
 
-@interface SourceEditViewController ()
+@interface SampleEditViewController ()
 {
     NSString* textString;
     UIImage* img;
@@ -28,22 +28,22 @@
 
 @end
 
-@implementation SourceEditViewController
+@implementation SampleEditViewController
 
-@synthesize selectedSource, scroller, libraryObjectStore;
+@synthesize selectedSample, scroller, libraryObjectStore;
 
-- (id)initWithSource:(Source*)initSource
+- (id)initWithSample:(Sample*)initSample
          WithLibrary:(AbstractCloudLibraryObjectStore*)initLibrary
 AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
 {
     self = [super init];
     if (self) {
-        selectedSource = initSource;
+        selectedSample = initSample;
         libraryObjectStore = initLibrary;
         navigateToRoot = navigateBackToRoot;
         
         UINavigationItem *n = [self navigationItem];
-        [n setTitle:[selectedSource key]];
+        [n setTitle:[selectedSample key]];
         
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         UIBarButtonItem *savebtn = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleBordered target:self action:@selector(save:)];
@@ -55,7 +55,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
 }
 
 - (IBAction)picturedTapped:(id)sender {
-    SourceImagesViewController *imgViewController = [[SourceImagesViewController alloc] initWithSource:selectedSource
+    SampleImagesViewController *imgViewController = [[SampleImagesViewController alloc] initWithSample:selectedSample
                                                                                            withLibrary:libraryObjectStore];
     [[self navigationController] pushViewController:imgViewController  animated:YES];
 }
@@ -65,7 +65,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
     SimpleTableViewController *typeOptions = [[SimpleTableViewController alloc] initWithNibName:@"SimpleTableViewController"
                                                                                          bundle:nil];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:typeOptions];
-    typeOptions.tableData = [SourceConstants rockTypes];
+    typeOptions.tableData = [SampleConstants rockTypes];
     typeOptions.tag = 0;
     typeOptions.navigationItem.title = @"Rock Types";
     typeOptions.delegate = self;
@@ -74,7 +74,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
 
 - (void)showLithologyOptions:(id)sender
 {
-    NSArray *lithologies = [SourceConstants lithologiesForRockType:TypeField.text];
+    NSArray *lithologies = [SampleConstants lithologiesForRockType:TypeField.text];
     if (!lithologies) {
         UIAlertView *alert = [[UIAlertView alloc]
                               initWithTitle:@"There are no known lithologies for the entered rock type."
@@ -97,7 +97,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
 
 - (void)showDeposytemOptions:(id)sender
 {
-    NSArray *deposystems = [SourceConstants deposystemsForRockType:TypeField.text];
+    NSArray *deposystems = [SampleConstants deposystemsForRockType:TypeField.text];
     if (!deposystems) {
         UIAlertView *alert = [[UIAlertView alloc]
                               initWithTitle:@"There are no known deposystems for the entered rock type."
@@ -123,7 +123,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
     SimpleTableViewController *ageMethodOptions = [[SimpleTableViewController alloc] initWithNibName:@"SimpleTableViewController"
                                                                                               bundle:nil];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:ageMethodOptions];
-    ageMethodOptions.tableData = [SourceConstants ageMethods];
+    ageMethodOptions.tableData = [SampleConstants ageMethods];
     ageMethodOptions.tag = 3;
     ageMethodOptions.navigationItem.title = @"Age Methods";
     ageMethodOptions.delegate = self;
@@ -136,7 +136,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
     NSString *oldRockType = TypeField.text;
 
     if (tag == 0) {
-        NSString *newRockType = [[SourceConstants rockTypes] objectAtIndex:row];
+        NSString *newRockType = [[SampleConstants rockTypes] objectAtIndex:row];
         [TypeField setText:newRockType];
         TypeLabel.textColor = [UIColor redColor];
         
@@ -155,15 +155,15 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
         }
     }
     else if (tag == 1) {
-        [LithologyField setText:[[SourceConstants lithologiesForRockType:oldRockType] objectAtIndex:row]];
+        [LithologyField setText:[[SampleConstants lithologiesForRockType:oldRockType] objectAtIndex:row]];
         LithologyLabel.textColor = [UIColor redColor];
     }
     else if (tag == 2) {
-        [DeposystemField setText:[[SourceConstants deposystemsForRockType:oldRockType] objectAtIndex:row]];
+        [DeposystemField setText:[[SampleConstants deposystemsForRockType:oldRockType] objectAtIndex:row]];
         DeposystemLabel.textColor = [UIColor redColor];
     }
     else if (tag == 3) {
-        [AgeMethodField setText:[[SourceConstants ageMethods] objectAtIndex:row]];
+        [AgeMethodField setText:[[SampleConstants ageMethods] objectAtIndex:row]];
         AgeMethodLabel.textColor = [UIColor redColor];
     }
 }
@@ -179,26 +179,26 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
     locationManager = [[CLLocationManager alloc] init];
     start = [[CLLocation alloc] initWithLatitude:[[LatitudeField text] floatValue] longitude:[[LongitudeField text] floatValue]];
     
-    [TypeField setText:[[selectedSource attributes] objectForKey:SRC_TYPE]];
-    [LithologyField setText:[[selectedSource attributes] objectForKey:SRC_LITHOLOGY]];
-    [DeposystemField setText:[[selectedSource attributes] objectForKey:SRC_DEPOSYSTEM]];
-    [GroupField setText:[[selectedSource attributes] objectForKey:SRC_GROUP]];
-    [FormationField setText:[[selectedSource attributes] objectForKey:SRC_FORMATION]];
-    [MemberField setText:[[selectedSource attributes] objectForKey:SRC_MEMBER]];
-    [RegionField setText:[[selectedSource attributes] objectForKey:SRC_REGION]];
-    [LocalityField setText:[[selectedSource attributes] objectForKey:SRC_LOCALITY]];
-    [SectionField setText:[[selectedSource attributes] objectForKey:SRC_SECTION]];
-    [MeterField setText:[[selectedSource attributes] objectForKey:SRC_METER]];
-    [LatitudeField setText:[[selectedSource attributes] objectForKey:SRC_LATITUDE]];
-    [LongitudeField setText:[[selectedSource attributes] objectForKey:SRC_LONGITUDE]];
-    [AgeField setText:[[selectedSource attributes] objectForKey:SRC_AGE]];
-    [AgeMethodField setText:[[selectedSource attributes] objectForKey:SRC_AGE_METHOD]];
-    [AgeDataTypeField setText:[[selectedSource attributes] objectForKey:SRC_AGE_DATATYPE]];
-    [CollectedField setText:[[selectedSource attributes] objectForKey:SRC_COLLECTED_BY]];
+    [TypeField setText:[[selectedSample attributes] objectForKey:SMP_TYPE]];
+    [LithologyField setText:[[selectedSample attributes] objectForKey:SMP_LITHOLOGY]];
+    [DeposystemField setText:[[selectedSample attributes] objectForKey:SMP_DEPOSYSTEM]];
+    [GroupField setText:[[selectedSample attributes] objectForKey:SMP_GROUP]];
+    [FormationField setText:[[selectedSample attributes] objectForKey:SMP_FORMATION]];
+    [MemberField setText:[[selectedSample attributes] objectForKey:SMP_MEMBER]];
+    [RegionField setText:[[selectedSample attributes] objectForKey:SMP_REGION]];
+    [LocalityField setText:[[selectedSample attributes] objectForKey:SMP_LOCALITY]];
+    [SectionField setText:[[selectedSample attributes] objectForKey:SMP_SECTION]];
+    [MeterField setText:[[selectedSample attributes] objectForKey:SMP_METER]];
+    [LatitudeField setText:[[selectedSample attributes] objectForKey:SMP_LATITUDE]];
+    [LongitudeField setText:[[selectedSample attributes] objectForKey:SMP_LONGITUDE]];
+    [AgeField setText:[[selectedSample attributes] objectForKey:SMP_AGE]];
+    [AgeMethodField setText:[[selectedSample attributes] objectForKey:SMP_AGE_METHOD]];
+    [AgeDataTypeField setText:[[selectedSample attributes] objectForKey:SMP_AGE_DATATYPE]];
+    [CollectedField setText:[[selectedSample attributes] objectForKey:SMP_COLLECTED_BY]];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"mm/dd/yyyy, hh:mm a"];
-    NSDate *newDate = [formatter dateFromString:[[selectedSource attributes] objectForKey:SRC_DATE_COLLECTED]];
+    NSDate *newDate = [formatter dateFromString:[[selectedSample attributes] objectForKey:SMP_DATE_COLLECTED]];
     if (!newDate)
         newDate = [NSDate dateWithTimeIntervalSince1970:0];
     [DatePicker setDate:newDate];
@@ -235,22 +235,22 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
     {
         return;
     }
-    [[selectedSource attributes] setObject:[TypeField text] forKey:SRC_TYPE];
-    [[selectedSource attributes] setObject:[LithologyField text] forKey:SRC_LITHOLOGY];
-    [[selectedSource attributes] setObject:[DeposystemField text] forKey:SRC_DEPOSYSTEM];
-    [[selectedSource attributes] setObject:[GroupField text] forKey:SRC_GROUP];
-    [[selectedSource attributes] setObject:[FormationField text] forKey:SRC_FORMATION];
-    [[selectedSource attributes] setObject:[MemberField text] forKey:SRC_MEMBER];
-    [[selectedSource attributes] setObject:[RegionField text] forKey:SRC_REGION];
-    [[selectedSource attributes] setObject:[LocalityField text] forKey:SRC_LOCALITY];
-    [[selectedSource attributes] setObject:[SectionField text] forKey:SRC_SECTION];
-    [[selectedSource attributes] setObject:[MeterField text] forKey:SRC_METER];
-    [[selectedSource attributes] setObject:[LatitudeField text] forKey:SRC_LATITUDE];
-    [[selectedSource attributes] setObject:[LongitudeField text] forKey:SRC_LONGITUDE];
-    [[selectedSource attributes] setObject:[AgeField text] forKey:SRC_AGE];
-    [[selectedSource attributes] setObject:[AgeMethodField text] forKey:SRC_AGE_METHOD];
-    [[selectedSource attributes] setObject:[AgeDataTypeField text] forKey:SRC_AGE_DATATYPE];
-    [[selectedSource attributes] setObject:[CollectedField text] forKey:SRC_COLLECTED_BY];
+    [[selectedSample attributes] setObject:[TypeField text] forKey:SMP_TYPE];
+    [[selectedSample attributes] setObject:[LithologyField text] forKey:SMP_LITHOLOGY];
+    [[selectedSample attributes] setObject:[DeposystemField text] forKey:SMP_DEPOSYSTEM];
+    [[selectedSample attributes] setObject:[GroupField text] forKey:SMP_GROUP];
+    [[selectedSample attributes] setObject:[FormationField text] forKey:SMP_FORMATION];
+    [[selectedSample attributes] setObject:[MemberField text] forKey:SMP_MEMBER];
+    [[selectedSample attributes] setObject:[RegionField text] forKey:SMP_REGION];
+    [[selectedSample attributes] setObject:[LocalityField text] forKey:SMP_LOCALITY];
+    [[selectedSample attributes] setObject:[SectionField text] forKey:SMP_SECTION];
+    [[selectedSample attributes] setObject:[MeterField text] forKey:SMP_METER];
+    [[selectedSample attributes] setObject:[LatitudeField text] forKey:SMP_LATITUDE];
+    [[selectedSample attributes] setObject:[LongitudeField text] forKey:SMP_LONGITUDE];
+    [[selectedSample attributes] setObject:[AgeField text] forKey:SMP_AGE];
+    [[selectedSample attributes] setObject:[AgeMethodField text] forKey:SMP_AGE_METHOD];
+    [[selectedSample attributes] setObject:[AgeDataTypeField text] forKey:SMP_AGE_DATATYPE];
+    [[selectedSample attributes] setObject:[CollectedField text] forKey:SMP_COLLECTED_BY];
     
     // Logic to set to current time and user entered date
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -268,10 +268,10 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
     date = [calendar dateFromComponents:comp];
     
     NSString *dateString = [formatter stringFromDate:date];
-    [[selectedSource attributes] setObject:dateString forKey:SRC_DATE_COLLECTED];
+    [[selectedSample attributes] setObject:dateString forKey:SMP_DATE_COLLECTED];
 
     
-    [libraryObjectStore updateLibraryObject:selectedSource IntoTable:[SourceConstants tableName]];
+    [libraryObjectStore updateLibraryObject:selectedSample IntoTable:[SampleConstants tableName]];
     
     TypeLabel.textColor = [UIColor blackColor];
     LithologyLabel.textColor = [UIColor blackColor];
@@ -373,7 +373,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
 {
     BOOL validationPassed = YES;
 
-    ValidationResponse *formationOK = [SourceFieldValidator validateFormation:[FormationField text]];
+    ValidationResponse *formationOK = [SampleFieldValidator validateFormation:[FormationField text]];
     if (!formationOK.isValid && validationPassed == YES) {
         validationPassed = NO;
         
@@ -388,7 +388,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
         [alert show];
     }
     
-    ValidationResponse *memberOK = [SourceFieldValidator validateMember:[MemberField text]];
+    ValidationResponse *memberOK = [SampleFieldValidator validateMember:[MemberField text]];
     if (!memberOK.isValid && validationPassed == YES) {
         validationPassed = NO;
         
@@ -403,7 +403,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
         [alert show];
     }
     
-    ValidationResponse *regionOK = [SourceFieldValidator validateRegion:[RegionField text]];
+    ValidationResponse *regionOK = [SampleFieldValidator validateRegion:[RegionField text]];
     if (!regionOK.isValid && validationPassed == YES) {
         validationPassed = NO;
         
@@ -418,7 +418,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
         [alert show];
     }
     
-    ValidationResponse *localityOK = [SourceFieldValidator validateLocality:[LocalityField text]];
+    ValidationResponse *localityOK = [SampleFieldValidator validateLocality:[LocalityField text]];
     if (!localityOK.isValid && validationPassed == YES) {
         validationPassed = NO;
         
@@ -433,7 +433,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
         [alert show];
     }
     
-    ValidationResponse *sectionOK = [SourceFieldValidator validateContinent:[SectionField text]];
+    ValidationResponse *sectionOK = [SampleFieldValidator validateContinent:[SectionField text]];
     if (!sectionOK.isValid && validationPassed == YES) {
         validationPassed = NO;
         
@@ -448,7 +448,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
         [alert show];
     }
     
-    ValidationResponse *meterOK = [SourceFieldValidator validateMeters:[MeterField text]];
+    ValidationResponse *meterOK = [SampleFieldValidator validateMeters:[MeterField text]];
     if (!meterOK.isValid && validationPassed == YES) {
         validationPassed = NO;
         
@@ -463,7 +463,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
         [alert show];
     }
     
-    ValidationResponse *latitudeOK = [SourceFieldValidator validateLatitude:[LatitudeField text]];
+    ValidationResponse *latitudeOK = [SampleFieldValidator validateLatitude:[LatitudeField text]];
     if (!latitudeOK.isValid && validationPassed == YES) {
         validationPassed = NO;
         
@@ -478,7 +478,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
         [alert show];
     }
     
-    ValidationResponse *longitudeOK = [SourceFieldValidator validateLongitude:[LongitudeField text]];
+    ValidationResponse *longitudeOK = [SampleFieldValidator validateLongitude:[LongitudeField text]];
     if (!longitudeOK.isValid && validationPassed == YES) {
         validationPassed = NO;
         
@@ -493,7 +493,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
         [alert show];
     }
     
-    ValidationResponse *ageOK = [SourceFieldValidator validateAge:[AgeField text]];
+    ValidationResponse *ageOK = [SampleFieldValidator validateAge:[AgeField text]];
     if (!ageOK.isValid && validationPassed == YES) {
         validationPassed = NO;
         
@@ -508,7 +508,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
         [alert show];
     }
     
-    ValidationResponse *ageDatatypeOK = [SourceFieldValidator validateAgeDatatype:[AgeDataTypeField text]];
+    ValidationResponse *ageDatatypeOK = [SampleFieldValidator validateAgeDatatype:[AgeDataTypeField text]];
     if (!ageDatatypeOK.isValid && validationPassed == YES) {
         validationPassed = NO;
         
@@ -523,7 +523,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
         [alert show];
     }
     
-    ValidationResponse *collectedOK = [SourceFieldValidator validateCollectedBy:[CollectedField text]];
+    ValidationResponse *collectedOK = [SampleFieldValidator validateCollectedBy:[CollectedField text]];
     if (!collectedOK.isValid && validationPassed == YES) {
         validationPassed = NO;
         
@@ -571,7 +571,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
     }
     else
     {
-        MapViewController* mapViewController = [[MapViewController alloc] initWithKey:[selectedSource key] withLat:[LatitudeField text] withLong:[LongitudeField text]];
+        MapViewController* mapViewController = [[MapViewController alloc] initWithKey:[selectedSample key] withLat:[LatitudeField text] withLong:[LongitudeField text]];
         
         [[self navigationController] pushViewController:mapViewController  animated:YES];
     }
@@ -606,12 +606,12 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
 {
     BOOL validationPassed = YES;
     
-    ValidationResponse *latitudeOK = [SourceFieldValidator validateLatitude:[LatitudeField text]];
+    ValidationResponse *latitudeOK = [SampleFieldValidator validateLatitude:[LatitudeField text]];
     if (!latitudeOK.isValid && validationPassed == YES) {
         validationPassed = NO;
     }
     
-    ValidationResponse *longitudeOK = [SourceFieldValidator validateLongitude:[LongitudeField text]];
+    ValidationResponse *longitudeOK = [SampleFieldValidator validateLongitude:[LongitudeField text]];
     if (!longitudeOK.isValid && validationPassed == YES) {
         validationPassed = NO;
     }

@@ -1,5 +1,5 @@
 //
-//  SourceFieldValidator.h
+//  SampleFieldValidator.h
 //  ProjectCrystalBlueOSX
 //
 //  Created by Logan Hood on 3/28/14.
@@ -11,11 +11,11 @@
 
 @class AbstractLibraryObjectStore;
 
-@interface SourceFieldValidator : NSObject
+@interface SampleFieldValidator : NSObject
 
-/// Validates that a source key is between 1 and 90 characters, contains alphanumeric
+/// Validates that a sample key is between 1 and 90 characters, contains alphanumeric
 /// characters and whitespace only, and it is a unique key
-+(ValidationResponse *)validateSourceKey:(NSString *)key
++(ValidationResponse *)validateSampleKey:(NSString *)key
                            WithDataStore:(AbstractLibraryObjectStore *)dataStore;
 
 /// Validates that a continent is between 1 and 90 characters, and contains letters and spaces

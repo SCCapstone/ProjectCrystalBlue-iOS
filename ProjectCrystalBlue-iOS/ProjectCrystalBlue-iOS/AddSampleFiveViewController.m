@@ -7,30 +7,31 @@
 //
 
 #import "AddSampleFiveViewController.h"
-#import "Source.h"
+#import "Sample.h"
 #import "AddSampleSixViewController.h"
 #import "AbstractLibraryObjectStore.h"
 #import "SplitConstants.h"
-#import "SourceFieldValidator.h"
+#import "SampleFieldValidator.h"
 
 @interface AddSampleFiveViewController ()
 
 @end
 
 @implementation AddSampleFiveViewController
-@synthesize GroupField, FormationField, MemberField, sourceToAdd, libraryObjectStore;
+@synthesize GroupField, FormationField, MemberField, sampleToAdd, libraryObjectStore;
 
-- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary
+- (id)initWithSample:(Sample *)initSample
+   WithLibraryObject:(AbstractCloudLibraryObjectStore *)initLibrary
 {
     self = [super init];
     if (self) {
-        sourceToAdd = initSource;
+        sampleToAdd = initSample;
         libraryObjectStore = initLibrary;
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Add Sample Cont."];
         
-        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(addSource:)];
+        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(addSample:)];
         
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         
@@ -41,17 +42,18 @@
 
 }
 
-- (IBAction)addSource:(id)sender
+- (IBAction)addSample:(id)sender
 {
     if (![self validateTextFieldValues])
     {
         return;
     }
-    [[sourceToAdd attributes] setObject:[GroupField text] forKey:SRC_GROUP];
-    [[sourceToAdd attributes] setObject:[FormationField text] forKey:SRC_FORMATION];
-    [[sourceToAdd attributes] setObject:[MemberField text] forKey:SRC_MEMBER];
+    [[sampleToAdd attributes] setObject:[GroupField text] forKey:SMP_GROUP];
+    [[sampleToAdd attributes] setObject:[FormationField text] forKey:SMP_FORMATION];
+    [[sampleToAdd attributes] setObject:[MemberField text] forKey:SMP_MEMBER];
     
-    AddSampleSixViewController *assViewController = [[AddSampleSixViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
+    AddSampleSixViewController *assViewController = [[AddSampleSixViewController alloc] initWithSample:sampleToAdd
+                                                                                     WithLibraryObject:libraryObjectStore];
     
     [[self navigationController] pushViewController:assViewController  animated:YES];
 }
@@ -87,7 +89,7 @@
 {
     BOOL validationPassed = YES;
     
-    ValidationResponse *formationOK = [SourceFieldValidator validateFormation:[FormationField text]];
+    ValidationResponse *formationOK = [SampleFieldValidator validateFormation:[FormationField text]];
     if (!formationOK.isValid && validationPassed == YES) {
         validationPassed = NO;
         
@@ -102,7 +104,7 @@
         [alert show];
     }
     
-    ValidationResponse *memberOK = [SourceFieldValidator validateMember:[MemberField text]];
+    ValidationResponse *memberOK = [SampleFieldValidator validateMember:[MemberField text]];
     if (!memberOK.isValid && validationPassed == YES) {
         validationPassed = NO;
         

@@ -7,9 +7,8 @@
 //
 
 #import "HomeViewController.h"
-#import "SourceViewController.h"
+#import "SampleViewController.h"
 #import "AddSampleOneViewController.h"
-#import "DeleteSourcesViewController.h"
 #import "CredentialsViewController.h"
 #import "EmbedReaderViewController.h"
 #import "SimpleDBLibraryObjectStore.h"
@@ -48,14 +47,14 @@
     [super didReceiveMemoryWarning];
 }
 
-- (IBAction)viewSources:(id)sender
+- (IBAction)viewSamples:(id)sender
 {
-    SourceViewController *sourceViewController = [[SourceViewController alloc] init];
-    [[self navigationController] pushViewController:sourceViewController  animated:YES];
+    SampleViewController *sampleViewController = [[SampleViewController alloc] init];
+    [[self navigationController] pushViewController:sampleViewController  animated:YES];
     
 }
 
-- (IBAction)addSource:(id)sender
+- (IBAction)addSample:(id)sender
 {
     AddSampleOneViewController *asoViewController = [[AddSampleOneViewController alloc] init];
     [[self navigationController] pushViewController:asoViewController  animated:YES];

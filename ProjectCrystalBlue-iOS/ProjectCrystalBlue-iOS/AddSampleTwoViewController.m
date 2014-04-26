@@ -7,7 +7,7 @@
 //
 
 #import "AddSampleTwoViewController.h"
-#import "Source.h"
+#import "Sample.h"
 #import "AddSampleThreeViewController.h"
 #import "AddSampleFiveViewController.h"
 
@@ -19,13 +19,14 @@
 
 @implementation AddSampleTwoViewController
 
-@synthesize sourceToAdd, libraryObjectStore;
+@synthesize sampleToAdd, libraryObjectStore;
 
-- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary
+- (id)initWithSample:(Sample *)initSample
+   WithLibraryObject:(AbstractCloudLibraryObjectStore *)initLibrary
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        sourceToAdd = initSource;
+        sampleToAdd = initSample;
         libraryObjectStore = initLibrary;
         typeArray = [[NSArray alloc] init];
         
@@ -73,35 +74,36 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    typeArray = [SourceConstants rockTypes];
+    typeArray = [SampleConstants rockTypes];
 }
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *typeSelected = [typeArray objectAtIndex:indexPath.row];
-    NSArray *lithologies = [SourceConstants lithologiesForRockType:typeSelected];
+    NSArray *lithologies = [SampleConstants lithologiesForRockType:typeSelected];
     
     // Has available lithologies, next view
     if (lithologies) {
-        AddSampleThreeViewController *viewControllerThree = [[AddSampleThreeViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
+        AddSampleThreeViewController *viewControllerThree = [[AddSampleThreeViewController alloc] initWithSample:sampleToAdd
+                                                                                               WithLibraryObject:libraryObjectStore];
         [viewControllerThree setTypeSelected:typeSelected];
-        [viewControllerThree setNumRows:lithologies.count];
-        [sourceToAdd.attributes setObject:typeSelected forKey:SRC_TYPE];
+        [sampleToAdd.attributes setObject:typeSelected forKey:SMP_TYPE];
         [[self navigationController] pushViewController:viewControllerThree animated:YES];
     }
     // Does not, skip to fifth view
     else {
-        AddSampleFiveViewController *viewControllerFive = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
+        AddSampleFiveViewController *viewControllerFive = [[AddSampleFiveViewController alloc] initWithSample:sampleToAdd
+                                                                                            WithLibraryObject:libraryObjectStore];
         
-        [sourceToAdd.attributes setObject:typeSelected forKey:SRC_TYPE];
-        [sourceToAdd.attributes setObject:@"" forKey:SRC_LITHOLOGY];
+        [sampleToAdd.attributes setObject:typeSelected forKey:SMP_TYPE];
+        [sampleToAdd.attributes setObject:@"" forKey:SMP_LITHOLOGY];
         
         if ([typeSelected isEqualToString:@"Siliciclastic"] || [typeSelected isEqualToString:@"Carbonate"] ||
             [typeSelected isEqualToString:@"Authigenic"] || [typeSelected isEqualToString:@"Volcanic"] ||
             [typeSelected isEqualToString:@"Fossil"])
-            [sourceToAdd.attributes setObject:@"" forKey:SRC_DEPOSYSTEM];
+            [sampleToAdd.attributes setObject:@"" forKey:SMP_DEPOSYSTEM];
         else
-            [sourceToAdd.attributes setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
+            [sampleToAdd.attributes setObject:@"N/A" forKey:SMP_DEPOSYSTEM];
         
         [[self navigationController] pushViewController:viewControllerFive animated:YES];
     }

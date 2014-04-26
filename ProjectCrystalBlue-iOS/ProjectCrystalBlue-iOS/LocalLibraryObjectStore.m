@@ -10,8 +10,8 @@
 #import "FMDatabase.h"
 #import "FMDatabaseQueue.h"
 #import "FMResultSet.h"
-#import "Source.h"
-#import "SourceImageUtils.h"
+#import "Sample.h"
+#import "SampleImageUtils.h"
 #import "Split.h"
 #import "DDLog.h"
 
@@ -26,7 +26,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     FMDatabaseQueue *localQueue;
 }
 
-/*  Creates the sqlite Source and Split tables if they do not already exist.
+/*  Creates the sqlite Sample and Split tables if they do not already exist.
  */
 - (void)setupTables;
 
@@ -60,8 +60,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (LibraryObject *)getLibraryObjectForKey:(NSString *)key
                                 FromTable:(NSString *)tableName
 {
-    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SplitConstants tableName]]) {
-        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SplitConstants tableName.", NSStringFromClass(self.class));
+    if (![tableName isEqualToString:[SampleConstants tableName]] && ![tableName isEqualToString:[SplitConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SampleConstants or SplitConstants tableName.", NSStringFromClass(self.class));
         return nil;
     }
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE KEY='%@'", tableName, key];
@@ -86,17 +86,17 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     if (!resultDictionary)
         return nil;
     
-    // Create a new Source or Split object
-    if ([tableName isEqualToString:[SourceConstants tableName]])
-        return [[Source alloc] initWithKey:key AndWithAttributeDictionary:resultDictionary];
+    // Create a new Sample or Split object
+    if ([tableName isEqualToString:[SampleConstants tableName]])
+        return [[Sample alloc] initWithKey:key AndWithAttributeDictionary:resultDictionary];
     else
         return [[Split alloc] initWithKey:key AndWithAttributeDictionary:resultDictionary];
 }
 
 - (NSArray *)getAllLibraryObjectsFromTable:(NSString *)tableName
 {
-    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SplitConstants tableName]]) {
-        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SplitConstants tableName.", NSStringFromClass(self.class));
+    if (![tableName isEqualToString:[SampleConstants tableName]] && ![tableName isEqualToString:[SplitConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SampleConstants or SplitConstants tableName.", NSStringFromClass(self.class));
         return nil;
     }
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@", tableName];
@@ -115,8 +115,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         // Add all the results to the libraryObjects array
         while (results.next) {
             NSString *key = [results.resultDictionary objectForKey:@"KEY"];
-            if ([tableName isEqualToString:[SourceConstants tableName]])
-                [libraryObjects addObject:[[Source alloc] initWithKey:key AndWithAttributeDictionary:results.resultDictionary]];
+            if ([tableName isEqualToString:[SampleConstants tableName]])
+                [libraryObjects addObject:[[Sample alloc] initWithKey:key AndWithAttributeDictionary:results.resultDictionary]];
             else
                 [libraryObjects addObject:[[Split alloc] initWithKey:key AndWithAttributeDictionary:results.resultDictionary]];
         }
@@ -156,8 +156,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                WithAttributeValue:(NSString *)attributeValue
                                         FromTable:(NSString *)tableName
 {
-    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SplitConstants tableName]]) {
-        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SplitConstants tableName.", NSStringFromClass(self.class));
+    if (![tableName isEqualToString:[SampleConstants tableName]] && ![tableName isEqualToString:[SplitConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SampleConstants or SplitConstants tableName.", NSStringFromClass(self.class));
         return nil;
     }
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ LIKE '%%%@%%'", tableName, attributeName, attributeValue];
@@ -176,8 +176,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         // Add all the results to the splits array
         while (results.next) {
             NSString *key = [results.resultDictionary objectForKey:@"KEY"];
-            if ([tableName isEqualToString:[SourceConstants tableName]])
-                [libraryObjects addObject:[[Source alloc] initWithKey:key AndWithAttributeDictionary:results.resultDictionary]];
+            if ([tableName isEqualToString:[SampleConstants tableName]])
+                [libraryObjects addObject:[[Sample alloc] initWithKey:key AndWithAttributeDictionary:results.resultDictionary]];
             else
                 [libraryObjects addObject:[[Split alloc] initWithKey:key AndWithAttributeDictionary:results.resultDictionary]];
         }
@@ -188,8 +188,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 - (NSArray *)getAllSplitsForSampleKey:(NSString *)sampleKey
-                   AndForAttributeName:(NSString *)attributeName
-                    WithAttributeValue:(NSString *)attributeValue
+                  AndForAttributeName:(NSString *)attributeName
+                   WithAttributeValue:(NSString *)attributeValue
 {
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@='%@' AND %@ LIKE '%%%@%%'", [SplitConstants tableName], SPL_SAMPLE_KEY, sampleKey, attributeName, attributeValue];
     
@@ -218,8 +218,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (NSArray *)getUniqueAttributeValuesForAttributeName:(NSString *)attributeName
                                             FromTable:(NSString *)tableName
 {
-    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SplitConstants tableName]]) {
-        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SplitConstants tableName.", NSStringFromClass(self.class));
+    if (![tableName isEqualToString:[SampleConstants tableName]] && ![tableName isEqualToString:[SplitConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SampleConstants or SplitConstants tableName.", NSStringFromClass(self.class));
         return nil;
     }
     NSString *sql = [NSString stringWithFormat:@"SELECT DISTINCT %@ FROM %@", attributeName, tableName];
@@ -248,8 +248,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (NSArray *)getLibraryObjectsWithSqlQuery:(NSString *)sql
                                    OnTable:(NSString *)tableName
 {
-    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SplitConstants tableName]]) {
-        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SplitConstants tableName.", NSStringFromClass(self.class));
+    if (![tableName isEqualToString:[SampleConstants tableName]] && ![tableName isEqualToString:[SplitConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SampleConstants or SplitConstants tableName.", NSStringFromClass(self.class));
         return nil;
     }
     if (![[sql uppercaseString] hasPrefix:@"SELECT"]) {
@@ -270,8 +270,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         // Add all the results to the libraryObjects array
         while (results.next) {
             NSString *key = [results.resultDictionary objectForKey:@"KEY"];
-            if ([tableName isEqualToString:[SourceConstants tableName]])
-                [libraryObjects addObject:[[Source alloc] initWithKey:key AndWithAttributeDictionary:results.resultDictionary]];
+            if ([tableName isEqualToString:[SampleConstants tableName]])
+                [libraryObjects addObject:[[Sample alloc] initWithKey:key AndWithAttributeDictionary:results.resultDictionary]];
             else
                 [libraryObjects addObject:[[Split alloc] initWithKey:key AndWithAttributeDictionary:results.resultDictionary]];
         }
@@ -284,8 +284,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)putLibraryObject:(LibraryObject *)libraryObject
                IntoTable:(NSString *)tableName
 {
-    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SplitConstants tableName]]) {
-        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SplitConstants tableName.", NSStringFromClass(self.class));
+    if (![tableName isEqualToString:[SampleConstants tableName]] && ![tableName isEqualToString:[SplitConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SampleConstants or SplitConstants tableName.", NSStringFromClass(self.class));
         return NO;
     }
     // Update instead if already exists
@@ -295,9 +295,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
     // Setup sql query
     NSString *sql;
-    if ([tableName isEqualToString:[SourceConstants tableName]])
+    if ([tableName isEqualToString:[SampleConstants tableName]])
         sql = [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES (%@)",
-               tableName, [SourceConstants tableColumns], [SourceConstants tableValueKeys]];
+               tableName, [SampleConstants tableColumns], [SampleConstants tableValueKeys]];
     else
         sql = [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES (%@)",
                tableName, [SplitConstants tableColumns], [SplitConstants tableValueKeys]];
@@ -319,8 +319,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)updateLibraryObject:(LibraryObject *)libraryObject
                   IntoTable:(NSString *)tableName
 {
-    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SplitConstants tableName]]) {
-        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SplitConstants tableName.", NSStringFromClass(self.class));
+    if (![tableName isEqualToString:[SampleConstants tableName]] && ![tableName isEqualToString:[SplitConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SampleConstants or SplitConstants tableName.", NSStringFromClass(self.class));
         return NO;
     }
     LibraryObject *oldObject = [self getLibraryObjectForKey:libraryObject.key FromTable:tableName];
@@ -329,7 +329,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return NO;
     }
     
-    NSArray *attrKeys = [tableName isEqualToString:[SourceConstants tableName]] ? [SourceConstants attributeNames] : [SplitConstants attributeNames];
+    NSArray *attrKeys = [tableName isEqualToString:[SampleConstants tableName]] ? [SampleConstants attributeNames] : [SplitConstants attributeNames];
     NSString *setSql;
     
     // Build the sql command, only update attributes that have changed
@@ -372,14 +372,23 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)deleteLibraryObjectWithKey:(NSString *)key
                          FromTable:(NSString *)tableName
 {
-    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SplitConstants tableName]]) {
-        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SplitConstants tableName.", NSStringFromClass(self.class));
+    if (![tableName isEqualToString:[SampleConstants tableName]] && ![tableName isEqualToString:[SplitConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SampleConstants or SplitConstants tableName.", NSStringFromClass(self.class));
         return NO;
     }
     if (![self libraryObjectExistsForKey:key FromTable:tableName]) {
         DDLogCError(@"%@: Library object attempting to delete does not exist in the local database", NSStringFromClass(self.class));
         return NO;
     }
+    
+    // Delete images, if any
+    LibraryObject *obj = [self getLibraryObjectForKey:key FromTable:tableName];
+    if ([obj.attributes.allKeys containsObject:SMP_IMAGES]) {
+        [SampleImageUtils removeAllImagesForSample:(Sample *)obj
+                                       inDataStore:self
+                                      inImageStore:[SampleImageUtils defaultImageStore]];
+    }
+    
     NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE KEY='%@'", tableName, key];
     
     // Delete library object
@@ -393,8 +402,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         }
     }];
     
-    if ([tableName isEqualToString:[SourceConstants tableName]])
+    if ([tableName isEqualToString:[SampleConstants tableName]]) {
         [self deleteAllSplitsForSampleKey:key];
+    }
     
     return isDeleted;
 }
@@ -420,8 +430,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)libraryObjectExistsForKey:(NSString *)key
                         FromTable:(NSString *)tableName
 {
-    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SplitConstants tableName]]) {
-        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SplitConstants tableName.", NSStringFromClass(self.class));
+    if (![tableName isEqualToString:[SampleConstants tableName]] && ![tableName isEqualToString:[SplitConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SampleConstants or SplitConstants tableName.", NSStringFromClass(self.class));
         return NO;
     }
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE KEY='%@'", tableName, key];
@@ -447,8 +457,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (NSUInteger)countInTable:(NSString *)tableName
 {
-    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SplitConstants tableName]]) {
-        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SplitConstants tableName.", NSStringFromClass(self.class));
+    if (![tableName isEqualToString:[SampleConstants tableName]] && ![tableName isEqualToString:[SplitConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SampleConstants or SplitConstants tableName.", NSStringFromClass(self.class));
         return 0;
     }
     NSString *sql = [NSString stringWithFormat:@"SELECT count(*) FROM %@", tableName];
@@ -475,12 +485,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)setupTables
 {
     [localQueue inDeferredTransaction:^(FMDatabase *localDatabase, BOOL *rollback) {
-        // Create source table
-        [localDatabase executeUpdate:[NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (%@)", [SourceConstants tableName], [SourceConstants tableSchema]]];
+        // Create sample table
+        [localDatabase executeUpdate:[NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (%@)", [SampleConstants tableName], [SampleConstants tableSchema]]];
         if (localDatabase.hadError) {
-            DDLogCError(@"%@: Failed to create the source table. Error: %@", NSStringFromClass(self.class), localDatabase.lastError);
+            DDLogCError(@"%@: Failed to create the sample table. Error: %@", NSStringFromClass(self.class), localDatabase.lastError);
             *rollback = YES;
-            [[NSException exceptionWithName:@"SQLiteException" reason:@"SQLite failed to create the source table." userInfo:nil] raise];
+            [[NSException exceptionWithName:@"SQLiteException" reason:@"SQLite failed to create the sample table." userInfo:nil] raise];
         }
         
         // Create split table

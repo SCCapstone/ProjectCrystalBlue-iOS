@@ -7,9 +7,9 @@
 //
 
 #import "AddImageViewController.h"
-#import "Source.h"
+#import "Sample.h"
 #import "AbstractCloudLibraryObjectStore.h"
-#import "SourceImageUtils.h"
+#import "SampleImageUtils.h"
 #import "ImagesFieldValidator.h"
 
 @interface AddImageViewController ()
@@ -20,13 +20,14 @@
 @end
 
 @implementation AddImageViewController
-@synthesize selectedSource, libraryObjectStore;
+@synthesize selectedSample, libraryObjectStore;
 
-- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary
+- (id)initWithSample:(Sample *)initSample
+   WithLibraryObject:(AbstractCloudLibraryObjectStore *)initLibrary
 {
     self = [super init];
     if (self) {
-        selectedSource = initSource;
+        selectedSample = initSample;
         libraryObjectStore = initLibrary;
         
         UINavigationItem *n = [self navigationItem];
@@ -61,7 +62,7 @@
     }
     else
     {
-        [SourceImageUtils addImage:image forSource:selectedSource inDataStore:libraryObjectStore withImageTag:[descriptionField text] intoImageStore:[SourceImageUtils defaultImageStore]];
+        [SampleImageUtils addImage:image forSample:selectedSample inDataStore:libraryObjectStore withImageTag:[descriptionField text] intoImageStore:[SampleImageUtils defaultImageStore]];
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
@@ -93,7 +94,7 @@
 }
 
 
-- (IBAction)TakePicture:(id)sender {
+- (IBAction)takePicture:(id)sender {
     if ([imagePickerPopover isPopoverVisible])
     {
         [imagePickerPopover dismissPopoverAnimated:YES];
@@ -136,7 +137,7 @@
     }
 }
 
-- (IBAction)UploadPhoto:(id)sender
+- (IBAction)uploadPhoto:(id)sender
 {
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     

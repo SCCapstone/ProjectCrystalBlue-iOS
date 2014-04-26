@@ -1,5 +1,5 @@
 //
-//  SourceImageUtilsTests.m
+//  SampleImageUtilsTests.m
 //  ProjectCrystalBlueOSX
 //
 //  Created by Logan Hood on 3/22/14.
@@ -7,9 +7,9 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "SourceImageUtils.h"
-#import "Source.h"
-#import "SourceConstants.h"
+#import "SampleImageUtils.h"
+#import "Sample.h"
+#import "SampleConstants.h"
 #import "LocalLibraryObjectStore.h"
 #import "LocalImageStore.h"
 
@@ -17,11 +17,11 @@
 #define DATABASE_NAME @"test_database.db"
 #define IMAGE_DIRECTORY @"project-crystal-blue-test-images-temp"
 
-@interface SourceImageUtilsTests : XCTestCase
+@interface SampleImageUtilsTests : XCTestCase
 
 @end
 
-@implementation SourceImageUtilsTests
+@implementation SampleImageUtilsTests
 
 - (void)setUp
 {
@@ -34,7 +34,7 @@
     [super tearDown];
 }
 
-/// Tests the main "addImage/forSource" methods
+/// Tests the main "addImage/forSample" methods
 - (void)testAddImages
 {
     AbstractLibraryObjectStore *dataStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:DATABASE_DIRECTORY
@@ -48,34 +48,34 @@
     UIImage *imageToUpload = [[UIImage alloc] initWithContentsOfFile:path];
     XCTAssertNotNil(imageToUpload, @"Upload test image seems to have been lost!");
 
-    // Set up the source object to add images to
-    NSString *sourceKey = @"SourceKey";
-    Source *source = [[Source alloc] initWithKey:sourceKey
-                                   AndWithValues:[SourceConstants attributeDefaultValues]];
+    // Set up the sample object to add images to
+    NSString *sampleKey = @"SampleKey";
+    Sample *sample = [[Sample alloc] initWithKey:sampleKey
+                                   AndWithValues:[SampleConstants attributeDefaultValues]];
 
-    BOOL successPutLibObject = [dataStore putLibraryObject:source
-                                                 IntoTable:[SourceConstants tableName]];
+    BOOL successPutLibObject = [dataStore putLibraryObject:sample
+                                                 IntoTable:[SampleConstants tableName]];
     XCTAssertTrue(successPutLibObject);
 
-    source = nil;
-    source = (Source *)[dataStore getLibraryObjectForKey:sourceKey FromTable:[SourceConstants tableName]];
+    sample = nil;
+    sample = (Sample *)[dataStore getLibraryObjectForKey:sampleKey FromTable:[SampleConstants tableName]];
 
-    // Initially, there should be no images for the source
+    // Initially, there should be no images for the sample
     NSArray *images;
     NSArray *keys;
-    images = [SourceImageUtils imagesForSource:source inImageStore:imageStore];
+    images = [SampleImageUtils imagesForSample:sample inImageStore:imageStore];
     XCTAssertTrue(images.count == 0);
 
     // Add an image
     NSString *imageTag = @"imageTag";
-    BOOL successAddImageForSource = [SourceImageUtils addImage:imageToUpload
-                                                     forSource:source
+    BOOL successAddImageForSample = [SampleImageUtils addImage:imageToUpload
+                                                     forSample:sample
                                                    inDataStore:dataStore
                                                   withImageTag:imageTag
                                                 intoImageStore:imageStore];
-    XCTAssertTrue(successAddImageForSource);
+    XCTAssertTrue(successAddImageForSample);
 
-    images = [SourceImageUtils imagesForSource:source
+    images = [SampleImageUtils imagesForSample:sample
                                   inImageStore:imageStore];
     XCTAssertTrue(images.count == 1);
     if (images.count >= 1) {
@@ -87,42 +87,42 @@
     }
 
     // Check that the image key is correct
-    source = nil;
-    source = (Source *)[dataStore getLibraryObjectForKey:sourceKey FromTable:[SourceConstants tableName]];
+    sample = nil;
+    sample = (Sample *)[dataStore getLibraryObjectForKey:sampleKey FromTable:[SampleConstants tableName]];
 
-    NSString *expectedKey = [NSString stringWithFormat:@"%@_i000.%@.jpg", sourceKey, imageTag];
+    NSString *expectedKey = [NSString stringWithFormat:@"%@_i000.%@.jpg", sampleKey, imageTag];
 
-    keys = [SourceImageUtils imageKeysForSource:source];
+    keys = [SampleImageUtils imageKeysForSample:sample];
     XCTAssertTrue([expectedKey isEqualToString:[keys objectAtIndex:0]]);
 
     // clean up data
-    [dataStore deleteLibraryObjectWithKey:sourceKey FromTable:[SourceConstants tableName]];
+    [dataStore deleteLibraryObjectWithKey:sampleKey FromTable:[SampleConstants tableName]];
     [imageStore flushLocalImageData];
 }
 
-/// Tests the "appendImageKey/toSource" method
+/// Tests the "appendImageKey/toSample" method
 - (void)testAppendImageKey
 {
     NSUInteger numberOfImages = 102;
-    NSString *sourceKey = @"sourceKey";
+    NSString *sampleKey = @"sampleKey";
     NSMutableArray *expectedImageKeys = [[NSMutableArray alloc] initWithCapacity:numberOfImages];
 
-    Source *source = [[Source alloc] initWithKey:sourceKey
-                                   AndWithValues:[SourceConstants attributeDefaultValues]];
+    Sample *sample = [[Sample alloc] initWithKey:sampleKey
+                                   AndWithValues:[SampleConstants attributeDefaultValues]];
 
     for (NSUInteger imageCount = 0; imageCount < numberOfImages; ++imageCount) {
-        NSString *imageKey = [NSString stringWithFormat:@"sourceKey_i%03d.jpg", (int)imageCount];
+        NSString *imageKey = [NSString stringWithFormat:@"sampleKey_i%03d.jpg", (int)imageCount];
         [expectedImageKeys addObject:imageKey];
 
-        [SourceImageUtils appendImageKey:imageKey toSource:source];
+        [SampleImageUtils appendImageKey:imageKey toSample:sample];
     }
 
-    NSArray *actualImageKeys = [SourceImageUtils imageKeysForSource:source];
+    NSArray *actualImageKeys = [SampleImageUtils imageKeysForSample:sample];
 
     XCTAssertTrue([expectedImageKeys isEqualToArray:actualImageKeys]);
 }
 
-- (void)testRemoveAllImagesForSource
+- (void)testRemoveAllImagesForSample
 {
     AbstractLibraryObjectStore *dataStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:DATABASE_DIRECTORY WithDatabaseName:DATABASE_NAME];
 
@@ -134,41 +134,41 @@
     UIImage *imageToUpload = [[UIImage alloc] initWithContentsOfFile:path];
     XCTAssertNotNil(imageToUpload, @"Upload test image seems to have been lost!");
 
-    // Set up the source object to add images to
-    NSString *sourceKey = @"SourceKey";
-    Source *source = [[Source alloc] initWithKey:sourceKey
-                                   AndWithValues:[SourceConstants attributeDefaultValues]];
+    // Set up the sample object to add images to
+    NSString *sampleKey = @"SampleKey";
+    Sample *sample = [[Sample alloc] initWithKey:sampleKey
+                                   AndWithValues:[SampleConstants attributeDefaultValues]];
 
-    BOOL successPutLibObject = [dataStore putLibraryObject:source
-                                                 IntoTable:[SourceConstants tableName]];
+    BOOL successPutLibObject = [dataStore putLibraryObject:sample
+                                                 IntoTable:[SampleConstants tableName]];
     XCTAssertTrue(successPutLibObject);
 
-    // Add some images to the source
+    // Add some images to the sample
     const int imagesToAdd = 5;
     for (int i = 0; i < imagesToAdd; ++i) {
-        [SourceImageUtils addImage:imageToUpload
-                         forSource:(Source *)[dataStore getLibraryObjectForKey:sourceKey FromTable:[SourceConstants tableName]]
+        [SampleImageUtils addImage:imageToUpload
+                         forSample:(Sample *)[dataStore getLibraryObjectForKey:sampleKey FromTable:[SampleConstants tableName]]
                        inDataStore:dataStore
                     intoImageStore:imageStore];
     }
 
     // Retrieving the imageKeys for later.
-    NSArray *imageKeys = [SourceImageUtils imageKeysForSource:(Source *)[dataStore getLibraryObjectForKey:sourceKey
-                                                                                                FromTable:[SourceConstants tableName]]];
+    NSArray *imageKeys = [SampleImageUtils imageKeysForSample:(Sample *)[dataStore getLibraryObjectForKey:sampleKey
+                                                                                                FromTable:[SampleConstants tableName]]];
     XCTAssertTrue(imageKeys.count == imagesToAdd);
 
     // Now remove them
     BOOL returnSuccessValue =
-    [SourceImageUtils removeAllImagesForSource:(Source *)[dataStore getLibraryObjectForKey:sourceKey FromTable:[SourceConstants tableName]]
+    [SampleImageUtils removeAllImagesForSample:(Sample *)[dataStore getLibraryObjectForKey:sampleKey FromTable:[SampleConstants tableName]]
                                    inDataStore:dataStore
                                   inImageStore:imageStore];
     XCTAssertTrue(returnSuccessValue);
 
-    // Check that the sources database doesn't contain the images
-    Source *retrievedSource = (Source *)[dataStore getLibraryObjectForKey:sourceKey
-                                                                FromTable:[SourceConstants tableName]];
+    // Check that the samples database doesn't contain the images
+    Sample *retrievedSample = (Sample *)[dataStore getLibraryObjectForKey:sampleKey
+                                                                FromTable:[SampleConstants tableName]];
 
-    NSString *imageDbValue = [retrievedSource.attributes objectForKey:SRC_IMAGES];
+    NSString *imageDbValue = [retrievedSample.attributes objectForKey:SMP_IMAGES];
     XCTAssertTrue([imageDbValue isEqualToString:@""]);
 
     // Check that the images were really deleted from the image store
@@ -177,11 +177,11 @@
     }
 
     // clean up data
-    [dataStore deleteLibraryObjectWithKey:sourceKey FromTable:[SourceConstants tableName]];
+    [dataStore deleteLibraryObjectWithKey:sampleKey FromTable:[SampleConstants tableName]];
     [imageStore flushLocalImageData];
 }
 
-/// Removal of a single image from a source.
+/// Removal of a single image from a sample.
 - (void)testRemoveSingleImage
 {
     AbstractLibraryObjectStore *dataStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:DATABASE_DIRECTORY
@@ -194,65 +194,65 @@
     UIImage *imageToUpload = [[UIImage alloc] initWithContentsOfFile:path];
     XCTAssertNotNil(imageToUpload, @"Upload test image seems to have been lost!");
 
-    // Set up the source object to add images to
-    NSString *sourceKey = @"SourceKey";
-    Source *source = [[Source alloc] initWithKey:sourceKey
-                                   AndWithValues:[SourceConstants attributeDefaultValues]];
+    // Set up the sample object to add images to
+    NSString *sampleKey = @"SampleKey";
+    Sample *sample = [[Sample alloc] initWithKey:sampleKey
+                                   AndWithValues:[SampleConstants attributeDefaultValues]];
 
-    BOOL successPutLibObject = [dataStore putLibraryObject:source
-                                                 IntoTable:[SourceConstants tableName]];
+    BOOL successPutLibObject = [dataStore putLibraryObject:sample
+                                                 IntoTable:[SampleConstants tableName]];
     XCTAssertTrue(successPutLibObject);
 
-    // Add some images to the source
+    // Add some images to the sample
     const int imagesToAdd = 5;
     for (int i = 0; i < imagesToAdd; ++i) {
-        [SourceImageUtils addImage:imageToUpload
-                         forSource:(Source *)[dataStore getLibraryObjectForKey:sourceKey FromTable:[SourceConstants tableName]]
+        [SampleImageUtils addImage:imageToUpload
+                         forSample:(Sample *)[dataStore getLibraryObjectForKey:sampleKey FromTable:[SampleConstants tableName]]
                        inDataStore:dataStore
                     intoImageStore:imageStore];
     }
 
-    NSArray *imageKeys = [SourceImageUtils imageKeysForSource:(Source *)[dataStore getLibraryObjectForKey:sourceKey FromTable:[SourceConstants tableName]]];
+    NSArray *imageKeys = [SampleImageUtils imageKeysForSample:(Sample *)[dataStore getLibraryObjectForKey:sampleKey FromTable:[SampleConstants tableName]]];
     const int indexToRemove = 2;
 
     // Now actually remove the image
     NSString *imageKeyToRemove = [imageKeys objectAtIndex:indexToRemove];
 
-    [SourceImageUtils removeImage:imageKeyToRemove
-                        forSource:(Source *)[dataStore getLibraryObjectForKey:sourceKey FromTable:[SourceConstants tableName]]
+    [SampleImageUtils removeImage:imageKeyToRemove
+                        forSample:(Sample *)[dataStore getLibraryObjectForKey:sampleKey FromTable:[SampleConstants tableName]]
                       inDataStore:dataStore
                      inImageStore:imageStore];
 
     // check that the image was removed
-    Source *retrievedSource = (Source *)[dataStore getLibraryObjectForKey:sourceKey
-                                                                FromTable:[SourceConstants tableName]];
-    XCTAssertTrue([SourceImageUtils imageKeysForSource:retrievedSource].count == imagesToAdd - 1);
-    XCTAssertFalse([[SourceImageUtils imageKeysForSource:retrievedSource] containsObject:imageKeyToRemove]);
+    Sample *retrievedSample = (Sample *)[dataStore getLibraryObjectForKey:sampleKey
+                                                                FromTable:[SampleConstants tableName]];
+    XCTAssertTrue([SampleImageUtils imageKeysForSample:retrievedSample].count == imagesToAdd - 1);
+    XCTAssertFalse([[SampleImageUtils imageKeysForSample:retrievedSample] containsObject:imageKeyToRemove]);
 
     XCTAssertFalse([imageStore imageExistsForKey:imageKeyToRemove]);
 
     // clean up data
-    [dataStore deleteLibraryObjectWithKey:sourceKey FromTable:[SourceConstants tableName]];
+    [dataStore deleteLibraryObjectWithKey:sampleKey FromTable:[SampleConstants tableName]];
     [imageStore flushLocalImageData];
 }
 
-/// Tests the "nextUniqueImageNumberForSource" method.
+/// Tests the "nextUniqueImageNumberForSample" method.
 - (void)testUniqueImageNumber
 {
-    NSString *key = @"sourceKey";
+    NSString *key = @"sampleKey";
     NSString *result;
     NSString *expected;
-    Source *source = [[Source alloc] initWithKey:key
-                              AndWithValues:[SourceConstants attributeDefaultValues]];
+    Sample *sample = [[Sample alloc] initWithKey:key
+                              AndWithValues:[SampleConstants attributeDefaultValues]];
 
     expected = @"_i000";
-    result = [SourceImageUtils nextUniqueImageNumberForSource:source];
+    result = [SampleImageUtils nextUniqueImageNumberForSample:sample];
     XCTAssertTrue([expected isEqualToString:result]);
 
-    NSString *initalImageKey = @"sourceKey_i123.TAG.jpg";
+    NSString *initalImageKey = @"sampleKey_i123.TAG.jpg";
     expected = @"_i124";
-    [source.attributes setObject:initalImageKey forKey:SRC_IMAGES];
-    result = [SourceImageUtils nextUniqueImageNumberForSource:source];
+    [sample.attributes setObject:initalImageKey forKey:SMP_IMAGES];
+    result = [SampleImageUtils nextUniqueImageNumberForSample:sample];
     XCTAssertTrue([expected isEqualToString:result]);
 }
 
@@ -263,29 +263,29 @@
     NSInteger result;
     NSInteger expected;
 
-    key = @"SOURCEKEY_i123.jpg";
+    key = @"SAMPLEKEY_i123.jpg";
     expected = 123;
-    result = [SourceImageUtils extractNumberSuffixFromKey:key];
+    result = [SampleImageUtils extractNumberSuffixFromKey:key];
     XCTAssertTrue(expected == result);
 
-    key = @"SOURCEKEY_i123.TAG.jpg";
+    key = @"SAMPLEKEY_i123.TAG.jpg";
     expected = 123;
-    result = [SourceImageUtils extractNumberSuffixFromKey:key];
+    result = [SampleImageUtils extractNumberSuffixFromKey:key];
     XCTAssertTrue(expected == result);
 
-    key = @"SOURCEKEY_i004.jpg";
+    key = @"SAMPLEKEY_i004.jpg";
     expected = 4;
-    result = [SourceImageUtils extractNumberSuffixFromKey:key];
+    result = [SampleImageUtils extractNumberSuffixFromKey:key];
     XCTAssertTrue(expected == result);
 
-    key = @"SOURCEKEY_i000.jpg";
+    key = @"SAMPLEKEY_i000.jpg";
     expected = 0;
-    result = [SourceImageUtils extractNumberSuffixFromKey:key];
+    result = [SampleImageUtils extractNumberSuffixFromKey:key];
     XCTAssertTrue(expected == result);
 
-    key = @"SOURCEKEY_i010.jpg";
+    key = @"SAMPLEKEY_i010.jpg";
     expected = 10;
-    result = [SourceImageUtils extractNumberSuffixFromKey:key];
+    result = [SampleImageUtils extractNumberSuffixFromKey:key];
     XCTAssertTrue(expected == result);
 }
 
@@ -296,8 +296,8 @@
     NSString *expected;
 
     expected = @"ImageTagHere";
-    key = [NSString stringWithFormat:@"SOURCEKEY_i100.%@.jpg", expected];
-    result = [SourceImageUtils extractImageTagFromKey:key];
+    key = [NSString stringWithFormat:@"SAMPLEKEY_i100.%@.jpg", expected];
+    result = [SampleImageUtils extractImageTagFromKey:key];
     XCTAssertTrue([expected isEqualToString:result]);
 }
 

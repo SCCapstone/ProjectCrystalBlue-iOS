@@ -1,5 +1,5 @@
 //
-//  sourceImagesViewController.h
+//  SampleImagesViewController.h
 //  ProjectCrystalBlue-iOS
 //
 //  Created by Ryan McGraw on 3/30/14.
@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Source.h"
+#import "Sample.h"
 #import "AbstractCloudLibraryObjectStore.h"
 
-@interface SourceImagesViewController : UIViewController<UINavigationControllerDelegate>
+@interface SampleImagesViewController : UIViewController<UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
-- (id)initWithSource:(Source*)initSource withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary;
+- (id)initWithSample:(Sample*)initSample
+         withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary;
 
-@property (nonatomic, strong) Source *selectedSource;
+@property (nonatomic, strong) Sample *selectedSample;
 @property (nonatomic, strong) AbstractCloudLibraryObjectStore *libraryObjectStore;
 @end

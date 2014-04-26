@@ -8,7 +8,7 @@
 
 #import "AddSampleAgeViewController.h"
 #import "AddSampleSevenViewController.h"
-#import "Source.h"
+#import "Sample.h"
 
 @interface AddSampleAgeViewController ()
 {
@@ -17,13 +17,14 @@
 @end
 
 @implementation AddSampleAgeViewController
-@synthesize sourceToAdd, libraryObjectStore;
+@synthesize sampleToAdd, libraryObjectStore;
 
-- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary
+- (id)initWithSample:(Sample *)initSample
+   WithLibraryObject:(AbstractCloudLibraryObjectStore *)initLibrary
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        sourceToAdd = initSource;
+        sampleToAdd = initSample;
         libraryObjectStore = initLibrary;
         ageArray = [[NSMutableArray alloc] init];
         
@@ -42,7 +43,7 @@
 {
     [super viewDidLoad];
     
-    ageArray = [SourceConstants ageMethods];
+    ageArray = [SampleConstants ageMethods];
 }
 
 -(void) goBack:(id)sender
@@ -77,9 +78,10 @@
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AddSampleSevenViewController *assViewController = [[AddSampleSevenViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
+    AddSampleSevenViewController *assViewController = [[AddSampleSevenViewController alloc] initWithSample:sampleToAdd
+                                                                                         WithLibraryObject:libraryObjectStore];
     
-    [sourceToAdd.attributes setObject:[ageArray objectAtIndex:indexPath.row] forKey:SRC_AGE_METHOD];
+    [sampleToAdd.attributes setObject:[ageArray objectAtIndex:indexPath.row] forKey:SMP_AGE_METHOD];
     [[self navigationController] pushViewController:assViewController  animated:YES];
 }
 

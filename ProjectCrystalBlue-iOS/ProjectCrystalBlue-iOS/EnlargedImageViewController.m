@@ -7,8 +7,8 @@
 //
 
 #import "EnlargedImageViewController.h"
-#import "SourceImageUtils.h"
-#import "Source.h"
+#import "SampleImageUtils.h"
+#import "Sample.h"
 #import "AbstractCloudLibraryObjectStore.h"
 
 @interface EnlargedImageViewController ()
@@ -21,15 +21,18 @@
 
 @implementation EnlargedImageViewController
 
-@synthesize selectedSource, libraryObjectStore;
+@synthesize selectedSample, libraryObjectStore;
 
-- (id)initWithSource:(Source*) initSource  withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary withImage:(UIImage*)initImage withDescription:(NSString*)initDescription
+- (id)initWithSample:(Sample*)initSample
+         withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary
+           withImage:(UIImage*)initImage
+     withDescription:(NSString*)initDescription
 {
     self = [super init];
     if (self)
     {
         image = initImage;
-        selectedSource = initSource;
+        selectedSample = initSample;
         libraryObjectStore = initLibrary;
         description = initDescription;
         
@@ -94,7 +97,10 @@
         case 0:
             break;
         case 1:
-            [SourceImageUtils removeImage:description forSource:selectedSource inDataStore:libraryObjectStore inImageStore:[SourceImageUtils defaultImageStore]];
+            [SampleImageUtils removeImage:description
+                                forSample:selectedSample
+                              inDataStore:libraryObjectStore
+                             inImageStore:[SampleImageUtils defaultImageStore]];
             [self.navigationController popViewControllerAnimated:YES];
             break;
     }

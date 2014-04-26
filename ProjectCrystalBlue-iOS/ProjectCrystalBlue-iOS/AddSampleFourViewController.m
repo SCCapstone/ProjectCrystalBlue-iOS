@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import "Source.h"
+#import "Sample.h"
 #import "AddSampleFourViewController.h"
 #import "AddSampleFiveViewController.h"
 
@@ -18,13 +18,14 @@
 
 @implementation AddSampleFourViewController
 
-@synthesize sourceToAdd, libraryObjectStore, typeSelected, numRows;
+@synthesize sampleToAdd, libraryObjectStore, typeSelected;
 
-- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary
+- (id)initWithSample:(Sample *)initSample
+   WithLibraryObject:(AbstractCloudLibraryObjectStore *)initLibrary
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        sourceToAdd = initSource;
+        sampleToAdd = initSample;
         libraryObjectStore = initLibrary;
         depoArray = [[NSArray alloc] init];
         
@@ -50,7 +51,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return numRows;
+    return depoArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -70,16 +71,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    depoArray = [SourceConstants deposystemsForRockType:typeSelected];
+    depoArray = [SampleConstants deposystemsForRockType:typeSelected];
 }
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AddSampleFiveViewController *viewControllerFive = [[AddSampleFiveViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
+    AddSampleFiveViewController *viewControllerFive = [[AddSampleFiveViewController alloc] initWithSample:sampleToAdd
+                                                                                        WithLibraryObject:libraryObjectStore];
     NSString *deposystemSelected = [depoArray objectAtIndex:indexPath.row];
     
     // If lithology selected is unknown, set to empty string
-    [sourceToAdd.attributes setObject:deposystemSelected forKey:SRC_DEPOSYSTEM];
+    [sampleToAdd.attributes setObject:deposystemSelected forKey:SMP_DEPOSYSTEM];
     [[self navigationController] pushViewController:viewControllerFive animated:YES];
 }
 

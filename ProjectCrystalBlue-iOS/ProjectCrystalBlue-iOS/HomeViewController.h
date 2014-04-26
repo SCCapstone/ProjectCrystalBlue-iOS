@@ -10,8 +10,8 @@
 
 @interface HomeViewController : UIViewController
 
-- (IBAction)viewSources:(id)sender;
-- (IBAction)addSource:(id)sender;
+- (IBAction)viewSamples:(id)sender;
+- (IBAction)addSample:(id)sender;
 - (IBAction)scanQRCode:(id)sender;
 
 @end

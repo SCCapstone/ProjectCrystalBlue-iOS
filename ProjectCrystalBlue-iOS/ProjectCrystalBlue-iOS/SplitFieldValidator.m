@@ -7,11 +7,11 @@
 //
 
 #import "SplitFieldValidator.h"
-#import "SourceFieldValidator.h"
+#import "SampleFieldValidator.h"
 #import "PrimitiveFieldValidator.h"
 #import "ValidationResponse.h"
 #import "SplitConstants.h"
-#import "SourceConstants.h"
+#import "SampleConstants.h"
 
 @implementation SplitFieldValidator
 
@@ -82,7 +82,7 @@
     
     if ([PrimitiveFieldValidator validateKey:sampleKey
                          isUniqueInDataStore:dataStore
-                                     inTable:[SourceConstants tableName]])
+                                     inTable:[SampleConstants tableName]])
     {
         [valid setIsValid:NO];
         NSString *errorStr = [NSString stringWithFormat:@"This split's sample key %@ does not exist in the database.", sampleKey];

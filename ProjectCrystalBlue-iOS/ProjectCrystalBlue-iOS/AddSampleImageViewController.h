@@ -7,23 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Source.h"
+#import "Sample.h"
 #import "AbstractCloudLibraryObjectStore.h"
 
 @interface AddSampleImageViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPopoverControllerDelegate, UIAlertViewDelegate>
 {
     __weak IBOutlet UIImageView *imageView;
     UIPopoverController *imagePickerPopover;
-
 }
 
-@property(nonatomic) Source* sourceToAdd;
+@property(nonatomic) Sample* sampleToAdd;
 @property(nonatomic) AbstractCloudLibraryObjectStore *libraryObjectStore;
 @property(nonatomic) NSString *titleNav;
 @property(nonatomic) NSMutableArray *imageArray;
 @property(nonatomic) NSMutableArray *descriptionArray;
 
-- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary WithTitle:(NSString*) initTitle withImages:(NSMutableArray *) initImages withDescriptions:(NSMutableArray *) initDescriptions;
+- (id)initWithSample:(Sample *)initSample
+   WithLibraryObject:(AbstractCloudLibraryObjectStore *)initLibrary
+           WithTitle:(NSString*)initTitle
+          WithImages:(NSMutableArray *)initImages
+    WithDescriptions:(NSMutableArray *)initDescriptions;
+
 - (IBAction)takePicture:(id)sender;
 - (IBAction)uploadPhoto:(id)sender;
 @end

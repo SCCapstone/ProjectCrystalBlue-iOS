@@ -8,7 +8,7 @@
 
 #import "SplitEditViewController.h"
 #import "ProcedureRecordParser.h"
-#import "SourceEditViewController.h"
+#import "SampleEditViewController.h"
 #import "ProcedureListViewController.h"
 
 @interface SplitEditViewController ()
@@ -64,11 +64,11 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot
     UIActionSheet *message;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
-        message = [[UIActionSheet alloc] initWithTitle:@"Action:" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"View Source", @"Apply Procedure", nil];
+        message = [[UIActionSheet alloc] initWithTitle:@"Action:" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"View Sample", @"Apply Procedure", nil];
     }
     else
     {
-        message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"View Source", @"Apply Procedure", nil];
+        message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"View Sample", @"Apply Procedure", nil];
     }
     
     [message showInView:[UIApplication sharedApplication].keyWindow];
@@ -82,14 +82,14 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot
     {
         
         NSString *temp = [selectedSplit sampleKey];
-        Source *selectedSource = (Source*)[libraryObjectStore getLibraryObjectForKey:temp FromTable:[SourceConstants tableName]];
+        Sample *selectedSample = (Sample*)[libraryObjectStore getLibraryObjectForKey:temp FromTable:[SampleConstants tableName]];
         
-        SourceEditViewController *sourceEditViewController =
-            [[SourceEditViewController alloc] initWithSource:selectedSource
+        SampleEditViewController *sampleEditViewController =
+            [[SampleEditViewController alloc] initWithSample:selectedSample
                                                  WithLibrary:libraryObjectStore
                                        AndNavigateBackToRoot:NO];
         
-        [[self navigationController] pushViewController:sourceEditViewController animated:YES];
+        [[self navigationController] pushViewController:sampleEditViewController animated:YES];
     }
     
     if([optionAS isEqualToString:@"APPLY"])

@@ -8,9 +8,9 @@
 #import "EmbedReaderViewController.h"
 #import "SimpleDBLibraryObjectStore.h"
 #import "LibraryObject.h"
-#import "Source.h"
+#import "Sample.h"
 #import "Split.h"
-#import "SourceEditViewController.h"
+#import "SampleEditViewController.h"
 #import "SplitEditViewController.h"
 
 @interface EmbedReaderViewController ()
@@ -91,16 +91,16 @@
     }
     
     // Object is source
-    if ([libraryObjectStore libraryObjectExistsForKey:libraryObjectKey FromTable:[SourceConstants tableName]]) {
+    if ([libraryObjectStore libraryObjectExistsForKey:libraryObjectKey FromTable:[SampleConstants tableName]]) {
         
-        Source *source = (Source*)[libraryObjectStore getLibraryObjectForKey:libraryObjectKey
-                                                                   FromTable:[SourceConstants tableName]];
+        Sample *sample = (Sample*)[libraryObjectStore getLibraryObjectForKey:libraryObjectKey
+                                                                   FromTable:[SampleConstants tableName]];
         
-        SourceEditViewController *sourceEditController =
-            [[SourceEditViewController alloc] initWithSource:source
+        SampleEditViewController *sampleEditController =
+            [[SampleEditViewController alloc] initWithSample:sample
                                                  WithLibrary:libraryObjectStore
                                        AndNavigateBackToRoot:YES];
-        [self.navigationController pushViewController:sourceEditController animated:YES];
+        [self.navigationController pushViewController:sampleEditController animated:YES];
     }
     // Object is split
     else if ([libraryObjectStore libraryObjectExistsForKey:libraryObjectKey FromTable:[SplitConstants tableName]]) {
@@ -117,7 +117,7 @@
     }
     else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Unrecognized QR Code"
-                                                        message:@"Make sure your source or split is synced with your device."
+                                                        message:@"Make sure your sample or split is synced with your device."
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil, nil];

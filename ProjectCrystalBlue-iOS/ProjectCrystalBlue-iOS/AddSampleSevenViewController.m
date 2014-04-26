@@ -10,7 +10,7 @@
 #import "AddSampleImageViewController.h"
 #import "Split.h"
 #import "DDLog.h"
-#import "SourceFieldValidator.h"
+#import "SampleFieldValidator.h"
 
 
 @interface AddSampleSevenViewController ()
@@ -18,19 +18,20 @@
 @end
 
 @implementation AddSampleSevenViewController
-@synthesize libraryObjectStore, sourceToAdd, AgeField, AgeDataTypeField;
+@synthesize libraryObjectStore, sampleToAdd, AgeField, AgeDataTypeField;
 
-- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary
+- (id)initWithSample:(Sample *)initSample
+   WithLibraryObject:(AbstractCloudLibraryObjectStore *)initLibrary
 {
     self = [super init];
     if (self) {
-        sourceToAdd = initSource;
+        sampleToAdd = initSample;
         libraryObjectStore = initLibrary;
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Add Sample Cont."];
         
-        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(addSource:)];
+        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(addSample:)];
         
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         
@@ -38,22 +39,26 @@
         [[self navigationItem] setLeftBarButtonItem:backbtn];
     }
     return self;
-    
 }
 
-- (IBAction)addSource:(id)sender {
+- (IBAction)addSample:(id)sender
+{
     if (![self validateTextFieldValues])
     {
         return;
     }
     
-    [[sourceToAdd attributes] setObject:[AgeField text] forKey:SRC_AGE];
-    [[sourceToAdd attributes] setObject:[AgeDataTypeField text] forKey:SRC_AGE_DATATYPE];
+    [[sampleToAdd attributes] setObject:[AgeField text] forKey:SMP_AGE];
+    [[sampleToAdd attributes] setObject:[AgeDataTypeField text] forKey:SMP_AGE_DATATYPE];
     
     NSMutableArray *images = [[NSMutableArray alloc] init];
     NSMutableArray *desriptions = [[NSMutableArray alloc] init];
     
-    AddSampleImageViewController *asiViewController = [[AddSampleImageViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore WithTitle:@"Far View Outcrop" withImages:images withDescriptions:desriptions];
+    AddSampleImageViewController *asiViewController = [[AddSampleImageViewController alloc] initWithSample:sampleToAdd
+                                                                                         WithLibraryObject:libraryObjectStore
+                                                                                                 WithTitle:@"Far View Outcrop"
+                                                                                                WithImages:images
+                                                                                          WithDescriptions:desriptions];
     
     [[self navigationController] pushViewController:asiViewController  animated:YES];
 }
@@ -89,7 +94,7 @@
 {
     BOOL validationPassed = YES;
 
-    ValidationResponse *ageOK = [SourceFieldValidator validateAge:[AgeField text]];
+    ValidationResponse *ageOK = [SampleFieldValidator validateAge:[AgeField text]];
     if (!ageOK.isValid && validationPassed == YES) {
         validationPassed = NO;
         
@@ -104,7 +109,7 @@
         [alert show];
     }
     
-    ValidationResponse *ageDatatypeOK = [SourceFieldValidator validateAgeDatatype:[AgeDataTypeField text]];
+    ValidationResponse *ageDatatypeOK = [SampleFieldValidator validateAgeDatatype:[AgeDataTypeField text]];
     if (!ageDatatypeOK.isValid && validationPassed == YES) {
         validationPassed = NO;
         

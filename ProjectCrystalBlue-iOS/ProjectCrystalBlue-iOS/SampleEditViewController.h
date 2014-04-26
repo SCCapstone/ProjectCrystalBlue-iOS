@@ -1,5 +1,5 @@
 //
-//  SourceEditViewController.h
+//  SampleEditViewController.h
 //  ProjectCrystalBlue-iOS
 //
 //  Created by Ryan McGraw on 1/31/14.
@@ -7,13 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Source.h"
+#import "Sample.h"
 #import "AbstractCloudLibraryObjectStore.h"
 #import "SimpleTableViewController.h"
 #import "CoreLocation/CoreLocation.h"
 
-@interface SourceEditViewController : UIViewController
-<UINavigationControllerDelegate,UITextFieldDelegate, UIAlertViewDelegate,CLLocationManagerDelegate, SimpleTableViewControllerDelegate>
+@interface SampleEditViewController : UIViewController <UINavigationControllerDelegate,UITextFieldDelegate, UIAlertViewDelegate,CLLocationManagerDelegate, SimpleTableViewControllerDelegate>
 {
     __weak IBOutlet UITextField *TypeField;
     __weak IBOutlet UITextField *LithologyField;
@@ -52,12 +51,13 @@
    
     __weak IBOutlet UIDatePicker *DatePicker;
 }
+
 @property (nonatomic, strong) IBOutlet UIScrollView *scroller;
-@property (nonatomic, strong) Source *selectedSource;
+@property (nonatomic, strong) Sample *selectedSample;
 @property (nonatomic, strong) AbstractCloudLibraryObjectStore *libraryObjectStore;
 @property (nonatomic, copy) void (^dismissBlock)(void);
 
-- (id)initWithSource:(Source*)initSource
+- (id)initWithSample:(Sample*)initSample
          WithLibrary:(AbstractCloudLibraryObjectStore*)initLibrary
 AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
 

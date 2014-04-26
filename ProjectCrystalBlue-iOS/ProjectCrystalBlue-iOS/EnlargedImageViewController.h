@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Source.h"
+#import "Sample.h"
 #import "AbstractCloudLibraryObjectStore.h"
 
 @interface EnlargedImageViewController : UIViewController<UIAlertViewDelegate>
@@ -15,9 +15,12 @@
     __strong IBOutlet UIImageView *imgView;
 }
 
-@property(nonatomic) Source* selectedSource;
+@property(nonatomic) Sample* selectedSample;
 @property (nonatomic, strong) AbstractCloudLibraryObjectStore *libraryObjectStore;
 
-- (id)initWithSource:(Source*) initSource withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary withImage:(UIImage*)initImage withDescription:(NSString*)initDescription;
+- (id)initWithSample:(Sample*)initSample
+         withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary
+           withImage:(UIImage*)initImage
+     withDescription:(NSString*)initDescription;
 
 @end

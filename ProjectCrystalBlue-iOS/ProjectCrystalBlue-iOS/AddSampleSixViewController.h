@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Source.h"
+#import "Sample.h"
 #import "AbstractCloudLibraryObjectStore.h"
 
 @interface AddSampleSixViewController : UIViewController<UITextFieldDelegate, UIAlertViewDelegate>
@@ -17,8 +17,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *MeterField;
 
 
-@property(nonatomic) Source* sourceToAdd;
+@property(nonatomic) Sample* sampleToAdd;
 @property(nonatomic) AbstractCloudLibraryObjectStore *libraryObjectStore;
 
-- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary;
+- (id)initWithSample:(Sample *)initSample
+   WithLibraryObject:(AbstractCloudLibraryObjectStore *)initLibrary;
 @end

@@ -1,16 +1,16 @@
 //
-//  SourceImageUtils.m
+//  SampleImageUtils.m
 //  ProjectCrystalBlueOSX
 //
 //  Created by Logan Hood on 3/22/14.
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import "SourceImageUtils.h"
+#import "SampleImageUtils.h"
 #import "S3ImageStore.h"
 #import "AbstractLibraryObjectStore.h"
-#import "Source.h"
-#import "SourceConstants.h"
+#import "Sample.h"
+#import "SampleConstants.h"
 #import "DDLog.h"
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -21,13 +21,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 /* 
  *  General format used is:
  *
- *  SOURCE-KEY_i###.TAG.jpg
+ *  SAMPLE-KEY_i###.TAG.jpg
  *
  *  Some examples:
- *  "sourceKey_i000.NearOutcrop.jpg"
- *  "sourceKey_i001.MicroscopeSlide.jpg"
- *  "sourceKey_i002.MicroscopeSlide.jpg" (tags don't have to be unique)
- *  "sourceKey_i003.jpg"                 (tags are completely optional)
+ *  "sampleKey_i000.NearOutcrop.jpg"
+ *  "sampleKey_i001.MicroscopeSlide.jpg"
+ *  "sampleKey_i002.MicroscopeSlide.jpg" (tags don't have to be unique)
+ *  "sampleKey_i003.jpg"                 (tags are completely optional)
  */
 #define FORMAT_IMAGE_KEY @"%@%@%@%@"
 #define FORMAT_IMAGE_NUMBER_SUFFIX @"_i%03d"
@@ -35,18 +35,18 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 #define DEFAULT_IMAGE_EXTENSION @".jpg"
 #define DEFAULT_IMAGE_TAG @"NoTag"
 
-@implementation SourceImageUtils
+@implementation SampleImageUtils
 
 + (AbstractMobileImageStore *)defaultImageStore
 {
     return [[S3ImageStore alloc] initWithLocalDirectory:[LOCAL_IMAGE_DIRECTORY copy]];
 }
 
-+ (NSArray *)imageKeysForSource:(Source *)source
++ (NSArray *)imageKeysForSample:(Sample *)sample
 {
     NSMutableArray *keys = [[NSMutableArray alloc] init];
 
-    NSString *commaSeparatedImageKeys = [source.attributes objectForKey:SRC_IMAGES];
+    NSString *commaSeparatedImageKeys = [sample.attributes objectForKey:SMP_IMAGES];
     NSScanner *scanner = [[NSScanner alloc] initWithString:commaSeparatedImageKeys];
 
     while (![scanner isAtEnd])
@@ -62,10 +62,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return keys;
 }
 
-+ (NSArray *)imagesForSource:(Source *)source
++ (NSArray *)imagesForSample:(Sample *)sample
                 inImageStore:(AbstractMobileImageStore *)imageStore
 {
-    NSArray *keys = [self.class imageKeysForSource:source];
+    NSArray *keys = [self.class imageKeysForSample:sample];
     NSMutableArray *images = [[NSMutableArray alloc] initWithCapacity:keys.count];
 
     for (NSString *key in keys) {
@@ -81,92 +81,92 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 + (BOOL)removeImage:(NSString *)imageKey
-          forSource:(Source *)source
+          forSample:(Sample *)sample
         inDataStore:(AbstractLibraryObjectStore *)dataStore
        inImageStore:(AbstractMobileImageStore *)imageStore
 {
-    NSMutableArray *imageKeysForSource;
-    imageKeysForSource = [NSMutableArray arrayWithArray:[self.class imageKeysForSource:source]];
+    NSMutableArray *imageKeysForSample;
+    imageKeysForSample = [NSMutableArray arrayWithArray:[self.class imageKeysForSample:sample]];
 
-    if (![imageKeysForSource containsObject:imageKey]) {
+    if (![imageKeysForSample containsObject:imageKey]) {
         return NO;
     }
 
-    [imageKeysForSource removeObject:imageKey];
+    [imageKeysForSample removeObject:imageKey];
     NSMutableString *newImagesString = [[NSMutableString alloc] init];
 
-    for (int i = 0; i < imageKeysForSource.count; ++i) {
+    for (int i = 0; i < imageKeysForSample.count; ++i) {
         if (i == 0) {
             // For the first image, we don't want to separate with a comma.
-            [newImagesString appendFormat:@"%@", [imageKeysForSource objectAtIndex:i]];
+            [newImagesString appendFormat:@"%@", [imageKeysForSample objectAtIndex:i]];
         } else {
             [newImagesString appendFormat:@"%@%@", IMAGE_LIST_DELIMITER,
-             [imageKeysForSource objectAtIndex:i]];
+             [imageKeysForSample objectAtIndex:i]];
         }
     }
 
-    [source.attributes setObject:newImagesString forKey:SRC_IMAGES];
+    [sample.attributes setObject:newImagesString forKey:SMP_IMAGES];
 
     BOOL success = YES;
     success = success && [imageStore deleteImageWithKey:imageKey];
-    success = success && [dataStore updateLibraryObject:source
-                                              IntoTable:[SourceConstants tableName]];
+    success = success && [dataStore updateLibraryObject:sample
+                                              IntoTable:[SampleConstants tableName]];
 
     return success;
 }
 
-+ (BOOL)removeAllImagesForSource:(Source *)source
++ (BOOL)removeAllImagesForSample:(Sample *)sample
                      inDataStore:(AbstractLibraryObjectStore *)dataStore
                     inImageStore:(AbstractMobileImageStore *)imageStore
 {
-    NSArray *imageKeys = [self.class imageKeysForSource:source];
+    NSArray *imageKeys = [self.class imageKeysForSample:sample];
     BOOL success = YES;
     for (NSString *imageKey in imageKeys) {
         success = success && [imageStore deleteImageWithKey:imageKey];
     }
-    [source.attributes setObject:@"" forKey:SRC_IMAGES];
+    [sample.attributes setObject:@"" forKey:SMP_IMAGES];
 
-    success = success && [dataStore updateLibraryObject:source IntoTable:[SourceConstants tableName]];
+    success = success && [dataStore updateLibraryObject:sample IntoTable:[SampleConstants tableName]];
 
     return success;
 }
 
 + (BOOL)addImage:(UIImage *)image
-       forSource:(Source *)source
+       forSample:(Sample *)sample
      inDataStore:(AbstractLibraryObjectStore *)dataStore
   intoImageStore:(AbstractMobileImageStore *)imageStore
 {
     return [self.class addImage:image
-                      forSource:source
+                      forSample:sample
                     inDataStore:dataStore
                    withImageTag:DEFAULT_IMAGE_TAG
                  intoImageStore:imageStore];
 }
 
 + (BOOL)addImage:(UIImage *)image
-       forSource:(Source *)source
+       forSample:(Sample *)sample
      inDataStore:(AbstractLibraryObjectStore *)dataStore
     withImageTag:(NSString *)tag
   intoImageStore:(AbstractMobileImageStore *)imageStore
 {
-    NSString *sourceKey = source.key;
-    NSString *imageNumber = [self.class nextUniqueImageNumberForSource:source];
+    NSString *sampleKey = sample.key;
+    NSString *imageNumber = [self.class nextUniqueImageNumberForSample:sample];
     NSString *formattedTag = [NSString stringWithFormat:FORMAT_IMAGE_TAG, tag];
     NSString *extension = DEFAULT_IMAGE_EXTENSION;
 
     NSString *key = [NSString stringWithFormat:FORMAT_IMAGE_KEY,
-                                               sourceKey,
+                                               sampleKey,
                                                imageNumber,
                                                formattedTag,
                                                extension];
 
     [self.class appendImageKey:key
-                      toSource:source];
+                      toSample:sample];
 
     BOOL success = !(nil == image);
 
-    success = success && [dataStore updateLibraryObject:source
-                                              IntoTable:[SourceConstants tableName]];
+    success = success && [dataStore updateLibraryObject:sample
+                                              IntoTable:[SampleConstants tableName]];
 
     success = success && [imageStore putImage:image
                                        forKey:key];
@@ -176,31 +176,31 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 // Some "private" helper methods.
 
-/// Appends another image key to a source. This is applied in-place to the source object in memory,
-/// so the source still needs to be updated in the appropriate data store.
+/// Appends another image key to a sample. This is applied in-place to the sample object in memory,
+/// so the sample still needs to be updated in the appropriate data store.
 ///
 /// Note that this method is NOT idempotent - calling multiple times will cause the same image key
 /// to be appended multiple times!
 + (BOOL)appendImageKey:(NSString *)imageKey
-              toSource:(Source *)source
+              toSample:(Sample *)sample
 {
-    NSString *keys = [source.attributes objectForKey:SRC_IMAGES];
+    NSString *keys = [sample.attributes objectForKey:SMP_IMAGES];
 
     if (keys.length <= 0) {
-        [source.attributes setObject:imageKey forKey:SRC_IMAGES];
+        [sample.attributes setObject:imageKey forKey:SMP_IMAGES];
         return YES;
     } else {
         NSString *newKeys = [keys stringByAppendingFormat:@"%@%@", IMAGE_LIST_DELIMITER, imageKey];
-        [source.attributes setObject:newKeys forKey:SRC_IMAGES];
+        [sample.attributes setObject:newKeys forKey:SMP_IMAGES];
         return YES;
     }
 }
 
-/// Finds the next valid image number for a provided source.
-/// For example, if "sourcekey_i001" already exists, then "_i002" would be returned.
-+ (NSString *)nextUniqueImageNumberForSource:(Source *)source
+/// Finds the next valid image number for a provided sample.
+/// For example, if "samplekey_i001" already exists, then "_i002" would be returned.
++ (NSString *)nextUniqueImageNumberForSample:(Sample *)sample
 {
-    NSArray *existingKeys = [self.class imageKeysForSource:source];
+    NSArray *existingKeys = [self.class imageKeysForSample:sample];
 
     if (existingKeys.count <= 0) {
         return [NSString stringWithFormat:FORMAT_IMAGE_NUMBER_SUFFIX, 0];
@@ -215,9 +215,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 /// Assuming a key with a format that looks something like this:
-///     SOURCEKEY_i123.jpg
+///     SAMPLEKEY_i123.jpg
 ///     or
-///     SOURCEKEY_i123.IMAGETAG.jpg
+///     SAMPLEKEY_i123.IMAGETAG.jpg
 ///
 /// then "123" will be returned.
 ///

@@ -9,7 +9,7 @@
 #import "AddSampleImageViewController.h"
 #import "Split.h"
 #import "DDLog.h"
-#import "SourceImageUtils.h"
+#import "SampleImageUtils.h"
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -26,17 +26,17 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @implementation AddSampleImageViewController
 
-@synthesize libraryObjectStore, sourceToAdd, titleNav, imageArray, descriptionArray;
+@synthesize libraryObjectStore, sampleToAdd, titleNav, imageArray, descriptionArray;
 
-- (id)initWithSource:(Source *)initSource
+- (id)initWithSample:(Sample *)initSample
    WithLibraryObject:(AbstractCloudLibraryObjectStore *)initLibrary
-           WithTitle:(NSString*)initTitle
-          withImages:(NSMutableArray *)initImages
-    withDescriptions:(NSMutableArray *)initDescriptions
+           WithTitle:(NSString *)initTitle
+          WithImages:(NSMutableArray *)initImages
+    WithDescriptions:(NSMutableArray *)initDescriptions
 {
     self = [super init];
     if (self) {
-        sourceToAdd = initSource;
+        sampleToAdd = initSample;
         libraryObjectStore = initLibrary;
         titleNav = initTitle;
         imageArray = initImages;
@@ -46,10 +46,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [n setTitle:titleNav];
         UIBarButtonItem *bbi;
         if ([titleNav isEqualToString:@"Close View Outcrop"]) {
-            bbi = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(addSource:)];
+            bbi = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(addSample:)];
         }
-        else{
-            bbi = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(addSource:)];
+        else {
+            bbi = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(addSample:)];
         }
         
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
@@ -61,7 +61,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
 }
 
-- (IBAction)addSource:(id)sender
+- (IBAction)addSample:(id)sender
 {
     if ([titleNav isEqualToString:@"Far View Outcrop"])
     {
@@ -71,8 +71,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             [descriptionArray addObject:@"Far View Outcrop"];
         }
         
-        AddSampleImageViewController *asiViewController = [[AddSampleImageViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore WithTitle:@"Medium View Outcrop" withImages:imageArray withDescriptions:descriptionArray];
-        
+        AddSampleImageViewController *asiViewController = [[AddSampleImageViewController alloc] initWithSample:sampleToAdd
+                                                                                             WithLibraryObject:libraryObjectStore
+                                                                                                     WithTitle:@"Medium View Outcrop"
+                                                                                                    WithImages:imageArray
+                                                                                              WithDescriptions:descriptionArray];
          [[self navigationController] pushViewController:asiViewController  animated:YES];
     }
     else if ([titleNav isEqualToString:@"Medium View Outcrop"])
@@ -83,7 +86,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             [descriptionArray addObject:@"Medium View Outcrop"];
         }
         
-        AddSampleImageViewController *asiViewController = [[AddSampleImageViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore WithTitle:@"Close View Outcrop" withImages:imageArray withDescriptions:descriptionArray];
+        AddSampleImageViewController *asiViewController = [[AddSampleImageViewController alloc] initWithSample:sampleToAdd
+                                                                                             WithLibraryObject:libraryObjectStore
+                                                                                                     WithTitle:@"Close View Outcrop"
+                                                                                                    WithImages:imageArray
+                                                                                              WithDescriptions:descriptionArray];
         [[self navigationController] pushViewController:asiViewController  animated:YES];
     }
     
@@ -96,21 +103,21 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         }
         
         
-     DDLogInfo(@"Adding new source %@", sourceToAdd.key);
-     [libraryObjectStore putLibraryObject:sourceToAdd IntoTable:[SourceConstants tableName]];
+         DDLogInfo(@"Adding new sample %@", sampleToAdd.key);
+         [libraryObjectStore putLibraryObject:sampleToAdd IntoTable:[SampleConstants tableName]];
+         
+         NSString *newSplitKey = [NSString stringWithFormat:@"%@%@", [sampleToAdd key], @".001"];
+         Split *newSplit = [[Split alloc] initWithKey:newSplitKey
+         AndWithValues:[SplitConstants attributeDefaultValues]];
+         [[newSplit attributes] setObject:[sampleToAdd key] forKey:SPL_SAMPLE_KEY];
+         [libraryObjectStore putLibraryObject:newSplit IntoTable:[SplitConstants tableName]];
+            
+            for(int i = 0; i < [imageArray count]; i++)
+            {
+                [SampleImageUtils addImage:[imageArray objectAtIndex:i] forSample:sampleToAdd inDataStore:libraryObjectStore withImageTag:[descriptionArray objectAtIndex:i] intoImageStore:[SampleImageUtils defaultImageStore]];
+            }
      
-     NSString *newSplitKey = [NSString stringWithFormat:@"%@%@", [sourceToAdd key], @".001"];
-     Split *newSplit = [[Split alloc] initWithKey:newSplitKey
-     AndWithValues:[SplitConstants attributeDefaultValues]];
-     [[newSplit attributes] setObject:[sourceToAdd key] forKey:SPL_SAMPLE_KEY];
-     [libraryObjectStore putLibraryObject:newSplit IntoTable:[SplitConstants tableName]];
-        
-        for(int i = 0; i < [imageArray count]; i++)
-        {
-            [SourceImageUtils addImage:[imageArray objectAtIndex:i] forSource:sourceToAdd inDataStore:libraryObjectStore withImageTag:[descriptionArray objectAtIndex:i] intoImageStore:[SourceImageUtils defaultImageStore]];
-        }
- 
-    [[self navigationController] popToRootViewControllerAnimated:YES];
+        [[self navigationController] popToRootViewControllerAnimated:YES];
     }
 }
 
@@ -197,4 +204,5 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [imageView setImage:image];
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
+
 @end

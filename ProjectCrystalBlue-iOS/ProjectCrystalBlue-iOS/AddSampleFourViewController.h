@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 #import <UIKit/UIKit.h>
-#import "Source.h"
+#import "Sample.h"
 #import "SimpleDBLibraryObjectStore.h"
 
 @interface AddSampleFourViewController : UITableViewController
 
-@property(nonatomic) Source* sourceToAdd;
+@property(nonatomic) Sample* sampleToAdd;
 @property(nonatomic) AbstractCloudLibraryObjectStore *libraryObjectStore;
 @property(nonatomic) NSString* typeSelected;
-@property(nonatomic) NSUInteger numRows;
 
-- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary;
+- (id)initWithSample:(Sample *)initSample
+   WithLibraryObject:(AbstractCloudLibraryObjectStore *)initLibrary;
 @end

@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Source.h"
+#import "Sample.h"
 #import "AbstractCloudLibraryObjectStore.h"
 
 @interface SplitViewController : UITableViewController <UIActionSheetDelegate>
 
-@property(nonatomic) Source* selectedSource;
+@property(nonatomic) Sample* selectedSample;
 @property(nonatomic) AbstractCloudLibraryObjectStore *libraryObjectStore;
 
--(id) initWithSource:(Source *)initSource;
+-(id) initWithSample:(Sample *)initSample;
+
 @end

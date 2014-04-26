@@ -8,7 +8,7 @@
 
 #import "AddSampleSixViewController.h"
 #import "AddSampleAgeViewController.h"
-#import "SourceFieldValidator.h"
+#import "SampleFieldValidator.h"
 
 
 @interface AddSampleSixViewController ()
@@ -16,20 +16,21 @@
 @end
 
 @implementation AddSampleSixViewController
-@synthesize libraryObjectStore, sourceToAdd, RegionField, LocalityField, SectionField, MeterField;
+@synthesize libraryObjectStore, sampleToAdd, RegionField, LocalityField, SectionField, MeterField;
 
-- (id)initWithSource:(Source *)initSource WithLibraryObject:(AbstractCloudLibraryObjectStore *) initLibrary
+- (id)initWithSample:(Sample *)initSample
+   WithLibraryObject:(AbstractCloudLibraryObjectStore *)initLibrary
 {
     self = [super init];
     if (self) {
         
-        sourceToAdd = initSource;
+        sampleToAdd = initSample;
         libraryObjectStore = initLibrary;
         
         UINavigationItem *n = [self navigationItem];
         [n setTitle:@"Add Sample Cont."];
         
-        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(addSource:)];
+        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(addSample:)];
         
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         
@@ -39,19 +40,20 @@
     return self;
 }
 
-- (IBAction)addSource:(id)sender
+- (IBAction)addSample:(id)sender
 {
     if (![self validateTextFieldValues])
     {
         return;
     }
     
-    [[sourceToAdd attributes] setObject:[RegionField text] forKey:SRC_REGION];
-    [[sourceToAdd attributes] setObject:[LocalityField text] forKey:SRC_LOCALITY];
-    [[sourceToAdd attributes] setObject:[SectionField text] forKey:SRC_SECTION];
-    [[sourceToAdd attributes] setObject:[MeterField text] forKey:SRC_METER];
+    [[sampleToAdd attributes] setObject:[RegionField text] forKey:SMP_REGION];
+    [[sampleToAdd attributes] setObject:[LocalityField text] forKey:SMP_LOCALITY];
+    [[sampleToAdd attributes] setObject:[SectionField text] forKey:SMP_SECTION];
+    [[sampleToAdd attributes] setObject:[MeterField text] forKey:SMP_METER];
     
-    AddSampleAgeViewController *asaViewController = [[AddSampleAgeViewController alloc] initWithSource:sourceToAdd WithLibraryObject:libraryObjectStore];
+    AddSampleAgeViewController *asaViewController = [[AddSampleAgeViewController alloc] initWithSample:sampleToAdd
+                                                                                     WithLibraryObject:libraryObjectStore];
     
     [[self navigationController] pushViewController:asaViewController  animated:YES];
    }
@@ -87,7 +89,7 @@
 {
     BOOL validationPassed = YES;
 
-    ValidationResponse *regionOK = [SourceFieldValidator validateRegion:[RegionField text]];
+    ValidationResponse *regionOK = [SampleFieldValidator validateRegion:[RegionField text]];
     if (!regionOK.isValid && validationPassed == YES) {
         validationPassed = NO;
         
@@ -102,7 +104,7 @@
         [alert show];
     }
     
-    ValidationResponse *localityOK = [SourceFieldValidator validateLocality:[LocalityField text]];
+    ValidationResponse *localityOK = [SampleFieldValidator validateLocality:[LocalityField text]];
     if (!localityOK.isValid && validationPassed == YES) {
         validationPassed = NO;
         
@@ -117,7 +119,7 @@
         [alert show];
     }
     
-    ValidationResponse *sectionOK = [SourceFieldValidator validateContinent:[SectionField text]];
+    ValidationResponse *sectionOK = [SampleFieldValidator validateContinent:[SectionField text]];
     if (!sectionOK.isValid && validationPassed == YES) {
         validationPassed = NO;
         
@@ -132,7 +134,7 @@
         [alert show];
     }
     
-    ValidationResponse *meterOK = [SourceFieldValidator validateMeters:[MeterField text]];
+    ValidationResponse *meterOK = [SampleFieldValidator validateMeters:[MeterField text]];
     if (!meterOK.isValid && validationPassed == YES) {
         validationPassed = NO;
         
