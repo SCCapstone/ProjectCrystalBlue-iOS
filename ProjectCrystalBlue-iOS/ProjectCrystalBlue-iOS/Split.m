@@ -1,17 +1,17 @@
 //
-//  Sample.m
+//  Split.m
 //  ProjectCrystalBlue-iOS
 //
 //  Created by Justin Baumgartner on 1/18/14.
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import "Sample.h"
+#import "Split.h"
 #import "ValidationResponse.h"
-#import "SampleFieldValidator.h"
+#import "SplitFieldValidator.h"
 #import "ProcedureRecordParser.h"
 
-@implementation Sample
+@implementation Split
 {
     NSArray *tags;
 }
@@ -20,19 +20,19 @@
     AndWithValues:(NSArray *)attributeValues
 {
     return [super initWithKey:key
-            AndWithAttributes:[SampleConstants attributeNames]
+            AndWithAttributes:[SplitConstants attributeNames]
                     AndValues:attributeValues];
 }
 
-- (NSString *)sourceKey
+- (NSString *)sampleKey
 {
-    return [[self attributes] objectForKey:SMP_SOURCE_KEY];
+    return [[self attributes] objectForKey:SPL_SAMPLE_KEY];
 }
 
 - (NSString *)description
 {
     NSString *descriptionString = [[NSString alloc] initWithFormat:@"%@    ", [self key]];
-    NSString *procedureRecords = [[self attributes] objectForKey:SMP_TAGS];
+    NSString *procedureRecords = [[self attributes] objectForKey:SPL_TAGS];
     NSArray *procedureTags = [ProcedureRecordParser tagArrayFromRecordList:procedureRecords];
     
     if ([procedureTags count] == 0)
@@ -67,8 +67,8 @@
     NSString *attr = [inKeyPath isEqualToString:@"key"] ? @"key" : [inKeyPath substringFromIndex:11];
     
     // Validate depending on attribute
-    if ([attr isEqualToString:SMP_CURRENT_LOCATION])
-        response = [SampleFieldValidator validateCurrentLocation:newValue];
+    if ([attr isEqualToString:SPL_CURRENT_LOCATION])
+        response = [SplitFieldValidator validateCurrentLocation:newValue];
     else
         return YES;
     

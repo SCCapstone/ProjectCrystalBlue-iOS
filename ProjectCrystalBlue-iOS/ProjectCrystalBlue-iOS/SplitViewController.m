@@ -1,15 +1,15 @@
 //
-//  SampleViewController.m
+//  SplitViewController.m
 //  ProjectCrystalBlue-iOS
 //
 //  Created by Ryan McGraw on 2/8/14.
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import "SampleViewController.h"
-#import "Sample.h"
+#import "SplitViewController.h"
+#import "Split.h"
 #import "DDLog.h"
-#import "SampleEditViewController.h"
+#import "SplitEditViewController.h"
 #import "ProcedureListViewController.h"
 #import "AbstractCloudLibraryObjectStore.h"
 #import "AbstractMobileCloudImageStore.h"
@@ -18,27 +18,27 @@
 #import "PrimitiveProcedures.h"
 #import "Reachability.h"
 
-@interface SampleViewController ()
+@interface SplitViewController ()
 {
-    NSArray *samples;
+    NSArray *splits;
     NSString* option;
 }
 @end
 
-@implementation SampleViewController
+@implementation SplitViewController
 
 @synthesize selectedSource, libraryObjectStore;
 
-- (id)initWithSource:(Source *) initSource
+- (id)initWithSource:(Source *)initSource
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        samples = [libraryObjectStore getAllSamplesForSourceKey:selectedSource.key];
+        splits = [libraryObjectStore getAllSplitsForSampleKey:selectedSource.key];
         selectedSource = initSource;
         
         UINavigationItem *n = [self navigationItem];
         NSString *title = selectedSource.key;
-        title = [title stringByAppendingString:@" Samples"];
+        title = [title stringByAppendingString:@" Splits"];
         [n setTitle:title];
         
         UIBarButtonItem *bbi = [[UIBarButtonItem alloc]
@@ -63,13 +63,13 @@
     // Control for sync visual cue
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self
-                       action:@selector(syncSamples)
+                       action:@selector(syncSplits)
              forControlEvents:UIControlEventValueChanged];
     
     self.refreshControl = refreshControl;
 }
 
-- (void)syncSamples
+- (void)syncSplits
 {
     Reachability *reach = [Reachability reachabilityForInternetConnection];
     if ([reach isReachable]) {
@@ -77,20 +77,20 @@
         [(AbstractMobileCloudImageStore *)[SourceImageUtils defaultImageStore] synchronizeWithCloud];
     }
     
-    samples = [libraryObjectStore getAllSamplesForSourceKey:selectedSource.key];
+    splits = [libraryObjectStore getAllSplitsForSampleKey:selectedSource.key];
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    samples = [libraryObjectStore getAllSamplesForSourceKey:selectedSource.key];
+    splits = [libraryObjectStore getAllSplitsForSampleKey:selectedSource.key];
     [self.tableView reloadData];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [samples count];
+    return [splits count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -103,24 +103,24 @@
                                       reuseIdentifier:@"UITableViewCell"];
     }
     
-    Sample *sample = [samples objectAtIndex:[indexPath row]];
-    [[cell textLabel] setText:[sample description]];
+    Split *split = [splits objectAtIndex:[indexPath row]];
+    [[cell textLabel] setText:[split description]];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Sample *selectedSample = [samples objectAtIndex:[indexPath row]];
+    Split *selectedSplit = [splits objectAtIndex:[indexPath row]];
     UIActionSheet *message;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
         
-        message = [[UIActionSheet alloc] initWithTitle:@"Action:" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Perform Procedure", @"View Sample", nil];
+        message = [[UIActionSheet alloc] initWithTitle:@"Action:" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Perform Procedure", @"View Split", nil];
     }
     else
     {
-        message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Perform Procedure", @"View Sample", nil];
+        message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Perform Procedure", @"View Split", nil];
     }
     
     CGRect cellRect = [self.tableView cellForRowAtIndexPath:indexPath].frame;
@@ -137,18 +137,18 @@
     
     if([option isEqualToString:@"PROC"])
     {
-        ProcedureListViewController *procedureListViewController = [[ProcedureListViewController alloc] initWithSample:selectedSample WithLibrary:libraryObjectStore];
+        ProcedureListViewController *procedureListViewController = [[ProcedureListViewController alloc] initWithSplit:selectedSplit WithLibrary:libraryObjectStore];
         [[self navigationController] pushViewController:procedureListViewController  animated:YES];
     }
     
     if([option isEqualToString:@"VIEW"])
     {
-        SampleEditViewController *sampleEditViewController =
-        [[SampleEditViewController alloc] initWithSample:selectedSample
+        SplitEditViewController *splitEditViewController =
+        [[SplitEditViewController alloc] initWithSplit:selectedSplit
                                              WithLibrary:libraryObjectStore
                                    AndNavigateBackToRoot:NO];
         
-        [[self navigationController] pushViewController:sampleEditViewController animated:YES];
+        [[self navigationController] pushViewController:splitEditViewController animated:YES];
     }
 }
 
@@ -159,10 +159,10 @@
 
 -(void) addNewItem:(id)sender
 {
-    samples = [libraryObjectStore getAllSamplesForSourceKey:selectedSource.key];
-    if([samples count] != 0)
+    splits = [libraryObjectStore getAllSplitsForSampleKey:selectedSource.key];
+    if([splits count] != 0)
     {
-        [Procedures addFreshSample:[samples objectAtIndex:0] inStore:libraryObjectStore];
+        [Procedures addFreshSplit:[splits objectAtIndex:0] inStore:libraryObjectStore];
     }
     else
     {
@@ -171,17 +171,17 @@
         
         NSString *key = [PrimitiveProcedures uniqueKeyBasedOn:selectedSource.key
                                                       inStore:libraryObjectStore
-                                                      inTable:[SampleConstants tableName]];
+                                                      inTable:[SplitConstants tableName]];
         
-        Sample *sample = [[Sample alloc] initWithKey:key
-                           AndWithAttributes:[SampleConstants attributeNames]
-                                   AndValues:[SampleConstants attributeDefaultValues]];
-        [sample.attributes setObject:selectedSource.key
-                              forKey:SMP_SOURCE_KEY];
+        Split *split = [[Split alloc] initWithKey:key
+                           AndWithAttributes:[SplitConstants attributeNames]
+                                   AndValues:[SplitConstants attributeDefaultValues]];
+        [split.attributes setObject:selectedSource.key
+                              forKey:SPL_SAMPLE_KEY];
         
-        [libraryObjectStore putLibraryObject:sample IntoTable:[SampleConstants tableName]];
+        [libraryObjectStore putLibraryObject:split IntoTable:[SplitConstants tableName]];
     }
-    samples = [libraryObjectStore getAllSamplesForSourceKey:selectedSource.key];
+    splits = [libraryObjectStore getAllSplitsForSampleKey:selectedSource.key];
     [self.tableView reloadData];
 }
 

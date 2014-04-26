@@ -31,16 +31,16 @@
 {
     NSString *empty = @"";
     NSString *twoCharacters = @"ab";
-
+    
     XCTAssertFalse([PrimitiveFieldValidator validateField:empty
                                        isAtLeastMinLength:1]);
-
+    
     XCTAssertFalse([PrimitiveFieldValidator validateField:twoCharacters
                                     isNoMoreThanMaxLength:1]);
-
+    
     XCTAssertTrue([PrimitiveFieldValidator validateField:empty
                                    isNoMoreThanMaxLength:5]);
-
+    
     XCTAssertTrue([PrimitiveFieldValidator validateField:twoCharacters
                                       isAtLeastMinLength:1]);
 }
@@ -51,19 +51,19 @@
     NSString *numerals = @"12345";
     NSString *alphabet = @"abcdeABCDE";
     NSString *alphaNumericWithWhitespace = @"12345 ABCDEFG abcdefgh";
-
+    
     XCTAssertTrue([PrimitiveFieldValidator validateField:alphanumeric
                                      containsOnlyCharSet:[NSCharacterSet alphanumericCharacterSet]]);
-
+    
     XCTAssertTrue([PrimitiveFieldValidator validateField:numerals
                                      containsOnlyCharSet:[NSCharacterSet decimalDigitCharacterSet]]);
-
+    
     XCTAssertTrue([PrimitiveFieldValidator validateField:alphabet
                                      containsOnlyCharSet:[NSCharacterSet letterCharacterSet]]);
-
+    
     XCTAssertFalse([PrimitiveFieldValidator validateField:alphaNumericWithWhitespace
                                       containsOnlyCharSet:[NSCharacterSet alphanumericCharacterSet]]);
-
+    
     NSMutableCharacterSet *alphaNumericAndWhitespace = [NSMutableCharacterSet alphanumericCharacterSet];
     [alphaNumericAndWhitespace formUnionWithCharacterSet:[NSCharacterSet whitespaceCharacterSet]];
     XCTAssertTrue([PrimitiveFieldValidator validateField:alphaNumericWithWhitespace
@@ -76,12 +76,12 @@
     NSString *option2 = @"bonobo";
     NSString *option3 = @"cheetah";
     NSString *notAnOption = @"dingo";
-
+    
     NSArray *validOptions = [NSArray arrayWithObjects:option1, option2, option3, nil];
-
+    
     XCTAssertTrue([PrimitiveFieldValidator validateField:option1
                                       isOneOfValidValues:validOptions]);
-
+    
     XCTAssertFalse([PrimitiveFieldValidator validateField:notAnOption
                                        isOneOfValidValues:validOptions]);
 }
@@ -93,12 +93,12 @@
     NSString *integer = @"420";
     NSString *zero = @"0";
     NSString *notValid = @"230adfjgs085208";
-
+    
     XCTAssertTrue([PrimitiveFieldValidator validateFieldIsDecimal:positiveDecimal]);
     XCTAssertTrue([PrimitiveFieldValidator validateFieldIsDecimal:negativeDecimal]);
     XCTAssertTrue([PrimitiveFieldValidator validateFieldIsDecimal:integer]);
     XCTAssertTrue([PrimitiveFieldValidator validateFieldIsDecimal:zero]);
-
+    
     XCTAssertFalse([PrimitiveFieldValidator validateFieldIsDecimal:notValid]);
 }
 
@@ -108,11 +108,11 @@
     NSString *negativeNumber = @"-258032805";
     NSString *invalid = @"xcvbijoijo";
     NSString *zero = @"0";
-
+    
     XCTAssertTrue([PrimitiveFieldValidator validateFieldIsIntegral:positiveNumber]);
     XCTAssertTrue([PrimitiveFieldValidator validateFieldIsIntegral:negativeNumber]);
     XCTAssertTrue([PrimitiveFieldValidator validateFieldIsIntegral:zero]);
-
+    
     XCTAssertFalse([PrimitiveFieldValidator validateFieldIsIntegral:invalid]);
 }
 

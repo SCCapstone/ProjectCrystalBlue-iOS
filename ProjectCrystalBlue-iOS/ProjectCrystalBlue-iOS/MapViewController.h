@@ -15,5 +15,7 @@
     IBOutlet MKMapView *mapView;
 }
 
-- (id)initWithKey:(NSString*) initKey withLat:(NSString*) initLat withLong:(NSString*) initLong;
+- (id)initWithKey:(NSString*)initKey
+          withLat:(NSString*)initLat
+         withLong:(NSString*)initLong;
 @end

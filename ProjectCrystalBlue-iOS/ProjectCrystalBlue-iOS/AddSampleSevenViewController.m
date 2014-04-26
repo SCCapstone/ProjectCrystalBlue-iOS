@@ -8,7 +8,7 @@
 
 #import "AddSampleSevenViewController.h"
 #import "AddSampleImageViewController.h"
-#import "Sample.h"
+#import "Split.h"
 #import "DDLog.h"
 #import "SourceFieldValidator.h"
 

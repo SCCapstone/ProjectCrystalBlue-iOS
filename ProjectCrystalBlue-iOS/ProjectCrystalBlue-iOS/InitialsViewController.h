@@ -7,18 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Sample.h"
+#import "Split.h"
 #import "AbstractCloudLibraryObjectStore.h"
 
 @interface InitialsViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *initialsField;
-@property(nonatomic) Sample* selectedSample;
+@property(nonatomic) Split* selectedSplit;
 @property(nonatomic) AbstractCloudLibraryObjectStore *libraryObjectStore;
 @property(nonatomic) int selectedRow;
 @property(nonatomic) NSString* titleNav;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
-- (id)initWithSample:(Sample*)initSample withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary withRow:(int) initRow withTitle:(NSString*)initTitle;
+- (id)initWithSplit:(Split*)initSplit
+        withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary
+            withRow:(int) initRow
+          withTitle:(NSString*)initTitle;
 - (IBAction)backgroundTapped:(id)sender;
+
 @end

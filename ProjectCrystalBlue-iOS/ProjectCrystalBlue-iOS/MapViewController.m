@@ -18,7 +18,9 @@
 
 @implementation MapViewController
 
-- (id)initWithKey:(NSString*) initKey withLat:(NSString*) initLat withLong:(NSString*) initLong
+- (id)initWithKey:(NSString*)initKey
+          withLat:(NSString*)initLat
+         withLong:(NSString*)initLong
 {
     self = [super init];
     if (self) {

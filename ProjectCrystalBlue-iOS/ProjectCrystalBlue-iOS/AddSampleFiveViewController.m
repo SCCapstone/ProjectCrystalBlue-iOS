@@ -10,7 +10,7 @@
 #import "Source.h"
 #import "AddSampleSixViewController.h"
 #import "AbstractLibraryObjectStore.h"
-#import "SampleConstants.h"
+#import "SplitConstants.h"
 #import "SourceFieldValidator.h"
 
 @interface AddSampleFiveViewController ()

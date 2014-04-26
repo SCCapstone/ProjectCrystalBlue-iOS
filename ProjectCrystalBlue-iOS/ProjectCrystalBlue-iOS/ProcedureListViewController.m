@@ -7,7 +7,7 @@
 //
 
 #import "ProcedureListViewController.h"
-#import "Sample.h"
+#import "Split.h"
 #import "Procedures.h"
 #import "AbstractCloudLibraryObjectStore.h"
 #import "ProcedureNameConstants.h"
@@ -26,13 +26,14 @@
 @end
 
 @implementation ProcedureListViewController
-@synthesize selectedSample, libraryObjectStore;
+@synthesize selectedSplit, libraryObjectStore;
 
-- (id)initWithSample:(Sample*)initSample WithLibrary:(AbstractCloudLibraryObjectStore *)library
+- (id)initWithSplit:(Split*)initSplit
+        WithLibrary:(AbstractCloudLibraryObjectStore *)library
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        selectedSample = initSample;
+        selectedSplit = initSplit;
         libraryObjectStore = library;
         procedureNames0 = [[NSMutableArray alloc] init];
         procedureNames1 = [[NSMutableArray alloc] init];
@@ -41,7 +42,7 @@
         procedureNames4 = [[NSMutableArray alloc] init];
         
         UINavigationItem *n = [self navigationItem];
-        [n setTitle:[selectedSample key]];
+        [n setTitle:[selectedSplit key]];
         
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         
@@ -137,7 +138,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [procedureNames0 addObject:@"Move Sample"];
+    [procedureNames0 addObject:@"Move Split"];
     [procedureNames1 addObject:@"Make Slab"];
     [procedureNames1 addObject:@"Make Billet"];
     [procedureNames1 addObject:@"Make Thin Section"];
@@ -163,13 +164,16 @@
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    InitialsViewController *initialsViewController = [[InitialsViewController alloc] initWithSample:selectedSample withLibrary:libraryObjectStore withRow:0 withTitle:NULL];
+    InitialsViewController *initialsViewController = [[InitialsViewController alloc] initWithSplit:selectedSplit
+                                                                                       withLibrary:libraryObjectStore
+                                                                                           withRow:0
+                                                                                         withTitle:NULL];
     
     if(indexPath.section == 0)
     {
         if ([indexPath row] == 0)
         {
-            EditLocationViewController *editLocationViewController = [[EditLocationViewController alloc] initWithSample:selectedSample];
+            EditLocationViewController *editLocationViewController = [[EditLocationViewController alloc] initWithSplit:selectedSplit];
             [[self navigationController] pushViewController:editLocationViewController  animated:YES];
         }
     }

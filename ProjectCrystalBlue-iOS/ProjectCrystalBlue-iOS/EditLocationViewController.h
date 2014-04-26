@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Sample.h"
+#import "Split.h"
 
 @interface EditLocationViewController : UIViewController
 
-@property (nonatomic, strong) Sample *selectedSample;
+@property (nonatomic, strong) Split *selectedSplit;
 @property (weak, nonatomic) IBOutlet UITextField *LocationField;
 
-- (id)initWithSample:(Sample *) initSample;
+- (id)initWithSplit:(Split *) initSplit;
 - (IBAction)updateLocation:(id)sender;
 - (IBAction)cancel:(id)sender;
 

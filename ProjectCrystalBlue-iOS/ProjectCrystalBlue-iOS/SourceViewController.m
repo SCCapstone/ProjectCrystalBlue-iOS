@@ -9,8 +9,8 @@
 #import "SourceViewController.h"
 #import "Source.h"
 #import "SourceEditViewController.h"
-#import "SampleViewController.h"
-#import "Sample.h"
+#import "SplitViewController.h"
+#import "Split.h"
 #import "SimpleDBLibraryObjectStore.h"
 #import "SourceImageUtils.h"
 #import "AbstractMobileCloudImageStore.h"
@@ -155,11 +155,11 @@
     UIActionSheet *message;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
-        message = [[UIActionSheet alloc] initWithTitle:@"Action:" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Edit Source", @"View Samples", nil];
+        message = [[UIActionSheet alloc] initWithTitle:@"Action:" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Edit Source", @"View Splits", nil];
     }
     else
     {
-        message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Edit Source", @"View Samples", nil];
+        message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Edit Source", @"View Splits", nil];
     }
     
     CGRect cellRect = [self.tableView cellForRowAtIndexPath:indexPath].frame;
@@ -184,9 +184,9 @@
     
     if([option isEqualToString:@"VIEW"])
     {
-        SampleViewController *sampleViewController = [[SampleViewController alloc] initWithSource:selectedSource];
-        [sampleViewController setLibraryObjectStore:libraryObjectStore];
-        [[self navigationController] pushViewController:sampleViewController  animated:YES];
+        SplitViewController *splitViewController = [[SplitViewController alloc] initWithSource:selectedSource];
+        [splitViewController setLibraryObjectStore:libraryObjectStore];
+        [[self navigationController] pushViewController:splitViewController  animated:YES];
     }
     
 }

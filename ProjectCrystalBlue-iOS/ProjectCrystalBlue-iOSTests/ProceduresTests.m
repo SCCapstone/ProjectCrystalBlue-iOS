@@ -49,51 +49,51 @@ AbstractLibraryObjectStore *testStore;
     XCTAssertNil(error, @"Error removing database file!");
 }
 
-- (void)testAddFreshSample
+- (void)testAddFreshSplit
 {
     NSString *originalKey = @"Rock.001";
-    Sample *s = [[Sample alloc] initWithKey:originalKey
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:originalKey
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
 
     
-    [Procedures addFreshSample:s inStore:testStore];
-    [Procedures addFreshSample:s inStore:testStore];
+    [Procedures addFreshSplit:s inStore:testStore];
+    [Procedures addFreshSplit:s inStore:testStore];
 
-    LibraryObject *sample1 = [testStore getLibraryObjectForKey:@"Rock.002"
-                                                     FromTable:[SampleConstants tableName]];
-    LibraryObject *sample2 = [testStore getLibraryObjectForKey:@"Rock.003"
-                                                     FromTable:[SampleConstants tableName]];
+    LibraryObject *split1 = [testStore getLibraryObjectForKey:@"Rock.002"
+                                                     FromTable:[SplitConstants tableName]];
+    LibraryObject *split2 = [testStore getLibraryObjectForKey:@"Rock.003"
+                                                     FromTable:[SplitConstants tableName]];
     
     
     XCTAssertEqualObjects(s.key,         @"Rock.001");
-    XCTAssertEqualObjects(sample1.key,   @"Rock.002");
-    XCTAssertEqualObjects(sample2.key,   @"Rock.003");
+    XCTAssertEqualObjects(split1.key,   @"Rock.002");
+    XCTAssertEqualObjects(split2.key,   @"Rock.003");
 }
 
-- (void)testMoveSample
+- (void)testMoveSplit
 {
     NSString *originalKey = @"Rock.001";
-    Sample *s = [[Sample alloc] initWithKey:originalKey
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:originalKey
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
-    NSString *originalLocation = [[s attributes] objectForKey:SMP_CURRENT_LOCATION];
+    NSString *originalLocation = [[s attributes] objectForKey:SPL_CURRENT_LOCATION];
     
-    [Procedures moveSample:s toLocation:@"NewLocation" inStore:testStore];
+    [Procedures moveSplit:s toLocation:@"NewLocation" inStore:testStore];
 
     
-    XCTAssertNotEqualObjects([[s attributes] objectForKey:SMP_CURRENT_LOCATION],    originalLocation);
-    XCTAssertEqualObjects([[s attributes] objectForKey:SMP_CURRENT_LOCATION],    @"NewLocation");
+    XCTAssertNotEqualObjects([[s attributes] objectForKey:SPL_CURRENT_LOCATION],    originalLocation);
+    XCTAssertEqualObjects([[s attributes] objectForKey:SPL_CURRENT_LOCATION],    @"NewLocation");
 }
 
 - (void)testMakeSlab
 {
     NSString *originalKey = @"Rock.001";
     NSString *initials = @"AAA";
-    Sample *s = [[Sample alloc] initWithKey:originalKey
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:originalKey
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
     ProcedureRecord *proc1 = [[ProcedureRecord alloc] initWithTag:@"TAG01" andInitials:initials];
     ProcedureRecord *proc2 = [[ProcedureRecord alloc] initWithTag:@"TAG02" andInitials:initials];
@@ -102,22 +102,22 @@ AbstractLibraryObjectStore *testStore;
     
     NSArray *originalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:originalRecords];
     
-    [s.attributes setValue:originalRecords forKey:SMP_TAGS];
-    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+    [s.attributes setValue:originalRecords forKey:SPL_TAGS];
+    [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [Procedures makeSlabfromSample:s
+    [Procedures makeSlabfromSplit:s
                   withInitials:initials
                        inStore:testStore];
     
     NSString *newKey = @"Rock.002";
     
-    LibraryObject *retrievedOriginalSample = [testStore getLibraryObjectForKey:originalKey
-                                                                FromTable:[SampleConstants tableName]];
-    LibraryObject *retrievedNewSample = [testStore getLibraryObjectForKey:newKey
-                                                             FromTable:[SampleConstants tableName]];
+    LibraryObject *retrievedOriginalSplit = [testStore getLibraryObjectForKey:originalKey
+                                                                FromTable:[SplitConstants tableName]];
+    LibraryObject *retrievedNewSplit = [testStore getLibraryObjectForKey:newKey
+                                                             FromTable:[SplitConstants tableName]];
     
-    NSString *newOriginalRecords = [[retrievedOriginalSample attributes] objectForKey:SMP_TAGS];
-    NSString *newRecords = [[retrievedNewSample attributes] objectForKey:SMP_TAGS];
+    NSString *newOriginalRecords = [[retrievedOriginalSplit attributes] objectForKey:SPL_TAGS];
+    NSString *newRecords = [[retrievedNewSplit attributes] objectForKey:SPL_TAGS];
     
     NSArray *postOriginalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newOriginalRecords];
     NSArray *postNewRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newRecords];
@@ -136,9 +136,9 @@ AbstractLibraryObjectStore *testStore;
 {
     NSString *originalKey = @"Rock.001";
     NSString *initials = @"AAA";
-    Sample *s = [[Sample alloc] initWithKey:originalKey
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:originalKey
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
     ProcedureRecord *proc1 = [[ProcedureRecord alloc] initWithTag:@"TAG01" andInitials:initials];
     ProcedureRecord *proc2 = [[ProcedureRecord alloc] initWithTag:@"TAG02" andInitials:initials];
@@ -147,22 +147,22 @@ AbstractLibraryObjectStore *testStore;
     
     NSArray *originalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:originalRecords];
     
-    [s.attributes setValue:originalRecords forKey:SMP_TAGS];
-    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+    [s.attributes setValue:originalRecords forKey:SPL_TAGS];
+    [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [Procedures makeBilletfromSample:s
+    [Procedures makeBilletfromSplit:s
                       withInitials:initials
                            inStore:testStore];
     
     NSString *newKey = @"Rock.002";
     
-    LibraryObject *retrievedOriginalSample = [testStore getLibraryObjectForKey:originalKey
-                                                                     FromTable:[SampleConstants tableName]];
-    LibraryObject *retrievedNewSample = [testStore getLibraryObjectForKey:newKey
-                                                                FromTable:[SampleConstants tableName]];
+    LibraryObject *retrievedOriginalSplit = [testStore getLibraryObjectForKey:originalKey
+                                                                     FromTable:[SplitConstants tableName]];
+    LibraryObject *retrievedNewSplit = [testStore getLibraryObjectForKey:newKey
+                                                                FromTable:[SplitConstants tableName]];
     
-    NSString *newOriginalRecords = [[retrievedOriginalSample attributes] objectForKey:SMP_TAGS];
-    NSString *newRecords = [[retrievedNewSample attributes] objectForKey:SMP_TAGS];
+    NSString *newOriginalRecords = [[retrievedOriginalSplit attributes] objectForKey:SPL_TAGS];
+    NSString *newRecords = [[retrievedNewSplit attributes] objectForKey:SPL_TAGS];
     
     NSArray *postOriginalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newOriginalRecords];
     NSArray *postNewRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newRecords];
@@ -181,9 +181,9 @@ AbstractLibraryObjectStore *testStore;
 {
     NSString *originalKey = @"Rock.001";
     NSString *initials = @"AAA";
-    Sample *s = [[Sample alloc] initWithKey:originalKey
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:originalKey
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
     ProcedureRecord *proc1 = [[ProcedureRecord alloc] initWithTag:@"TAG01" andInitials:initials];
     ProcedureRecord *proc2 = [[ProcedureRecord alloc] initWithTag:@"TAG02" andInitials:initials];
@@ -192,22 +192,22 @@ AbstractLibraryObjectStore *testStore;
     
     NSArray *originalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:originalRecords];
     
-    [s.attributes setValue:originalRecords forKey:SMP_TAGS];
-    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+    [s.attributes setValue:originalRecords forKey:SPL_TAGS];
+    [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [Procedures makeThinSectionfromSample:s
+    [Procedures makeThinSectionfromSplit:s
                       withInitials:initials
                            inStore:testStore];
     
     NSString *newKey = @"Rock.002";
     
-    LibraryObject *retrievedOriginalSample = [testStore getLibraryObjectForKey:originalKey
-                                                                     FromTable:[SampleConstants tableName]];
-    LibraryObject *retrievedNewSample = [testStore getLibraryObjectForKey:newKey
-                                                                FromTable:[SampleConstants tableName]];
+    LibraryObject *retrievedOriginalSplit = [testStore getLibraryObjectForKey:originalKey
+                                                                     FromTable:[SplitConstants tableName]];
+    LibraryObject *retrievedNewSplit = [testStore getLibraryObjectForKey:newKey
+                                                                FromTable:[SplitConstants tableName]];
     
-    NSString *newOriginalRecords = [[retrievedOriginalSample attributes] objectForKey:SMP_TAGS];
-    NSString *newRecords = [[retrievedNewSample attributes] objectForKey:SMP_TAGS];
+    NSString *newOriginalRecords = [[retrievedOriginalSplit attributes] objectForKey:SPL_TAGS];
+    NSString *newRecords = [[retrievedNewSplit attributes] objectForKey:SPL_TAGS];
     
     NSArray *postOriginalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newOriginalRecords];
     NSArray *postNewRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newRecords];
@@ -226,9 +226,9 @@ AbstractLibraryObjectStore *testStore;
 {
     NSString *originalKey = @"Rock.001";
     NSString *initials = @"AAA";
-    Sample *s = [[Sample alloc] initWithKey:originalKey
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:originalKey
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
     ProcedureRecord *proc1 = [[ProcedureRecord alloc] initWithTag:@"TAG01" andInitials:initials];
     ProcedureRecord *proc2 = [[ProcedureRecord alloc] initWithTag:@"TAG02" andInitials:initials];
@@ -237,17 +237,17 @@ AbstractLibraryObjectStore *testStore;
     
     NSArray *originalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:originalRecords];
     
-    [s.attributes setValue:originalRecords forKey:SMP_TAGS];
-    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+    [s.attributes setValue:originalRecords forKey:SPL_TAGS];
+    [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [Procedures pulverizeSample:s
+    [Procedures pulverizeSplit:s
                   withInitials:initials
                        inStore:testStore];
     
-    LibraryObject *retrievedSample = [testStore getLibraryObjectForKey:originalKey
-                                                             FromTable:[SampleConstants tableName]];
+    LibraryObject *retrievedSplit = [testStore getLibraryObjectForKey:originalKey
+                                                             FromTable:[SplitConstants tableName]];
     
-    NSString *newRecords = [[retrievedSample attributes] objectForKey:SMP_TAGS];
+    NSString *newRecords = [[retrievedSplit attributes] objectForKey:SPL_TAGS];
     NSArray *newRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newRecords];
     
     ProcedureRecord *expectedPulverizeRecord = [[ProcedureRecord alloc] initWithTag:PROC_TAG_PULVERIZE andInitials:initials];
@@ -262,9 +262,9 @@ AbstractLibraryObjectStore *testStore;
 {
     NSString *originalKey = @"Rock.001";
     NSString *initials = @"AAA";
-    Sample *s = [[Sample alloc] initWithKey:originalKey
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:originalKey
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
     ProcedureRecord *proc1 = [[ProcedureRecord alloc] initWithTag:@"TAG01" andInitials:initials];
     ProcedureRecord *proc2 = [[ProcedureRecord alloc] initWithTag:@"TAG02" andInitials:initials];
@@ -273,17 +273,17 @@ AbstractLibraryObjectStore *testStore;
     
     NSArray *originalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:originalRecords];
     
-    [s.attributes setValue:originalRecords forKey:SMP_TAGS];
-    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+    [s.attributes setValue:originalRecords forKey:SPL_TAGS];
+    [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [Procedures trimSample:s
+    [Procedures trimSplit:s
                    withInitials:initials
                         inStore:testStore];
     
-    LibraryObject *retrievedSample = [testStore getLibraryObjectForKey:originalKey
-                                                             FromTable:[SampleConstants tableName]];
+    LibraryObject *retrievedSplit = [testStore getLibraryObjectForKey:originalKey
+                                                             FromTable:[SplitConstants tableName]];
     
-    NSString *newRecords = [[retrievedSample attributes] objectForKey:SMP_TAGS];
+    NSString *newRecords = [[retrievedSplit attributes] objectForKey:SPL_TAGS];
     NSArray *newRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newRecords];
     
     ProcedureRecord *expectedRecord = [[ProcedureRecord alloc] initWithTag:PROC_TAG_TRIM andInitials:initials];
@@ -298,9 +298,9 @@ AbstractLibraryObjectStore *testStore;
 {
     NSString *originalKey = @"Rock.001";
     NSString *initials = @"AAA";
-    Sample *s = [[Sample alloc] initWithKey:originalKey
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:originalKey
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
     ProcedureRecord *proc1 = [[ProcedureRecord alloc] initWithTag:@"TAG01" andInitials:initials];
     ProcedureRecord *proc2 = [[ProcedureRecord alloc] initWithTag:@"TAG02" andInitials:initials];
@@ -309,22 +309,22 @@ AbstractLibraryObjectStore *testStore;
     
     NSArray *originalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:originalRecords];
     
-    [s.attributes setValue:originalRecords forKey:SMP_TAGS];
-    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+    [s.attributes setValue:originalRecords forKey:SPL_TAGS];
+    [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [Procedures geminiSample:s
+    [Procedures geminiSplit:s
                              withInitials:initials
                                   inStore:testStore];
     
     NSString *newKey = @"Rock.002";
     
-    LibraryObject *retrievedOriginalSample = [testStore getLibraryObjectForKey:originalKey
-                                                                     FromTable:[SampleConstants tableName]];
-    LibraryObject *retrievedNewSample = [testStore getLibraryObjectForKey:newKey
-                                                                FromTable:[SampleConstants tableName]];
+    LibraryObject *retrievedOriginalSplit = [testStore getLibraryObjectForKey:originalKey
+                                                                     FromTable:[SplitConstants tableName]];
+    LibraryObject *retrievedNewSplit = [testStore getLibraryObjectForKey:newKey
+                                                                FromTable:[SplitConstants tableName]];
     
-    NSString *newOriginalRecords = [[retrievedOriginalSample attributes] objectForKey:SMP_TAGS];
-    NSString *newRecords = [[retrievedNewSample attributes] objectForKey:SMP_TAGS];
+    NSString *newOriginalRecords = [[retrievedOriginalSplit attributes] objectForKey:SPL_TAGS];
+    NSString *newRecords = [[retrievedNewSplit attributes] objectForKey:SPL_TAGS];
     
     NSArray *postOriginalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newOriginalRecords];
     NSArray *postNewRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newRecords];
@@ -345,9 +345,9 @@ AbstractLibraryObjectStore *testStore;
 {
     NSString *originalKey = @"Rock.001";
     NSString *initials = @"AAA";
-    Sample *s = [[Sample alloc] initWithKey:originalKey
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:originalKey
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
     ProcedureRecord *proc1 = [[ProcedureRecord alloc] initWithTag:@"TAG01" andInitials:initials];
     ProcedureRecord *proc2 = [[ProcedureRecord alloc] initWithTag:@"TAG02" andInitials:initials];
@@ -356,22 +356,22 @@ AbstractLibraryObjectStore *testStore;
     
     NSArray *originalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:originalRecords];
     
-    [s.attributes setValue:originalRecords forKey:SMP_TAGS];
-    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+    [s.attributes setValue:originalRecords forKey:SPL_TAGS];
+    [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [Procedures panSample:s
+    [Procedures panSplit:s
                 withInitials:initials
                      inStore:testStore];
     
     NSString *newKey = @"Rock.002";
     
-    LibraryObject *retrievedOriginalSample = [testStore getLibraryObjectForKey:originalKey
-                                                                     FromTable:[SampleConstants tableName]];
-    LibraryObject *retrievedNewSample = [testStore getLibraryObjectForKey:newKey
-                                                                FromTable:[SampleConstants tableName]];
+    LibraryObject *retrievedOriginalSplit = [testStore getLibraryObjectForKey:originalKey
+                                                                     FromTable:[SplitConstants tableName]];
+    LibraryObject *retrievedNewSplit = [testStore getLibraryObjectForKey:newKey
+                                                                FromTable:[SplitConstants tableName]];
     
-    NSString *newOriginalRecords = [[retrievedOriginalSample attributes] objectForKey:SMP_TAGS];
-    NSString *newRecords = [[retrievedNewSample attributes] objectForKey:SMP_TAGS];
+    NSString *newOriginalRecords = [[retrievedOriginalSplit attributes] objectForKey:SPL_TAGS];
+    NSString *newRecords = [[retrievedNewSplit attributes] objectForKey:SPL_TAGS];
     
     NSArray *postOriginalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newOriginalRecords];
     NSArray *postNewRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newRecords];
@@ -392,9 +392,9 @@ AbstractLibraryObjectStore *testStore;
 {
     NSString *originalKey = @"Rock.001";
     NSString *initials = @"AAA";
-    Sample *s = [[Sample alloc] initWithKey:originalKey
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:originalKey
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
     ProcedureRecord *proc1 = [[ProcedureRecord alloc] initWithTag:@"TAG01" andInitials:initials];
     ProcedureRecord *proc2 = [[ProcedureRecord alloc] initWithTag:@"TAG02" andInitials:initials];
@@ -403,22 +403,22 @@ AbstractLibraryObjectStore *testStore;
     
     NSArray *originalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:originalRecords];
     
-    [s.attributes setValue:originalRecords forKey:SMP_TAGS];
-    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+    [s.attributes setValue:originalRecords forKey:SPL_TAGS];
+    [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [Procedures sievesTenSample:s
+    [Procedures sievesTenSplit:s
                 withInitials:initials
                      inStore:testStore];
     
     NSString *newKey = @"Rock.002";
     
-    LibraryObject *retrievedOriginalSample = [testStore getLibraryObjectForKey:originalKey
-                                                                     FromTable:[SampleConstants tableName]];
-    LibraryObject *retrievedNewSample = [testStore getLibraryObjectForKey:newKey
-                                                                FromTable:[SampleConstants tableName]];
+    LibraryObject *retrievedOriginalSplit = [testStore getLibraryObjectForKey:originalKey
+                                                                     FromTable:[SplitConstants tableName]];
+    LibraryObject *retrievedNewSplit = [testStore getLibraryObjectForKey:newKey
+                                                                FromTable:[SplitConstants tableName]];
     
-    NSString *newOriginalRecords = [[retrievedOriginalSample attributes] objectForKey:SMP_TAGS];
-    NSString *newRecords = [[retrievedNewSample attributes] objectForKey:SMP_TAGS];
+    NSString *newOriginalRecords = [[retrievedOriginalSplit attributes] objectForKey:SPL_TAGS];
+    NSString *newRecords = [[retrievedNewSplit attributes] objectForKey:SPL_TAGS];
     
     NSArray *postOriginalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newOriginalRecords];
     NSArray *postNewRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newRecords];
@@ -440,9 +440,9 @@ AbstractLibraryObjectStore *testStore;
 {
     NSString *originalKey = @"Rock.001";
     NSString *initials = @"AAA";
-    Sample *s = [[Sample alloc] initWithKey:originalKey
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:originalKey
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
     ProcedureRecord *proc1 = [[ProcedureRecord alloc] initWithTag:@"TAG01" andInitials:initials];
     ProcedureRecord *proc2 = [[ProcedureRecord alloc] initWithTag:@"TAG02" andInitials:initials];
@@ -451,22 +451,22 @@ AbstractLibraryObjectStore *testStore;
     
     NSArray *originalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:originalRecords];
     
-    [s.attributes setValue:originalRecords forKey:SMP_TAGS];
-    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+    [s.attributes setValue:originalRecords forKey:SPL_TAGS];
+    [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [Procedures heavyLiquid_330_Sample:s
+    [Procedures heavyLiquid_330_Split:s
                           withInitials:initials
                                inStore:testStore];
     
     NSString *newKey = @"Rock.002";
     
-    LibraryObject *retrievedOriginalSample = [testStore getLibraryObjectForKey:originalKey
-                                                                     FromTable:[SampleConstants tableName]];
-    LibraryObject *retrievedNewSample = [testStore getLibraryObjectForKey:newKey
-                                                                FromTable:[SampleConstants tableName]];
+    LibraryObject *retrievedOriginalSplit = [testStore getLibraryObjectForKey:originalKey
+                                                                     FromTable:[SplitConstants tableName]];
+    LibraryObject *retrievedNewSplit = [testStore getLibraryObjectForKey:newKey
+                                                                FromTable:[SplitConstants tableName]];
     
-    NSString *newOriginalRecords = [[retrievedOriginalSample attributes] objectForKey:SMP_TAGS];
-    NSString *newRecords = [[retrievedNewSample attributes] objectForKey:SMP_TAGS];
+    NSString *newOriginalRecords = [[retrievedOriginalSplit attributes] objectForKey:SPL_TAGS];
+    NSString *newRecords = [[retrievedNewSplit attributes] objectForKey:SPL_TAGS];
     
     NSArray *postOriginalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newOriginalRecords];
     NSArray *postNewRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newRecords];
@@ -487,9 +487,9 @@ AbstractLibraryObjectStore *testStore;
 {
     NSString *originalKey = @"Rock.001";
     NSString *initials = @"AAA";
-    Sample *s = [[Sample alloc] initWithKey:originalKey
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:originalKey
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
     ProcedureRecord *proc1 = [[ProcedureRecord alloc] initWithTag:@"TAG01" andInitials:initials];
     ProcedureRecord *proc2 = [[ProcedureRecord alloc] initWithTag:@"TAG02" andInitials:initials];
@@ -498,22 +498,22 @@ AbstractLibraryObjectStore *testStore;
     
     NSArray *originalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:originalRecords];
     
-    [s.attributes setValue:originalRecords forKey:SMP_TAGS];
-    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+    [s.attributes setValue:originalRecords forKey:SPL_TAGS];
+    [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [Procedures heavyLiquid_290_Sample:s
+    [Procedures heavyLiquid_290_Split:s
                           withInitials:initials
                                inStore:testStore];
     
     NSString *newKey = @"Rock.002";
     
-    LibraryObject *retrievedOriginalSample = [testStore getLibraryObjectForKey:originalKey
-                                                                     FromTable:[SampleConstants tableName]];
-    LibraryObject *retrievedNewSample = [testStore getLibraryObjectForKey:newKey
-                                                                FromTable:[SampleConstants tableName]];
+    LibraryObject *retrievedOriginalSplit = [testStore getLibraryObjectForKey:originalKey
+                                                                     FromTable:[SplitConstants tableName]];
+    LibraryObject *retrievedNewSplit = [testStore getLibraryObjectForKey:newKey
+                                                                FromTable:[SplitConstants tableName]];
     
-    NSString *newOriginalRecords = [[retrievedOriginalSample attributes] objectForKey:SMP_TAGS];
-    NSString *newRecords = [[retrievedNewSample attributes] objectForKey:SMP_TAGS];
+    NSString *newOriginalRecords = [[retrievedOriginalSplit attributes] objectForKey:SPL_TAGS];
+    NSString *newRecords = [[retrievedNewSplit attributes] objectForKey:SPL_TAGS];
     
     NSArray *postOriginalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newOriginalRecords];
     NSArray *postNewRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newRecords];
@@ -534,9 +534,9 @@ AbstractLibraryObjectStore *testStore;
 {
     NSString *originalKey = @"Rock.001";
     NSString *initials = @"AAA";
-    Sample *s = [[Sample alloc] initWithKey:originalKey
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:originalKey
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
     ProcedureRecord *proc1 = [[ProcedureRecord alloc] initWithTag:@"TAG01" andInitials:initials];
     ProcedureRecord *proc2 = [[ProcedureRecord alloc] initWithTag:@"TAG02" andInitials:initials];
@@ -545,22 +545,22 @@ AbstractLibraryObjectStore *testStore;
     
     NSArray *originalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:originalRecords];
     
-    [s.attributes setValue:originalRecords forKey:SMP_TAGS];
-    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+    [s.attributes setValue:originalRecords forKey:SPL_TAGS];
+    [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [Procedures heavyLiquid_265_Sample:s
+    [Procedures heavyLiquid_265_Split:s
                           withInitials:initials
                                inStore:testStore];
     
     NSString *newKey = @"Rock.002";
     
-    LibraryObject *retrievedOriginalSample = [testStore getLibraryObjectForKey:originalKey
-                                                                     FromTable:[SampleConstants tableName]];
-    LibraryObject *retrievedNewSample = [testStore getLibraryObjectForKey:newKey
-                                                                FromTable:[SampleConstants tableName]];
+    LibraryObject *retrievedOriginalSplit = [testStore getLibraryObjectForKey:originalKey
+                                                                     FromTable:[SplitConstants tableName]];
+    LibraryObject *retrievedNewSplit = [testStore getLibraryObjectForKey:newKey
+                                                                FromTable:[SplitConstants tableName]];
     
-    NSString *newOriginalRecords = [[retrievedOriginalSample attributes] objectForKey:SMP_TAGS];
-    NSString *newRecords = [[retrievedNewSample attributes] objectForKey:SMP_TAGS];
+    NSString *newOriginalRecords = [[retrievedOriginalSplit attributes] objectForKey:SPL_TAGS];
+    NSString *newRecords = [[retrievedNewSplit attributes] objectForKey:SPL_TAGS];
     
     NSArray *postOriginalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newOriginalRecords];
     NSArray *postNewRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newRecords];
@@ -581,9 +581,9 @@ AbstractLibraryObjectStore *testStore;
 {
     NSString *originalKey = @"Rock.001";
     NSString *initials = @"AAA";
-    Sample *s = [[Sample alloc] initWithKey:originalKey
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:originalKey
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
     ProcedureRecord *proc1 = [[ProcedureRecord alloc] initWithTag:@"TAG01" andInitials:initials];
     ProcedureRecord *proc2 = [[ProcedureRecord alloc] initWithTag:@"TAG02" andInitials:initials];
@@ -592,22 +592,22 @@ AbstractLibraryObjectStore *testStore;
     
     NSArray *originalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:originalRecords];
     
-    [s.attributes setValue:originalRecords forKey:SMP_TAGS];
-    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+    [s.attributes setValue:originalRecords forKey:SPL_TAGS];
+    [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [Procedures heavyLiquid_255_Sample:s
+    [Procedures heavyLiquid_255_Split:s
                           withInitials:initials
                                inStore:testStore];
     
     NSString *newKey = @"Rock.002";
     
-    LibraryObject *retrievedOriginalSample = [testStore getLibraryObjectForKey:originalKey
-                                                                     FromTable:[SampleConstants tableName]];
-    LibraryObject *retrievedNewSample = [testStore getLibraryObjectForKey:newKey
-                                                                FromTable:[SampleConstants tableName]];
+    LibraryObject *retrievedOriginalSplit = [testStore getLibraryObjectForKey:originalKey
+                                                                     FromTable:[SplitConstants tableName]];
+    LibraryObject *retrievedNewSplit = [testStore getLibraryObjectForKey:newKey
+                                                                FromTable:[SplitConstants tableName]];
     
-    NSString *newOriginalRecords = [[retrievedOriginalSample attributes] objectForKey:SMP_TAGS];
-    NSString *newRecords = [[retrievedNewSample attributes] objectForKey:SMP_TAGS];
+    NSString *newOriginalRecords = [[retrievedOriginalSplit attributes] objectForKey:SPL_TAGS];
+    NSString *newRecords = [[retrievedNewSplit attributes] objectForKey:SPL_TAGS];
     
     NSArray *postOriginalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newOriginalRecords];
     NSArray *postNewRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newRecords];
@@ -628,9 +628,9 @@ AbstractLibraryObjectStore *testStore;
 {
     NSString *originalKey = @"Rock.001";
     NSString *initials = @"AAA";
-    Sample *s = [[Sample alloc] initWithKey:originalKey
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:originalKey
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
     ProcedureRecord *proc1 = [[ProcedureRecord alloc] initWithTag:@"TAG01" andInitials:initials];
     ProcedureRecord *proc2 = [[ProcedureRecord alloc] initWithTag:@"TAG02" andInitials:initials];
@@ -639,22 +639,22 @@ AbstractLibraryObjectStore *testStore;
     
     NSArray *originalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:originalRecords];
     
-    [s.attributes setValue:originalRecords forKey:SMP_TAGS];
-    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+    [s.attributes setValue:originalRecords forKey:SPL_TAGS];
+    [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [Procedures handMagnetSample:s
+    [Procedures handMagnetSplit:s
                           withInitials:initials
                                inStore:testStore];
     
     NSString *newKey = @"Rock.002";
     
-    LibraryObject *retrievedOriginalSample = [testStore getLibraryObjectForKey:originalKey
-                                                                     FromTable:[SampleConstants tableName]];
-    LibraryObject *retrievedNewSample = [testStore getLibraryObjectForKey:newKey
-                                                                FromTable:[SampleConstants tableName]];
+    LibraryObject *retrievedOriginalSplit = [testStore getLibraryObjectForKey:originalKey
+                                                                     FromTable:[SplitConstants tableName]];
+    LibraryObject *retrievedNewSplit = [testStore getLibraryObjectForKey:newKey
+                                                                FromTable:[SplitConstants tableName]];
     
-    NSString *newOriginalRecords = [[retrievedOriginalSample attributes] objectForKey:SMP_TAGS];
-    NSString *newRecords = [[retrievedNewSample attributes] objectForKey:SMP_TAGS];
+    NSString *newOriginalRecords = [[retrievedOriginalSplit attributes] objectForKey:SPL_TAGS];
+    NSString *newRecords = [[retrievedNewSplit attributes] objectForKey:SPL_TAGS];
     
     NSArray *postOriginalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newOriginalRecords];
     NSArray *postNewRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newRecords];
@@ -675,9 +675,9 @@ AbstractLibraryObjectStore *testStore;
 {
     NSString *originalKey = @"Rock.001";
     NSString *initials = @"AAA";
-    Sample *s = [[Sample alloc] initWithKey:originalKey
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:originalKey
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
     ProcedureRecord *proc1 = [[ProcedureRecord alloc] initWithTag:@"TAG01" andInitials:initials];
     ProcedureRecord *proc2 = [[ProcedureRecord alloc] initWithTag:@"TAG02" andInitials:initials];
@@ -686,22 +686,22 @@ AbstractLibraryObjectStore *testStore;
     
     NSArray *originalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:originalRecords];
     
-    [s.attributes setValue:originalRecords forKey:SMP_TAGS];
-    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+    [s.attributes setValue:originalRecords forKey:SPL_TAGS];
+    [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [Procedures magnet02AmpsSample:s
+    [Procedures magnet02AmpsSplit:s
                           withInitials:initials
                                inStore:testStore];
     
     NSString *newKey = @"Rock.002";
     
-    LibraryObject *retrievedOriginalSample = [testStore getLibraryObjectForKey:originalKey
-                                                                     FromTable:[SampleConstants tableName]];
-    LibraryObject *retrievedNewSample = [testStore getLibraryObjectForKey:newKey
-                                                                FromTable:[SampleConstants tableName]];
+    LibraryObject *retrievedOriginalSplit = [testStore getLibraryObjectForKey:originalKey
+                                                                     FromTable:[SplitConstants tableName]];
+    LibraryObject *retrievedNewSplit = [testStore getLibraryObjectForKey:newKey
+                                                                FromTable:[SplitConstants tableName]];
     
-    NSString *newOriginalRecords = [[retrievedOriginalSample attributes] objectForKey:SMP_TAGS];
-    NSString *newRecords = [[retrievedNewSample attributes] objectForKey:SMP_TAGS];
+    NSString *newOriginalRecords = [[retrievedOriginalSplit attributes] objectForKey:SPL_TAGS];
+    NSString *newRecords = [[retrievedNewSplit attributes] objectForKey:SPL_TAGS];
     
     NSArray *postOriginalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newOriginalRecords];
     NSArray *postNewRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newRecords];
@@ -722,9 +722,9 @@ AbstractLibraryObjectStore *testStore;
 {
     NSString *originalKey = @"Rock.001";
     NSString *initials = @"AAA";
-    Sample *s = [[Sample alloc] initWithKey:originalKey
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:originalKey
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
     ProcedureRecord *proc1 = [[ProcedureRecord alloc] initWithTag:@"TAG01" andInitials:initials];
     ProcedureRecord *proc2 = [[ProcedureRecord alloc] initWithTag:@"TAG02" andInitials:initials];
@@ -733,22 +733,22 @@ AbstractLibraryObjectStore *testStore;
     
     NSArray *originalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:originalRecords];
     
-    [s.attributes setValue:originalRecords forKey:SMP_TAGS];
-    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+    [s.attributes setValue:originalRecords forKey:SPL_TAGS];
+    [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [Procedures magnet04AmpsSample:s
+    [Procedures magnet04AmpsSplit:s
                       withInitials:initials
                            inStore:testStore];
     
     NSString *newKey = @"Rock.002";
     
-    LibraryObject *retrievedOriginalSample = [testStore getLibraryObjectForKey:originalKey
-                                                                     FromTable:[SampleConstants tableName]];
-    LibraryObject *retrievedNewSample = [testStore getLibraryObjectForKey:newKey
-                                                                FromTable:[SampleConstants tableName]];
+    LibraryObject *retrievedOriginalSplit = [testStore getLibraryObjectForKey:originalKey
+                                                                     FromTable:[SplitConstants tableName]];
+    LibraryObject *retrievedNewSplit = [testStore getLibraryObjectForKey:newKey
+                                                                FromTable:[SplitConstants tableName]];
     
-    NSString *newOriginalRecords = [[retrievedOriginalSample attributes] objectForKey:SMP_TAGS];
-    NSString *newRecords = [[retrievedNewSample attributes] objectForKey:SMP_TAGS];
+    NSString *newOriginalRecords = [[retrievedOriginalSplit attributes] objectForKey:SPL_TAGS];
+    NSString *newRecords = [[retrievedNewSplit attributes] objectForKey:SPL_TAGS];
     
     NSArray *postOriginalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newOriginalRecords];
     NSArray *postNewRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newRecords];
@@ -769,9 +769,9 @@ AbstractLibraryObjectStore *testStore;
 {
     NSString *originalKey = @"Rock.001";
     NSString *initials = @"AAA";
-    Sample *s = [[Sample alloc] initWithKey:originalKey
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:originalKey
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
     ProcedureRecord *proc1 = [[ProcedureRecord alloc] initWithTag:@"TAG01" andInitials:initials];
     ProcedureRecord *proc2 = [[ProcedureRecord alloc] initWithTag:@"TAG02" andInitials:initials];
@@ -780,22 +780,22 @@ AbstractLibraryObjectStore *testStore;
     
     NSArray *originalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:originalRecords];
     
-    [s.attributes setValue:originalRecords forKey:SMP_TAGS];
-    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+    [s.attributes setValue:originalRecords forKey:SPL_TAGS];
+    [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [Procedures magnet06AmpsSample:s
+    [Procedures magnet06AmpsSplit:s
                       withInitials:initials
                            inStore:testStore];
     
     NSString *newKey = @"Rock.002";
     
-    LibraryObject *retrievedOriginalSample = [testStore getLibraryObjectForKey:originalKey
-                                                                     FromTable:[SampleConstants tableName]];
-    LibraryObject *retrievedNewSample = [testStore getLibraryObjectForKey:newKey
-                                                                FromTable:[SampleConstants tableName]];
+    LibraryObject *retrievedOriginalSplit = [testStore getLibraryObjectForKey:originalKey
+                                                                     FromTable:[SplitConstants tableName]];
+    LibraryObject *retrievedNewSplit = [testStore getLibraryObjectForKey:newKey
+                                                                FromTable:[SplitConstants tableName]];
     
-    NSString *newOriginalRecords = [[retrievedOriginalSample attributes] objectForKey:SMP_TAGS];
-    NSString *newRecords = [[retrievedNewSample attributes] objectForKey:SMP_TAGS];
+    NSString *newOriginalRecords = [[retrievedOriginalSplit attributes] objectForKey:SPL_TAGS];
+    NSString *newRecords = [[retrievedNewSplit attributes] objectForKey:SPL_TAGS];
     
     NSArray *postOriginalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newOriginalRecords];
     NSArray *postNewRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newRecords];
@@ -816,9 +816,9 @@ AbstractLibraryObjectStore *testStore;
 {
     NSString *originalKey = @"Rock.001";
     NSString *initials = @"AAA";
-    Sample *s = [[Sample alloc] initWithKey:originalKey
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:originalKey
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
     ProcedureRecord *proc1 = [[ProcedureRecord alloc] initWithTag:@"TAG01" andInitials:initials];
     ProcedureRecord *proc2 = [[ProcedureRecord alloc] initWithTag:@"TAG02" andInitials:initials];
@@ -827,22 +827,22 @@ AbstractLibraryObjectStore *testStore;
     
     NSArray *originalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:originalRecords];
     
-    [s.attributes setValue:originalRecords forKey:SMP_TAGS];
-    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+    [s.attributes setValue:originalRecords forKey:SPL_TAGS];
+    [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [Procedures magnet08AmpsSample:s
+    [Procedures magnet08AmpsSplit:s
                       withInitials:initials
                            inStore:testStore];
     
     NSString *newKey = @"Rock.002";
     
-    LibraryObject *retrievedOriginalSample = [testStore getLibraryObjectForKey:originalKey
-                                                                     FromTable:[SampleConstants tableName]];
-    LibraryObject *retrievedNewSample = [testStore getLibraryObjectForKey:newKey
-                                                                FromTable:[SampleConstants tableName]];
+    LibraryObject *retrievedOriginalSplit = [testStore getLibraryObjectForKey:originalKey
+                                                                     FromTable:[SplitConstants tableName]];
+    LibraryObject *retrievedNewSplit = [testStore getLibraryObjectForKey:newKey
+                                                                FromTable:[SplitConstants tableName]];
     
-    NSString *newOriginalRecords = [[retrievedOriginalSample attributes] objectForKey:SMP_TAGS];
-    NSString *newRecords = [[retrievedNewSample attributes] objectForKey:SMP_TAGS];
+    NSString *newOriginalRecords = [[retrievedOriginalSplit attributes] objectForKey:SPL_TAGS];
+    NSString *newRecords = [[retrievedNewSplit attributes] objectForKey:SPL_TAGS];
     
     NSArray *postOriginalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newOriginalRecords];
     NSArray *postNewRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newRecords];
@@ -863,9 +863,9 @@ AbstractLibraryObjectStore *testStore;
 {
     NSString *originalKey = @"Rock.001";
     NSString *initials = @"AAA";
-    Sample *s = [[Sample alloc] initWithKey:originalKey
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:originalKey
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
     ProcedureRecord *proc1 = [[ProcedureRecord alloc] initWithTag:@"TAG01" andInitials:initials];
     ProcedureRecord *proc2 = [[ProcedureRecord alloc] initWithTag:@"TAG02" andInitials:initials];
@@ -874,22 +874,22 @@ AbstractLibraryObjectStore *testStore;
     
     NSArray *originalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:originalRecords];
     
-    [s.attributes setValue:originalRecords forKey:SMP_TAGS];
-    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+    [s.attributes setValue:originalRecords forKey:SPL_TAGS];
+    [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [Procedures magnet10AmpsSample:s
+    [Procedures magnet10AmpsSplit:s
                       withInitials:initials
                            inStore:testStore];
     
     NSString *newKey = @"Rock.002";
     
-    LibraryObject *retrievedOriginalSample = [testStore getLibraryObjectForKey:originalKey
-                                                                     FromTable:[SampleConstants tableName]];
-    LibraryObject *retrievedNewSample = [testStore getLibraryObjectForKey:newKey
-                                                                FromTable:[SampleConstants tableName]];
+    LibraryObject *retrievedOriginalSplit = [testStore getLibraryObjectForKey:originalKey
+                                                                     FromTable:[SplitConstants tableName]];
+    LibraryObject *retrievedNewSplit = [testStore getLibraryObjectForKey:newKey
+                                                                FromTable:[SplitConstants tableName]];
     
-    NSString *newOriginalRecords = [[retrievedOriginalSample attributes] objectForKey:SMP_TAGS];
-    NSString *newRecords = [[retrievedNewSample attributes] objectForKey:SMP_TAGS];
+    NSString *newOriginalRecords = [[retrievedOriginalSplit attributes] objectForKey:SPL_TAGS];
+    NSString *newRecords = [[retrievedNewSplit attributes] objectForKey:SPL_TAGS];
     
     NSArray *postOriginalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newOriginalRecords];
     NSArray *postNewRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newRecords];
@@ -910,9 +910,9 @@ AbstractLibraryObjectStore *testStore;
 {
     NSString *originalKey = @"Rock.001";
     NSString *initials = @"AAA";
-    Sample *s = [[Sample alloc] initWithKey:originalKey
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:originalKey
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
     ProcedureRecord *proc1 = [[ProcedureRecord alloc] initWithTag:@"TAG01" andInitials:initials];
     ProcedureRecord *proc2 = [[ProcedureRecord alloc] initWithTag:@"TAG02" andInitials:initials];
@@ -921,22 +921,22 @@ AbstractLibraryObjectStore *testStore;
     
     NSArray *originalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:originalRecords];
     
-    [s.attributes setValue:originalRecords forKey:SMP_TAGS];
-    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+    [s.attributes setValue:originalRecords forKey:SPL_TAGS];
+    [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [Procedures magnet12AmpsSample:s
+    [Procedures magnet12AmpsSplit:s
                       withInitials:initials
                            inStore:testStore];
     
     NSString *newKey = @"Rock.002";
     
-    LibraryObject *retrievedOriginalSample = [testStore getLibraryObjectForKey:originalKey
-                                                                     FromTable:[SampleConstants tableName]];
-    LibraryObject *retrievedNewSample = [testStore getLibraryObjectForKey:newKey
-                                                                FromTable:[SampleConstants tableName]];
+    LibraryObject *retrievedOriginalSplit = [testStore getLibraryObjectForKey:originalKey
+                                                                     FromTable:[SplitConstants tableName]];
+    LibraryObject *retrievedNewSplit = [testStore getLibraryObjectForKey:newKey
+                                                                FromTable:[SplitConstants tableName]];
     
-    NSString *newOriginalRecords = [[retrievedOriginalSample attributes] objectForKey:SMP_TAGS];
-    NSString *newRecords = [[retrievedNewSample attributes] objectForKey:SMP_TAGS];
+    NSString *newOriginalRecords = [[retrievedOriginalSplit attributes] objectForKey:SPL_TAGS];
+    NSString *newRecords = [[retrievedNewSplit attributes] objectForKey:SPL_TAGS];
     
     NSArray *postOriginalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newOriginalRecords];
     NSArray *postNewRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newRecords];
@@ -957,9 +957,9 @@ AbstractLibraryObjectStore *testStore;
 {
     NSString *originalKey = @"Rock.001";
     NSString *initials = @"AAA";
-    Sample *s = [[Sample alloc] initWithKey:originalKey
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:originalKey
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
     ProcedureRecord *proc1 = [[ProcedureRecord alloc] initWithTag:@"TAG01" andInitials:initials];
     ProcedureRecord *proc2 = [[ProcedureRecord alloc] initWithTag:@"TAG02" andInitials:initials];
@@ -968,22 +968,22 @@ AbstractLibraryObjectStore *testStore;
     
     NSArray *originalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:originalRecords];
     
-    [s.attributes setValue:originalRecords forKey:SMP_TAGS];
-    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+    [s.attributes setValue:originalRecords forKey:SPL_TAGS];
+    [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [Procedures magnet14AmpsSample:s
+    [Procedures magnet14AmpsSplit:s
                       withInitials:initials
                            inStore:testStore];
     
     NSString *newKey = @"Rock.002";
     
-    LibraryObject *retrievedOriginalSample = [testStore getLibraryObjectForKey:originalKey
-                                                                     FromTable:[SampleConstants tableName]];
-    LibraryObject *retrievedNewSample = [testStore getLibraryObjectForKey:newKey
-                                                                FromTable:[SampleConstants tableName]];
+    LibraryObject *retrievedOriginalSplit = [testStore getLibraryObjectForKey:originalKey
+                                                                     FromTable:[SplitConstants tableName]];
+    LibraryObject *retrievedNewSplit = [testStore getLibraryObjectForKey:newKey
+                                                                FromTable:[SplitConstants tableName]];
     
-    NSString *newOriginalRecords = [[retrievedOriginalSample attributes] objectForKey:SMP_TAGS];
-    NSString *newRecords = [[retrievedNewSample attributes] objectForKey:SMP_TAGS];
+    NSString *newOriginalRecords = [[retrievedOriginalSplit attributes] objectForKey:SPL_TAGS];
+    NSString *newRecords = [[retrievedNewSplit attributes] objectForKey:SPL_TAGS];
     
     NSArray *postOriginalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newOriginalRecords];
     NSArray *postNewRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newRecords];

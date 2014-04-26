@@ -1,5 +1,5 @@
 //
-//  SampleViewController.h
+//  SplitViewController.h
 //  ProjectCrystalBlue-iOS
 //
 //  Created by Ryan McGraw on 2/8/14.
@@ -10,10 +10,10 @@
 #import "Source.h"
 #import "AbstractCloudLibraryObjectStore.h"
 
-@interface SampleViewController : UITableViewController <UIActionSheetDelegate>
+@interface SplitViewController : UITableViewController <UIActionSheetDelegate>
 
 @property(nonatomic) Source* selectedSource;
 @property(nonatomic) AbstractCloudLibraryObjectStore *libraryObjectStore;
 
--(id) initWithSource:(Source *) initSource;
+-(id) initWithSource:(Source *)initSource;
 @end

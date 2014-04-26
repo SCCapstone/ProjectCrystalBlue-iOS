@@ -7,7 +7,7 @@
 //
 
 #import "InitialsViewController.h"
-#import "Sample.h"
+#import "Split.h"
 #import "Procedures.h"
 #import "ProcedureFieldValidator.h"
 
@@ -21,22 +21,22 @@
 
 @implementation InitialsViewController
 
-@synthesize initialsField, selectedSample, libraryObjectStore, selectedRow, titleNav, descriptionLabel;
+@synthesize initialsField, selectedSplit, libraryObjectStore, selectedRow, titleNav, descriptionLabel;
 
-- (id)initWithSample:(Sample*)initSample
-         withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary
-             withRow:(int) initRow
-           withTitle:(NSString*)initTitle
+- (id)initWithSplit:(Split*)initSplit
+        withLibrary:(AbstractCloudLibraryObjectStore*)initLibrary
+            withRow:(int) initRow
+          withTitle:(NSString*)initTitle
 {
     self = [super init];
     if (self) {
-        selectedSample = initSample;
+        selectedSplit = initSplit;
         libraryObjectStore = initLibrary;
         selectedRow = initRow;
         titleNav = initTitle;
         
         UINavigationItem *n = [self navigationItem];
-        [n setTitle:[selectedSample key]];
+        [n setTitle:[selectedSplit key]];
         
         UIBarButtonItem *nextbtn = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(procedure:)];
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
@@ -58,107 +58,107 @@
     
     if (selectedRow == 1)
     {
-        [Procedures makeSlabfromSample:selectedSample withInitials:initials inStore:libraryObjectStore];
+        [Procedures makeSlabfromSplit:selectedSplit withInitials:initials inStore:libraryObjectStore];
     }
     
     else if (selectedRow == 2)
     {
-        [Procedures makeBilletfromSample:selectedSample withInitials:initials inStore:libraryObjectStore];
+        [Procedures makeBilletfromSplit:selectedSplit withInitials:initials inStore:libraryObjectStore];
     }
     
     else if (selectedRow == 3)
     {
-        [Procedures makeThinSectionfromSample:selectedSample withInitials:initials inStore:libraryObjectStore];
+        [Procedures makeThinSectionfromSplit:selectedSplit withInitials:initials inStore:libraryObjectStore];
     }
     
     else if (selectedRow == 4)
     {
-        [Procedures trimSample:selectedSample withInitials:initials inStore:libraryObjectStore];
+        [Procedures trimSplit:selectedSplit withInitials:initials inStore:libraryObjectStore];
     }
 
     else if (selectedRow == 5)
     {
-        [Procedures pulverizeSample:selectedSample withInitials:initials inStore:libraryObjectStore];
+        [Procedures pulverizeSplit:selectedSplit withInitials:initials inStore:libraryObjectStore];
     }
     
     else if (selectedRow == 6)
     {
-        [Procedures jawCrushSample:selectedSample withInitials:initials inStore:libraryObjectStore];
+        [Procedures jawCrushSplit:selectedSplit withInitials:initials inStore:libraryObjectStore];
     }
     
     else if (selectedRow == 7)
     {
-        [Procedures geminiSample:selectedSample withInitials:initials inStore:libraryObjectStore];
+        [Procedures geminiSplit:selectedSplit withInitials:initials inStore:libraryObjectStore];
     }
     
     else if (selectedRow == 8)
     {
-        [Procedures panSample:selectedSample withInitials:initials inStore:libraryObjectStore];
+        [Procedures panSplit:selectedSplit withInitials:initials inStore:libraryObjectStore];
     }
     
     else if (selectedRow == 9)
     {
-        [Procedures sievesTenSample:selectedSample withInitials:initials inStore:libraryObjectStore];
+        [Procedures sievesTenSplit:selectedSplit withInitials:initials inStore:libraryObjectStore];
     }
 
     else if (selectedRow == 10)
     {
-        [Procedures heavyLiquid_330_Sample:selectedSample withInitials:initials inStore:libraryObjectStore];
+        [Procedures heavyLiquid_330_Split:selectedSplit withInitials:initials inStore:libraryObjectStore];
     }
     
     else if (selectedRow == 11)
     {
-        [Procedures heavyLiquid_290_Sample:selectedSample withInitials:initials inStore:libraryObjectStore];
+        [Procedures heavyLiquid_290_Split:selectedSplit withInitials:initials inStore:libraryObjectStore];
     }
     
     else if (selectedRow == 12)
     {
-        [Procedures heavyLiquid_265_Sample:selectedSample withInitials:initials inStore:libraryObjectStore];
+        [Procedures heavyLiquid_265_Split:selectedSplit withInitials:initials inStore:libraryObjectStore];
     }
 
     else if (selectedRow == 13)
     {
-        [Procedures heavyLiquid_255_Sample:selectedSample withInitials:initials inStore:libraryObjectStore];
+        [Procedures heavyLiquid_255_Split:selectedSplit withInitials:initials inStore:libraryObjectStore];
     }
 
     else if (selectedRow == 14)
     {
-        [Procedures handMagnetSample:selectedSample withInitials:initials inStore:libraryObjectStore];
+        [Procedures handMagnetSplit:selectedSplit withInitials:initials inStore:libraryObjectStore];
     }
     
     else if (selectedRow == 15)
     {
-        [Procedures  magnet02AmpsSample:selectedSample withInitials:initials inStore:libraryObjectStore];
+        [Procedures  magnet02AmpsSplit:selectedSplit withInitials:initials inStore:libraryObjectStore];
     }
     
     else if (selectedRow == 16)
     {
-        [Procedures  magnet04AmpsSample:selectedSample withInitials:initials inStore:  libraryObjectStore];
+        [Procedures  magnet04AmpsSplit:selectedSplit withInitials:initials inStore:  libraryObjectStore];
     }
     
     else if (selectedRow == 17)
     {
-        [Procedures  magnet06AmpsSample:selectedSample withInitials:initials inStore:libraryObjectStore];
+        [Procedures  magnet06AmpsSplit:selectedSplit withInitials:initials inStore:libraryObjectStore];
     }
     
     else if (selectedRow == 18)
     {
-        [Procedures  magnet08AmpsSample:selectedSample withInitials:initials inStore:libraryObjectStore];
+        [Procedures  magnet08AmpsSplit:selectedSplit withInitials:initials inStore:libraryObjectStore];
     }
     
     else if (selectedRow == 19)
     {
-        [Procedures  magnet10AmpsSample:selectedSample withInitials:initials inStore:libraryObjectStore];
+        [Procedures  magnet10AmpsSplit:selectedSplit withInitials:initials inStore:libraryObjectStore];
     }
     
     else if (selectedRow == 20)
     {
-        [Procedures  magnet12AmpsSample:selectedSample withInitials:initials inStore:libraryObjectStore];
+        [Procedures  magnet12AmpsSplit:selectedSplit withInitials:initials inStore:libraryObjectStore];
     }
     
     else if (selectedRow == 21)
     {
-        [Procedures  magnet14AmpsSample:selectedSample withInitials:initials inStore:libraryObjectStore];
+        [Procedures  magnet14AmpsSplit:selectedSplit withInitials:initials inStore:libraryObjectStore];
     }
     
     NSUInteger temp = self.navigationController.viewControllers.count - 3;
@@ -181,7 +181,7 @@
     NSString* tempString = @"Applying '";
     tempString = [tempString stringByAppendingString:titleNav];
     tempString = [tempString stringByAppendingString:@"' to "];
-    tempString = [tempString stringByAppendingString:[selectedSample key]];
+    tempString = [tempString stringByAppendingString:[selectedSplit key]];
     [descriptionLabel setText:tempString];
 }
 

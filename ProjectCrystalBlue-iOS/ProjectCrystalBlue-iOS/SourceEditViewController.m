@@ -8,7 +8,7 @@
 
 #import "SourceEditViewController.h"
 #import "Source.h"
-#import "Sample.h"
+#import "Split.h"
 #import "AbstractCloudLibraryObjectStore.h"
 #import "SourceConstants.h"
 #import "SourceImagesViewController.h"

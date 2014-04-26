@@ -48,22 +48,22 @@
                UsingClient:(AmazonSimpleDBClient *)simpleDBClient;
 
 /*  Converts an array of SimpleDBAttributes to an equivalent object of the provided
- *  class (Source/Sample/Transaction).
+ *  class (Source/Split/Transaction).
  */
 + (id)convertSimpleDBAttributes:(NSArray *)simpleDBAttributes
                 ToObjectOfClass:(Class)objectClass;
 
 /*  Converts an array of SimpleDBItems to an equivalent array of objects of the provided
- *  class (Source/Sample/Transaction).
+ *  class (Source/Split/Transaction).
  */
 + (NSArray *)convertSimpleDBItemArray:(NSArray *)simpleDBItems
                      ToObjectsOfClass:(Class)objectClass;
 
-/*  Converts a Source/Sample/Transaction object to an equivalent SimpleDBReplaceableItem.
+/*  Converts a Source/Split/Transaction object to an equivalent SimpleDBReplaceableItem.
  */
 + (SimpleDBReplaceableItem *)convertObjectToSimpleDBItem:(NSObject *)object;
 
-/*  Converts an array of Source/Sample/Transaction objects to an equivalent array of 
+/*  Converts an array of Source/Split/Transaction objects to an equivalent array of
  *  SimpleDBReplaceableItem.
  */
 + (NSArray *)convertObjectArrayToSimpleDBItemArray:(NSArray *)objectArray;

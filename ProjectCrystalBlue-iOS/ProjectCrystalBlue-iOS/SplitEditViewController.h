@@ -1,5 +1,5 @@
 //
-//  SampleEditViewController.h
+//  SplitEditViewController.h
 //  ProjectCrystalBlue-iOS
 //
 //  Created by Ryan McGraw on 2/15/14.
@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Sample.h"
+#import "Split.h"
 #import "AbstractCloudLibraryObjectStore.h"
 
-@interface SampleEditViewController : UITableViewController <UINavigationControllerDelegate, UIActionSheetDelegate>
+@interface SplitEditViewController : UITableViewController <UINavigationControllerDelegate, UIActionSheetDelegate>
 
-@property (nonatomic, strong) Sample *selectedSample;
+@property (nonatomic, strong) Split *selectedSplit;
 @property (nonatomic, strong) AbstractCloudLibraryObjectStore *libraryObjectStore;
 
-- (id)initWithSample:(Sample *)initSample
+- (id)initWithSplit:(Split *)initSplit
          WithLibrary:(AbstractCloudLibraryObjectStore*)initLibrary
 AndNavigateBackToRoot:(BOOL)navigateBackToRoot;
 

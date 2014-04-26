@@ -1,17 +1,17 @@
 //
-//  SampleEditViewController.m
+//  SplitEditViewController.m
 //  ProjectCrystalBlue-iOS
 //
 //  Created by Ryan McGraw on 2/15/14.
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import "SampleEditViewController.h"
+#import "SplitEditViewController.h"
 #import "ProcedureRecordParser.h"
 #import "SourceEditViewController.h"
 #import "ProcedureListViewController.h"
 
-@interface SampleEditViewController ()
+@interface SplitEditViewController ()
 
 {
     NSArray *tags;
@@ -21,24 +21,24 @@
 
 @end
 
-@implementation SampleEditViewController
+@implementation SplitEditViewController
 
-@synthesize selectedSample, libraryObjectStore;
+@synthesize selectedSplit, libraryObjectStore;
 
-- (id)initWithSample:(Sample *)initSample
+- (id)initWithSplit:(Split *)initSplit
          WithLibrary:(AbstractCloudLibraryObjectStore*)initLibrary
 AndNavigateBackToRoot:(BOOL)navigateBackToRoot
 {
     // Call the superclass's designated initializer
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        selectedSample = initSample;
+        selectedSplit = initSplit;
         libraryObjectStore = initLibrary;
         navigateToRoot = navigateBackToRoot;
         tags = [[NSMutableArray alloc] init];
         
         UINavigationItem *n = [self navigationItem];
-        [n setTitle:[selectedSample key]];
+        [n setTitle:[selectedSplit key]];
         
         UIBarButtonItem *actions = [[UIBarButtonItem alloc] initWithTitle:@"Options" style:UIBarButtonItemStyleBordered target:self action:@selector(multiOptions:)];
         
@@ -81,7 +81,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot
     if([optionAS isEqualToString:@"VIEW"])
     {
         
-        NSString *temp = [selectedSample sourceKey];
+        NSString *temp = [selectedSplit sampleKey];
         Source *selectedSource = (Source*)[libraryObjectStore getLibraryObjectForKey:temp FromTable:[SourceConstants tableName]];
         
         SourceEditViewController *sourceEditViewController =
@@ -94,7 +94,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot
     
     if([optionAS isEqualToString:@"APPLY"])
     {
-        ProcedureListViewController *procedureListViewController = [[ProcedureListViewController alloc] initWithSample:selectedSample WithLibrary:libraryObjectStore];
+        ProcedureListViewController *procedureListViewController = [[ProcedureListViewController alloc] initWithSplit:selectedSplit WithLibrary:libraryObjectStore];
         [[self navigationController] pushViewController:procedureListViewController  animated:YES];
     }
 }
@@ -151,7 +151,7 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot
  
     if (indexPath.section==0)
     {
-        NSString *p = [[selectedSample attributes] objectForKey:SMP_CURRENT_LOCATION];
+        NSString *p = [[selectedSplit attributes] objectForKey:SPL_CURRENT_LOCATION];
          [[cell textLabel] setText:p];
         return cell;
     }
@@ -169,12 +169,12 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    tags = [ProcedureRecordParser nameArrayFromRecordList:[[selectedSample attributes] objectForKey:SMP_TAGS]];
+    tags = [ProcedureRecordParser nameArrayFromRecordList:[[selectedSplit attributes] objectForKey:SPL_TAGS]];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-     tags = [ProcedureRecordParser nameArrayFromRecordList:[[selectedSample attributes] objectForKey:SMP_TAGS]];
+     tags = [ProcedureRecordParser nameArrayFromRecordList:[[selectedSplit attributes] objectForKey:SPL_TAGS]];
     [self.tableView reloadData];
 }
 

@@ -33,7 +33,7 @@
     NSUInteger numberOfProcedureTags =  [[ProcedureNameConstants allProcedureTags] count];
     
     XCTAssertEqual(numberOfProcedureNames, numberOfProcedureTags,
-                   @"Tags (%lu) and Names (%lu) should have same count!", (unsigned long)numberOfProcedureNames, (unsigned long)numberOfProcedureTags);
+                   @"Tags (%lu) and Names (%lu) should have same count!", numberOfProcedureNames, numberOfProcedureTags);
 }
 
 @end

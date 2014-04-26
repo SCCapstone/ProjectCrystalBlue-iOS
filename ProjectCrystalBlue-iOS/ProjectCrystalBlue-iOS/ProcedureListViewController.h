@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Sample.h"
+#import "Split.h"
 #import "AbstractCloudLibraryObjectStore.h"
 
 @interface ProcedureListViewController : UITableViewController <UINavigationControllerDelegate>
 
-@property (nonatomic, strong) Sample *selectedSample;
+@property (nonatomic, strong) Split *selectedSplit;
 @property (strong) AbstractCloudLibraryObjectStore *libraryObjectStore;
 
-- (id)initWithSample:(Sample*)initSample WithLibrary:(AbstractCloudLibraryObjectStore *)library;
+- (id)initWithSplit:(Split*)initSplit
+         WithLibrary:(AbstractCloudLibraryObjectStore *)library;
 
 @end

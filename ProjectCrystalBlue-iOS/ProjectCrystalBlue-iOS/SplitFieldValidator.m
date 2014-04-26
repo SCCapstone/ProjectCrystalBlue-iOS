@@ -1,21 +1,21 @@
 //
-//  SampleFieldValidator.m
+//  SplitFieldValidator.m
 //  ProjectCrystalBlueOSX
 //
 //  Created by Logan Hood on 3/22/14.
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import "SampleFieldValidator.h"
+#import "SplitFieldValidator.h"
 #import "SourceFieldValidator.h"
 #import "PrimitiveFieldValidator.h"
 #import "ValidationResponse.h"
-#import "SampleConstants.h"
+#import "SplitConstants.h"
 #import "SourceConstants.h"
 
-@implementation SampleFieldValidator
+@implementation SplitFieldValidator
 
-+ (ValidationResponse *)validateSampleKey:(NSString *)key
++ (ValidationResponse *)validateSplitKey:(NSString *)key
                             WithDataStore:(AbstractLibraryObjectStore *)dataStore
 {
     const NSUInteger maxLength = 90;
@@ -26,10 +26,10 @@
     
     if (![PrimitiveFieldValidator validateKey:key
                           isUniqueInDataStore:dataStore
-                                      inTable:[SampleConstants tableName]])
+                                      inTable:[SplitConstants tableName]])
     {
         [valid setIsValid:NO];
-        NSString *errorStr = [NSString stringWithFormat:@"%@ is not a unique sample key.", key];
+        NSString *errorStr = [NSString stringWithFormat:@"%@ is not a unique split key.", key];
         [valid.errors addObject:errorStr];
     }
     
@@ -71,7 +71,7 @@
     return valid;
 }
 
-+ (ValidationResponse *)validateOriginalSourceKey:(NSString *)sourceKey
++ (ValidationResponse *)validateOriginalSampleKey:(NSString *)sampleKey
                                     WithDataStore:(AbstractLibraryObjectStore *)dataStore
 {
     const NSUInteger maxLength = 90;
@@ -80,32 +80,32 @@
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
     
-    if ([PrimitiveFieldValidator validateKey:sourceKey
+    if ([PrimitiveFieldValidator validateKey:sampleKey
                          isUniqueInDataStore:dataStore
                                      inTable:[SourceConstants tableName]])
     {
         [valid setIsValid:NO];
-        NSString *errorStr = [NSString stringWithFormat:@"This sample's source key %@ does not exist in the database.", sourceKey];
+        NSString *errorStr = [NSString stringWithFormat:@"This split's sample key %@ does not exist in the database.", sampleKey];
         [valid.errors addObject:errorStr];
     }
     
-    if (![PrimitiveFieldValidator validateField:sourceKey
+    if (![PrimitiveFieldValidator validateField:sampleKey
                           isNoMoreThanMaxLength:maxLength])
     {
         [valid setIsValid:NO];
         NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_MAX_CHARS copy],
                               maxLength,
-                              sourceKey.length];
+                              sampleKey.length];
         [valid.errors addObject:errorStr];
     }
     
-    if (![PrimitiveFieldValidator validateField:sourceKey
+    if (![PrimitiveFieldValidator validateField:sampleKey
                              isAtLeastMinLength:minLength])
     {
         [valid setIsValid:NO];
         NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_MIN_CHARS copy],
                               minLength,
-                              sourceKey.length];
+                              sampleKey.length];
         [valid.errors addObject:errorStr];
     }
     
@@ -114,7 +114,7 @@
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
     
-    if (![PrimitiveFieldValidator validateField:sourceKey
+    if (![PrimitiveFieldValidator validateField:sampleKey
                             containsOnlyCharSet:validCharacters])
     {
         [valid setIsValid:NO];

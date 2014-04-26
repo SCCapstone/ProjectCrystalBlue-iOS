@@ -7,7 +7,7 @@
 //
 
 #import "AddSampleImageViewController.h"
-#import "Sample.h"
+#import "Split.h"
 #import "DDLog.h"
 #import "SourceImageUtils.h"
 
@@ -99,11 +99,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
      DDLogInfo(@"Adding new source %@", sourceToAdd.key);
      [libraryObjectStore putLibraryObject:sourceToAdd IntoTable:[SourceConstants tableName]];
      
-     NSString *newSampleKey = [NSString stringWithFormat:@"%@%@", [sourceToAdd key], @".001"];
-     Sample *newSample = [[Sample alloc] initWithKey:newSampleKey
-     AndWithValues:[SampleConstants attributeDefaultValues]];
-     [[newSample attributes] setObject:[sourceToAdd key] forKey:SMP_SOURCE_KEY];
-     [libraryObjectStore putLibraryObject:newSample IntoTable:[SampleConstants tableName]];
+     NSString *newSplitKey = [NSString stringWithFormat:@"%@%@", [sourceToAdd key], @".001"];
+     Split *newSplit = [[Split alloc] initWithKey:newSplitKey
+     AndWithValues:[SplitConstants attributeDefaultValues]];
+     [[newSplit attributes] setObject:[sourceToAdd key] forKey:SPL_SAMPLE_KEY];
+     [libraryObjectStore putLibraryObject:newSplit IntoTable:[SplitConstants tableName]];
         
         for(int i = 0; i < [imageArray count]; i++)
         {

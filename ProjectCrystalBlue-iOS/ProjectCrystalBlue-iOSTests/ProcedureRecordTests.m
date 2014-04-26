@@ -39,20 +39,20 @@
     NSDate *notNow = [NSDate distantFuture];
     
     ProcedureRecord *original = [[ProcedureRecord alloc] initWithTag:testTag
-                                            andInitials:testInitials
-                                                andDate:now];
+                                                         andInitials:testInitials
+                                                             andDate:now];
     
     ProcedureRecord *diffDate = [[ProcedureRecord alloc] initWithTag:testTag
-                                            andInitials:testInitials
-                                                andDate:notNow];
+                                                         andInitials:testInitials
+                                                             andDate:notNow];
     
     ProcedureRecord *diffTag = [[ProcedureRecord alloc] initWithTag:[[[NSUUID alloc] init] UUIDString]
-                                            andInitials:testInitials
-                                                andDate:now];
+                                                        andInitials:testInitials
+                                                            andDate:now];
     
     ProcedureRecord *diffInitials = [[ProcedureRecord alloc] initWithTag:testTag
-                                            andInitials:[[[NSUUID alloc] init] UUIDString]
-                                                andDate:now];
+                                                             andInitials:[[[NSUUID alloc] init] UUIDString]
+                                                                 andDate:now];
     
     XCTAssertEqualObjects(original, original, @"A single object should be equal to itself.");
     XCTAssertEqual([original hash], [original hash], @"A single object should have generated the same hash.");
@@ -74,8 +74,8 @@
     NSDate *now = [[NSDate alloc] init];
     
     ProcedureRecord *original = [[ProcedureRecord alloc] initWithTag:testTag
-                                                   andInitials:testInitials
-                                                       andDate:now];
+                                                         andInitials:testInitials
+                                                             andDate:now];
     
     NSString *originalAsString = [NSString stringWithFormat:@"%@", original];
     

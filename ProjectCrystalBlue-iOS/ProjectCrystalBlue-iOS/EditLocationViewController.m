@@ -8,33 +8,34 @@
 
 #import "EditLocationViewController.h"
 #import "SimpleDBLibraryObjectStore.h"
-#import "SampleEditViewController.h"
-#import "Sample.h"
-#import "SampleConstants.h"
+#import "SplitEditViewController.h"
+#import "Split.h"
+#import "SplitConstants.h"
 #import "Procedures.h"
-#import "SampleFieldValidator.h"
+#import "SplitFieldValidator.h"
 
 @interface EditLocationViewController ()
 {
     SimpleDBLibraryObjectStore *libraryObjectStore;
     NSString *newLocation;
-    Sample *editedSample;
+    Split *editedSplit;
 }
 
 @end
 
 @implementation EditLocationViewController
-@synthesize selectedSample, LocationField;
+@synthesize selectedSplit, LocationField;
 
-- (id)initWithSample:(Sample *) initSample
+- (id)initWithSplit:(Split *)initSplit
 {
     self = [super init];
     if (self) {
-        selectedSample = initSample;
-        libraryObjectStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data"           WithDatabaseName:@"test_database.db"];
+        selectedSplit = initSplit;
+        libraryObjectStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data"
+                                                                     WithDatabaseName:@"test_database.db"];
         
         UINavigationItem *n = [self navigationItem];
-        [n setTitle:@"Change Sample Location"];
+        [n setTitle:@"Change Split Location"];
     }
     return self;
 }
@@ -56,7 +57,7 @@
         return;
     }
     newLocation = [LocationField text];
-    [Procedures moveSample:selectedSample toLocation:newLocation inStore:libraryObjectStore];
+    [Procedures moveSplit:selectedSplit toLocation:newLocation inStore:libraryObjectStore];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -104,7 +105,7 @@
 {
     BOOL validationPassed = YES;
     
-    ValidationResponse *locationOK = [SampleFieldValidator validateCurrentLocation:[LocationField text]];
+    ValidationResponse *locationOK = [SplitFieldValidator validateCurrentLocation:[LocationField text]];
     if (!locationOK.isValid && validationPassed == YES) {
         validationPassed = NO;
         

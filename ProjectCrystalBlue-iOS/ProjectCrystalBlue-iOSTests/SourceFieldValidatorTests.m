@@ -120,7 +120,6 @@
     
     XCTAssertTrue( [[SourceFieldValidator validateGroup:emptyStr]   isValid]);
     XCTAssertTrue( [[SourceFieldValidator validateGroup:valid]      isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateGroup:invalid]    isValid]);
     XCTAssertFalse([[SourceFieldValidator validateGroup:tooLong]    isValid]);
 }
 
@@ -136,7 +135,6 @@
     
     XCTAssertTrue( [[SourceFieldValidator validateType:emptyStr]   isValid]);
     XCTAssertTrue( [[SourceFieldValidator validateType:valid]      isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateType:invalid]    isValid]);
     XCTAssertFalse([[SourceFieldValidator validateType:tooLong]    isValid]);
 }
 
@@ -152,7 +150,6 @@
     
     XCTAssertTrue( [[SourceFieldValidator validateDeposystem:emptyStr]   isValid]);
     XCTAssertTrue( [[SourceFieldValidator validateDeposystem:valid]      isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateDeposystem:invalid]    isValid]);
     XCTAssertFalse([[SourceFieldValidator validateDeposystem:tooLong]    isValid]);
 }
 
