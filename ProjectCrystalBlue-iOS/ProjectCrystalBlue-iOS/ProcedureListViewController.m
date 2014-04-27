@@ -148,10 +148,10 @@
     [procedureNames2 addObject:@"Gemini"];
     [procedureNames2 addObject:@"Pan"];
     [procedureNames2 addObject:@"Sieves"];
-    [procedureNames3 addObject:@"Heavy Liquid 330"];
-    [procedureNames3 addObject:@"Heavy Liquid 290"];
-    [procedureNames3 addObject:@"Heavy Liquid 265"];
-    [procedureNames3 addObject:@"Heavy Liquid 255"];
+    [procedureNames3 addObject:@"Heavy Liquid 3.30"];
+    [procedureNames3 addObject:@"Heavy Liquid 2.90"];
+    [procedureNames3 addObject:@"Heavy Liquid 2.65"];
+    [procedureNames3 addObject:@"Heavy Liquid 2.55"];
     [procedureNames4 addObject:@"Hand Magnet"];
     [procedureNames4 addObject:@"Magnet 0.2 Amps"];
     [procedureNames4 addObject:@"Magnet 0.4 Amps"];
@@ -254,21 +254,21 @@
         if([indexPath row] == 0)
         {
             initialsViewController.selectedRow = 10;
-            initialsViewController.titleNav = @"Heavy Liquid 330";
+            initialsViewController.titleNav = @"Heavy Liquid 3.30";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
         else if([indexPath row] == 1)
         {
             initialsViewController.selectedRow = 11;
-            initialsViewController.titleNav = @"Heavy Liquid 290";
+            initialsViewController.titleNav = @"Heavy Liquid 2.90";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
         else if([indexPath row] == 2)
         {
             initialsViewController.selectedRow = 12;
-            initialsViewController.titleNav = @"Heavy Liquid 265";
+            initialsViewController.titleNav = @"Heavy Liquid 2.65";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
 
         }
@@ -276,7 +276,7 @@
         else if([indexPath row] == 3)
         {
             initialsViewController.selectedRow = 13;
-            initialsViewController.titleNav = @"Heavy Liquid 255";
+            initialsViewController.titleNav = @"Heavy Liquid 2.55";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     }
