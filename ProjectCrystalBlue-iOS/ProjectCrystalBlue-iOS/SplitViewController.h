@@ -10,7 +10,7 @@
 #import "Sample.h"
 #import "AbstractCloudLibraryObjectStore.h"
 
-@interface SplitViewController : UITableViewController <UIActionSheetDelegate>
+@interface SplitViewController : UITableViewController <UIActionSheetDelegate, UIAlertViewDelegate>
 
 @property(nonatomic) Sample* selectedSample;
 @property(nonatomic) AbstractCloudLibraryObjectStore *libraryObjectStore;

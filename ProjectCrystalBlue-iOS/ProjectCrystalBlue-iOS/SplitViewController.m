@@ -20,8 +20,11 @@
 
 @interface SplitViewController ()
 {
-    NSArray *splits;
+    NSMutableArray *splits;
     NSString* option;
+    NSString* delOption;
+    Split *selectedSplit;
+    int selectedRow;
 }
 @end
 
@@ -33,7 +36,7 @@
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        splits = [libraryObjectStore getAllSplitsForSampleKey:selectedSample.key];
+        splits = (NSMutableArray*) [libraryObjectStore getAllSplitsForSampleKey:selectedSample.key];
         selectedSample = initSample;
         
         UINavigationItem *n = [self navigationItem];
@@ -77,14 +80,14 @@
         [(AbstractMobileCloudImageStore *)[SampleImageUtils defaultImageStore] synchronizeWithCloud];
     }
     
-    splits = [libraryObjectStore getAllSplitsForSampleKey:selectedSample.key];
+    splits = (NSMutableArray*)[libraryObjectStore getAllSplitsForSampleKey:selectedSample.key];
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    splits = [libraryObjectStore getAllSplitsForSampleKey:selectedSample.key];
+    splits = (NSMutableArray*)[libraryObjectStore getAllSplitsForSampleKey:selectedSample.key];
     [self.tableView reloadData];
 }
 
@@ -111,16 +114,16 @@
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Split *selectedSplit = [splits objectAtIndex:[indexPath row]];
+    selectedSplit = [splits objectAtIndex:[indexPath row]];
     UIActionSheet *message;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
         
-        message = [[UIActionSheet alloc] initWithTitle:@"Action:" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Perform Procedure", @"View Split", nil];
+        message = [[UIActionSheet alloc] initWithTitle:@"Action:" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Perform Procedure", @"View Split", @"Delete Split", nil];
     }
     else
     {
-        message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Perform Procedure", @"View Split", nil];
+        message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Perform Procedure", @"View Split", @"Delete Split", nil];
     }
     
     CGRect cellRect = [self.tableView cellForRowAtIndexPath:indexPath].frame;
@@ -150,6 +153,20 @@
         
         [[self navigationController] pushViewController:splitEditViewController animated:YES];
     }
+    if([option isEqualToString:@"DEL"])
+    {
+        selectedRow = indexPath.row;
+        NSString *alertMessage = @"Are you sure you want to delete ";
+        alertMessage = [alertMessage stringByAppendingString:[selectedSplit key  ]];
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:alertMessage
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"No"
+                              otherButtonTitles:@"Yes", nil];
+        [alert show];
+
+    }
 }
 
 -(void) goBack:(id)sender
@@ -159,7 +176,7 @@
 
 -(void) addNewItem:(id)sender
 {
-    splits = [libraryObjectStore getAllSplitsForSampleKey:selectedSample.key];
+    splits = (NSMutableArray*)[libraryObjectStore getAllSplitsForSampleKey:selectedSample.key];
     if([splits count] != 0)
     {
         [Procedures addFreshSplit:[splits objectAtIndex:0] inStore:libraryObjectStore];
@@ -181,7 +198,7 @@
         
         [libraryObjectStore putLibraryObject:split IntoTable:[SplitConstants tableName]];
     }
-    splits = [libraryObjectStore getAllSplitsForSampleKey:selectedSample.key];
+    splits = (NSMutableArray*)[libraryObjectStore getAllSplitsForSampleKey:selectedSample.key];
     [self.tableView reloadData];
 }
 
@@ -196,8 +213,26 @@
             option = @"VIEW";
             break;
         case 2:
+            option = @"DEL";
+            break;
+        case 3:
             option = @"NOTHING";
             break;
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex)
+    {
+        case 0:
+            break;
+        case 1:
+        {
+            [libraryObjectStore deleteLibraryObjectWithKey:[selectedSplit key] FromTable:[SplitConstants tableName]];
+            [splits removeObjectAtIndex:selectedRow];
+            [self.tableView reloadData];
+        }
     }
 }
 

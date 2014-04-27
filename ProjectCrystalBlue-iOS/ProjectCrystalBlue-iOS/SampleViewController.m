@@ -21,6 +21,8 @@
     SimpleDBLibraryObjectStore *libraryObjectStore;
     NSMutableArray *displayedSamples;
     NSString *option;
+    Sample *selectedSample;
+    int selectedRow;
 }
 
 @end
@@ -151,16 +153,16 @@
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Sample *selectedSample = [displayedSamples objectAtIndex:indexPath.row];
+    selectedSample = [displayedSamples objectAtIndex:indexPath.row];
     
     UIActionSheet *message;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
-        message = [[UIActionSheet alloc] initWithTitle:@"Action:" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Edit Sample", @"View Splits", nil];
+        message = [[UIActionSheet alloc] initWithTitle:@"Action:" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Edit Sample", @"View Splits", @"Delete Sample", nil];
     }
     else
     {
-        message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Edit Sample", @"View Splits", nil];
+        message = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Edit Sample", @"View Splits", @"Delete Sample", nil];
     }
     
     CGRect cellRect = [self.tableView cellForRowAtIndexPath:indexPath].frame;
@@ -189,7 +191,20 @@
         [splitViewController setLibraryObjectStore:libraryObjectStore];
         [[self navigationController] pushViewController:splitViewController animated:YES];
     }
-    
+    if([option isEqualToString:@"DEL"])
+    {
+        selectedRow = indexPath.row;
+        NSString *alertMessage = @"Are you sure you want to delete ";
+        alertMessage = [alertMessage stringByAppendingString:[selectedSample key]];
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:alertMessage
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"No"
+                              otherButtonTitles:@"Yes", nil];
+        [alert show];
+        
+    }
 }
 
 -(void) goBack:(id)sender
@@ -208,8 +223,26 @@
             option = @"VIEW";
             break;
         case 2:
+            option = @"DEL";
+            break;
+        case 3:
             option = @"NOTHING";
             break;
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex)
+    {
+        case 0:
+            break;
+        case 1:
+        {
+            [libraryObjectStore deleteLibraryObjectWithKey:[selectedSample key] FromTable:[SampleConstants tableName]];
+            [displayedSamples removeObjectAtIndex:selectedRow];
+            [self.tableView reloadData];
+        }
     }
 }
 
