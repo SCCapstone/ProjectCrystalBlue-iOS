@@ -50,6 +50,7 @@
     [mapView setMapType:MKMapTypeStandard];
     [mapView setZoomEnabled:YES];
     [mapView setScrollEnabled:YES];
+    [mapView setMapType:MKMapTypeSatellite];
     MKCoordinateRegion region = { {0.0, 0.0 }, { 0.0, 0.0 } };
     CLLocation *location = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
     region.center.latitude =  location.coordinate.latitude;
