@@ -357,11 +357,11 @@
     }
     else if(section ==3)
     {
-        return @"Density Seperation";
+        return @"Density Separation";
     }
     else //section == 4
     {
-        return @"Magnetic Seperation";
+        return @"Magnetic Separation";
     }
 }
 
