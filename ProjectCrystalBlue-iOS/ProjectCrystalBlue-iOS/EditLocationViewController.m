@@ -58,7 +58,9 @@
     }
     newLocation = [LocationField text];
     [Procedures moveSplit:selectedSplit toLocation:newLocation inStore:libraryObjectStore];
-    [self.navigationController popViewControllerAnimated:YES];
+    NSUInteger temp = self.navigationController.viewControllers.count - 3;
+    UIViewController* tempController = [self.navigationController.viewControllers objectAtIndex:temp];
+    [self.navigationController popToViewController:tempController animated:YES];
 }
 
 - (IBAction)cancel:(id)sender

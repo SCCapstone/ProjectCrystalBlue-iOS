@@ -14,9 +14,10 @@
 @interface SplitEditViewController ()
 
 {
-    NSArray *tags;
+    NSMutableArray *tags;
     NSString *optionAS;
     BOOL navigateToRoot;
+    NSString *selectedProcedure;
 }
 
 @end
@@ -169,12 +170,12 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    tags = [ProcedureRecordParser nameArrayFromRecordList:[[selectedSplit attributes] objectForKey:SPL_TAGS]];
+    tags = (NSMutableArray*)[ProcedureRecordParser nameArrayFromRecordList:[[selectedSplit attributes] objectForKey:SPL_TAGS]];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-     tags = [ProcedureRecordParser nameArrayFromRecordList:[[selectedSplit attributes] objectForKey:SPL_TAGS]];
+     tags = (NSMutableArray*)[ProcedureRecordParser nameArrayFromRecordList:[[selectedSplit attributes] objectForKey:SPL_TAGS]];
     [self.tableView reloadData];
 }
 
@@ -188,5 +189,16 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot
         return @"Procedures Applied";
     }
 }
+
+/*
+- (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.section == 1)
+    {
+        [tags removeObjectAtIndex:indexPath.row];
+        [self.tableView reloadData];
+    }
+}
+*/
 
 @end
