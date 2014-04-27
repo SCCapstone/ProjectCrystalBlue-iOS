@@ -72,32 +72,6 @@
     
     self.refreshControl = refreshControl;
     alphabetsArray = [[NSMutableArray alloc] init];
-    [alphabetsArray addObject:@"A"];
-    [alphabetsArray addObject:@"B"];
-    [alphabetsArray addObject:@"C"];
-    [alphabetsArray addObject:@"D"];
-    [alphabetsArray addObject:@"E"];
-    [alphabetsArray addObject:@"F"];
-    [alphabetsArray addObject:@"G"];
-    [alphabetsArray addObject:@"H"];
-    [alphabetsArray addObject:@"I"];
-    [alphabetsArray addObject:@"J"];
-    [alphabetsArray addObject:@"K"];
-    [alphabetsArray addObject:@"L"];
-    [alphabetsArray addObject:@"M"];
-    [alphabetsArray addObject:@"N"];
-    [alphabetsArray addObject:@"O"];
-    [alphabetsArray addObject:@"P"];
-    [alphabetsArray addObject:@"Q"];
-    [alphabetsArray addObject:@"R"];
-    [alphabetsArray addObject:@"S"];
-    [alphabetsArray addObject:@"T"];
-    [alphabetsArray addObject:@"U"];
-    [alphabetsArray addObject:@"V"];
-    [alphabetsArray addObject:@"W"];
-    [alphabetsArray addObject:@"Y"];
-    [alphabetsArray addObject:@"X"];
-    [alphabetsArray addObject:@"Z"];
     [self createAlphabetArray];
 }
 
@@ -110,7 +84,7 @@
         NSString *letterString = [[[[displayedSamples objectAtIndex:i] key] substringToIndex:1] uppercaseString];
         if ([letterString isEqualToString:title]) {
             [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]
-             atScrollPosition:UITableViewScrollPositionTop animated:YES];
+             atScrollPosition:UITableViewScrollPositionTop animated:NO];
             break;
         }
     }
@@ -144,6 +118,7 @@
     NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     displayedSamples = [temp sortedArrayUsingDescriptors:sortDescriptors].mutableCopy;
     
+    [self createAlphabetArray];
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
 }
