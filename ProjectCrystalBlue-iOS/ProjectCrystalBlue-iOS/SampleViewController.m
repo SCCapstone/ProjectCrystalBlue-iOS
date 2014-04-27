@@ -93,9 +93,20 @@
 
 - (void)createAlphabetArray {
     NSMutableArray *tempFirstLetterArray = [[NSMutableArray alloc] init];
+    NSMutableCharacterSet *numberSet = [[NSMutableCharacterSet alloc] init];
+    [numberSet addCharactersInString:@"0123456789"];
+    
     for (int i = 0; i < [displayedSamples count]; i++) {
         NSString *letterString = [[[[displayedSamples objectAtIndex:i] key] substringToIndex:1] uppercaseString];
-        if (![tempFirstLetterArray containsObject:letterString]) {
+        NSRange letterRange = [letterString rangeOfCharacterFromSet:numberSet];
+        if (letterRange.location == 0)
+        {
+            if (![tempFirstLetterArray containsObject:@"0"])
+            {
+                [tempFirstLetterArray addObject:@"0"];
+            }
+        }
+        else if (![tempFirstLetterArray containsObject:letterString]) {
             [tempFirstLetterArray addObject:letterString];
         }
     }
@@ -233,6 +244,7 @@
         {
             [libraryObjectStore deleteLibraryObjectWithKey:[selectedSample key] FromTable:[SampleConstants tableName]];
             [displayedSamples removeObjectAtIndex:selectedRow];
+            [self createAlphabetArray];
             [self.tableView reloadData];
         }
     }
