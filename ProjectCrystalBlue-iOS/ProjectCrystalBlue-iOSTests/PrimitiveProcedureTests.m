@@ -150,7 +150,7 @@ LocalLibraryObjectStore *testStore;
     NSString *bInitials = @"BBB";
     
     ProcedureRecord *pulvRecord = [[ProcedureRecord alloc] initWithTag:PROC_TAG_PULVERIZE andInitials:aInitials];
-    ProcedureRecord *gemRecord  = [[ProcedureRecord alloc] initWithTag:PROC_TAG_GEMINI_DOWN andInitials:bInitials];
+    ProcedureRecord *gemRecord  = [[ProcedureRecord alloc] initWithTag:PROC_TAG_GEMENI_DOWN andInitials:bInitials];
     ProcedureRecord *magRecord  = [[ProcedureRecord alloc] initWithTag:PROC_TAG_HAND_MAGNET_UP andInitials:bInitials];
     
     NSString *originalProcedureRecords = [NSString stringWithFormat:@"%@%@%@%@%@",
@@ -196,7 +196,7 @@ LocalLibraryObjectStore *testStore;
     NSString *bInitials = @"BBB";
     
     ProcedureRecord *pulvRecord = [[ProcedureRecord alloc] initWithTag:PROC_TAG_PULVERIZE andInitials:aInitials];
-    ProcedureRecord *gemRecord  = [[ProcedureRecord alloc] initWithTag:PROC_TAG_GEMINI_DOWN andInitials:bInitials];
+    ProcedureRecord *gemRecord  = [[ProcedureRecord alloc] initWithTag:PROC_TAG_GEMENI_DOWN andInitials:bInitials];
     ProcedureRecord *magRecord  = [[ProcedureRecord alloc] initWithTag:PROC_TAG_HAND_MAGNET_UP andInitials:bInitials];
     
     NSString *originalProcedureRecords = [NSString stringWithFormat:@"%@%@%@%@%@",

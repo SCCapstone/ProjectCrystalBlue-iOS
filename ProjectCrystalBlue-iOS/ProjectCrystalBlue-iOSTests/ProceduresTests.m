@@ -294,7 +294,7 @@ AbstractLibraryObjectStore *testStore;
     
 }
 
-- (void)testGemini
+- (void)testGemeni
 {
     NSString *originalKey = @"Rock.001";
     NSString *initials = @"AAA";
@@ -312,7 +312,7 @@ AbstractLibraryObjectStore *testStore;
     [s.attributes setValue:originalRecords forKey:SPL_TAGS];
     [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [Procedures geminiSplit:s
+    [Procedures gemeniSplit:s
                              withInitials:initials
                                   inStore:testStore];
     
@@ -330,8 +330,8 @@ AbstractLibraryObjectStore *testStore;
     NSArray *postNewRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newRecords];
     
     
-    ProcedureRecord *expectedOriginalRecord = [[ProcedureRecord alloc] initWithTag:PROC_TAG_GEMINI_UP andInitials:initials];
-    ProcedureRecord *expectedNewRecord = [[ProcedureRecord alloc] initWithTag:PROC_TAG_GEMINI_DOWN andInitials:initials];
+    ProcedureRecord *expectedOriginalRecord = [[ProcedureRecord alloc] initWithTag:PROC_TAG_GEMENI_UP andInitials:initials];
+    ProcedureRecord *expectedNewRecord = [[ProcedureRecord alloc] initWithTag:PROC_TAG_GEMENI_DOWN andInitials:initials];
     
     XCTAssertEqualObjects([originalRecordArray objectAtIndex:0],    [postOriginalRecordArray objectAtIndex:0]);
     XCTAssertEqualObjects([originalRecordArray objectAtIndex:1],    [postOriginalRecordArray objectAtIndex:1]);

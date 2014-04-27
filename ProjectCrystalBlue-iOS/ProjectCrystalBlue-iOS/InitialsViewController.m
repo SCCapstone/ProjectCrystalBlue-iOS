@@ -78,17 +78,17 @@
 
     else if (selectedRow == 5)
     {
-        [Procedures pulverizeSplit:selectedSplit withInitials:initials inStore:libraryObjectStore];
+        [Procedures jawCrushSplit:selectedSplit withInitials:initials inStore:libraryObjectStore];
     }
     
     else if (selectedRow == 6)
     {
-        [Procedures jawCrushSplit:selectedSplit withInitials:initials inStore:libraryObjectStore];
+        [Procedures pulverizeSplit:selectedSplit withInitials:initials inStore:libraryObjectStore];
     }
     
     else if (selectedRow == 7)
     {
-        [Procedures geminiSplit:selectedSplit withInitials:initials inStore:libraryObjectStore];
+        [Procedures gemeniSplit:selectedSplit withInitials:initials inStore:libraryObjectStore];
     }
     
     else if (selectedRow == 8)

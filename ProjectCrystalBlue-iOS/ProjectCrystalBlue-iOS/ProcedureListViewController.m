@@ -143,9 +143,9 @@
     [procedureNames1 addObject:@"Make Billet"];
     [procedureNames1 addObject:@"Make Thin Section"];
     [procedureNames1 addObject:@"Trim"];
-    [procedureNames2 addObject:@"Pulverizer"];
     [procedureNames2 addObject:@"Jaw Crusher"];
-    [procedureNames2 addObject:@"Gemini"];
+    [procedureNames2 addObject:@"Pulverizer"];
+    [procedureNames2 addObject:@"Gemeni"];
     [procedureNames2 addObject:@"Pan"];
     [procedureNames2 addObject:@"Sieves"];
     [procedureNames3 addObject:@"Heavy Liquid 3.30"];
@@ -214,7 +214,7 @@
         if([indexPath row] == 0)
         {
             initialsViewController.selectedRow = 5;
-             initialsViewController.titleNav = @"Pulverize";
+             initialsViewController.titleNav = @"Jaw Crush";
              [[self navigationController] pushViewController:initialsViewController  animated:YES];
 
         }
@@ -222,7 +222,7 @@
         else if([indexPath row] == 1)
         {
             initialsViewController.selectedRow = 6;
-            initialsViewController.titleNav = @"Jaw Crush";
+            initialsViewController.titleNav = @"Pulverize";
             [[self navigationController] pushViewController:initialsViewController  animated:YES];
         }
     
