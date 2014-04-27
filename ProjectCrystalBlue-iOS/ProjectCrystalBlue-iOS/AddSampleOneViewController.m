@@ -70,7 +70,7 @@
         NSString *dateString = [formatter stringFromDate:date];
         sampleToAdd = [[Sample alloc] initWithKey:[KeyField text]
                                         AndWithValues:[SampleConstants attributeDefaultValues]];
-    
+        
         [[sampleToAdd attributes] setObject:[LatitudeField text] forKey:SMP_LATITUDE];
         [[sampleToAdd attributes] setObject:[LongitudeField text] forKey:SMP_LONGITUDE];
         [[sampleToAdd attributes] setObject:[CollectedByField text] forKey:SMP_COLLECTED_BY];
