@@ -23,6 +23,7 @@
     NSString *option;
     Sample *selectedSample;
     int selectedRow;
+    NSMutableArray *alphabetsArray;
 }
 
 @end
@@ -49,7 +50,6 @@
         
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
         
-        [[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
         [[self navigationItem] setLeftBarButtonItem:backbtn];
     }
     return self;
@@ -71,6 +71,61 @@
              forControlEvents:UIControlEventValueChanged];
     
     self.refreshControl = refreshControl;
+    alphabetsArray = [[NSMutableArray alloc] init];
+    [alphabetsArray addObject:@"A"];
+    [alphabetsArray addObject:@"B"];
+    [alphabetsArray addObject:@"C"];
+    [alphabetsArray addObject:@"D"];
+    [alphabetsArray addObject:@"E"];
+    [alphabetsArray addObject:@"F"];
+    [alphabetsArray addObject:@"G"];
+    [alphabetsArray addObject:@"H"];
+    [alphabetsArray addObject:@"I"];
+    [alphabetsArray addObject:@"J"];
+    [alphabetsArray addObject:@"K"];
+    [alphabetsArray addObject:@"L"];
+    [alphabetsArray addObject:@"M"];
+    [alphabetsArray addObject:@"N"];
+    [alphabetsArray addObject:@"O"];
+    [alphabetsArray addObject:@"P"];
+    [alphabetsArray addObject:@"Q"];
+    [alphabetsArray addObject:@"R"];
+    [alphabetsArray addObject:@"S"];
+    [alphabetsArray addObject:@"T"];
+    [alphabetsArray addObject:@"U"];
+    [alphabetsArray addObject:@"V"];
+    [alphabetsArray addObject:@"W"];
+    [alphabetsArray addObject:@"Y"];
+    [alphabetsArray addObject:@"X"];
+    [alphabetsArray addObject:@"Z"];
+    [self createAlphabetArray];
+}
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    return alphabetsArray;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
+    for (int i = 0; i< [displayedSamples count]; i++) {
+        NSString *letterString = [[[[displayedSamples objectAtIndex:i] key] substringToIndex:1] uppercaseString];
+        if ([letterString isEqualToString:title]) {
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]
+             atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            break;
+        }
+    }
+    return index;
+}
+
+- (void)createAlphabetArray {
+    NSMutableArray *tempFirstLetterArray = [[NSMutableArray alloc] init];
+    for (int i = 0; i < [displayedSamples count]; i++) {
+        NSString *letterString = [[[[displayedSamples objectAtIndex:i] key] substringToIndex:1] uppercaseString];
+        if (![tempFirstLetterArray containsObject:letterString]) {
+            [tempFirstLetterArray addObject:letterString];
+        }
+    }
+    alphabetsArray = tempFirstLetterArray;
 }
 
 - (void)syncSamples
@@ -111,44 +166,6 @@
     Sample *sample = [displayedSamples objectAtIndex:indexPath.row];
     [[cell textLabel] setText:[sample description]];
     return cell;
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (self.tableView.editing)
-    {
-        self.editButtonItem.title =  @"Done";
-    }
-    else
-        self.editButtonItem.title = @"Delete";
-    return YES;
-}
-
-- (IBAction)toggleEditingMode:(id)sender
-{
-    if ([self isEditing])
-    {
-        [sender setTitle:@"Edit" forState:UIControlStateNormal];
-        [   self setEditing:NO animated:YES];
-    }
-    else
-    {
-        [sender setTitle:@"Done" forState:UIControlStateNormal];
-        [self setEditing:YES animated:YES];
-    }
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
-        Sample *sample = [displayedSamples objectAtIndex:indexPath.row];
-        [libraryObjectStore deleteLibraryObjectWithKey:[sample key] FromTable:[SampleConstants tableName]];
-        [displayedSamples removeObjectAtIndex:indexPath.row];
-        
-        [[self tableView] deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        
-    }
 }
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
