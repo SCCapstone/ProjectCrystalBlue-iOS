@@ -28,7 +28,8 @@ static NSString *const SPLIT_TABLE_NAME = @"prod_split_table";
                           SPL_KEY,
                           SPL_SAMPLE_KEY,
                           SPL_CURRENT_LOCATION,
-                          SPL_TAGS, nil];
+                          SPL_TAGS,
+                          SPL_LAST_PROC, nil];
     }
     return attributeNames;
 }
@@ -42,7 +43,8 @@ static NSString *const SPLIT_TABLE_NAME = @"prod_split_table";
                                   SPL_DEF_VAL_KEY,
                                   SPL_DEF_VAL_SAMPLE_KEY,
                                   SPL_DEF_VAL_CURRENT_LOCATION,
-                                  SPL_DEF_VAL_TAGS, nil];
+                                  SPL_DEF_VAL_TAGS,
+                                  SPL_DEF_VAL_LAST_PROC, nil];
     }
     return attributeDefaultValues;
 }
@@ -57,7 +59,8 @@ static NSString *const SPLIT_TABLE_NAME = @"prod_split_table";
                                SPL_DISPLAY_KEY,
                                SPL_DISPLAY_SAMPLE_KEY,
                                SPL_DISPLAY_CURRENT_LOCATION,
-                               SPL_DISPLAY_TAGS, nil];
+                               SPL_DISPLAY_TAGS,
+                               SPL_DISPLAY_LAST_PROC, nil];
     }
     return humanReadableLabels;
 }
