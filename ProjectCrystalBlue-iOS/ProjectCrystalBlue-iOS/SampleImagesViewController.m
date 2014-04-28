@@ -13,6 +13,8 @@
 #import "AddImageViewController.h"
 #import "EnlargedImageViewController.h"
 
+#define TITLE_LOADING @"Loading images..."
+#define TITLE_FORMAT @"Images for %@"
 
 @interface SampleImagesViewController ()
 {
@@ -33,11 +35,8 @@
     if (self) {
         selectedSample = initSample;
         libraryObjectStore = initLibrary;
-        NSString* title = @"Images for ";
-        title = [title stringByAppendingString:selectedSample.key];
-        
-        UINavigationItem *n = [self navigationItem];
-        [n setTitle:title];
+        self.title = TITLE_LOADING;
+        [self.navigationItem setTitle:TITLE_LOADING];
         
         UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStyleBordered target:self action:@selector(addImage:)];
         UIBarButtonItem *backbtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
@@ -72,7 +71,7 @@
     {
         [view removeFromSuperview];
     }
-    [self loadImages];
+    [self performSelectorInBackground:@selector(loadImages) withObject:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -149,6 +148,8 @@
        }
        [_scrollView setContentSize:CGSizeMake(screenWidth, (650*[imageArray count])+100)];
    }
+    self.title = [NSString stringWithFormat:TITLE_FORMAT, self.selectedSample.key];
+    [self.navigationItem setTitle:self.title];
 }
 
 -(IBAction)tapDetected:(id)sender
