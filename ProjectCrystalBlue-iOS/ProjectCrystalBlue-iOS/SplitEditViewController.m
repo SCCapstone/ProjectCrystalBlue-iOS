@@ -18,6 +18,7 @@
     NSString *optionAS;
     BOOL navigateToRoot;
     NSString *selectedProcedure;
+    NSMutableArray *procArray;
 }
 
 @end
@@ -195,7 +196,29 @@ AndNavigateBackToRoot:(BOOL)navigateBackToRoot
 {
     if(indexPath.section == 1)
     {
+        procArray = (NSMutableArray*)[ProcedureRecordParser procedureRecordArrayFromList:[[selectedSplit attributes] objectForKey:SPL_TAGS]];
+        
+        [procArray removeObjectAtIndex:indexPath.row];
         [tags removeObjectAtIndex:indexPath.row];
+        NSString *record = @"";
+        //NSObject *record
+        for(int i = 0; i < [procArray count]; i++)
+        {
+            record = [record stringByAppendingString:@"{"];
+            record = [record stringByAppendingString:[[procArray objectAtIndex:i] valueForKey:@"tag"]];
+            record = [record stringByAppendingString:@"|"];
+            record = [record stringByAppendingString:[[procArray objectAtIndex:i] valueForKey:@"initials"]];
+            record = [record stringByAppendingString:@"|"];
+
+            NSString *dateString = [NSDateFormatter localizedStringFromDate:[[procArray objectAtIndex:i] valueForKey:@"date"]
+                                                                  dateStyle:NSDateFormatterShortStyle
+                                                                  timeStyle:NSDateFormatterLongStyle];
+          
+            record = [record stringByAppendingString:dateString];
+            record = [record stringByAppendingString:@"}, "];
+        }
+        
+        [selectedSplit.attributes setObject:record forKey:SPL_TAGS];
         [self.tableView reloadData];
     }
 }
