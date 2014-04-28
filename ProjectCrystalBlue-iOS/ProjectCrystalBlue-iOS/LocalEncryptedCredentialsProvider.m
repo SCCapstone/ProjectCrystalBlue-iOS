@@ -9,6 +9,7 @@
 #import "LocalEncryptedCredentialsProvider.h"
 #import "AmazonCredentialsEncodable.h"
 #import "CredentialsEncryption.h"
+#import "PCBLogWrapper.h"
 
 #define filename @"credentials"
 

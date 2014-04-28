@@ -14,6 +14,7 @@
 #import "EditLocationViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "InitialsViewController.h"
+#import "PCBLogWrapper.h"
 
 @interface ProcedureListViewController ()
 {

@@ -13,6 +13,7 @@
 #import "SplitConstants.h"
 #import "Procedures.h"
 #import "SplitFieldValidator.h"
+#import "PCBLogWrapper.h"
 
 @interface EditLocationViewController ()
 {

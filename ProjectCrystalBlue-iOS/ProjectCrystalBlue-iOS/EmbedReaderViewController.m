@@ -12,6 +12,7 @@
 #import "Split.h"
 #import "SampleEditViewController.h"
 #import "SplitEditViewController.h"
+#import "PCBLogWrapper.h"
 
 @interface EmbedReaderViewController ()
 {

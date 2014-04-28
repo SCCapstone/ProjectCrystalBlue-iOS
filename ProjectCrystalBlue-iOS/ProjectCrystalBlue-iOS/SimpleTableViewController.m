@@ -7,6 +7,7 @@
 //
 
 #import "SimpleTableViewController.h"
+#import "PCBLogWrapper.h"
 
 @implementation SimpleTableViewController
 

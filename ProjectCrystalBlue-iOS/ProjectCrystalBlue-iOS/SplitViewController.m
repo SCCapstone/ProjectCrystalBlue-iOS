@@ -17,6 +17,7 @@
 #import "Procedures.h"
 #import "PrimitiveProcedures.h"
 #import "Reachability.h"
+#import "PCBLogWrapper.h"
 
 @interface SplitViewController ()
 {

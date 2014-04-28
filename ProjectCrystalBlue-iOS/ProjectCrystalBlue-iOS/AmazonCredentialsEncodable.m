@@ -7,6 +7,7 @@
 //
 
 #import "AmazonCredentialsEncodable.h"
+#import "PCBLogWrapper.h"
 
 #define K_ACCESS_KEY @"accessKey"
 #define K_SECRET_KEY @"secretKey"

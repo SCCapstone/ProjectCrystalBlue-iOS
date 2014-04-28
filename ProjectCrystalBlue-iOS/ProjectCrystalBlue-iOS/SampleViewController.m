@@ -15,6 +15,7 @@
 #import "SampleImageUtils.h"
 #import "AbstractMobileCloudImageStore.h"
 #import "Reachability.h"
+#import "PCBLogWrapper.h"
 
 @interface SampleViewController()
 {

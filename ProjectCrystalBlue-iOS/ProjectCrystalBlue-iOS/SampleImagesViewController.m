@@ -12,6 +12,7 @@
 #import "SampleImageUtils.h"
 #import "AddImageViewController.h"
 #import "EnlargedImageViewController.h"
+#import "PCBLogWrapper.h"
 
 #define TITLE_LOADING @"Loading images..."
 #define TITLE_FORMAT @"Images for %@"

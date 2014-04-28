@@ -10,7 +10,7 @@
 #import "Split.h"
 #import "Procedures.h"
 #import "ProcedureFieldValidator.h"
-
+#import "PCBLogWrapper.h"
 
 @interface InitialsViewController ()
 {

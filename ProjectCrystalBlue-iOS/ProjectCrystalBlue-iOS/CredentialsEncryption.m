@@ -8,6 +8,7 @@
 
 #import "CredentialsEncryption.h"
 #import <Security/Security.h>
+#import "PCBLogWrapper.h"
 
 @implementation CredentialsEncryption
 

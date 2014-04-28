@@ -12,6 +12,7 @@
 #import "CredentialsViewController.h"
 #import "EmbedReaderViewController.h"
 #import "SimpleDBLibraryObjectStore.h"
+#import "PCBLogWrapper.h"
 
 @interface HomeViewController ()
 {

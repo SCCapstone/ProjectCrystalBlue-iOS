@@ -8,15 +8,7 @@
 
 #import "AppDelegate.h"
 #import "HomeViewController.h"
-#import "DDLog.h"
-#import "DDTTYLogger.h"
-#import "DDASLLogger.h"
-
-#ifdef DEBUG
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
-#else
-static const int ddLogLevel = LOG_LEVEL_WARN;
-#endif
+#import "PCBLogWrapper.h"
 
 @implementation AppDelegate
 
@@ -24,9 +16,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    
-    [DDLog addLogger:[DDASLLogger sharedInstance]];
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    [PCBLogWrapper setupLog];
     DDLogInfo(@"Starting Lumberjack log!");
     
     // force view class to load so it may be referenced directly from NIB

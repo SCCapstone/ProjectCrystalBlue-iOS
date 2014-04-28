@@ -9,7 +9,7 @@
 #import "AddSampleSixViewController.h"
 #import "AddSampleAgeViewController.h"
 #import "SampleFieldValidator.h"
-
+#import "PCBLogWrapper.h"
 
 @interface AddSampleSixViewController ()
 

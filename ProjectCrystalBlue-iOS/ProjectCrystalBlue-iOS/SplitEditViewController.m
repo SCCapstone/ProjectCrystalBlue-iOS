@@ -10,6 +10,7 @@
 #import "ProcedureRecordParser.h"
 #import "SampleEditViewController.h"
 #import "ProcedureListViewController.h"
+#import "PCBLogWrapper.h"
 
 @interface SplitEditViewController ()
 
