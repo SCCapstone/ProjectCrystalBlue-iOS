@@ -8,6 +8,7 @@
 
 #import "MapViewController.h"
 #import <MapKit/MapKit.h>
+#import "PCBLogWrapper.h"
 
 @interface MapViewController ()
 {

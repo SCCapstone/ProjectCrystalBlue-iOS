@@ -9,6 +9,7 @@
 #import "CredentialsViewController.h"
 #import "LocalEncryptedCredentialsProvider.h"
 #import "AbstractCloudLibraryObjectStore.h"
+#import "PCBLogWrapper.h"
 
 @interface CredentialsViewController ()
 

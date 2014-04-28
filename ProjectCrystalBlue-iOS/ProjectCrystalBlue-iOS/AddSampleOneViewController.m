@@ -13,6 +13,7 @@
 #import "AddSampleTwoViewController.h"
 #import "SampleFieldValidator.h"
 #import "MapViewController.h"
+#import "PCBLogWrapper.h"
 
 @interface AddSampleOneViewController ()
 {

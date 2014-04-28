@@ -9,9 +9,8 @@
 #import "AddSampleSevenViewController.h"
 #import "AddSampleImageViewController.h"
 #import "Split.h"
-#import "DDLog.h"
 #import "SampleFieldValidator.h"
-
+#import "PCBLogWrapper.h"
 
 @interface AddSampleSevenViewController ()
 

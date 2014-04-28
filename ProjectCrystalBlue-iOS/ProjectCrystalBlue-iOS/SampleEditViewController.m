@@ -15,6 +15,7 @@
 #import "SampleFieldValidator.h"
 #import <MapKit/MapKit.h>
 #import "MapViewController.h"
+#import "PCBLogWrapper.h"
 
 @interface SampleEditViewController ()
 {

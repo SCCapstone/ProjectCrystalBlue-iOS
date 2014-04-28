@@ -11,6 +11,7 @@
 #import "AbstractCloudLibraryObjectStore.h"
 #import "SampleImageUtils.h"
 #import "ImagesFieldValidator.h"
+#import "PCBLogWrapper.h"
 
 @interface AddImageViewController ()
 {

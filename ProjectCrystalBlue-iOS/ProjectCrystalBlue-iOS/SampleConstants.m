@@ -7,13 +7,7 @@
 //
 
 #import "SampleConstants.h"
-#import "DDLog.h"
-
-#ifdef DEBUG
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
-#else
-static const int ddLogLevel = LOG_LEVEL_WARN;
-#endif
+#import "PCBLogWrapper.h"
 
 /* Sample table name
  */
@@ -52,6 +46,7 @@ static NSString *const SAMPLE_TABLE_NAME = @"prod_sample_table";
                           SMP_METER,
                           SMP_NOTES,
                           SMP_HYPERLINKS,
+                          SMP_NUM_SPLITS,
                           SMP_IMAGES, nil];
     }
     
@@ -85,6 +80,7 @@ static NSString *const SAMPLE_TABLE_NAME = @"prod_sample_table";
                                   SMP_DEF_VAL_METER,
                                   SMP_DEF_VAL_NOTES,
                                   SMP_DEF_VAL_HYPERLINKS,
+                                  SMP_DEF_VAL_NUM_SPLITS,
                                   SMP_DEF_VAL_IMAGES, nil];
     }
     return attributeDefaultValues;
@@ -117,6 +113,7 @@ static NSString *const SAMPLE_TABLE_NAME = @"prod_sample_table";
                                 SMP_DISPLAY_METER,
                                 SMP_DISPLAY_NOTES,
                                 SMP_DISPLAY_HYPERLINKS,
+                                SMP_DISPLAY_NUM_SPLITS,
                                 SMP_DISPLAY_IMAGES, nil];
     }
     return attributeLabelValues;

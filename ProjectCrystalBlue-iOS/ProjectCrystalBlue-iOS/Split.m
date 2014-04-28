@@ -10,6 +10,7 @@
 #import "ValidationResponse.h"
 #import "SplitFieldValidator.h"
 #import "ProcedureRecordParser.h"
+#import "PCBLogWrapper.h"
 
 @implementation Split
 {

@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-
 #import "Sample.h"
 #import "AddSampleThreeViewController.h"
 #import "AddSampleFourViewController.h"
 #import "AddSampleFiveViewController.h"
+#import "PCBLogWrapper.h"
 
 @interface AddSampleThreeViewController ()
 {

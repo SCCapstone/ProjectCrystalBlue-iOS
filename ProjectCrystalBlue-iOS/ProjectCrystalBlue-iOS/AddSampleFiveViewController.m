@@ -12,6 +12,7 @@
 #import "AbstractLibraryObjectStore.h"
 #import "SplitConstants.h"
 #import "SampleFieldValidator.h"
+#import "PCBLogWrapper.h"
 
 @interface AddSampleFiveViewController ()
 

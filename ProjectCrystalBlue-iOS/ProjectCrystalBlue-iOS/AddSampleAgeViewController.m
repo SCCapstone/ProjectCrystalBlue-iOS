@@ -9,6 +9,7 @@
 #import "AddSampleAgeViewController.h"
 #import "AddSampleSevenViewController.h"
 #import "Sample.h"
+#import "PCBLogWrapper.h"
 
 @interface AddSampleAgeViewController ()
 {

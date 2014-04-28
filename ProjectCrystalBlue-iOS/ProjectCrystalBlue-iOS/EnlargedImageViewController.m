@@ -10,6 +10,7 @@
 #import "SampleImageUtils.h"
 #import "Sample.h"
 #import "AbstractCloudLibraryObjectStore.h"
+#import "PCBLogWrapper.h"
 
 @interface EnlargedImageViewController ()
 {

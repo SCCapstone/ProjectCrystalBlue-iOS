@@ -13,13 +13,7 @@
 #import "Sample.h"
 #import "SampleImageUtils.h"
 #import "Split.h"
-#import "DDLog.h"
-
-#ifdef DEBUG
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
-#else
-static const int ddLogLevel = LOG_LEVEL_WARN;
-#endif
+#import "PCBLogWrapper.h"
 
 @interface LocalLibraryObjectStore()
 {

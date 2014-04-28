@@ -9,6 +9,7 @@
 #import "Sample.h"
 #import "AddSampleFourViewController.h"
 #import "AddSampleFiveViewController.h"
+#import "PCBLogWrapper.h"
 
 @interface AddSampleFourViewController ()
 {
