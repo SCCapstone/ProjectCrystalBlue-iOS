@@ -98,6 +98,7 @@
         
         
          DDLogInfo(@"Adding new sample %@", sampleToAdd.key);
+         [[sampleToAdd attributes] setObject:@"1" forKey:SMP_NUM_SPLITS];
          [libraryObjectStore putLibraryObject:sampleToAdd IntoTable:[SampleConstants tableName]];
          
          NSString *newSplitKey = [NSString stringWithFormat:@"%@%@", [sampleToAdd key], @".001"];
