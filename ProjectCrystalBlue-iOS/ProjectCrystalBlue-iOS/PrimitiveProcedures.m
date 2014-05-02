@@ -8,7 +8,8 @@
 
 #import "PrimitiveProcedures.h"
 #import "ProcedureNameConstants.h"
-#import "SplitConstants.h"
+#import "Split.h"
+#import "Sample.h"
 #import "ProcedureRecord.h"
 #import "PCBLogWrapper.h"
 
@@ -42,9 +43,22 @@
                                          inTable:tableName];
     [newAttributes setObject:key forKey:SPL_KEY];
     [newAttributes setObject:@"" forKey:SPL_TAGS];
+    [newAttributes setObject:@"" forKey:SPL_LAST_PROC];
     Split *newSplit = [[Split alloc] initWithKey:key AndWithAttributeDictionary:newAttributes];
     
     [store putLibraryObject:newSplit IntoTable:tableName];
+    
+    Sample *sample = (Sample *)[store getLibraryObjectForKey:[newSplit sampleKey] FromTable:[SampleConstants tableName]];
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    NSNumber *count = [formatter numberFromString:[sample.attributes objectForKey:SMP_NUM_SPLITS]];
+    count = [NSNumber numberWithInt:[count intValue] + 1];
+    [sample.attributes setObject:count.stringValue forKey:SMP_NUM_SPLITS];
+    [store updateLibraryObject:sample IntoTable:[SampleConstants tableName]];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshSampleData"
+                                                        object:self];
 }
 
 +(void)appendToSplitInPlace:(Split *)modifiedSplit
@@ -63,6 +77,7 @@
                                                tagString:[newProcedureRecord description]];
     
     [[modifiedSplit attributes] setObject:newTagList forKey:SPL_TAGS];
+    [[modifiedSplit attributes] setObject:[self lastProcedureFromProcedureRecord:newProcedureRecord] forKey:SPL_LAST_PROC];
     [store updateLibraryObject:modifiedSplit IntoTable:tableName];
 }
 
@@ -87,9 +102,22 @@
                                          inTable:tableName];
     [newAttributes setObject:key forKey:SPL_KEY];
     [newAttributes setObject:newTagList forKey:SPL_TAGS];
+    [newAttributes setObject:[self lastProcedureFromProcedureRecord:newProcedureRecord] forKey:SPL_LAST_PROC];
     Split *newSplit = [[Split alloc] initWithKey:key AndWithAttributeDictionary:newAttributes];
     
     [store putLibraryObject:newSplit IntoTable:tableName];
+    
+    Sample *sample = (Sample *)[store getLibraryObjectForKey:[newSplit sampleKey] FromTable:[SampleConstants tableName]];
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    NSNumber *count = [formatter numberFromString:[sample.attributes objectForKey:SMP_NUM_SPLITS]];
+    count = [NSNumber numberWithInt:[count intValue] + 1];
+    [sample.attributes setObject:count.stringValue forKey:SMP_NUM_SPLITS];
+    [store updateLibraryObject:sample IntoTable:[SampleConstants tableName]];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshSampleData"
+                                                        object:self];
 }
 
 /**
@@ -135,7 +163,7 @@
     
     previousNumber = [previousNumberAsString intValue];
     
-    for (int newNumber = previousNumber + 1; newNumber < 1000; ++newNumber) {
+    for (int newNumber = previousNumber; newNumber < 1000; newNumber++) {
         NSString *newKey = [strippedString stringByAppendingFormat:@".%03d", newNumber];
         if (![store libraryObjectExistsForKey:newKey FromTable:tableName]) {
             DDLogInfo(@"%@: Created new key %@ from key %@", NSStringFromClass(self.class), newKey, previousKey);
@@ -155,4 +183,15 @@
     return [strippedString stringByAppendingFormat:@"%@.%3d", randomCharacters, 1];
 }
 
++ (NSString *)lastProcedureFromProcedureRecord:(ProcedureRecord *)procedureRecord
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM/dd/yy"];
+    
+    NSString *procedureName = [ProcedureNameConstants procedureNameForTag:procedureRecord.tag];
+    NSString *date = [formatter stringFromDate:procedureRecord.date];
+    return [NSString stringWithFormat:@"%@ on %@ by %@", procedureName, date, procedureRecord.initials];
+}
+
 @end
+

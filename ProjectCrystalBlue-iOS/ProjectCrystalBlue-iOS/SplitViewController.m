@@ -21,7 +21,7 @@
 
 @interface SplitViewController ()
 {
-    NSMutableArray *splits;
+    NSArray *splits;
     NSString* option;
     NSString* delOption;
     Split *selectedSplit;
@@ -37,7 +37,6 @@
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        splits = (NSMutableArray*) [libraryObjectStore getAllSplitsForSampleKey:selectedSample.key];
         selectedSample = initSample;
         
         UINavigationItem *n = [self navigationItem];
@@ -81,26 +80,23 @@
         [(AbstractMobileCloudImageStore *)[SampleImageUtils defaultImageStore] synchronizeWithCloud];
     }
     
-    splits = (NSMutableArray*)[libraryObjectStore getAllSplitsForSampleKey:selectedSample.key];
-    [self.tableView reloadData];
+    [self updateDisplayedSplits];
     [self.refreshControl endRefreshing];
 }
 
--(void)viewDidAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
-    splits = (NSMutableArray*)[libraryObjectStore getAllSplitsForSampleKey:selectedSample.key];
-    [self.tableView reloadData];
+    [self updateDisplayedSplits];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [splits count];
+    return splits.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell =
-    [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
     
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
@@ -109,7 +105,6 @@
     
     Split *split = [splits objectAtIndex:[indexPath row]];
     [[cell textLabel] setText:[split description]];
-    
     return cell;
 }
 
@@ -166,41 +161,40 @@
                               cancelButtonTitle:@"No"
                               otherButtonTitles:@"Yes", nil];
         [alert show];
-
     }
 }
 
--(void) goBack:(id)sender
+- (void)updateDisplayedSplits
+{
+    splits = [libraryObjectStore getAllSplitsForSampleKey:selectedSample.key];
+    [self.tableView reloadData];
+}
+
+- (void)goBack:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void) addNewItem:(id)sender
+- (void)addNewItem:(id)sender
 {
-    splits = (NSMutableArray*)[libraryObjectStore getAllSplitsForSampleKey:selectedSample.key];
-    if([splits count] != 0)
-    {
-        [Procedures addFreshSplit:[splits objectAtIndex:0] inStore:libraryObjectStore];
-    }
+    Split *split;
+    
+    if (splits.count != 0)
+        split = [splits firstObject];
     else
     {
-        NSString *temp = selectedSample.key;
-        temp = [temp stringByAppendingString:@".001"];
-        
-        NSString *key = [PrimitiveProcedures uniqueKeyBasedOn:selectedSample.key
+        NSString *key = [PrimitiveProcedures uniqueKeyBasedOn:[selectedSample.key stringByAppendingString:@".001"]
                                                       inStore:libraryObjectStore
                                                       inTable:[SplitConstants tableName]];
         
-        Split *split = [[Split alloc] initWithKey:key
-                           AndWithAttributes:[SplitConstants attributeNames]
-                                   AndValues:[SplitConstants attributeDefaultValues]];
-        [split.attributes setObject:selectedSample.key
-                              forKey:SPL_SAMPLE_KEY];
-        
-        [libraryObjectStore putLibraryObject:split IntoTable:[SplitConstants tableName]];
+        split = [[Split alloc] initWithKey:key
+                         AndWithAttributes:[SplitConstants attributeNames]
+                                 AndValues:[SplitConstants attributeDefaultValues]];
+        [split.attributes setObject:selectedSample.key forKey:SPL_SAMPLE_KEY];
     }
-    splits = (NSMutableArray*)[libraryObjectStore getAllSplitsForSampleKey:selectedSample.key];
-    [self.tableView reloadData];
+    
+    [Procedures addFreshSplit:split inStore:libraryObjectStore];
+    [self updateDisplayedSplits];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -230,9 +224,19 @@
             break;
         case 1:
         {
-            [libraryObjectStore deleteLibraryObjectWithKey:[selectedSplit key] FromTable:[SplitConstants tableName]];
-            [splits removeObjectAtIndex:selectedRow];
-            [self.tableView reloadData];
+            NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+            [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+            
+            NSNumber *count = [formatter numberFromString:[selectedSample.attributes objectForKey:SMP_NUM_SPLITS]];
+            count = [NSNumber numberWithInt:[count intValue] - 1];
+            [selectedSample.attributes setObject:count.stringValue forKey:SMP_NUM_SPLITS];
+            [libraryObjectStore updateLibraryObject:selectedSample IntoTable:[SampleConstants tableName]];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshSampleData"
+                                                                object:self];
+            
+            [libraryObjectStore deleteLibraryObjectWithKey:selectedSplit.key FromTable:[SplitConstants tableName]];
+            [self updateDisplayedSplits];
         }
     }
 }
